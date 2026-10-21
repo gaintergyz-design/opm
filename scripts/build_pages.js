@@ -206,38 +206,37 @@ function buildWeekAhead() {
   const days = (D.week_ahead || {}).days || [];
   const a = scaffold('Week Ahead', `${days.length ? days[0].date : ''} – ${days.length ? days[days.length - 1].date : ''} · next week`);
 
-  const BLOCK = 180, areaTop = 250, areaBottom = H - 126;
-  const contentH = days.length * BLOCK;
-  const start = Math.round(areaTop + Math.max(0, (areaBottom - areaTop - contentH) / 2));
-
-  const TX = M + 558;                    // 右側個股區起點
+  // 5 天在金色橫線以下整個區域「平均分配」，不再整塊居中
+  const areaTop = 250, areaBottom = H - 126;
+  const RH = Math.floor((areaBottom - areaTop) / Math.max(1, days.length));
+  const TX = M + 570;                    // 右側個股區起點（與左側數據留出間距）
   days.forEach((d, i) => {
-    const y = start + i * BLOCK;
+    const y = areaTop + i * RH;
     if (i > 0) a.push(`<rect x="${M}" y="${y}" width="${CW}" height="1" fill="${C.line}"/>`);  // 第一行不畫線（上方已有金色粗橫線）
-    const mid = y + BLOCK / 2;
+    const mid = y + RH / 2;
 
-    a.push(t(M, mid - 14, d.day, { size: 30, weight: 500 }));
-    a.push(t(M, mid + 14, d.date, { size: 20, fill: C.dim }));
+    a.push(t(M, mid - 16, d.day, { size: 30, weight: 500 }));
+    a.push(t(M, mid + 16, d.date, { size: 20, fill: C.dim }));
 
-    // 經濟數據 3-4 行（帶序號），垂直居中
+    // 經濟數據 3-4 行（帶序號），行距放寬、垂直居中
     const econ = (d.econ || []).slice(0, 4);
-    const step = 29;
+    const step = 34;
     const n = Math.max(1, econ.length);
     const sy = mid - (n * step) / 2 + step / 2 + 9;
     econ.forEach((ev, j) => {
       a.push(t(M + 118, sy + j * step, `${j + 1}`, { size: 20, fill: C.dim }));
-      a.push(t(M + 146, sy + j * step, clip(ev, 31), { size: 24 }));
+      a.push(t(M + 146, sy + j * step, clip(ev, 29), { size: 24 }));
     });
     if (!econ.length) a.push(t(M + 118, mid + 9, '—', { size: 24, fill: C.dim }));
 
-    // 右側：盤前 / 盤後 財報（各最多 8 家，兩行），結構同原 Earnings Week
-    const groups = [['Pre', d.before || [], -40], ['Post', d.after || [], 20]];
+    // 右側：盤前 / 盤後 財報（各最多 8 家，兩行），行距放寬
+    const groups = [['Pre', d.before || [], -46], ['Post', d.after || [], 16]];
     groups.forEach(([lab, list, dy]) => {
       if (!list.length) return;          // 無財報的日子不顯示空標籤
       a.push(t(TX, mid + dy + 6, lab, { size: 16, fill: C.dim }));
       const r1 = list.slice(0, 4), r2 = list.slice(4, 8);
-      a.push(tickerRow(r1, TX + 46, mid + dy + 6, { size: 17, logo: 17, gap: 10, max: 4 }));
-      if (r2.length) a.push(tickerRow(r2, TX + 46, mid + dy + 30, { size: 17, logo: 17, gap: 10, max: 4 }));
+      a.push(tickerRow(r1, TX + 46, mid + dy + 6, { size: 17, logo: 17, gap: 12, max: 4 }));
+      if (r2.length) a.push(tickerRow(r2, TX + 46, mid + dy + 36, { size: 17, logo: 17, gap: 12, max: 4 }));
     });
   });
 
