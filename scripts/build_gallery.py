@@ -190,7 +190,7 @@ html = f'''<!DOCTYPE html>
 <main>
 {body}
 {more}
-<p class="hint">點圖看原尺寸 · 保存圖片可一鍵下載</p>
+<p class="hint">iPhone：點「保存圖片」→ 分享選單 → 存儲圖像（進相冊）<br>電腦：直接下載到「下載項目」</p>
 </main>
 <script>
 function copyText(t, btn) {{
@@ -215,7 +215,7 @@ document.querySelectorAll('.copy').forEach(function (b) {{
   }});
 }});
 
-// 一鍵保存：fetch 成 blob 再觸發下載（避免 iOS 直接開新視窗）
+// 一鍵保存：iOS 用分享選單（可「存儲圖像」直接進相冊），桌面用 blob 下載
 document.querySelectorAll('.save').forEach(function (b) {{
   b.addEventListener('click', async function (e) {{
     e.preventDefault(); e.stopPropagation();
@@ -225,6 +225,15 @@ document.querySelectorAll('.save').forEach(function (b) {{
     try {{
       var r = await fetch(src, {{ cache: 'force-cache' }});
       var blob = await r.blob();
+      var file = new File([blob], name, {{ type: blob.type || 'image/png' }});
+      // iOS / Android：分享選單裡有「存儲圖像」，直接進相冊
+      if (navigator.canShare && navigator.canShare({{ files: [file] }})) {{
+        await navigator.share({{ files: [file], title: name }});
+        b.textContent = '已保存'; b.classList.add('done');
+        setTimeout(function () {{ b.textContent = old; b.classList.remove('done'); }}, 1800);
+        return;
+      }}
+      // 桌面瀏覽器：blob 下載到「下載項目」
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url; a.download = name;
@@ -233,6 +242,7 @@ document.querySelectorAll('.save').forEach(function (b) {{
       b.textContent = '已保存'; b.classList.add('done');
       setTimeout(function () {{ b.textContent = old; b.classList.remove('done'); }}, 1800);
     }} catch (err) {{
+      if (err && err.name === 'AbortError') {{ b.textContent = old; return; }}  // 用戶取消分享
       window.open(src, '_blank');       // 保底：開原圖讓用戶長按保存
       b.textContent = old;
     }}
