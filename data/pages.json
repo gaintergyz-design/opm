@@ -2,70 +2,100 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-20 19:22",
+  "generated_at": "2026-10-21 02:27",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
-    "session": "2026-10-20",
-    "slot": "pre-market",
+    "session": "2026-10-21",
+    "slot": "next session",
     "prev_close": [
       {
-        "label": "S&P 500 (cap-weighted)",
-        "pct": -1.17
+        "label": "S&P 500",
+        "pct": 0.28
       },
       {
         "label": "Nasdaq",
-        "pct": 1.11
+        "pct": -0.02
       },
       {
         "label": "Russell 2000",
-        "pct": 0.25
+        "pct": 1.65
       }
     ],
     "econ": [
       {
+        "time": "10:30",
+        "event": "Atlanta Fed GDPNow",
+        "consensus": "3.6%",
+        "previous": "3.6%"
+      },
+      {
+        "time": "08:30",
+        "event": "Housing Starts",
+        "consensus": "1.9%",
+        "previous": "-5.9%"
+      },
+      {
+        "time": "08:30",
+        "event": "Building Permits",
+        "consensus": "1.390M",
+        "previous": "1.403M"
+      },
+      {
         "time": "10:00",
-        "event": "NAHB Housing Market Index",
-        "consensus": "31",
-        "previous": "32"
+        "event": "Pending Home Sales",
+        "consensus": "-0.7%",
+        "previous": "0.3%"
       },
       {
-        "time": "11:30",
-        "event": "3-Month Bill Auction",
-        "consensus": "",
-        "previous": "4.085%"
+        "time": "16:30",
+        "event": "API Weekly Crude Oil Stock",
+        "consensus": "-1.300M",
+        "previous": "-11.120M"
       },
       {
-        "time": "11:30",
-        "event": "6-Month Bill Auction",
+        "time": "08:15",
+        "event": "ADP Employment Change Weekly",
         "consensus": "",
-        "previous": "4.200%"
+        "previous": "24.80K"
+      },
+      {
+        "time": "08:55",
+        "event": "Redbook",
+        "consensus": "",
+        "previous": "10.4%"
+      },
+      {
+        "time": "10:00",
+        "event": "Pending Home Sales Index",
+        "consensus": "",
+        "previous": "71.2"
       }
     ],
-    "econ_all": 3,
+    "econ_all": 8,
     "earnings": {
       "before": [
-        "GE",
-        "RTX",
-        "MMM",
-        "NOC",
-        "GM",
-        "MSCI",
-        "HAL",
-        "SYF"
+        "PM",
+        "TMO",
+        "ABT",
+        "NEE",
+        "T",
+        "DHR",
+        "CME",
+        "ELV"
       ],
       "after": [
-        "NFLX",
-        "ISRG",
-        "CB",
-        "COF",
-        "AMX",
-        "UAL",
-        "EWBC",
-        "NLY"
+        "META",
+        "TSLA",
+        "LRCX",
+        "SAP",
+        "TXN",
+        "IBM",
+        "CSX",
+        "KMI"
       ],
-      "before_n": 21,
-      "after_n": 22,
-      "total": 55
+      "before_n": 23,
+      "after_n": 64,
+      "total": 91
     }
   },
   "winners": {
@@ -172,16 +202,16 @@
       {
         "day": "Tue",
         "date": "Oct 20",
-        "count": 55,
+        "count": 53,
         "before": [
           "GE",
           "RTX",
           "MMM",
-          "NOC",
           "GM",
+          "NOC",
           "MSCI",
-          "HAL",
           "SYF",
+          "HAL",
           "KEY",
           "EFX"
         ],
@@ -209,8 +239,8 @@
           "TMO",
           "ABT",
           "NEE",
-          "DHR",
           "T",
+          "DHR",
           "CME",
           "ELV",
           "MCO",
@@ -238,8 +268,8 @@
         "before": [
           "PG",
           "UNP",
-          "VLO",
           "LMT",
+          "VLO",
           "SPOT",
           "BX",
           "CMCSA",
@@ -248,8 +278,8 @@
           "HON"
         ],
         "after": [
-          "NEM",
           "WDC",
+          "NEM",
           "BE",
           "BBD",
           "BBDO",
