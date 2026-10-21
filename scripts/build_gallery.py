@@ -72,8 +72,11 @@ for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
     shutil.copy2(p, os.path.join(IMG, name))
     cap_file = os.path.join(OUT, f'caption-{name[:-4]}.txt')
     caption = open(cap_file, encoding='utf-8').read().strip() if os.path.exists(cap_file) else ''
+    mt = os.stat(p).st_mtime
+    ts = datetime.datetime.fromtimestamp(mt).strftime('%Y-%m-%d %H:%M:%S')
     items.append({'img': f'img/{name}', 'name': name, 'kind': kind, 'date': d,
-                  'post': POST_OF.get(kind, kind), 'caption': caption})
+                  'post': POST_OF.get(kind, kind), 'caption': caption,
+                  'mtime': mt, 'time': ts})
 
 # 清掉 docs/img 裡已不在 out/ 的舊檔
 keep = {i['name'] for i in items}
@@ -88,15 +91,16 @@ for f in os.listdir(IMG):
     if f not in keep:
         os.remove(os.path.join(IMG, f))
 
-# 按貼文分組
+# 按貼文分組；同日內按「組內最新圖的生成時間」倒序（新出的卡種排最前）
 groups = {}
 for it in items:
     groups.setdefault((it['post'], it['date']), []).append(it)
 for g in groups.values():
     g.sort(key=lambda x: ORDER.index(x['kind']) if x['kind'] in ORDER else 99)
 
+glatest = {k: max(i['mtime'] for i in v) for k, v in groups.items()}
 ordered = sorted(groups.items(),
-                 key=lambda kv: (kv[0][1], 0 if kv[0][0] == 'theclose' else 1),
+                 key=lambda kv: (kv[0][1], glatest[kv[0]]),
                  reverse=True)
 
 cutoff_open = datetime.date.today() - datetime.timedelta(days=OPEN_DAYS - 1)
@@ -126,7 +130,8 @@ def group_html(key, imgs, idx):
         src = f'src="{i["img"]}"' if live else 'data-src="' + i['img'] + '"'
         shots.append(
             f'<div class="shot"><a class="link" href="{i["img"]}" target="_blank">'
-            f'<img {src} loading="lazy" alt="{i["name"]}"></a></div>')
+            f'<img {src} loading="lazy" alt="{i["name"]}"></a>'
+            f'<span class="ts">{i["time"]}</span></div>')
     cls = 'sec' if live else 'sec late'
     hid = '' if live else ' hidden'
     return f'<section class="{cls}"{hid}>{head}{block}<div class="shots">{"".join(shots)}</div></section>'
@@ -174,6 +179,8 @@ html = f'''<!DOCTYPE html>
   .shots {{ display:flex; flex-direction:column; gap:14px; }}
   .shot {{ position:relative; }}
   .shot img {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }}
+  .shot .ts {{ display:block; text-align:center; font-size:11px; color:var(--dim);
+    font-variant-numeric:tabular-nums; margin-top:5px; letter-spacing:.3px; }}
   .link {{ display:block; text-decoration:none; }}
   .morebar {{ padding:22px 0 4px; text-align:center; }}
   .morebar button {{ width:100%; padding:14px; font-size:14.5px; color:var(--gray);

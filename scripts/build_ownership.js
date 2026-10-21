@@ -194,15 +194,15 @@ const drawLabel = (s, x, bt, anchor, elbowR = 0) => {
   block(bt, s.name.split('|'), s.disp, anchor, x);
 };
 
-// 頂部外排（bt=260，離環遠）
+// 頂部外排（bt=260，離環遠）—— 12 點右側三個小扇區全進外排、按角度順序，線不交叉
 drawLabel(segByName['Insiders'], 340, 260, 'middle');
-drawLabel(segByName['JPMorgan Chase'], 520, 260, 'middle');
-drawLabel(segByName['T. Rowe Price'], 700, 260, 'middle');
-drawLabel(segByName['Invesco'], 860, 260, 'middle');
+drawLabel(segByName['JPMorgan Chase'], 505, 260, 'middle');
+drawLabel(segByName['T. Rowe Price'], 680, 260, 'middle');
+drawLabel(segByName['Morgan Stanley'], 835, 260, 'middle');
+drawLabel(segByName['Invesco'], 962, 260, 'middle');
 // 頂部內排（bt=330，靠近環）
-drawLabel(segByName['Geode Capital'], 440, 330, 'middle');
-drawLabel(segByName['Capital Group'], 620, 330, 'middle');
-drawLabel(segByName['Morgan Stanley'], 800, 330, 'middle');
+drawLabel(segByName['Geode Capital'], 400, 330, 'middle');
+drawLabel(segByName['Capital Group'], 560, 330, 'middle');
 // 左欄 4（全部單段直線，貼環外緣通過不交叉）
 drawLabel(segByName['State Street'], 216, 550, 'end');
 drawLabel(segByName['Fidelity (FMR)'], 216, 650, 'end');
