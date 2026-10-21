@@ -56,8 +56,8 @@ jobs:
           echo "本次產線：$K"
 
       # ET 是排程的唯一基準。cron 只有 UTC，換時制會差 1 小時，
-      # 加上 GitHub cron 本身有 5–15 分鐘延遲，所以放寬到 ±35 分鐘。
-      - name: 時區守衛（ET 目標時間 ±35 分鐘）
+      # GitHub cron 延遲可達 45 分鐘以上（高峰期），所以放寬到 ±60 分鐘。
+      - name: 時區守衛（ET 目標時間 ±60 分鐘）
         id: guard
         env:
           KIND: ${{ steps.kind.outputs.kind }}
@@ -82,7 +82,7 @@ jobs:
           (hh, mm), days = T[KIND]
           now = datetime.now(ZoneInfo('America/New_York'))
           delta = abs((now.hour * 60 + now.minute) - (hh * 60 + mm))
-          ok = now.weekday() in days and delta <= 35
+          ok = now.weekday() in days and delta <= 60
           print(f"ET 現在 {now:%a %H:%M}（weekday={now.weekday()}）· 目標 {hh:02d}:{mm:02d} · 偏差 {delta} 分 → {'執行' if ok else '跳過'}")
           open(os.environ['GITHUB_OUTPUT'], 'a').write(f'run={"true" if ok else "false"}\n')
           PY
