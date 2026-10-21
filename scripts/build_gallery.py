@@ -134,7 +134,7 @@ def next_post():
                     best = (t, name)
         if not best:
             return ''
-        t, name = best.astimezone(cn), best[1]
+        t, name = best[0].astimezone(cn), best[1]
         when = t.strftime('今天 %H:%M') if t.date() == datetime.datetime.now(cn).date() \
             else t.strftime('%m/%d %H:%M')
         return f'預計下一張圖：{name} · {when}（北京時間）'
