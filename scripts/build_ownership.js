@@ -200,22 +200,20 @@ const drawLabel = (s, x, bt, anchor, nfs = 25, pfs = 38) => {
   a.push(`<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="4.5" fill="${CFG.green}" stroke="#FFFFFF" stroke-width="1.5"/>`);
 };
 
-// 頂部一排 5（小份額，12 點偏左掃過來的）
-drawLabel(segByName['JPMorgan Chase'], 150, 300, 'middle');
-drawLabel(segByName['Capital Group'], 350, 300, 'middle');
-drawLabel(segByName['T. Rowe Price'], 555, 300, 'middle');
-drawLabel(segByName['Morgan Stanley'], 760, 300, 'middle');
-drawLabel(segByName['Invesco'], 955, 300, 'middle');
-// 左欄 4（右上角掃下來的）
-drawLabel(segByName['Geode Capital'], 256, 560, 'end');
-drawLabel(segByName['Insiders'], 256, 670, 'end');
-drawLabel(segByName['State Street'], 256, 780, 'end');
-drawLabel(segByName['Fidelity (FMR)'], 256, 890, 'end');
-// 底部 2（錨在側壁底緣，線垂直下行不穿環）
-drawLabel(segByName['Vanguard'], 450, 1080, 'middle');
-drawLabel(segByName['BlackRock'], 300, 1060, 'middle');
-// 右側：All Other（最大份額、最大 pill）
-drawLabel(segByName['All Other'], 830, 690, 'start', 24, 44);
+// 橢圓環繞布局：12 個標籤沿橢圓按扇區圓序均勻排列（右→左下→左→左上→頂→右上）
+// 圓序單調 → 引導線兩兩不交叉；下半圓錨點在側壁底緣。
+drawLabel(segByName['All Other'], 830, 690, 'start', 24, 44);        // 右
+drawLabel(segByName['Vanguard'], 335, 978, 'middle');                // 左下
+drawLabel(segByName['BlackRock'], 180, 863, 'middle');               // 左下
+drawLabel(segByName['Fidelity (FMR)'], 252, 719, 'end');             // 左
+drawLabel(segByName['State Street'], 250, 611, 'end');               // 左上
+drawLabel(segByName['Insiders'], 250, 503, 'end');                   // 左上
+drawLabel(segByName['Geode Capital'], 260, 392, 'middle');           // 上左
+drawLabel(segByName['JPMorgan Chase'], 390, 285, 'middle');          // 上左
+drawLabel(segByName['Capital Group'], 600, 280, 'middle');           // 上
+drawLabel(segByName['T. Rowe Price'], 820, 235, 'middle');           // 上右
+drawLabel(segByName['Morgan Stanley'], 920, 355, 'middle');          // 右上
+drawLabel(segByName['Invesco'], 960, 475, 'middle');                 // 右上
 
 /* --- 頁腳 --- */
 a.push(`<rect x="${M}" y="${H - 118}" width="${W - M * 2}" height="1" fill="${C.line}"/>`);
