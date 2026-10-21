@@ -1,12 +1,22 @@
 name: daily-cards
 
+# 排程基準：全部以「美東 ET」為準（受眾在美國時段）
+#   On Deck         ET 08:30（週一~五）   → 夏令時 12:30 UTC / 冬令時 13:30 UTC
+#   The Close       ET 16:15（週一~五）   → 夏令時 20:15 UTC / 冬令時 21:15 UTC
+#   Winners&Losers  ET 週五 16:30         → 夏令時 20:30 UTC / 冬令時 21:30 UTC
+#   Week Ahead      ET 週一 07:00         → 夏令時 11:00 UTC / 冬令時 12:00 UTC
+# 每條產線註冊兩個 UTC 時間（DST / 非 DST 各一），哪一次真的跑由「時區守衛」判定，
+# 這樣 3 月 / 11 月換時制時不會整體錯開 1 小時，也不必手動改 cron。
 on:
   schedule:
-    # 全部以 UTC 表示；GH cron 通常延遲 5–15 分鐘
-    - cron: '0 11 * * 1-5'    # On Deck       → 19:00 HKT / 07:00 ET
-    - cron: '20 20 * * 1-5'   # The Close     → 04:20 HKT / 16:20 ET（次日）
-    - cron: '30 0 * * 6'      # Winners & Losers（週五收盤後）→ 週六 08:30 HKT
-    - cron: '30 0 * * 1'      # Week Ahead（本週前瞻）      → 週一 08:30 HKT
+    - cron: '30 12 * * 1-5'   # On Deck  EDT
+    - cron: '30 13 * * 1-5'   # On Deck  EST
+    - cron: '15 20 * * 1-5'   # The Close EDT
+    - cron: '15 21 * * 1-5'   # The Close EST
+    - cron: '30 20 * * 5'     # Winners  EDT（週五收盤後）
+    - cron: '30 21 * * 5'     # Winners  EST
+    - cron: '0 11 * * 1'      # Week Ahead EDT
+    - cron: '0 12 * * 1'      # Week Ahead EST
   workflow_dispatch:
     inputs:
       kind:
@@ -53,23 +63,58 @@ jobs:
             K="${{ github.event.inputs.kind }}"
           else
             case "${{ github.event.schedule }}" in
-              '0 11 * * 1-5')  K=ondeck ;;
-              '20 20 * * 1-5') K=theclose ;;
-              '30 0 * * 6')    K=winners ;;
-              '30 0 * * 1')    K=weekahead ;;
-              *)               K=ondeck ;;
+              '30 12 * * 1-5'|'30 13 * * 1-5') K=ondeck ;;
+              '15 20 * * 1-5'|'15 21 * * 1-5') K=theclose ;;
+              '30 20 * * 5'|'30 21 * * 5')     K=winners ;;
+              '0 11 * * 1'|'0 12 * * 1')       K=weekahead ;;
+              *)                               K=ondeck ;;
             esac
           fi
           echo "kind=$K" >> "$GITHUB_OUTPUT"
           echo "本次產線：$K"
 
+      # ET 是排程的唯一基準。cron 只有 UTC，換時制會差 1 小時，
+      # 加上 GitHub cron 本身有 5–15 分鐘延遲，所以放寬到 ±35 分鐘。
+      - name: 時區守衛（ET 目標時間 ±35 分鐘）
+        id: guard
+        env:
+          KIND: ${{ steps.kind.outputs.kind }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import os, sys
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          if os.environ.get('EVENT') == 'workflow_dispatch':
+              print('手動觸發 → 跳過守衛')
+              open(os.environ['GITHUB_OUTPUT'], 'a').write('run=true\n')
+              sys.exit(0)
+
+          KIND = os.environ['KIND']
+          # (目標 ET 時分, 允許的 ET 星期 0=Mon)
+          T = {'ondeck':    ((8, 30),  [0, 1, 2, 3, 4]),
+               'theclose':  ((16, 15), [0, 1, 2, 3, 4]),
+               'winners':   ((16, 30), [4]),
+               'weekahead': ((7, 0),   [0])}
+          (hh, mm), days = T[KIND]
+          now = datetime.now(ZoneInfo('America/New_York'))
+          delta = abs((now.hour * 60 + now.minute) - (hh * 60 + mm))
+          ok = now.weekday() in days and delta <= 35
+          print(f"ET 現在 {now:%a %H:%M}（weekday={now.weekday()}）· 目標 {hh:02d}:{mm:02d} · 偏差 {delta} 分 → {'執行' if ok else '跳過'}")
+          open(os.environ['GITHUB_OUTPUT'], 'a').write(f'run={"true" if ok else "false"}\n')
+          PY
+
       - name: 產圖 + 貼文文案
+        if: steps.guard.outputs.run == 'true'
         run: bash scripts/publish.sh "${{ steps.kind.outputs.kind }}"
 
       - name: 生成畫廊頁
+        if: steps.guard.outputs.run == 'true'
         run: python3 scripts/build_gallery.py
 
       - name: 保存產物（Actions Artifact）
+        if: steps.guard.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: cards-${{ steps.kind.outputs.kind }}-${{ github.run_number }}
@@ -77,6 +122,7 @@ jobs:
           retention-days: 30
 
       - name: 提交回倉庫（GitHub Pages 圖庫 + 歷史累積）
+        if: steps.guard.outputs.run == 'true'
         run: |
           git config user.name  "onepagemarket-bot"
           git config user.email "bot@users.noreply.github.com"
