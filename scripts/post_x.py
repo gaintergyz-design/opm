@@ -130,15 +130,20 @@ def caption_for(kind):
     return ''
 
 
-def data_session():
-    """當前數據對應的交易日（用來檢查文案與圖片是否同一天）"""
-    import json as _j
-    for f, key in (('close.json', None), ('pages.json', 'ondeck')):
+def data_session(kind=''):
+    """當前數據對應的交易日（用來檢查文案與圖片是否同一天）
+       必須按 kind 取對應的數據檔：On Deck 看 pages.json 的 ondeck.session，
+       The Close 看 close.json 的 session。否則盤前跑會被前一交易日收盤資料誤擋。"""
+    if kind == 'ondeck':
+        order = [('pages.json', 'ondeck'), ('close.json', None)]
+    else:
+        order = [('close.json', None), ('pages.json', 'ondeck')]
+    for f, key in order:
         path = os.path.join(BASE, 'data', f)
         if not os.path.exists(path):
             continue
         try:
-            d = _j.load(open(path))
+            d = json.load(open(path))
         except Exception:
             continue
         if f == 'close.json' and d.get('session'):
@@ -172,7 +177,7 @@ def main():
 
     # 只出文案（手動發帖模式）：寫成 txt 供複製，不需要任何憑證
     if '--caption-only' in args:
-        ds, idate = data_session(), image_date(image)
+        ds, idate = data_session(kind), image_date(image)
         if image and ds and idate and ds != idate:
             print(f'⚠️ 數據日期 {ds} 與圖片日期 {idate} 不符，跳過文案生成')
             return
