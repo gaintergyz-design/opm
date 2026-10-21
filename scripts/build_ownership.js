@@ -182,8 +182,8 @@ const block = (bt, lines, disp, anchor, x, nfs, pfs) => {
   const py0 = bt + 40 + (lines.length - 1) * 32;
   a.push(chip(x, py0, disp, anchor, pfs));
   if (anchor === 'end') {
-    const pw = Math.round(disp.length * 0.62 * pfs) + 40;
-    return [x - pw - 5, py0 + 29];
+    // 扇區錨點在標籤右側 → 引導線接 pill 右外緣中點（不穿文字塊）
+    return [x + 5, py0 + 29];
   }
   if (anchor === 'start') return [x - 5, py0 + 29];   // All Other：錨在左、標籤在右
   return [x, py0 + 64];                               // middle：連 pill 底中點

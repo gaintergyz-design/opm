@@ -20,6 +20,7 @@
   python3 scripts/build_gallery.py --days 7    # 調整展開天數
 """
 import glob, os, re, shutil, sys, datetime
+from zoneinfo import ZoneInfo
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, 'out')
@@ -113,6 +114,37 @@ def esc(s):
              .replace('"', '&quot;'))
 
 
+# 預計下一張圖：按 GitHub Actions 排程（ET）算下一次運行，換算北京時間顯示
+def next_post():
+    try:
+        et, cn = ZoneInfo('America/New_York'), ZoneInfo('Asia/Shanghai')
+        now_et = datetime.datetime.now(et)
+        sched = [('On Deck', (0, 1, 2, 3, 4), 8, 30),
+                 ('The Close', (0, 1, 2, 3, 4), 16, 15),
+                 ('Winners & Losers', (4,), 16, 30),
+                 ('Week Ahead', (0,), 7, 0)]
+        best = None
+        for i in range(9):
+            d = (now_et + datetime.timedelta(days=i)).date()
+            for name, wds, h, m in sched:
+                if d.weekday() not in wds:
+                    continue
+                t = datetime.datetime.combine(d, datetime.time(h, m), tzinfo=et)
+                if t > now_et and (best is None or t < best[0]):
+                    best = (t, name)
+        if not best:
+            return ''
+        t, name = best.astimezone(cn), best[1]
+        when = t.strftime('今天 %H:%M') if t.date() == datetime.datetime.now(cn).date() \
+            else t.strftime('%m/%d %H:%M')
+        return f'預計下一張圖：{name} · {when}（北京時間）'
+    except Exception:
+        return ''
+
+
+NEXT_POST = next_post()
+
+
 def group_html(key, imgs, idx):
     post, d = key
     live = idx < n_open          # 展開組才載圖
@@ -190,7 +222,7 @@ html = f'''<!DOCTYPE html>
 </style></head>
 <body>
 <header><h1>@onepagemarket</h1>
-<div class="sub">每日行情卡片 · 更新於 {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}</div></header>
+<div class="sub">{NEXT_POST or '每日行情卡片'}</div></header>
 <div class="rule"></div>
 <main>
 {body}
