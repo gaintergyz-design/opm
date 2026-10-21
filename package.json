@@ -1,0 +1,13 @@
+{
+  "name": "onepagemarket",
+  "version": "1.0.0",
+  "private": true,
+  "description": "@onepagemarket daily market cards → PNG + X post",
+  "scripts": {
+    "build:close": "node scripts/build_close.js",
+    "build:pages": "node scripts/build_pages.js"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "2.6.2"
+  }
+}

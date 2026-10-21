@@ -1,0 +1,87 @@
+name: daily-cards
+
+on:
+  schedule:
+    # 全部以 UTC 表示；GH cron 通常延遲 5–15 分鐘
+    - cron: '0 11 * * 1-5'    # On Deck  → 19:00 HKT / 07:00 ET
+    - cron: '20 20 * * 1-5'   # The Close → 04:20 HKT / 16:20 ET
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: 'ondeck | theclose'
+        required: true
+        default: 'ondeck'
+
+concurrency:
+  group: daily-cards
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安裝依賴（resvg 渲染器）
+        run: npm ci || npm install
+
+      - name: 寫入憑證（未設 secret 則跳過對應步驟）
+        env:
+          X_TOKEN_JSON: ${{ secrets.X_TOKEN_JSON }}
+          X_ENV: ${{ secrets.X_ENV }}
+          NOTIFY_ENV: ${{ secrets.NOTIFY_ENV }}
+        run: |
+          mkdir -p data
+          [ -n "$X_TOKEN_JSON" ] && printf '%s' "$X_TOKEN_JSON" > data/.x_tokens.json || true
+          [ -n "$X_ENV" ] && printf '%s\n' "$X_ENV" > scripts/.env.x || true
+          [ -n "$NOTIFY_ENV" ] && printf '%s\n' "$NOTIFY_ENV" > scripts/.env.notify || true
+          echo "準備完成"
+
+      - name: 決定本次產線
+        id: kind
+        run: |
+          if [ -n "${{ github.event.inputs.kind }}" ]; then
+            K="${{ github.event.inputs.kind }}"
+          elif [ "${{ github.event.schedule }}" = "0 11 * * 1-5" ]; then
+            K=ondeck
+          else
+            K=theclose
+          fi
+          echo "kind=$K" >> "$GITHUB_OUTPUT"
+          echo "本次產線：$K"
+
+      - name: 產圖 + 推送 + 發帖
+        run: bash scripts/publish.sh "${{ steps.kind.outputs.kind }}"
+
+      - name: 生成畫廊頁
+        run: python3 scripts/build_gallery.py
+
+      - name: 保存產物（Actions Artifact）
+        uses: actions/upload-artifact@v4
+        with:
+          name: cards-${{ steps.kind.outputs.kind }}-${{ github.run_number }}
+          path: out/*.png
+          retention-days: 30
+
+      - name: 提交回倉庫（GitHub Pages 圖庫 + 歷史累積）
+        run: |
+          git config user.name  "onepagemarket-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs out data
+          if git diff --cached --quiet; then
+            echo "無變更"
+          else
+            git commit -m "cards: $(date -u +%F) ${{ steps.kind.outputs.kind }}"
+            git push
+          fi

@@ -1,0 +1,368 @@
+{
+  "handle": "@onepagemarket",
+  "disclaimer": "For informational purposes only. Not investment advice.",
+  "source": "Nasdaq official calendar & screener",
+  "generated_at": "2026-10-20 19:22",
+  "week_label": "Oct 19 – Oct 23",
+  "ondeck": {
+    "session": "2026-10-20",
+    "slot": "pre-market",
+    "prev_close": [
+      {
+        "label": "S&P 500 (cap-weighted)",
+        "pct": -1.17
+      },
+      {
+        "label": "Nasdaq",
+        "pct": 1.11
+      },
+      {
+        "label": "Russell 2000",
+        "pct": 0.25
+      }
+    ],
+    "econ": [
+      {
+        "time": "10:00",
+        "event": "NAHB Housing Market Index",
+        "consensus": "31",
+        "previous": "32"
+      },
+      {
+        "time": "11:30",
+        "event": "3-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.085%"
+      },
+      {
+        "time": "11:30",
+        "event": "6-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.200%"
+      }
+    ],
+    "econ_all": 3,
+    "earnings": {
+      "before": [
+        "GE",
+        "RTX",
+        "MMM",
+        "NOC",
+        "GM",
+        "MSCI",
+        "HAL",
+        "SYF"
+      ],
+      "after": [
+        "NFLX",
+        "ISRG",
+        "CB",
+        "COF",
+        "AMX",
+        "UAL",
+        "EWBC",
+        "NLY"
+      ],
+      "before_n": 21,
+      "after_n": 22,
+      "total": 55
+    }
+  },
+  "winners": {
+    "from": "Oct 13",
+    "to": "Oct 17",
+    "universe": 503,
+    "is_demo": true,
+    "gainers": [
+      {
+        "ticker": "ASTS",
+        "pct": 38.4
+      },
+      {
+        "ticker": "RKLB",
+        "pct": 29.1
+      },
+      {
+        "ticker": "SOFI",
+        "pct": 23.7
+      },
+      {
+        "ticker": "HOOD",
+        "pct": 19.2
+      },
+      {
+        "ticker": "PLTR",
+        "pct": 16.8
+      },
+      {
+        "ticker": "COIN",
+        "pct": 14.1
+      },
+      {
+        "ticker": "SMCI",
+        "pct": 12.6
+      },
+      {
+        "ticker": "IONQ",
+        "pct": 11.3
+      },
+      {
+        "ticker": "MARA",
+        "pct": 9.8
+      },
+      {
+        "ticker": "AFRM",
+        "pct": 8.4
+      }
+    ],
+    "losers": [
+      {
+        "ticker": "LULU",
+        "pct": -28.6
+      },
+      {
+        "ticker": "DG",
+        "pct": -24.3
+      },
+      {
+        "ticker": "MRNA",
+        "pct": -21.7
+      },
+      {
+        "ticker": "PFE",
+        "pct": -18.9
+      },
+      {
+        "ticker": "NKE",
+        "pct": -16.2
+      },
+      {
+        "ticker": "TGT",
+        "pct": -14.5
+      },
+      {
+        "ticker": "BA",
+        "pct": -12.8
+      },
+      {
+        "ticker": "INTC",
+        "pct": -11.4
+      },
+      {
+        "ticker": "WBA",
+        "pct": -9.7
+      },
+      {
+        "ticker": "F",
+        "pct": -8.1
+      }
+    ]
+  },
+  "earnings_week": {
+    "days": [
+      {
+        "day": "Mon",
+        "date": "Oct 19",
+        "count": 32,
+        "before": [],
+        "after": [],
+        "before_n": 0,
+        "after_n": 0
+      },
+      {
+        "day": "Tue",
+        "date": "Oct 20",
+        "count": 55,
+        "before": [
+          "GE",
+          "RTX",
+          "MMM",
+          "NOC",
+          "GM",
+          "MSCI",
+          "HAL",
+          "SYF",
+          "KEY",
+          "EFX"
+        ],
+        "after": [
+          "NFLX",
+          "ISRG",
+          "CB",
+          "COF",
+          "AMX",
+          "UAL",
+          "EWBC",
+          "NLY",
+          "ELS",
+          "ADC"
+        ],
+        "before_n": 21,
+        "after_n": 22
+      },
+      {
+        "day": "Wed",
+        "date": "Oct 21",
+        "count": 91,
+        "before": [
+          "PM",
+          "TMO",
+          "ABT",
+          "NEE",
+          "DHR",
+          "T",
+          "CME",
+          "ELV",
+          "MCO",
+          "WAB"
+        ],
+        "after": [
+          "META",
+          "TSLA",
+          "LRCX",
+          "SAP",
+          "TXN",
+          "IBM",
+          "CSX",
+          "KMI",
+          "URI",
+          "WCN"
+        ],
+        "before_n": 23,
+        "after_n": 64
+      },
+      {
+        "day": "Thu",
+        "date": "Oct 22",
+        "count": 138,
+        "before": [
+          "PG",
+          "UNP",
+          "VLO",
+          "LMT",
+          "SPOT",
+          "BX",
+          "CMCSA",
+          "BCS",
+          "NSC",
+          "HON"
+        ],
+        "after": [
+          "NEM",
+          "WDC",
+          "BE",
+          "BBD",
+          "BBDO",
+          "VRSN",
+          "SSNC",
+          "DECK",
+          "KNSL",
+          "REXR"
+        ],
+        "before_n": 54,
+        "after_n": 46
+      },
+      {
+        "day": "Fri",
+        "date": "Oct 23",
+        "count": 28,
+        "before": [
+          "AXP",
+          "E",
+          "SLB",
+          "INFY",
+          "FCNCA",
+          "RCI",
+          "BAH",
+          "ALV",
+          "BCPC",
+          "RITM"
+        ],
+        "after": [
+          "RCBC"
+        ],
+        "before_n": 17,
+        "after_n": 1
+      }
+    ]
+  },
+  "week_ahead": {
+    "days": [
+      {
+        "day": "Mon",
+        "date": "Oct 26",
+        "count": 67,
+        "econ": [],
+        "earn": [
+          "VZ",
+          "WELL",
+          "CDNS"
+        ]
+      },
+      {
+        "day": "Tue",
+        "date": "Oct 27",
+        "count": 189,
+        "econ": [
+          "Chicago Fed National Activity",
+          "Dallas Fed Mfg Business Index",
+          "3-Month Bill Auction",
+          "6-Month Bill Auction"
+        ],
+        "earn": [
+          "V",
+          "KO",
+          "HSBC"
+        ]
+      },
+      {
+        "day": "Wed",
+        "date": "Oct 28",
+        "count": 211,
+        "econ": [
+          "Atlanta Fed GDPNow",
+          "Core Durable Goods Orders",
+          "Durable Goods Orders",
+          "Durables Excluding Defense"
+        ],
+        "earn": [
+          "GOOG",
+          "GOOGL",
+          "MSFT"
+        ]
+      },
+      {
+        "day": "Thu",
+        "date": "Oct 29",
+        "count": 331,
+        "econ": [
+          "Goods Trade Balance",
+          "Fed Interest Rate Decision",
+          "FOMC Press Conference",
+          "Retail Inventories Ex Auto"
+        ],
+        "earn": [
+          "AMZN",
+          "LLY",
+          "MA"
+        ]
+      },
+      {
+        "day": "Fri",
+        "date": "Oct 30",
+        "count": 52,
+        "econ": [
+          "GDP",
+          "GDP Price Index",
+          "GDP Sales",
+          "Dallas Fed PCE"
+        ],
+        "earn": [
+          "XOM",
+          "ABBV",
+          "CVX"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+out/*.svg
+data/.x_tokens.json
+data/close.snapshot.json
+scripts/.env.x
+scripts/.env.notify
+.DS_Store
+__pycache__/

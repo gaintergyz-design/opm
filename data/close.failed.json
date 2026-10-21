@@ -1,0 +1,37 @@
+{
+  "session": "2026-10-20",
+  "generated_at": "2026-10-20 16:17",
+  "timezone": "ET",
+  "source": "Yahoo Finance · Nasdaq · S&P 500 constituents",
+  "indexes": [],
+  "volume": {
+    "metric": "dollar volume",
+    "currency": "USD",
+    "ranked_within": "top 0 most active US equities",
+    "rows": []
+  },
+  "breadth": {
+    "pool": 503,
+    "pool_rule": "S&P 500 constituents",
+    "up": 0,
+    "down": 0,
+    "flat": 503,
+    "adv_pct": 0
+  },
+  "earnings": {
+    "date": "2026-10-21",
+    "rows": [
+      {
+        "session": "Before open",
+        "tickers": "PM · TMO · ABT"
+      },
+      {
+        "session": "After close",
+        "tickers": "META · TSLA · LRCX"
+      }
+    ],
+    "total": 91
+  },
+  "handle": "@onepagemarket",
+  "disclaimer": "For informational purposes only. Not investment advice."
+}
