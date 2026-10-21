@@ -14,16 +14,16 @@
   .sub { color:var(--dim); font-size:12.5px; margin-top:3px; }
   .rule { height:4px; background:var(--amber); }
   main { padding:6px 16px 48px; max-width:620px; margin:0 auto; }
-  section { padding:20px 0 6px; border-bottom:1px solid var(--line); }
-  section:last-child { border-bottom:0; }
+  section { padding:20px 0 8px; border-bottom:1px solid var(--line); }
+  section:last-of-type { border-bottom:0; }
   .ghead { display:flex; align-items:baseline; gap:8px; margin-bottom:10px; }
   .ghead b { font-size:17px; }
   .ghead .day { font-size:12.5px; color:var(--dim); }
   .tweet { position:relative; background:var(--soft); border:1px solid var(--line);
     border-left:3px solid var(--amber); border-radius:0 10px 10px 0;
-    padding:12px 12px 10px; margin-bottom:14px; }
+    padding:12px 12px 10px; margin-bottom:16px; }
   .tweet p { margin:0; font-size:14px; line-height:1.6; white-space:pre-wrap;
-    user-select:text; -webkit-user-select:text; padding-right:4px; }
+    user-select:text; -webkit-user-select:text; }
   .tweet.empty p { color:var(--dim); }
   .len { display:block; margin-top:6px; font-size:11px; color:var(--dim); }
   .copy { position:absolute; top:-11px; right:10px; font-size:11.5px; padding:4px 10px;
@@ -31,42 +31,90 @@
     box-shadow:0 1px 2px rgba(11,18,32,.06); }
   .copy:active { background:#F2F4F7; }
   .copy.done { color:#12A263; border-color:#BFE9D5; background:#F1FBF6; }
-  .shots { display:flex; flex-direction:column; gap:12px; }
-  .shot { display:block; text-decoration:none; color:inherit; position:relative; }
+  .shots { display:flex; flex-direction:column; gap:14px; }
+  .shot { position:relative; }
   .shot img { width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }
-  .tag { position:absolute; left:10px; top:10px; font-size:11px; padding:3px 9px;
-    background:rgba(255,255,255,.94); border:1px solid var(--line); border-radius:20px; color:var(--gray); }
+  .link { display:block; text-decoration:none; }
+  .save { position:absolute; right:10px; bottom:10px; font-size:12px; padding:6px 13px;
+    border:0; border-radius:20px; color:#fff; background:rgba(11,18,32,.78);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    box-shadow:0 2px 6px rgba(11,18,32,.25); }
+  .save:active { background:rgba(11,18,32,.95); }
+  .save.done { background:rgba(18,162,99,.92); }
+  .morebar { padding:22px 0 4px; text-align:center; }
+  .morebar button { width:100%; padding:14px; font-size:14.5px; color:var(--gray);
+    background:#fff; border:1px solid var(--line); border-radius:12px; }
+  .morebar button:active { background:#F7F8FA; }
   .hint { font-size:12px; color:var(--dim); text-align:center; margin:18px 0 0; }
 </style></head>
 <body>
 <header><h1>@onepagemarket</h1>
-<div class="sub">每日行情卡片 · 更新於 2026-10-21 10:49</div></header>
+<div class="sub">每日行情卡片 · 更新於 2026-10-21 11:01</div></header>
 <div class="rule"></div>
 <main>
-<section><div class="ghead"><b>On Deck</b><span class="day">Wed, Oct 21 · 4 images</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵">複製文案</button><p>On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵</p><span class="len">160 字</span></div><div class="shots"><a class="shot" href="img/on-deck-20261021.png" target="_blank"><img src="img/on-deck-20261021.png" loading="lazy" alt="on-deck-20261021.png"><span class="tag">On Deck</span></a><a class="shot" href="img/winners-losers-20261021.png" target="_blank"><img src="img/winners-losers-20261021.png" loading="lazy" alt="winners-losers-20261021.png"><span class="tag">Winners & Losers</span></a><a class="shot" href="img/earnings-week-20261021.png" target="_blank"><img src="img/earnings-week-20261021.png" loading="lazy" alt="earnings-week-20261021.png"><span class="tag">Earnings Week</span></a><a class="shot" href="img/week-ahead-20261021.png" target="_blank"><img src="img/week-ahead-20261021.png" loading="lazy" alt="week-ahead-20261021.png"><span class="tag">Week Ahead</span></a></div></section><section><div class="ghead"><b>On Deck</b><span class="day">Tue, Oct 20 · 4 images</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵">複製文案</button><p>On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵</p><span class="len">175 字</span></div><div class="shots"><a class="shot" href="img/on-deck-20261020.png" target="_blank"><img src="img/on-deck-20261020.png" loading="lazy" alt="on-deck-20261020.png"><span class="tag">On Deck</span></a><a class="shot" href="img/winners-losers-20261020.png" target="_blank"><img src="img/winners-losers-20261020.png" loading="lazy" alt="winners-losers-20261020.png"><span class="tag">Winners & Losers</span></a><a class="shot" href="img/earnings-week-20261020.png" target="_blank"><img src="img/earnings-week-20261020.png" loading="lazy" alt="earnings-week-20261020.png"><span class="tag">Earnings Week</span></a><a class="shot" href="img/week-ahead-20261020.png" target="_blank"><img src="img/week-ahead-20261020.png" loading="lazy" alt="week-ahead-20261020.png"><span class="tag">Week Ahead</span></a></div></section><section><div class="ghead"><b>The Close</b><span class="day">Tue, Oct 20 · 1 image</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><a class="shot" href="img/the-close-20261020.png" target="_blank"><img src="img/the-close-20261020.png" loading="lazy" alt="the-close-20261020.png"><span class="tag">The Close</span></a></div></section><section><div class="ghead"><b>The Close</b><span class="day">Mon, Oct 19 · 1 image</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><a class="shot" href="img/the-close-20261019.png" target="_blank"><img src="img/the-close-20261019.png" loading="lazy" alt="the-close-20261019.png"><span class="tag">The Close</span></a></div></section>
-<p class="hint">點圖看原尺寸 · 長按可保存</p>
+<section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Wed, Oct 21 · 4 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵">複製文案</button><p>On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵</p><span class="len">160 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261021.png" target="_blank"><img src="img/on-deck-20261021.png" loading="lazy" alt="on-deck-20261021.png"></a><button class="save" data-src="img/on-deck-20261021.png" data-name="on-deck-20261021.png">保存圖片</button></div><div class="shot"><a class="link" href="img/winners-losers-20261021.png" target="_blank"><img src="img/winners-losers-20261021.png" loading="lazy" alt="winners-losers-20261021.png"></a><button class="save" data-src="img/winners-losers-20261021.png" data-name="winners-losers-20261021.png">保存圖片</button></div><div class="shot"><a class="link" href="img/earnings-week-20261021.png" target="_blank"><img src="img/earnings-week-20261021.png" loading="lazy" alt="earnings-week-20261021.png"></a><button class="save" data-src="img/earnings-week-20261021.png" data-name="earnings-week-20261021.png">保存圖片</button></div><div class="shot"><a class="link" href="img/week-ahead-20261021.png" target="_blank"><img src="img/week-ahead-20261021.png" loading="lazy" alt="week-ahead-20261021.png"></a><button class="save" data-src="img/week-ahead-20261021.png" data-name="week-ahead-20261021.png">保存圖片</button></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Tue, Oct 20 · 4 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵">複製文案</button><p>On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵</p><span class="len">175 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261020.png" target="_blank"><img src="img/on-deck-20261020.png" loading="lazy" alt="on-deck-20261020.png"></a><button class="save" data-src="img/on-deck-20261020.png" data-name="on-deck-20261020.png">保存圖片</button></div><div class="shot"><a class="link" href="img/winners-losers-20261020.png" target="_blank"><img src="img/winners-losers-20261020.png" loading="lazy" alt="winners-losers-20261020.png"></a><button class="save" data-src="img/winners-losers-20261020.png" data-name="winners-losers-20261020.png">保存圖片</button></div><div class="shot"><a class="link" href="img/earnings-week-20261020.png" target="_blank"><img src="img/earnings-week-20261020.png" loading="lazy" alt="earnings-week-20261020.png"></a><button class="save" data-src="img/earnings-week-20261020.png" data-name="earnings-week-20261020.png">保存圖片</button></div><div class="shot"><a class="link" href="img/week-ahead-20261020.png" target="_blank"><img src="img/week-ahead-20261020.png" loading="lazy" alt="week-ahead-20261020.png"></a><button class="save" data-src="img/week-ahead-20261020.png" data-name="week-ahead-20261020.png">保存圖片</button></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Tue, Oct 20 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261020.png" target="_blank"><img src="img/the-close-20261020.png" loading="lazy" alt="the-close-20261020.png"></a><button class="save" data-src="img/the-close-20261020.png" data-name="the-close-20261020.png">保存圖片</button></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Mon, Oct 19 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261019.png" target="_blank"><img src="img/the-close-20261019.png" loading="lazy" alt="the-close-20261019.png"></a><button class="save" data-src="img/the-close-20261019.png" data-name="the-close-20261019.png">保存圖片</button></div></div></section>
+
+<p class="hint">點圖看原尺寸 · 保存圖片可一鍵下載</p>
 </main>
 <script>
-document.querySelectorAll('.copy').forEach(function (b) {
-  b.addEventListener('click', function (e) {
-    e.preventDefault();
-    var t = b.getAttribute('data-t') || '';
-    var done = function () {
-      b.textContent = '已複製';
-      b.classList.add('done');
-      setTimeout(function () { b.textContent = '複製文案'; b.classList.remove('done'); }, 1600);
-    };
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(t).then(done, function () { fallback(t, done); });
-    } else { fallback(t, done); }
-  });
-});
-function fallback(t, done) {
+function copyText(t, btn) {
+  var done = function () {
+    btn.textContent = '已複製'; btn.classList.add('done');
+    setTimeout(function () { btn.textContent = '複製文案'; btn.classList.remove('done'); }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(t).then(done, function () { legacyCopy(t, done); });
+  } else { legacyCopy(t, done); }
+}
+function legacyCopy(t, done) {
   var ta = document.createElement('textarea');
   ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
   document.body.appendChild(ta); ta.select();
   try { document.execCommand('copy'); done(); } catch (e) {}
   document.body.removeChild(ta);
+}
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function (e) {
+    e.preventDefault(); copyText(b.getAttribute('data-t') || '', b);
+  });
+});
+
+// 一鍵保存：fetch 成 blob 再觸發下載（避免 iOS 直接開新視窗）
+document.querySelectorAll('.save').forEach(function (b) {
+  b.addEventListener('click', async function (e) {
+    e.preventDefault(); e.stopPropagation();
+    var src = b.getAttribute('data-src'), name = b.getAttribute('data-name');
+    var old = b.textContent;
+    b.textContent = '保存中…';
+    try {
+      var r = await fetch(src, { cache: 'force-cache' });
+      var blob = await r.blob();
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+      b.textContent = '已保存'; b.classList.add('done');
+      setTimeout(function () { b.textContent = old; b.classList.remove('done'); }, 1800);
+    } catch (err) {
+      window.open(src, '_blank');       // 保底：開原圖讓用戶長按保存
+      b.textContent = old;
+    }
+  });
+});
+
+// 查看更多：展開折疊組並延遲載入圖片
+var moreBtn = document.getElementById('more');
+if (moreBtn) {
+  moreBtn.addEventListener('click', function () {
+    document.querySelectorAll('section.late').forEach(function (s) {
+      s.hidden = false;
+      s.querySelectorAll('img[data-src]').forEach(function (im) {
+        if (!im.getAttribute('src')) im.setAttribute('src', im.getAttribute('data-src'));
+      });
+    });
+    moreBtn.parentElement.remove();
+  });
 }
 </script>
 </body></html>
