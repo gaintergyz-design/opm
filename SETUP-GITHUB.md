@@ -49,7 +49,10 @@ Generate new token → 勾 **repo** → 生成後複製，貼在密碼位置。
 
 ---
 
-## 第 4 步：拿 X 的 OAuth 1.0a 四項憑證
+## 第 4 步（可選）：X 憑證 —— **目前用手動發帖，可跳過**
+
+> 產線只在出圖後寫出 `out/caption-*.txt`，不調用 X API。
+> 除非之後要改成自動發帖，否則第 4、5 步都不用做。
 
 [developer.x.com](https://developer.x.com) → **Projects & Apps** → 你的 App → **Keys and tokens**
 

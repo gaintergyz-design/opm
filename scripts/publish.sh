@@ -24,7 +24,7 @@ else
 fi
 
 echo "IMAGE: $IMG"
-# 先推手機/微信側（失敗不阻斷發帖）
+# 推手機（可選，失敗不阻斷）
 "$PY" scripts/notify.py --image "$IMG" --text "${KIND} · $(date +%Y-%m-%d) · 新圖已生成" || true
-# 發 X（未授權時自動跳過，不讓整條流水線失敗）
-"$PY" scripts/post_x.py --image "$IMG" --type "$KIND" "$@" || echo "[post_x skipped]"
+# 產出貼文文案（手動發帖模式：只寫 txt，不調用 X API）
+"$PY" scripts/post_x.py --image "$IMG" --type "$KIND" --caption-only || true

@@ -130,6 +130,34 @@ def caption_for(kind):
     return ''
 
 
+def data_session():
+    """當前數據對應的交易日（用來檢查文案與圖片是否同一天）"""
+    import json as _j
+    for f, key in (('close.json', None), ('pages.json', 'ondeck')):
+        path = os.path.join(BASE, 'data', f)
+        if not os.path.exists(path):
+            continue
+        try:
+            d = _j.load(open(path))
+        except Exception:
+            continue
+        if f == 'close.json' and d.get('session'):
+            return d['session']
+        if key and (d.get(key) or {}).get('session'):
+            return d[key]['session']
+    return None
+
+
+def image_date(image):
+    """the-close-20261020.png → 2026-10-20"""
+    import re as _re
+    m = _re.search(r'(\d{8})\d*(\.png)$', os.path.basename(image or ''))
+    if not m:
+        return None
+    t = m.group(1)
+    return f'{t[:4]}-{t[4:6]}-{t[6:]}'
+
+
 def main():
     args = sys.argv[1:]
     def opt(name, d=None):
@@ -141,6 +169,23 @@ def main():
         print('缺文案：--text 或 --type ondeck/theclose'); sys.exit(1)
     if len(text) > 280:
         text = text[:277] + '...'
+
+    # 只出文案（手動發帖模式）：寫成 txt 供複製，不需要任何憑證
+    if '--caption-only' in args:
+        ds, idate = data_session(), image_date(image)
+        if image and ds and idate and ds != idate:
+            print(f'⚠️ 數據日期 {ds} 與圖片日期 {idate} 不符，跳過文案生成')
+            return
+        out_dir = os.path.join(BASE, 'out')
+        os.makedirs(out_dir, exist_ok=True)
+        stem = os.path.splitext(os.path.basename(image or kind))[0]
+        path = os.path.join(out_dir, f'caption-{stem}.txt')
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(text + '\n')
+        print('文案已存：', path)
+        print('—' * 28)
+        print(text)
+        return
 
     print('將發帖：', text)
     if not image:
