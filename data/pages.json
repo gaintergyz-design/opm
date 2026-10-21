@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-21 13:17",
+  "generated_at": "2026-10-21 13:31",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
     "session": "2026-10-21",
@@ -31,8 +31,8 @@
       {
         "time": "08:30",
         "event": "Housing Starts",
-        "consensus": "1.9%",
-        "previous": "-5.9%"
+        "consensus": "1.300M",
+        "previous": "1.288M"
       },
       {
         "time": "08:30",
@@ -189,11 +189,25 @@
         "date": "Oct 26",
         "count": 67,
         "econ": [],
-        "econ_n": 0,
-        "earn": [
+        "before": [
           "VZ",
+          "CX",
+          "MMYT",
+          "ARLP",
+          "BOH",
+          "LKFN",
+          "HBT",
+          "DEA"
+        ],
+        "after": [
           "WELL",
-          "CDNS"
+          "CDNS",
+          "NUE",
+          "PSA",
+          "HIG",
+          "CLS",
+          "CINF",
+          "BRO"
         ]
       },
       {
@@ -206,11 +220,25 @@
           "3-Month Bill Auction",
           "6-Month Bill Auction"
         ],
-        "econ_n": 5,
-        "earn": [
-          "V",
+        "before": [
           "KO",
-          "HSBC"
+          "NVS",
+          "BA",
+          "SPGI",
+          "GLW",
+          "FCX",
+          "HCA",
+          "JCI"
+        ],
+        "after": [
+          "V",
+          "STX",
+          "WM",
+          "HOOD",
+          "OKE",
+          "NXPI",
+          "BKR",
+          "TER"
         ]
       },
       {
@@ -223,11 +251,25 @@
           "Durables Excluding Defense",
           "CB Consumer Confidence"
         ],
-        "econ_n": 17,
-        "earn": [
+        "before": [
+          "GEV",
+          "APH",
+          "UBS",
+          "PSX",
+          "ADP",
+          "GSK",
+          "VRT",
+          "AEP"
+        ],
+        "after": [
           "GOOG",
           "GOOGL",
-          "MSFT"
+          "MSFT",
+          "TMUS",
+          "NOW",
+          "BBVA",
+          "FTNT",
+          "EQIX"
         ]
       },
       {
@@ -240,11 +282,25 @@
           "FOMC Press Conference",
           "Retail Inventories Ex Auto"
         ],
-        "econ_n": 5,
-        "earn": [
-          "AMZN",
+        "before": [
           "LLY",
-          "MA"
+          "MA",
+          "MRK",
+          "CAT",
+          "SHEL",
+          "LIN",
+          "TTE",
+          "BUD"
+        ],
+        "after": [
+          "AMZN",
+          "INTC",
+          "SNDK",
+          "GILD",
+          "SYK",
+          "SBUX",
+          "MDLZ",
+          "RSG"
         ]
       },
       {
@@ -257,12 +313,17 @@
           "GDP Sales",
           "Dallas Fed PCE"
         ],
-        "econ_n": 10,
-        "earn": [
+        "before": [
           "XOM",
           "ABBV",
-          "CVX"
-        ]
+          "CVX",
+          "AZN",
+          "BP",
+          "SNY",
+          "GD",
+          "REGN"
+        ],
+        "after": []
       }
     ]
   }

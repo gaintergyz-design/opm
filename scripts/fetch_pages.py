@@ -198,8 +198,7 @@ def main():
             'day': d.strftime('%a'), 'date': d.strftime('%b %d'),
             'count': e['total'],
             'econ': [x['event'] for x in ev[:4]],
-            'econ_n': len(ev),
-            'earn': e['notable'][:5],
+            'before': e['before'][:8], 'after': e['after'][:8],
         })
 
     daily = json.load(open(os.path.join(BASE, 'data', 'close.json'), encoding='utf-8'))
@@ -235,7 +234,7 @@ def main():
 
     json.dump(data, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print('OK ->', OUT)
-    print('  econ events next week:', sum(d.get('econ_n', 0) for d in next_days))
+    print('  econ events next week:', sum(len(d['econ']) for d in next_days))
     print('  winners demo?', data['winners']['is_demo'])
 
 

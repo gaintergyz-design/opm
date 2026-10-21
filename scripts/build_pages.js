@@ -213,14 +213,11 @@ function buildWeekAhead() {
   const TX = M + 558;                    // 右側個股區起點
   days.forEach((d, i) => {
     const y = start + i * BLOCK;
-    a.push(`<rect x="${M}" y="${y}" width="${CW}" height="1" fill="${C.line}"/>`);
+    if (i > 0) a.push(`<rect x="${M}" y="${y}" width="${CW}" height="1" fill="${C.line}"/>`);  // 第一行不畫線（上方已有金色粗橫線）
     const mid = y + BLOCK / 2;
 
     a.push(t(M, mid - 14, d.day, { size: 30, weight: 500 }));
     a.push(t(M, mid + 14, d.date, { size: 20, fill: C.dim }));
-    // 每天：經濟數據數 + 財報家數（右下角，避開左側數據列表）
-    const econN = d.econ_n != null ? d.econ_n : (d.econ || []).length;
-    a.push(t(W - M, mid + 44, `${econN} events · ${num(d.count)} reports`, { size: 16, fill: C.dim, anchor: 'end' }));
 
     // 經濟數據 3-4 行（帶序號），垂直居中
     const econ = (d.econ || []).slice(0, 4);
@@ -233,8 +230,15 @@ function buildWeekAhead() {
     });
     if (!econ.length) a.push(t(M + 118, mid + 9, '—', { size: 24, fill: C.dim }));
 
-    // 個股一行 5 個（右側），垂直居中
-    a.push(tickerRow(d.earn || [], TX, mid + 7, { size: 18, logo: 18, gap: 12, max: 5 }));
+    // 右側：盤前 / 盤後 財報（各最多 8 家，兩行），結構同原 Earnings Week
+    const groups = [['Pre', d.before || [], -40], ['Post', d.after || [], 20]];
+    groups.forEach(([lab, list, dy]) => {
+      if (!list.length) return;          // 無財報的日子不顯示空標籤
+      a.push(t(TX, mid + dy + 6, lab, { size: 16, fill: C.dim }));
+      const r1 = list.slice(0, 4), r2 = list.slice(4, 8);
+      a.push(tickerRow(r1, TX + 46, mid + dy + 6, { size: 17, logo: 17, gap: 10, max: 4 }));
+      if (r2.length) a.push(tickerRow(r2, TX + 46, mid + dy + 30, { size: 17, logo: 17, gap: 10, max: 4 }));
+    });
   });
 
   return finish(a);
