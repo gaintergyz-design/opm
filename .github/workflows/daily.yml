@@ -36,26 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: 安裝依賴（resvg 渲染器）
-        run: npm ci || npm install
-
-      - name: 寫入推送憑證（可選；未設 secret 則不推手機）
-        env:
-          NOTIFY_ENV: ${{ secrets.NOTIFY_ENV }}
-        run: |
-          mkdir -p data
-          [ -n "$NOTIFY_ENV" ] && printf '%s\n' "$NOTIFY_ENV" > scripts/.env.notify || true
-          echo "準備完成（手動發帖模式：不調用 X API）"
-
       - name: 決定本次產線
         id: kind
         run: |
@@ -104,6 +84,30 @@ jobs:
           print(f"ET 現在 {now:%a %H:%M}（weekday={now.weekday()}）· 目標 {hh:02d}:{mm:02d} · 偏差 {delta} 分 → {'執行' if ok else '跳過'}")
           open(os.environ['GITHUB_OUTPUT'], 'a').write(f'run={"true" if ok else "false"}\n')
           PY
+
+      - if: steps.guard.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - if: steps.guard.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安裝依賴（resvg 渲染器）
+        if: steps.guard.outputs.run == 'true'
+        run: npm ci || npm install
+
+      - name: 寫入推送憑證（可選；未設 secret 則不推手機）
+        if: steps.guard.outputs.run == 'true'
+        env:
+          NOTIFY_ENV: ${{ secrets.NOTIFY_ENV }}
+        run: |
+          mkdir -p data
+          [ -n "$NOTIFY_ENV" ] && printf '%s\n' "$NOTIFY_ENV" > scripts/.env.notify || true
+          echo "準備完成（手動發帖模式：不調用 X API）"
 
       - name: 產圖 + 貼文文案
         if: steps.guard.outputs.run == 'true'
