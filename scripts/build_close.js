@@ -186,7 +186,8 @@ svg.push('</svg>');
 svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);
 const svgStr = svg.join('\n');
 
-const outDir = path.join(BASE, 'out');
+// 調排版用：PREVIEW=1 寫到 out/_preview/（不污染正式產物與 git）
+const outDir = path.join(BASE, 'out', process.env.PREVIEW ? '_preview' : '');
 fs.mkdirSync(outDir, { recursive: true });
 const stamp = String(D.session || 'x').replace(/-/g, '');
 fs.writeFileSync(path.join(outDir, `the-close-${stamp}${OUT_SUFFIX}.svg`), svgStr);

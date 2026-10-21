@@ -6,3 +6,4 @@ scripts/.env.x
 scripts/.env.notify
 .DS_Store
 __pycache__/
+out/_preview/

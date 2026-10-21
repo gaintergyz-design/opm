@@ -289,12 +289,16 @@ const FONT_DIRS = [path.join(BASE, 'assets', 'fonts'),
 const fontFiles = ['MiSans-Bold.ttf', 'MiSans-Medium.ttf', 'MiSans-Regular.ttf']
   .map((f) => FONT_DIRS.map((d) => path.join(d, f)).find((p) => fs.existsSync(p)))
   .filter(Boolean);
-const outDir = path.join(BASE, 'out');
+// 調排版用：PAGE=ondeck 只渲一頁；PREVIEW=1 寫到 out/_preview/（不污染正式產物與 git）
+const ONLY = (process.env.PAGE || '').trim();
+const PREVIEW = !!process.env.PREVIEW;
+const outDir = path.join(BASE, 'out', PREVIEW ? '_preview' : '');
 fs.mkdirSync(outDir, { recursive: true });
 const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
 
 [['on-deck', buildOnDeck], ['winners-losers', buildWinners],
- ['earnings-week', buildEarningsWeek], ['week-ahead', buildWeekAhead]].forEach(([name, fn]) => {
+ ['earnings-week', buildEarningsWeek], ['week-ahead', buildWeekAhead]]
+  .filter(([name]) => !ONLY || name === ONLY).forEach(([name, fn]) => {
   const svg = fn();
   fs.writeFileSync(path.join(outDir, `${name}-${stamp}${SUFFIX}.svg`), svg);
   const png = new Resvg(svg, {
