@@ -142,19 +142,14 @@ def _demo_winners():
             'losers': [{'ticker': t, 'pct': v} for t, v in l]}
 
 
-def load_history():
-    """讀本地每日快照，計算週報酬（需 ≥2 個交易日）"""
-    # 佔位演示資料：歷史累積滿 2 個交易日前，避免版面空白
-    g = [('ASTS', 38.4), ('RKLB', 29.1), ('SOFI', 23.7), ('HOOD', 19.2), ('PLTR', 16.8),
-         ('COIN', 14.1), ('SMCI', 12.6), ('IONQ', 11.3), ('MARA', 9.8), ('AFRM', 8.4)]
-    l = [('LULU', -28.6), ('DG', -24.3), ('MRNA', -21.7), ('PFE', -18.9), ('NKE', -16.2),
-         ('TGT', -14.5), ('BA', -12.8), ('INTC', -11.4), ('WBA', -9.7), ('F', -8.1)]
-    demo = {'from': 'Oct 13', 'to': 'Oct 17', 'universe': 503, 'is_demo': True,
-            'gainers': [{'ticker': t, 'pct': v} for t, v in g],
-            'losers': [{'ticker': t, 'pct': v} for t, v in l]}
+def load_history(since=None):
+    """讀本地每日快照，計算週報酬（需 ≥2 個交易日）
+       since='YYYY-MM-DD'：只取該日期（本週一）之後的快照，避免跨週累積成「雙週榜」"""
     if not os.path.isdir(HIST):
         return None
     files = sorted(f for f in os.listdir(HIST) if f.endswith('.json'))
+    if since:
+        files = [f for f in files if f[:10] >= since]
     if len(files) < 2:
         return None
     first = json.load(open(os.path.join(HIST, files[0])))
@@ -184,22 +179,10 @@ def main():
     days = weekdays(start)
     nxt = weekdays(days[-1] + timedelta(days=3))
 
-    print('[1/3] earnings week ...')
-    earn_days = []
-    for d in days:
-        e = earnings_of(d.strftime('%Y-%m-%d'))
-        earn_days.append({'day': d.strftime('%a'), 'date': d.strftime('%b %d'),
-                          'count': e['total'],
-                          'before': e['before'][:10], 'after': e['after'][:10],
-                          'before_n': e['before_n'], 'after_n': e['after_n']})
+    # Earnings Week 頁已移除（阿澤 2026-10-21 拍板），只保留 next week + on deck
+    # days 仍作為「本週」錨點，用來推導下週 nxt
 
-    print('[2/3] econ week ...')
-    econ_days = []
-    for d in days:
-        econ_days.append({'day': d.strftime('%a'), 'date': d.strftime('%b %d'),
-                          'events': econ_of(d.strftime('%Y-%m-%d'))})
-
-    print('[3/3] next week + on deck ...')
+    print('[2/2] next week + on deck ...')
     # On Deck = 今天（ET 未收盤）或下一個交易日（ET 收盤後 / 週末）
     nd = on_deck_session()
     on_deck_earn = earnings_of(nd.strftime('%Y-%m-%d'))
@@ -215,6 +198,7 @@ def main():
             'day': d.strftime('%a'), 'date': d.strftime('%b %d'),
             'count': e['total'],
             'econ': [x['event'] for x in ev[:4]],
+            'econ_n': len(ev),
             'earn': e['notable'][:5],
         })
 
@@ -227,7 +211,7 @@ def main():
                               'dollar_volume': r['dollar_volume']}
                 for r in daily['volume']['rows']}
         json.dump(snap, open(os.path.join(HIST, f"{daily['session']}.json"), 'w'))
-    week = load_history()
+    week = load_history(days[0].strftime('%Y-%m-%d'))
 
     data = {
         'handle': '@onepagemarket',
@@ -246,14 +230,12 @@ def main():
                          'total': on_deck_earn['total']},
         },
         'winners': week or _demo_winners(),
-        'earnings_week': {'days': earn_days},
         'week_ahead': {'days': next_days},
     }
 
     json.dump(data, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print('OK ->', OUT)
-    print('  earnings week total:', sum(d['count'] for d in earn_days))
-    print('  econ events this week:', sum(len(d['events']) for d in econ_days))
+    print('  econ events next week:', sum(d.get('econ_n', 0) for d in next_days))
     print('  winners demo?', data['winners']['is_demo'])
 
 

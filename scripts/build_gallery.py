@@ -3,7 +3,7 @@
 """掃描 out/*.png + out/caption-*.txt → docs/img/ + docs/index.html（手機畫廊）
 
 畫廊按「一則貼文」分組：
-  · On Deck 帖 = on-deck + winners-losers + earnings-week + week-ahead 四張圖，共用一則文案
+  · On Deck 帖 = on-deck + winners-losers + week-ahead 三張圖，共用一則文案
   · The Close 帖 = the-close 一張圖，自帶一則文案
 
 顯示策略：
@@ -37,12 +37,11 @@ os.makedirs(IMG, exist_ok=True)
 POST_OF = {
     'on-deck': 'ondeck',
     'winners-losers': 'ondeck',
-    'earnings-week': 'ondeck',
     'week-ahead': 'ondeck',
     'the-close': 'theclose',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close'}
-ORDER = ['on-deck', 'winners-losers', 'earnings-week', 'week-ahead', 'the-close']
+ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close']
 
 
 def parse(name):

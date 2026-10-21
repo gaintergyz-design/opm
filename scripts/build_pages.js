@@ -199,59 +199,14 @@ function buildWinners() {
   return finish(a);
 }
 
-/* ---------------- 3. Earnings Week ---------------- */
-function buildEarningsWeek() {
-  defs = []; uid = 0;
-  H = CFG.H;
-  const days = (D.earnings_week || {}).days || [];
-  const total = days.reduce((s, d) => s + (d.count || 0), 0);
-  const preN = days.reduce((s, d) => s + (d.before_n || 0), 0);
-  const postN = days.reduce((s, d) => s + (d.after_n || 0), 0);
-  const a = scaffold('Earnings Week', `${D.week_label || ''} · ${num(total)} reports`);
-  const mx = Math.max(1, ...days.map((d) => d.count || 0));
-
-  a.push(t(M, 254, `Before open ${num(preN)}`, { size: 22, fill: C.gray }));
-  a.push(t(W - M, 254, `After close ${num(postN)}`, { size: 22, fill: C.gray, anchor: 'end' }));
-
-  const TOP = 292, BLOCK = 184;
-  days.forEach((d, i) => {
-    const y = TOP + i * BLOCK;
-    const mid = y + BLOCK / 2;
-    a.push(`<rect x="${M}" y="${y}" width="${CW}" height="1" fill="${C.line}"/>`);
-
-    a.push(t(M, mid - 18, d.day, { size: 30, weight: 500 }));
-    a.push(t(M, mid + 10, d.date, { size: 20, fill: C.dim }));
-    a.push(t(M + 118, mid + 14, String(d.count), { size: 42, weight: 700 }));
-    const bw = Math.max(8, Math.round((d.count || 0) / mx * 168));
-    a.push(`<rect x="${M + 218}" y="${mid - 8}" width="168" height="12" rx="3" fill="${C.track}"/>`);
-    a.push(`<rect x="${M + 218}" y="${mid - 8}" width="${bw}" height="12" rx="3" fill="${C.amber}" opacity="0.9"/>`);
-
-    const rx = M + 430, tx = rx + 46;
-    // 4 行（Pre×2 + Post×2）以 BLOCK 中線對稱分佈：Pre dy=-54、Post dy=+18，組內行距 36
-    const groups = [['Pre', (d.before || []).slice(0, 10), -54], ['Post', (d.after || []).slice(0, 10), 18]];
-    groups.forEach(([lab, list, dy]) => {
-      if (!list.length) return;          // 已過去的交易日可能無個股，跳過空標籤
-      a.push(t(rx, mid + dy + 8, lab, { size: 18, fill: C.dim }));
-      a.push(tickerRow(list.slice(0, 5), tx, mid + dy + 8, { size: 19, logo: 21, gap: 14, max: 5 }));
-      a.push(tickerRow(list.slice(5, 10), tx, mid + dy + 36 + 8, { size: 19, logo: 21, gap: 14, max: 5 }));
-    });
-  });
-
-  return finish(a);
-}
-
-/* ---------------- 4. Week Ahead ---------------- */
+/* ---------------- 3. Week Ahead ---------------- */
 function buildWeekAhead() {
   defs = []; uid = 0;
   H = CFG.H;
   const days = (D.week_ahead || {}).days || [];
-  const totalE = days.reduce((s, d) => s + (d.count || 0), 0);
   const a = scaffold('Week Ahead', `${days.length ? days[0].date : ''} – ${days.length ? days[days.length - 1].date : ''} · next week`);
 
-  a.push(t(M, 268, 'Reports scheduled', { size: 22, fill: C.dim }));
-  a.push(t(M, 338, num(totalE), { size: 72, weight: 700, ls: -2 }));
-
-  const BLOCK = 158, areaTop = 380, areaBottom = H - 126;
+  const BLOCK = 180, areaTop = 250, areaBottom = H - 126;
   const contentH = days.length * BLOCK;
   const start = Math.round(areaTop + Math.max(0, (areaBottom - areaTop - contentH) / 2));
 
@@ -261,8 +216,11 @@ function buildWeekAhead() {
     a.push(`<rect x="${M}" y="${y}" width="${CW}" height="1" fill="${C.line}"/>`);
     const mid = y + BLOCK / 2;
 
-    a.push(t(M, mid - 10, d.day, { size: 30, weight: 500 }));
-    a.push(t(M, mid + 20, d.date, { size: 20, fill: C.dim }));
+    a.push(t(M, mid - 14, d.day, { size: 30, weight: 500 }));
+    a.push(t(M, mid + 14, d.date, { size: 20, fill: C.dim }));
+    // 每天：經濟數據數 + 財報家數（右下角，避開左側數據列表）
+    const econN = d.econ_n != null ? d.econ_n : (d.econ || []).length;
+    a.push(t(W - M, mid + 44, `${econN} events · ${num(d.count)} reports`, { size: 16, fill: C.dim, anchor: 'end' }));
 
     // 經濟數據 3-4 行（帶序號），垂直居中
     const econ = (d.econ || []).slice(0, 4);
@@ -297,7 +255,7 @@ fs.mkdirSync(outDir, { recursive: true });
 const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
 
 [['on-deck', buildOnDeck], ['winners-losers', buildWinners],
- ['earnings-week', buildEarningsWeek], ['week-ahead', buildWeekAhead]]
+ ['week-ahead', buildWeekAhead]]
   .filter(([name]) => !ONLY || name === ONLY).forEach(([name, fn]) => {
   const svg = fn();
   fs.writeFileSync(path.join(outDir, `${name}-${stamp}${SUFFIX}.svg`), svg);

@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-21 02:27",
+  "generated_at": "2026-10-21 13:17",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
     "session": "2026-10-21",
-    "slot": "next session",
+    "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -63,15 +63,9 @@
         "event": "Redbook",
         "consensus": "",
         "previous": "10.4%"
-      },
-      {
-        "time": "10:00",
-        "event": "Pending Home Sales Index",
-        "consensus": "",
-        "previous": "71.2"
       }
     ],
-    "econ_all": 8,
+    "econ_all": 7,
     "earnings": {
       "before": [
         "PM",
@@ -188,134 +182,6 @@
       }
     ]
   },
-  "earnings_week": {
-    "days": [
-      {
-        "day": "Mon",
-        "date": "Oct 19",
-        "count": 32,
-        "before": [],
-        "after": [],
-        "before_n": 0,
-        "after_n": 0
-      },
-      {
-        "day": "Tue",
-        "date": "Oct 20",
-        "count": 53,
-        "before": [
-          "GE",
-          "RTX",
-          "MMM",
-          "GM",
-          "NOC",
-          "MSCI",
-          "SYF",
-          "HAL",
-          "KEY",
-          "EFX"
-        ],
-        "after": [
-          "NFLX",
-          "ISRG",
-          "CB",
-          "COF",
-          "AMX",
-          "UAL",
-          "EWBC",
-          "NLY",
-          "ELS",
-          "ADC"
-        ],
-        "before_n": 21,
-        "after_n": 22
-      },
-      {
-        "day": "Wed",
-        "date": "Oct 21",
-        "count": 91,
-        "before": [
-          "PM",
-          "TMO",
-          "ABT",
-          "NEE",
-          "T",
-          "DHR",
-          "CME",
-          "ELV",
-          "MCO",
-          "WAB"
-        ],
-        "after": [
-          "META",
-          "TSLA",
-          "LRCX",
-          "SAP",
-          "TXN",
-          "IBM",
-          "CSX",
-          "KMI",
-          "URI",
-          "WCN"
-        ],
-        "before_n": 23,
-        "after_n": 64
-      },
-      {
-        "day": "Thu",
-        "date": "Oct 22",
-        "count": 138,
-        "before": [
-          "PG",
-          "UNP",
-          "LMT",
-          "VLO",
-          "SPOT",
-          "BX",
-          "CMCSA",
-          "BCS",
-          "NSC",
-          "HON"
-        ],
-        "after": [
-          "WDC",
-          "NEM",
-          "BE",
-          "BBD",
-          "BBDO",
-          "VRSN",
-          "SSNC",
-          "DECK",
-          "KNSL",
-          "REXR"
-        ],
-        "before_n": 54,
-        "after_n": 46
-      },
-      {
-        "day": "Fri",
-        "date": "Oct 23",
-        "count": 28,
-        "before": [
-          "AXP",
-          "E",
-          "SLB",
-          "INFY",
-          "FCNCA",
-          "RCI",
-          "BAH",
-          "ALV",
-          "BCPC",
-          "RITM"
-        ],
-        "after": [
-          "RCBC"
-        ],
-        "before_n": 17,
-        "after_n": 1
-      }
-    ]
-  },
   "week_ahead": {
     "days": [
       {
@@ -323,6 +189,7 @@
         "date": "Oct 26",
         "count": 67,
         "econ": [],
+        "econ_n": 0,
         "earn": [
           "VZ",
           "WELL",
@@ -339,6 +206,7 @@
           "3-Month Bill Auction",
           "6-Month Bill Auction"
         ],
+        "econ_n": 5,
         "earn": [
           "V",
           "KO",
@@ -352,9 +220,10 @@
         "econ": [
           "Atlanta Fed GDPNow",
           "Core Durable Goods Orders",
-          "Durable Goods Orders",
-          "Durables Excluding Defense"
+          "Durables Excluding Defense",
+          "CB Consumer Confidence"
         ],
+        "econ_n": 17,
         "earn": [
           "GOOG",
           "GOOGL",
@@ -371,6 +240,7 @@
           "FOMC Press Conference",
           "Retail Inventories Ex Auto"
         ],
+        "econ_n": 5,
         "earn": [
           "AMZN",
           "LLY",
@@ -387,6 +257,7 @@
           "GDP Sales",
           "Dallas Fed PCE"
         ],
+        "econ_n": 10,
         "earn": [
           "XOM",
           "ABBV",
