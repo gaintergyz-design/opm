@@ -122,6 +122,10 @@ def econ_of(date_str):
         k = e['event'].lower()
         if k in seen:
             continue
+        # 包含式去重：「Pending Home Sales Index」=「Pending Home Sales」
+        # 短於 10 字元的鍵不參與（避免 GDP 誤傷 GDPNow）
+        if any(len(s) >= 10 and (s in k or k in s) for s in seen):
+            continue
         seen.add(k)
         uniq.append(e)
     uniq.sort(key=econ_score, reverse=True)
