@@ -20,8 +20,8 @@ const CFG = {
   pale: '#DDF4BE',                      // 依次變淺的終點色
   font: 'MiSans',
   watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
-  donut: { CX: 540, CY: 740, RX: 300, RY: 190, IX: 138, IY: 88, D: 52 },
-  start: -70,                           // 起始角：讓 All Other 佔住右側大弧
+  donut: { CX: 530, CY: 780, RX: 250, RY: 170, IX: 130, IY: 80, D: 48 },
+  start: -106,                          // All Other 佔右側大弧，小份額掃向左側（左右上下均可落標籤）
 };
 const { W, H, M, colors: C } = CFG;
 const { CX, CY, RX, RY, IX, IY, DEPTH } = { ...CFG.donut, DEPTH: CFG.donut.D };
@@ -168,48 +168,54 @@ segs.forEach((s) => {
          `L ${px(270, IX)} ${py(270, IY)} A ${IX} ${IY} 0 1 0 ${px(-90, IX)} ${py(-90, IY)} Z" fill="url(#${id})"/>`);
 }
 
-/* --- ① 標籤 + 引導線：頂部 7 個小扇區按角度排「雙排弧形錯層」（外排4/內排3），
-       左欄 4 + 右欄 1（All Other）。起終點 x/y 皆單調 → 引導線兩兩不交叉、不穿環。 --- */
-const chip = (x, y, txt, anchor) => {
-  const w = Math.round(txt.length * 0.62 * 26) + 26, h = 44;
+/* --- 標籤：大字號 pill + 直斜引導線（參考 moneywise Tesla 卡）。
+       錨點與標籤槽位同向單調 → 引導線兩兩不交叉、不穿環。 --- */
+const chip = (x, y, txt, anchor, fs) => {
+  const w = Math.round(txt.length * 0.62 * fs) + 40, h = 58;
   const x0 = anchor === 'end' ? x - w : anchor === 'middle' ? x - w / 2 : x;
-  return `<rect x="${x0}" y="${y}" width="${w}" height="${h}" rx="10" fill="${C.ink}"/>` +
-         t(x0 + w / 2, y + 30, txt + '%', { size: 26, weight: 700, fill: '#FFFFFF', anchor: 'middle' });
+  return `<rect x="${x0}" y="${y}" width="${w}" height="${h}" rx="12" fill="${C.ink}"/>` +
+         t(x0 + w / 2, y + 41, txt + '%', { size: fs, weight: 700, fill: '#FFFFFF', anchor: 'middle' });
 };
-const block = (bt, lines, disp, anchor, x) => {
-  lines.forEach((ln, j) => a.push(t(x, bt + 21 + j * 24, ln, { size: 19, weight: 500, anchor })));
-  a.push(chip(x, bt + 30 + (lines.length - 1) * 24, disp, anchor));
+// 標籤塊：名稱在上、大 pill 在下；回傳引導線終點（pill 外緣中點）
+const block = (bt, lines, disp, anchor, x, nfs, pfs) => {
+  lines.forEach((ln, j) => a.push(t(x, bt + 24 + j * 32, ln, { size: nfs, weight: 500, anchor })));
+  const py0 = bt + 40 + (lines.length - 1) * 32;
+  a.push(chip(x, py0, disp, anchor, pfs));
+  if (anchor === 'end') {
+    const pw = Math.round(disp.length * 0.62 * pfs) + 40;
+    return [x - pw - 5, py0 + 29];
+  }
+  if (anchor === 'start') return [x - 5, py0 + 29];   // All Other：錨在左、標籤在右
+  return [x, py0 + 64];                               // middle：連 pill 底中點
 };
 const segByName = {};
 segs.forEach((s) => { segByName[s.name.split('|')[0]] = s; });
-
-const drawLabel = (s, x, bt, anchor, elbowR = 0) => {
-  const ex = px(s.aMid, RX + 6), ey = py(s.aMid, RY + 6);
-  let pts = `${ex.toFixed(1)},${ey.toFixed(1)}`;
-  if (elbowR) pts += ` ${px(s.aMid, RX + elbowR).toFixed(1)},${py(s.aMid, RY + elbowR).toFixed(1)}`;
-  const tx = anchor === 'middle' ? x : anchor === 'end' ? 216 : 868;
-  const ty = anchor === 'middle' ? bt + 74 : bt + 52;   // middle 連 chip 底中點，其餘連 chip 側中點
-  a.push(`<polyline points="${pts} ${tx},${ty}" fill="none" stroke="#AEBFA4" stroke-width="1.5"/>`);
-  a.push(`<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="4" fill="${CFG.green}" stroke="#FFFFFF" stroke-width="1.5"/>`);
-  block(bt, s.name.split('|'), s.disp, anchor, x);
+const drawLabel = (s, x, bt, anchor, nfs = 25, pfs = 38) => {
+  const ex = px(s.aMid, RX + 6);
+  // 下半圓扇區：錨點放到側壁底緣（+DEPTH），引導線不穿過 3D 側壁
+  let ey = py(s.aMid, RY + 6);
+  if (Math.sin(rad(s.aMid)) > 0) ey += DEPTH;
+  const [tx, ty] = block(bt, s.name.split('|'), s.disp, anchor, x, nfs, pfs);
+  a.push(`<polyline points="${ex.toFixed(1)},${ey.toFixed(1)} ${tx},${ty}" fill="none" stroke="#AEBFA4" stroke-width="1.5"/>`);
+  a.push(`<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="4.5" fill="${CFG.green}" stroke="#FFFFFF" stroke-width="1.5"/>`);
 };
 
-// 頂部外排（bt=260，離環遠）—— 12 點右側三個小扇區全進外排、按角度順序，線不交叉
-drawLabel(segByName['Insiders'], 340, 260, 'middle');
-drawLabel(segByName['JPMorgan Chase'], 505, 260, 'middle');
-drawLabel(segByName['T. Rowe Price'], 680, 260, 'middle');
-drawLabel(segByName['Morgan Stanley'], 835, 260, 'middle');
-drawLabel(segByName['Invesco'], 962, 260, 'middle');
-// 頂部內排（bt=330，靠近環）
-drawLabel(segByName['Geode Capital'], 400, 330, 'middle');
-drawLabel(segByName['Capital Group'], 560, 330, 'middle');
-// 左欄 4（全部單段直線，貼環外緣通過不交叉）
-drawLabel(segByName['State Street'], 216, 550, 'end');
-drawLabel(segByName['Fidelity (FMR)'], 216, 650, 'end');
-drawLabel(segByName['BlackRock'], 216, 780, 'end');
-drawLabel(segByName['Vanguard'], 216, 900, 'end');
-// 右欄：All Other（三行名稱）
-drawLabel(segByName['All Other'], 868, 750, 'start');
+// 頂部一排 5（小份額，12 點偏左掃過來的）
+drawLabel(segByName['JPMorgan Chase'], 150, 300, 'middle');
+drawLabel(segByName['Capital Group'], 350, 300, 'middle');
+drawLabel(segByName['T. Rowe Price'], 555, 300, 'middle');
+drawLabel(segByName['Morgan Stanley'], 760, 300, 'middle');
+drawLabel(segByName['Invesco'], 955, 300, 'middle');
+// 左欄 4（右上角掃下來的）
+drawLabel(segByName['Geode Capital'], 256, 560, 'end');
+drawLabel(segByName['Insiders'], 256, 670, 'end');
+drawLabel(segByName['State Street'], 256, 780, 'end');
+drawLabel(segByName['Fidelity (FMR)'], 256, 890, 'end');
+// 底部 2（錨在側壁底緣，線垂直下行不穿環）
+drawLabel(segByName['Vanguard'], 450, 1080, 'middle');
+drawLabel(segByName['BlackRock'], 300, 1060, 'middle');
+// 右側：All Other（最大份額、最大 pill）
+drawLabel(segByName['All Other'], 830, 690, 'start', 24, 44);
 
 /* --- 頁腳 --- */
 a.push(`<rect x="${M}" y="${H - 118}" width="${W - M * 2}" height="1" fill="${C.line}"/>`);
