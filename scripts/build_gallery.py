@@ -42,10 +42,12 @@ POST_OF = {
     'winners-losers': 'winners',
     'week-ahead': 'weekahead',
     'the-close': 'theclose',
+    'who-owns-nvda': 'who-owns-nvda',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
-             'winners': 'Winners & Losers', 'weekahead': 'Week Ahead'}
-ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close']
+             'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
+             'who-owns-nvda': 'Who Owns NVDA?'}
+ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close', 'who-owns-nvda']
 
 
 def parse(name):

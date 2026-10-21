@@ -1,0 +1,27 @@
+{
+  "company": "NVIDIA",
+  "ticker": "NVDA",
+  "title_line1": "WHO OWNS",
+  "title_line2": "NVIDIA?",
+  "subtitle": "By % Shareholding",
+  "data_as_of": "30 Jun 2026",
+  "source": "13F filings · Yahoo Finance · Stockrow",
+  "segments": [
+    {"name": "All Other|Institutions|& Public", "pct": 59.37, "disp": "59.4", "side": "R"},
+    {"name": "Vanguard", "pct": 9.58, "disp": "9.6", "side": "B"},
+    {"name": "BlackRock", "pct": 8.06, "disp": "8.1", "side": "B"},
+    {"name": "Fidelity (FMR)", "pct": 4.26, "disp": "4.3", "side": "L"},
+    {"name": "State Street", "pct": 4.19, "disp": "4.2", "side": "L"},
+    {"name": "Insiders", "pct": 4.01, "disp": "4.0", "side": "L"},
+    {"name": "Geode Capital", "pct": 2.52, "disp": "2.5", "side": "L"},
+    {"name": "JPMorgan Chase", "pct": 1.86, "disp": "1.9", "side": "L"},
+    {"name": "Capital Group", "pct": 1.70, "disp": "1.7", "side": "L"},
+    {"name": "T. Rowe Price", "pct": 1.60, "disp": "1.6", "side": "L"},
+    {"name": "Morgan Stanley", "pct": 1.48, "disp": "1.5", "side": "L"},
+    {"name": "Invesco", "pct": 1.37, "disp": "1.4", "side": "L"}
+  ],
+  "insiders_total": "4.01%",
+  "institutions_total": "71.4%",
+  "summary_note": "Insiders 4.01% incl. Jensen Huang",
+  "notes": "13F 口徑為 Q2 2026（6/30）。Vanguard 為旗下各實體合併口徑（Stockrow，2.31B 股 9.58%）；內部人 4.01% 來自 Yahoo major holders breakdown；其餘百分比為 Yahoo % out。All Other = 100% − top10(36.62%) − insiders(4.01%)。"
+}
