@@ -121,8 +121,7 @@ def group_html(key, imgs, idx):
         src = f'src="{i["img"]}"' if live else 'data-src="' + i['img'] + '"'
         shots.append(
             f'<div class="shot"><a class="link" href="{i["img"]}" target="_blank">'
-            f'<img {src} loading="lazy" alt="{i["name"]}"></a>'
-            f'<button class="save" data-src="{i["img"]}" data-name="{i["name"]}">保存圖片</button></div>')
+            f'<img {src} loading="lazy" alt="{i["name"]}"></a></div>')
     cls = 'sec' if live else 'sec late'
     hid = '' if live else ' hidden'
     return f'<section class="{cls}"{hid}>{head}{block}<div class="shots">{"".join(shots)}</div></section>'
@@ -171,12 +170,6 @@ html = f'''<!DOCTYPE html>
   .shot {{ position:relative; }}
   .shot img {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }}
   .link {{ display:block; text-decoration:none; }}
-  .save {{ position:absolute; right:10px; bottom:10px; font-size:12px; padding:6px 13px;
-    border:0; border-radius:20px; color:#fff; background:rgba(11,18,32,.78);
-    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-    box-shadow:0 2px 6px rgba(11,18,32,.25); }}
-  .save:active {{ background:rgba(11,18,32,.95); }}
-  .save.done {{ background:rgba(18,162,99,.92); }}
   .morebar {{ padding:22px 0 4px; text-align:center; }}
   .morebar button {{ width:100%; padding:14px; font-size:14.5px; color:var(--gray);
     background:#fff; border:1px solid var(--line); border-radius:12px; }}
@@ -190,7 +183,7 @@ html = f'''<!DOCTYPE html>
 <main>
 {body}
 {more}
-<p class="hint">iPhone：點「保存圖片」→ 分享選單 → 存儲圖像（進相冊）<br>電腦：直接下載到「下載項目」</p>
+<p class="hint">點圖開原尺寸 · 長按可直接複製或存圖</p>
 </main>
 <script>
 function copyText(t, btn) {{
@@ -212,40 +205,6 @@ function legacyCopy(t, done) {{
 document.querySelectorAll('.copy').forEach(function (b) {{
   b.addEventListener('click', function (e) {{
     e.preventDefault(); copyText(b.getAttribute('data-t') || '', b);
-  }});
-}});
-
-// 一鍵保存：iOS 用分享選單（可「存儲圖像」直接進相冊），桌面用 blob 下載
-document.querySelectorAll('.save').forEach(function (b) {{
-  b.addEventListener('click', async function (e) {{
-    e.preventDefault(); e.stopPropagation();
-    var src = b.getAttribute('data-src'), name = b.getAttribute('data-name');
-    var old = b.textContent;
-    b.textContent = '保存中…';
-    try {{
-      var r = await fetch(src, {{ cache: 'force-cache' }});
-      var blob = await r.blob();
-      var file = new File([blob], name, {{ type: blob.type || 'image/png' }});
-      // iOS / Android：分享選單裡有「存儲圖像」，直接進相冊
-      if (navigator.canShare && navigator.canShare({{ files: [file] }})) {{
-        await navigator.share({{ files: [file], title: name }});
-        b.textContent = '已保存'; b.classList.add('done');
-        setTimeout(function () {{ b.textContent = old; b.classList.remove('done'); }}, 1800);
-        return;
-      }}
-      // 桌面瀏覽器：blob 下載到「下載項目」
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url; a.download = name;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(function () {{ URL.revokeObjectURL(url); }}, 5000);
-      b.textContent = '已保存'; b.classList.add('done');
-      setTimeout(function () {{ b.textContent = old; b.classList.remove('done'); }}, 1800);
-    }} catch (err) {{
-      if (err && err.name === 'AbortError') {{ b.textContent = old; return; }}  // 用戶取消分享
-      window.open(src, '_blank');       // 保底：開原圖讓用戶長按保存
-      b.textContent = old;
-    }}
   }});
 }});
 
