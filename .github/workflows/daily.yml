@@ -3,12 +3,14 @@ name: daily-cards
 on:
   schedule:
     # 全部以 UTC 表示；GH cron 通常延遲 5–15 分鐘
-    - cron: '0 11 * * 1-5'    # On Deck  → 19:00 HKT / 07:00 ET
-    - cron: '20 20 * * 1-5'   # The Close → 04:20 HKT / 16:20 ET
+    - cron: '0 11 * * 1-5'    # On Deck       → 19:00 HKT / 07:00 ET
+    - cron: '20 20 * * 1-5'   # The Close     → 04:20 HKT / 16:20 ET（次日）
+    - cron: '30 0 * * 6'      # Winners & Losers（週五收盤後）→ 週六 08:30 HKT
+    - cron: '30 0 * * 1'      # Week Ahead（本週前瞻）      → 週一 08:30 HKT
   workflow_dispatch:
     inputs:
       kind:
-        description: 'ondeck | theclose'
+        description: 'ondeck | theclose | winners | weekahead'
         required: true
         default: 'ondeck'
 
@@ -49,10 +51,14 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.kind }}" ]; then
             K="${{ github.event.inputs.kind }}"
-          elif [ "${{ github.event.schedule }}" = "0 11 * * 1-5" ]; then
-            K=ondeck
           else
-            K=theclose
+            case "${{ github.event.schedule }}" in
+              '0 11 * * 1-5')  K=ondeck ;;
+              '20 20 * * 1-5') K=theclose ;;
+              '30 0 * * 6')    K=winners ;;
+              '30 0 * * 1')    K=weekahead ;;
+              *)               K=ondeck ;;
+            esac
           fi
           echo "kind=$K" >> "$GITHUB_OUTPUT"
           echo "本次產線：$K"

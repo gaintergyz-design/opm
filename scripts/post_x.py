@@ -127,6 +127,25 @@ def caption_for(kind):
         names = ', '.join(r['ticker'] for r in top)
         return (f"The Close: {idx}. Most traded: {names}. Breadth "
                 f"{(d.get('breadth') or {}).get('adv_pct', '—')}% advancers. 🧵")
+    if kind == 'winners' and os.path.exists(p):
+        w = json.load(open(p)).get('winners') or {}
+        g = w['gainers'][:3]; l = w['losers'][:3]
+        return ("Week in review: top gainers " +
+                ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in g) +
+                ". Biggest drops: " +
+                ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in l) +
+                f". Universe: {w.get('universe', '—')} most-traded US names. 🧵")
+    if kind == 'weekahead' and os.path.exists(p):
+        d = json.load(open(p))
+        wa = d.get('week_ahead') or {}
+        days = wa.get('days') or []
+        scope = 'Next week' if wa.get('scope') == 'next week' else 'This week'
+        head = ', '.join(f"{x['day']} {x['econ'][0]}" for x in days[:3] if x.get('econ'))
+        names = []
+        for x in days:
+            names += (x.get('before') or [])[:1] + (x.get('after') or [])[:1]
+        return (f"{scope} in US markets: {head}. Key earnings: "
+                f"{', '.join(names[:6])}. Full calendar in the card. 🧵")
     return ''
 
 
@@ -134,9 +153,9 @@ def data_session(kind=''):
     """當前數據對應的交易日（用來檢查文案與圖片是否同一天）
        必須按 kind 取對應的數據檔：On Deck 看 pages.json 的 ondeck.session，
        The Close 看 close.json 的 session。否則盤前跑會被前一交易日收盤資料誤擋。"""
-    if kind == 'ondeck':
+    if kind in ('ondeck', 'weekahead'):
         order = [('pages.json', 'ondeck'), ('close.json', None)]
-    else:
+    else:                       # theclose / winners：以收盤交易日為準
         order = [('close.json', None), ('pages.json', 'ondeck')]
     for f, key in order:
         path = os.path.join(BASE, 'data', f)

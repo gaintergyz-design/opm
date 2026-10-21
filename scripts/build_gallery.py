@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*-
 """掃描 out/*.png + out/caption-*.txt → docs/img/ + docs/index.html（手機畫廊）
 
-畫廊按「一則貼文」分組：
-  · On Deck 帖 = on-deck + winners-losers + week-ahead 三張圖，共用一則文案
-  · The Close 帖 = the-close 一張圖，自帶一則文案
+畫廊按「一則貼文」分組（四條獨立產線）：
+  · On Deck      每天 19:00 HKT      → on-deck 一張
+  · The Close    每天 04:20 HKT      → the-close 一張
+  · Winners & Losers 週六 08:30 HKT  → winners-losers 一張（週五收盤後）
+  · Week Ahead   週一 08:30 HKT      → week-ahead 一張（本週前瞻）
+  每則貼文自帶一則文案
 
 顯示策略：
   · 最近 7 天（含今天）預設展開
@@ -36,11 +39,12 @@ os.makedirs(IMG, exist_ok=True)
 
 POST_OF = {
     'on-deck': 'ondeck',
-    'winners-losers': 'ondeck',
-    'week-ahead': 'ondeck',
+    'winners-losers': 'winners',
+    'week-ahead': 'weekahead',
     'the-close': 'theclose',
 }
-POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close'}
+POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'winners': 'Winners & Losers', 'weekahead': 'Week Ahead'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close']
 
 

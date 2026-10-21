@@ -204,7 +204,8 @@ function buildWeekAhead() {
   defs = []; uid = 0;
   H = CFG.H;
   const days = (D.week_ahead || {}).days || [];
-  const a = scaffold('Week Ahead', `${days.length ? days[0].date : ''} – ${days.length ? days[days.length - 1].date : ''} · next week`);
+  const scope = (D.week_ahead || {}).scope || 'next week';
+  const a = scaffold('Week Ahead', `${days.length ? days[0].date : ''} – ${days.length ? days[days.length - 1].date : ''} · ${scope}`);
 
   // 5 天在金色橫線以下整個區域「平均分配」，不再整塊居中
   const areaTop = 250, areaBottom = H - 126;
@@ -255,7 +256,7 @@ const ONLY = (process.env.PAGE || '').trim();
 const PREVIEW = !!process.env.PREVIEW;
 const outDir = path.join(BASE, 'out', PREVIEW ? '_preview' : '');
 fs.mkdirSync(outDir, { recursive: true });
-const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+const stamp = process.env.PAGES_STAMP || new Date().toISOString().slice(0, 10).replace(/-/g, '');
 
 [['on-deck', buildOnDeck], ['winners-losers', buildWinners],
  ['week-ahead', buildWeekAhead]]

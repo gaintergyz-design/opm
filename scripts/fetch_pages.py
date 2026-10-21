@@ -171,6 +171,8 @@ def load_history(since=None):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--week-start', default='')
+    ap.add_argument('--target', choices=['week', 'next'], default='next',
+                    help='Week Ahead 覆蓋週：week=本週（週一早上發）/ next=下週（預設）')
     args = ap.parse_args()
 
     start = (datetime.strptime(args.week_start, '%Y-%m-%d') if args.week_start
@@ -179,17 +181,15 @@ def main():
     days = weekdays(start)
     nxt = weekdays(days[-1] + timedelta(days=3))
 
-    # Earnings Week 頁已移除（阿澤 2026-10-21 拍板），只保留 next week + on deck
-    # days 仍作為「本週」錨點，用來推導下週 nxt
-
-    print('[2/2] next week + on deck ...')
+    # Week Ahead 覆蓋哪一週：--target week（週一早上發「本週前瞻」）/ next（預設，下週）
+    wa_days = days if getattr(args, 'target', 'next') == 'week' else nxt
     # On Deck = 今天（ET 未收盤）或下一個交易日（ET 收盤後 / 週末）
     nd = on_deck_session()
     on_deck_earn = earnings_of(nd.strftime('%Y-%m-%d'))
     on_deck_econ = econ_of(nd.strftime('%Y-%m-%d'))
     next_days = []
     seen_econ = set()                       # GDPNow 等每日重複指標跨日去重
-    for d in nxt:
+    for d in wa_days:
         e = earnings_of(d.strftime('%Y-%m-%d'))
         ev = [x for x in econ_of(d.strftime('%Y-%m-%d')) if x['event'] not in seen_econ]
         for x in ev[:4]:
@@ -229,12 +229,14 @@ def main():
                          'total': on_deck_earn['total']},
         },
         'winners': week or _demo_winners(),
-        'week_ahead': {'days': next_days},
+        'week_ahead': {'days': next_days,
+                       'scope': 'this week' if getattr(args, 'target', 'next') == 'week' else 'next week'},
     }
 
     json.dump(data, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print('OK ->', OUT)
-    print('  econ events next week:', sum(len(d['econ']) for d in next_days))
+    print('  week ahead scope:', data['week_ahead']['scope'], '|',
+          '  econ events:', sum(len(d['econ']) for d in next_days))
     print('  winners demo?', data['winners']['is_demo'])
 
 
