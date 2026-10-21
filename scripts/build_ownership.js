@@ -202,16 +202,17 @@ const drawLabel = (s, x, bt, anchor, nfs = 25, pfs = 38) => {
 
 // 橢圓環繞布局：12 個標籤沿橢圓按扇區圓序均勻排列（右→左下→左→左上→頂→右上）
 // 圓序單調 → 引導線兩兩不交叉；下半圓錨點在側壁底緣。
+// 注意：Insiders 需在 SS 之前繪製（其引導線從 SS 標籤背後穿過，由 pill 蓋住）
 drawLabel(segByName['All Other'], 830, 690, 'start', 24, 44);        // 右
-drawLabel(segByName['Vanguard'], 335, 978, 'middle');                // 左下
-drawLabel(segByName['BlackRock'], 180, 863, 'middle');               // 左下
+drawLabel(segByName['Vanguard'], 295, 978, 'middle');                // 左下
+drawLabel(segByName['BlackRock'], 150, 863, 'middle');               // 左下
+drawLabel(segByName['Insiders'], 210, 503, 'end');                   // 左上
+drawLabel(segByName['State Street'], 232, 611, 'end');               // 左
 drawLabel(segByName['Fidelity (FMR)'], 252, 719, 'end');             // 左
-drawLabel(segByName['State Street'], 250, 611, 'end');               // 左上
-drawLabel(segByName['Insiders'], 250, 503, 'end');                   // 左上
 drawLabel(segByName['Geode Capital'], 260, 392, 'middle');           // 上左
-drawLabel(segByName['JPMorgan Chase'], 390, 285, 'middle');          // 上左
-drawLabel(segByName['Capital Group'], 600, 280, 'middle');           // 上
-drawLabel(segByName['T. Rowe Price'], 820, 235, 'middle');           // 上右
+drawLabel(segByName['JPMorgan Chase'], 380, 285, 'middle');          // 上左
+drawLabel(segByName['Capital Group'], 585, 280, 'middle');           // 上
+drawLabel(segByName['T. Rowe Price'], 780, 235, 'middle');           // 上右
 drawLabel(segByName['Morgan Stanley'], 920, 355, 'middle');          // 右上
 drawLabel(segByName['Invesco'], 960, 475, 'middle');                 // 右上
 
