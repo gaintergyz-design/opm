@@ -112,7 +112,7 @@ def group_html(key, imgs, idx):
     live = idx < n_open          # 展開組才載圖
     caption = next((i['caption'] for i in imgs if i['caption']), '')
     day = d.strftime('%a, %b %-d')
-    head = (f'<div class="ghead"><b>{POST_NAME.get(post, post)}</b>'
+    head = (f'<div class="ghead"><b>{esc(POST_NAME.get(post, post))}</b>'
             f'<span class="day">{day} · {len(imgs)} 張</span></div>')
     if caption:
         block = (f'<div class="tweet"><button class="copy" data-t="{esc(caption)}">複製文案</button>'
