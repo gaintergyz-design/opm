@@ -413,6 +413,9 @@ const segClear = (x1, y1, x2, y2, slots, self, gap) => {
       const b = so.box;
       if (x > b.x0 - gap && x < b.x1 + gap && y > b.y0 - gap && y < b.y1 + gap) { ok = false; return; }
     }
+    for (const b of [SHIPBOX, NOTEBOX]) {   // 星艦與副題行也是障礙
+      if (x > b.x0 - gap && x < b.x1 + gap && y > b.y0 - gap && y < b.y1 + gap) { ok = false; return; }
+    }
   });
   return ok;
 };
@@ -437,7 +440,10 @@ function drawOrbitLabel(sl, slots) {
   const nx = (RY * Math.cos(t0)) / nl, ny = (RX * Math.sin(t0)) / nl;
   const bs = s.badge ? bsize : 0;
   const m = metrics(s, opt);
-  const nearX = opt.mirror ? badgeC.x - bs / 2 - 4 : badgeC.x + bs / 2 + 4;
+  // 接點落在徽章「朝環那一側」的邊緣：mirror（文字在左、徽章在右）→ 從右側進
+  const nearX = bs
+    ? (opt.mirror ? badgeC.x + bs / 2 + 4 : badgeC.x - bs / 2 - 4)
+    : (opt.mirror ? badgeC.x - 4 : badgeC.x + 4);
   const span = bs ? bs / 2 - 8 : m.blockH / 2 - 12;
   const kys = [];                       // 水平段接徽章的高度（優先 badge 正中）
   for (let d = 0; d <= span + 0.1; d += 6) {
@@ -457,11 +463,13 @@ function drawOrbitLabel(sl, slots) {
   };
   let plan = null;
   // A：短斜段出環 → 橫移（水平）→ 垂直 → 水平接徽章
+  // 車道優先貼近徽章（末段水平最短），避免長橫段橫穿別人的走廊
   outerA:
   for (const t of STUBS) {
     const Dx = ax + nx * t, Dy = ay + ny * t;
     if (!inXY(Dx, Dy)) continue;
-    for (const sh of SHIFTS) {
+    const orderA = SHIFTS.slice().sort((p, q) => Math.abs(Dx + p - nearX) - Math.abs(Dx + q - nearX));
+    for (const sh of orderA) {
       const Ex = Dx + sh;
       if (!inXY(Ex, Dy)) continue;
       for (const Ky of kys) {
@@ -472,7 +480,7 @@ function drawOrbitLabel(sl, slots) {
   }
   // B：水平 → 垂直 → 水平（全直角）
   if (!plan) outerB:
-  for (const sh of SHIFTS) {
+  for (const sh of SHIFTS.slice().sort((p, q) => Math.abs(ax + p - nearX) - Math.abs(ax + q - nearX))) {
     const x1 = ax + sh;
     if (!inXY(x1, ay)) continue;
     for (const Ky of kys) {
@@ -513,6 +521,7 @@ function drawOrbitLabel(sl, slots) {
   a.push(`<polyline points="${poly}" fill="none" stroke="#9AA5B1" stroke-width="1.2"/>`);
   a.push(`<circle cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="3.5" fill="#FFFFFF" stroke="${C.ink}" stroke-width="1.4"/>`);
   a.push(block(s, badgeC.x, badgeC.y, opt));
+  return !!plan;
 }
 // 難度優先繪製：錨點→徽章距離越遠的標籤越容易無路可走，先讓它挑路徑
 let fallbackCount = 0;
@@ -520,11 +529,7 @@ ORBIT.slots
   .slice()
   .sort((p, q) => Math.hypot(q.badgeC.x - px(q.s.aMid, RX + 6), q.badgeC.y - py(q.s.aMid, RY + 6)) -
                   Math.hypot(p.badgeC.x - px(p.s.aMid, RX + 6), p.badgeC.y - py(p.s.aMid, RY + 6)))
-  .forEach((sl) => {
-    const before = drawnSegs.length;
-    drawOrbitLabel(sl, ORBIT.slots);
-    if (drawnSegs.length === before) fallbackCount++;
-  });
+  .forEach((sl) => { if (!drawOrbitLabel(sl, ORBIT.slots)) fallbackCount++; });
 if (fallbackCount) console.log('leader fallback:', fallbackCount);
 
 /* --- 星艦 Starship（底部矢量）--- */
