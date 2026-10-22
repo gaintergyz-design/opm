@@ -420,7 +420,7 @@ const segClear = (x1, y1, x2, y2, slots, self, gap) => {
   return ok;
 };
 const segFree = (x1, y1, x2, y2) => {
-  const thr = Math.hypot(x2 - x1, y2 - y1) > 120 ? 7 : 3;   // 長線段間距要拉開，避免視覺重疊
+  const thr = Math.hypot(x2 - x1, y2 - y1) > 120 ? 18 : 3;   // 長線段要拉開走廊，避免兩條平行線像雙線
   for (const sg of drawnSegs) {
     let bad = false;
     segPts(x1, y1, x2, y2, (x, y) => { if (distPtSeg(x, y, sg[0], sg[1], sg[2], sg[3]) < thr) bad = true; });
@@ -462,23 +462,19 @@ function drawOrbitLabel(sl, slots) {
     return segs;
   };
   let plan = null;
-  // A：短斜段出環 → 橫移（水平）→ 垂直 → 水平接徽章
-  // 車道優先貼近徽章（末段水平最短），避免長橫段橫穿別人的走廊
-  outerA:
-  for (const t of STUBS) {
-    const Dx = ax + nx * t, Dy = ay + ny * t;
-    if (!inXY(Dx, Dy)) continue;
-    const orderA = SHIFTS.slice().sort((p, q) => Math.abs(Dx + p - nearX) - Math.abs(Dx + q - nearX));
-    for (const sh of orderA) {
-      const Ex = Dx + sh;
-      if (!inXY(Ex, Dy)) continue;
-      for (const Ky of kys) {
-        const f = trySegs([[ax, ay, Dx, Dy], [Dx, Dy, Ex, Dy], [Ex, Dy, Ex, Ky], [Ex, Ky, nearX, Ky]]);
-        if (f) { plan = f; break outerA; }
-      }
-    }
+  // L1（首選，與參考圖一致）：錨點垂直段 → 到標籤高度轉水平 → 進徽章。只有一個直角。
+  outerL1:
+  for (const Ky of kys) {
+    const f = trySegs([[ax, ay, ax, Ky], [ax, Ky, nearX, Ky]]);
+    if (f) { plan = f; break outerL1; }
   }
-  // B：水平 → 垂直 → 水平（全直角）
+  // L2：錨點水平段 → 到徽章邊緣轉垂直 → 進徽章。同樣只有一個直角。
+  if (!plan) outerL2:
+  for (const Ky of kys) {
+    const f = trySegs([[ax, ay, nearX, ay], [nearX, ay, nearX, Ky]]);
+    if (f) { plan = f; break outerL2; }
+  }
+  // B：水平 → 垂直 → 水平（兩個直角，即參考圖裡「先橫出、再上下、再橫進」的走法）
   if (!plan) outerB:
   for (const sh of SHIFTS.slice().sort((p, q) => Math.abs(ax + p - nearX) - Math.abs(ax + q - nearX))) {
     const x1 = ax + sh;
@@ -496,6 +492,21 @@ function drawOrbitLabel(sl, slots) {
     for (const Ky of kys) {
       const f = trySegs([[ax, ay, ax, y1], [ax, y1, nearX, y1], [nearX, y1, nearX, Ky]]);
       if (f) { plan = f; break outerC; }
+    }
+  }
+  // A（最後手段）：短斜段出環 → 橫移 → 垂直 → 水平
+  if (!plan) outerA:
+  for (const t of STUBS) {
+    const Dx = ax + nx * t, Dy = ay + ny * t;
+    if (!inXY(Dx, Dy)) continue;
+    const orderA = SHIFTS.slice().sort((p, q) => Math.abs(Dx + p - nearX) - Math.abs(Dx + q - nearX));
+    for (const sh of orderA) {
+      const Ex = Dx + sh;
+      if (!inXY(Ex, Dy)) continue;
+      for (const Ky of kys) {
+        const f = trySegs([[ax, ay, Dx, Dy], [Dx, Dy, Ex, Dy], [Ex, Dy, Ex, Ky], [Ex, Ky, nearX, Ky]]);
+        if (f) { plan = f; break outerA; }
+      }
     }
   }
   let pts;
