@@ -420,7 +420,7 @@ const segClear = (x1, y1, x2, y2, slots, self, gap) => {
   return ok;
 };
 const segFree = (x1, y1, x2, y2) => {
-  const thr = Math.hypot(x2 - x1, y2 - y1) > 120 ? 18 : 3;   // 長線段要拉開走廊，避免兩條平行線像雙線
+  const thr = Math.hypot(x2 - x1, y2 - y1) > 120 ? 14 : 3;   // 長線段要拉開走廊，避免兩條平行線像雙線
   for (const sg of drawnSegs) {
     let bad = false;
     segPts(x1, y1, x2, y2, (x, y) => { if (distPtSeg(x, y, sg[0], sg[1], sg[2], sg[3]) < thr) bad = true; });
@@ -485,8 +485,10 @@ function drawOrbitLabel(sl, slots) {
     }
   }
   // C：垂直 → 水平 → 垂直接徽章（全直角）
+  const DVS = [20, -20, 30, -30, 40, -40, 50, -50, 60, -60, 75, -75, 90, -90,
+               110, -110, 130, -130, 170, -170, 220, -220, 280, -280, 340, -340];
   if (!plan) outerC:
-  for (const dv of [30, -30, 60, -60, 90, -90, 130, -130, 170, -170, 220, -220, 280, -280, 340, -340]) {
+  for (const dv of DVS) {
     const y1 = ay + dv;
     if (!inXY(ax, y1)) continue;
     for (const Ky of kys) {
@@ -494,7 +496,41 @@ function drawOrbitLabel(sl, slots) {
       if (f) { plan = f; break outerC; }
     }
   }
-  // A（最後手段）：短斜段出環 → 橫移 → 垂直 → 水平
+  // T：垂直 → 水平 → 垂直，改從徽章「上／下緣」接入（側面車道被擋時用，同樣全直角）
+  if (!plan) outerT:
+  for (const dv of DVS) {
+    const y1 = ay + dv;
+    if (!inXY(ax, y1)) continue;
+    const half = bs ? bs / 2 + 4 : 10;
+    for (const ty of [badgeC.y - half, badgeC.y + half]) {
+      if (!inXY(badgeC.x, ty)) continue;
+      const f = trySegs([[ax, ay, ax, y1], [ax, y1, badgeC.x, y1], [badgeC.x, y1, badgeC.x, ty]]);
+      if (f) { plan = f; break outerT; }
+    }
+  }
+  // S：垂直 → 水平 → 垂直 → 水平，四段全直角（標籤上下都被別的標籤夾住時用）
+  if (!plan) outerS:
+  for (const dv of DVS) {
+    const y1 = ay + dv;
+    if (!inXY(ax, y1)) continue;
+    const half = bs ? bs / 2 + 4 : 10;
+    const attaches = [
+      ...kys.map((Ky) => ({ ty: Ky, ex: nearX })),
+      { ty: badgeC.y - half, ex: badgeC.x },
+      { ty: badgeC.y + half, ex: badgeC.x },
+    ];
+    for (const at of attaches) {
+      if (!inXY(at.ex, at.ty)) continue;
+      const xcs = [at.ex];
+      for (let k = 18; k <= 200; k += 18) { xcs.push(at.ex + k, at.ex - k); }
+      for (const xc of xcs) {
+        if (!inXY(xc, at.ty)) continue;
+        const f = trySegs([[ax, ay, ax, y1], [ax, y1, xc, y1], [xc, y1, xc, at.ty], [xc, at.ty, at.ex, at.ty]]);
+        if (f) { plan = f; break outerS; }
+      }
+    }
+  }
+  // A（最後手段，帶斜段）：短斜段出環 → 橫移 → 垂直 → 水平
   if (!plan) outerA:
   for (const t of STUBS) {
     const Dx = ax + nx * t, Dy = ay + ny * t;
