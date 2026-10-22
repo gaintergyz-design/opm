@@ -1,0 +1,22 @@
+{
+  "ticker": "META",
+  "title_line1": "WHO OWNS",
+  "title_line2": "META?",
+  "subtitle": "% Shareholding · Class A + B",
+  "summary_note": "Zuckerberg holds ~61% of voting power",
+  "data_as_of": "30 Jun 2026",
+  "source": "13F filings · Meta proxy statement",
+  "institutions_total": "67.8%",
+  "segments": [
+    { "name": "Other Institutions", "disp": "38.7", "pct": 38.7, "icon": "bank" },
+    { "name": "Public & Other", "disp": "18.8", "pct": 18.8, "icon": "people" },
+    { "name": "Mark Zuckerberg", "disp": "13.4", "pct": 13.4, "badge": "zuck", "hero": true, "role": "Founder · CEO" },
+    { "name": "Vanguard Group", "disp": "7.6", "pct": 7.6, "mono": "V", "monoBg": "#8E1B22" },
+    { "name": "BlackRock", "disp": "6.8", "pct": 6.8, "mono": "B", "monoBg": "#111417" },
+    { "name": "Capital Research", "disp": "4.0", "pct": 4.0, "mono": "C", "monoBg": "#0F3E86" },
+    { "name": "State Street", "disp": "3.6", "pct": 3.6, "mono": "S", "monoBg": "#0C4C8C" },
+    { "name": "Fidelity (FMR)", "disp": "3.5", "pct": 3.5, "mono": "F", "monoBg": "#4E7B2B" },
+    { "name": "Geode Capital", "disp": "2.2", "pct": 2.2, "mono": "G", "monoBg": "#1F5C8B" },
+    { "name": "T. Rowe Price", "disp": "1.4", "pct": 1.4, "mono": "T", "monoBg": "#00539B" }
+  ]
+}
