@@ -19,7 +19,7 @@
   python3 scripts/build_gallery.py --prune 90  # 額外刪掉 docs/img 中超過 90 天的圖（默認保留全部）
   python3 scripts/build_gallery.py --days 7    # 調整展開天數
 """
-import glob, os, re, shutil, sys, datetime
+import glob, json, os, re, shutil, subprocess, sys, datetime
 from zoneinfo import ZoneInfo
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,6 +64,53 @@ def parse(name):
     return kind, d
 
 
+def git_commit_times():
+    """out/ 下每個檔案「最後一次被提交」的時間（epoch）。
+    不能用 mtime：git pull/checkout 會把 mtime 重置成拉取時刻。"""
+    times = {}
+    try:
+        raw = subprocess.run(['git', '-C', BASE, 'log', '--format=@%ct', '--name-only', '--', 'out'],
+                             capture_output=True, text=True).stdout
+        cur = None
+        for line in raw.splitlines():
+            if line.startswith('@'):
+                cur = int(line[1:])
+            elif line.strip() and cur:
+                f = line.strip()
+                if f not in times:
+                    times[f] = cur           # git log 由新到舊 → 首次出現即最新
+    except Exception:
+        pass
+    return times
+
+
+GIT_TIMES = git_commit_times()
+SH = ZoneInfo('Asia/Shanghai')
+
+
+def gen_times():
+    """產線出圖時寫入的生成時刻（最準）。"""
+    try:
+        with open(os.path.join(OUT, 'gen-times.json'), encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+GEN_TIMES = gen_times()
+
+
+def stamp_of(p, name):
+    """圖片生成時刻：① 產線記錄 gen-times ② min(git 提交時間, mtime)
+       —— git 拉取只會把 mtime 推後、批量提交只會把 git 時間推後，取較早者最接近真實生成時刻。"""
+    ep = GEN_TIMES.get(name)
+    if not ep:
+        git_ep = GIT_TIMES.get(f'out/{name}')
+        mtime = os.stat(p).st_mtime
+        ep = min(git_ep, mtime) if git_ep else mtime
+    return ep, datetime.datetime.fromtimestamp(ep, SH).strftime('%Y-%m-%d %H:%M:%S')
+
+
 items = []
 for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
     name = os.path.basename(p)
@@ -73,8 +120,7 @@ for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
     shutil.copy2(p, os.path.join(IMG, name))
     cap_file = os.path.join(OUT, f'caption-{name[:-4]}.txt')
     caption = open(cap_file, encoding='utf-8').read().strip() if os.path.exists(cap_file) else ''
-    mt = os.stat(p).st_mtime
-    ts = datetime.datetime.fromtimestamp(mt).strftime('%Y-%m-%d %H:%M:%S')
+    mt, ts = stamp_of(p, name)
     items.append({'img': f'img/{name}', 'name': name, 'kind': kind, 'date': d,
                   'post': POST_OF.get(kind, kind), 'caption': caption,
                   'mtime': mt, 'time': ts})

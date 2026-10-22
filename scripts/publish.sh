@@ -43,6 +43,15 @@ else
 fi
 
 echo "IMAGE: $IMG"
+# 記錄生成時刻（畫廊時間顯示用：mtime 會被 git 拉取重置、git 時間會被同位元組提交掩蓋）
+"$PY" - "$IMG" <<'PY'
+import json, os, sys, time
+p = sys.argv[1]
+f = 'out/gen-times.json'
+m = json.load(open(f)) if os.path.exists(f) else {}
+m[os.path.basename(p)] = int(time.time())
+json.dump(m, open(f, 'w'), ensure_ascii=False, indent=0, sort_keys=True)
+PY
 # 推手機（可選，失敗不阻斷）
 "$PY" scripts/notify.py --image "$IMG" --text "${KIND} · $(date +%Y-%m-%d) · 新圖已生成" || true
 # 產出貼文文案（手動發帖模式：只寫 txt，不調用 X API）

@@ -37,6 +37,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # 完整歷史：畫廊靠 git log 取每張圖的生成時間
 
       - name: 決定本次產線
         id: kind

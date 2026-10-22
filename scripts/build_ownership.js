@@ -241,4 +241,12 @@ const png = new Resvg(svgStr, {
   background: '#FFFFFF',
 }).render().asPng();
 fs.writeFileSync(path.join(outDir, `who-owns-nvda-${stamp}.png`), png);
+// 記錄生成時刻（畫廊時間顯示用）
+{
+  const genFile = path.join(outDir, 'gen-times.json');
+  let genMap = {};
+  try { genMap = JSON.parse(fs.readFileSync(genFile, 'utf8')); } catch (e) {}
+  genMap[`who-owns-nvda-${stamp}.png`] = Math.floor(Date.now() / 1000);
+  fs.writeFileSync(genFile, JSON.stringify(genMap));
+}
 console.log('PNG ->', `out/who-owns-nvda-${stamp}.png`, `(${(png.length / 1024).toFixed(0)} KB)`);
