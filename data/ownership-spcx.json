@@ -1,0 +1,25 @@
+{
+  "company": "SpaceX",
+  "ticker": "SPCX",
+  "title_line1": "WHO OWNS",
+  "title_line2": "SPACEX?",
+  "subtitle": "By % Shareholding · Post-IPO",
+  "data_as_of": "30 Jun 2026",
+  "source": "13F filings · S&P Global Market Intelligence · StockVane",
+  "segments": [
+    {"name": "Elon Musk", "badge": "musk", "role": "Founder · CEO", "pct": 44.71, "disp": "44.7"},
+    {"name": "All Other|Institutions|& Public", "badge": null, "pct": 35.95, "disp": "36.0"},
+    {"name": "Alphabet", "badge": "alphabet", "pct": 4.06, "disp": "4.1"},
+    {"name": "Valor Equity", "badge": "valor", "pct": 3.39, "disp": "3.4"},
+    {"name": "Founders Fund", "badge": "founders", "pct": 3.15, "disp": "3.2"},
+    {"name": "Fidelity (FMR)", "badge": "fidelity", "pct": 2.23, "disp": "2.2"},
+    {"name": "Vy Capital", "badge": "vy", "pct": 2.00, "disp": "2.0"},
+    {"name": "Gigafund", "badge": "gigafund", "pct": 1.27, "disp": "1.3"},
+    {"name": "Saudi PIF", "badge": "pif", "pct": 1.14, "disp": "1.1"},
+    {"name": "Baron Capital", "badge": "baron", "pct": 1.07, "disp": "1.1"},
+    {"name": "Sequoia Capital", "badge": "sequoia", "pct": 1.03, "disp": "1.0"}
+  ],
+  "institutions_total": "30.0%",
+  "summary_note": "Musk holds ~82% voting power via Class B",
+  "notes": "IPO 2026-06（$135/股，代碼 SPCX）。Top-10 為 13F 口徑 Q2 2026（6/30，StockVane/S&P Global）；All Other = 100% − top10(64.05%)。機構合計持股 29.97%；Musk 44.71%（6.07B 股）+ Class B 十倍投票權 ≈ 82% 投票權。IBD 2026-10 報導口徑一致（Musk 44.7% / Alphabet 4.0 / Valor 3.3 / FF 3.1 / Fidelity 2.2）。"
+}
