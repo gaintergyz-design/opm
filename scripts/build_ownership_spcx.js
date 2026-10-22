@@ -384,39 +384,148 @@ ORBIT.slots.forEach((sl) => {
   if (process.env.DIAG) console.log(`  ${sl.s.name.padEnd(20)} th=${sl.th.toFixed(1).padStart(6)} ed=${ed.toFixed(3)}`);
 });
 
-function drawOrbitLabel(sl) {
-  const { s, th, badgeC, bsize, opt } = sl;
+/* --- 引導線：橫平豎直（moneywise 式）：斜段出環 → 垂直段 → 水平段接徽章。
+       逐標籤搜索路徑（短刺長度 × 車道橫移 × 接點高度），三重檢測：
+       ① 不切進環體（下半圓計入側壁厚度）② 不穿其他標籤塊 ③ 不與已畫線重疊。
+       全部候選失敗才退回純斜線。 --- */
+const distPtSeg = (px0, py0, x1, y1, x2, y2) => {
+  const dx = x2 - x1, dy = y2 - y1;
+  const L2 = dx * dx + dy * dy || 1;
+  const t = Math.max(0, Math.min(1, ((px0 - x1) * dx + (py0 - y1) * dy) / L2));
+  return Math.hypot(px0 - (x1 + dx * t), py0 - (y1 + dy * t));
+};
+const drawnSegs = [];
+const segPts = (x1, y1, x2, y2, cb) => {
+  const n = Math.max(2, Math.round(Math.hypot(x2 - x1, y2 - y1) / 9));
+  for (let k = 0; k <= n; k++) cb(x1 + (x2 - x1) * k / n, y1 + (y2 - y1) * k / n);
+};
+const hitRing = (x, y) => {
+  const ryE = (y > CY ? RY + DEPTH : RY) + 3;
+  return ((x - CX) / (RX + 3)) ** 2 + ((y - CY) / ryE) ** 2 < 1;
+};
+const segClear = (x1, y1, x2, y2, slots, self, gap) => {
+  let ok = true;
+  segPts(x1, y1, x2, y2, (x, y) => {
+    if (!ok) return;
+    if (x < 14 || x > 1066 || y < 256 || y > 1222 || hitRing(x, y)) { ok = false; return; }
+    for (const so of slots) {
+      if (so === self) continue;
+      const b = so.box;
+      if (x > b.x0 - gap && x < b.x1 + gap && y > b.y0 - gap && y < b.y1 + gap) { ok = false; return; }
+    }
+  });
+  return ok;
+};
+const segFree = (x1, y1, x2, y2) => {
+  const thr = Math.hypot(x2 - x1, y2 - y1) > 120 ? 7 : 3;   // 長線段間距要拉開，避免視覺重疊
+  for (const sg of drawnSegs) {
+    let bad = false;
+    segPts(x1, y1, x2, y2, (x, y) => { if (distPtSeg(x, y, sg[0], sg[1], sg[2], sg[3]) < thr) bad = true; });
+    if (bad) return false;
+  }
+  return true;
+};
+
+function drawOrbitLabel(sl, slots) {
+  const { s, badgeC, bsize, opt } = sl;
   // 錨點（真實扇區中點，下半圓移到側壁底）
   const t0 = rad(s.aMid);
-  const ex = px(s.aMid, RX + 4);
-  let ey = py(s.aMid, RY + 4);
-  if (Math.sin(t0) > 0) ey += DEPTH;
-  // 徑向短刺：沿橢圓外法線向外；長度自適應——保證「刺尖 K → 徽章」線段不切進環體
+  const ax = px(s.aMid, RX + 6);
+  let ay = py(s.aMid, RY + 6);
+  if (Math.sin(t0) > 0) ay += DEPTH;
   const nl = Math.hypot(RY * Math.cos(t0), RX * Math.sin(t0)) || 1;
   const nx = (RY * Math.cos(t0)) / nl, ny = (RX * Math.sin(t0)) / nl;
-  const ryEff = Math.sin(t0) > 0 ? RY + DEPTH : RY;   // 下半圓計入側壁厚度
-  const inside = (x, y) => ((x - CX) / (RX + 6)) ** 2 + ((y - CY) / (ryEff + 6)) ** 2 < 1;
-  const segClear = (K) => {
-    for (let k = 1; k <= 24; k++) {
-      const x = K[0] + (badgeC.x - K[0]) * k / 24, y = K[1] + (badgeC.y - K[1]) * k / 24;
-      if (inside(x, y)) return false;
-    }
-    return true;
-  };
-  let K = null;
-  for (const stub of [26, 38, 52, 68, 86, 106]) {
-    const cand = [ex + nx * stub, ey + ny * stub];
-    if (cand[0] > 16 && cand[0] < 1064 && cand[1] > 260 && segClear(cand)) { K = cand; break; }
+  const bs = s.badge ? bsize : 0;
+  const m = metrics(s, opt);
+  const nearX = opt.mirror ? badgeC.x - bs / 2 - 4 : badgeC.x + bs / 2 + 4;
+  const span = bs ? bs / 2 - 8 : m.blockH / 2 - 12;
+  const kys = [];                       // 水平段接徽章的高度（優先 badge 正中）
+  for (let d = 0; d <= span + 0.1; d += 6) {
+    kys.push(badgeC.y - d);
+    if (d > 0) kys.push(badgeC.y + d);
   }
-  if (!K) K = [ex + nx * 26, ey + ny * 26];
-  const dxK = K[0] - badgeC.x, dyK = K[1] - badgeC.y;
-  const dl = Math.hypot(dxK, dyK) || 1;
-  const P = [badgeC.x + dxK / dl * (bsize / 2 + 4), badgeC.y + dyK / dl * (bsize / 2 + 4)];
-  a.push(`<polyline points="${ex.toFixed(1)},${ey.toFixed(1)} ${K[0].toFixed(1)},${K[1].toFixed(1)} ${P[0].toFixed(1)},${P[1].toFixed(1)}" fill="none" stroke="#9AA5B1" stroke-width="1.2"/>`);
-  a.push(`<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="3.5" fill="#FFFFFF" stroke="${C.ink}" stroke-width="1.4"/>`);
+  const STUBS = [20, 32, 46, 62, 80, 100, 124];
+  const SHIFTS = [0, 14, -14, 28, -28, 44, -44, 62, -62, 84, -84, 110, -110, 140, -140, 175, -175, 210, -210, 250, -250, 300, -300, 340, -340, 380, -380, 420, -420];
+  const inXY = (x, y) => x >= 16 && x <= 1064 && y >= 258 && y <= 1218;
+  const trySegs = (raw) => {
+    const segs = raw.filter((sg) => Math.hypot(sg[2] - sg[0], sg[3] - sg[1]) > 1.5);
+    if (!segs.length) return null;
+    for (const sg of segs) {
+      if (!segClear(sg[0], sg[1], sg[2], sg[3], slots, sl, 2) || !segFree(sg[0], sg[1], sg[2], sg[3])) return null;
+    }
+    return segs;
+  };
+  let plan = null;
+  // A：短斜段出環 → 橫移（水平）→ 垂直 → 水平接徽章
+  outerA:
+  for (const t of STUBS) {
+    const Dx = ax + nx * t, Dy = ay + ny * t;
+    if (!inXY(Dx, Dy)) continue;
+    for (const sh of SHIFTS) {
+      const Ex = Dx + sh;
+      if (!inXY(Ex, Dy)) continue;
+      for (const Ky of kys) {
+        const f = trySegs([[ax, ay, Dx, Dy], [Dx, Dy, Ex, Dy], [Ex, Dy, Ex, Ky], [Ex, Ky, nearX, Ky]]);
+        if (f) { plan = f; break outerA; }
+      }
+    }
+  }
+  // B：水平 → 垂直 → 水平（全直角）
+  if (!plan) outerB:
+  for (const sh of SHIFTS) {
+    const x1 = ax + sh;
+    if (!inXY(x1, ay)) continue;
+    for (const Ky of kys) {
+      const f = trySegs([[ax, ay, x1, ay], [x1, ay, x1, Ky], [x1, Ky, nearX, Ky]]);
+      if (f) { plan = f; break outerB; }
+    }
+  }
+  // C：垂直 → 水平 → 垂直接徽章（全直角）
+  if (!plan) outerC:
+  for (const dv of [30, -30, 60, -60, 90, -90, 130, -130, 170, -170, 220, -220, 280, -280, 340, -340]) {
+    const y1 = ay + dv;
+    if (!inXY(ax, y1)) continue;
+    for (const Ky of kys) {
+      const f = trySegs([[ax, ay, ax, y1], [ax, y1, nearX, y1], [nearX, y1, nearX, Ky]]);
+      if (f) { plan = f; break outerC; }
+    }
+  }
+  let pts;
+  if (plan) {
+    pts = [[ax, ay], ...plan.map((sg) => [sg[2], sg[3]])];
+    plan.forEach((sg) => drawnSegs.push(sg));
+  } else {
+    // 後備：自適應徑向短刺 + 直線接徽章
+    let K = null;
+    for (const stub of [26, 38, 52, 68, 86, 106]) {
+      const cand = [ax + nx * stub, ay + ny * stub];
+      if (cand[0] > 16 && cand[0] < 1064 && cand[1] > 260 && !hitRing(cand[0], cand[1]) &&
+          segClear(ax, ay, cand[0], cand[1], slots, sl, 2) &&
+          segClear(cand[0], cand[1], badgeC.x, badgeC.y, slots, sl, 2)) { K = cand; break; }
+    }
+    if (!K) K = [ax + nx * 26, ay + ny * 26];
+    const dl = Math.hypot(K[0] - badgeC.x, K[1] - badgeC.y) || 1;
+    const P = [badgeC.x + (K[0] - badgeC.x) / dl * (bsize / 2 + 4), badgeC.y + (K[1] - badgeC.y) / dl * (bsize / 2 + 4)];
+    pts = [[ax, ay], K, P];
+    drawnSegs.push([ax, ay, K[0], K[1]], [K[0], K[1], P[0], P[1]]);
+  }
+  const poly = pts.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ');
+  a.push(`<polyline points="${poly}" fill="none" stroke="#9AA5B1" stroke-width="1.2"/>`);
+  a.push(`<circle cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="3.5" fill="#FFFFFF" stroke="${C.ink}" stroke-width="1.4"/>`);
   a.push(block(s, badgeC.x, badgeC.y, opt));
 }
-ORBIT.slots.forEach(drawOrbitLabel);
+// 難度優先繪製：錨點→徽章距離越遠的標籤越容易無路可走，先讓它挑路徑
+let fallbackCount = 0;
+ORBIT.slots
+  .slice()
+  .sort((p, q) => Math.hypot(q.badgeC.x - px(q.s.aMid, RX + 6), q.badgeC.y - py(q.s.aMid, RY + 6)) -
+                  Math.hypot(p.badgeC.x - px(p.s.aMid, RX + 6), p.badgeC.y - py(p.s.aMid, RY + 6)))
+  .forEach((sl) => {
+    const before = drawnSegs.length;
+    drawOrbitLabel(sl, ORBIT.slots);
+    if (drawnSegs.length === before) fallbackCount++;
+  });
+if (fallbackCount) console.log('leader fallback:', fallbackCount);
 
 /* --- 星艦 Starship（底部矢量）--- */
 function starship(cx, baseY, h) {
