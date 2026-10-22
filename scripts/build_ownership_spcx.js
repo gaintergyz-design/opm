@@ -176,8 +176,8 @@ a.push(`<path d="M ${px(0)} ${py(0)} A ${RX} ${RY} 0 0 1 ${px(180)} ${py(180)}" 
 /* --- 標籤（badge + 名稱 + % pill + Tesla 式折線）--- */
 const badgeCache = {};
 function badgeImg(name, size) {
-  const f = A(`badge-${name}.png`);
-  if (!fs.existsSync(f)) return '';
+  const f = [A(`badge-${name}.png`), A(`${name}.png`)].find((p) => fs.existsSync(p));
+  if (!f) { console.warn('missing badge asset:', name); return ''; }
   if (!badgeCache[name]) badgeCache[name] = fs.readFileSync(f).toString('base64');
   return `<circle r="${size / 2}" fill="#FFFFFF" stroke="#DDE2E9" stroke-width="1.5"/>` +
          `<image x="${-size / 2}" y="${-size / 2}" width="${size}" height="${size}" href="data:image/png;base64,${badgeCache[name]}"/>`;
