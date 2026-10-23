@@ -494,9 +494,26 @@ module.exports = function build(OPTS) {
     const STUBS = [20, 32, 46, 62, 80, 100, 124];
     const SHIFTS = [0, 14, -14, 28, -28, 44, -44, 62, -62, 84, -84, 110, -110, 140, -140, 175, -175, 210, -210, 250, -250, 300, -300, 340, -340, 380, -380, 420, -420];
     const inXY = (x, y) => x >= 16 && x <= 1064 && y >= 258 && y <= 1218;
+    /* 退化段處理（坑 26）：L1/L2 算出的拐角可能與錨點只差 <1.5px（或反之）。
+       以前的做法是「丟掉太短的段」，結果剩下的那段起點還是原錨點、
+       終點卻是拐角高度 → 出現 1px 的假斜線（肉眼像水平，檢查判 DIAG）。
+       正解：以「上一個保留點」為基準吸附，被丟掉的拐角不留殘影。 */
     const trySegs = (raw) => {
-      const ss = raw.filter((sg) => Math.hypot(sg[2] - sg[0], sg[3] - sg[1]) > 1.5);
-      if (!ss.length) return null;
+      const chain = [[raw[0][0], raw[0][1]]];
+      for (const sg of raw) chain.push([sg[2], sg[3]]);
+      const pts = [chain[0]];
+      for (let i = 1; i < chain.length; i++) {
+        const p = pts[pts.length - 1];
+        const q = [chain[i][0], chain[i][1]];
+        const dx = Math.abs(q[0] - p[0]), dy = Math.abs(q[1] - p[1]);
+        if (dx < 1.5 && dy < 1.5) continue;               // 與上一點重合 → 丟棄
+        if (dx < 1.5) q[0] = p[0];                        // 吸附成嚴格垂直
+        else if (dy < 1.5) q[1] = p[1];                   // 吸附成嚴格水平
+        pts.push(q);
+      }
+      if (pts.length < 2) return null;
+      const ss = [];
+      for (let i = 1; i < pts.length; i++) ss.push([pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]]);
       for (const sg of ss) {
         if (!segClear(sg[0], sg[1], sg[2], sg[3], slots, sl, 2) || !segFree(sg[0], sg[1], sg[2], sg[3])) return null;
       }

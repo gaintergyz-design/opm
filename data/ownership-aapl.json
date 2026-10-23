@@ -1,0 +1,20 @@
+{
+  "ticker": "AAPL",
+  "title_line1": "WHO OWNS",
+  "title_line2": "APPLE?",
+  "subtitle": "% Shareholding · Common Stock",
+  "summary_note": "Institutions 65.7% · insiders just 0.06%",
+  "data_as_of": "30 Jun 2026",
+  "source": "13F filings · ADVFN",
+  "institutions_total": "65.7%",
+  "segments": [
+    { "name": "Other Institutions", "disp": "38.1", "pct": 38.07, "color": "#1D1D1F", "icon": "bank" },
+    { "name": "Vanguard Group", "disp": "9.4", "pct": 9.43, "color": "#3C444F", "mono": "V", "monoBg": "#8E1B22" },
+    { "name": "BlackRock", "disp": "8.0", "pct": 7.96, "color": "#4A5360", "mono": "B", "monoBg": "#111417" },
+    { "name": "Public & Other", "disp": "34.3", "pct": 34.31, "color": "#AEB8C5", "icon": "people" },
+    { "name": "State Street", "disp": "4.2", "pct": 4.21, "color": "#586271", "mono": "S", "monoBg": "#0C4C8C" },
+    { "name": "Geode Capital", "disp": "2.5", "pct": 2.54, "color": "#6A7481", "mono": "G", "monoBg": "#1F5C8B" },
+    { "name": "Fidelity (FMR)", "disp": "1.9", "pct": 1.92, "color": "#7C8693", "mono": "F", "monoBg": "#4E7B2B" },
+    { "name": "Berkshire Hathaway", "disp": "1.6", "pct": 1.56, "color": "#0071E3", "badge": "buffett", "hero": true, "role": "Warren Buffett" }
+  ]
+}
