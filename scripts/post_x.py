@@ -124,9 +124,9 @@ def caption_for(kind):
         idx = ' · '.join(f"{i['label'].split(' (')[0]} {i['pct']:+.2f}%"
                          for i in d.get('indexes', []))
         top = (d.get('volume') or {}).get('rows', [])[:3]
-        names = ', '.join(r['ticker'] for r in top)
-        return (f"The Close: {idx}. Most traded: {names}. Breadth "
-                f"{(d.get('breadth') or {}).get('adv_pct', '—')}% advancers. 🧵")
+        lead = ', '.join(f"{r['ticker']} {r['pct']:+.2f}%" for r in top if r.get('pct') is not None)
+        return (f"The Close: {idx}. Most traded: {lead}. "
+                f"Top 20 by turnover inside. 🧵")
     if kind == 'winners' and os.path.exists(p):
         w = json.load(open(p)).get('winners') or {}
         g = w['gainers'][:3]; l = w['losers'][:3]

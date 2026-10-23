@@ -2,8 +2,14 @@
  * The Close — 1080x1350 PNG 產生器
  * 輸入：data/close.json    輸出：out/the-close-<session>.png
  *
- * 版面規格見「X起號方案-美股數據號」§11
+ * 2026-10-22 改版（阿澤定稿）：
+ *   · Top 20 由雙列改**單列**（20 行 × 38px）
+ *   · 每隻個股都顯示**漲跌幅**（方向色 + 正負號）
+ *   · 刪除「Breadth 市場寬度」與「Earnings 明日財報」兩個模塊
+ *   · 數據改用東方財富**真實成交額**（Σ 成交價×股數），不再是 price × volume 估算
+ *
  * 用法：NODE_PATH=<workspace>/node_modules node scripts/build_close.js
+ *       PREVIEW=1 ... → 寫到 out/_preview/（不污染正式產物）
  */
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +35,7 @@ const CFG = {
   watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
 };
 const { W, M, colors: C } = CFG;
-let H = CFG.H;                     // 可切換 1080×1080 / 1080×1350
+const H = CFG.H;
 // ===============================
 
 let uid = 0, defs = [];
@@ -61,42 +67,58 @@ const bill = (n) => {
   if (n >= 1e6) return (n / 1e6).toFixed(0) + 'M';
   return String(Math.round(n));
 };
-const num = (n) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—');
 const longDate = (iso) => {
   const d = new Date(iso + 'T12:00:00');
   if (isNaN(d)) return iso;
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 };
+// 公司名瘦身：去掉 "Common Stock" / "Class A Capital Stock" 尾巴、長詞縮寫，
+// 再按估算字寬截斷——且**在詞邊界截**（"Advanced Micro Devices…" 而非 "Advanced Micro Devic…"）
+const fitName = (s, maxW, size) => {
+  let str = String(s || '')
+    // 只去掉尾巴的 "Common Stock" / "Capital Stock"，保留 Class A/B/C
+    // （GOOGL 與 GOOG 都是 Alphabet，靠 Class A / Class C 才分得出來）
+    .replace(/\s+(Common|Capital) Stock$/i, '')
+    .replace(/\bCorporation\b/gi, 'Corp.')
+    .replace(/\bIncorporated\b/gi, 'Inc.')
+    .trim();
+  const w = (x) => x.length * size * 0.56;
+  if (w(str) <= maxW) return str;
+  const full = str;
+  while (str.length > 1 && w(str + '\u2026') > maxW) str = str.slice(0, -1);
+  // 只在「剛好切在半個單詞中間」時才退到詞邊界；
+  // 若截斷點本來就落在詞尾（下一個字元是空白）就保留整詞，避免把 "Taiwan Semiconductor" 砍成 "Taiwan"
+  if (full.charAt(str.length) !== ' ') {
+    const sp = str.lastIndexOf(' ');
+    if (sp > 3) str = str.slice(0, sp);
+  }
+  // 停在 "Inc." / "Corp." 這種縮寫結尾時讀起來已是完整公司名，不再補省略號
+  if (/\.$/.test(str)) return str;
+  return str.replace(/[\s,\-]+$/, '') + '\u2026';
+};
+// 代碼寬度估算（MiSans Bold 大寫，advance ≈ 0.72em）
+const tickerW = (s, size) => String(s || '').length * size * 0.72;
 
-// ---------- 版面常數 ----------
-const CW = W - M * 2;                     // 984
-const IDX_BOTTOM = 340;                   // 指數百分比文字視覺底緣
-const ROW_H = 46, ROWS_PER_COL = 10;      // Top20 行距
-const COL_W = (CW - 40) / 2;              // 472
-const BAR_MAX = 168;
+// ---------- 版面常數（單列 · 20 行） ----------
+const CW = W - M * 2;            // 984
+const ROW_H = 38;
+const RANK_X = M + 26;           // 74（右對齊）
+const LOGO_X = M + 36;           // 84
+const LOGO_S = 28;
+const TICKER_X = M + 88;         // 136
+const NAME_X = M + 194;          // 242
+const NAME_SIZE = 19;
+const BAR_X = 512, BAR_MAX = 292;
+const PCT_X = 930;               // 右對齊
+const AMT_X = W - M;             // 1032（右對齊）
 
 const rows = (D.volume && D.volume.rows) || [];
 const maxDV = Math.max(1, ...rows.map((r) => r.dollar_volume || 0));
-const breadth = D.breadth || {};
-const advPct = typeof breadth.adv_pct === 'number' ? breadth.adv_pct : 0;
-const earnRows = ((D.earnings && D.earnings.rows) || []).slice(0, 3);
+const listH = rows.length * ROW_H;
 
-// 內容少 → 正方形 1080×1080；否則 1080×1350（三段間距 GAP 統一）
-const perCol = Math.max(1, Math.ceil(rows.length / 2));
-const listH = Math.min(perCol, ROWS_PER_COL) * ROW_H;
-const earnH = earnRows.length ? 40 + (earnRows.length - 1) * 34 + 26 : 0;
-const NATURAL_BASE = IDX_BOTTOM + 44 + listH + 82 + earnH;   // 不含 GAP
-H = CFG.H;
-{
-  const gSquare = (CFG.H_SQUARE - 146 - NATURAL_BASE) / 3;
-  if (gSquare >= 48) H = CFG.H_SQUARE;
-}
-const GAP = Math.max(40, Math.round((H - 146 - NATURAL_BASE) / 3));
-const Y_TOP_LABEL = IDX_BOTTOM + GAP;
-const LIST_TOP = Y_TOP_LABEL + 44;
+const Y_TOP_LABEL = 392;
+const LIST_TOP = 426;
 const LIST_BOTTOM = LIST_TOP + listH;
-const Y_BREADTH_LABEL = LIST_BOTTOM + GAP;
-const Y_EARN_LABEL = Y_BREADTH_LABEL + 82 + GAP;
 
 let svg = [];
 svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`);
@@ -131,56 +153,44 @@ idx.forEach((it, i) => {
   svg.push(t(x, 328, pctStr(it.pct), { size: 60, weight: 700, fill: pctColor(it.pct) }));
 });
 
-// ---------- 成交量榜 ----------
+// ---------- 成交額榜（單列 20 行）----------
 function sectionLabel(x, y, label) {
   svg.push(`<rect x="${x}" y="${y - 20}" width="6" height="24" fill="${C.amber}"/>`);
   svg.push(t(x + 18, y, label, { size: 24, fill: C.gray }));
 }
-sectionLabel(M, Y_TOP_LABEL, `Top ${rows.length || 20} by dollar volume`);
-svg.push(t(W - M, Y_TOP_LABEL, D.volume && D.volume.metric ? 'USD' : '', { size: 22, fill: C.dim, anchor: 'end' }));
+sectionLabel(M, Y_TOP_LABEL, `Top ${rows.length || 20} stocks by turnover`);
+svg.push(t(W - M, Y_TOP_LABEL, 'USD · actual traded value', { size: 22, fill: C.dim, anchor: 'end' }));
 
 rows.forEach((r, i) => {
-  const col = Math.floor(i / ROWS_PER_COL);
-  const row = i % ROWS_PER_COL;
-  const x = M + col * (COL_W + 40);
-  const y = LIST_TOP + row * ROW_H;
+  const y = LIST_TOP + i * ROW_H;
   const mid = y + ROW_H / 2;
 
-  svg.push(t(x, mid + 8, String(i + 1), { size: 20, fill: C.dim }));
-  svg.push(logoAt(r.ticker, x + 30, mid + 2, 26));
-  svg.push(t(x + 64, mid + 9, r.ticker, { size: 28, weight: 700 }));
-  // 條：與代碼同行，位於代碼右側
-  const barX = x + 178;
+  svg.push(t(RANK_X, mid + 7, String(i + 1), { size: 19, fill: C.dim, anchor: 'end' }));
+  svg.push(logoAt(r.ticker, LOGO_X, mid, LOGO_S));
+  svg.push(t(TICKER_X, mid + 9, r.ticker, { size: 27, weight: 700 }));
+  if (r.name) {
+    // 名稱起點跟著代碼長度浮動（GOOGL / GOOG 這種 5 碼才不會黏上去）
+    const nx = Math.max(NAME_X, Math.round(TICKER_X + tickerW(r.ticker, 27) + 16));
+    svg.push(t(nx, mid + 7, fitName(r.name, BAR_X - nx - 18, NAME_SIZE),
+               { size: NAME_SIZE, fill: C.gray }));
+  }
+  // 條長 = 成交額；顏色 = 當日漲跌方向
   const bw = Math.max(6, Math.round((r.dollar_volume || 0) / maxDV * BAR_MAX));
-  svg.push(`<rect x="${barX}" y="${mid - 5}" width="${BAR_MAX}" height="10" rx="2" fill="${C.track}"/>`);
-  svg.push(`<rect x="${barX}" y="${mid - 5}" width="${bw}" height="10" rx="2" fill="${pctColor(r.pct)}" opacity="0.85"/>`);
-  svg.push(t(x + COL_W, mid + 9, bill(r.dollar_volume), { size: 22, fill: C.gray, anchor: 'end' }));
-});
-
-// ---------- 市場寬度 ----------
-sectionLabel(M, Y_BREADTH_LABEL, `Breadth · advancers`);
-svg.push(t(W - M, Y_BREADTH_LABEL, `${advPct}%`, { size: 32, weight: 700, anchor: 'end' }));
-const barY = Y_BREADTH_LABEL + 22;
-svg.push(`<rect x="${M}" y="${barY}" width="${CW}" height="20" rx="3" fill="#FCEBEB"/>`);
-svg.push(`<rect x="${M}" y="${barY}" width="${Math.round(CW * advPct / 100)}" height="20" rx="3" fill="${C.up}"/>`);
-svg.push(t(M, barY + 52, `${num(breadth.up)} up`, { size: 22, fill: C.dim }));
-svg.push(t(M + CW / 2, barY + 52, `${num(breadth.down)} down`, { size: 22, fill: C.dim, anchor: 'middle' }));
-const poolTag = (breadth.pool_rule === 'S&P 500 constituents') ? `${num(breadth.pool)} S&P 500 members` : `${num(breadth.pool)} names`;
-svg.push(t(W - M, barY + 52, poolTag, { size: 20, fill: C.dim, anchor: 'end' }));
-
-// ---------- 明日財報 ----------
-sectionLabel(M, Y_EARN_LABEL, `Earnings · ${longDate(D.earnings && D.earnings.date || D.session)}`);
-earnRows.forEach((r, i) => {
-  const y = Y_EARN_LABEL + 40 + i * 34;
-  svg.push(t(M, y, r.session, { size: 26 }));
-  svg.push(t(W - M, y, r.tickers, { size: 26, fill: C.gray, anchor: 'end' }));
+  svg.push(`<rect x="${BAR_X}" y="${mid - 5}" width="${BAR_MAX}" height="10" rx="2" fill="${C.track}"/>`);
+  svg.push(`<rect x="${BAR_X}" y="${mid - 5}" width="${bw}" height="10" rx="2" fill="${pctColor(r.pct)}" opacity="0.85"/>`);
+  // 漲跌幅
+  svg.push(t(PCT_X, mid + 9, pctStr(r.pct), { size: 26, weight: 700, fill: pctColor(r.pct), anchor: 'end' }));
+  // 成交額
+  svg.push(t(AMT_X, mid + 8, bill(r.dollar_volume), { size: 24, fill: C.gray, anchor: 'end' }));
 });
 
 // ---------- 頁腳 ----------
 svg.push(`<rect x="${M}" y="${H - 118}" width="${CW}" height="1" fill="${C.line}"/>`);
 svg.push(t(M, H - 78, D.disclaimer || '', { size: 20, fill: C.dim }));
 svg.push(t(W - M, H - 78, handle, { size: 20, fill: C.dim, anchor: 'end' }));
-svg.push(t(M, H - 48, `Source: ${D.source || 'Yahoo Finance · Nasdaq'} · dollar volume = price × shares traded`, { size: 18, fill: C.dim }));
+const metricNote = (D.volume && D.volume.metric_note) || 'actual traded value';
+svg.push(t(M, H - 48, `Source: ${D.source || 'Eastmoney · Nasdaq'} · ${metricNote} · index: Eastmoney / CNBC`,
+           { size: 18, fill: C.dim }));
 
 svg.push('</svg>');
 svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);

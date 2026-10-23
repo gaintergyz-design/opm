@@ -23,6 +23,19 @@ SRC = [
 ]
 
 
+def white_on_transparent(im):
+    """白字 + 透明底的 logo 放在白卡上等於隱形（Marvell 就是）。
+    判斷：不透明像素裡 ≥97% 是近白色 → 視為壞圖，換下一個來源。
+    （AAPL / LRCX 那種「白底方塊 + 深色圖形」白佔比約 0.88，不算壞圖）"""
+    px = im.load()
+    w, h = im.size
+    op = [(x, y) for y in range(h) for x in range(w) if px[x, y][3] > 200]
+    if not op:
+        return True
+    wht = sum(1 for x, y in op if px[x, y][0] > 235 and px[x, y][1] > 235 and px[x, y][2] > 235)
+    return wht / len(op) >= 0.97
+
+
 def fetch(t):
     for u in SRC:
         r = subprocess.run(['curl', '-s', '--max-time', '12', '-H', f'User-Agent: {UA}', u.format(t)],
@@ -35,6 +48,8 @@ def fetch(t):
             continue
         if im.size[0] < 16:
             continue
+        if white_on_transparent(im):
+            continue          # 白字透明底 → 白卡上看不見，換下一個來源
         # 去透明邊
         bbox = im.split()[3].getbbox()
         if bbox:
