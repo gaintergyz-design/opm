@@ -152,12 +152,8 @@ rows.forEach((r, i) => {
   svg.push(t(AMT_X, mid + 8, bill(r.dollar_volume), { size: AMT_SIZE, fill: C.gray, anchor: 'end' }));
 });
 
-// ---------- 頁腳（統一聲明三行 + 來源/handle 一行）----------
-const metricNote = (D.volume && D.volume.metric_note) || 'actual traded value';
-pushFooter(t, svg, {
-  M, W, H, C, handle,
-  meta: `Source: ${D.source || 'Eastmoney · Nasdaq'} · ${metricNote} · index: Eastmoney / CNBC`,
-});
+// ---------- 頁腳（統一聲明三行；不寫 Source）----------
+pushFooter(t, svg, { M, W, H, C, handle });
 
 svg.push('</svg>');
 svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);

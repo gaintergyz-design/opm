@@ -24,7 +24,9 @@ const DISCLAIMER_SIZE = 15;
 const DISCLAIMER_LH = 19;       // 行距
 
 /**
- * 在 svg push 陣列裡畫聲明（三行）+ 最後一行左邊放 meta、右邊放 handle
+ * 在 svg push 陣列裡畫聲明（三行）
+ * ⚠️ 2026-10-23 阿澤定稿：**不要寫 Source**，不論數據來自哪裡都不寫；
+ *    免責區只放上面那三段文字。（meta 只留給「數據截止日」這類非來源資訊）
  * @param {(x,y,s,opt)=>string} t  文字產生器
  * @param {string[]} a             svg 片段陣列
  * @param {object} o               { M, W, H, C, meta, handle }

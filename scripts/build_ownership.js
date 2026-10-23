@@ -217,11 +217,8 @@ drawLabel(segByName['T. Rowe Price'], 780, 235, 'middle');           // 上右
 drawLabel(segByName['Morgan Stanley'], 920, 355, 'middle');          // 右上
 drawLabel(segByName['Invesco'], 960, 475, 'middle');                 // 右上
 
-/* --- 頁腳（統一聲明三行 + 來源/handle 一行）--- */
-pushFooter(t, a, {
-  M, W, H, C, handle,
-  meta: `Data as of ${D.data_as_of} · Source: ${D.source}`,
-});
+/* --- 頁腳（統一聲明三行；不寫 Source，只留數據截止日）--- */
+pushFooter(t, a, { M, W, H, C, handle, meta: `Data as of ${D.data_as_of}` });
 
 a.push('</svg>');
 a.splice(1, 0, `<defs>${defs.join('')}</defs>`);

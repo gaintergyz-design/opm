@@ -644,11 +644,8 @@ module.exports = function build(OPTS) {
     a.push(`<g>${O.figure.svg({ defs, uid: () => uid++, t, C, W, H })}</g>`);
   }
 
-  /* --- 頁腳（統一聲明三行 + 來源/handle 一行）--- */
-  pushFooter(t, a, {
-    M, W, H, C, handle,
-    meta: `Data as of ${D.data_as_of} · Source: ${D.source}`,
-  });
+  /* --- 頁腳（統一聲明三行；不寫 Source，只留數據截止日）--- */
+  pushFooter(t, a, { M, W, H, C, handle, meta: `Data as of ${D.data_as_of}` });
 
   a.push('</svg>');
   a.splice(1, 0, `<defs>${defs.join('')}</defs>`);

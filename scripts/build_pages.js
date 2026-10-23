@@ -97,11 +97,8 @@ function scaffold(title, sub) {
   return a;
 }
 function finish(a) {
-  pushFooter(t, a, {
-    M, W, H, C,
-    handle: D.handle || '@onepagemarket',
-    meta: `Source: ${D.source || ''}`,
-  });
+  // 免責區只放統一聲明，不寫 Source（阿澤 2026-10-23）
+  pushFooter(t, a, { M, W, H, C, handle: D.handle || '@onepagemarket' });
   a.push('</svg>');
   return [a[0], `<defs>${defs.join('')}</defs>`, ...a.slice(1)].join('\n');
 }
