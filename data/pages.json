@@ -2,260 +2,253 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-22 13:19",
+  "generated_at": "2026-10-23 13:13",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
-    "session": "2026-10-22",
+    "session": "2026-10-23",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 0.58
+        "pct": -1.21
       },
       {
         "label": "Nasdaq",
-        "pct": 1.05
+        "pct": -2.6
       },
       {
         "label": "Russell 2000",
-        "pct": 0.27
+        "pct": 0.11
       }
     ],
     "econ": [
       {
-        "time": "10:30",
-        "event": "Crude Oil Inventories",
-        "consensus": "-0.100M",
-        "previous": "-8.557M"
+        "time": "08:30",
+        "event": "Continuing Jobless Claims",
+        "consensus": "1,720K",
+        "previous": "1,703K"
       },
       {
-        "time": "10:30",
-        "event": "EIA Weekly Distillates Stocks",
-        "consensus": "-1.200M",
-        "previous": "-2.527M"
+        "time": "08:30",
+        "event": "Initial Jobless Claims",
+        "consensus": "200K",
+        "previous": "200K"
       },
       {
-        "time": "10:30",
-        "event": "Gasoline Inventories",
-        "consensus": "-0.400M",
-        "previous": "3.518M"
+        "time": "08:30",
+        "event": "Jobless Claims 4-Week Avg.",
+        "consensus": "200.00K",
+        "previous": "198.75K"
       },
       {
-        "time": "07:00",
-        "event": "MBA 30-Year Mortgage Rate",
+        "time": "11:00",
+        "event": "KC Fed Composite Index",
+        "consensus": "12",
+        "previous": "14"
+      },
+      {
+        "time": "11:00",
+        "event": "KC Fed Manufacturing Index",
         "consensus": "",
-        "previous": "7.50%"
+        "previous": "20"
       },
       {
-        "time": "07:00",
-        "event": "MBA Mortgage Applications",
+        "time": "16:30",
+        "event": "Fed's Balance Sheet",
         "consensus": "",
-        "previous": "-2.7%"
+        "previous": "6,756B"
       },
       {
-        "time": "07:00",
-        "event": "MBA Purchase Index",
+        "time": "16:30",
+        "event": "Reserve Balances with Federal Reserve Banks",
         "consensus": "",
-        "previous": "139.3"
+        "previous": "3.030T"
       },
       {
-        "time": "07:00",
-        "event": "Mortgage Market Index",
-        "consensus": "",
-        "previous": "199.2"
-      },
-      {
-        "time": "07:00",
-        "event": "Mortgage Refinance Index",
-        "consensus": "",
-        "previous": "513.5"
-      },
-      {
-        "time": "10:30",
-        "event": "EIA Refinery Crude Runs",
-        "consensus": "",
-        "previous": "0.135M"
+        "time": "10:00",
+        "event": "US Leading Index",
+        "consensus": "-0.1%",
+        "previous": "-0.1%"
       },
       {
         "time": "10:30",
-        "event": "Crude Oil Imports",
+        "event": "Natural Gas Storage",
+        "consensus": "80B",
+        "previous": "67B"
+      },
+      {
+        "time": "11:30",
+        "event": "4-Week Bill Auction",
         "consensus": "",
-        "previous": "-0.596M"
+        "previous": "4.000%"
       }
     ],
-    "econ_all": 15,
+    "econ_all": 11,
     "earnings": {
       "before": [
-        "PG",
-        "UNP",
-        "LMT",
-        "VLO",
-        "SPOT",
-        "BX",
-        "CMCSA",
-        "BCS"
+        "AXP",
+        "E",
+        "SLB",
+        "INFY",
+        "FCNCA",
+        "RCI",
+        "BAH",
+        "ALV"
       ],
       "after": [
-        "WDC",
-        "NEM",
-        "BE",
-        "FIX",
-        "BBD",
-        "BBDO",
-        "VRSN",
-        "OMC"
+        "RCBC"
       ],
-      "before_n": 54,
-      "after_n": 48,
-      "total": 137
+      "before_n": 17,
+      "after_n": 1,
+      "total": 30
     }
   },
   "winners": {
     "from": "2026-10-20",
-    "to": "2026-10-21",
-    "universe": 19,
+    "to": "2026-10-22",
+    "universe": 17,
     "gainers": [
-      {
-        "ticker": "MRNA",
-        "name": "Moderna Inc. Common Stock",
-        "pct": 6.69,
-        "last": 242.08,
-        "dollar_volume": 4081202270
-      },
-      {
-        "ticker": "CRWV",
-        "name": "CoreWeave Inc. Class A Common Stock",
-        "pct": 1.65,
-        "last": 62.13,
-        "dollar_volume": 5888574599
-      },
       {
         "ticker": "TSLA",
         "name": "Tesla Inc. Common Stock",
-        "pct": 1.54,
-        "last": 373.71,
-        "dollar_volume": 12005058919
-      },
-      {
-        "ticker": "MRVL",
-        "name": "Marvell Technology Inc. Common Stock",
-        "pct": 1.4,
-        "last": 240.42,
-        "dollar_volume": 4025835545
-      },
-      {
-        "ticker": "TSM",
-        "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
-        "pct": 1.16,
-        "last": 425.08,
-        "dollar_volume": 5329982052
-      },
-      {
-        "ticker": "NBIS",
-        "name": "Nebius Group N.V. Class A Ordinary Shares",
-        "pct": 0.71,
-        "last": 171.45,
-        "dollar_volume": 3877533431
-      },
-      {
-        "ticker": "AMZN",
-        "name": "Amazon.com Inc. Common Stock",
-        "pct": 0.07,
-        "last": 262.63,
-        "dollar_volume": 9172982799
-      },
-      {
-        "ticker": "AVGO",
-        "name": "Broadcom Inc. Common Stock",
-        "pct": -0.07,
-        "last": 334.37,
-        "dollar_volume": 5333938117
-      },
-      {
-        "ticker": "SPCX",
-        "name": "Space Exploration Technologies Corp. Class A Common Stock",
-        "pct": -0.11,
-        "last": 147.79,
-        "dollar_volume": 17322034353
-      },
-      {
-        "ticker": "NVDA",
-        "name": "NVIDIA Corporation Common Stock",
-        "pct": -0.29,
-        "last": 216.47,
-        "dollar_volume": 17233319787
-      }
-    ],
-    "losers": [
-      {
-        "ticker": "META",
-        "name": "Meta Platforms Inc. Class A Common Stock",
-        "pct": -1.59,
-        "last": 694.25,
-        "dollar_volume": 11836714653
-      },
-      {
-        "ticker": "GOOGL",
-        "name": "Alphabet Inc. Class A Common Stock",
-        "pct": -1.14,
-        "last": 340.27,
-        "dollar_volume": 6232880466
-      },
-      {
-        "ticker": "GOOG",
-        "name": "Alphabet Inc. Class C Capital Stock",
-        "pct": -1.11,
-        "last": 336.4,
-        "dollar_volume": 4975463984
+        "pct": 1.77,
+        "last": 374.58,
+        "dollar_volume": 19623813632
       },
       {
         "ticker": "AAPL",
         "name": "Apple Inc. Common Stock",
-        "pct": -1.0,
-        "last": 339.5,
-        "dollar_volume": 12171637891
+        "pct": 1.54,
+        "last": 348.22,
+        "dollar_volume": 16255283712
       },
       {
-        "ticker": "MU",
-        "name": "Micron Technology Inc. Common Stock",
-        "pct": -0.98,
-        "last": 896.07,
-        "dollar_volume": 18194667299
+        "ticker": "TSM",
+        "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
+        "pct": -1.87,
+        "last": 412.35,
+        "dollar_volume": 6811538944
       },
       {
-        "ticker": "AMD",
-        "name": "Advanced Micro Devices Inc. Common Stock",
-        "pct": -0.62,
-        "last": 534.74,
-        "dollar_volume": 8121338082
-      },
-      {
-        "ticker": "SNDK",
-        "name": "Sandisk Corporation Common Stock",
-        "pct": -0.42,
-        "last": 1365.38,
-        "dollar_volume": 8984633225
-      },
-      {
-        "ticker": "INTC",
-        "name": "Intel Corporation Common Stock",
-        "pct": -0.37,
-        "last": 91.69,
-        "dollar_volume": 7707404827
-      },
-      {
-        "ticker": "MSFT",
-        "name": "Microsoft Corporation Common Stock",
-        "pct": -0.31,
-        "last": 531.87,
-        "dollar_volume": 7752667960
+        "ticker": "SPCX",
+        "name": "Space Exploration Technologies Corp. Class A Common Stock",
+        "pct": -2.17,
+        "last": 144.75,
+        "dollar_volume": 29393700608
       },
       {
         "ticker": "NVDA",
         "name": "NVIDIA Corporation Common Stock",
-        "pct": -0.29,
-        "last": 216.47,
-        "dollar_volume": 17233319787
+        "pct": -2.25,
+        "last": 212.21,
+        "dollar_volume": 26772696832
+      },
+      {
+        "ticker": "MSFT",
+        "name": "Microsoft Corporation Common Stock",
+        "pct": -2.33,
+        "last": 521.08,
+        "dollar_volume": 11130665472
+      },
+      {
+        "ticker": "AVGO",
+        "name": "Broadcom Inc. Common Stock",
+        "pct": -3.39,
+        "last": 323.24,
+        "dollar_volume": 9133671424
+      },
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com Inc. Common Stock",
+        "pct": -4.6,
+        "last": 250.38,
+        "dollar_volume": 12278666752
+      },
+      {
+        "ticker": "MU",
+        "name": "Micron Technology Inc. Common Stock",
+        "pct": -5.35,
+        "last": 856.49,
+        "dollar_volume": 27971311872
+      },
+      {
+        "ticker": "AMD",
+        "name": "Advanced Micro Devices Inc. Common Stock",
+        "pct": -5.6,
+        "last": 507.93,
+        "dollar_volume": 14368201472
+      }
+    ],
+    "losers": [
+      {
+        "ticker": "MRNA",
+        "name": "Moderna Inc. Common Stock",
+        "pct": -10.69,
+        "last": 202.63,
+        "dollar_volume": 10071320320
+      },
+      {
+        "ticker": "SNDK",
+        "name": "Sandisk Corporation Common Stock",
+        "pct": -8.04,
+        "last": 1260.93,
+        "dollar_volume": 13370221056
+      },
+      {
+        "ticker": "META",
+        "name": "Meta Platforms Inc. Class A Common Stock",
+        "pct": -8.02,
+        "last": 648.85,
+        "dollar_volume": 26501625600
+      },
+      {
+        "ticker": "INTC",
+        "name": "Intel Corporation Common Stock",
+        "pct": -7.11,
+        "last": 85.49,
+        "dollar_volume": 11603019264
+      },
+      {
+        "ticker": "GOOGL",
+        "name": "Alphabet Inc. Class A Common Stock",
+        "pct": -5.8,
+        "last": 324.22,
+        "dollar_volume": 9041679872
+      },
+      {
+        "ticker": "MRVL",
+        "name": "Marvell Technology Inc. Common Stock",
+        "pct": -5.74,
+        "last": 223.47,
+        "dollar_volume": 5626512128
+      },
+      {
+        "ticker": "GOOG",
+        "name": "Alphabet Inc. Class C Capital Stock",
+        "pct": -5.7,
+        "last": 320.76,
+        "dollar_volume": 6792116992
+      },
+      {
+        "ticker": "AMD",
+        "name": "Advanced Micro Devices Inc. Common Stock",
+        "pct": -5.6,
+        "last": 507.93,
+        "dollar_volume": 14368201472
+      },
+      {
+        "ticker": "MU",
+        "name": "Micron Technology Inc. Common Stock",
+        "pct": -5.35,
+        "last": 856.49,
+        "dollar_volume": 27971311872
+      },
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com Inc. Common Stock",
+        "pct": -4.6,
+        "last": 250.38,
+        "dollar_volume": 12278666752
       }
     ],
     "is_demo": false
@@ -265,7 +258,7 @@
       {
         "day": "Mon",
         "date": "Oct 26",
-        "count": 76,
+        "count": 74,
         "econ": [],
         "before": [
           "VZ",
@@ -291,7 +284,7 @@
       {
         "day": "Tue",
         "date": "Oct 27",
-        "count": 178,
+        "count": 180,
         "econ": [
           "Chicago Fed National Activity",
           "Dallas Fed Mfg Business Index",
@@ -322,22 +315,22 @@
       {
         "day": "Wed",
         "date": "Oct 28",
-        "count": 217,
+        "count": 223,
         "econ": [
           "Atlanta Fed GDPNow",
           "Core Durable Goods Orders",
-          "Durables Excluding Defense",
-          "CB Consumer Confidence"
+          "CB Consumer Confidence",
+          "Durables Excluding Defense"
         ],
         "before": [
           "GEV",
+          "SAN",
           "APH",
           "UBS",
-          "PSX",
           "ADP",
+          "PSX",
           "GSK",
-          "VRT",
-          "AEP"
+          "VRT"
         ],
         "after": [
           "GOOG",
@@ -353,11 +346,11 @@
       {
         "day": "Thu",
         "date": "Oct 29",
-        "count": 323,
+        "count": 322,
         "econ": [
           "Goods Trade Balance",
-          "FOMC Statement",
           "Fed Interest Rate Decision",
+          "FOMC Statement",
           "FOMC Press Conference"
         ],
         "before": [
@@ -373,8 +366,8 @@
         "after": [
           "AMZN",
           "INTC",
-          "SNDK",
           "GILD",
+          "SNDK",
           "SYK",
           "SBUX",
           "MDLZ",
@@ -384,7 +377,7 @@
       {
         "day": "Fri",
         "date": "Oct 30",
-        "count": 53,
+        "count": 54,
         "econ": [
           "GDP",
           "GDP Price Index",
