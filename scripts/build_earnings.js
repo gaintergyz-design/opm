@@ -44,7 +44,8 @@ const LAY = D.layout || {};
 const MARGIN_MAX = LAY.marginMax || 60;      // 毛利率軸上限（Meta 80%+ 用 90）
 const MARGIN_STEP = LAY.marginStep || 10;    // 毛利率軸刻度
 const OCF = D.ocf_fmt || { unit: 'US$M', div: 1, dec: 0, step: 400 };
-const fmtOcf = (v) => (v === 0 ? '0' : OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec) : String(Math.round(v)));
+const fmtOcf = (v) => (v === 0 ? '0' : (OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec) : String(Math.round(v)))
+  .replace('-', '\u2212'));
 
 let uid = 0, defs = [];
 const esc = (s) => String(s == null ? '' : s)
@@ -208,7 +209,8 @@ svg.push(t(RP_X, B_Y + 30, D.mix_title || 'Revenue mix', { size: 26, weight: 500
   const p = (r, d) => [cx + r * Math.cos(rad(d)), cy + r * Math.sin(rad(d))];
   let a = -90;
   mix.forEach((m, i) => {
-    const sweep = m.pct / 100 * 360;
+    // 最後一段用剩餘角度收尾：三個百分比四捨五入後相加常是 100.1，硬乘會多畫 0.4°
+    const sweep = i === mix.length - 1 ? (360 - (a + 90)) : m.pct / 100 * 360;
     const a0 = a, a1 = a + sweep; a = a1;
     const large = sweep > 180 ? 1 : 0;
     const [x1, y1] = p(R, a0), [x2, y2] = p(R, a1);
@@ -255,23 +257,34 @@ svg.push(t(OP_X + OP_W, C_Y + 29, OCF.unit, { size: 17, fill: C.dim, anchor: 'en
 {
   const n = D.ocf.length;
   const gx0 = OP_X + 52, gx1 = OP_X + OP_W;
-  const baseY = C_Y + 310, maxH = 226;
-  const mx = Math.max(...D.ocf);
+  const botY = C_Y + 310, topY = botY - 226;
+  // 支援負值（BE 3Q26 經營現金流 −27.1M）：lo 恆 ≤ 0，零線按比例上移
+  const hi = Math.max(...D.ocf, 0), lo = Math.min(...D.ocf, 0);
+  const span = (hi - lo) || 1;
+  const yOfV = (v) => botY - ((v - lo) / span) * (botY - topY);
+  const zeroY = yOfV(0);
   const slot = (gx1 - gx0) / n;
   const bw = Math.min(62, slot * 0.54);
-  for (let v = 0; v <= mx; v += OCF.step * OCF.div) {
-    const y = baseY - (v / mx) * maxH;
+  const step = OCF.step * OCF.div;
+  for (let v = 0; v <= hi; v += step) {
+    const y = yOfV(v);
     svg.push(`<line x1="${gx0}" y1="${y.toFixed(1)}" x2="${gx1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
     svg.push(t(gx0 - 12, y + 5, fmtOcf(v), { size: 15, fill: C.dim, anchor: 'end' }));
   }
+  if (lo < 0) {
+    svg.push(`<line x1="${gx0}" y1="${zeroY.toFixed(1)}" x2="${gx1}" y2="${zeroY.toFixed(1)}" stroke="#C9D5E2" stroke-width="1.4"/>`);
+  }
   D.ocf.forEach((v, i) => {
-    const h = (v / mx) * maxH;
+    const y = yOfV(v);
     const x = gx0 + slot * i + (slot - bw) / 2;
-    svg.push(rrect(x, baseY - h, bw, h, 4, i === n - 1 ? 'url(#barCur)' : 'url(#barOcf)'));
-    svg.push(t(x + bw / 2, baseY - h - 10, fmtOcf(v), { size: 17, weight: 600, fill: C.deep, anchor: 'middle' }));
+    const h = Math.abs(y - zeroY);
+    const fill = v < 0 ? '#98A2B3' : (i === n - 1 ? 'url(#barCur)' : 'url(#barOcf)');
+    svg.push(rrect(x, Math.min(y, zeroY), bw, Math.max(h, 1), 4, fill));
+    svg.push(t(x + bw / 2, v >= 0 ? y - 10 : zeroY - 8, fmtOcf(v),
+               { size: 17, weight: 600, fill: v < 0 ? '#5C6675' : C.deep, anchor: 'middle' }));
   });
   D.quarters.forEach((q, i) => {
-    svg.push(t(gx0 + slot * i + slot / 2, baseY + 28, q, { size: 17, fill: C.gray, anchor: 'middle' }));
+    svg.push(t(gx0 + slot * i + slot / 2, botY + 28, q, { size: 17, fill: C.gray, anchor: 'middle' }));
   });
 }
 

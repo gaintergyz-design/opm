@@ -1,0 +1,74 @@
+{
+  "ticker": "BE",
+  "company": "Bloom Energy",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 22, 2026 · after close",
+
+  "brand": {
+    "deep": "#14663A",
+    "primary": "#37A85A",
+    "mid": "#1F8548",
+    "teal": "#405060",
+    "pos": "#028948"
+  },
+
+  "strip": "GAAP EPS $0.78 vs $0.94 non-GAAP · operating cash flow −$27.1M · free cash flow −$180.6M",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 1235.8,
+      "actual_disp": "$1.24B",
+      "est_disp": "$1.06B",
+      "surprise": 16.6,
+      "prior": 519.0,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 138
+    },
+    "eps": {
+      "label": "Non-GAAP EPS",
+      "actual": 0.94,
+      "actual_disp": "$0.94",
+      "est_disp": "$0.68",
+      "surprise": 38.2,
+      "prior": 0.15,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 527
+    }
+  },
+
+  "layout": {
+    "marginMax": 40,
+    "marginStep": 10
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [29.2, 30.8, 30.0, 33.4, 33.8],
+  "op_margin": [1.5, 11.3, 9.6, 17.1, 18.2],
+
+  "ocf": [19.7, 418.1, 73.6, 226.4, -27.1],
+  "ocf_fmt": { "unit": "US$M", "div": 1, "dec": 0, "step": 100 },
+
+  "mix_title": "Revenue mix",
+  "mix_colors": ["#14663A", "#37A85A", "#8CCBA0", "#405060"],
+  "mix": [
+    { "name": "Product", "pct": 86.9, "value": "$1.07B" },
+    { "name": "Installation", "pct": 6.9, "value": "$85M" },
+    { "name": "Service", "pct": 5.5, "value": "$68M" },
+    { "name": "Electricity", "pct": 0.8, "value": "$10M" }
+  ],
+
+  "outlook": {
+    "title": "FY2026 · raised a third time",
+    "items": [
+      { "k": "Revenue", "v": "$4.4–4.6B", "note": "+122% Y/Y at the midpoint" },
+      { "k": "Gross margin", "v": "~34%", "note": "non-GAAP · Q3 was 34.5%" },
+      { "k": "Operating income", "v": "$960M–$1.03B", "note": "non-GAAP" },
+      { "k": "EPS", "v": "$3.10–3.40", "note": "est. was $2.71" },
+      { "k": "S&P 500", "v": "added", "note": "index inclusion in Q4" }
+    ]
+  }
+}
