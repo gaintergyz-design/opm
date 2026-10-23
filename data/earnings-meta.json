@@ -1,0 +1,75 @@
+{
+  "ticker": "META",
+  "company": "Meta Platforms",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 21, 2026 · after close",
+
+  "brand": {
+    "deep": "#0B3D91",
+    "primary": "#0866FF",
+    "mid": "#1E5AC6",
+    "teal": "#00B8D9",
+    "pos": "#028948"
+  },
+
+  "strip": "Excluding a $9.89B legal charge: operating income $22.88B · EPS $7.40 · margin 35% — a clean beat",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 64601,
+      "actual_disp": "$64.60B",
+      "est_disp": "$63.35B",
+      "surprise": 2.0,
+      "prior": 51242,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 26
+    },
+    "eps": {
+      "label": "EPS (GAAP)",
+      "actual": 3.83,
+      "actual_disp": "$3.83",
+      "est_disp": "$5.46",
+      "surprise": -29.9,
+      "prior": 1.05,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 265
+    }
+  },
+
+  "layout": {
+    "marginMax": 90,
+    "marginStep": 20
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [82.0, 81.8, 81.9, 81.4, 79.3],
+  "op_margin": [40.1, 41.3, 40.6, 30.9, 20.1],
+
+  "ocf": [29999, 36214, 32226, 31862, 32786],
+  "ocf_fmt": { "unit": "US$B", "div": 1000, "dec": 1, "step": 10 },
+
+  "mix_title": "Revenue by region",
+  "mix_center": "US & Canada",
+  "mix_colors": ["#0B3D91", "#0866FF", "#00B8D9", "#8CBBF7"],
+  "mix": [
+    { "name": "US & Canada", "pct": 40.6, "value": "$26.2B" },
+    { "name": "Asia-Pacific", "pct": 26.3, "value": "$17.0B" },
+    { "name": "Europe", "pct": 21.7, "value": "$14.0B" },
+    { "name": "Rest of World", "pct": 11.4, "value": "$7.4B" }
+  ],
+
+  "outlook": {
+    "title": "Q4 2026 outlook",
+    "items": [
+      { "k": "Revenue", "v": "$73–76B", "note": "+24% Y/Y · est. $73.6B" },
+      { "k": "Capex FY26", "v": "$135–145B", "note": "low end raised from $130B" },
+      { "k": "Total expenses", "v": "$175–179B", "note": "includes the $9.9B charge" },
+      { "k": "Reality Labs", "v": "−$18–19B", "note": "operating loss · ~−$15B in FY27" },
+      { "k": "Class C stock", "v": "1:1 dividend", "note": "non-voting · trades Jan 2027" }
+    ]
+  }
+}

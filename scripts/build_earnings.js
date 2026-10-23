@@ -39,6 +39,13 @@ const C = {
 };
 const FONT = 'MiSans';
 
+/* 個股差異化設定（都有預設值，WDC 卡不用改） */
+const LAY = D.layout || {};
+const MARGIN_MAX = LAY.marginMax || 60;      // 毛利率軸上限（Meta 80%+ 用 90）
+const MARGIN_STEP = LAY.marginStep || 10;    // 毛利率軸刻度
+const OCF = D.ocf_fmt || { unit: 'US$M', div: 1, dec: 0, step: 400 };
+const fmtOcf = (v) => (v === 0 ? '0' : OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec) : String(Math.round(v)));
+
 let uid = 0, defs = [];
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -127,8 +134,16 @@ function kpiCard(x, k) {
 svg.push(kpiCard(M, D.kpi.revenue));
 svg.push(kpiCard(M + cardW + GAP, D.kpi.eps));
 
+/* ---------------- ① KPI 卡下方的口徑說明條（可選） ---------------- */
+if (D.strip) {
+  const SY = 452, SH = 46;
+  svg.push(rrect(M, SY, CW, SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
+  svg.push(`<rect x="${M}" y="${SY + 9}" width="4" height="${SH - 18}" rx="2" fill="${C.primary}"/>`);
+  svg.push(t(M + 18, SY + 30, D.strip, { size: 18, weight: 500, fill: C.deep }));
+}
+
 /* ---------------- ② 獲利能力 ---------------- */
-const B_Y = 462, B_H = 320;
+const B_Y = D.strip ? 512 : 462, B_H = 320;
 const LP_X = M, LP_W = 512;
 const RP_X = M + LP_W + 32, RP_W = CW - LP_W - 32;
 
@@ -152,11 +167,11 @@ svg.push(t(LP_X, B_Y + 30, 'Profitability', { size: 26, weight: 500 }));
 }
 
 const PX0 = LP_X + 48, PX1 = LP_X + LP_W - 10, PY0 = B_Y + 62, PY1 = B_Y + 246;
-const Y_MAX = 60;
+const Y_MAX = MARGIN_MAX;
 const yOf = (v) => PY1 - (v / Y_MAX) * (PY1 - PY0);
 const xOf = (i, n) => PX0 + (PX1 - PX0) * (i / (n - 1));
 
-for (let v = 0; v <= Y_MAX; v += 10) {
+for (let v = 0; v <= Y_MAX; v += MARGIN_STEP) {
   const y = yOf(v);
   svg.push(`<line x1="${PX0}" y1="${y.toFixed(1)}" x2="${PX1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
   svg.push(t(PX0 - 12, y + 5, `${v}%`, { size: 15, fill: C.dim, anchor: 'end' }));
@@ -181,11 +196,11 @@ D.quarters.forEach((q, i) => {
 });
 
 /* ---------------- ② 營收佔比 ---------------- */
-svg.push(t(RP_X, B_Y + 30, 'Revenue mix', { size: 26, weight: 500 }));
+svg.push(t(RP_X, B_Y + 30, D.mix_title || 'Revenue mix', { size: 26, weight: 500 }));
 {
   const cx = RP_X + 104, cy = B_Y + 168, R = 98, HOLE = 56;
   const mix = D.mix || [];
-  const COL = [C.deep, C.mid, C.teal];
+  const COL = D.mix_colors || [C.deep, C.mid, C.teal];
   const rad = (d) => d * Math.PI / 180;
   const p = (r, d) => [cx + r * Math.cos(rad(d)), cy + r * Math.sin(rad(d))];
   let a = -90;
@@ -200,15 +215,25 @@ svg.push(t(RP_X, B_Y + 30, 'Revenue mix', { size: 26, weight: 500 }));
     svg.push(`<path d="${d}" fill="${COL[i % COL.length]}" stroke="#FFFFFF" stroke-width="2"/>`);
   });
   svg.push(t(cx, cy + 2, `${mix[0].pct}%`, { size: 30, weight: 700, fill: C.deep, anchor: 'middle' }));
-  svg.push(t(cx, cy + 25, 'cloud', { size: 16, fill: C.gray, anchor: 'middle' }));
+  const centerLbl = D.mix_center || String(mix[0].name).toLowerCase();
+  svg.push(t(cx, cy + 25, centerLbl, { size: centerLbl.length > 9 ? 14 : 16, fill: C.gray, anchor: 'middle' }));
 
   const LX = cx + R + 40;
+  const dense = mix.length >= 4;
+  const rowGap = dense ? 50 : 62;
+  const rowY0 = B_Y + (dense ? 100 : 112);
   mix.forEach((m, i) => {
-    const y = B_Y + 112 + i * 62;
+    const y = rowY0 + i * rowGap;
     svg.push(rrect(LX, y - 13, 13, 13, 3.5, COL[i % COL.length]));
-    svg.push(t(LX + 22, y, m.name, { size: 21, weight: 500 }));
-    svg.push(t(RP_X + RP_W, y, `${m.pct}%`, { size: 22, weight: 700, fill: C.deep, anchor: 'end' }));
-    svg.push(t(LX + 22, y + 22, m.value, { size: 17, fill: C.dim }));
+    svg.push(t(LX + 22, y, m.name, { size: dense ? 20 : 21, weight: 500 }));
+    if (dense) {
+      // 4 段時名稱太長（Rest of World 136px），% 移到第二行右端，避免與名稱打架
+      svg.push(t(LX + 22, y + 21, m.value, { size: 16, fill: C.dim }));
+      svg.push(t(RP_X + RP_W, y + 21, `${m.pct}%`, { size: 17, weight: 700, fill: C.deep, anchor: 'end' }));
+    } else {
+      svg.push(t(RP_X + RP_W, y, `${m.pct}%`, { size: 22, weight: 700, fill: C.deep, anchor: 'end' }));
+      svg.push(t(LX + 22, y + 22, m.value, { size: 17, fill: C.dim }));
+    }
   });
 }
 
@@ -218,7 +243,7 @@ const OP_X = M, OP_W = 512;
 const OB_X = M + OP_W + 32, OB_W = CW - OP_W - 32;
 
 svg.push(t(OP_X, C_Y + 30, 'Operating cash flow', { size: 26, weight: 500 }));
-svg.push(t(OP_X + OP_W, C_Y + 29, 'US$M', { size: 17, fill: C.dim, anchor: 'end' }));
+svg.push(t(OP_X + OP_W, C_Y + 29, OCF.unit, { size: 17, fill: C.dim, anchor: 'end' }));
 
 {
   const n = D.ocf.length;
@@ -227,16 +252,16 @@ svg.push(t(OP_X + OP_W, C_Y + 29, 'US$M', { size: 17, fill: C.dim, anchor: 'end'
   const mx = Math.max(...D.ocf);
   const slot = (gx1 - gx0) / n;
   const bw = Math.min(62, slot * 0.54);
-  for (let v = 0; v <= mx; v += 400) {
+  for (let v = 0; v <= mx; v += OCF.step * OCF.div) {
     const y = baseY - (v / mx) * maxH;
     svg.push(`<line x1="${gx0}" y1="${y.toFixed(1)}" x2="${gx1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
-    svg.push(t(gx0 - 12, y + 5, String(v), { size: 15, fill: C.dim, anchor: 'end' }));
+    svg.push(t(gx0 - 12, y + 5, fmtOcf(v), { size: 15, fill: C.dim, anchor: 'end' }));
   }
   D.ocf.forEach((v, i) => {
     const h = (v / mx) * maxH;
     const x = gx0 + slot * i + (slot - bw) / 2;
     svg.push(rrect(x, baseY - h, bw, h, 4, i === n - 1 ? 'url(#barCur)' : 'url(#barOcf)'));
-    svg.push(t(x + bw / 2, baseY - h - 10, String(v), { size: 17, weight: 600, fill: C.deep, anchor: 'middle' }));
+    svg.push(t(x + bw / 2, baseY - h - 10, fmtOcf(v), { size: 17, weight: 600, fill: C.deep, anchor: 'middle' }));
   });
   D.quarters.forEach((q, i) => {
     svg.push(t(gx0 + slot * i + slot / 2, baseY + 28, q, { size: 17, fill: C.gray, anchor: 'middle' }));

@@ -62,11 +62,26 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-spcx': 'Who Owns SpaceX?',
              'who-owns-meta': 'Who Owns Meta?',
              'who-owns-aapl': 'Who Owns Apple?',
-             'who-owns-msft': 'Who Owns Microsoft?',
-             'earnings-wdc': 'WDC Earnings'}
-ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close', 'earnings-wdc',
+             'who-owns-msft': 'Who Owns Microsoft?'}
+ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft']
+
+
+def post_name(post):
+    """earnings-<ticker> 自動命名 → 新標的只丟 data/earnings-<t>.json 就夠，不用改這張表。"""
+    if post in POST_NAME:
+        return POST_NAME[post]
+    if post.startswith('earnings-'):
+        return f"{post.split('-', 1)[1].upper()} Earnings"
+    return post
+
+
+def order_key(kind):
+    """同一則貼文裡多張圖的排序：財報卡統一緊跟 the-close（新卡排前）。"""
+    if kind.startswith('earnings-') and kind not in ORDER:
+        return ORDER.index('the-close') + 1
+    return ORDER.index(kind) if kind in ORDER else 99
 
 
 def parse(name):
@@ -169,7 +184,7 @@ groups = {}
 for it in items:
     groups.setdefault((it['post'], it['date']), []).append(it)
 for g in groups.values():
-    g.sort(key=lambda x: ORDER.index(x['kind']) if x['kind'] in ORDER else 99)
+    g.sort(key=lambda x: order_key(x['kind']))
 
 glatest = {k: max(i['mtime'] for i in v) for k, v in groups.items()}
 ordered = sorted(groups.items(),
@@ -222,7 +237,7 @@ def group_html(key, imgs, idx):
     live = idx < n_open          # 展開組才載圖
     caption = next((i['caption'] for i in imgs if i['caption']), '')
     day = d.strftime('%a, %b %-d')
-    head = (f'<div class="ghead"><b>{esc(POST_NAME.get(post, post))}</b>'
+    head = (f'<div class="ghead"><b>{esc(post_name(post))}</b>'
             f'<span class="day">{day} · {len(imgs)} 張</span></div>')
     if caption:
         block = (f'<div class="tweet"><button class="copy" data-t="{esc(caption)}">複製文案</button>'
