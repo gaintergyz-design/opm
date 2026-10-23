@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-23 13:13",
+  "generated_at": "2026-10-23 20:58",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
-    "session": "2026-10-23",
-    "slot": "pre-market",
+    "session": "2026-10-26",
+    "slot": "next session",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -21,86 +21,32 @@
         "pct": 0.11
       }
     ],
-    "econ": [
-      {
-        "time": "08:30",
-        "event": "Continuing Jobless Claims",
-        "consensus": "1,720K",
-        "previous": "1,703K"
-      },
-      {
-        "time": "08:30",
-        "event": "Initial Jobless Claims",
-        "consensus": "200K",
-        "previous": "200K"
-      },
-      {
-        "time": "08:30",
-        "event": "Jobless Claims 4-Week Avg.",
-        "consensus": "200.00K",
-        "previous": "198.75K"
-      },
-      {
-        "time": "11:00",
-        "event": "KC Fed Composite Index",
-        "consensus": "12",
-        "previous": "14"
-      },
-      {
-        "time": "11:00",
-        "event": "KC Fed Manufacturing Index",
-        "consensus": "",
-        "previous": "20"
-      },
-      {
-        "time": "16:30",
-        "event": "Fed's Balance Sheet",
-        "consensus": "",
-        "previous": "6,756B"
-      },
-      {
-        "time": "16:30",
-        "event": "Reserve Balances with Federal Reserve Banks",
-        "consensus": "",
-        "previous": "3.030T"
-      },
-      {
-        "time": "10:00",
-        "event": "US Leading Index",
-        "consensus": "-0.1%",
-        "previous": "-0.1%"
-      },
-      {
-        "time": "10:30",
-        "event": "Natural Gas Storage",
-        "consensus": "80B",
-        "previous": "67B"
-      },
-      {
-        "time": "11:30",
-        "event": "4-Week Bill Auction",
-        "consensus": "",
-        "previous": "4.000%"
-      }
-    ],
-    "econ_all": 11,
+    "econ": [],
+    "econ_all": 0,
     "earnings": {
       "before": [
-        "AXP",
-        "E",
-        "SLB",
-        "INFY",
-        "FCNCA",
-        "RCI",
-        "BAH",
-        "ALV"
+        "VZ",
+        "CX",
+        "MMYT",
+        "ARLP",
+        "BOH",
+        "LKFN",
+        "HBT",
+        "DEA"
       ],
       "after": [
-        "RCBC"
+        "WELL",
+        "CDNS",
+        "NUE",
+        "PSA",
+        "HIG",
+        "CLS",
+        "CINF",
+        "BRO"
       ],
-      "before_n": 17,
-      "after_n": 1,
-      "total": 30
+      "before_n": 12,
+      "after_n": 40,
+      "total": 74
     }
   },
   "winners": {
@@ -257,146 +203,79 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Oct 26",
-        "count": 74,
-        "econ": [],
-        "before": [
-          "VZ",
-          "CX",
-          "MMYT",
-          "ARLP",
-          "BOH",
-          "LKFN",
-          "HBT",
-          "DEA"
+        "date": "Oct 19",
+        "count": 27,
+        "econ": [
+          "IMF Meetings"
         ],
-        "after": [
-          "WELL",
-          "CDNS",
-          "NUE",
-          "PSA",
-          "HIG",
-          "CLS",
-          "CINF",
-          "BRO"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Tue",
-        "date": "Oct 27",
-        "count": 180,
+        "date": "Oct 20",
+        "count": 54,
         "econ": [
-          "Chicago Fed National Activity",
-          "Dallas Fed Mfg Business Index",
+          "NAHB Housing Market Index",
           "3-Month Bill Auction",
           "6-Month Bill Auction"
         ],
-        "before": [
-          "KO",
-          "NVS",
-          "BA",
-          "SPGI",
-          "GLW",
-          "HCA",
-          "FCX",
-          "JCI"
-        ],
-        "after": [
-          "V",
-          "STX",
-          "WM",
-          "HOOD",
-          "NXPI",
-          "OKE",
-          "BKR",
-          "TER"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Wed",
-        "date": "Oct 28",
-        "count": 223,
+        "date": "Oct 21",
+        "count": 106,
         "econ": [
           "Atlanta Fed GDPNow",
-          "Core Durable Goods Orders",
-          "CB Consumer Confidence",
-          "Durables Excluding Defense"
+          "Housing Starts",
+          "Building Permits",
+          "Pending Home Sales"
         ],
-        "before": [
-          "GEV",
-          "SAN",
-          "APH",
-          "UBS",
-          "ADP",
-          "PSX",
-          "GSK",
-          "VRT"
-        ],
-        "after": [
-          "GOOG",
-          "GOOGL",
-          "MSFT",
-          "KLAC",
-          "TMUS",
-          "NOW",
-          "BBVA",
-          "FTNT"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Thu",
-        "date": "Oct 29",
-        "count": 322,
+        "date": "Oct 22",
+        "count": 143,
         "econ": [
-          "Goods Trade Balance",
-          "Fed Interest Rate Decision",
-          "FOMC Statement",
-          "FOMC Press Conference"
+          "Crude Oil Inventories",
+          "EIA Weekly Distillates Stocks",
+          "Gasoline Inventories",
+          "MBA 30-Year Mortgage Rate"
         ],
         "before": [
-          "LLY",
-          "MA",
-          "MRK",
-          "CAT",
-          "SHEL",
-          "LIN",
-          "TTE",
-          "BUD"
+          "ZGN"
         ],
-        "after": [
-          "AMZN",
-          "INTC",
-          "GILD",
-          "SNDK",
-          "SYK",
-          "SBUX",
-          "MDLZ",
-          "RSG"
-        ]
+        "after": []
       },
       {
         "day": "Fri",
-        "date": "Oct 30",
-        "count": 54,
+        "date": "Oct 23",
+        "count": 29,
         "econ": [
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales",
-          "Dallas Fed PCE"
+          "Continuing Jobless Claims",
+          "Initial Jobless Claims",
+          "Jobless Claims 4-Week Avg.",
+          "KC Fed Composite Index"
         ],
         "before": [
-          "XOM",
-          "ABBV",
-          "CVX",
-          "AZN",
-          "BP",
-          "SNY",
-          "GD",
-          "REGN"
+          "AXP",
+          "E",
+          "SLB",
+          "INFY",
+          "FCNCA",
+          "RCI",
+          "BAH",
+          "ALV"
         ],
-        "after": []
+        "after": [
+          "RCBC"
+        ]
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }
