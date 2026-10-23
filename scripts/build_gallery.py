@@ -15,9 +15,14 @@
   · 點「查看更多」才展開並載入
 
 用法：
-  python3 scripts/build_gallery.py             # 預設
+  python3 scripts/build_gallery.py             # 預設：只顯示最近 3 天
+  python3 scripts/build_gallery.py --show 7    # 顯示最近 N 天（僅影響渲染，不刪圖）
   python3 scripts/build_gallery.py --prune 90  # 額外刪掉 docs/img 中超過 90 天的圖（默認保留全部）
-  python3 scripts/build_gallery.py --days 7    # 調整展開天數
+  python3 scripts/build_gallery.py --days 3    # 調整「預設展開」的天數（折疊閾值）
+
+⚠️ 這個腳本會整份重寫 docs/index.html —— 任何想長期存在的頁面改動（圖標、
+   刷新按鈕、顯示天數…）都必須寫進本文件的模板，直接改 index.html 會在
+   下一次 GitHub Action 跑完產線後被覆蓋掉（Meta 文案就是這樣消失過的）。
 """
 import glob, json, os, re, shutil, subprocess, sys, datetime
 from zoneinfo import ZoneInfo
@@ -33,7 +38,8 @@ def arg(name, d):
     return int(a[a.index(name) + 1]) if name in a else d
 
 
-OPEN_DAYS = arg('--days', 7)     # 最近 N 天預設展開
+OPEN_DAYS = arg('--days', 3)     # 最近 N 天預設展開
+SHOW_DAYS = arg('--show', 3)     # 只渲染最近 N 天的貼文（0 = 全部）
 PRUNE_DAYS = arg('--prune', 0)   # >0 時，docs/img 超過 N 天的圖直接刪除
 
 os.makedirs(IMG, exist_ok=True)
@@ -145,6 +151,14 @@ for f in os.listdir(IMG):
     if f not in keep:
         os.remove(os.path.join(IMG, f))
 
+# 只渲染最近 SHOW_DAYS 天（以「最新一張圖的日期」為基準，避免週末沒產線時整頁空白；
+# 圖仍留在 docs/img，只是不上頁面）
+if SHOW_DAYS > 0 and items:
+    newest = max(i['date'] for i in items)
+    show_cutoff = newest - datetime.timedelta(days=SHOW_DAYS - 1)
+    items = [i for i in items if i['date'] >= show_cutoff]
+    print(f'顯示範圍：{show_cutoff} ~ {newest}（最近 {SHOW_DAYS} 天）')
+
 # 按貼文分組；同日內按「組內最新圖的生成時間」倒序（新出的卡種排最前）
 groups = {}
 for it in items:
@@ -231,17 +245,45 @@ if n_hidden > 0:
 html = f'''<!DOCTYPE html>
 <html lang="zh"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>@onepagemarket</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OPM">
 <style>
   :root {{ --ink:#0B1220; --gray:#5C6675; --dim:#98A2B3; --amber:#BA7517;
           --line:#E4E7EC; --soft:#FAFAFA; --bg:#FFFFFF; }}
   * {{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }}
+  html, body {{ overscroll-behavior-y:contain; }}
   body {{ margin:0; background:var(--bg); color:var(--ink);
     font:15px/1.55 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif; }}
-  header {{ padding:20px 16px 10px; }}
+  header {{ padding:calc(20px + env(safe-area-inset-top)) 16px 10px; max-width:620px;
+    margin:0 auto; display:flex; align-items:flex-start; gap:12px; }}
+  .hinfo {{ flex:1; min-width:0; }}
   h1 {{ margin:0; font-size:25px; letter-spacing:-.5px; }}
   .sub {{ color:var(--dim); font-size:12.5px; margin-top:3px; }}
+  .rf {{ flex:none; width:38px; height:38px; margin-top:2px; padding:0; border:1px solid var(--line);
+    background:#fff; border-radius:12px; color:var(--gray); display:grid; place-items:center;
+    box-shadow:0 1px 2px rgba(11,18,32,.06); }}
+  .rf:active {{ background:#F2F4F7; }}
+  .rf svg {{ width:18px; height:18px; display:block; }}
+  .rf.spin svg {{ animation:spin .7s linear infinite; }}
+  @keyframes spin {{ to {{ transform:rotate(360deg); }} }}
+  /* 下拉刷新：只在「加到主畫面」的獨立視窗啟用（瀏覽器本身已有自己的刷新） */
+  #ptr {{ position:fixed; top:0; left:0; right:0; height:56px; z-index:50;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-size:13px; color:var(--dim); pointer-events:none;
+    transform:translateY(-56px); transition:transform .18s ease; }}
+  #ptr .dot {{ width:17px; height:17px; border-radius:50%; border:2px solid var(--line);
+    border-top-color:var(--amber); }}
+  #ptr.armed {{ color:var(--amber); }}
+  #ptr.armed .dot {{ border-color:var(--amber); }}
+  #ptr.loading .dot {{ animation:spin .7s linear infinite; }}
   .rule {{ height:4px; background:var(--amber); }}
   main {{ padding:6px 16px 48px; max-width:620px; margin:0 auto; }}
   section {{ padding:20px 0 8px; border-bottom:1px solid var(--line); }}
@@ -271,16 +313,15 @@ html = f'''<!DOCTYPE html>
   .morebar button {{ width:100%; padding:14px; font-size:14.5px; color:var(--gray);
     background:#fff; border:1px solid var(--line); border-radius:12px; }}
   .morebar button:active {{ background:#F7F8FA; }}
-  .hint {{ font-size:12px; color:var(--dim); text-align:center; margin:18px 0 0; }}
 </style></head>
 <body>
-<header><h1>@onepagemarket</h1>
-<div class="sub">{NEXT_POST or '每日行情卡片'}</div></header>
+<div id="ptr"><span class="dot"></span><span id="ptxt">下拉重新整理</span></div>
+<header><div class="hinfo"><h1>@onepagemarket</h1>
+<div class="sub">{NEXT_POST or '每日行情卡片'}</div></div><button class="rf" id="rf" type="button" aria-label="重新整理"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button></header>
 <div class="rule"></div>
 <main>
 {body}
 {more}
-<p class="hint">點圖開原尺寸 · 長按可直接複製或存圖</p>
 </main>
 <script>
 function copyText(t, btn) {{
@@ -318,6 +359,55 @@ if (moreBtn) {{
     moreBtn.parentElement.remove();
   }});
 }}
+
+// 重新整理：加時間戳避開 HTML 快取（GitHub Pages 的 HTML 有 10 分鐘快取）
+function doRefresh() {{
+  location.replace(location.pathname + '?r=' + Date.now());
+}}
+var rfBtn = document.getElementById('rf');
+if (rfBtn) {{
+  rfBtn.addEventListener('click', function () {{
+    rfBtn.classList.add('spin');
+    setTimeout(doRefresh, 220);
+  }});
+}}
+
+// 下拉刷新：只在「加到主畫面」的獨立視窗啟用（瀏覽器自帶刷新，避免雙重行為）
+(function () {{
+  var standalone = (window.navigator.standalone === true) ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (!standalone) return;
+  var ptr = document.getElementById('ptr'), ptxt = document.getElementById('ptxt');
+  var TH = 64, start = 0, dy = 0, pulling = false, ready = false;
+  var setY = function (v) {{ ptr.style.transform = 'translateY(' + v + 'px)'; }};
+  window.addEventListener('touchstart', function (e) {{
+    if (window.scrollY > 0 || e.touches.length !== 1) return;
+    start = e.touches[0].clientY; pulling = true; dy = 0; ready = false;
+    ptr.style.transition = 'none';
+  }}, {{ passive: true }});
+  window.addEventListener('touchmove', function (e) {{
+    if (!pulling) return;
+    dy = e.touches[0].clientY - start;
+    if (dy <= 0) {{ setY(-56); ptr.classList.remove('armed'); ready = false; return; }}
+    var d = Math.min(dy * 0.55, 96);
+    setY(d - 56);
+    var arm = d >= TH * 0.55;
+    if (arm !== ready) {{
+      ready = arm; ptr.classList.toggle('armed', arm);
+      ptxt.textContent = arm ? '鬆手重新整理' : '下拉重新整理';
+    }}
+    if (e.cancelable) e.preventDefault();
+  }}, {{ passive: false }});
+  window.addEventListener('touchend', function () {{
+    if (!pulling) return;
+    pulling = false;
+    ptr.style.transition = '';
+    if (ready) {{
+      ptr.classList.add('loading'); ptxt.textContent = '重新整理中…'; setY(0);
+      setTimeout(doRefresh, 260);
+    }} else {{ setY(-56); }}
+  }});
+}})();
 </script>
 </body></html>'''
 

@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>@onepagemarket</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OPM">
 <style>
   :root { --ink:#0B1220; --gray:#5C6675; --dim:#98A2B3; --amber:#BA7517;
           --line:#E4E7EC; --soft:#FAFAFA; --bg:#FFFFFF; }
   * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { overscroll-behavior-y:contain; }
   body { margin:0; background:var(--bg); color:var(--ink);
     font:15px/1.55 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif; }
-  header { padding:20px 16px 10px; }
+  header { padding:calc(20px + env(safe-area-inset-top)) 16px 10px; max-width:620px;
+    margin:0 auto; display:flex; align-items:flex-start; gap:12px; }
+  .hinfo { flex:1; min-width:0; }
   h1 { margin:0; font-size:25px; letter-spacing:-.5px; }
   .sub { color:var(--dim); font-size:12.5px; margin-top:3px; }
+  .rf { flex:none; width:38px; height:38px; margin-top:2px; padding:0; border:1px solid var(--line);
+    background:#fff; border-radius:12px; color:var(--gray); display:grid; place-items:center;
+    box-shadow:0 1px 2px rgba(11,18,32,.06); }
+  .rf:active { background:#F2F4F7; }
+  .rf svg { width:18px; height:18px; display:block; }
+  .rf.spin svg { animation:spin .7s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  /* 下拉刷新：只在「加到主畫面」的獨立視窗啟用（瀏覽器本身已有自己的刷新） */
+  #ptr { position:fixed; top:0; left:0; right:0; height:56px; z-index:50;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-size:13px; color:var(--dim); pointer-events:none;
+    transform:translateY(-56px); transition:transform .18s ease; }
+  #ptr .dot { width:17px; height:17px; border-radius:50%; border:2px solid var(--line);
+    border-top-color:var(--amber); }
+  #ptr.armed { color:var(--amber); }
+  #ptr.armed .dot { border-color:var(--amber); }
+  #ptr.loading .dot { animation:spin .7s linear infinite; }
   .rule { height:4px; background:var(--amber); }
   main { padding:6px 16px 48px; max-width:620px; margin:0 auto; }
   section { padding:20px 0 8px; border-bottom:1px solid var(--line); }
@@ -41,16 +69,15 @@
   .morebar button { width:100%; padding:14px; font-size:14.5px; color:var(--gray);
     background:#fff; border:1px solid var(--line); border-radius:12px; }
   .morebar button:active { background:#F7F8FA; }
-  .hint { font-size:12px; color:var(--dim); text-align:center; margin:18px 0 0; }
 </style></head>
 <body>
-<header><h1>@onepagemarket</h1>
-<div class="sub">預計下一張圖：On Deck · 今天 20:30（北京時間）</div></header>
+<div id="ptr"><span class="dot"></span><span id="ptxt">下拉重新整理</span></div>
+<header><div class="hinfo"><h1>@onepagemarket</h1>
+<div class="sub">預計下一張圖：On Deck · 今天 20:30（北京時間）</div></div><button class="rf" id="rf" type="button" aria-label="重新整理"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button></header>
 <div class="rule"></div>
 <main>
-<section class="sec"><div class="ghead"><b>Who Owns Apple?</b><span class="day">Fri, Oct 23 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns Apple? Institutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%. Insiders hold just 0.06% — no controlling shareholder. Buffett's Berkshire: 1.6%. 🧵">複製文案</button><p>Who owns Apple? Institutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%. Insiders hold just 0.06% — no controlling shareholder. Buffett's Berkshire: 1.6%. 🧵</p><span class="len">175 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-aapl-20261023.png" target="_blank"><img src="img/who-owns-aapl-20261023.png" loading="lazy" alt="who-owns-aapl-20261023.png"></a><span class="ts">2026-10-23 12:44:57</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 -1.21% · Nasdaq -2.60% · Russell 2000 +0.11%. Most traded: SPCX, META, NVDA. Breadth 56% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 -1.21% · Nasdaq -2.60% · Russell 2000 +0.11%. Most traded: SPCX, META, NVDA. Breadth 56% advancers. 🧵</p><span class="len">120 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261022.png" target="_blank"><img src="img/the-close-20261022.png" loading="lazy" alt="the-close-20261022.png"></a><span class="ts">2026-10-23 04:37:31</span></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Crude Oil Inventories; EIA Weekly Distillates Stocks; Gasoline Inventories. 137 companies report — PG, UNP, LMT before the open, WDC, NEM, BE after the close. 🧵">複製文案</button><p>On Deck for today: Crude Oil Inventories; EIA Weekly Distillates Stocks; Gasoline Inventories. 137 companies report — PG, UNP, LMT before the open, WDC, NEM, BE after the close. 🧵</p><span class="len">179 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261022.png" target="_blank"><img src="img/on-deck-20261022.png" loading="lazy" alt="on-deck-20261022.png"></a><span class="ts">2026-10-22 21:19:31</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns Meta?</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns Meta? Zuckerberg 13.4% — but ~61% of the vote via Class B. Institutions hold 67.8%: Vanguard 7.6%, BlackRock 6.8%, Capital Group 4.0%. These 7 managers hold 29.1% between them. 🧵">複製文案</button><p>Who owns Meta? Zuckerberg 13.4% — but ~61% of the vote via Class B. Institutions hold 67.8%: Vanguard 7.6%, BlackRock 6.8%, Capital Group 4.0%. These 7 managers hold 29.1% between them. 🧵</p><span class="len">187 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-meta-20261022.png" target="_blank"><img src="img/who-owns-meta-20261022.png" loading="lazy" alt="who-owns-meta-20261022.png"></a><span class="ts">2026-10-22 16:41:40</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns SpaceX?</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns SpaceX? Musk 44.7% — and ~82% of the votes via Class B. Institutions hold 30.0% — top: Alphabet 4.1%, Valor Equity 3.4%, Founders Fund 3.2%, Fidelity 2.2%. Everyone else: 36.0%. 🧵">複製文案</button><p>Who owns SpaceX? Musk 44.7% — and ~82% of the votes via Class B. Institutions hold 30.0% — top: Alphabet 4.1%, Valor Equity 3.4%, Founders Fund 3.2%, Fidelity 2.2%. Everyone else: 36.0%. 🧵</p><span class="len">188 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-spcx-20261022.png" target="_blank"><img src="img/who-owns-spcx-20261022.png" loading="lazy" alt="who-owns-spcx-20261022.png"></a><span class="ts">2026-10-22 16:41:39</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.58% · Nasdaq +1.05% · Russell 2000 +0.27%. Most traded: MU, SPCX, NVDA. Breadth 80% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.58% · Nasdaq +1.05% · Russell 2000 +0.27%. Most traded: MU, SPCX, NVDA. Breadth 80% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261021.png" target="_blank"><img src="img/the-close-20261021.png" loading="lazy" alt="the-close-20261021.png"></a><span class="ts">2026-10-22 04:38:14</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns NVDA?</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns NVIDIA? Institutions hold 71.4% — top: Vanguard 9.6%, BlackRock 8.1%, Fidelity 4.3%, State Street 4.2%. Insiders (incl. Jensen Huang) 4.0%. Everyone else: 59.4%. 🧵">複製文案</button><p>Who owns NVIDIA? Institutions hold 71.4% — top: Vanguard 9.6%, BlackRock 8.1%, Fidelity 4.3%, State Street 4.2%. Insiders (incl. Jensen Huang) 4.0%. Everyone else: 59.4%. 🧵</p><span class="len">172 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-nvda-20261021.png" target="_blank"><img src="img/who-owns-nvda-20261021.png" loading="lazy" alt="who-owns-nvda-20261021.png"></a><span class="ts">2026-10-21 20:25:28</span></div></div></section><section class="sec"><div class="ghead"><b>Week Ahead</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="This week in US markets: Mon IMF Meetings, Tue NAHB Housing Market Index, Wed Atlanta Fed GDPNow. Key earnings: GE, NFLX, PM, META, PG, WDC. Full calendar in the card. 🧵">複製文案</button><p>This week in US markets: Mon IMF Meetings, Tue NAHB Housing Market Index, Wed Atlanta Fed GDPNow. Key earnings: GE, NFLX, PM, META, PG, WDC. Full calendar in the card. 🧵</p><span class="len">169 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/week-ahead-20261021.png" target="_blank"><img src="img/week-ahead-20261021.png" loading="lazy" alt="week-ahead-20261021.png"></a><span class="ts">2026-10-21 13:55:01</span></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵">複製文案</button><p>On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵</p><span class="len">160 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261021.png" target="_blank"><img src="img/on-deck-20261021.png" loading="lazy" alt="on-deck-20261021.png"></a><span class="ts">2026-10-21 13:32:26</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Tue, Oct 20 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261020.png" target="_blank"><img src="img/the-close-20261020.png" loading="lazy" alt="the-close-20261020.png"></a><span class="ts">2026-10-21 09:28:43</span></div></div></section><section class="sec"><div class="ghead"><b>Winners &amp; Losers</b><span class="day">Tue, Oct 20 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Week in review: top gainers ASTS +38.4%, RKLB +29.1%, SOFI +23.7%. Biggest drops: LULU -28.6%, DG -24.3%, MRNA -21.7%. Universe: 503 most-traded US names. 🧵">複製文案</button><p>Week in review: top gainers ASTS +38.4%, RKLB +29.1%, SOFI +23.7%. Biggest drops: LULU -28.6%, DG -24.3%, MRNA -21.7%. Universe: 503 most-traded US names. 🧵</p><span class="len">156 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/winners-losers-20261020.png" target="_blank"><img src="img/winners-losers-20261020.png" loading="lazy" alt="winners-losers-20261020.png"></a><span class="ts">2026-10-21 09:28:43</span></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Tue, Oct 20 · 1 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵">複製文案</button><p>On Deck for today: NAHB Housing Market Index; 3-Month Bill Auction; 6-Month Bill Auction. 55 companies report — GE, RTX, MMM before the open, NFLX, ISRG, CB after the close. 🧵</p><span class="len">175 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261020.png" target="_blank"><img src="img/on-deck-20261020.png" loading="lazy" alt="on-deck-20261020.png"></a><span class="ts">2026-10-20 19:51:22</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Mon, Oct 19 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.28% · Nasdaq -0.02% · Russell 2000 +1.65%. Most traded: MU, NVDA, AMZN. Breadth 35% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261019.png" target="_blank"><img src="img/the-close-20261019.png" loading="lazy" alt="the-close-20261019.png"></a><span class="ts">2026-10-20 19:51:22</span></div></div></section>
+<section class="sec"><div class="ghead"><b>Who Owns Apple?</b><span class="day">Fri, Oct 23 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns Apple? Institutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%. Insiders hold just 0.06% — no controlling shareholder. Buffett's Berkshire: 1.6%. 🧵">複製文案</button><p>Who owns Apple? Institutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%. Insiders hold just 0.06% — no controlling shareholder. Buffett's Berkshire: 1.6%. 🧵</p><span class="len">175 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-aapl-20261023.png" target="_blank"><img src="img/who-owns-aapl-20261023.png" loading="lazy" alt="who-owns-aapl-20261023.png"></a><span class="ts">2026-10-23 12:44:57</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 -1.21% · Nasdaq -2.60% · Russell 2000 +0.11%. Most traded: SPCX, META, NVDA. Breadth 56% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 -1.21% · Nasdaq -2.60% · Russell 2000 +0.11%. Most traded: SPCX, META, NVDA. Breadth 56% advancers. 🧵</p><span class="len">120 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261022.png" target="_blank"><img src="img/the-close-20261022.png" loading="lazy" alt="the-close-20261022.png"></a><span class="ts">2026-10-23 04:37:31</span></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Crude Oil Inventories; EIA Weekly Distillates Stocks; Gasoline Inventories. 137 companies report — PG, UNP, LMT before the open, WDC, NEM, BE after the close. 🧵">複製文案</button><p>On Deck for today: Crude Oil Inventories; EIA Weekly Distillates Stocks; Gasoline Inventories. 137 companies report — PG, UNP, LMT before the open, WDC, NEM, BE after the close. 🧵</p><span class="len">179 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261022.png" target="_blank"><img src="img/on-deck-20261022.png" loading="lazy" alt="on-deck-20261022.png"></a><span class="ts">2026-10-22 21:19:31</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns Meta?</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns Meta? Zuckerberg 13.4% — but ~61% of the vote via Class B. Institutions hold 67.8%: Vanguard 7.6%, BlackRock 6.8%, Capital Group 4.0%. These 7 managers hold 29.1% between them. 🧵">複製文案</button><p>Who owns Meta? Zuckerberg 13.4% — but ~61% of the vote via Class B. Institutions hold 67.8%: Vanguard 7.6%, BlackRock 6.8%, Capital Group 4.0%. These 7 managers hold 29.1% between them. 🧵</p><span class="len">187 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-meta-20261022.png" target="_blank"><img src="img/who-owns-meta-20261022.png" loading="lazy" alt="who-owns-meta-20261022.png"></a><span class="ts">2026-10-22 16:41:40</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns SpaceX?</b><span class="day">Thu, Oct 22 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns SpaceX? Musk 44.7% — and ~82% of the votes via Class B. Institutions hold 30.0% — top: Alphabet 4.1%, Valor Equity 3.4%, Founders Fund 3.2%, Fidelity 2.2%. Everyone else: 36.0%. 🧵">複製文案</button><p>Who owns SpaceX? Musk 44.7% — and ~82% of the votes via Class B. Institutions hold 30.0% — top: Alphabet 4.1%, Valor Equity 3.4%, Founders Fund 3.2%, Fidelity 2.2%. Everyone else: 36.0%. 🧵</p><span class="len">188 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-spcx-20261022.png" target="_blank"><img src="img/who-owns-spcx-20261022.png" loading="lazy" alt="who-owns-spcx-20261022.png"></a><span class="ts">2026-10-22 16:41:39</span></div></div></section><section class="sec"><div class="ghead"><b>The Close</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="The Close: S&amp;P 500 +0.58% · Nasdaq +1.05% · Russell 2000 +0.27%. Most traded: MU, SPCX, NVDA. Breadth 80% advancers. 🧵">複製文案</button><p>The Close: S&amp;P 500 +0.58% · Nasdaq +1.05% · Russell 2000 +0.27%. Most traded: MU, SPCX, NVDA. Breadth 80% advancers. 🧵</p><span class="len">118 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/the-close-20261021.png" target="_blank"><img src="img/the-close-20261021.png" loading="lazy" alt="the-close-20261021.png"></a><span class="ts">2026-10-22 04:38:14</span></div></div></section><section class="sec"><div class="ghead"><b>Who Owns NVDA?</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="Who owns NVIDIA? Institutions hold 71.4% — top: Vanguard 9.6%, BlackRock 8.1%, Fidelity 4.3%, State Street 4.2%. Insiders (incl. Jensen Huang) 4.0%. Everyone else: 59.4%. 🧵">複製文案</button><p>Who owns NVIDIA? Institutions hold 71.4% — top: Vanguard 9.6%, BlackRock 8.1%, Fidelity 4.3%, State Street 4.2%. Insiders (incl. Jensen Huang) 4.0%. Everyone else: 59.4%. 🧵</p><span class="len">172 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/who-owns-nvda-20261021.png" target="_blank"><img src="img/who-owns-nvda-20261021.png" loading="lazy" alt="who-owns-nvda-20261021.png"></a><span class="ts">2026-10-21 20:25:28</span></div></div></section><section class="sec"><div class="ghead"><b>Week Ahead</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="This week in US markets: Mon IMF Meetings, Tue NAHB Housing Market Index, Wed Atlanta Fed GDPNow. Key earnings: GE, NFLX, PM, META, PG, WDC. Full calendar in the card. 🧵">複製文案</button><p>This week in US markets: Mon IMF Meetings, Tue NAHB Housing Market Index, Wed Atlanta Fed GDPNow. Key earnings: GE, NFLX, PM, META, PG, WDC. Full calendar in the card. 🧵</p><span class="len">169 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/week-ahead-20261021.png" target="_blank"><img src="img/week-ahead-20261021.png" loading="lazy" alt="week-ahead-20261021.png"></a><span class="ts">2026-10-21 13:55:01</span></div></div></section><section class="sec"><div class="ghead"><b>On Deck</b><span class="day">Wed, Oct 21 · 1 張</span></div><div class="tweet"><button class="copy" data-t="On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵">複製文案</button><p>On Deck for today: Atlanta Fed GDPNow; Housing Starts; Building Permits. 91 companies report — PM, TMO, ABT before the open, META, TSLA, LRCX after the close. 🧵</p><span class="len">160 字</span></div><div class="shots"><div class="shot"><a class="link" href="img/on-deck-20261021.png" target="_blank"><img src="img/on-deck-20261021.png" loading="lazy" alt="on-deck-20261021.png"></a><span class="ts">2026-10-21 13:32:26</span></div></div></section>
 
-<p class="hint">點圖開原尺寸 · 長按可直接複製或存圖</p>
 </main>
 <script>
 function copyText(t, btn) {
@@ -88,5 +115,54 @@ if (moreBtn) {
     moreBtn.parentElement.remove();
   });
 }
+
+// 重新整理：加時間戳避開 HTML 快取（GitHub Pages 的 HTML 有 10 分鐘快取）
+function doRefresh() {
+  location.replace(location.pathname + '?r=' + Date.now());
+}
+var rfBtn = document.getElementById('rf');
+if (rfBtn) {
+  rfBtn.addEventListener('click', function () {
+    rfBtn.classList.add('spin');
+    setTimeout(doRefresh, 220);
+  });
+}
+
+// 下拉刷新：只在「加到主畫面」的獨立視窗啟用（瀏覽器自帶刷新，避免雙重行為）
+(function () {
+  var standalone = (window.navigator.standalone === true) ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (!standalone) return;
+  var ptr = document.getElementById('ptr'), ptxt = document.getElementById('ptxt');
+  var TH = 64, start = 0, dy = 0, pulling = false, ready = false;
+  var setY = function (v) { ptr.style.transform = 'translateY(' + v + 'px)'; };
+  window.addEventListener('touchstart', function (e) {
+    if (window.scrollY > 0 || e.touches.length !== 1) return;
+    start = e.touches[0].clientY; pulling = true; dy = 0; ready = false;
+    ptr.style.transition = 'none';
+  }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (!pulling) return;
+    dy = e.touches[0].clientY - start;
+    if (dy <= 0) { setY(-56); ptr.classList.remove('armed'); ready = false; return; }
+    var d = Math.min(dy * 0.55, 96);
+    setY(d - 56);
+    var arm = d >= TH * 0.55;
+    if (arm !== ready) {
+      ready = arm; ptr.classList.toggle('armed', arm);
+      ptxt.textContent = arm ? '鬆手重新整理' : '下拉重新整理';
+    }
+    if (e.cancelable) e.preventDefault();
+  }, { passive: false });
+  window.addEventListener('touchend', function () {
+    if (!pulling) return;
+    pulling = false;
+    ptr.style.transition = '';
+    if (ready) {
+      ptr.classList.add('loading'); ptxt.textContent = '重新整理中…'; setY(0);
+      setTimeout(doRefresh, 260);
+    } else { setY(-56); }
+  });
+})();
 </script>
 </body></html>
