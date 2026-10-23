@@ -12,14 +12,12 @@
       "name": "Other Institutions",
       "disp": "47.8",
       "pct": 47.84,
-      "color": "#141B24",
       "icon": "bank"
     },
     {
       "name": "Vanguard Group",
       "disp": "9.8",
       "pct": 9.84,
-      "color": "#2C3643",
       "mono": "V",
       "monoBg": "#8E1B22"
     },
@@ -27,7 +25,6 @@
       "name": "BlackRock",
       "disp": "8.2",
       "pct": 8.18,
-      "color": "#3A4553",
       "mono": "B",
       "monoBg": "#111417"
     },
@@ -35,7 +32,6 @@
       "name": "Steve Ballmer",
       "disp": "4.4",
       "pct": 4.4,
-      "color": "#0078D4",
       "badge": "ballmer",
       "hero": true,
       "role": "Former CEO · 2000–2014"
@@ -44,7 +40,6 @@
       "name": "State Street",
       "disp": "4.3",
       "pct": 4.25,
-      "color": "#4B5765",
       "mono": "S",
       "monoBg": "#0C4C8C"
     },
@@ -52,7 +47,6 @@
       "name": "Geode Capital",
       "disp": "2.6",
       "pct": 2.55,
-      "color": "#5C6876",
       "mono": "G",
       "monoBg": "#1F5C8B"
     },
@@ -60,7 +54,6 @@
       "name": "Fidelity (FMR)",
       "disp": "2.5",
       "pct": 2.5,
-      "color": "#6C7887",
       "mono": "F",
       "monoBg": "#4E7B2B"
     },
@@ -68,7 +61,6 @@
       "name": "Bill Gates",
       "disp": "1.4",
       "pct": 1.39,
-      "color": "#8492A3",
       "badge": "gates",
       "role": "Co-founder"
     },
@@ -76,7 +68,6 @@
       "name": "Public & Other",
       "disp": "19.0",
       "pct": 19.05,
-      "color": "#C3CBD6",
       "icon": "people"
     }
   ],

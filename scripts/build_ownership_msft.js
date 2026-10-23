@@ -1,9 +1,13 @@
 /**
- * Who Owns Microsoft? — 3D 立體空心環股權卡（淺底 · 石墨色階 + 微軟藍強調）
+ * Who Owns Microsoft? — 3D 立體空心環股權卡（淺底 · 微軟藍色階）
  *   數據：13F Q2-2026（Yahoo Finance / StockVane / Stockrow 交叉核對）
  *         institutions 75.2% · 現任董監高 0.08% · Ballmer 4.4%（最大個人）· Gates 1.4%
  *   引擎：scripts/lib/ownership_card.js
  *   用法：node scripts/build_ownership_msft.js
+ *
+ * 2026-10-23 阿澤：環改為「藍色為主」。
+ *   顏色只留一個來源 = 本檔的 RAMP（JSON 不寫 color，見 MEMORY 坑 17）。
+ *   順序照 JSON 分段次序走（不含 hero），hero 另外釘 HERO_BLUE 做亮點。
  */
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +15,16 @@ const build = require('./lib/ownership_card');
 
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(path.join(BASE, 'data', 'ownership-msft.json'), 'utf8'));
+
+/* 微軟藍階：深海军藍 → 淺霧藍，steps 由大到小（不含 hero 那格） */
+const RAMP = ['#0E3A66', '#16497A', '#1E5A8F', '#2E6FA5', '#4383B5', '#63A0C9', '#93BDDA', '#C6DDEE'];
+const HERO_BLUE = '#0078D4';          // 微軟品牌藍，只給 Ballmer 那格當亮點
+{
+  let ri = 0;
+  D.segments.forEach((s) => {
+    s.color = s.hero ? HERO_BLUE : RAMP[Math.min(ri++, RAMP.length - 1)];
+  });
+}
 
 /* Windows 四色方塊（底部矢量）：品牌主體，扁平 + 地面投影 + 玻璃反光 */
 const hex2rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
@@ -97,12 +111,12 @@ const OPTS = {
   heroSize: { badge: 78, nfs: 24, pfs: 40 },
   noteSize: 20,
   palette: {
-    bgTop: '#FFFFFF', bgMid: '#FAFBFC', bgBot: '#EDF0F4',
-    glowA: ['#0078D4', 0.08], glowB: ['#5C6B7A', 0.10],
-    orbitStroke1: '#D3D9E1', orbitStroke2: '#E0E5EB',
-    title2: ['#0B1220', '#7A828E'],
-    handlePill: '#E9F3FC', handleInk: '#0B4A82',
-    lead: '#96A2B0', anchorFill: '#FFFFFF',
+    bgTop: '#FFFFFF', bgMid: '#F8FAFD', bgBot: '#E7EFF8',
+    glowA: ['#0078D4', 0.10], glowB: ['#2F6699', 0.09],
+    orbitStroke1: '#C8DAEC', orbitStroke2: '#D9E5F2',
+    title2: ['#0B1220', '#0078D4'],
+    handlePill: '#E7F1FB', handleInk: '#0B4A82',
+    lead: '#9BB0C6', anchorFill: '#FFFFFF',
   },
   wordmark: { file: 'msft-mark.png', w: 44, h: 44, y: 126 },
   nameLines: {
