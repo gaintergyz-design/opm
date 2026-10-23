@@ -1,0 +1,57 @@
+{
+  "ticker": "WDC",
+  "company": "Western Digital",
+  "quarter": "FY2027 Q1",
+  "period_end": "Oct 2, 2026",
+  "reported": "Oct 22, 2026 · after close",
+  "brand": {
+    "deep": "#003369",
+    "primary": "#005195",
+    "mid": "#0067B3",
+    "teal": "#17A9C4",
+    "pos": "#028948"
+  },
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 4381,
+      "actual_disp": "$4.38B",
+      "est_disp": "$4.14B",
+      "surprise": 5.8,
+      "prior": 2818,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 55
+    },
+    "eps": {
+      "label": "Non-GAAP EPS",
+      "actual": 4.64,
+      "actual_disp": "$4.64",
+      "est_disp": "$4.11",
+      "surprise": 12.9,
+      "prior": 1.78,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 161
+    }
+  },
+  "quarters": ["1Q26", "2Q26", "3Q26", "4Q26", "1Q27"],
+  "gross_margin": [43.5, 45.7, 50.2, 54.1, 57.8],
+  "op_margin": [28.1, 30.1, 35.7, 41.7, 46.7],
+  "ocf": [672, 745, 1123, 1389, 1604],
+  "mix": [
+    { "name": "Cloud", "pct": 88, "value": "$3.9B" },
+    { "name": "Client", "pct": 7, "value": "$320M" },
+    { "name": "Consumer", "pct": 5, "value": "$193M" }
+  ],
+  "outlook": {
+    "title": "Q2 FY27 outlook",
+    "items": [
+      { "k": "Revenue", "v": "$5.1B ±$0.1B", "note": "+69% Y/Y" },
+      { "k": "Gross margin", "v": "60–61%", "note": "vs 57.8% this quarter" },
+      { "k": "Non-GAAP EPS", "v": "$5.80 ±$0.20", "note": "vs $4.64 this quarter" },
+      { "k": "Dividend", "v": "+17% → $0.175", "note": "per share, quarterly" },
+      { "k": "HAMR", "v": "volume ramp 1H CY27", "note": "2 hyperscalers qualifying" }
+    ]
+  }
+}
