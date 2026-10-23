@@ -127,8 +127,11 @@ function kpiCard(x, k) {
   g.push(t(bx + bw / 2, baseY + 22, k.prior_txt, { size: 16, fill: C.dim, anchor: 'middle' }));
   g.push(t(bx + bw + gap2 + bw / 2, baseY + 22, k.cur_txt, { size: 16, fill: C.dim, anchor: 'middle' }));
 
-  g.push(t(x + cardW - 26, KPI_Y + 46, `YOY +${k.yoy}%`,
-           { size: 23, weight: 700, fill: C.pos, anchor: 'end' }));
+  // YOY 帶號：|Δ|<1% 用灰（持平），否則綠/紅
+  const yoy = Number(k.yoy);
+  const ytxt = `YOY ${yoy > 0 ? '+' : yoy < 0 ? '\u2212' : ''}${Math.abs(yoy)}%`;
+  const ycol = Math.abs(yoy) < 1 ? C.gray : (yoy > 0 ? C.pos : '#C0392B');
+  g.push(t(x + cardW - 26, KPI_Y + 46, ytxt, { size: 23, weight: 700, fill: ycol, anchor: 'end' }));
   return g.join('');
 }
 svg.push(kpiCard(M, D.kpi.revenue));
@@ -219,8 +222,12 @@ svg.push(t(RP_X, B_Y + 30, D.mix_title || 'Revenue mix', { size: 26, weight: 500
   svg.push(t(cx, cy + 25, centerLbl, { size: centerLbl.length > 9 ? 14 : 16, fill: C.gray, anchor: 'middle' }));
 
   const LX = cx + R + 40;
-  const dense = mix.length >= 4;
-  const rowGap = dense ? 50 : 62;
+  // 名稱 + % 放同一行會撞（Rest of World 136px、Automotive 118px）→ 用實測寬度決定要不要拆兩行
+  const legendAvail = (RP_X + RP_W) - (LX + 22);
+  const nameW = Math.max(...mix.map((m) => tw(m.name, 21, 500)));
+  const pctW = Math.max(...mix.map((m) => tw(`${m.pct}%`, 22, 700)));
+  const dense = D.mix_dense != null ? !!D.mix_dense : (nameW + 10 + pctW > legendAvail);
+  const rowGap = mix.length >= 4 ? 50 : 62;
   const rowY0 = B_Y + (dense ? 100 : 112);
   mix.forEach((m, i) => {
     const y = rowY0 + i * rowGap;

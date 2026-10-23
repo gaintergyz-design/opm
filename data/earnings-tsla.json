@@ -1,0 +1,72 @@
+{
+  "ticker": "TSLA",
+  "company": "Tesla",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 21, 2026 · after close",
+
+  "brand": {
+    "deep": "#8F0E1C",
+    "primary": "#E31937",
+    "mid": "#B51228",
+    "teal": "#334E68",
+    "pos": "#028948"
+  },
+
+  "strip": "GAAP EPS $0.22 (−44% Y/Y) vs $0.48 non-GAAP · free cash flow +$1.53B vs −$4.51B expected",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 28046,
+      "actual_disp": "$28.05B",
+      "est_disp": "$28.34B",
+      "surprise": -1.0,
+      "prior": 28095,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -0.2
+    },
+    "eps": {
+      "label": "Non-GAAP EPS",
+      "actual": 0.48,
+      "actual_disp": "$0.48",
+      "est_disp": "$0.45",
+      "surprise": 6.7,
+      "prior": 0.50,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -4
+    }
+  },
+
+  "layout": {
+    "marginMax": 25,
+    "marginStep": 5
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [18.0, 20.1, 21.1, 16.8, 19.6],
+  "op_margin": [5.8, 5.7, 4.2, 1.4, 2.6],
+
+  "ocf": [6238, 3813, 3937, 4697, 6263],
+  "ocf_fmt": { "unit": "US$M", "div": 1, "dec": 0, "step": 2000 },
+
+  "mix_colors": ["#8F0E1C", "#E31937", "#334E68"],
+  "mix": [
+    { "name": "Automotive", "pct": 73.3, "value": "$20.56B" },
+    { "name": "Services", "pct": 16.4, "value": "$4.61B" },
+    { "name": "Energy", "pct": 10.3, "value": "$2.88B" }
+  ],
+
+  "outlook": {
+    "title": "Q4 2026 · what to watch",
+    "items": [
+      { "k": "Capex FY26", "v": ">$25B", "note": "Q3 was $4.73B, +110% Y/Y" },
+      { "k": "Order backlog", "v": "4-year high", "note": "battery supply caps output" },
+      { "k": "Robotaxi", "v": "~2M miles", "note": "unsupervised miles · Dallas next month" },
+      { "k": "Optimus", "v": "in production", "note": "began this quarter" },
+      { "k": "Energy storage", "v": "13.7 GWh", "note": "+10% Y/Y · record backlog" }
+    ]
+  }
+}
