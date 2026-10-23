@@ -1,0 +1,78 @@
+{
+  "ticker": "NFLX",
+  "company": "Netflix",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 20, 2026 · after close",
+
+  "brand": {
+    "deep": "#7C0A0F",
+    "primary": "#E50914",
+    "mid": "#B8070F",
+    "teal": "#3C3C46",
+    "pos": "#028948"
+  },
+
+  "strip": "Q4 margin guided to 26.0% · layoffs cost ~120bp · FY26 ad revenue cut $3.0B → $2.7B",
+  "mono_badge": true,
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 12874,
+      "actual_disp": "$12.87B",
+      "est_disp": "$12.87B",
+      "surprise": 0,
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "prior": 11510,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 11.8
+    },
+    "eps": {
+      "label": "Diluted EPS",
+      "actual": 0.87,
+      "actual_disp": "$0.87",
+      "est_disp": "$0.82",
+      "surprise": 6.1,
+      "prior": 0.59,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 47.5
+    }
+  },
+
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [46.4, 45.9, 51.9, 51.9, 52.8],
+  "op_margin": [28.2, 24.5, 32.3, 33.4, 34.6],
+
+  "ocf": [2825, 2112, 5290, 1744, 3162],
+  "ocf_fmt": { "unit": "US$M", "div": 1, "dec": 0, "step": 1000 },
+
+  "mix_title": "Revenue by region",
+  "mix_center": "US & Canada",
+  "mix_colors": ["#7C0A0F", "#B8070F", "#E50914", "#F46A6F"],
+  "mix": [
+    { "name": "US & Canada", "pct": 43.7, "value": "$5.63B" },
+    { "name": "EMEA", "pct": 31.9, "value": "$4.11B" },
+    { "name": "LATAM", "pct": 12.5, "value": "$1.60B" },
+    { "name": "APAC", "pct": 11.9, "value": "$1.54B" }
+  ],
+
+  "outlook": {
+    "title": "Q4 2026 guidance",
+    "items": [
+      { "k": "Revenue", "v": "$13.44B", "note": "+11.5% Y/Y" },
+      { "k": "Operating margin", "v": "26.0%", "note": "vs 34.6% in Q3" },
+      { "k": "Diluted EPS", "v": "$0.67", "note": "vs $0.87 in Q3" },
+      { "k": "FY26 revenue", "v": "$51.1B", "note": "+13% · low end of the range" },
+      { "k": "FY26 ad revenue", "v": "~$2.7B", "note": "cut from ~$3.0B" }
+    ]
+  }
+}

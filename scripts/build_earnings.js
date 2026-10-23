@@ -98,6 +98,12 @@ if (logoUri) {
   defs.push(`<clipPath id="${cid}"><circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}"/></clipPath>`);
   svg.push(`<g clip-path="url(#${cid})"><image x="${lx}" y="${91 - ls2 / 2}" width="${ls2}" height="${ls2}" href="${logoUri}"/></g>`);
   svg.push(`<circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}" fill="none" stroke="#DDE6EF" stroke-width="1.2"/>`);
+} else if (D.mono_badge) {
+  // 只有字標的品牌（Netflix 的 wordmark 塞進 46px 圓只剩一條線）→ 品牌色圓底 + 白首字母
+  const ls2 = 44, lx = pillX - 16 - ls2, ccx = lx + ls2 / 2;
+  const ch = D.mono_badge === true ? TICK.charAt(0) : String(D.mono_badge);
+  svg.push(`<circle cx="${ccx}" cy="91" r="${ls2 / 2}" fill="${C.primary}"/>`);
+  svg.push(t(ccx, 100, ch, { size: 23, weight: 700, fill: '#FFFFFF', anchor: 'middle', ls: -0.5 }));
 }
 svg.push(`<rect x="${M}" y="196" width="${CW}" height="6" fill="url(#ruleG)"/>`);
 
@@ -113,9 +119,12 @@ function kpiCard(x, k) {
   g.push(t(x + 26, KPI_Y + 118, k.actual_disp, { size: 62, weight: 700, fill: C.deep, ls: -1 }));
 
   const beat = k.surprise >= 0;
-  const ptxt = `${beat ? 'Beat' : 'Miss'} ${beat ? '+' : '\u2212'}${Math.abs(k.surprise).toFixed(1)}%`;
+  // 可覆寫膠囊文字（NFLX 營收與共識完全一致 → 「In line」比「+0.0%」誠實）
+  const ptxt = k.pill || `${beat ? 'Beat' : 'Miss'} ${beat ? '+' : '\u2212'}${Math.abs(k.surprise).toFixed(1)}%`;
+  const ptone = k.pill_tone || (beat ? 'pos' : 'neg');
+  const pbg = ptone === 'neutral' ? '#8A93A0' : ptone === 'pos' ? C.pos : '#C0392B';
   const ps = 22, pwid = Math.round(tw(ptxt, ps, 600)) + 30;
-  g.push(rrect(x + 26, KPI_Y + 136, pwid, 38, 9, beat ? C.pos : '#C0392B'));
+  g.push(rrect(x + 26, KPI_Y + 136, pwid, 38, 9, pbg));
   g.push(t(x + 26 + pwid / 2, KPI_Y + 163, ptxt, { size: ps, weight: 600, fill: '#FFFFFF', anchor: 'middle' }));
 
   g.push(t(x + 26, KPI_Y + 206, `Est. ${k.est_disp}`, { size: 21, fill: C.gray }));
