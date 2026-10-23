@@ -286,15 +286,17 @@ module.exports = function build(OPTS) {
   const boxesHit = (a, b, gap = 0) => !(a.x1 + gap < b.x0 || b.x1 + gap < a.x0 || a.y1 + gap < b.y0 || b.y1 + gap < a.y0);
 
   const HS = Object.assign({ badge: 84, nfs: 31, pfs: 44 }, O.heroSize || {});
+  // 段落多（9 段以上）時標籤盒會互相擠壓，可用 labelSize 統一縮小一號
+  const LS = Object.assign({ badge: 46, nfs: 23, pfs: 34 }, O.labelSize || {});
   function buildSlot(s, th, ORB) {
     const cosT = Math.cos(rad(th)), sinT = Math.sin(rad(th));
     const big = HERO && s.name === HERO;
-    const bsize = big ? HS.badge : 46;
+    const bsize = big ? HS.badge : LS.badge;
     const opt = {
       bsize,
       mirror: cosT < -0.15,
-      nfs: big ? HS.nfs : 23,
-      pfs: big ? HS.pfs : 34,
+      nfs: big ? HS.nfs : LS.nfs,
+      pfs: big ? HS.pfs : LS.pfs,
       lines: NAME_LINES[s.name] || null,
       role: big ? (HERO_ROLE || null) : null,
     };

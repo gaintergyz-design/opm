@@ -53,15 +53,18 @@ POST_OF = {
     'who-owns-spcx': 'who-owns-spcx',
     'who-owns-meta': 'who-owns-meta',
     'who-owns-aapl': 'who-owns-aapl',
+    'who-owns-msft': 'who-owns-msft',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
              'who-owns-nvda': 'Who Owns NVDA?',
              'who-owns-spcx': 'Who Owns SpaceX?',
              'who-owns-meta': 'Who Owns Meta?',
-             'who-owns-aapl': 'Who Owns Apple?'}
+             'who-owns-aapl': 'Who Owns Apple?',
+             'who-owns-msft': 'Who Owns Microsoft?'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
-         'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl']
+         'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
+         'who-owns-msft']
 
 
 def parse(name):
