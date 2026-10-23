@@ -248,8 +248,9 @@ def group_html(key, imgs, idx):
     for i in imgs:
         src = f'src="{i["img"]}"' if live else 'data-src="' + i['img'] + '"'
         shots.append(
-            f'<div class="shot"><a class="link" href="{i["img"]}" target="_blank">'
-            f'<img {src} loading="lazy" alt="{i["name"]}"></a>'
+            f'<div class="shot">'
+            f'<button class="dl" type="button" data-img="{i["img"]}" data-name="{i["name"]}">下載圖片</button>'
+            f'<img {src} loading="lazy" alt="{i["name"]}">'
             f'<span class="ts">{i["time"]}</span></div>')
     cls = 'sec' if live else 'sec late'
     hid = '' if live else ' hidden'
@@ -261,6 +262,75 @@ n_hidden = len(ordered) - n_open
 more = ''
 if n_hidden > 0:
     more = (f'<div class="morebar"><button id="more">查看更多（{n_hidden} 則更早）</button></div>')
+
+GALLERY_JS = r"""
+// 下載圖片：手機走系統分享面板（網頁唯一能存進「相簿」的路徑），桌面直接下載
+// 不使用自製確認框，完成後只彈 toast
+var toastEl = document.getElementById('toast'), toastTimer = 0;
+function toast(msg) {
+  if (!toastEl) return;
+  toastEl.textContent = msg; toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1600);
+}
+function fileDownload(blob, name) {
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+}
+// 預取：pointerdown 就先把 blob 抓好，click 時才能「同步」呼叫 share
+// （iOS Safari 只認同一個手勢任務內的 navigator.share，await 之後再呼叫會被拒）
+var dlBlob = {}, dlPend = {};
+function grab(url) {
+  if (dlBlob[url]) return Promise.resolve(dlBlob[url]);
+  if (dlPend[url]) return dlPend[url];
+  dlPend[url] = fetch(url, { cache: 'force-cache' })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); })
+    .then(function (b) { dlBlob[url] = b; delete dlPend[url]; return b; });
+  dlPend[url].catch(function () { delete dlPend[url]; });
+  return dlPend[url];
+}
+var isTouch = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+function shareFile(blob, name) {
+  if (!isTouch || !navigator.canShare) return null;
+  var f = new File([blob], name, { type: blob.type || 'image/png' });
+  if (!navigator.canShare({ files: [f] })) return null;
+  return navigator.share({ files: [f] });
+}
+function runShare(blob, name) {
+  var p = shareFile(blob, name);
+  if (p) {
+    p.then(function () { toast('已下載'); }, function (err) {
+      if (err && err.name === 'AbortError') return;      // 用戶自己關掉分享面板，不提示
+      fileDownload(blob, name); toast('已下載');
+    });
+    return;
+  }
+  fileDownload(blob, name); toast('已下載');
+}
+function saveImage(btn) {
+  var url = btn.getAttribute('data-img'), name = btn.getAttribute('data-name') || 'card.png';
+  if (dlBlob[url]) { runShare(dlBlob[url], name); return; }   // 快路徑：手勢內同步
+  var label = btn.textContent;
+  btn.textContent = '處理中'; btn.classList.add('busy');
+  grab(url).then(function (blob) { runShare(blob, name); })
+    .catch(function () { toast('下載失敗'); })
+    .then(function () { btn.textContent = label; btn.classList.remove('busy'); });
+}
+document.querySelectorAll('.dl').forEach(function (b) {
+  b.addEventListener('pointerdown', function () { grab(b.getAttribute('data-img')); }, { passive: true });
+  b.addEventListener('click', function (e) {
+    e.preventDefault(); e.stopPropagation(); saveImage(b);
+  });
+});
+
+// 頂部吸附：滾動時補一層陰影，讓固定在頂部的 header 與內容分層
+var topBar = document.getElementById('top');
+function onScroll() { if (topBar) topBar.classList.toggle('scrolled', window.scrollY > 4); }
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+"""
 
 html = f'''<!DOCTYPE html>
 <html lang="zh"><head>
@@ -284,6 +354,11 @@ html = f'''<!DOCTYPE html>
     font:15px/1.55 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif; }}
   header {{ padding:calc(20px + env(safe-area-inset-top)) 16px 10px; max-width:620px;
     margin:0 auto; display:flex; align-items:flex-start; gap:12px; }}
+  /* 頂部吸附：滑動時 header + 品牌色線固定，內容從下面滑過 */
+  .top {{ position:sticky; top:0; z-index:30; background:rgba(255,255,255,.94);
+    -webkit-backdrop-filter:saturate(180%) blur(12px); backdrop-filter:saturate(180%) blur(12px);
+    transition:box-shadow .18s ease; }}
+  .top.scrolled {{ box-shadow:0 6px 16px rgba(11,18,32,.07); }}
   .hinfo {{ flex:1; min-width:0; }}
   h1 {{ margin:0; font-size:25px; letter-spacing:-.5px; }}
   .sub {{ color:var(--dim); font-size:12.5px; margin-top:3px; }}
@@ -326,6 +401,13 @@ html = f'''<!DOCTYPE html>
   .shots {{ display:flex; flex-direction:column; gap:14px; }}
   .shot {{ position:relative; }}
   .shot img {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }}
+  /* 下載膠囊：與「複製文案」同一套視覺，浮在圖片右上角 */
+  .shot .dl {{ position:absolute; top:10px; right:10px; z-index:2; font-size:11.5px; padding:5px 11px;
+    border:1px solid var(--line); background:rgba(255,255,255,.94); border-radius:20px;
+    color:var(--gray); box-shadow:0 1px 4px rgba(11,18,32,.14);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }}
+  .shot .dl:active {{ background:#F2F4F7; }}
+  .shot .dl.busy {{ color:var(--dim); }}
   .shot .ts {{ display:block; text-align:center; font-size:11px; color:var(--dim);
     font-variant-numeric:tabular-nums; margin-top:5px; letter-spacing:.3px; }}
   .link {{ display:block; text-decoration:none; }}
@@ -333,12 +415,21 @@ html = f'''<!DOCTYPE html>
   .morebar button {{ width:100%; padding:14px; font-size:14.5px; color:var(--gray);
     background:#fff; border:1px solid var(--line); border-radius:12px; }}
   .morebar button:active {{ background:#F7F8FA; }}
+  #toast {{ position:fixed; left:50%; bottom:calc(30px + env(safe-area-inset-bottom)); z-index:80;
+    transform:translateX(-50%) translateY(10px); opacity:0; pointer-events:none;
+    background:rgba(11,18,32,.9); color:#fff; font-size:13px; letter-spacing:.2px;
+    padding:9px 18px; border-radius:20px; box-shadow:0 6px 20px rgba(11,18,32,.24);
+    transition:opacity .18s ease, transform .18s ease; }}
+  #toast.show {{ opacity:1; transform:translateX(-50%) translateY(0); }}
 </style></head>
 <body>
 <div id="ptr"><span class="dot"></span><span id="ptxt">下拉重新整理</span></div>
+<div class="top" id="top">
 <header><div class="hinfo"><h1>@onepagemarket</h1>
 <div class="sub">{NEXT_POST or '每日行情卡片'}</div></div><button class="rf" id="rf" type="button" aria-label="重新整理"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button></header>
 <div class="rule"></div>
+</div>
+<div id="toast"></div>
 <main>
 {body}
 {more}
@@ -365,6 +456,7 @@ document.querySelectorAll('.copy').forEach(function (b) {{
     e.preventDefault(); copyText(b.getAttribute('data-t') || '', b);
   }});
 }});
+{GALLERY_JS}
 
 // 查看更多：展開折疊組並延遲載入圖片
 var moreBtn = document.getElementById('more');
