@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
+const { pushFooter } = require('./lib/disclaimer');
 
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(process.env.PAGES_DATA || path.join(BASE, 'data', 'pages.json'), 'utf8'));
@@ -96,10 +97,11 @@ function scaffold(title, sub) {
   return a;
 }
 function finish(a) {
-  a.push(`<rect x="${M}" y="${H - 118}" width="${CW}" height="1" fill="${C.line}"/>`);
-  a.push(t(M, H - 78, D.disclaimer || '', { size: 20, fill: C.dim }));
-  a.push(t(W - M, H - 78, D.handle || '@onepagemarket', { size: 20, fill: C.dim, anchor: 'end' }));
-  a.push(t(M, H - 48, `Source: ${D.source || ''}`, { size: 18, fill: C.dim }));
+  pushFooter(t, a, {
+    M, W, H, C,
+    handle: D.handle || '@onepagemarket',
+    meta: `Source: ${D.source || ''}`,
+  });
   a.push('</svg>');
   return [a[0], `<defs>${defs.join('')}</defs>`, ...a.slice(1)].join('\n');
 }

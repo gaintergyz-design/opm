@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
+const { pushFooter } = require('./disclaimer');
 
 const BASE = path.join(__dirname, '..', '..');
 
@@ -643,11 +644,11 @@ module.exports = function build(OPTS) {
     a.push(`<g>${O.figure.svg({ defs, uid: () => uid++, t, C, W, H })}</g>`);
   }
 
-  /* --- 頁腳 --- */
-  a.push(`<rect x="${M}" y="${H - 118}" width="${W - M * 2}" height="1" fill="${C.line}"/>`);
-  a.push(t(M, H - 78, 'For informational purposes only. Not investment advice.', { size: 20, fill: C.dim }));
-  a.push(t(W - M, H - 78, handle, { size: 20, fill: C.dim, anchor: 'end' }));
-  a.push(t(M, H - 48, `Data as of ${D.data_as_of} · Source: ${D.source}`, { size: 18, fill: C.dim }));
+  /* --- 頁腳（統一聲明三行 + 來源/handle 一行）--- */
+  pushFooter(t, a, {
+    M, W, H, C, handle,
+    meta: `Data as of ${D.data_as_of} · Source: ${D.source}`,
+  });
 
   a.push('</svg>');
   a.splice(1, 0, `<defs>${defs.join('')}</defs>`);

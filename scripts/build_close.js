@@ -14,6 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
+const { pushFooter } = require('./lib/disclaimer');
 
 const BASE = path.join(__dirname, '..');
 const DATA_PATH = process.env.CLOSE_DATA || path.join(BASE, 'data', 'close.json');
@@ -72,45 +73,18 @@ const longDate = (iso) => {
   if (isNaN(d)) return iso;
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 };
-// 公司名瘦身：去掉 "Common Stock" / "Class A Capital Stock" 尾巴、長詞縮寫，
-// 再按估算字寬截斷——且**在詞邊界截**（"Advanced Micro Devices…" 而非 "Advanced Micro Devic…"）
-const fitName = (s, maxW, size) => {
-  let str = String(s || '')
-    // 只去掉尾巴的 "Common Stock" / "Capital Stock"，保留 Class A/B/C
-    // （GOOGL 與 GOOG 都是 Alphabet，靠 Class A / Class C 才分得出來）
-    .replace(/\s+(Common|Capital) Stock$/i, '')
-    .replace(/\bCorporation\b/gi, 'Corp.')
-    .replace(/\bIncorporated\b/gi, 'Inc.')
-    .trim();
-  const w = (x) => x.length * size * 0.56;
-  if (w(str) <= maxW) return str;
-  const full = str;
-  while (str.length > 1 && w(str + '\u2026') > maxW) str = str.slice(0, -1);
-  // 只在「剛好切在半個單詞中間」時才退到詞邊界；
-  // 若截斷點本來就落在詞尾（下一個字元是空白）就保留整詞，避免把 "Taiwan Semiconductor" 砍成 "Taiwan"
-  if (full.charAt(str.length) !== ' ') {
-    const sp = str.lastIndexOf(' ');
-    if (sp > 3) str = str.slice(0, sp);
-  }
-  // 停在 "Inc." / "Corp." 這種縮寫結尾時讀起來已是完整公司名，不再補省略號
-  if (/\.$/.test(str)) return str;
-  return str.replace(/[\s,\-]+$/, '') + '\u2026';
-};
-// 代碼寬度估算（MiSans Bold 大寫，advance ≈ 0.72em）
-const tickerW = (s, size) => String(s || '').length * size * 0.72;
 
-// ---------- 版面常數（單列 · 20 行） ----------
+// ---------- 版面常數（單列 · 20 行 · 只顯示代碼） ----------
 const CW = W - M * 2;            // 984
-const ROW_H = 38;
+const ROW_H = 37;
 const RANK_X = M + 26;           // 74（右對齊）
 const LOGO_X = M + 36;           // 84
 const LOGO_S = 28;
-const TICKER_X = M + 88;         // 136
-const NAME_X = M + 194;          // 242
-const NAME_SIZE = 19;
-const BAR_X = 512, BAR_MAX = 292;
+const TICKER_X = M + 110;        // 158
+const BAR_X = 300, BAR_MAX = 500;
 const PCT_X = 930;               // 右對齊
 const AMT_X = W - M;             // 1032（右對齊）
+const PCT_SIZE = 26, AMT_SIZE = 26;   // 成交額字級與漲跌幅對齊
 
 const rows = (D.volume && D.volume.rows) || [];
 const maxDV = Math.max(1, ...rows.map((r) => r.dollar_volume || 0));
@@ -168,29 +142,22 @@ rows.forEach((r, i) => {
   svg.push(t(RANK_X, mid + 7, String(i + 1), { size: 19, fill: C.dim, anchor: 'end' }));
   svg.push(logoAt(r.ticker, LOGO_X, mid, LOGO_S));
   svg.push(t(TICKER_X, mid + 9, r.ticker, { size: 27, weight: 700 }));
-  if (r.name) {
-    // 名稱起點跟著代碼長度浮動（GOOGL / GOOG 這種 5 碼才不會黏上去）
-    const nx = Math.max(NAME_X, Math.round(TICKER_X + tickerW(r.ticker, 27) + 16));
-    svg.push(t(nx, mid + 7, fitName(r.name, BAR_X - nx - 18, NAME_SIZE),
-               { size: NAME_SIZE, fill: C.gray }));
-  }
   // 條長 = 成交額；顏色 = 當日漲跌方向
   const bw = Math.max(6, Math.round((r.dollar_volume || 0) / maxDV * BAR_MAX));
   svg.push(`<rect x="${BAR_X}" y="${mid - 5}" width="${BAR_MAX}" height="10" rx="2" fill="${C.track}"/>`);
   svg.push(`<rect x="${BAR_X}" y="${mid - 5}" width="${bw}" height="10" rx="2" fill="${pctColor(r.pct)}" opacity="0.85"/>`);
   // 漲跌幅
-  svg.push(t(PCT_X, mid + 9, pctStr(r.pct), { size: 26, weight: 700, fill: pctColor(r.pct), anchor: 'end' }));
-  // 成交額
-  svg.push(t(AMT_X, mid + 8, bill(r.dollar_volume), { size: 24, fill: C.gray, anchor: 'end' }));
+  svg.push(t(PCT_X, mid + 9, pctStr(r.pct), { size: PCT_SIZE, weight: 700, fill: pctColor(r.pct), anchor: 'end' }));
+  // 成交額（字級與漲跌幅對齊）
+  svg.push(t(AMT_X, mid + 8, bill(r.dollar_volume), { size: AMT_SIZE, fill: C.gray, anchor: 'end' }));
 });
 
-// ---------- 頁腳 ----------
-svg.push(`<rect x="${M}" y="${H - 118}" width="${CW}" height="1" fill="${C.line}"/>`);
-svg.push(t(M, H - 78, D.disclaimer || '', { size: 20, fill: C.dim }));
-svg.push(t(W - M, H - 78, handle, { size: 20, fill: C.dim, anchor: 'end' }));
+// ---------- 頁腳（統一聲明三行 + 來源/handle 一行）----------
 const metricNote = (D.volume && D.volume.metric_note) || 'actual traded value';
-svg.push(t(M, H - 48, `Source: ${D.source || 'Eastmoney · Nasdaq'} · ${metricNote} · index: Eastmoney / CNBC`,
-           { size: 18, fill: C.dim }));
+pushFooter(t, svg, {
+  M, W, H, C, handle,
+  meta: `Source: ${D.source || 'Eastmoney · Nasdaq'} · ${metricNote} · index: Eastmoney / CNBC`,
+});
 
 svg.push('</svg>');
 svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);

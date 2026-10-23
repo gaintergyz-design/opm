@@ -31,6 +31,13 @@ OUT = os.path.join(BASE, 'data', 'close.json')
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
 
 TOP_N = 20
+# OPM 卡統一聲明（2026-10-23 阿澤定稿）——與 scripts/lib/disclaimer.js 保持一字不差
+DISCLAIMER = (
+    'For informational purposes only. Not investment advice. The relevant data and content '
+    'are obtained from public sources and for reference only. All third-party trademarks, '
+    'brand names and logos displayed are for identification purposes only and remain the '
+    'property of their respective owners.'
+)
 NASDAQ = 'https://api.nasdaq.com/api'
 EM_UT = 'fa5fd1943c7b386f172d6893dbfba10b'
 EM_CLIST = 'https://push2.eastmoney.com/api/qt/clist/get'
@@ -336,7 +343,7 @@ def main():
             'rows': top,
         },
         'handle': '@onepagemarket',
-        'disclaimer': 'For informational purposes only. Not investment advice.',
+        'disclaimer': DISCLAIMER,
     }
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

@@ -214,7 +214,10 @@ def main():
 
     data = {
         'handle': '@onepagemarket',
-        'disclaimer': 'For informational purposes only. Not investment advice.',
+        'disclaimer': ('For informational purposes only. Not investment advice. The relevant data and content '
+                       'are obtained from public sources and for reference only. All third-party trademarks, '
+                       'brand names and logos displayed are for identification purposes only and remain the '
+                       'property of their respective owners.'),
         'source': 'Nasdaq official calendar & screener',
         'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M'),
         'week_label': f"{days[0].strftime('%b %d')} – {days[-1].strftime('%b %d')}",
