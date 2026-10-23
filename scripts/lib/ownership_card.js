@@ -668,5 +668,16 @@ module.exports = function build(OPTS) {
   }).render().asPng();
   fs.writeFileSync(path.join(outDir, `${stem}.png`), png);
   console.log('PNG ->', `out/${stem}.png`, `(${(png.length / 1024).toFixed(0)} KB)`);
+
+  /* 貼文文案一併落盤（坑 28）：畫廊只從 out/caption-<stem>.txt 讀文案，
+     沒有這個檔，下次 GitHub Action 重生成 index.html 時該則的文案就會變成
+     「（這則還沒生成文案）」。手動補文案很容易漏，所以讓產線自己寫。 */
+  if (O.caption) {
+    const capPath = path.join(outDir, `caption-${stem}.txt`);
+    fs.writeFileSync(capPath, String(O.caption).trim() + '\n');
+    console.log('CAPTION ->', `out/caption-${stem}.txt`);
+  } else {
+    console.warn('⚠️ 未提供 caption，畫廊這則會顯示「（這則還沒生成文案）」');
+  }
   return { svg: svgStr, png, stem, fallbackCount, orbit: ORBIT.ORB };
 };

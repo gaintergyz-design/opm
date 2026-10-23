@@ -53,6 +53,7 @@ build({
   data: D,
   assetsDir: path.join(BASE, 'assets', 'spcx'),
   outBase: 'spcx',
+  caption: "Who owns SpaceX? Musk 44.7% — and ~82% of the votes via Class B. Institutions hold 30.0% — top: Alphabet 4.1%, Valor Equity 3.4%, Founders Fund 3.2%, Fidelity 2.2%. Everyone else: 36.0%. 🧵",
   start: -106,
   ring: { CX: 550, CY: 760, RX: 245, RY: 162, D: 50, IX: 115, IY: 66 },
   ramp: ['#0E131B', '#6F7A89', '#8A94A2', '#9DA7B4', '#AEB7C3', '#BDC5D0',

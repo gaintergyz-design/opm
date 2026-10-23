@@ -27,6 +27,7 @@ build({
   data: D,
   assetsDir: path.join(BASE, 'assets', 'meta'),
   outBase: 'meta',
+  caption: "Who owns Meta? Zuckerberg 13.4% — but ~61% of the vote via Class B. Institutions hold 67.8%: Vanguard 7.6%, BlackRock 6.8%, Capital Group 4.0%. These 7 managers hold 29.1% between them. 🧵",
   start: -106,
   relaxCost: { even: 0.35, mid: 1.2 },
   obstacles: [TAKEBOX],
