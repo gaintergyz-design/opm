@@ -139,7 +139,13 @@ jobs:
             echo "無變更"
           else
             git commit -m "cards: $(date -u +%F) ${{ steps.kind.outputs.kind }}"
-            # 補跑/排程重疊時遠端可能已前進，rebase 後再推，避免 non-fast-forward 丟卡
-            git pull --rebase || true
-            git push
+            # 補跑/排程重疊時遠端會前進，且 docs/index.html 常衝突（兩次運行都改畫廊索引）
+            # → rebase 衝突就 abort 後帶 -X theirs 重試（out/docs 都是自動生成物，取哪邊都行）
+            ok=""
+            for i in 1 2 3; do
+              if git pull --rebase -X theirs >/dev/null 2>&1 && git push >/dev/null 2>&1; then ok=1; break; fi
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep 15
+            done
+            [ -n "$ok" ] || { echo "FATAL: push 3 次失敗"; exit 1; }
           fi
