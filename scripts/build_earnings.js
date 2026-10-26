@@ -76,18 +76,25 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032
   ${t(0, 0, '@onepagemarket', { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
 </g>`);
 
+const handle = '@onepagemarket';
+
 /* ---------------- 頁首 ---------------- */
 const TICK = D.ticker || '';
 const TS = 92;
 svg.push(t(M, 128, TICK, { size: TS, weight: 700, ls: -2.5 }));
 let hx = M + tw(TICK, TS, 700) + 22;
 const nameStr = D.company || '';
-const nameSize = 40;
+// 公司名過長（IBM → International Business Machines）時自動縮字，不撞右上 logo/handle
+const logoW = (LOGOS[TICK] || D.mono_badge) ? 44 + 16 : 0;
+const handleW = Math.round(tw(handle, 27, 500)) + 38;
+const nameAvail = (W - M - handleW - logoW) - hx - 8;
+const nameSize = tw(nameStr, 40, 500) > nameAvail
+  ? Math.max(24, Math.floor(40 * nameAvail / tw(nameStr, 40, 500)))
+  : 40;
 svg.push(t(hx, 128, nameStr, { size: nameSize, weight: 500, fill: C.primary }));
 svg.push(t(M, 172, `${D.quarter} · Quarter ended ${D.period_end} · Reported ${D.reported}`,
            { size: 21, fill: C.gray }));
 
-const handle = '@onepagemarket';
 const pillW = Math.round(tw(handle, 27, 500)) + 38;
 const pillX = W - M - pillW;
 svg.push(rrect(pillX, 66, pillW, 50, 12, '#EAF2F9'));

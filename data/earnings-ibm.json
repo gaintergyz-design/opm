@@ -1,0 +1,77 @@
+{
+  "ticker": "IBM",
+  "company": "International Business Machines",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 21, 2026 · after close",
+
+  "brand": {
+    "deep": "#001D6C",
+    "primary": "#0F62FE",
+    "mid": "#1B64D8",
+    "teal": "#0091D4",
+    "pos": "#028948"
+  },
+
+  "strip": "GAAP diluted EPS $2.31 (+26%) · operating gross margin 58.5% · FY26 FCF outlook raised",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 17103,
+      "actual_disp": "$17.10B",
+      "est_disp": "$16.82B",
+      "surprise": 1.7,
+      "prior": 16331,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 4.7
+    },
+    "eps": {
+      "label": "Op. EPS (non-GAAP)",
+      "actual": 2.95,
+      "actual_disp": "$2.95",
+      "est_disp": "$2.85",
+      "surprise": 3.5,
+      "prior": 2.65,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 11.3
+    }
+  },
+
+  "layout": {
+    "marginMax": 70,
+    "marginStep": 10
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [57.3, 60.6, 56.2, 57.7, 56.8],
+  "op_margin": [18.6, 24.1, 13.4, 19.2, 19.3],
+
+  "ocf": [3081, 4050, 5166, 2600, 4025],
+  "ocf_fmt": { "unit": "US$B", "div": 1000, "dec": 1, "step": 1 },
+
+  "mix_title": "Revenue mix",
+  "mix_center": "software",
+  "mix_colors": ["#001D6C", "#0F62FE", "#4589FF", "#98A2B3"],
+  "mix": [
+    { "name": "Software", "pct": 45.6, "value": "$7.80B · +8%" },
+    { "name": "Consulting", "pct": 31.2, "value": "$5.34B · flat" },
+    { "name": "Infrastructure", "pct": 21.7, "value": "$3.71B · +4%" },
+    { "name": "Financing & Other", "pct": 1.5, "value": "$0.26B" }
+  ],
+
+  "outlook": {
+    "title": "FY2026 · outlook raised on cash",
+    "items": [
+      { "k": "Revenue", "v": "4–5% cc", "note": "FY26 growth · FX neutral" },
+      { "k": "Free cash flow", "v": "+$1B+ Y/Y", "note": "raised · FY25 was $14.7B" },
+      { "k": "Dividend", "v": "$1.69 / sh", "note": "next payable Dec 10 · since 1916" },
+      { "k": "Acquisitions", "v": "$11.4B YTD", "note": "cash & securities $11.1B" },
+      { "k": "Software mix", "v": "Red Hat +11%", "note": "Data +19% · Automation −3%" }
+    ]
+  },
+
+  "notes": "口徑：IBM 8-K Ex-99.1（2026-10-21）為主，五季歷史取自各季 8-K（2026-01-28 / 04-22 / 07-22）。營收 17,103 vs 共識 16,820（MarketBeat/财联社 16.83B）＝+1.7%；Operating EPS 2.95 vs 共識 2.85＝+3.5%（财联社口徑 2.86，差 0.01）；GAAP 稀釋 EPS 2.31（+26%，稅率 11.9% vs 28.2% 貢獻大）。毛利率＝GAAP：57.3 / 60.6 / 56.2 / 57.7 / 56.8；營業利潤率＝Operating（non-GAAP）稅前利潤率：18.6 / 24.1 / 13.4 / 19.2 / 19.3。OCF（US$M）：3,081 / 4,050（FY25 13.2B−9M 9,153）/ 5,166（9M 11,791−Q2 2.6B−Q3 4,025 推回，稿載 5.2B）/ 2,600 / 4,025。mix 為分部營收，Financing 192+Other 66 併一項。展望取自新聞稿：FY26 收入 4–5% cc、FCF 上調至 Y/Y +$1B+（FY25 14.7B）、季度股息 1.69、YTD 併購 11.4B、分部亮點 Red Hat +11%。"
+}

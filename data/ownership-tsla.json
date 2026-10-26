@@ -1,0 +1,76 @@
+{
+  "ticker": "TSLA",
+  "company": "Tesla",
+  "title_line1": "WHO OWNS",
+  "title_line2": "TESLA?",
+  "subtitle": "% Shareholding · Common Stock",
+  "summary_note": "Institutions 43.7% · Musk alone 19.9%",
+  "data_as_of": "30 Jun 2026",
+  "source": "13F filings (Q2 2026) · SEC 13G · Yahoo Finance",
+  "segments": [
+    {
+      "name": "Elon Musk",
+      "disp": "19.9",
+      "pct": 19.9,
+      "badge": "musk",
+      "hero": true,
+      "role": "CEO · Co-founder",
+      "note": "SEC 13G (amended 16 Jun 2026): 717,112,739 shares beneficially owned, incl. 2018 option award shares exercised"
+    },
+    {
+      "name": "Other Institutions",
+      "disp": "26.3",
+      "pct": 26.25,
+      "icon": "bank"
+    },
+    {
+      "name": "Vanguard Group",
+      "disp": "5.9",
+      "pct": 5.91,
+      "mono": "V",
+      "monoBg": "#A6192E",
+      "note": "13F: Vanguard Capital 184.02M + Vanguard Portfolio Mgmt 49.55M = 233.57M shares"
+    },
+    {
+      "name": "BlackRock",
+      "disp": "5.4",
+      "pct": 5.42,
+      "mono": "B",
+      "monoBg": "#111417",
+      "note": "13F: 214.12M shares"
+    },
+    {
+      "name": "State Street",
+      "disp": "3.0",
+      "pct": 2.97,
+      "mono": "S",
+      "monoBg": "#0C4C8C",
+      "note": "13F: 117.46M shares"
+    },
+    {
+      "name": "Geode Capital",
+      "disp": "1.7",
+      "pct": 1.74,
+      "mono": "G",
+      "monoBg": "#1F5C8B",
+      "note": "13F: 68.91M shares"
+    },
+    {
+      "name": "Invesco",
+      "disp": "1.4",
+      "pct": 1.4,
+      "mono": "I",
+      "monoBg": "#00437A",
+      "note": "13F: 55.46M shares"
+    },
+    {
+      "name": "Public & Other",
+      "disp": "36.4",
+      "pct": 36.41,
+      "icon": "people",
+      "note": "Retail + other insiders; residual = 100 - 19.9 (Musk 13G) - 43.69 (institutions 13F)"
+    }
+  ],
+  "institutions_total": "43.7%",
+  "data_notes": "Institution percentages from 13F Q2-2026 (as of 30 Jun 2026, Yahoo quoteSummary). Musk 19.9% per SEC Schedule 13G Amendment, signed 17 Jun 2026 (beneficial ownership incl. option-award shares). Cross-checked: stocktitan.net, value-investor.io, sec.gov."
+}
