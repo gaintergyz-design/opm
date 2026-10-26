@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-26 00:58",
+  "generated_at": "2026-10-26 01:31",
   "week_label": "Oct 26 – Oct 30",
   "ondeck": {
     "session": "2026-10-26",
@@ -10,15 +10,15 @@
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -1.21
+        "pct": -0.52
       },
       {
         "label": "Nasdaq",
-        "pct": -2.6
+        "pct": -0.21
       },
       {
         "label": "Russell 2000",
-        "pct": 0.11
+        "pct": -0.29
       }
     ],
     "econ": [],
