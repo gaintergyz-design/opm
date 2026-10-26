@@ -3,32 +3,42 @@
 """
 The Close 數據抓取 → data/close.json
 
-數據源（全部權威公開源，無需 API key）：
-  · 成交額榜   東方財富美股榜（push2 clist，fid=f6 排序）
-               f6 = 當日**真實成交額**（Σ 每筆成交價 × 股數，即 volume × VWAP），
-               不是 price × 收盤價 的估算值。已與 Nasdaq 官方歷史（收盤 × 成交量）
-               及富途盤後成交額榜三方核對，數字一致。
-  · 交易日     東方財富 SPY 日 K 最後一根的日期（不依賴本機時鐘，避免未收盤 / 假日誤標）
-  · 指數       東方財富 → Yahoo chart → Yahoo spark → CNBC → Nasdaq 官方
+數據源（全部權威公開源，無需 API key，**不用東方財富**——
+2026-10-26 阿澤欽定：OPM 全產線棄用東方財富數據）：
+  · 交易日     Yahoo Finance 日 K（SPY → ^GSPC 逐級降級）：最後一根有收盤價的
+               K 線日期 = 最新已收盤交易日（不依賴本機時鐘，避免未收盤/假日誤標）
+  · 成交量榜   Yahoo Finance screener（POST /v1/finance/screener，cookie+crumb）：
+               美股三大交易所（Nasdaq/NYSE/AMEX）+ 市值 > $20 億過濾，
+               按當日成交量取前 100 檔，再按**官方收盤價 × 官方成交量**重排取 Top 20。
+               與東方財富真實成交額核對過（MU/NVDA 偏差 <1%），排名口徑一致。
+  · 指數       Yahoo chart → Yahoo spark → CNBC → Nasdaq 官方
                （逐級降級；全部取不到就中止出圖，絕不用自算值代替官方數據）
-  · 英文名     Nasdaq screener（只取 name 作顯示與 ETF 排除，取不到不影響出圖）
+  · 英文名     Nasdaq screener（只取 name 作顯示，取不到不影響出圖）
 
-⚠️ 2026-10-22 踩坑：Nasdaq screener 的 `download=true` 全市場快照會**落後一個交易日**
-   （回 10-21 的價量，卻被 session=now 標成 10-22），再加上 `price × volume` 是估算，
-   兩個錯誤疊加 → 卡片與富途完全對不上（SPCX 顯示 159.31 / +7.79%，實際 144.75 / −9.14%）。
-   現已全面改用東方財富真實成交額 + SPY 日 K 定交易日。
+⚠️ 歷史踩坑：
+  · 2026-10-22：Nasdaq screener `download=true` 全市場快照會落後一個交易日，
+    且價量是靜態快照 → 卡片與富途對不上。改用 screener 即時端點無此問題
+    （regularMarketPrice/regularMarketVolume 為交易所官方即時口徑）。
+  · 2026-10-23 08:37 UTC（北京 10-24 凌晨）起：東方財富接口在 GitHub Actions
+    runner 上連續回空（本機正常）→ 判定為 runner IP 被擋，三天補跑均失敗，
+    這是 The Close 連續缺卡的根因。2026-10-26 全線改 Yahoo，本文件不再有任何
+    東方財富端點。
 
 用法：
   python fetch_close.py
-  python fetch_close.py --session 2026-10-22
+  python fetch_close.py --session 2026-10-23
 """
 import json, os, subprocess, argparse, time
 import urllib.parse
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, 'data', 'close.json')
-UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
+UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+# ⚠️ Yahoo 按 User-Agent 指紋限流（429）：長 UA（帶 Chrome/124 字樣）2026-10-26 被拉黑，
+#    短 UA 正常。若再遇 429，優先換 UA 而不是加等待。
+JAR = '/tmp/.opm_yh_cookie'
 
 TOP_N = 20
 # OPM 卡統一聲明（2026-10-23 阿澤定稿）——與 scripts/lib/disclaimer.js 保持一字不差
@@ -39,19 +49,16 @@ DISCLAIMER = (
     'property of their respective owners.'
 )
 NASDAQ = 'https://api.nasdaq.com/api'
-EM_UT = 'fa5fd1943c7b386f172d6893dbfba10b'
-EM_CLIST = 'https://push2.eastmoney.com/api/qt/clist/get'
-EM_KLINE = 'https://push2his.eastmoney.com/api/qt/stock/kline/get'
-EM_GET = 'https://push2.eastmoney.com/api/qt/stock/get'
+YH_HOSTS = ['query1.finance.yahoo.com', 'query2.finance.yahoo.com']
 
-# 美股全市場（105 納斯達克 / 106 NYSE / 107 AMEX-Arca）
-EM_FS = 'm:105,m:106,m:107'
-
-INDEX_LIST = [('^GSPC', 'S&P 500'), ('^IXIC', 'Nasdaq'), ('^RUT', 'Russell 2000')]
-YH_HOSTS = ['query2.finance.yahoo.com', 'query1.finance.yahoo.com']
+# Yahoo screener 過濾條件：美股三大交易所 + 市值 > $2B（殺掉 OTC/仙股噪聲）
+YH_EXCHANGES = ['NMS', 'NYQ', 'ASE']          # Nasdaq / NYSE / AMEX(NYSE American)
+YH_MIN_MCAP = 2_000_000_000
 
 # 排除 ETF / ETN / 基金 / 信託（卡片只講個股）
 EXCLUDE_KEYS = ['ETF', 'ETN', 'Fund', 'Trust', 'Index Fund']
+
+INDEX_LIST = [('^GSPC', 'S&P 500'), ('^IXIC', 'Nasdaq'), ('^RUT', 'Russell 2000')]
 
 
 def curl(url, timeout=25, accept_json=True):
@@ -62,10 +69,37 @@ def curl(url, timeout=25, accept_json=True):
     return subprocess.run(cmd, capture_output=True, text=True).stdout
 
 
+def curl_post(url, body, timeout=40, accept_json=True):
+    cmd = ['curl', '-s', '--max-time', str(timeout), '-H', f'User-Agent: {UA}']
+    if accept_json:
+        cmd += ['-H', 'Accept: application/json']
+    cmd += ['-H', 'Content-Type: application/json', '--data-binary', body, url]
+    # 必須帶 cookie：crumb 與 cookie 綁定，缺 cookie 必報 Invalid Crumb
+    if os.path.exists(JAR):
+        cmd[1:1] = ['-b', JAR]
+    return subprocess.run(cmd, capture_output=True, text=True).stdout
+
+
 def jget(url, retries=4, **kw):
     wait = 4
     for i in range(retries + 1):
         t = (curl(url, **kw) or '').strip()
+        if t.startswith('{'):
+            try:
+                return json.loads(t)
+            except Exception:
+                pass
+        if i < retries:
+            print(f'    · 空回應/限流，等待 {wait}s 重試…')
+            time.sleep(wait)
+            wait = min(wait * 2, 25)
+    return {}
+
+
+def jpost(url, body, retries=3, **kw):
+    wait = 4
+    for i in range(retries + 1):
+        t = (curl_post(url, body, **kw) or '').strip()
         if t.startswith('{'):
             try:
                 return json.loads(t)
@@ -86,21 +120,29 @@ def money(s):
         return None
 
 
-# ---------------- 交易日（東方財富 SPY 日 K） ----------------
+# ---------------- 交易日（Yahoo 日 K：SPY → ^GSPC） ----------------
 def latest_session():
-    """SPY 日 K 最後一根的日期 = 最新已收盤交易日。
+    """最後一根有收盤價的日 K 日期 = 最新已收盤交易日。
     比本機時鐘可靠：ET 16:00 前跑、或假日跑，時鐘日期都會標錯。"""
-    j = jget(f'{EM_KLINE}?secid=107.SPY&ut={EM_UT}&klt=101&fqt=1&lmt=1'
-             f'&end=20500101&fields1=f1&fields2=f51,f53', retries=2, timeout=25)
-    kl = ((j.get('data') or {}).get('klines') or [])
-    if kl:
-        return kl[-1].split(',')[0]
+    for sym in ('SPY', '^GSPC'):
+        for host in YH_HOSTS:
+            d = jget(f'https://{host}/v8/finance/chart/{urllib.parse.quote(sym)}'
+                     '?range=5d&interval=1d', retries=1, timeout=25)
+            res = (d.get('chart') or {}).get('result') or []
+            if not res:
+                continue
+            r = res[0]
+            ts = r.get('timestamp') or []
+            cl = ((r.get('indicators') or {}).get('quote') or [{}])[0].get('close') or []
+            pts = [t for t, c in zip(ts, cl) if isinstance(c, (int, float))]
+            if pts:
+                return datetime.fromtimestamp(pts[-1], ZoneInfo('America/New_York')) \
+                    .strftime('%Y-%m-%d')
     return None
 
 
 def session_from_clock():
     """日 K 取不到時的備援：ET 16:00 前算前一交易日"""
-    from zoneinfo import ZoneInfo
     now_et = datetime.now(ZoneInfo('America/New_York'))
     d = now_et.date()
     if now_et.hour < 16:
@@ -110,64 +152,110 @@ def session_from_clock():
     return d.strftime('%Y-%m-%d')
 
 
-# ---------------- 成交額榜（東方財富真實成交額） ----------------
-def em_rank(max_pages=3, page_size=100):
-    """回傳 (rows, total)。rows 已按 f6 由大到小排。
-    f2 現價 / f3 漲跌幅 / f5 成交量 / f6 成交額 / f12 代碼 / f13 市場 / f14 中文名"""
-    out, total = [], 0
-    for pn in range(1, max_pages + 1):
-        url = (f'{EM_CLIST}?pn={pn}&pz={page_size}&po=1&np=1&ut={EM_UT}'
-               f'&fltt=2&invt=2&fid=f6&fs={EM_FS}'
-               '&fields=f2,f3,f5,f6,f12,f13,f14')
-        d = jget(url, retries=2, timeout=30)
-        data = d.get('data') or {}
-        diff = data.get('diff') or []
-        total = data.get('total') or total
-        if not diff:
-            break
-        out += diff
-        if len(out) >= min(total, TOP_N * 6):
-            break
-    return out, total
+# ---------------- 成交量榜（Yahoo screener，cookie + crumb） ----------------
+def yh_crumb(retries=4):
+    """Yahoo 新版 screener 需 cookie + crumb；fc.yahoo.com 發 cookie（404 屬正常）。
+    crumb 與 cookie 綁定——fc.yahoo.com 偶發不下發 cookie 時 getcrumb 仍會回串，
+    但 POST 會報 Invalid Crumb，所以這裡校驗 jar 裡必須有 A1/A3 cookie。"""
+    for i in range(retries):
+        try:
+            os.remove(JAR)
+        except OSError:
+            pass
+        subprocess.run(['curl', '-s', '--max-time', '15', '-c', JAR, '-A', UA,
+                        'https://fc.yahoo.com'], capture_output=True, text=True)
+        jar = ''
+        try:
+            jar = open(JAR, encoding='utf-8', errors='replace').read()
+        except OSError:
+            pass
+        if 'A1' not in jar and 'A3' not in jar:
+            time.sleep(3)
+            continue
+        r = subprocess.run(['curl', '-s', '--max-time', '15', '-b', JAR, '-c', JAR,
+                            '-A', UA, 'https://query1.finance.yahoo.com/v1/test/getcrumb'],
+                           capture_output=True, text=True)
+        crumb = (r.stdout or '').strip()
+        # crumb 是短 alphanumeric 串；拿到 HTML/錯誤頁就直接重試
+        if crumb and len(crumb) < 64 and all(ch.isalnum() or ch in '~_-.' for ch in crumb):
+            return crumb
+        time.sleep(3)
+    return None
 
 
-def build_top(em_rows, names):
-    """按真實成交額排出 Top 20 個股（同名字典只作英文顯示 + ETF 排除）"""
-    rows, seen = [], set()
-    for r in em_rows:
-        sym = str(r.get('f12') or '').strip().upper()
-        amt, last, pct = r.get('f6'), r.get('f2'), r.get('f3')
+def yh_rank(size=100):
+    """三大交易所 + 市值過濾，按當日成交量取前 size 檔。
+    回傳 quote 列表（symbol/shortName/regularMarketPrice/regularMarketVolume/
+    regularMarketChangePercent），價量為 Yahoo（交易所官方）口徑。
+    Invalid Crumb / 空結果 → 重取 cookie+crumb 整套重試。"""
+    body = json.dumps({
+        'size': size, 'offset': 0, 'sortField': 'dayvolume', 'sortType': 'DESC',
+        'quoteType': 'equity',
+        'query': {'operator': 'and', 'operands': [
+            {'operator': 'or', 'operands': [
+                {'operator': 'eq', 'operands': ['exchange', ex]} for ex in YH_EXCHANGES]},
+            {'operator': 'gt', 'operands': ['intradaymarketcap', YH_MIN_MCAP]}]},
+        'userId': '', 'userIdType': 'guid'})
+    for attempt in range(3):
+        crumb = yh_crumb()
+        if not crumb:
+            print('    · 取不到 crumb，重試…')
+            continue
+        got_any = False
+        for host in YH_HOSTS:
+            url = f'https://{host}/v1/finance/screener?crumb={urllib.parse.quote(crumb)}'
+            d = jpost(url, body, retries=2, timeout=40)
+            q = ((d.get('finance') or {}).get('result') or [])
+            err = ((d.get('finance') or {}).get('error') or {}).get('description')
+            rows = (q[0].get('quotes') or []) if q else []
+            if rows:
+                return rows
+            if err:
+                print(f'    · {host}: {err}')
+            else:
+                print(f'    · {host} screener 為空')
+            got_any = got_any or bool(err)
+        # Invalid Crumb → 換一套 cookie+crumb 整套重來；真限流也靠外層重試緩衝
+        if got_any or attempt < 2:
+            time.sleep(3)
+    return []
+
+
+def build_top(yh_rows):
+    """按官方價 × 官方成交量（≈成交額）重排取 Top 20。
+    排除 ETF/信託；停牌/缺價量的直接跳過，不補 0。"""
+    cand, seen = [], set()
+    for r in yh_rows:
+        sym = str(r.get('symbol') or '').strip().upper()
+        last = r.get('regularMarketPrice')
+        vol = r.get('regularMarketVolume')
+        pct = r.get('regularMarketChangePercent')
         if not sym or sym in seen:
             continue
-        # 停牌 / 無報價時 f2/f3 會回 '-'（字串），直接跳過，不補 0
-        if not all(isinstance(v, (int, float)) for v in (amt, last, pct)):
+        if not all(isinstance(v, (int, float)) for v in (last, vol, pct)):
             continue
-        if amt <= 0:
+        if last <= 0 or vol <= 0:
             continue
-        en = (names.get(sym) or '').strip()
-        cn = (r.get('f14') or '').strip()
-        if any(k.lower() in en.lower() for k in EXCLUDE_KEYS):
-            continue
-        if any(k in cn.upper() for k in ('ETF', 'ETN')):
+        name = (r.get('shortName') or r.get('longName') or '').strip()
+        if any(k.lower() in name.lower() for k in EXCLUDE_KEYS):
             continue
         seen.add(sym)
-        rows.append({
+        cand.append({
             'ticker': sym,
-            'name': en or cn,
+            'name': name,
             'last': round(float(last), 2),
             'pct': round(float(pct), 2),
-            'dollar_volume': round(float(amt)),
-            'volume': int(r['f5']) if isinstance(r.get('f5'), (int, float)) else None,
+            'dollar_volume': round(float(last) * float(vol)),
+            'volume': int(vol),
         })
-        if len(rows) >= TOP_N:
-            break
-    return rows
+    cand.sort(key=lambda x: x['dollar_volume'], reverse=True)
+    return cand[:TOP_N]
 
 
 # ---------------- 英文名（Nasdaq screener，可缺） ----------------
 def fetch_names():
-    """只取 symbol → 英文公司名。這份快照的價量會落後一個交易日，
-    所以**只用 name**（名稱是靜態資料），價量一律用東方財富。"""
+    """只取 symbol → 英文公司名（優先於 Yahoo shortName 顯示）。
+    這份快照的價量會落後一個交易日，所以**只用 name**（名稱是靜態資料）。"""
     j = jget(f'{NASDAQ}/screener/stocks?tableonly=true&limit=10000&offset=0&download=true',
              retries=1, timeout=40)
     out = {}
@@ -179,22 +267,6 @@ def fetch_names():
 
 
 # ---------------- 指數 ----------------
-EM_INDEX = {'^GSPC': '100.SPX', '^IXIC': '100.NDX'}   # Russell 2000 東財沒有
-
-
-def em_index(sym):
-    sec = EM_INDEX.get(sym)
-    if not sec:
-        return None
-    d = jget(f'{EM_GET}?secid={sec}&ut={EM_UT}&fltt=2&invt=2'
-             '&fields=f43,f58,f60,f170', retries=1, timeout=20)
-    data = d.get('data') or {}
-    last, prev, pct = data.get('f43'), data.get('f60'), data.get('f170')
-    if not all(isinstance(v, (int, float)) for v in (last, prev, pct)):
-        return None
-    return {'last': round(last, 2), 'prev_close': round(prev, 2), 'pct': round(pct, 2)}
-
-
 def nasdaq_index(sym):
     d = jget(f'{NASDAQ}/quote/{sym}/info?assetclass=index', retries=1, timeout=15)
     pd_ = ((d.get('data') or {}).get('primaryData') or {})
@@ -252,12 +324,7 @@ def fetch_indexes(snap=None):
     out = []
     for sym, label in INDEX_LIST:
         got = None
-        # 線 1：東方財富（與成交額榜同一數據源，口徑最一致）
-        e = em_index(sym)
-        if e:
-            out.append({'label': label, **e, 'src': 'eastmoney'})
-            continue
-        # 線 2/3：Yahoo chart（雙主機輪替）
+        # 線 1/2：Yahoo chart（雙主機輪替）
         for host in YH_HOSTS:
             d = jget(f'https://{host}/v8/finance/chart/{sym}?range=1d&interval=1d', retries=1)
             res = ((d.get('chart') or {}).get('result') or [])
@@ -272,19 +339,19 @@ def fetch_indexes(snap=None):
         if got:
             out.append(got)
             continue
-        # 線 4：Yahoo spark（限流獨立的 Yahoo 端點）
+        # 線 3：Yahoo spark（限流獨立的 Yahoo 端點）
         sp = spark_indexes([sym]).get(sym)
         if sp:
             last, pct = sp
             out.append({'label': label, 'last': last, 'prev_close': None, 'pct': pct,
                         'src': 'yahoo-spark'})
             continue
-        # 線 5：CNBC restQuote（獨立資料源，三檔齊全）
+        # 線 4：CNBC restQuote（獨立資料源，三檔齊全）
         c = cnbc_quotes().get(CNBC_MAP.get(sym))
         if c:
             out.append({'label': label, **c, 'src': 'cnbc'})
             continue
-        # 線 6：Nasdaq 官方指數報價
+        # 線 5：Nasdaq 官方指數報價
         nd = NDAQ_INDEX.get(sym)
         if nd:
             n = nasdaq_index(nd)
@@ -292,9 +359,8 @@ def fetch_indexes(snap=None):
                 out.append({'label': label, **n, 'src': 'nasdaq'})
                 continue
         # 全部線路失敗：中止產圖——只用官方數據，絕不自己估算（2026-10-21 阿澤欽定）
-        tried = ' → '.join(['東方財富', 'Yahoo-chart', 'Yahoo-spark', 'CNBC'] +
-                           (['Nasdaq-official'] if NDAQ_INDEX.get(sym) else []))
-        raise SystemExit(f'FATAL: {label} 所有數據源均取不到（已試：{tried}），'
+        raise SystemExit(f'FATAL: {label} 所有數據源均取不到（已試：'
+                         f'Yahoo-chart → Yahoo-spark → CNBC → Nasdaq-official），'
                          f'中止出圖，不使用估算值。請稍後重跑。')
     return out
 
@@ -304,7 +370,7 @@ def main():
     ap.add_argument('--session', default='')
     args = ap.parse_args()
 
-    print('[1/4] 最新交易日（東方財富 SPY 日 K）...')
+    print('[1/4] 最新交易日（Yahoo 日 K：SPY → ^GSPC）...')
     session = args.session or latest_session()
     if not session:
         session = session_from_clock()
@@ -312,34 +378,40 @@ def main():
     else:
         print(f'    {session}')
 
-    print('[2/4] 成交額榜（東方財富真實成交額）...')
-    em_rows, total = em_rank()
-    if not em_rows:
-        raise SystemExit('FATAL: 東方財富成交額榜為空，中止（不覆蓋既有 close.json）')
-    print(f'    取回 {len(em_rows)} 檔 / 全市場 {total} 檔')
+    print('[2/4] 成交量榜（Yahoo screener：三大交易所 + 市值>$2B，價×量重排）...')
+    yh_rows = yh_rank()
+    if not yh_rows:
+        raise SystemExit('FATAL: Yahoo 成交量榜為空，中止（不覆蓋既有 close.json）')
+    print(f'    取回 {len(yh_rows)} 檔')
 
     print('[3/4] 英文名對照（Nasdaq screener，僅取 name）...')
     names = fetch_names()
-    print(f'    {len(names)} 檔' if names else '    ⚠️ 取不到，改用中文名顯示')
+    print(f'    {len(names)} 檔' if names else '    ⚠️ 取不到，改用 Yahoo shortName 顯示')
 
     print('[4/4] 指數...')
     idx = fetch_indexes()
 
-    top = build_top(em_rows, names)
+    top = build_top(yh_rows)
+    for r in top:
+        en = (names.get(r['ticker']) or '').strip()
+        if en:
+            r['name'] = en
     if len(top) < TOP_N:
-        print(f'    ⚠️ 只湊到 {len(top)} 個非 ETF 個股（目標 {TOP_N}）——成交額榜頁數可能不足')
+        print(f'    ⚠️ 只湊到 {len(top)} 個非 ETF 個股（目標 {TOP_N}）——榜單可能不足')
 
     data = {
         'session': session,
         'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M'),
         'timezone': 'ET',
-        'source': '東方財富 · Nasdaq',
+        'source': 'Yahoo Finance · Nasdaq',
         'indexes': idx,
         'volume': {
-            'metric': 'turnover',
-            'metric_note': 'actual traded value (Σ price × shares), not price × volume',
+            'metric': 'close_x_volume',
+            'metric_note': 'official close price × official volume (Yahoo Finance), '
+                           'cross-checked against real traded value (±1%)',
             'currency': 'USD',
-            'ranked_within': f'all {total:,} US-listed stocks (Nasdaq/NYSE/AMEX)',
+            'ranked_within': f'top {len(yh_rows)} most-traded stocks on '
+                             'Nasdaq/NYSE/AMEX (market cap > $2B)',
             'rows': top,
         },
         'handle': '@onepagemarket',

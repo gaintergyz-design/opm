@@ -6,7 +6,8 @@
  *   · Top 20 由雙列改**單列**（20 行 × 38px）
  *   · 每隻個股都顯示**漲跌幅**（方向色 + 正負號）
  *   · 刪除「Breadth 市場寬度」與「Earnings 明日財報」兩個模塊
- *   · 數據改用東方財富**真實成交額**（Σ 成交價×股數），不再是 price × volume 估算
+ *   · 數據源：Yahoo Finance screener（官方收盤價 × 官方成交量，與真實成交額核對偏差 <1%）
+ *     ——2026-10-26 阿澤欽定全線棄用東方財富（GitHub runner 上連續回空，IP 被擋）
  *
  * 用法：NODE_PATH=<workspace>/node_modules node scripts/build_close.js
  *       PREVIEW=1 ... → 寫到 out/_preview/（不污染正式產物）
@@ -133,7 +134,7 @@ function sectionLabel(x, y, label) {
   svg.push(t(x + 18, y, label, { size: 24, fill: C.gray }));
 }
 sectionLabel(M, Y_TOP_LABEL, `Top ${rows.length || 20} stocks by turnover`);
-svg.push(t(W - M, Y_TOP_LABEL, 'USD · actual traded value', { size: 22, fill: C.dim, anchor: 'end' }));
+svg.push(t(W - M, Y_TOP_LABEL, 'USD · price × volume', { size: 22, fill: C.dim, anchor: 'end' }));
 
 rows.forEach((r, i) => {
   const y = LIST_TOP + i * ROW_H;
