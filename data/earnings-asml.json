@@ -1,0 +1,77 @@
+{
+  "ticker": "ASML",
+  "company": "ASML Holding",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 27, 2026",
+  "reported": "Oct 14, 2026 · before US open",
+
+  "brand": {
+    "deep": "#083A5E",
+    "primary": "#0E6FA3",
+    "mid": "#3D97C2",
+    "teal": "#5AA7CE",
+    "pos": "#028948"
+  },
+
+  "strip": "Record 57.5% GM, above 55–57% guide · includes €0.5B Mistral AI revaluation gain · 121 systems shipped",
+
+  "kpi": {
+    "revenue": {
+      "label": "Total net sales",
+      "actual": 11662,
+      "actual_disp": "€11.66B",
+      "est_disp": "€11.50B",
+      "surprise": 1.4,
+      "prior": 7516,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 55.2
+    },
+    "eps": {
+      "label": "EPS · basic",
+      "actual": 12.95,
+      "actual_disp": "€12.95",
+      "est_disp": "€10.68",
+      "surprise": 21.3,
+      "prior": 5.49,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 136
+    }
+  },
+
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [51.6, 52.2, 53.0, 54.0, 57.5],
+  "op_margin": [32.8, 35.3, 36.0, 37.1, 44.4],
+
+  "ocf": [559, 11410, -2186, 1703, 11798],
+  "ocf_fmt": { "unit": "€B", "div": 1000, "dec": 1, "step": 4 },
+
+  "mix_title": "System sales mix",
+  "mix_center": "EUV systems",
+  "mix_colors": ["#083A5E", "#0E6FA3", "#3D97C2", "#98A2B3"],
+  "mix": [
+    { "name": "EUV", "pct": 49, "value": "€4.12B" },
+    { "name": "ArFi immersion", "pct": 39, "value": "€3.28B" },
+    { "name": "Other DUV", "pct": 9, "value": "€0.76B" },
+    { "name": "Metrology & Insp.", "pct": 3, "value": "€0.25B" }
+  ],
+
+  "outlook": {
+    "title": "Q4 2026 · third raise this year",
+    "items": [
+      { "k": "Revenue", "v": "€14.2–15.2B", "note": "Q4 guide · ~4% above consensus" },
+      { "k": "Gross margin", "v": "~57%", "note": "FY26 ~56% · Q3 was 57.5%" },
+      { "k": "FY26 sales", "v": "€44–45B", "note": "third raise · +~36% Y/Y" },
+      { "k": "Capacity", "v": ">30% by 2028", "note": "plans may still miss demand" },
+      { "k": "Capital return", "v": "€4.1B buyback", "note": "Q3 · interim div €1.88 on Nov 4" }
+    ]
+  },
+
+  "notes": "口徑：ASML 6-K Ex-99.1（2026-10-14，SEC 0001628280-26-065813）＋ FS 季度彙總。總淨銷售 €11,662M（+55.2% Y/Y），高於公司財測 €11.0–12.0B 中值（est €11.5B → +1.4%；市場共識口徑分歧：finguider/LSEG €11.73B 略低、MoneyCheck €11.63B 略高，故改用官方財測中值）；EPS basic €12.95 vs 共識 €10.68（21經濟）＝+21.3%，3Q25 prior €5.49；GM 57.5%（共識 55.7、財測 55–57）；營業利益率 44.4%；淨利 €4,960M 含 Mistral AI 股權重評 gain €509.7M（FS 官方行）。五季 GM：51.6/52.2/53.0/54.0/57.5；OM（IFO/sales）：32.8/35.3/36.0/37.1/44.4（各季 FS）。OCF（€M，FS Quarterly Summary 五季欄）：559 / 11,410 / −2,186 / 1,703 / 11,798（波動大＝營運資本季節性）。mix＝net system sales €8.4B 按技術：EUV 49 / ArFi 39 / KrF 5+I-line 1+ArF Dry 3 併 Other DUV 9 / M&I 3。展望：Q4 €14.2–15.2B、GM ~57%；FY26 €44–45B（今年第三次上調，前值 43–45B）、GM ~56%、Y/Y +~36%；2028 產能研究在 +30% 之上再加碼；Q3 回購 €4.1B、中期股息 €1.88（11/4 派）。121 台＝new 113 + used 8。"
+}
