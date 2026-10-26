@@ -134,7 +134,7 @@ jobs:
         run: |
           git config user.name  "onepagemarket-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add docs out data
+          git add docs out data assets
           if git diff --cached --quiet; then
             echo "無變更"
           else

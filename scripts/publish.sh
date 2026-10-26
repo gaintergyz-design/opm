@@ -27,10 +27,14 @@ esac
 
 if [ "$KIND" = "theclose" ]; then
   "$PY" scripts/fetch_close.py "$@"
+  # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json（2026-10-26 起 runner 也執行）
+  "$PY" scripts/fetch_logos.py || echo "    ⚠️ fetch_logos 失敗，沿用舊 logos.json"
   "$NODE" scripts/build_close.js
   IMG=$(ls -t out/the-close-*.png | head -1)
 else
   "$PY" scripts/fetch_pages.py --target "$TARGET" "$@"
+  # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json
+  "$PY" scripts/fetch_logos.py || echo "    ⚠️ fetch_logos 失敗，沿用舊 logos.json"
   # 圖檔日期統一用數據交易日；winners 用最近收盤日（週五），其餘用 On Deck session
   if [ "$KIND" = "winners" ]; then
     PAGES_STAMP=$("$PY" -c "import json;print(json.load(open('data/close.json'))['session'].replace('-',''))")

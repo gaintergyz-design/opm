@@ -9,7 +9,7 @@
 """
 import json, os, io, base64, subprocess, argparse
 from concurrent.futures import ThreadPoolExecutor
-from PIL import Image
+from PIL import Image, ImageDraw
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGO_DIR = os.path.join(BASE, 'assets', 'logos')
@@ -23,17 +23,22 @@ SRC = [
 ]
 
 
-def white_on_transparent(im):
-    """白字 + 透明底的 logo 放在白卡上等於隱形（Marvell 就是）。
-    判斷：不透明像素裡 ≥97% 是近白色 → 視為壞圖，換下一個來源。
-    （AAPL / LRCX 那種「白底方塊 + 深色圖形」白佔比約 0.88，不算壞圖）"""
+def white_ratio(im):
+    """不透明像素裡近白色的佔比（0.0-1.0）"""
     px = im.load()
     w, h = im.size
     op = [(x, y) for y in range(h) for x in range(w) if px[x, y][3] > 200]
     if not op:
-        return True
+        return 1.0
     wht = sum(1 for x, y in op if px[x, y][0] > 235 and px[x, y][1] > 235 and px[x, y][2] > 235)
-    return wht / len(op) >= 0.97
+    return wht / len(op)
+
+
+def white_on_transparent(im):
+    """白字 + 透明底的 logo 放在白卡上等於隱形（Marvell 就是）。
+    判斷：不透明像素裡 ≥97% 是近白色 → 視為壞圖，換下一個來源。
+    （AAPL / LRCX 那種「白底方塊 + 深色圖形」白佔比約 0.88，不算壞圖）"""
+    return white_ratio(im) >= 0.97
 
 
 def fetch(t):
@@ -59,6 +64,15 @@ def fetch(t):
         canvas = Image.new('RGBA', (side, side), (0, 0, 0, 0))
         canvas.paste(im, ((side - im.size[0]) // 2, (side - im.size[1]) // 2), im)
         canvas = canvas.resize((SIZE, SIZE), Image.LANCZOS)
+        # 白字 logo（如 AFRM：白字+藍弧）在白卡上隱形 → 墊深色圓底讓白色筆畫可讀
+        # （品牌 App 圖標做法：白字 logo 本來就設計在深色底上）
+        if white_ratio(canvas) >= 0.5:
+            bg = Image.new('RGBA', (SIZE, SIZE), (0, 0, 0, 0))
+            pad = 4
+            ImageDraw.Draw(bg).ellipse(
+                (pad, pad, SIZE - pad, SIZE - pad), fill=(25, 31, 44, 255))
+            bg.paste(canvas, (0, 0), canvas)
+            canvas = bg
         return canvas
     return None
 
