@@ -1,0 +1,77 @@
+{
+  "ticker": "NOK",
+  "company": "Nokia",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 22, 2026 · before US open",
+
+  "brand": {
+    "deep": "#0A2C63",
+    "primary": "#124191",
+    "mid": "#3C74C9",
+    "teal": "#6AA6E0",
+    "pos": "#028948"
+  },
+
+  "strip": "Comparable OM 11.7% (+220 bps) vs 3.8% reported · comparable OP €605M, 34% above consensus",
+
+  "kpi": {
+    "revenue": {
+      "label": "Net sales",
+      "actual": 5154,
+      "actual_disp": "€5.15B",
+      "est_disp": "€5.05B",
+      "surprise": 2.0,
+      "prior": 4700,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 9.7
+    },
+    "eps": {
+      "label": "Comparable EPS",
+      "actual": 0.09,
+      "actual_disp": "€0.09",
+      "est_disp": "€0.06",
+      "surprise": 50,
+      "prior": 0.06,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 50
+    }
+  },
+
+  "layout": {
+    "marginMax": 50,
+    "marginStep": 10,
+    "marginMin": -10
+  },
+
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [44.4, 44.9, 44.0, 44.6, 42.2],
+  "op_margin": [5.4, 8.8, 3.3, -1.0, 3.8],
+
+  "ocf": [597, 375, 782, -620, 95],
+  "ocf_fmt": { "unit": "€M", "div": 1, "dec": 0, "step": 200 },
+
+  "mix_title": "Revenue mix · segment",
+  "mix_center": "mobile infra",
+  "mix_colors": ["#0A2C63", "#124191", "#6AA6E0"],
+  "mix": [
+    { "name": "Mobile Infrastructure", "pct": 56, "value": "€2.90B" },
+    { "name": "Network Infrastructure", "pct": 42, "value": "€2.16B" },
+    { "name": "Portfolio & Other", "pct": 2, "value": "€0.10B" }
+  ],
+
+  "outlook": {
+    "title": "FY2026 · AI order book builds",
+    "items": [
+      { "k": "Comparable OP", "v": "€2.1–2.6B", "note": "FY26 held · raised from 2.0–2.5B" },
+      { "k": "Optical + IP", "v": "+25–30%", "note": "2027 growth outlook" },
+      { "k": "AI & Cloud", "v": "+123%", "note": "Q3 sales · order intake +118%" },
+      { "k": "Infinera", "v": "€200M", "note": "net synergies · done end-2026" },
+      { "k": "Net cash", "v": "€2.58B", "note": "end-Q3 · −€192M QoQ" }
+    ]
+  },
+
+  "notes": "口徑：Nokia Q3 2026 interim report（6-K，2026-10-22）＋ Q2 2026 / Q4 2025 6-K。淨銷售 €5,154M（+9% cc／+10% reported）；共識 €5,054M（Infront 官方彙總）→ +2.0%。Comparable diluted EPS €0.09 vs 共識 €0.06（+50%）、3Q25 €0.06；reported EPS €0.03。GM/OM 全用 reported（IFRS）以保持五季同口徑：3Q25 44.4/5.4（252/4,700）、4Q25 44.9/8.8（540/6,125）、1Q26 44.0/3.3、2Q26 44.6/−1.0（營業虧損 50）、3Q26 42.2/3.8（196/5,154）。Comparable 口徑 3Q26 為 GM 44.6%、OM 11.7%、OP €605M。OCF 為季度現金流（第三方彙總，3Q26 €95M 與官方敘述「調整後利潤 744、營運資本流出約 560」方向一致；Nokia 摘要稿未列季度現金流表）。mix＝3Q26 分部營收（Mobile 2,902／NI 2,158／Portfolio & Other 94）。展望：FY26 comparable OP €2.1–2.6B（Q2 曾技術性上修自 2.0–2.5B）；2027 光纖+IP 合計 +25–30%；Q3 AI & Cloud 銷售 +123%、訂單 +118%、新單 €1.5B；Infinera 整合提前一年完成、淨協同 €200M；季末淨現金 €2.58B。"
+}
