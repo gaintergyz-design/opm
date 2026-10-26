@@ -236,9 +236,10 @@ def group_html(key, imgs, idx):
     post, d = key
     live = idx < n_open          # 展開組才載圖
     caption = next((i['caption'] for i in imgs if i['caption']), '')
-    day = d.strftime('%a, %b %-d')
+    # 生成時刻移到組標題（原本掛在每張圖下方）：一組多圖時取最新那張
+    stamp = max(imgs, key=lambda i: i['mtime'])['time']
     head = (f'<div class="ghead"><b>{esc(post_name(post))}</b>'
-            f'<span class="day">{day} · {len(imgs)} 張</span></div>')
+            f'<span class="day">{stamp} · {len(imgs)} 張</span></div>')
     if caption:
         block = (f'<div class="tweet"><button class="copy" data-t="{esc(caption)}">複製文案</button>'
                  f'<p>{esc(caption)}</p><span class="len">{len(caption)} 字</span></div>')
@@ -250,8 +251,7 @@ def group_html(key, imgs, idx):
         shots.append(
             f'<div class="shot">'
             f'<button class="dl" type="button" data-img="{i["img"]}" data-name="{i["name"]}">下載圖片</button>'
-            f'<img {src} loading="lazy" alt="{i["name"]}">'
-            f'<span class="ts">{i["time"]}</span></div>')
+            f'<img {src} loading="lazy" alt="{i["name"]}"></div>')
     cls = 'sec' if live else 'sec late'
     hid = '' if live else ' hidden'
     return f'<section class="{cls}"{hid}>{head}{block}<div class="shots">{"".join(shots)}</div></section>'
@@ -385,7 +385,8 @@ html = f'''<!DOCTYPE html>
   section:last-of-type {{ border-bottom:0; }}
   .ghead {{ display:flex; align-items:baseline; gap:8px; margin-bottom:10px; }}
   .ghead b {{ font-size:17px; }}
-  .ghead .day {{ font-size:12.5px; color:var(--dim); }}
+  .ghead .day {{ font-size:12.5px; color:var(--dim); font-variant-numeric:tabular-nums;
+    letter-spacing:.2px; }}
   .tweet {{ position:relative; background:var(--soft); border:1px solid var(--line);
     border-left:3px solid var(--amber); border-radius:0 10px 10px 0;
     padding:12px 12px 10px; margin-bottom:16px; }}
@@ -408,8 +409,6 @@ html = f'''<!DOCTYPE html>
     -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }}
   .shot .dl:active {{ background:#F2F4F7; }}
   .shot .dl.busy {{ color:var(--dim); }}
-  .shot .ts {{ display:block; text-align:center; font-size:11px; color:var(--dim);
-    font-variant-numeric:tabular-nums; margin-top:5px; letter-spacing:.3px; }}
   .link {{ display:block; text-decoration:none; }}
   .morebar {{ padding:22px 0 4px; text-align:center; }}
   .morebar button {{ width:100%; padding:14px; font-size:14.5px; color:var(--gray);
