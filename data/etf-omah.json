@@ -1,0 +1,28 @@
+{
+  "ticker": "OMAH",
+  "fund_name": "VistaShares Target 15 Berkshire Select Income ETF",
+  "title_line1": "OMAH ETF",
+  "title_line2": "TOP 10 HOLDINGS",
+  "subtitle": "% of net assets · 71 positions",
+  "summary_note": "Berkshire-inspired portfolio · income paid monthly",
+  "top10_combined": "62.7",
+  "facts": [
+    { "label": "AUM", "value": "~$1B" },
+    { "label": "Expense ratio", "value": "0.95%" },
+    { "label": "Distribution", "value": "15%/yr" }
+  ],
+  "data_as_of": "23 Oct 2026",
+  "holdings": [
+    { "ticker": "AAPL",  "display": "AAPL",  "name": "Apple Inc.",            "disp": "10.80", "pct": 10.80 },
+    { "ticker": "BRK-B", "display": "BRK.B", "name": "Berkshire Hathaway",    "disp": "10.71", "pct": 10.71 },
+    { "ticker": "AXP",   "display": "AXP",   "name": "American Express",      "disp": "6.52",  "pct": 6.52 },
+    { "ticker": "KR",    "display": "KR",    "name": "Kroger",                "disp": "5.25",  "pct": 5.25 },
+    { "ticker": "CVX",   "display": "CVX",   "name": "Chevron",               "disp": "5.21",  "pct": 5.21 },
+    { "ticker": "KO",    "display": "KO",    "name": "Coca-Cola",             "disp": "5.12",  "pct": 5.12 },
+    { "ticker": "OXY",   "display": "OXY",   "name": "Occidental Petroleum",  "disp": "4.99",  "pct": 4.99 },
+    { "ticker": "VRSN",  "display": "VRSN",  "name": "VeriSign",              "disp": "4.78",  "pct": 4.78 },
+    { "ticker": "DVA",   "display": "DVA",   "name": "DaVita",                "disp": "4.68",  "pct": 4.68 },
+    { "ticker": "CB",    "display": "CB",    "name": "Chubb",                 "disp": "4.61",  "pct": 4.61 }
+  ],
+  "other": { "label": "Other positions", "disp": "37.3", "pct": 37.3, "count": 61 }
+}
