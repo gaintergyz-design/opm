@@ -44,4 +44,7 @@ else
 fi
 
 echo "預覽圖：$TARGET"
+# build 以 2× 渲染，縮回標準尺寸保持與正式產物一致
+PY="${PY:-$(command -v python3 || echo /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python)}"
+"$PY" scripts/downscale_png.py out/_preview/*.png || true
 if [ "$OPEN_IT" = "1" ]; then open "$TARGET"; fi

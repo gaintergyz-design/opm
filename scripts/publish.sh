@@ -8,8 +8,9 @@
 set -e
 cd "$(dirname "$0")/.."
 
-# 解譯器：環境變數優先 → PATH（雲端 CI）→ 本地固定路徑
-PY="${PY:-$(command -v python3 || echo /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python)}"
+# 解譯器：環境變數優先 → 本機工作 venv（有 PIL）→ PATH（雲端 CI）
+_LOCAL_PY="/Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python"
+PY="${PY:-$([ -x "$_LOCAL_PY" ] && echo "$_LOCAL_PY" || command -v python3)}"
 NODE="${NODE:-$(command -v node || echo /Users/gyz-igyz-imacmac/.workbuddy/binaries/node/versions/22.22.2-6/bin/node)}"
 export NODE_PATH="${NODE_PATH:-$(pwd)/node_modules}"
 
@@ -30,6 +31,8 @@ if [ "$KIND" = "theclose" ]; then
   # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json（2026-10-26 起 runner 也執行）
   "$PY" scripts/fetch_logos.py || echo "    ⚠️ fetch_logos 失敗，沿用舊 logos.json"
   "$NODE" scripts/build_close.js
+  # 2× 超采樣縮回標準尺寸（logo/文字邊緣平滑）
+  "$PY" scripts/downscale_png.py out/the-close-*.png || echo "    ⚠️ downscale 失敗，卡為 2160px"
   IMG=$(ls -t out/the-close-*.png | head -1)
 else
   if [ "$KIND" = "winners" ]; then
@@ -51,6 +54,8 @@ else
   fi
   export PAGES_STAMP
   PAGE="$PAGE" "$NODE" scripts/build_pages.js
+  # 2× 超采樣縮回標準尺寸（logo/文字邊緣平滑）
+  "$PY" scripts/downscale_png.py "out/${PAGE}-"*.png || echo "    ⚠️ downscale 失敗，卡為 2160px"
   IMG=$(ls -t "out/${PAGE}-"*.png | head -1)
 fi
 

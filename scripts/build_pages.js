@@ -273,7 +273,8 @@ const stamp = process.env.PAGES_STAMP || new Date().toISOString().slice(0, 10).r
   const svg = fn();
   fs.writeFileSync(path.join(outDir, `${name}-${stamp}${SUFFIX}.svg`), svg);
   const png = new Resvg(svg, {
-    fitTo: { mode: 'width', value: W },
+    // 2× 超采樣，由 downscale_png.py 縮回（見 build_close.js 註釋）
+    fitTo: { mode: 'width', value: W * 2 },
     font: { fontFiles, loadSystemFonts: true, defaultFontFamily: CFG.font },
     background: C.bg,
   }).render().asPng();

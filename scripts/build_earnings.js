@@ -331,7 +331,8 @@ const fontFiles = ['MiSans-Bold.ttf', 'MiSans-Medium.ttf', 'MiSans-Regular.ttf']
   .filter(Boolean);
 
 const png = new Resvg(svgStr, {
-  fitTo: { mode: 'width', value: W },
+  // 2× 超采樣，由 downscale_png.py 縮回（見 build_close.js 註釋）
+  fitTo: { mode: 'width', value: W * 2 },
   font: { fontFiles, loadSystemFonts: true, defaultFontFamily: FONT },
   background: C.bg,
 }).render().asPng();

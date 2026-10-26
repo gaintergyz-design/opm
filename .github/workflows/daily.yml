@@ -100,9 +100,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 安裝依賴（resvg 渲染器）
+      - name: 安裝依賴（resvg 渲染器 + Pillow）
         if: steps.guard.outputs.run == 'true'
-        run: npm ci || npm install
+        run: |
+          npm ci || npm install
+          pip install Pillow
 
       - name: 寫入推送憑證（可選；未設 secret 則不推手機）
         if: steps.guard.outputs.run == 'true'

@@ -177,7 +177,9 @@ const fontFiles = ['MiSans-Bold.ttf', 'MiSans-Medium.ttf', 'MiSans-Regular.ttf']
   .filter(Boolean);
 
 const resvg = new Resvg(svgStr, {
-  fitTo: { mode: 'width', value: W },
+  // 2× 超采樣（2160px）再由 downscale_png.py LANCZOS 縮回 1080：
+  // 向量（字/圓環）與位圖 logo 全部邊緣更平滑（2026-10-26 阿澤反饋鋸齒）
+  fitTo: { mode: 'width', value: W * 2 },
   font: { fontFiles, loadSystemFonts: true, defaultFontFamily: CFG.font },
   background: C.bg,
 });
