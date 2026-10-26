@@ -10,13 +10,17 @@
   每則貼文自帶一則文案
 
 顯示策略：
-  · 最近 7 天（含今天）預設展開
+  · 最近 3 天（含最新一張圖那天）預設展開
   · 更早的整組折疊，圖片用 data-src 延遲載入（折疊時完全不佔流量與內存）
   · 點「查看更多」才展開並載入
 
+⚠️ 不能改成「只渲染最近 N 天」：週末沒有產線，日期一跳空，週五及以前的卡就會
+   整批從頁面上消失（2026-10-23 的 3-day window 就是這樣讓 10/19–10/23 的卡
+   全部下線，圖還在 docs/img 但頁面看不到）。要控制頁面長度請用折疊閾值 --days。
+
 用法：
-  python3 scripts/build_gallery.py             # 預設：只顯示最近 3 天
-  python3 scripts/build_gallery.py --show 7    # 顯示最近 N 天（僅影響渲染，不刪圖）
+  python3 scripts/build_gallery.py             # 預設：全部上頁（舊組折疊，點「查看更多」才載圖）
+  python3 scripts/build_gallery.py --show 7    # 只上最近 N 天的貼文（僅影響渲染，不刪圖）
   python3 scripts/build_gallery.py --prune 90  # 額外刪掉 docs/img 中超過 90 天的圖（默認保留全部）
   python3 scripts/build_gallery.py --days 3    # 調整「預設展開」的天數（折疊閾值）
 
@@ -39,7 +43,7 @@ def arg(name, d):
 
 
 OPEN_DAYS = arg('--days', 3)     # 最近 N 天預設展開
-SHOW_DAYS = arg('--show', 3)     # 只渲染最近 N 天的貼文（0 = 全部）
+SHOW_DAYS = arg('--show', 0)     # 只渲染最近 N 天的貼文（0 = 全部，默認；舊組折疊不佔流量）
 PRUNE_DAYS = arg('--prune', 0)   # >0 時，docs/img 超過 N 天的圖直接刪除
 
 os.makedirs(IMG, exist_ok=True)
@@ -160,7 +164,7 @@ for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
                   'post': POST_OF.get(kind, kind), 'caption': caption,
                   'mtime': mt, 'time': ts})
 
-# 清掉 docs/img 裡已不在 out/ 的舊檔
+# 本輪 out/ 裡有的圖（會被複製進 docs/img）
 keep = {i['name'] for i in items}
 
 # 可選：清掉超過 PRUNE_DAYS 天的圖（默認 0 = 全留）
@@ -169,9 +173,22 @@ if PRUNE_DAYS > 0:
     keep = {i['name'] for i in items if i['date'] >= cutoff}
     items = [i for i in items if i['date'] >= cutoff]
 
+# 清掉 docs/img 裡已不在 out/ 的舊檔。
+# 但「已入 git 的歷史圖」不刪：某次 runner checkout 就算少帶幾張 out/*.png，
+# 也不能把它們從 docs/img 連根拔掉（否則頁面與 repo 一起永久少圖）。
+try:
+    tracked = {os.path.basename(f) for f in subprocess.run(
+        ['git', '-C', BASE, 'ls-files', 'docs/img'],
+        capture_output=True, text=True).stdout.split()}
+except Exception:
+    tracked = set()
+
 for f in os.listdir(IMG):
-    if f not in keep:
-        os.remove(os.path.join(IMG, f))
+    if f in keep:
+        continue
+    if f in tracked and PRUNE_DAYS == 0:   # 只有顯式 --prune 才允許刪已入庫的歷史圖
+        continue
+    os.remove(os.path.join(IMG, f))
 
 # 只渲染最近 SHOW_DAYS 天（以「最新一張圖的日期」為基準，避免週末沒產線時整頁空白；
 # 圖仍留在 docs/img，只是不上頁面）
@@ -193,9 +210,12 @@ ordered = sorted(groups.items(),
                  key=lambda kv: (kv[0][1], glatest[kv[0]]),
                  reverse=True)
 
-cutoff_open = datetime.date.today() - datetime.timedelta(days=OPEN_DAYS - 1)
+# 以「最新一張圖的日期」為錨，不用 today：runner 是 UTC，且週末無產線時 today 會
+# 把最近幾組全折起來，頁面一開就是空的。
+anchor_day = max((k[1] for k, _ in ordered), default=datetime.date.today())
+cutoff_open = anchor_day - datetime.timedelta(days=OPEN_DAYS - 1)
 n_open = sum(1 for k, _ in ordered if k[1] >= cutoff_open)
-n_open = max(n_open, 1)          # 最新一組一定展開
+n_open = max(n_open, min(3, len(ordered)))   # 至少展開最新 3 則（週末跳空也不會只剩 1 則）
 
 
 def esc(s):
