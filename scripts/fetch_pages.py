@@ -173,6 +173,8 @@ def main():
     ap.add_argument('--week-start', default='')
     ap.add_argument('--target', choices=['week', 'next'], default='next',
                     help='Week Ahead 覆蓋週：week=本週（週一早上發）/ next=下週（預設）')
+    ap.add_argument('--strict-winners', action='store_true',
+                    help='winners 產線用：歷史快照不足時直接 FATAL，絕不出 demo 假數據（2026-10-26 阿澤欽定）')
     args = ap.parse_args()
 
     start = (datetime.strptime(args.week_start, '%Y-%m-%d') if args.week_start
@@ -211,6 +213,9 @@ def main():
                 for r in daily['volume']['rows']}
         json.dump(snap, open(os.path.join(HIST, f"{daily['session']}.json"), 'w'))
     week = load_history(days[0].strftime('%Y-%m-%d'))
+    if getattr(args, 'strict_winners', False) and not week:
+        raise SystemExit(f'FATAL: 週牛熊榜歷史快照不足（{days[0]} 之後需 ≥2 個交易日快照），'
+                         f'中止出圖，不使用 demo 假數據。可用 scripts/backfill_history.py 回填缺日。')
 
     data = {
         'handle': '@onepagemarket',

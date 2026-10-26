@@ -1,0 +1,142 @@
+{
+"AAPL": {
+"dollar_volume": 11856533208,
+"last": 342.94,
+"name": "Apple Inc. Common Stock"
+},
+"AMAT": {
+"dollar_volume": 2788616433,
+"last": 413.11,
+"name": "Applied Materials Inc. Common Stock"
+},
+"AMD": {
+"dollar_volume": 10868448585,
+"last": 538.05,
+"name": "Advanced Micro Devices Inc. Common Stock"
+},
+"AMZN": {
+"dollar_volume": 14746750560,
+"last": 262.45,
+"name": "Amazon.com Inc. Common Stock"
+},
+"AVGO": {
+"dollar_volume": 5841138384,
+"last": 334.59,
+"name": "Broadcom Inc. Common Stock"
+},
+"BE": {
+"dollar_volume": 2257132672,
+"last": 226.22,
+"name": "Bloom Energy Corporation Class A Common Stock"
+},
+"CRWV": {
+"dollar_volume": 6173773984,
+"last": 61.12,
+"name": "CoreWeave Inc. Class A Common Stock"
+},
+"GOOG": {
+"dollar_volume": 4327039296,
+"last": 340.16,
+"name": "Alphabet Inc. Class C Capital Stock"
+},
+"GOOGL": {
+"dollar_volume": 6817620694,
+"last": 344.18,
+"name": "Alphabet Inc. Class A Common Stock"
+},
+"INTC": {
+"dollar_volume": 9351057864,
+"last": 92.03,
+"name": "Intel Corporation Common Stock"
+},
+"LLY": {
+"dollar_volume": 2430446230,
+"last": 1240.34,
+"name": "Eli Lilly and Company Common Stock"
+},
+"LRCX": {
+"dollar_volume": 2827259740,
+"last": 272.2,
+"name": "Lam Research Corporation Common Stock"
+},
+"META": {
+"dollar_volume": 11471089296,
+"last": 705.44,
+"name": "Meta Platforms Inc. Class A Common Stock"
+},
+"MRNA": {
+"dollar_volume": 4263013521,
+"last": 226.89,
+"name": "Moderna Inc. Common Stock"
+},
+"MRVL": {
+"dollar_volume": 4268686905,
+"last": 237.09,
+"name": "Marvell Technology Inc. Common Stock"
+},
+"MSFT": {
+"dollar_volume": 9600639048,
+"last": 533.52,
+"name": "Microsoft Corporation Common Stock"
+},
+"MSTR": {
+"dollar_volume": 1623330690,
+"last": 136.02,
+"name": "Strategy Inc Common Stock Class A"
+},
+"MU": {
+"dollar_volume": 23292578450,
+"last": 904.9,
+"name": "Micron Technology Inc. Common Stock"
+},
+"NBIS": {
+"dollar_volume": 4576255488,
+"last": 170.24,
+"name": "Nebius Group N.V. Class A Ordinary Shares"
+},
+"NVDA": {
+"dollar_volume": 21423461523,
+"last": 217.09,
+"name": "NVIDIA Corporation Common Stock"
+},
+"ORCL": {
+"dollar_volume": 3077658828,
+"last": 129.59,
+"name": "Oracle Corporation Common Stock"
+},
+"PLTR": {
+"dollar_volume": 4646941420,
+"last": 194.15,
+"name": "Palantir Technologies Inc. Class A Common Stock"
+},
+"SNDK": {
+"dollar_volume": 11703057648,
+"last": 1371.12,
+"name": "Sandisk Corporation Common Stock"
+},
+"SPCX": {
+"dollar_volume": 10954632888,
+"last": 147.96,
+"name": "Space Exploration Technologies Corp. Class A Common Stock"
+},
+"TSLA": {
+"dollar_volume": 14287316274,
+"last": 368.06,
+"name": "Tesla Inc. Common Stock"
+},
+"TSM": {
+"dollar_volume": 5191313836,
+"last": 420.22,
+"name": "Taiwan Semiconductor Manufacturing Company Ltd."
+},
+"VZ": {
+"dollar_volume": 712943030,
+"last": 44.15,
+"name": "Verizon Communications Inc. Common Stock"
+},
+"WDC": {
+"dollar_volume": 2752028056,
+"last": 352.21,
+"name": "Western Digital Corporation Common Stock"
+}
+}

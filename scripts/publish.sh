@@ -32,7 +32,15 @@ if [ "$KIND" = "theclose" ]; then
   "$NODE" scripts/build_close.js
   IMG=$(ls -t out/the-close-*.png | head -1)
 else
-  "$PY" scripts/fetch_pages.py --target "$TARGET" "$@"
+  if [ "$KIND" = "winners" ]; then
+    # 週榜窗口＝**最近一個完整交易週**，錨定 close.json 的最新交易日（不是「今天」）
+    # ——週一補跑時「今天所在週」會指到下週、拿不到快照 → 之前靜默退回 demo（Oct 13-17 假數據）
+    WEEK_START=$("$PY" -c "import json,datetime; d=datetime.date.fromisoformat(json.load(open('data/close.json'))['session']); print((d-datetime.timedelta(days=d.weekday())).isoformat())")
+    echo "  週榜窗口起始：$WEEK_START（錨定最近交易日）"
+    "$PY" scripts/fetch_pages.py --target week --week-start "$WEEK_START" --strict-winners "$@"
+  else
+    "$PY" scripts/fetch_pages.py --target "$TARGET" "$@"
+  fi
   # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json
   "$PY" scripts/fetch_logos.py || echo "    ⚠️ fetch_logos 失敗，沿用舊 logos.json"
   # 圖檔日期統一用數據交易日；winners 用最近收盤日（週五），其餘用 On Deck session

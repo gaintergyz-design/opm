@@ -2,8 +2,8 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-26 01:59",
-  "week_label": "Oct 26 – Oct 30",
+  "generated_at": "2026-10-26 10:13",
+  "week_label": "Oct 19 – Oct 23",
   "ondeck": {
     "session": "2026-10-26",
     "slot": "next session",
@@ -50,237 +50,221 @@
     }
   },
   "winners": {
-    "from": "Oct 13",
-    "to": "Oct 17",
-    "universe": 503,
-    "is_demo": true,
+    "from": "2026-10-19",
+    "to": "2026-10-23",
+    "universe": 20,
     "gainers": [
       {
-        "ticker": "ASTS",
-        "pct": 38.4
+        "ticker": "MSTR",
+        "name": "Strategy Inc Common Stock Class A",
+        "pct": 7.34,
+        "last": 146.01,
+        "dollar_volume": 2712246718
       },
       {
-        "ticker": "RKLB",
-        "pct": 29.1
-      },
-      {
-        "ticker": "SOFI",
-        "pct": 23.7
-      },
-      {
-        "ticker": "HOOD",
-        "pct": 19.2
+        "ticker": "AAPL",
+        "name": "Apple Inc. Common Stock",
+        "pct": 1.4,
+        "last": 347.73,
+        "dollar_volume": 13748938705
       },
       {
         "ticker": "PLTR",
-        "pct": 16.8
+        "name": "Palantir Technologies Inc. Class A Common Stock",
+        "pct": 1.34,
+        "last": 196.75,
+        "dollar_volume": 3476254946
       },
       {
-        "ticker": "COIN",
-        "pct": 14.1
+        "ticker": "VZ",
+        "name": "Verizon Communications Inc. Common Stock",
+        "pct": 1.16,
+        "last": 44.66,
+        "dollar_volume": 2280840819
       },
       {
-        "ticker": "SMCI",
-        "pct": 12.6
+        "ticker": "TSLA",
+        "name": "Tesla Inc. Common Stock",
+        "pct": 1.13,
+        "last": 372.22,
+        "dollar_volume": 12939471577
       },
       {
-        "ticker": "IONQ",
-        "pct": 11.3
+        "ticker": "SPCX",
+        "name": "Space Exploration Technologies Corp. Class A Common Stock",
+        "pct": -0.32,
+        "last": 147.49,
+        "dollar_volume": 16314969323
       },
       {
-        "ticker": "MARA",
-        "pct": 9.8
+        "ticker": "MSFT",
+        "name": "Microsoft Corporation Common Stock",
+        "pct": -1.69,
+        "last": 524.51,
+        "dollar_volume": 7175856452
       },
       {
-        "ticker": "AFRM",
-        "pct": 8.4
+        "ticker": "WDC",
+        "name": "Western Digital Corporation Common Stock",
+        "pct": -2.42,
+        "last": 343.67,
+        "dollar_volume": 4795478045
+      },
+      {
+        "ticker": "ORCL",
+        "name": "Oracle Corporation Common Stock",
+        "pct": -2.65,
+        "last": 126.16,
+        "dollar_volume": 2417109028
+      },
+      {
+        "ticker": "NVDA",
+        "name": "NVIDIA Corporation Common Stock",
+        "pct": -2.82,
+        "last": 210.96,
+        "dollar_volume": 16916832824
       }
     ],
     "losers": [
       {
-        "ticker": "LULU",
-        "pct": -28.6
-      },
-      {
-        "ticker": "DG",
-        "pct": -24.3
+        "ticker": "BE",
+        "name": "Bloom Energy Corporation Class A Common Stock",
+        "pct": -14.55,
+        "last": 193.3,
+        "dollar_volume": 6924793311
       },
       {
         "ticker": "MRNA",
-        "pct": -21.7
+        "name": "Moderna Inc. Common Stock",
+        "pct": -11.81,
+        "last": 200.1,
+        "dollar_volume": 4295387220
       },
       {
-        "ticker": "PFE",
-        "pct": -18.9
+        "ticker": "CRWV",
+        "name": "CoreWeave Inc. Class A Common Stock",
+        "pct": -11.27,
+        "last": 54.23,
+        "dollar_volume": 2546194246
       },
       {
-        "ticker": "NKE",
-        "pct": -16.2
+        "ticker": "META",
+        "name": "Meta Platforms Inc. Class A Common Stock",
+        "pct": -8.91,
+        "last": 642.62,
+        "dollar_volume": 9505379920
       },
       {
-        "ticker": "TGT",
-        "pct": -14.5
-      },
-      {
-        "ticker": "BA",
-        "pct": -12.8
+        "ticker": "GOOGL",
+        "name": "Alphabet Inc. Class A Common Stock",
+        "pct": -6.96,
+        "last": 320.21,
+        "dollar_volume": 5625974424
       },
       {
         "ticker": "INTC",
-        "pct": -11.4
+        "name": "Intel Corporation Common Stock",
+        "pct": -5.51,
+        "last": 86.96,
+        "dollar_volume": 6269266413
       },
       {
-        "ticker": "WBA",
-        "pct": -9.7
+        "ticker": "AMZN",
+        "name": "Amazon.com Inc. Common Stock",
+        "pct": -5.51,
+        "last": 248.0,
+        "dollar_volume": 6341122664
       },
       {
-        "ticker": "F",
-        "pct": -8.1
+        "ticker": "AMD",
+        "name": "Advanced Micro Devices Inc. Common Stock",
+        "pct": -3.95,
+        "last": 516.79,
+        "dollar_volume": 7843805029
+      },
+      {
+        "ticker": "AVGO",
+        "name": "Broadcom Inc. Common Stock",
+        "pct": -3.86,
+        "last": 321.68,
+        "dollar_volume": 5120182168
+      },
+      {
+        "ticker": "MU",
+        "name": "Micron Technology Inc. Common Stock",
+        "pct": -3.02,
+        "last": 877.55,
+        "dollar_volume": 18647835704
       }
-    ]
+    ],
+    "is_demo": false
   },
   "week_ahead": {
     "days": [
       {
         "day": "Mon",
-        "date": "Oct 26",
-        "count": 74,
-        "econ": [],
-        "before": [
-          "VZ",
-          "CX",
-          "MMYT",
-          "ARLP",
-          "BOH",
-          "LKFN",
-          "HBT",
-          "DEA"
+        "date": "Oct 19",
+        "count": 27,
+        "econ": [
+          "IMF Meetings"
         ],
-        "after": [
-          "WELL",
-          "CDNS",
-          "NUE",
-          "PSA",
-          "HIG",
-          "CLS",
-          "CINF",
-          "BRO"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Tue",
-        "date": "Oct 27",
-        "count": 178,
+        "date": "Oct 20",
+        "count": 54,
         "econ": [
-          "Chicago Fed National Activity",
-          "Dallas Fed Mfg Business Index",
+          "NAHB Housing Market Index",
           "3-Month Bill Auction",
           "6-Month Bill Auction"
         ],
-        "before": [
-          "KO",
-          "NVS",
-          "BA",
-          "SPGI",
-          "GLW",
-          "HCA",
-          "FCX",
-          "JCI"
-        ],
-        "after": [
-          "V",
-          "STX",
-          "WM",
-          "HOOD",
-          "NXPI",
-          "OKE",
-          "BKR",
-          "TER"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Wed",
-        "date": "Oct 28",
-        "count": 223,
+        "date": "Oct 21",
+        "count": 106,
         "econ": [
           "Atlanta Fed GDPNow",
-          "Core Durable Goods Orders",
-          "CB Consumer Confidence",
-          "Durables Excluding Defense"
+          "Housing Starts",
+          "Building Permits",
+          "Pending Home Sales"
         ],
-        "before": [
-          "GEV",
-          "SAN",
-          "APH",
-          "UBS",
-          "ADP",
-          "PSX",
-          "GSK",
-          "VRT"
-        ],
-        "after": [
-          "GOOG",
-          "GOOGL",
-          "MSFT",
-          "KLAC",
-          "TMUS",
-          "NOW",
-          "BBVA",
-          "FTNT"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Thu",
-        "date": "Oct 29",
-        "count": 322,
+        "date": "Oct 22",
+        "count": 143,
         "econ": [
-          "Goods Trade Balance",
-          "Fed Interest Rate Decision",
-          "FOMC Statement",
-          "FOMC Press Conference"
+          "Crude Oil Inventories",
+          "EIA Weekly Distillates Stocks",
+          "Gasoline Inventories",
+          "MBA 30-Year Mortgage Rate"
         ],
         "before": [
-          "LLY",
-          "MA",
-          "MRK",
-          "CAT",
-          "SHEL",
-          "LIN",
-          "TTE",
-          "BUD"
+          "ZGN"
         ],
-        "after": [
-          "AMZN",
-          "INTC",
-          "GILD",
-          "SNDK",
-          "SYK",
-          "SBUX",
-          "MDLZ",
-          "RSG"
-        ]
+        "after": []
       },
       {
         "day": "Fri",
-        "date": "Oct 30",
-        "count": 54,
+        "date": "Oct 23",
+        "count": 32,
         "econ": [
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales",
-          "Dallas Fed PCE"
+          "Continuing Jobless Claims",
+          "Initial Jobless Claims",
+          "Jobless Claims 4-Week Avg.",
+          "KC Fed Composite Index"
         ],
-        "before": [
-          "XOM",
-          "ABBV",
-          "CVX",
-          "AZN",
-          "BP",
-          "SNY",
-          "GD",
-          "REGN"
-        ],
-        "after": []
+        "before": [],
+        "after": [
+          "RCBC"
+        ]
       }
     ],
     "scope": "this week"

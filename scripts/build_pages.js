@@ -168,11 +168,18 @@ function buildOnDeck() {
 }
 
 /* ---------------- 2. Winners & Losers ---------------- */
+// 週榜窗口標籤：ISO（2026-10-19）→ 'Oct 19'；已是 'Oct 13' 之類則原樣
+const fmtDay = (s) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ''));
+  if (!m) return s || '—';
+  const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${M[Number(m[2]) - 1]} ${Number(m[3])}`;
+};
 function buildWinners() {
   defs = []; uid = 0;
   H = CFG.H;
   const w = D.winners || {};
-  const a = scaffold('Winners & Losers', `${w.from || '—'} → ${w.to || '—'} · ${num(w.universe)} names`);
+  const a = scaffold('Winners & Losers', `${fmtDay(w.from)} → ${fmtDay(w.to)} · ${num(w.universe)} names`);
   const gain = (w.gainers || []).slice(0, 10);
   const lose = (w.losers || []).slice(0, 10);
   const mx = Math.max(1, ...gain.concat(lose).map((r) => Math.abs(r.pct || 0)));
