@@ -3,7 +3,8 @@
 """
 其餘四頁的數據裝配 → data/pages.json
   · On Deck      盤前：當日經濟數據 + 當日財報（盤前/盤後）
-  · Winners & Losers  週牛熊榜（需本地歷史累積，未滿 5 個交易日時標記 demo）
+  · Winners & Losers  週牛熊榜（TradingView 全市場股票池 + Yahoo 官方收盤價直算，
+                     不依賴本地歷史快照；數據取不到即 FATAL，絕不出 demo 假數據）
   · Earnings Week    本週財報日曆（週一~週五，逐日家數 + 市值前三）
   · Week Ahead       下週日程（經濟數據 + 財報家數 + 期權到期）
 
@@ -17,7 +18,9 @@ from zoneinfo import ZoneInfo
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(BASE, 'data', 'pages.json')
 HIST = os.path.join(BASE, 'data', 'history')
-UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
+UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+# ⚠️ Yahoo 按 UA 指紋限流（429）：帶 Chrome/124 的長 UA 已被拉黑（2026-10-26 實測），
+#    短 UA 正常。遇 429 先換 UA，不要傻等。
 NASDAQ = 'https://api.nasdaq.com/api'
 
 
@@ -133,13 +136,122 @@ def econ_of(date_str):
 
 
 def _demo_winners():
-    g = [('ASTS', 38.4), ('RKLB', 29.1), ('SOFI', 23.7), ('HOOD', 19.2), ('PLTR', 16.8),
-         ('COIN', 14.1), ('SMCI', 12.6), ('IONQ', 11.3), ('MARA', 9.8), ('AFRM', 8.4)]
-    l = [('LULU', -28.6), ('DG', -24.3), ('MRNA', -21.7), ('PFE', -18.9), ('NKE', -16.2),
-         ('TGT', -14.5), ('BA', -12.8), ('INTC', -11.4), ('WBA', -9.7), ('F', -8.1)]
-    return {'from': 'Oct 13', 'to': 'Oct 17', 'universe': 503, 'is_demo': True,
-            'gainers': [{'ticker': t, 'pct': v} for t, v in g],
-            'losers': [{'ticker': t, 'pct': v} for t, v in l]}
+    """已廢除（2026-10-26 阿澤欽定：週榜必須全市場權威數據，demo 假數據絕不上卡）。
+    保留空殼只是為了 pages.json 結構兼容；非 winners 產線不會渲染它。"""
+    return {'from': '', 'to': '', 'universe': 0, 'is_demo': True,
+            'gainers': [], 'losers': []}
+
+
+def curl_post(url, body, timeout=40):
+    out = subprocess.run(['curl', '-s', '--max-time', str(timeout),
+                          '-H', f'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                          '-H', 'Content-Type: application/json',
+                          '--data-binary', body, url],
+                         capture_output=True, text=True).stdout
+    try:
+        return json.loads(out) if out.strip().startswith('{') else {}
+    except Exception:
+        return {}
+
+
+def tv_universe(min_cap=2_000_000_000, limit=5000):
+    """TradingView 官方 scanner：美股三大交易所、type=stock、市值 > $2B 的全列表。
+    （TV 的 Perf.W 字段有拆股污染不能用，但它的股票池/市值/收盤價可靠）"""
+    body = json.dumps({
+        'filter': [
+            {'left': 'type', 'operation': 'equal', 'right': 'stock'},
+            {'left': 'exchange', 'operation': 'in_range', 'right': ['NASDAQ', 'NYSE', 'AMEX']},
+            {'left': 'market_cap_basic', 'operation': 'greater', 'right': min_cap},
+        ],
+        'options': {'lang': 'en'},
+        'markets': ['america'],
+        'symbols': {'query': {'types': []}, 'tickers': []},
+        'columns': ['name', 'description', 'close'],
+        'sort': {'sortBy': 'market_cap_basic', 'sortOrder': 'desc'},
+        'range': [0, limit],
+    })
+    import time
+    d = {}
+    for attempt in range(4):
+        d = curl_post('https://scanner.tradingview.com/america/scan', body)
+        if d.get('data'):
+            break
+        print(f'    · TV scanner 空回應，重試 {attempt+1}/4 …')
+        time.sleep(12)
+    out = []
+    for it in (d.get('data') or []):
+        sym = (it.get('s') or '').split(':')[-1].strip().replace('.', '-')
+        desc = ((it.get('d') or [None, None])[1]) or ''
+        # 剔除權證/單位/優先股等非普通股（名稱含關鍵字）
+        if any(k in desc for k in ('Warrant', 'Right', 'Unit', 'Preferred', 'Depositary')):
+            continue
+        if sym:
+            out.append(sym)
+    return out
+
+
+def weekly_returns(symbols, start_day, end_day, batch=20):
+    """Yahoo 官方日 K（spark 批量，**上限 20 檔/請求**，2026-10-26 實測）算週回報：
+    窗口首個交易日收盤 → 末日收盤。失敗批次重試；連續 3 批失敗直接 FATAL。"""
+    import time, urllib.parse
+    s0 = datetime(start_day.year, start_day.month, start_day.day, 0, 0, tzinfo=ET).timestamp()
+    s1 = datetime(end_day.year, end_day.month, end_day.day, 23, 59, tzinfo=ET).timestamp()
+    out, failed = {}, 0
+    for i in range(0, len(symbols), batch):
+        chunk = symbols[i:i + batch]
+        d = {}
+        for attempt in range(3):
+            q = urllib.parse.quote(','.join(chunk), safe=',.-')
+            d = jget(f'https://query1.finance.yahoo.com/v8/finance/spark'
+                     f'?symbols={q}&range=1mo&interval=1d', timeout=40)
+            if d:
+                break
+            time.sleep(8)
+        if not d:
+            failed += 1
+            print(f'    ⚠️ 第 {i//batch+1} 批（{len(chunk)} 檔）重試後仍失敗')
+            if failed >= 3:
+                raise SystemExit(f'FATAL: spark 已失敗 {failed} 批，中止——週榜不出殘缺數據')
+            continue
+        got_any = False
+        for sym, v in d.items():
+            if not isinstance(v, dict):
+                continue
+            ts, cl = v.get('timestamp') or [], v.get('close') or []
+            pts = [(t, c) for t, c in zip(ts, cl) if c and s0 <= t <= s1]
+            if len(pts) >= 2 and pts[0][1] > 0:
+                out[sym] = round((pts[-1][1] / pts[0][1] - 1) * 100, 2)
+                got_any = True
+        if not got_any:
+            # 回應非空但解析不出任何符號（限流 JSON 錯誤體、Bad Request 等）→ 記為失敗批次
+            failed += 1
+            print(f'    ⚠️ 第 {i//batch+1} 批（{len(chunk)} 檔）回應異常（解析 0 檔）')
+            if failed >= 3:
+                raise SystemExit(f'FATAL: spark 已失敗 {failed} 批，中止——週榜不出殘缺數據')
+        time.sleep(0.8)
+    return out
+
+
+def compute_week_winners(start_day, end_day):
+    """週牛熊榜：全市場（市值>$2B）官方收盤價直算，不再依賴本地歷史快照。"""
+    print('[winners] 股票池（TradingView：三大交易所、市值>$2B）...')
+    universe = tv_universe()
+    if len(universe) < 100:
+        raise SystemExit(f'FATAL: 股票池只取到 {len(universe)} 檔，中止')
+    print(f'    {len(universe)} 檔')
+    print('[winners] 週回報（Yahoo 官方日 K 收盤）...')
+    rets = weekly_returns(universe, start_day, end_day)
+    if len(rets) < 100:
+        raise SystemExit(f'FATAL: 週回報只算出 {len(rets)} 檔，中止')
+    rows = sorted(rets.items(), key=lambda kv: kv[1], reverse=True)
+    print(f'    有效 {len(rets)} 檔 | 領漲 {rows[0][0]} {rows[0][1]:+.2f}% '
+          f'| 領跌 {rows[-1][0]} {rows[-1][1]:+.2f}%')
+    return {
+        'from': start_day.strftime('%Y-%m-%d'), 'to': end_day.strftime('%Y-%m-%d'),
+        'universe': len(rets), 'is_demo': False,
+        'gainers': [{'ticker': t, 'pct': p} for t, p in rows[:10]],
+        'losers': [{'ticker': t, 'pct': p} for t, p in rows[-10:][::-1]],
+    }
 
 
 def load_history(since=None):
@@ -212,10 +324,20 @@ def main():
                               'dollar_volume': r['dollar_volume']}
                 for r in daily['volume']['rows']}
         json.dump(snap, open(os.path.join(HIST, f"{daily['session']}.json"), 'w'))
-    week = load_history(days[0].strftime('%Y-%m-%d'))
-    if getattr(args, 'strict_winners', False) and not week:
-        raise SystemExit(f'FATAL: 週牛熊榜歷史快照不足（{days[0]} 之後需 ≥2 個交易日快照），'
-                         f'中止出圖，不使用 demo 假數據。可用 scripts/backfill_history.py 回填缺日。')
+    week = None
+    if getattr(args, 'strict_winners', False):
+        # winners 產線：全市場權威數據直算（TradingView 股票池 + Yahoo 官方收盤價）
+        week = compute_week_winners(days[0], days[-1])
+    else:
+        # 其他產線不渲染週榜：沿用上一份真實數據，絕不再生成 demo 假數據
+        week = _demo_winners()
+        if os.path.exists(OUT):
+            try:
+                prev = (json.load(open(OUT)) or {}).get('winners') or {}
+                if prev.get('gainers'):
+                    week = prev
+            except Exception:
+                pass
 
     data = {
         'handle': '@onepagemarket',

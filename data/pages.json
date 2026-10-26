@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-26 03:27",
+  "generated_at": "2026-10-26 12:13",
   "week_label": "Oct 19 – Oct 23",
   "ondeck": {
     "session": "2026-10-26",
-    "slot": "next session",
+    "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -52,152 +52,92 @@
   "winners": {
     "from": "2026-10-19",
     "to": "2026-10-23",
-    "universe": 20,
+    "universe": 1853,
+    "is_demo": false,
     "gainers": [
       {
-        "ticker": "MSTR",
-        "name": "Strategy Inc Common Stock Class A",
-        "pct": 7.34,
-        "last": 146.01,
-        "dollar_volume": 2712246718
+        "ticker": "BRZE",
+        "pct": 52.73
       },
       {
-        "ticker": "AAPL",
-        "name": "Apple Inc. Common Stock",
-        "pct": 1.4,
-        "last": 347.73,
-        "dollar_volume": 13748938705
+        "ticker": "RHI",
+        "pct": 39.55
       },
       {
-        "ticker": "PLTR",
-        "name": "Palantir Technologies Inc. Class A Common Stock",
-        "pct": 1.34,
-        "last": 196.75,
-        "dollar_volume": 3476254946
+        "ticker": "UWMC",
+        "pct": 36.79
       },
       {
-        "ticker": "VZ",
-        "name": "Verizon Communications Inc. Common Stock",
-        "pct": 1.16,
-        "last": 44.66,
-        "dollar_volume": 2280840819
+        "ticker": "NTSK",
+        "pct": 25.03
       },
       {
-        "ticker": "TSLA",
-        "name": "Tesla Inc. Common Stock",
-        "pct": 1.13,
-        "last": 372.22,
-        "dollar_volume": 12939471577
+        "ticker": "LQDA",
+        "pct": 24.96
       },
       {
-        "ticker": "SPCX",
-        "name": "Space Exploration Technologies Corp. Class A Common Stock",
-        "pct": -0.32,
-        "last": 147.49,
-        "dollar_volume": 16314969323
+        "ticker": "APPN",
+        "pct": 23.82
       },
       {
-        "ticker": "MSFT",
-        "name": "Microsoft Corporation Common Stock",
-        "pct": -1.69,
-        "last": 524.51,
-        "dollar_volume": 7175856452
+        "ticker": "BHVN",
+        "pct": 22.29
       },
       {
-        "ticker": "WDC",
-        "name": "Western Digital Corporation Common Stock",
-        "pct": -2.42,
-        "last": 343.67,
-        "dollar_volume": 4795478045
+        "ticker": "RH",
+        "pct": 20.52
       },
       {
-        "ticker": "ORCL",
-        "name": "Oracle Corporation Common Stock",
-        "pct": -2.65,
-        "last": 126.16,
-        "dollar_volume": 2417109028
+        "ticker": "KVYO",
+        "pct": 20.49
       },
       {
-        "ticker": "NVDA",
-        "name": "NVIDIA Corporation Common Stock",
-        "pct": -2.82,
-        "last": 210.96,
-        "dollar_volume": 16916832824
+        "ticker": "ZS",
+        "pct": 20.05
       }
     ],
     "losers": [
       {
-        "ticker": "BE",
-        "name": "Bloom Energy Corporation Class A Common Stock",
-        "pct": -14.55,
-        "last": 193.3,
-        "dollar_volume": 6924793311
+        "ticker": "CRS",
+        "pct": -24.79
       },
       {
-        "ticker": "MRNA",
-        "name": "Moderna Inc. Common Stock",
-        "pct": -11.81,
-        "last": 200.1,
-        "dollar_volume": 4295387220
+        "ticker": "RGC",
+        "pct": -23.68
       },
       {
-        "ticker": "CRWV",
-        "name": "CoreWeave Inc. Class A Common Stock",
-        "pct": -11.27,
-        "last": 54.23,
-        "dollar_volume": 2546194246
+        "ticker": "CORT",
+        "pct": -23.41
       },
       {
-        "ticker": "META",
-        "name": "Meta Platforms Inc. Class A Common Stock",
-        "pct": -8.91,
-        "last": 642.62,
-        "dollar_volume": 9505379920
+        "ticker": "FPS",
+        "pct": -23.16
       },
       {
-        "ticker": "GOOGL",
-        "name": "Alphabet Inc. Class A Common Stock",
-        "pct": -6.96,
-        "last": 320.21,
-        "dollar_volume": 5625974424
+        "ticker": "FIX",
+        "pct": -20.71
       },
       {
-        "ticker": "INTC",
-        "name": "Intel Corporation Common Stock",
-        "pct": -5.51,
-        "last": 86.96,
-        "dollar_volume": 6269266413
+        "ticker": "DPC",
+        "pct": -20.14
       },
       {
-        "ticker": "AMZN",
-        "name": "Amazon.com Inc. Common Stock",
-        "pct": -5.51,
-        "last": 248.0,
-        "dollar_volume": 6341122664
+        "ticker": "FCFS",
+        "pct": -19.62
       },
       {
-        "ticker": "AMD",
-        "name": "Advanced Micro Devices Inc. Common Stock",
-        "pct": -3.95,
-        "last": 516.79,
-        "dollar_volume": 7843805029
+        "ticker": "TTMI",
+        "pct": -19.16
       },
       {
-        "ticker": "AVGO",
-        "name": "Broadcom Inc. Common Stock",
-        "pct": -3.86,
-        "last": 321.68,
-        "dollar_volume": 5120182168
+        "ticker": "LKQ",
+        "pct": -19.05
       },
       {
-        "ticker": "MU",
-        "name": "Micron Technology Inc. Common Stock",
-        "pct": -3.02,
-        "last": 877.55,
-        "dollar_volume": 18647835704
+        "ticker": "LGN",
+        "pct": -18.41
       }
-    ],
-    "is_demo": false
+    ]
   },
   "week_ahead": {
     "days": [

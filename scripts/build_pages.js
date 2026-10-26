@@ -204,7 +204,7 @@ function buildWinners() {
   drawCol(gain, M, 'Top 10', C.up);
   drawCol(lose, M + colW + 48, 'Bottom 10', C.down);
 
-  a.push(t(M, 1206, 'Ranked by weekly return · same universe as The Close', { size: 20, fill: C.dim }));
+  a.push(t(M, 1206, 'Ranked by weekly return · US-listed stocks (market cap > $2B)', { size: 20, fill: C.dim }));
   return finish(a);
 }
 

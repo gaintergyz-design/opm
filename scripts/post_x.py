@@ -134,7 +134,7 @@ def caption_for(kind):
                 ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in g) +
                 ". Biggest drops: " +
                 ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in l) +
-                f". Universe: {w.get('universe', '—')} most-traded US names. 🧵")
+                f". Universe: {w.get('universe', '—')} US-listed stocks (market cap > $2B). 🧵")
     if kind == 'weekahead' and os.path.exists(p):
         d = json.load(open(p))
         wa = d.get('week_ahead') or {}
