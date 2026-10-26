@@ -54,6 +54,7 @@ POST_OF = {
     'who-owns-meta': 'who-owns-meta',
     'who-owns-aapl': 'who-owns-aapl',
     'who-owns-msft': 'who-owns-msft',
+    'etf-omah': 'etf-omah',
     'earnings-wdc': 'earnings-wdc',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
@@ -62,10 +63,11 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-spcx': 'Who Owns SpaceX?',
              'who-owns-meta': 'Who Owns Meta?',
              'who-owns-aapl': 'Who Owns Apple?',
-             'who-owns-msft': 'Who Owns Microsoft?'}
+             'who-owns-msft': 'Who Owns Microsoft?',
+             'etf-omah': 'OMAH ETF · Top 10 Holdings'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
-         'who-owns-msft']
+         'who-owns-msft', 'etf-omah']
 
 
 def post_name(post):
