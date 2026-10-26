@@ -2,8 +2,8 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-26 04:17",
-  "week_label": "Oct 19 – Oct 23",
+  "generated_at": "2026-10-26 11:34",
+  "week_label": "Oct 26 – Oct 30",
   "ondeck": {
     "session": "2026-10-26",
     "slot": "pre-market",
@@ -143,68 +143,144 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Oct 19",
-        "count": 27,
-        "econ": [
-          "IMF Meetings"
+        "date": "Oct 26",
+        "count": 74,
+        "econ": [],
+        "before": [
+          "VZ",
+          "CX",
+          "MMYT",
+          "ARLP",
+          "BOH",
+          "LKFN",
+          "HBT",
+          "DEA"
         ],
-        "before": [],
-        "after": []
+        "after": [
+          "WELL",
+          "CDNS",
+          "NUE",
+          "PSA",
+          "HIG",
+          "CLS",
+          "CINF",
+          "BRO"
+        ]
       },
       {
         "day": "Tue",
-        "date": "Oct 20",
-        "count": 54,
+        "date": "Oct 27",
+        "count": 176,
         "econ": [
-          "NAHB Housing Market Index",
+          "Chicago Fed National Activity",
+          "Dallas Fed Mfg Business Index",
           "3-Month Bill Auction",
           "6-Month Bill Auction"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "KO",
+          "NVS",
+          "BA",
+          "SPGI",
+          "GLW",
+          "HCA",
+          "FCX",
+          "JCI"
+        ],
+        "after": [
+          "V",
+          "STX",
+          "WM",
+          "HOOD",
+          "NXPI",
+          "OKE",
+          "BKR",
+          "TER"
+        ]
       },
       {
         "day": "Wed",
-        "date": "Oct 21",
-        "count": 106,
+        "date": "Oct 28",
+        "count": 227,
         "econ": [
           "Atlanta Fed GDPNow",
-          "Housing Starts",
-          "Building Permits",
-          "Pending Home Sales"
+          "Core Durable Goods Orders",
+          "CB Consumer Confidence",
+          "Durables Excluding Defense"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "GEV",
+          "SAN",
+          "APH",
+          "UBS",
+          "ADP",
+          "PSX",
+          "GSK",
+          "VRT"
+        ],
+        "after": [
+          "GOOG",
+          "GOOGL",
+          "MSFT",
+          "KLAC",
+          "NOW",
+          "TMUS",
+          "BBVA",
+          "FTNT"
+        ]
       },
       {
         "day": "Thu",
-        "date": "Oct 22",
-        "count": 143,
+        "date": "Oct 29",
+        "count": 316,
         "econ": [
-          "Crude Oil Inventories",
-          "EIA Weekly Distillates Stocks",
-          "Gasoline Inventories",
-          "MBA 30-Year Mortgage Rate"
+          "Goods Trade Balance",
+          "Fed Interest Rate Decision",
+          "FOMC Statement",
+          "FOMC Press Conference"
         ],
         "before": [
-          "ZGN"
+          "LLY",
+          "MA",
+          "MRK",
+          "CAT",
+          "SHEL",
+          "LIN",
+          "TTE",
+          "BUD"
         ],
-        "after": []
+        "after": [
+          "AMZN",
+          "INTC",
+          "GILD",
+          "SNDK",
+          "SYK",
+          "SBUX",
+          "MDLZ",
+          "RSG"
+        ]
       },
       {
         "day": "Fri",
-        "date": "Oct 23",
-        "count": 32,
+        "date": "Oct 30",
+        "count": 57,
         "econ": [
-          "Continuing Jobless Claims",
-          "Initial Jobless Claims",
-          "Jobless Claims 4-Week Avg.",
-          "KC Fed Composite Index"
+          "GDP",
+          "GDP Price Index",
+          "GDP Sales",
+          "Dallas Fed PCE"
         ],
-        "before": [],
-        "after": [
-          "RCBC"
-        ]
+        "before": [
+          "XOM",
+          "ABBV",
+          "CVX",
+          "AZN",
+          "BP",
+          "SNY",
+          "GD",
+          "REGN"
+        ],
+        "after": []
       }
     ],
     "scope": "this week"
