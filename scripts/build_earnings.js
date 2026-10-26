@@ -132,10 +132,17 @@ function kpiCard(x, k) {
   g.push(t(x + 26, KPI_Y + 206, `Est. ${k.est_disp}`, { size: 21, fill: C.gray }));
 
   const bx = x + 306, bw = 42, gap2 = 14, baseY = KPI_Y + 176, maxH = 96;
-  const mx = Math.max(k.actual, k.prior);
-  const h1 = Math.round(k.prior / mx * maxH), h2 = Math.round(k.actual / mx * maxH);
-  g.push(rrect(bx, baseY - h1, bw, h1, 4, '#CBDDEB'));
-  g.push(rrect(bx + bw + gap2, baseY - h2, bw, h2, 4, 'url(#barCur)'));
+  // 支援負值（SPCX 3Q25 EPS −0.36）：零線按比例上移，負柱向下畫
+  const hi = Math.max(k.actual, k.prior, 0), lo = Math.min(k.actual, k.prior, 0);
+  const span = (hi - lo) || 1;
+  const zeroY = baseY - (0 - lo) / span * maxH;
+  const h1 = Math.round(Math.abs(k.prior) / span * maxH), h2 = Math.round(Math.abs(k.actual) / span * maxH);
+  g.push(rrect(bx, k.prior >= 0 ? zeroY - h1 : zeroY, bw, Math.max(h1, 1), 4, '#CBDDEB'));
+  g.push(rrect(bx + bw + gap2, k.actual >= 0 ? zeroY - h2 : zeroY, bw, Math.max(h2, 1), 4, 'url(#barCur)'));
+  if (lo < 0) {
+    // 有負柱時補零線，避免柱體懸空難判讀
+    g.push(`<line x1="${bx - 8}" y1="${zeroY.toFixed(1)}" x2="${bx + bw * 2 + gap2 + 8}" y2="${zeroY.toFixed(1)}" stroke="#C9D5E2" stroke-width="1.4"/>`);
+  }
   g.push(t(bx + bw / 2, baseY + 22, k.prior_txt, { size: 16, fill: C.dim, anchor: 'middle' }));
   g.push(t(bx + bw + gap2 + bw / 2, baseY + 22, k.cur_txt, { size: 16, fill: C.dim, anchor: 'middle' }));
 
@@ -183,13 +190,16 @@ svg.push(t(LP_X, B_Y + 30, 'Profitability', { size: 26, weight: 500 }));
 
 const PX0 = LP_X + 48, PX1 = LP_X + LP_W - 10, PY0 = B_Y + 62, PY1 = B_Y + 246;
 const Y_MAX = MARGIN_MAX;
-const yOf = (v) => PY1 - (v / Y_MAX) * (PY1 - PY0);
+// 支援負值（SPCX 營業利潤率最低 −41.4%）：軸下限可經 marginMin 下探
+const Y_LO = LAY.marginMin != null ? LAY.marginMin : 0;
+const yOf = (v) => PY1 - ((v - Y_LO) / (Y_MAX - Y_LO)) * (PY1 - PY0);
 const xOf = (i, n) => PX0 + (PX1 - PX0) * (i / (n - 1));
 
-for (let v = 0; v <= Y_MAX; v += MARGIN_STEP) {
+const fmtMg = (v) => `${v < 0 ? '\u2212' : ''}${Math.abs(v)}%`;
+for (let v = Y_LO; v <= Y_MAX; v += MARGIN_STEP) {
   const y = yOf(v);
   svg.push(`<line x1="${PX0}" y1="${y.toFixed(1)}" x2="${PX1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
-  svg.push(t(PX0 - 12, y + 5, `${v}%`, { size: 15, fill: C.dim, anchor: 'end' }));
+  svg.push(t(PX0 - 12, y + 5, fmtMg(v), { size: 15, fill: C.dim, anchor: 'end' }));
 }
 
 function drawLine(series, color, wdt) {

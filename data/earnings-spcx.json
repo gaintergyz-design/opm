@@ -1,0 +1,133 @@
+{
+  "ticker": "SPCX",
+  "company": "SpaceX",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 20, 2026 · after close",
+  "brand": {
+    "deep": "#0A2540",
+    "primary": "#1D5C96",
+    "mid": "#2F7EB8",
+    "teal": "#5AA7CE",
+    "pos": "#028948"
+  },
+  "strip": "First profitable quarter as a public company · Adjusted EBITDA $8.81B (+306%) · FCF −$10.0B on $19.6B capex",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 14575,
+      "actual_disp": "$14.58B",
+      "est_disp": "$12.72B",
+      "surprise": 14.6,
+      "prior": 5576,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 161
+    },
+    "eps": {
+      "label": "GAAP EPS · diluted",
+      "actual": 0.35,
+      "actual_disp": "$0.35",
+      "est_disp": "$0.13",
+      "surprise": 169.2,
+      "prior": -0.36,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 197
+    }
+  },
+  "layout": {
+    "marginMax": 70,
+    "marginStep": 10,
+    "marginMin": -50
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    51.5,
+    49.6,
+    49.1,
+    55.3,
+    62.4
+  ],
+  "op_margin": [
+    -4.9,
+    -27.7,
+    -41.4,
+    -1.8,
+    19.1
+  ],
+  "ocf": [
+    3769,
+    2665,
+    1047,
+    2419,
+    9631
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 2
+  },
+  "mix_title": "Revenue mix",
+  "mix_center": "si revenue",
+  "mix_colors": [
+    "#0A2540",
+    "#2F7EB8",
+    "#5AA7CE"
+  ],
+  "mix": [
+    {
+      "name": "Super Intelligence",
+      "pct": 51.9,
+      "value": "$7.56B"
+    },
+    {
+      "name": "Connectivity",
+      "pct": 36.0,
+      "value": "$5.25B"
+    },
+    {
+      "name": "Space",
+      "pct": 12.1,
+      "value": "$1.77B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 · capex at full tilt",
+    "items": [
+      {
+        "k": "Capex",
+        "v": "$35–40B",
+        "note": "Q4 guide · Q3 was $19.6B"
+      },
+      {
+        "k": "1Q27 revenue",
+        "v": "$33–37B",
+        "note": "CFO guide · Q3 was $14.6B"
+      },
+      {
+        "k": "Revenue run-rate",
+        "v": "$100B ARR",
+        "note": "by Dec 2026 · reaffirmed"
+      },
+      {
+        "k": "Compute",
+        "v": "up to 3 GW",
+        "note": "year-end · 1.7 GW as of Sep 30"
+      },
+      {
+        "k": "Starship",
+        "v": "Flight 15 in Nov",
+        "note": "first booster + ship recovery"
+      }
+    ]
+  },
+  "notes": "口徑：8-K Ex-99.1（2026-10-20）+ 424B4 招股書 + 財報會紀要。營收 14,575 vs 共識 12,720（LSEG）＝+14.6%；EPS 0.35 vs 0.13（LSEG）＝+169.2%；去年同期 EPS −0.36。毛利率＝(營收−成本營收)/營收：3Q25 51.5 / 4Q25 49.6（FY25 9,451−9M25 6,949 推得成本 2,502，營收 4,960）/ 1Q26 49.1（4,694−2,388）/ 2Q26 55.3（7,814−3,495）/ 3Q26 62.4（14,575−5,478）。營業利潤率：3Q25 −4.9 / 4Q25 −27.7（FY25 −2,589−9M25 −1,216 推得 −1,373）/ 1Q26 −41.4 / 2Q26 −1.8 / 3Q26 19.1。OCF：3Q25 3,769（9M25 4,120−H1 351）/ 4Q25 2,665（FY25 6,785−4,120）/ 1Q26 1,047 / 2Q26 2,419 / 3Q26 9,631（9M26 13,097−H1 3,466）。展望取自財報會：Q4 capex 35–40B、1Q27 營收 33–37B、年底 ARR 100B 重申、算力年底最高 3GW、Flight 15 十一月嘗試兩級回收。"
+}
