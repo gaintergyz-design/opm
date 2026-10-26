@@ -50,7 +50,10 @@ function logoAt(ticker, x, cy, size) {
     return `<circle cx="${x + r}" cy="${cy}" r="${r}" fill="#F6F7F9"/>` + ring;
   }
   defs.push(`<clipPath id="${id}"><circle cx="${x + r}" cy="${cy}" r="${r}"/></clipPath>`);
-  return `<g clip-path="url(#${id})"><image x="${x}" y="${cy - r}" width="${size}" height="${size}" href="${uri}"/></g>` + ring;
+  // 圖不鋪滿直徑：留 4% 餘量（配合 logo 素材本身的內縮留白），避免圓形裁切切到四角
+  const inner = size * 0.96;
+  const off = (size - inner) / 2;
+  return `<g clip-path="url(#${id})"><image x="${x + off}" y="${cy - r + off}" width="${inner}" height="${inner}" href="${uri}" image-rendering="optimizeQuality"/></g>` + ring;
 }
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

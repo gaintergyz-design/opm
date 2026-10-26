@@ -96,7 +96,9 @@ const logoUri = LOGOS[TICK];
 if (logoUri) {
   const ls2 = 44, lx = pillX - 16 - ls2, cid = `lg${uid++}`;
   defs.push(`<clipPath id="${cid}"><circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}"/></clipPath>`);
-  svg.push(`<g clip-path="url(#${cid})"><image x="${lx}" y="${91 - ls2 / 2}" width="${ls2}" height="${ls2}" href="${logoUri}"/></g>`);
+  // 圖不鋪滿直徑：留 4% 餘量，避免圓形裁切切到四角（同 build_pages/build_close）
+  const ein = ls2 * 0.96, eoff = (ls2 - ein) / 2;
+  svg.push(`<g clip-path="url(#${cid})"><image x="${lx + eoff}" y="${91 - ls2 / 2 + eoff}" width="${ein}" height="${ein}" href="${logoUri}" image-rendering="optimizeQuality"/></g>`);
   svg.push(`<circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}" fill="none" stroke="#DDE6EF" stroke-width="1.2"/>`);
 } else if (D.mono_badge) {
   // 只有字標的品牌（Netflix 的 wordmark 塞進 46px 圓只剩一條線）→ 品牌色圓底 + 白首字母

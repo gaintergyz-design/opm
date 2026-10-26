@@ -15,7 +15,11 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGO_DIR = os.path.join(BASE, 'assets', 'logos')
 OUT = os.path.join(BASE, 'data', 'logos.json')
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
-SIZE = 96
+# 256 而非 96：卡上以 26-30px 顯示，源圖太小會鋸齒（2026-10-26 阿澤指出）
+SIZE = 256
+# 留白係數：卡上 logo 用圓形裁切，方形圖的**四角會被切掉**。
+# 內容必須落在圓的內接正方形內（邊長 = 直徑/√2 ≈ 0.707），故整圖放大到 1/0.68 ≈ 1.47 倍。
+FIT = 1.47
 
 SRC = [
     'https://financialmodelingprep.com/image-stock/{}.png',
@@ -59,8 +63,8 @@ def fetch(t):
         bbox = im.split()[3].getbbox()
         if bbox:
             im = im.crop(bbox)
-        # 正方形 + 6% 留白
-        side = int(max(im.size) * 1.12)
+        # 正方形 + 留白（見 FIT：確保內容不被圓形裁切切角）
+        side = int(max(im.size) * FIT)
         canvas = Image.new('RGBA', (side, side), (0, 0, 0, 0))
         canvas.paste(im, ((side - im.size[0]) // 2, (side - im.size[1]) // 2), im)
         canvas = canvas.resize((SIZE, SIZE), Image.LANCZOS)
