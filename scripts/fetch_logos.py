@@ -17,6 +17,10 @@ OUT = os.path.join(BASE, 'data', 'logos.json')
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
 # 256 而非 96：卡上以 26-30px 顯示，源圖太小會鋸齒（2026-10-26 阿澤指出）
 SIZE = 256
+# logos.json 嵌入尺寸：64px（≈卡上顯示尺寸的 2 倍）。
+# 實測 resvg 把 256px 直接縮到 30px 會鋸齒（大比例降採樣質量差），
+# 先用 LANCZOS 預縮到 64px 再交 resvg 1:2 縮放，邊緣平滑（2026-10-26 對照實驗）。
+EMBED = 64
 # 留白係數：卡上 logo 用圓形裁切，方形圖的**四角會被切掉**。
 # 內容必須落在圓的內接正方形內（邊長 = 直徑/√2 ≈ 0.707），故整圖放大到 1/0.68 ≈ 1.47 倍。
 FIT = 1.47
@@ -129,10 +133,14 @@ def main():
             (ok if good else fail).append(t)
 
     logos = {}
+    buf = io.BytesIO()
     for t in ticks:
         path = os.path.join(LOGO_DIR, f'{t}.png')
         if os.path.exists(path):
-            logos[t] = 'data:image/png;base64,' + base64.b64encode(open(path, 'rb').read()).decode()
+            im = Image.open(path).convert('RGBA').resize((EMBED, EMBED), Image.LANCZOS)
+            buf.truncate(0); buf.seek(0)
+            im.save(buf, 'PNG')
+            logos[t] = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
     json.dump(logos, open(OUT, 'w'), ensure_ascii=False)
 
     print(f'OK {len(ok)} | FAIL {len(fail)}')
