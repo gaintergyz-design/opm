@@ -139,5 +139,7 @@ jobs:
             echo "無變更"
           else
             git commit -m "cards: $(date -u +%F) ${{ steps.kind.outputs.kind }}"
+            # 補跑/排程重疊時遠端可能已前進，rebase 後再推，避免 non-fast-forward 丟卡
+            git pull --rebase || true
             git push
           fi
