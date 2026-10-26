@@ -1,0 +1,138 @@
+{
+  "ticker": "TSM",
+  "company": "Taiwan Semiconductor",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 15, 2026 · before US open",
+  "brand": {
+    "deep": "#8A1A12",
+    "primary": "#DA291C",
+    "mid": "#E4574A",
+    "teal": "#5B7C99",
+    "pos": "#028948"
+  },
+  "strip": "Beat $44.6–45.8B company guide · advanced nodes 79% of wafer revenue · HPC now 68% of sales",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 46720,
+      "actual_disp": "$46.72B",
+      "est_disp": "$45.20B",
+      "surprise": 3.4,
+      "prior": 33090,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 41.2
+    },
+    "eps": {
+      "label": "EPS per ADR",
+      "actual": 4.6,
+      "actual_disp": "$4.60",
+      "est_disp": "$4.53",
+      "surprise": 1.5,
+      "prior": 2.73,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 68.7
+    }
+  },
+  "layout": {
+    "marginMax": 70,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    59.5,
+    62.3,
+    66.2,
+    67.7,
+    66.4
+  ],
+  "op_margin": [
+    50.6,
+    54.0,
+    58.1,
+    60.3,
+    58.7
+  ],
+  "ocf": [
+    450,
+    750,
+    699,
+    783,
+    920
+  ],
+  "ocf_fmt": {
+    "unit": "NT$B",
+    "div": 1,
+    "dec": 0,
+    "step": 200
+  },
+  "mix_title": "Revenue mix · platform",
+  "mix_center": "HPC revenue",
+  "mix_colors": [
+    "#8A1A12",
+    "#DA291C",
+    "#E4574A",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "HPC",
+      "pct": 68,
+      "value": "$31.8B"
+    },
+    {
+      "name": "Smartphone",
+      "pct": 21,
+      "value": "$9.8B"
+    },
+    {
+      "name": "Automotive",
+      "pct": 4,
+      "value": "$1.9B"
+    },
+    {
+      "name": "IoT & Others",
+      "pct": 7,
+      "value": "$3.3B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 · 2nm steep ramp",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$52.3–54.3B",
+        "note": "mid +14% QoQ · +58% Y/Y"
+      },
+      {
+        "k": "Gross margin",
+        "v": "65–67%",
+        "note": "2nm ramp + overseas dilution"
+      },
+      {
+        "k": "Operating margin",
+        "v": "56.5–58.5%",
+        "note": "guide · 3Q26 was 58.7%"
+      },
+      {
+        "k": "FY26 revenue",
+        "v": "+~44% USD",
+        "note": "raised from >40% view"
+      },
+      {
+        "k": "Free cash flow",
+        "v": "NT$476.6B",
+        "note": "Q3 record · capex NT$443.2B"
+      }
+    ]
+  },
+  "notes": "口徑：TSMC 3Q26 Earnings Release / Management Report（pr.tsmc.com news/3346，2026-10-15）＋ 2Q26 Management Report 四季現金流表。美元營收 $46.72B（+41.2% Y/Y、+16.2% QoQ），高於公司財測 44.6–45.8B（中值 45.2 → +3.4%）；EPS 每 ADR $4.60（NT$29.43），市場預期均值約 NT$29（經濟日報）→ 換算約 $4.53（+1.5%）；3Q25 prior $2.73（4.60/1.687）。NT$ 營收 1,494.24B（+50.9%）；淨利 763.06B（+68.7%）；GM 66.4%（財測 65–67 內）、OM 58.7%（高於財測 56–58）。五季毛利率／營益率：3Q25 59.5/50.6、4Q25 62.3/54.0、1Q26 66.2/58.1、2Q26 67.7/60.3、3Q26 66.4/58.7（2Q26 與 3Q25 由 3Q26 官方環比/同比差值推回，其餘為各季原稿）。OCF（NT$B，管理報告現金流表，4Q25/3Q25 為報告內取整值）：3Q25 450、4Q25 750、1Q26 698.97、2Q26 783.36、3Q26 919.77。mix＝應用平台佔總營收（HPC 68／Smartphone 21／Automotive 4／IoT 4＋Consumer 1＋其他 2 併為 IoT & Others 7），價值欄金額按 46.72B 推算。展望取自法說：Q4 營收 52.3–54.3B（中值 +14% QoQ／+58% Y/Y）、GM 65–67%、OM 56.5–58.5%（匯率假設 31.8）；FY26 美元營收 +約 44%（上修自「略高於 40%」）；Q3 FCF 476.56B（capex 443.21B）。製程：2nm 8%、3nm 33%、5nm 28%、7nm 10%，先進製程 79%。"
+}
