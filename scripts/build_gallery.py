@@ -68,10 +68,16 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-meta': 'Who Owns Meta?',
              'who-owns-aapl': 'Who Owns Apple?',
              'who-owns-msft': 'Who Owns Microsoft?',
-             'etf-omah': 'OMAH ETF · Top 10 Holdings'}
+             'etf-omah': 'OMAH ETF · Top 10 Holdings',
+             'anthropic-s1': 'Anthropic S-1 · 6 cards'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
-         'who-owns-msft', 'etf-omah']
+         'who-owns-msft', 'etf-omah', 'anthropic-s1']
+
+# 總結型系列：多張卡（-p01..pNN）共用一則貼文 → 歸併成同一 kind、同一 post 組
+def kind_alias(kind):
+    m = re.match(r'^(anthropic-s1)-p\d+$', kind)
+    return m.group(1) if m else kind
 
 
 def post_name(post):
@@ -154,6 +160,7 @@ items = []
 for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
     name = os.path.basename(p)
     kind, d = parse(name)
+    kind = kind_alias(kind)
     if d is None:
         continue
     shutil.copy2(p, os.path.join(IMG, name))

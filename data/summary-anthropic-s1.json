@@ -1,0 +1,221 @@
+{
+  "handle": "@onepagemarket",
+  "series": "ANTHROPIC · S-1",
+  "date": "Oct 27, 2026",
+  "slug": "anthropic-s1",
+  "cards": [
+    {
+      "no": "01",
+      "tag": "PRICING LOGIC",
+      "title": "Model, app, agent",
+      "sub": "Revenue up 13× in a year — with an $80.7B loss attached",
+      "hero": {
+        "value": "$16.3B",
+        "label": "Revenue · 1H 2026",
+        "delta": "+1,368% YoY"
+      },
+      "blocks": [
+        {
+          "type": "bars",
+          "title": "Revenue, USD",
+          "items": [
+            { "label": "2023", "value": 0.041, "display": "$41M" },
+            { "label": "2024", "value": 0.386, "display": "$386M" },
+            { "label": "2025", "value": 4.585, "display": "$4.59B" },
+            { "label": "1H 2026", "value": 16.286, "display": "$16.29B" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Where it comes from",
+          "items": [
+            { "k": "Consumption-based (pay-for-intelligence)", "v": "80%", "sub": "$13.1B in 1H 2026" },
+            { "k": "Subscriptions", "v": "20%", "sub": "$3.2B in 1H 2026" },
+            { "k": "Net revenue retention", "v": "~900%", "sub": "as of Sep 30, 2026" },
+            { "k": "Annualised run-rate", "v": "~$65B", "sub": "market estimate" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Models — four Claude lines: Mythos, Opus, Sonnet, Haiku",
+        "Apps — subs $0.98B → $7.89B, then $3.2B in 1H 2026",
+        "Agents — Claude Code first, Cowork adopted even faster"
+      ]
+    },
+    {
+      "no": "02",
+      "tag": "ROADMAP",
+      "title": "Revenue outrunning compute",
+      "sub": "11,900 customers above $100K a year — 950 twelve months ago",
+      "hero": {
+        "value": "11,900",
+        "label": "Customers paying >$100K / yr",
+        "delta": "12.5× in a year"
+      },
+      "blocks": [
+        {
+          "type": "rows",
+          "title": "Customer pyramid · Sep 30, 2026",
+          "items": [
+            { "k": "Above $10M a year", "v": "~250" },
+            { "k": "Above $1M a year", "v": "1,900" },
+            { "k": "Above $100K a year", "v": "11,900", "sub": "950 a year earlier" }
+          ]
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "value": "5,300", "label": "Employees · from 940" },
+            { "value": "$6.6M", "label": "Rev / head · from $1.4M" },
+            { "value": "−40%", "label": "Cost per task · Opus 5.5" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Q2 2026 revenue +1,368% while compute spend rose 300%",
+        "End state: “a country of geniuses in a datacenter”",
+        "Millions of agents on open-ended tasks lasting weeks"
+      ]
+    },
+    {
+      "no": "03",
+      "tag": "MOAT",
+      "title": "Five layers, one cost curve",
+      "sub": "Research, models, products, ops, customers — each layer cuts cost",
+      "hero": {
+        "items": [
+          { "value": "5", "label": "layers of vertical integration" },
+          { "value": "50%+", "label": "of $100K+ customers run platform + app" }
+        ]
+      },
+      "blocks": [
+        {
+          "type": "stack",
+          "items": [
+            { "n": "1", "title": "Research", "desc": "Constitutional AI, mechanistic interpretability, alignment science" },
+            { "n": "2", "title": "Models", "desc": "Pre-training, post-training, evaluation" },
+            { "n": "3", "title": "Products", "desc": "Claude.ai, Claude Code, Claude Cowork" },
+            { "n": "4", "title": "Operations", "desc": "Compute scheduling, red-teaming, quality control" },
+            { "n": "5", "title": "Customers", "desc": "Governments, Fortune 500, developers" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Same-class capability needs less compute every cycle",
+        "Alignment overhead shrinking as a share of training cost",
+        "Sales cost ratio flat while the customer count multiplies"
+      ]
+    },
+    {
+      "no": "04",
+      "tag": "SUPPLY CHAIN",
+      "title": "Giants in the stack",
+      "sub": "Compute suppliers on the way in — shareholders on the way out",
+      "hero": {
+        "items": [
+          { "value": "3", "label": "hyperscalers, all natively supported" },
+          { "value": "2045", "label": "supply commitments run out to" }
+        ]
+      },
+      "blocks": [
+        {
+          "type": "logos",
+          "title": "Who actually runs the compute",
+          "items": [
+            { "ticker": "AMZN", "name": "Amazon", "role": "Trainium, Project Rainier · notes convert to Class N" },
+            { "ticker": "GOOGL", "name": "Google", "role": "TPU clusters · material share of training" },
+            { "ticker": "MSFT", "name": "Microsoft", "role": "Azure · NVIDIA GPU capacity" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Also in the chain",
+          "items": [
+            { "k": "Anthropic Direct", "v": "lease chips, own facilities" },
+            { "k": "Systems integrators", "v": "Accenture · Deloitte · KPMG · PwC" },
+            { "k": "Mid-market JV", "v": "Ode with Anthropic" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Amazon holds convertible notes, converted at IPO, capped stake",
+        "Google TPU and Microsoft GPU sit beside Anthropic’s own capacity",
+        "Shift from pure cloud buying to cloud plus own infrastructure"
+      ]
+    },
+    {
+      "no": "05",
+      "tag": "CONTROL",
+      "title": "One share, 50.1% of the vote",
+      "sub": "Founders pledge 80% of their stock to charity — and keep the wheel",
+      "hero": {
+        "value": "50.1%",
+        "label": "voting power from a single Class F share",
+        "delta": "zero economic rights"
+      },
+      "blocks": [
+        {
+          "type": "rows",
+          "title": "Governance stack",
+          "items": [
+            { "k": "Founder LLC · Class F", "v": "1 share", "sub": "50.1% of total votes, no economics" },
+            { "k": "LTBT · Class T", "v": "1 share", "sub": "elects and removes the board majority" },
+            { "k": "Delaware PBC", "v": "charter", "sub": "AI for the long-term benefit of humanity" },
+            { "k": "Seven co-founders", "v": "80%", "sub": "of personal shares pledged to charity" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Pay, 2025",
+          "items": [
+            { "k": "Dario Amodei, CEO", "v": "$18.0M" },
+            { "k": "Daniela Amodei, President", "v": "$16.4M" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Base salary $1.4M each from July 2026, plus IPO-linked RSUs",
+        "RSU charge of $29B booked, another $23.7B over ~2.1 years",
+        "Public holders carry opex and capex; the mission holds the wheel"
+      ]
+    },
+    {
+      "no": "06",
+      "tag": "RISKS",
+      "title": "Compute, losses, limits",
+      "sub": "$72.4B of the $80.7B net loss never left the building",
+      "hero": {
+        "items": [
+          { "value": "$80.7B", "label": "net loss · 1H 2026" },
+          { "value": "$693M", "label": "operating loss · adjusted profit $1.6B" }
+        ]
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "title": "What the filing warns about",
+          "items": [
+            "Growth may not last — the surge reflects early adoption, per the filing",
+            "Compute is booked 12–18 months early; the cost lands before revenue does",
+            "$72.4B of the loss is fair-value moves on converts, derivatives, SAFE",
+            "Top five customers are ~25% of revenue; compute leans on three clouds",
+            "$1.5B Bartz copyright settlement booked in 2025"
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Balance sheet · Jun 30, 2026",
+          "items": [
+            { "k": "Cash, equivalents and short-term investments", "v": "$131.7B" },
+            { "k": "Raised to date", "v": "$141.1B" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Convert losses fade at IPO — RSU charges start right after",
+        "What investors buy is not today’s profit but the build-out",
+        "The bet is one vertical chain, priced at a trillion dollars"
+      ]
+    }
+  ]
+}
