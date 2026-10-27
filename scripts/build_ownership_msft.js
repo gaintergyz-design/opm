@@ -102,7 +102,7 @@ const OPTS = {
   assetsDir: path.join(BASE, 'assets', 'msft'),
   outBase: 'msft',
   start: -80,
-  caption: 'Who owns Microsoft? Institutions hold 75.2% — Vanguard 9.8%, BlackRock 8.2%, State Street 4.3%. Ballmer is the largest individual shareholder at 4.4%; Gates is down to 1.4% after his foundation exited in early 2026. 🧵',
+  caption: 'Ballmer still owns more Microsoft than Gates: 4.4% vs 1.4%.\nInstitutions hold 75.2% — Vanguard 9.8%, BlackRock 8.2%, State Street 4.3%.\nGates exited via his foundation in early 2026. One page ↓',
   relaxCost: { even: 0.55, mid: 1.15 },
   ring: { CX: 550, CY: 760, RX: 245, RY: 162, D: 50, IX: 115, IY: 66 },
   wallShade: -0.30,

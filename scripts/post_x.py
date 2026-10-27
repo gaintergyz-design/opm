@@ -108,6 +108,48 @@ def create_post(text, media_id, token):
 
 
 # ---------- 自動文案 ----------
+# 寫法約束（2026-10-27 阿澤定）：每則 ≤3 行、≤200 字元，第一行必須是「一眼抓人」的
+# 那一句，不放欄目名當開頭（欄目名已經印在圖上，文字位要留給 hook）。
+# 全部只寫事實與數字：不做方向判斷、不評價個股，符合 No takes 定位。
+def _idx_short(label):
+    """S&P 500 → S&P；Russell 2000 → Russell（省字，餵給 X 的第一行）"""
+    m = label.split(' (')[0]
+    return {'S&P 500': 'S&P', 'Russell 2000': 'Russell', 'Dow 30': 'Dow'}.get(m, m)
+
+
+def _tone(pcts):
+    """一句話定調，讓第一行不是乾巴巴的數字串。"""
+    if not pcts:
+        return ''
+    if all(p < 0 for p in pcts):
+        return 'All three down.'
+    if all(p > 0 for p in pcts):
+        return 'All three up.'
+    return 'Mixed close.'
+
+
+def _num(n):
+    """1853 → 1,853"""
+    try:
+        return f'{int(n):,}'
+    except Exception:
+        return str(n)
+
+
+def _dedupe(events):
+    """econ 清單常有 Continuing / Initial / 4-Week Avg 三胞胎，只留第一條，避免文案變垃圾。"""
+    out = []
+    for n in events:
+        n = (n or '').strip().rstrip('.')
+        if not n:
+            continue
+        low = n.lower()
+        if any(low in o.lower() or o.lower() in low for o in out):
+            continue
+        out.append(n)
+    return out
+
+
 def caption_for(kind):
     p = os.path.join(BASE, 'data', 'pages.json')
     c = os.path.join(BASE, 'data', 'close.json')
@@ -115,37 +157,40 @@ def caption_for(kind):
         o = json.load(open(p))['ondeck']
         e = o['earnings']
         pre = ', '.join(e['before'][:3]); post = ', '.join(e['after'][:3])
-        ev = '; '.join(x['event'] for x in o['econ'][:3]) or 'no major US data'
-        return (f"On Deck for today: {ev}. "
-                f"{e['total']} companies report — {pre} before the open, "
-                f"{post} after the close. 🧵")
+        ev = _dedupe([x['event'] for x in o.get('econ', [])])[:2]
+        data = (' · '.join(ev)) if ev else 'No major US data today'
+        return (f"{e['total']} companies report today.\n"
+                f"Before the bell: {pre}. After the close: {post}.\n"
+                f"{data}. One page ↓")
     if kind == 'theclose' and os.path.exists(c):
         d = json.load(open(c))
-        idx = ' · '.join(f"{i['label'].split(' (')[0]} {i['pct']:+.2f}%"
-                         for i in d.get('indexes', []))
+        rows = d.get('indexes', [])
+        idx = ' · '.join(f"{_idx_short(i['label'])} {i['pct']:+.2f}%" for i in rows)
         top = (d.get('volume') or {}).get('rows', [])[:3]
-        lead = ', '.join(f"{r['ticker']} {r['pct']:+.2f}%" for r in top if r.get('pct') is not None)
-        return (f"The Close: {idx}. Most traded: {lead}. "
-                f"Top 20 by turnover inside. 🧵")
+        lead = ' · '.join(f"{r['ticker']} {r['pct']:+.2f}%"
+                          for r in top if r.get('pct') is not None)
+        return (f"{_tone([i['pct'] for i in rows])} {idx}.\n"
+                f"Turnover went to {lead}.\n"
+                f"Top 20 by dollar volume, one page ↓")
     if kind == 'winners' and os.path.exists(p):
         w = json.load(open(p)).get('winners') or {}
         g = w['gainers'][:3]; l = w['losers'][:3]
-        return ("Week in review: top gainers " +
-                ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in g) +
-                ". Biggest drops: " +
-                ', '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in l) +
-                f". Universe: {w.get('universe', '—')} US-listed stocks (market cap > $2B). 🧵")
+        return (f"Last week, {_num(w.get('universe', 0))} US names ranked.\n"
+                "Top: " + ' · '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in g) + "\n"
+                "Bottom: " + ' · '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in l) + "\n"
+                "Full list, one page ↓")
     if kind == 'weekahead' and os.path.exists(p):
         d = json.load(open(p))
         wa = d.get('week_ahead') or {}
         days = wa.get('days') or []
         scope = 'Next week' if wa.get('scope') == 'next week' else 'This week'
-        head = ', '.join(f"{x['day']} {x['econ'][0]}" for x in days[:3] if x.get('econ'))
+        head = ' · '.join(f"{x['day']} {x['econ'][0]}" for x in days[:2] if x.get('econ'))
         names = []
         for x in days:
             names += (x.get('before') or [])[:1] + (x.get('after') or [])[:1]
-        return (f"{scope} in US markets: {head}. Key earnings: "
-                f"{', '.join(names[:6])}. Full calendar in the card. 🧵")
+        return (f"{scope} in US markets: {head or 'quiet calendar'}.\n"
+                f"Earnings: {', '.join(names[:6])}.\n"
+                f"Whole week, one page ↓")
     return ''
 
 
@@ -192,7 +237,11 @@ def main():
     if not text:
         print('缺文案：--text 或 --type ondeck/theclose'); sys.exit(1)
     if len(text) > 280:
-        text = text[:277] + '...'
+        # 斷在空白處，不要切半個字／半個數字（切壞的 "€44-45…" 比超長更難看）
+        cut = text[:277]
+        sp = cut.rfind(' ')
+        print(f'⚠️ 文案 {len(text)} 字元，超出 X 上限，已截斷')
+        text = (cut[:sp] if sp > 180 else cut).rstrip(' ,·-') + '…'
 
     # 只出文案（手動發帖模式）：寫成 txt 供複製，不需要任何憑證
     if '--caption-only' in args:

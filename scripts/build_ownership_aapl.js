@@ -57,7 +57,7 @@ build({
   assetsDir: path.join(BASE, 'assets', 'aapl'),
   outBase: 'aapl',
   start: -106,
-  caption: "Who owns Apple? Institutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%. Insiders hold just 0.06% — no controlling shareholder. Buffett's Berkshire: 1.6%. 🧵",
+  caption: "Insiders own 0.06% of Apple. Nobody controls it.\nInstitutions hold 65.7% — Vanguard 9.4%, BlackRock 8.0%, State Street 4.2%.\nBerkshire 1.6%. Full breakdown, one page ↓",
   relaxCost: { even: 0.45, mid: 1.2 },
   ring: { CX: 550, CY: 760, RX: 245, RY: 162, D: 50, IX: 115, IY: 66 },
   wallShade: -0.30,

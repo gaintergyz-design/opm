@@ -1,1 +1,3 @@
-IBM Q3 2026: revenue $17.10B, up 4.7% Y/Y and 1.7% ahead of the $16.82B consensus. Operating EPS $2.95 versus $2.85 expected; GAAP diluted EPS $2.31, up 26% on a much lower tax rate. Gross margin 56.8% GAAP (−50 bps); operating pre-tax margin 19.3%, up 70 bps. Software led at $7.80B (+8%, Red Hat +11%, Data +19%), Consulting flat at $5.33B, Infrastructure +4% as Distributed rose 31% ahead of the z17 cycle. Free cash flow $3.0B, up 28% Y/Y — and the FY26 outlook was raised: FCF now expected to grow by more than $1B Y/Y. 🧵
+IBM Q3: revenue $17.10B, +4.7% Y/Y — a beat.
+EPS $2.95 vs $2.85. Software +8%, Red Hat +11%.
+FY26 free cash flow outlook raised by $1B+. One page ↓

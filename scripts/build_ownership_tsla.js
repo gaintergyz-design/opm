@@ -43,7 +43,7 @@ const OPTS = {
   assetsDir: path.join(BASE, 'assets', 'tsla'),
   outBase: 'tsla',
   start: -80,
-  caption: 'Who owns Tesla? Elon Musk holds 19.9% per his June 13G — the largest individual stake. Institutions hold 43.7%: Vanguard 5.9%, BlackRock 5.4%, State Street 3.0%. Nearly 40% sits with retail and other holders. 🧵',
+  caption: 'Musk owns 19.9% of Tesla — the largest single stake.\nInstitutions 43.7%: Vanguard 5.9%, BlackRock 5.4%, State Street 3.0%.\nRetail and everyone else: ~40%. One page ↓',
   relaxCost: { even: 0.55, mid: 1.15 },
   ring: { CX: 550, CY: 760, RX: 245, RY: 162, D: 50, IX: 115, IY: 66 },
   wallShade: -0.30,

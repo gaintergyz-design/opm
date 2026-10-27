@@ -147,7 +147,7 @@ def stamp_of(p, name):
         git_ep = GIT_TIMES.get(f'out/{name}')
         mtime = os.stat(p).st_mtime
         ep = min(git_ep, mtime) if git_ep else mtime
-    return ep, datetime.datetime.fromtimestamp(ep, SH).strftime('%Y-%m-%d %H:%M:%S')
+    return ep, datetime.datetime.fromtimestamp(ep, SH).strftime('%Y-%m-%d %H:%M')
 
 
 items = []
@@ -259,9 +259,11 @@ def group_html(key, imgs, idx):
     live = idx < n_open          # 展開組才載圖
     caption = next((i['caption'] for i in imgs if i['caption']), '')
     # 生成時刻移到組標題（原本掛在每張圖下方）：一組多圖時取最新那張
+    # 2026-10-27 阿澤：標題後面只留「日期 時:分」，去掉秒與「N 張」——那個數字沒人看，
+    # 還會讓標題變長、在手機上折行。
     stamp = max(imgs, key=lambda i: i['mtime'])['time']
     head = (f'<div class="ghead"><b>{esc(post_name(post))}</b>'
-            f'<span class="day">{stamp} · {len(imgs)} 張</span></div>')
+            f'<span class="day">{stamp}</span></div>')
     if caption:
         block = (f'<div class="tweet"><button class="copy" data-t="{esc(caption)}">複製文案</button>'
                  f'<p>{esc(caption)}</p><span class="len">{len(caption)} 字</span></div>')
@@ -321,24 +323,41 @@ function shareFile(blob, name) {
   return navigator.share({ files: [f] });
 }
 function runShare(blob, name) {
+  // 回傳 Promise<Boolean>：true = 存好了、false = 用戶自己取消（不該標成已下載）
   var p = shareFile(blob, name);
-  if (p) {
-    p.then(function () { toast('已下載'); }, function (err) {
-      if (err && err.name === 'AbortError') return;      // 用戶自己關掉分享面板，不提示
-      fileDownload(blob, name); toast('已下載');
-    });
-    return;
-  }
-  fileDownload(blob, name); toast('已下載');
+  if (!p) { fileDownload(blob, name); return Promise.resolve(true); }
+  return p.then(function () { return true; }, function (err) {
+    if (err && err.name === 'AbortError') return false;   // 用戶關掉分享面板，不提示也不改字
+    fileDownload(blob, name); return true;
+  });
+}
+// 「已下載／已複製」是**常駐狀態**，不是 1.6 秒後復原的提示：
+// 按鈕仍然可點，再點就再下一次／再複一次，只補一個縮放動畫當回饋
+function flash(btn) {
+  btn.classList.remove('flash');
+  void btn.offsetWidth;                 // 強制重排，讓同一個動畫能重新播放
+  btn.classList.add('flash');
+}
+function markDone(btn, text) {
+  btn.textContent = text;
+  btn.classList.remove('busy');
+  btn.classList.add('done');
+  flash(btn);
 }
 function saveImage(btn) {
   var url = btn.getAttribute('data-img'), name = btn.getAttribute('data-name') || 'card.png';
-  if (dlBlob[url]) { runShare(dlBlob[url], name); return; }   // 快路徑：手勢內同步
-  var label = btn.textContent;
+  var settle = function (ok) {
+    if (ok) { markDone(btn, '已下載'); toast('已下載'); }
+    else { btn.textContent = '下載圖片'; btn.classList.remove('busy', 'done'); }
+  };
+  if (dlBlob[url]) { runShare(dlBlob[url], name).then(settle); return; }   // 快路徑：手勢內同步
+  var fallback = btn.classList.contains('done') ? '已下載' : '下載圖片';
   btn.textContent = '處理中'; btn.classList.add('busy');
-  grab(url).then(function (blob) { runShare(blob, name); })
-    .catch(function () { toast('下載失敗'); })
-    .then(function () { btn.textContent = label; btn.classList.remove('busy'); });
+  grab(url)
+    .then(function (blob) { return runShare(blob, name); })
+    .then(settle, function () {
+      toast('下載失敗'); btn.textContent = fallback; btn.classList.remove('busy');
+    });
 }
 document.querySelectorAll('.dl').forEach(function (b) {
   b.addEventListener('pointerdown', function () { grab(b.getAttribute('data-img')); }, { passive: true });
@@ -421,6 +440,10 @@ html = f'''<!DOCTYPE html>
     box-shadow:0 1px 2px rgba(11,18,32,.06); }}
   .copy:active {{ background:#F2F4F7; }}
   .copy.done {{ color:#12A263; border-color:#BFE9D5; background:#F1FBF6; }}
+  /* 「已下載」用跟「已複製」同一套完成態配色；.flash 給再點一次的回饋 */
+  .shot .dl.done {{ color:#12A263; border-color:#BFE9D5; background:#F1FBF6; }}
+  @keyframes pop {{ 0% {{ transform:scale(1); }} 45% {{ transform:scale(1.07); }} 100% {{ transform:scale(1); }} }}
+  .flash {{ animation:pop .34s ease; }}
   .shots {{ display:flex; flex-direction:column; gap:14px; }}
   .shot {{ position:relative; }}
   .shot img {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }}
@@ -457,9 +480,13 @@ html = f'''<!DOCTYPE html>
 </main>
 <script>
 function copyText(t, btn) {{
+  // 同「下載圖片」：按一次就常駐「已複製」，再點仍然複製，只補縮放動畫
   var done = function () {{
-    btn.textContent = '已複製'; btn.classList.add('done');
-    setTimeout(function () {{ btn.textContent = '複製文案'; btn.classList.remove('done'); }}, 1600);
+    btn.textContent = '已複製';
+    btn.classList.add('done');
+    btn.classList.remove('flash');
+    void btn.offsetWidth;
+    btn.classList.add('flash');
   }};
   if (navigator.clipboard && window.isSecureContext) {{
     navigator.clipboard.writeText(t).then(done, function () {{ legacyCopy(t, done); }});
