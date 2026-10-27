@@ -2,51 +2,82 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-26 11:34",
+  "generated_at": "2026-10-27 13:24",
   "week_label": "Oct 26 – Oct 30",
   "ondeck": {
-    "session": "2026-10-26",
+    "session": "2026-10-27",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.52
+        "pct": 0.7
       },
       {
         "label": "Nasdaq",
-        "pct": -0.21
+        "pct": 0.82
       },
       {
         "label": "Russell 2000",
-        "pct": -0.29
+        "pct": 0.38
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "08:30",
+        "event": "Chicago Fed National Activity",
+        "consensus": "-0.10",
+        "previous": "-0.08"
+      },
+      {
+        "time": "10:30",
+        "event": "Dallas Fed Mfg Business Index",
+        "consensus": "8.8",
+        "previous": "9.8"
+      },
+      {
+        "time": "12:20",
+        "event": "3-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.095%"
+      },
+      {
+        "time": "12:20",
+        "event": "6-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.220%"
+      },
+      {
+        "time": "13:00",
+        "event": "2-Year Note Auction",
+        "consensus": "",
+        "previous": "4.787%"
+      }
+    ],
+    "econ_all": 5,
     "earnings": {
       "before": [
-        "VZ",
-        "CX",
-        "MMYT",
-        "ARLP",
-        "BOH",
-        "LKFN",
-        "HBT",
-        "DEA"
+        "KO",
+        "NVS",
+        "BA",
+        "SPGI",
+        "GLW",
+        "HCA",
+        "FCX",
+        "AMT"
       ],
       "after": [
-        "WELL",
-        "CDNS",
-        "NUE",
-        "PSA",
-        "HIG",
-        "CLS",
-        "CINF",
-        "BRO"
+        "V",
+        "STX",
+        "WM",
+        "HOOD",
+        "OKE",
+        "NXPI",
+        "BKR",
+        "TER"
       ],
-      "before_n": 12,
-      "after_n": 40,
-      "total": 74
+      "before_n": 64,
+      "after_n": 82,
+      "total": 174
     }
   },
   "winners": {
@@ -143,146 +174,147 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Oct 26",
-        "count": 74,
+        "date": "Nov 02",
+        "count": 154,
         "econ": [],
         "before": [
-          "VZ",
-          "CX",
-          "MMYT",
-          "ARLP",
-          "BOH",
-          "LKFN",
-          "HBT",
-          "DEA"
+          "MAR",
+          "ETR",
+          "IDXX",
+          "EL",
+          "PEG",
+          "RYAAY",
+          "FOX",
+          "FOXA"
         ],
         "after": [
-          "WELL",
-          "CDNS",
-          "NUE",
-          "PSA",
-          "HIG",
-          "CLS",
-          "CINF",
-          "BRO"
+          "AAPL",
+          "PLTR",
+          "VRTX",
+          "WMB",
+          "FANG",
+          "O",
+          "ON",
+          "ROKU"
         ]
       },
       {
         "day": "Tue",
-        "date": "Oct 27",
-        "count": 176,
+        "date": "Nov 03",
+        "count": 284,
         "econ": [
-          "Chicago Fed National Activity",
-          "Dallas Fed Mfg Business Index",
-          "3-Month Bill Auction",
-          "6-Month Bill Auction"
+          "ISM Manufacturing Employment",
+          "ISM Manufacturing New Orders Index",
+          "ISM Manufacturing PMI",
+          "ISM Manufacturing Prices"
         ],
         "before": [
-          "KO",
-          "NVS",
-          "BA",
-          "SPGI",
-          "GLW",
-          "HCA",
-          "FCX",
-          "JCI"
+          "SHOP",
+          "PFE",
+          "ETN",
+          "MPC",
+          "RACE",
+          "APO",
+          "MPLX",
+          "AME"
         ],
         "after": [
-          "V",
-          "STX",
-          "WM",
-          "HOOD",
-          "NXPI",
-          "OKE",
-          "BKR",
-          "TER"
+          "AMD",
+          "AMGN",
+          "ANET",
+          "BKNG",
+          "ITUB",
+          "SU",
+          "XYZ",
+          "ALAB"
         ]
       },
       {
         "day": "Wed",
-        "date": "Oct 28",
-        "count": 227,
+        "date": "Nov 04",
+        "count": 491,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "Core Durable Goods Orders",
-          "CB Consumer Confidence",
-          "Durables Excluding Defense"
+          "Durables Excluding Defense",
+          "Durables Excluding Transport",
+          "IBD/TIPP Economic Optimism",
+          "S&P Global Manufacturing PMI"
         ],
         "before": [
-          "GEV",
-          "SAN",
-          "APH",
-          "UBS",
-          "ADP",
-          "PSX",
-          "GSK",
-          "VRT"
+          "MCD",
+          "NVO",
+          "UBER",
+          "CVS",
+          "DDOG",
+          "EMR",
+          "GWW",
+          "COR"
         ],
         "after": [
-          "GOOG",
-          "GOOGL",
-          "MSFT",
-          "KLAC",
-          "NOW",
-          "TMUS",
-          "BBVA",
-          "FTNT"
+          "ARM",
+          "QCOM",
+          "MCK",
+          "APP",
+          "MSI",
+          "MFC",
+          "DASH",
+          "ALL"
         ]
       },
       {
         "day": "Thu",
-        "date": "Oct 29",
-        "count": 316,
+        "date": "Nov 05",
+        "count": 622,
         "econ": [
-          "Goods Trade Balance",
-          "Fed Interest Rate Decision",
-          "FOMC Statement",
-          "FOMC Press Conference"
+          "ADP Nonfarm Employment Change",
+          "Trade Balance",
+          "ISM Non-Manufacturing Business Activity",
+          "ISM Non-Manufacturing Employment"
         ],
         "before": [
-          "LLY",
-          "MA",
-          "MRK",
-          "CAT",
-          "SHEL",
-          "LIN",
-          "TTE",
-          "BUD"
+          "COP",
+          "SONY",
+          "PH",
+          "CNQ",
+          "SO",
+          "DUK",
+          "CI",
+          "CMI"
         ],
         "after": [
-          "AMZN",
-          "INTC",
-          "GILD",
-          "SNDK",
-          "SYK",
-          "SBUX",
-          "MDLZ",
-          "RSG"
+          "NET",
+          "ABNB",
+          "EOG",
+          "LITE",
+          "SPG",
+          "DVN",
+          "TEAM",
+          "WPM"
         ]
       },
       {
         "day": "Fri",
-        "date": "Oct 30",
-        "count": 57,
+        "date": "Nov 06",
+        "count": 118,
         "econ": [
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales",
-          "Dallas Fed PCE"
+          "Nonfarm Productivity",
+          "Challenger Job Cuts",
+          "Unit Labor Costs"
         ],
         "before": [
-          "XOM",
-          "ABBV",
-          "CVX",
-          "AZN",
-          "BP",
-          "SNY",
-          "GD",
-          "REGN"
+          "ENB",
+          "MRNA",
+          "BAM",
+          "HUM",
+          "VST",
+          "PPL",
+          "PAA",
+          "BIP"
         ],
-        "after": []
+        "after": [
+          "HE"
+        ]
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
