@@ -1,0 +1,62 @@
+{
+  "ticker": "KO",
+  "company": "Coca-Cola",
+  "quarter": "Q3 2026",
+  "period_end": "Oct 2, 2026",
+  "reported": "Oct 27, 2026 · pre-market",
+  "brand": {
+    "deep": "#7A0C14",
+    "primary": "#C8102E",
+    "mid": "#DE4B3C",
+    "teal": "#F08A7A",
+    "pos": "#028948"
+  },
+  "layout": { "marginMax": 40, "marginStep": 10 },
+  "margin_title": "Operating margin",
+  "ocf_fmt": { "unit": "US$B", "div": 1000, "dec": 1, "step": 1 },
+  "kpi": {
+    "revenue": {
+      "label": "Net revenues",
+      "actual": 13380,
+      "actual_disp": "$13.38B",
+      "est_disp": "$12.93B",
+      "surprise": 3.5,
+      "prior": 12455,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 7
+    },
+    "eps": {
+      "label": "Comparable EPS",
+      "actual": 0.91,
+      "actual_disp": "$0.91",
+      "est_disp": "$0.87",
+      "surprise": 4.6,
+      "prior": 0.82,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 11
+    }
+  },
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "op_margin": [31.9, 24.4, 34.5, 35.6, 32.9],
+  "ocf": [5100, 3700, 2000, 5500, 5000],
+  "mix": [
+    { "name": "North America", "pct": 40, "value": "$5.39B" },
+    { "name": "EMEA", "pct": 23, "value": "$3.10B" },
+    { "name": "Latin America", "pct": 14, "value": "$1.96B" },
+    { "name": "Asia Pacific", "pct": 12, "value": "$1.56B" },
+    { "name": "Bottling Investments", "pct": 11, "value": "$1.52B" }
+  ],
+  "mix_colors": ["#7A0C14", "#C8102E", "#E2523F", "#F08A7A", "#F5BFAF"],
+  "outlook": {
+    "title": "FY 2026 outlook (raised)",
+    "items": [
+      { "k": "Organic revenue", "v": "≥ +5%", "note": "unchanged" },
+      { "k": "Comparable EPS", "v": "≥ +11%", "note": "raised from +9–10%" },
+      { "k": "Comparable cc EPS", "v": "≥ +9%", "note": "raised from +7–8%" },
+      { "k": "Free cash flow", "v": "≥ $13B", "note": "OCF $15.2B − capex $2.2B" },
+      { "k": "CCBA exit", "v": "−4% Q4 rev", "note": "refranchising headwind" }
+    ]
+  }
+}
