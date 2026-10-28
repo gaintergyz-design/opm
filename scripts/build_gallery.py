@@ -340,6 +340,22 @@ function runShare(blob, name) {
 }
 // 「已下載／已複製」是**常駐狀態**，不是 1.6 秒後復原的提示：
 // 按鈕仍然可點，再點就再下一次／再複一次，只補一個縮放動畫當回饋
+// 且寫進 localStorage 永久保存——刷新／重開瀏覽器／改天再來，仍是「已複製／已下載」
+var DONE_KEY = 'opm-done-v1';
+function doneMap() {
+  try { return JSON.parse(localStorage.getItem(DONE_KEY) || '{}'); } catch (e) { return {}; }
+}
+function saveDone(key) {
+  try {
+    var m = doneMap();
+    if (!m[key]) { m[key] = 1; localStorage.setItem(DONE_KEY, JSON.stringify(m)); }
+  } catch (e) {}
+}
+function hash32(s) {
+  var h = 5381;
+  for (var i = 0; i < s.length; i++) { h = ((h << 5) + h + s.charCodeAt(i)) | 0; }
+  return (h >>> 0).toString(36);
+}
 function flash(btn) {
   btn.classList.remove('flash');
   void btn.offsetWidth;                 // 強制重排，讓同一個動畫能重新播放
@@ -354,7 +370,7 @@ function markDone(btn, text) {
 function saveImage(btn) {
   var url = btn.getAttribute('data-img'), name = btn.getAttribute('data-name') || 'card.png';
   var settle = function (ok) {
-    if (ok) { markDone(btn, '已下載'); toast('已下載'); }
+    if (ok) { markDone(btn, '已下載'); saveDone('d:' + url); toast('已下載'); }
     else { btn.textContent = '下載圖片'; btn.classList.remove('busy', 'done'); }
   };
   if (dlBlob[url]) { runShare(dlBlob[url], name).then(settle); return; }   // 快路徑：手勢內同步
@@ -487,10 +503,11 @@ html = f'''<!DOCTYPE html>
 </main>
 <script>
 function copyText(t, btn) {{
-  // 同「下載圖片」：按一次就常駐「已複製」，再點仍然複製，只補縮放動畫
+  // 同「下載圖片」：按一次就常駐「已複製」（localStorage 永久保存），再點仍然複製，只補縮放動畫
   var done = function () {{
     btn.textContent = '已複製';
     btn.classList.add('done');
+    saveDone('c:' + hash32(t));
     btn.classList.remove('flash');
     void btn.offsetWidth;
     btn.classList.add('flash');
@@ -512,6 +529,22 @@ document.querySelectorAll('.copy').forEach(function (b) {{
   }});
 }});
 {GALLERY_JS}
+
+// 載入時恢復永久完成態：點過「複製／下載」的按鈕，刷新／重開後直接顯示「已複製／已下載」
+// （按鈕本來就在 DOM 裡，只有圖片是懶載入，不需等展開）
+(function () {{
+  var m = doneMap();
+  document.querySelectorAll('.copy').forEach(function (b) {{
+    if (m['c:' + hash32(b.getAttribute('data-t') || '')]) {{
+      b.textContent = '已複製'; b.classList.add('done');
+    }}
+  }});
+  document.querySelectorAll('.dl').forEach(function (b) {{
+    if (m['d:' + (b.getAttribute('data-img') || '')]) {{
+      b.textContent = '已下載'; b.classList.add('done');
+    }}
+  }});
+}})();
 
 // 查看更多：展開折疊組並延遲載入圖片
 var moreBtn = document.getElementById('more');
