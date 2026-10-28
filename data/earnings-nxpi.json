@@ -1,0 +1,59 @@
+{
+  "ticker": "NXPI",
+  "company": "NXP Semiconductors",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 27, 2026",
+  "reported": "Oct 27, 2026 · after close",
+  "brand": {
+    "deep": "#0A1E5C",
+    "primary": "#123A8C",
+    "mid": "#1D57B8",
+    "teal": "#3F8FD6",
+    "pos": "#028948"
+  },
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 3786,
+      "actual_disp": "$3.79B",
+      "est_disp": "$3.76B",
+      "surprise": 0.7,
+      "prior": 3173,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 19
+    },
+    "eps": {
+      "label": "Non-GAAP EPS",
+      "actual": 4.2,
+      "actual_disp": "$4.20",
+      "est_disp": "$4.11",
+      "surprise": 2.2,
+      "prior": 3.11,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 35
+    }
+  },
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "gross_margin": [57.0, 57.4, 57.1, 58.0, 58.6],
+  "op_margin": [33.8, 34.6, 33.1, 35.1, 37.1],
+  "ocf": [585, 891, 793, 854, 1256],
+  "mix": [
+    { "name": "Automotive", "pct": 55, "value": "$2.07B" },
+    { "name": "Industrial & IoT", "pct": 21, "value": "$802M" },
+    { "name": "Mobile", "pct": 11, "value": "$411M" },
+    { "name": "Comm. Infra & Other", "pct": 13, "value": "$503M" }
+  ],
+  "mix_colors": ["#0A1E5C", "#1D57B8", "#3F8FD6", "#8FB3DC"],
+  "outlook": {
+    "title": "Q4 2026 outlook",
+    "items": [
+      { "k": "Revenue", "v": "$3.75–3.95B", "note": "mid $3.85B, +15% Y/Y" },
+      { "k": "Non-GAAP EPS", "v": "$4.14–4.58", "note": "mid $4.36 vs $4.20 this quarter" },
+      { "k": "Gross margin", "v": "→ ~59%", "note": "FY27 target 60%" },
+      { "k": "Buyback", "v": "+$5B authorized", "note": "total capacity $6.3B" },
+      { "k": "Pricing", "v": "+1% in Q4", "note": "after +1% in Q3, cost-driven" }
+    ]
+  }
+}

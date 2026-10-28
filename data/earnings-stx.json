@@ -1,0 +1,56 @@
+{
+  "ticker": "STX",
+  "company": "Seagate Technology",
+  "quarter": "FY2027 Q1",
+  "period_end": "Oct 2, 2026",
+  "reported": "Oct 27, 2026 · after close",
+  "brand": {
+    "deep": "#0B4423",
+    "primary": "#166B34",
+    "mid": "#2F8F45",
+    "teal": "#55B06A",
+    "pos": "#028948"
+  },
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 4233,
+      "actual_disp": "$4.23B",
+      "est_disp": "$4.11B",
+      "surprise": 3.0,
+      "prior": 2629,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 61
+    },
+    "eps": {
+      "label": "Non-GAAP EPS",
+      "actual": 7.68,
+      "actual_disp": "$7.68",
+      "est_disp": "$7.39",
+      "surprise": 3.9,
+      "prior": 2.61,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 194
+    }
+  },
+  "quarters": ["1Q26", "2Q26", "3Q26", "4Q26", "1Q27"],
+  "gross_margin": [40.1, 42.2, 47.0, 52.7, 57.8],
+  "op_margin": [29.0, 31.9, 37.5, 44.6, 50.7],
+  "ocf": [532, 723, 1114, 1305, 1700],
+  "mix": [
+    { "name": "Data Center", "pct": 81, "value": "$3.4B" },
+    { "name": "Edge IoT", "pct": 19, "value": "$784M" }
+  ],
+  "outlook": {
+    "title": "Q2 FY27 outlook",
+    "items": [
+      { "k": "Revenue", "v": "$4.8B ±$0.1B", "note": "+70% Y/Y" },
+      { "k": "Non-GAAP EPS", "v": "$9.00–9.40", "note": "vs $7.68 this quarter" },
+      { "k": "Operating margin", "v": "→ ~55%", "note": "vs 50.7% this quarter" },
+      { "k": "Dividend", "v": "+3% → $0.76", "note": "payable Jan 7, 2027" },
+      { "k": "Nearline supply", "v": "→ CY2028", "note": "some cloud deals to 2030" }
+    ]
+  }
+}
