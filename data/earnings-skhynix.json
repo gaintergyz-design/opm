@@ -1,0 +1,115 @@
+{
+  "ticker": "SK HYNIX",
+  "company": "SK hynix Inc.",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 28, 2026 · pre-market KST · KRX 000660",
+  "brand": {
+    "deep": "#9A3E00",
+    "primary": "#E8650F",
+    "mid": "#F47725",
+    "teal": "#5B7C99",
+    "pos": "#028948"
+  },
+  "strip": "First quarter above ₩100T · record 80% op margin · net hit by ₩32.6T FX & one-off losses",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (KRW)",
+      "actual": 104.6155,
+      "actual_disp": "₩104.62T",
+      "est_disp": "₩98.96T",
+      "surprise": 5.7,
+      "prior": 24.4489,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 328
+    },
+    "eps": {
+      "label": "Operating profit",
+      "actual": 83.3338,
+      "actual_disp": "₩83.33T",
+      "est_disp": "₩77.50T",
+      "surprise": 7.5,
+      "prior": 11.3834,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 632
+    }
+  },
+  "layout": {
+    "marginMax": 90,
+    "marginStep": 10,
+    "marginMin": 40
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "op_margin": [
+    47,
+    58,
+    72,
+    76,
+    80
+  ],
+  "panel3_title": "Revenue by quarter",
+  "ocf": [
+    24.4,
+    32.8,
+    52.6,
+    79.3,
+    104.6
+  ],
+  "ocf_fmt": {
+    "unit": "₩T",
+    "div": 1,
+    "dec": 1,
+    "step": 25
+  },
+  "mix_title": "Cash & equivalents",
+  "cash_trend": {
+    "step": 30,
+    "values": [
+      27.9,
+      34.9,
+      54.3,
+      88,
+      114.5
+    ],
+    "note": "Net cash ₩98.7T · borrowings down to ₩15.8T"
+  },
+  "outlook": {
+    "title": "Q4 2026 · HBM4 takes over",
+    "items": [
+      {
+        "k": "DRAM shipments",
+        "v": "+20% QoQ",
+        "note": "HBM4 to pass HBM3E in volume & revenue"
+      },
+      {
+        "k": "Supply outlook",
+        "v": "Tight to 2030",
+        "note": "shortage seen persisting through 2030"
+      },
+      {
+        "k": "FY26 returns",
+        "v": "~₩100T",
+        "note": "₩30T+ dividends · ₩60T+ buyback & cancel"
+      },
+      {
+        "k": "3Q dividend",
+        "v": "₩20,000/sh",
+        "note": "incl ₩10,000 Kioxia special dividend"
+      },
+      {
+        "k": "2027 demand",
+        "v": "DRAM +20%+",
+        "note": "NAND up high-teens % · capex to rise sharply"
+      }
+    ]
+  },
+  "notes": "口徑：SK hynix 3Q26 官方新聞稿（news.skhynix.com/en/q3-2026-business-results，2026-10-28，K-IFRS 合併）。營收 ₩104.6155T（QoQ +32%、YoY +328%，史上首破 ₩100T），市場預期 ₩98.96T（LSEG，據中國基金報）→ Beat +5.7%（每經引 LSEG 為 ₩97.34T，口徑略異）。營業利潤 ₩83.3338T（OM 80% 歷史新高，QoQ +38%、YoY +632%），預期 ₩77.5T → Beat +7.5%。淨利 ₩39.7756T（NM 38%）低於預期 ₩59.66T：2Q26 含鎧俠股權出售一次性收益 ₩62.166T（稅前 ₩122.7T）、3Q26 錄得非營業損失 ₩32.63T（匯率 ₩11.63T＋投資資產 ₩22.92T，據智通財經）。五季營收（₩T）：3Q25 24.4489、4Q25 32.8267、1Q26 52.5763、2Q26 79.3187、3Q26 104.6155。五季營業利潤率（官方整數）：47／58／72／76／80。毛利率 3Q26 官方未披露 → 獲利能力面板只畫營業利潤率單線。期末現金（₩T）：3Q25 27.9、4Q25 34.9（＝1Q26 官方 54.3 減官方環比增量 19.4）、1Q26 54.3、2Q26 88.0、3Q26 114.5；3Q26 借款 ₩15.8T、淨現金 ₩98.7T。展望：Q4 DRAM 出貨 QoQ +20% 中段、HBM4 出貨與營收均超越 HBM3E 成主力；321 層 NAND 產能占比升至韓國過半；供給短缺持續至 2030。股東回報 FY26 約 ₩100T（現金股息 ₩30T+、回購註銷 ₩60T+，含 8 月 ₩40T 已完成）；Q3 董事會決議現金股息 ₩14T（每股 ₩20,000，含 ₩10,000 鎧俠特別股息）＋回購 ₩20T（其中 ₩10T 註銷）。LTA：14 家主要客戶（含全球 CSP），已鎖定 2027–28 年產能 50%+；2027 年 DRAM 需求 +20%+、NAND 高十位數%。"
+}

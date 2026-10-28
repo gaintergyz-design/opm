@@ -44,7 +44,8 @@ const LAY = D.layout || {};
 const MARGIN_MAX = LAY.marginMax || 60;      // 毛利率軸上限（Meta 80%+ 用 90）
 const MARGIN_STEP = LAY.marginStep || 10;    // 毛利率軸刻度
 const OCF = D.ocf_fmt || { unit: 'US$M', div: 1, dec: 0, step: 400 };
-const fmtOcf = (v) => (v === 0 ? '0' : (OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec) : String(Math.round(v)))
+const fmtOcf = (v) => (v === 0 ? '0' : (OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec)
+  : OCF.dec ? v.toFixed(OCF.dec) : String(Math.round(v)))
   .replace('-', '\u2212'));
 
 let uid = 0, defs = [];
@@ -176,14 +177,13 @@ const B_Y = D.strip ? 512 : 462, B_H = 320;
 const LP_X = M, LP_W = 512;
 const RP_X = M + LP_W + 32, RP_W = CW - LP_W - 32;
 
-svg.push(t(LP_X, B_Y + 30, 'Profitability', { size: 26, weight: 500 }));
+svg.push(t(LP_X, B_Y + 30, D.margin_title || 'Profitability', { size: 26, weight: 500 }));
 {
   // 圖例直接把最新一季的數值寫出來（取代壓在線上的標籤）
-  const last = D.gross_margin.length - 1;
-  const items = [
-    { c: C.deep, label: 'Gross', val: `${D.gross_margin[last].toFixed(1)}%` },
-    { c: C.teal, label: 'Operating', val: `${D.op_margin[last].toFixed(1)}%` },
-  ];
+  const last = D.gross_margin ? D.gross_margin.length - 1 : D.op_margin.length - 1;
+  const items = [];
+  if (D.gross_margin) items.push({ c: C.deep, label: 'Gross', val: `${D.gross_margin[last].toFixed(1)}%` });
+  items.push({ c: C.teal, label: 'Operating', val: `${D.op_margin[last].toFixed(1)}%` });
   let rx = LP_X + LP_W;
   items.slice().reverse().forEach((it) => {
     const vw = tw(it.val, 16, 700), lw = tw(it.label, 15);
@@ -220,16 +220,52 @@ function drawLine(series, color, wdt) {
   });
   return s;
 }
-svg.push(drawLine(D.gross_margin, C.deep, 3.6));
-svg.push(drawLine(D.op_margin, C.teal, 3.6));
+if (D.gross_margin) svg.push(drawLine(D.gross_margin, C.deep, 3.6));
+svg.push(drawLine(D.op_margin, D.gross_margin ? C.teal : C.primary, 3.6));
+// 單線模式（韓系公司不披露毛利率）→ 每個點直接標數值
+if (!D.gross_margin) {
+  const n = D.op_margin.length;
+  D.op_margin.forEach((v, i) => {
+    // 首點靠左會撞 Y 軸刻度 → 改左對齊往右讓
+    const first = i === 0;
+    svg.push(t(xOf(i, n) + (first ? 10 : 0), yOf(v) - 14, `${v}%`,
+               { size: 16, weight: 700, fill: C.primary, anchor: first ? 'start' : 'middle' }));
+  });
+}
 
 D.quarters.forEach((q, i) => {
   svg.push(t(xOf(i, D.quarters.length), PY1 + 28, q, { size: 17, fill: C.gray, anchor: 'middle' }));
 });
 
-/* ---------------- ② 營收佔比 ---------------- */
+/* ---------------- ② 營收佔比 / 現金趨勢 ---------------- */
 svg.push(t(RP_X, B_Y + 30, D.mix_title || 'Revenue mix', { size: 26, weight: 500 }));
-{
+if (D.cash_trend) {
+  // 分部佔比未披露時（韓系財報）→ 改畫期末現金水位柱
+  const vals = D.cash_trend.values;
+  const n = vals.length;
+  const gx0 = RP_X + 46, gx1 = RP_X + RP_W - 10;
+  const botY = B_Y + 282, topY = B_Y + 84;
+  const hi = Math.max(...vals, 0);
+  const yOfV = (v) => botY - (v / hi) * (botY - topY);
+  const step = D.cash_trend.step || 30;
+  for (let v = 0; v <= hi; v += step) {
+    const y = yOfV(v);
+    svg.push(`<line x1="${gx0}" y1="${y.toFixed(1)}" x2="${gx1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
+    svg.push(t(gx0 - 12, y + 5, String(v), { size: 15, fill: C.dim, anchor: 'end' }));
+  }
+  const slot = (gx1 - gx0) / n;
+  const bw = Math.min(56, slot * 0.52);
+  vals.forEach((v, i) => {
+    const y = yOfV(v);
+    const x = gx0 + slot * i + (slot - bw) / 2;
+    svg.push(rrect(x, y, bw, botY - y, 4, i === n - 1 ? 'url(#barCur)' : 'url(#barOcf)'));
+    svg.push(t(x + bw / 2, y - 9, fmtOcf(v), { size: 15, weight: 600, fill: C.deep, anchor: 'middle' }));
+  });
+  D.quarters.forEach((q, i) => {
+    svg.push(t(gx0 + slot * i + slot / 2, botY + 24, q, { size: 15, fill: C.gray, anchor: 'middle' }));
+  });
+  if (D.cash_trend.note) svg.push(t(RP_X, B_Y + 322, D.cash_trend.note, { size: 15, fill: C.dim }));
+} else {
   const cx = RP_X + 104, cy = B_Y + 168, R = 98, HOLE = 56;
   const mix = D.mix || [];
   const COL = D.mix_colors || [C.deep, C.mid, C.teal];
@@ -279,7 +315,7 @@ const C_Y = 806, C_H = 370;
 const OP_X = M, OP_W = 512;
 const OB_X = M + OP_W + 32, OB_W = CW - OP_W - 32;
 
-svg.push(t(OP_X, C_Y + 30, 'Operating cash flow', { size: 26, weight: 500 }));
+svg.push(t(OP_X, C_Y + 30, D.panel3_title || 'Operating cash flow', { size: 26, weight: 500 }));
 svg.push(t(OP_X + OP_W, C_Y + 29, OCF.unit, { size: 17, fill: C.dim, anchor: 'end' }));
 
 {
@@ -339,7 +375,7 @@ const svgStr = svg.join('\n');
 const outDir = path.join(BASE, 'out', process.env.PREVIEW ? '_preview' : '');
 fs.mkdirSync(outDir, { recursive: true });
 const stamp = process.env.EARN_STAMP || new Date().toISOString().slice(0, 10).replace(/-/g, '');
-const stem = `earnings-${TICK.toLowerCase()}-${stamp}`;
+const stem = `earnings-${TICK.toLowerCase().replace(/\s+/g, '')}-${stamp}`;
 fs.writeFileSync(path.join(outDir, `${stem}.svg`), svgStr);
 
 const FONT_DIRS = [path.join(BASE, 'assets', 'fonts'), path.join(process.env.HOME || '', 'Library', 'Fonts')];
