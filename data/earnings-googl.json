@@ -1,0 +1,138 @@
+{
+  "ticker": "GOOGL",
+  "company": "Alphabet",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 28, 2026 · after US close",
+  "brand": {
+    "deep": "#174EA6",
+    "primary": "#1A73E8",
+    "mid": "#4285F4",
+    "teal": "#12B5CB",
+    "pos": "#028948"
+  },
+  "strip": "Cloud +103% to $30.7B · EPS hit by $8.7B equity losses · FCF −$9.1B on record $51.4B capex",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 127577,
+      "actual_disp": "$127.6B",
+      "est_disp": "$128.2B",
+      "surprise": -0.5,
+      "prior": 102346,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 24.7
+    },
+    "eps": {
+      "label": "Diluted EPS",
+      "actual": 2.12,
+      "actual_disp": "$2.12",
+      "est_disp": "$3.01",
+      "surprise": -29.6,
+      "prior": 2.87,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -26.1
+    }
+  },
+  "layout": {
+    "marginMax": 70,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    59.5,
+    59.8,
+    62.5,
+    61.6,
+    59.7
+  ],
+  "op_margin": [
+    30.5,
+    31.6,
+    36.2,
+    34.0,
+    31.8
+  ],
+  "ocf": [
+    48.4,
+    52.4,
+    45.8,
+    39.1,
+    42.3
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1,
+    "dec": 1,
+    "step": 10
+  },
+  "mix_title": "Revenue mix · segment",
+  "mix_center": "$127.6B revenue",
+  "mix_colors": [
+    "#174EA6",
+    "#1A73E8",
+    "#4285F4",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "Search & other",
+      "pct": 49.7,
+      "value": "$63.4B"
+    },
+    {
+      "name": "Google Cloud",
+      "pct": 24.1,
+      "value": "$30.7B"
+    },
+    {
+      "name": "YouTube & Network",
+      "pct": 14.6,
+      "value": "$18.7B ads"
+    },
+    {
+      "name": "Subscriptions & other",
+      "pct": 11.6,
+      "value": "$14.9B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 · AI capex keeps climbing",
+    "items": [
+      {
+        "k": "FY26 capex",
+        "v": "$195–205B",
+        "note": "unchanged · 2027 to rise significantly"
+      },
+      {
+        "k": "Cloud backlog",
+        "v": "$561B",
+        "note": "TPU systems sales now meaningful"
+      },
+      {
+        "k": "Free cash flow",
+        "v": "−$9.1B",
+        "note": "2nd straight negative quarter"
+      },
+      {
+        "k": "Q4 Search",
+        "v": "tougher comps + FX",
+        "note": "growth seen slowing from 3Q"
+      },
+      {
+        "k": "Purchase commitments",
+        "v": "$924B",
+        "note": "plus $152B pre-commencement leases"
+      }
+    ]
+  },
+  "notes": "口徑：Alphabet 3Q26 Earnings Release（8-K Ex-99.1，2026-10-28 4:01 PM ET）＋ Q3 財報電話會（CFO Anat Ashkenazi）。營收 $127,577M（+24.7% Y/Y），低於 LSEG 分析師預期 $128.22B（−0.5%），連續 13 季雙位數增長；稀釋 EPS $2.12 對 MarketBeat 共識 $3.01（−29.6%），主因 OI&E 由上年 +$12.8B 轉為 −$8.2B——其中股權證券淨損 $8.7B（主要 SpaceX 股價下跌之未實現損失，上年同期為 +$10.7B 收益），該損失壓低淨利 $6.7B、EPS $0.55；調整後 EPS $2.67 對 LSEG 預期 $3.02（−11.6%）。營業利益 $40,576M（+30%）、營益率 31.8%。五季毛利率＝1−總營收成本/營收：3Q25 41.45/102.35→59.5%（由 3Q26 成本 +24% 反推，TAC $14,876M 吻合）、4Q25 45.8/113.83→59.8%、1Q26 41.27/110.08→62.5%、2Q26 45.94/119.69→61.6%、3Q26 51.4/127.58→59.7%；營益率 30.5/31.6/36.2/34.0/31.8。OCF（US$B）：3Q25 48.4（由 2Q26 TTM 185.7 反推）、4Q25 52.4（創紀錄）、1Q26 45.8、2Q26 39.1、3Q26 42.3（受 TPU 系統銷售備貨與 $5.2B 2018 歐盟罰款付款拖累；3Q26 TTM 179.6 吻合）。3Q26 capex $51,355M（+114%），FCF −$9.07B 連續第二季為負（2Q26 −$5.9B 為上市 22 年首次）。mix＝3Q26 分部營收：Search & other $63,350M（+12%）、Cloud $30,709M（+103%，營業利益 $11,121M）、YouTube 廣告 $11,207M＋Network $7,455M 合併為 YouTube & Network ads $18.7B、Subscriptions/platforms/devices $14,290M＋Other Bets $372M＋hedging $194M 合併為 Subscriptions & other $14.9B（合計 $127.6B）。展望取自法說：FY26 capex 維持 $195–205B、2027 將顯著增加；Cloud backlog $561B；Q4 Search 面臨 FX 與 2025 末起加速帶來的高基數；未來購買承諾 $924B＋pre-commencement leases $152B。雲端使用第三方算力，短期利潤率承壓。其他：Gemini 用戶達 10 億、API token 每分鐘近 320 億、員工 204,757 人（+14,590）。"
+}
