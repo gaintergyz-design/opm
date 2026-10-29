@@ -1,0 +1,113 @@
+{
+  "ticker": "SAMSUNG",
+  "company": "Samsung Electronics",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30",
+  "reported": "Oct 29, 2026 · KRX 005930",
+  "mono_badge": "S",
+  "brand": {
+    "deep": "#0E1F8C",
+    "primary": "#1428A0",
+    "mid": "#3D55D8",
+    "teal": "#5A8DD6",
+    "pos": "#028948"
+  },
+  "strip": "First tech company above ₩100T quarterly OP · net ₩75.2T missed est ₩83.6T · DX −₩0.8T on memory costs",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (KRW)",
+      "actual": 195.2532,
+      "actual_disp": "₩195.3T",
+      "est_disp": "₩194–196T (Oct 8 guide)",
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "surprise": 0,
+      "prior": 171.5,
+      "prior_txt": "2Q26",
+      "cur_txt": "3Q26",
+      "yoy": 127
+    },
+    "eps": {
+      "label": "Operating profit",
+      "actual": 107.4405,
+      "actual_disp": "₩107.44T",
+      "est_disp": "₩106.1T",
+      "surprise": 1.3,
+      "prior": 89.49,
+      "prior_txt": "2Q26",
+      "cur_txt": "3Q26",
+      "yoy": 783
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "margin_title": "Operating margin",
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "op_margin": [
+    14.1,
+    21.4,
+    42.7,
+    52.2,
+    55.1
+  ],
+  "panel3_title": "Revenue by quarter",
+  "ocf": [
+    86.1,
+    93.8,
+    133.9,
+    171.5,
+    195.3
+  ],
+  "ocf_fmt": {
+    "unit": "₩T",
+    "div": 1,
+    "dec": 1,
+    "step": 40
+  },
+  "mix_title": "Operating profit by quarter",
+  "cash_trend": {
+    "step": 25,
+    "values": [
+      12.2,
+      20.1,
+      57.2,
+      89.5,
+      107.4
+    ],
+    "note": "DS ₩106.5T = 99% of group OP · DX −₩0.8T · SDC ₩1.1T"
+  },
+  "outlook": {
+    "title": "Q4 2026 · 2027 · AI supercycle",
+    "items": [
+      {
+        "k": "Memory mix",
+        "v": "AI-first",
+        "note": "HBM4 · server DRAM · QLC SSD sales to lead"
+      },
+      {
+        "k": "2027 supply",
+        "v": "Demand > supply",
+        "note": "AI-driven demand to far exceed 2026 industry supply"
+      },
+      {
+        "k": "Foundry",
+        "v": "Q4 +2-digit rev",
+        "note": "Taylor, TX fab starts operations in 2027"
+      },
+      {
+        "k": "Q3 dividend",
+        "v": "₩30T",
+        "note": "₩4,601/sh · FY26 returns ₩90–110T set in Jan"
+      }
+    ]
+  },
+  "notes": "口徑：Samsung Electronics 3Q26 官方新聞稿（news.samsung.com/global/samsung-electronics-announces-third-quarter-2026-results，2026-10-29，K-IFRS 合併）。營收 ₩195.2532T（QoQ +14%、YoY +126.6%，史上新高；落於 10/8 官方指引 ₩194–196T 內 → In line）。營業利潤 ₩107.4405T（QoQ +20%、YoY +782.5%，全球首家科技企業單季 OP 破 ₩100T；10/8 初值 ₩107.4T，LSEG 綜合預估 ₩106.1T → Beat +1.3%）。淨利 ₩75.2T 不及市場預期 ₩83.6T（insigtX/BlockBeats）。分部：DS 營收 ₩147.1T、OP ₩106.5T（佔集團 OP 99.2%，Memory 單季營收與 OP 均創新高，HBM4 放量＋server SSD）；DX 營收 QoQ +8% 但 OP −₩0.8T（連續兩季虧損，其中 MX 手機 −₩0.6T、VD/DA −₩0.2T，記憶體漲價推高零件成本）；SDC 營收 ₩8.0T、OP ₩1.1T。五季營收（₩T）：3Q25 86.06、4Q25 93.8、1Q26 133.87、2Q26 171.5、3Q26 195.2532（4Q25 來源：官方 4Q25/FY25 新聞稿；1Q26 來源：官方 1Q26 新聞稿＋新華社 57.23/47.23 淨利）。五季營業利潤（₩T）：12.17、20.1、57.23、89.49、107.4405（2Q26 來源：10/8 指引稿對照表）。五季營業利潤率為營業利潤÷營收自算：14.1／21.4／42.7／52.2／55.1。毛利率未披露 → 獲利能力面板只畫營業利潤率單線。股東回報：Q3 現金股息 ₩4,601/股、總額 ₩30T（11/27 發放）；FY26 股東回報 ₩90–110T（8 月公告，含已執行 ₩5T 回購），餘額 2027 年 1 月底董事會定案。展望（官方）：Q4 記憶體需求圍繞新 CPU/GPU 平台、QLC SSD 隨個人 AI agent 服務擴張；策略上擴大 HBM、server DRAM、SSD 與高速 server DDR5 銷售；2027 年 AI 基建資本開支將達歷史級、AI 需求將遠超 2026 年行業供給；Foundry Q4 營收雙位數增長、Taylor, Texas 新廠 2027 年投產。"
+}

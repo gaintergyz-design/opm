@@ -92,9 +92,13 @@ const nameAvail = (W - M - handleW - logoW) - hx - 8;
 const nameSize = tw(nameStr, 40, 500) > nameAvail
   ? Math.max(24, Math.floor(40 * nameAvail / tw(nameStr, 40, 500)))
   : 40;
-svg.push(t(hx, 128, nameStr, { size: nameSize, weight: 500, fill: C.primary }));
-svg.push(t(M, 172, `${D.quarter} · Quarter ended ${D.period_end} · Reported ${D.reported}`,
-           { size: 21, fill: C.gray }));
+// 公司名縮到下限仍放不下（SAMSUNG 這種寬 ticker）→ 不擠頁首，改併入副標行
+const nameFits = tw(nameStr, nameSize, 500) <= nameAvail;
+if (nameFits) svg.push(t(hx, 128, nameStr, { size: nameSize, weight: 500, fill: C.primary }));
+svg.push(t(M, 172, nameFits
+  ? `${D.quarter} · Quarter ended ${D.period_end} · Reported ${D.reported}`
+  : `${D.company} · ${D.quarter} · Quarter ended ${D.period_end} · Reported ${D.reported}`,
+  { size: 21, fill: C.gray }));
 
 const pillW = Math.round(tw(handle, 27, 500)) + 38;
 const pillX = W - M - pillW;
