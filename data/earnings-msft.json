@@ -1,0 +1,72 @@
+{
+  "ticker": "MSFT",
+  "company": "Microsoft",
+  "quarter": "Q1 FY2027",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 28, 2026 · after close",
+
+  "brand": {
+    "deep": "#0D3B6F",
+    "primary": "#0078D4",
+    "mid": "#0F6CBD",
+    "teal": "#038387",
+    "pos": "#028948"
+  },
+
+  "strip": "GAAP EPS $4.92 (+32%) includes a $0.03 OpenAI investment gain · Azure is now the largest single business",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 92279,
+      "actual_disp": "$92.28B",
+      "est_disp": "$90.69B",
+      "surprise": 1.8,
+      "prior": 77673,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 18.8
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 4.89,
+      "actual_disp": "$4.89",
+      "est_disp": "$4.73",
+      "surprise": 3.4,
+      "prior": 4.13,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 18
+    }
+  },
+
+  "layout": {
+    "marginMax": 80,
+    "marginStep": 20
+  },
+
+  "quarters": ["1Q26", "2Q26", "3Q26", "4Q26", "1Q27"],
+  "gross_margin": [69.05, 68.04, 67.63, 67.20, 67.79],
+  "op_margin": [48.87, 47.09, 46.33, 45.11, 49.76],
+
+  "ocf": [45057, 35758, 46679, 55441, 58000],
+  "ocf_fmt": { "unit": "US$B", "div": 1000, "dec": 1, "step": 10 },
+
+  "mix_title": "Revenue by segment",
+  "mix_center": "Agents & Infra",
+  "mix_colors": ["#0D3B6F", "#0078D4"],
+  "mix": [
+    { "name": "Agents & Infra", "pct": 83.2, "value": "$76.8B" },
+    { "name": "Devices & Consumer", "pct": 16.8, "value": "$15.5B" }
+  ],
+
+  "outlook": {
+    "title": "Q2 FY2027 outlook",
+    "items": [
+      { "k": "Revenue", "v": "~$96.6B mid", "note": "+19% Y/Y · est. $95.6B" },
+      { "k": "Azure growth", "v": "+49–50%", "note": "constant currency · vs +48% this qtr" },
+      { "k": "Capex CY2026", "v": "~$170B", "note": "slightly below prior expectation" },
+      { "k": "Commercial RPO", "v": "$677B", "note": "+73% Y/Y · contracted backlog" }
+    ]
+  }
+}
