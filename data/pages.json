@@ -2,82 +2,112 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-27 13:24",
+  "generated_at": "2026-10-29 13:36",
   "week_label": "Oct 26 – Oct 30",
   "ondeck": {
-    "session": "2026-10-27",
+    "session": "2026-10-29",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 0.7
+        "pct": 0.28
       },
       {
         "label": "Nasdaq",
-        "pct": 0.82
+        "pct": 0.27
       },
       {
         "label": "Russell 2000",
-        "pct": 0.38
+        "pct": 0.41
       }
     ],
     "econ": [
       {
+        "time": "10:50",
+        "event": "Atlanta Fed GDPNow",
+        "consensus": "3.4%",
+        "previous": "3.4%"
+      },
+      {
         "time": "08:30",
-        "event": "Chicago Fed National Activity",
-        "consensus": "-0.10",
-        "previous": "-0.08"
+        "event": "Goods Trade Balance",
+        "consensus": "-130.40B",
+        "previous": "-132.07B"
+      },
+      {
+        "time": "14:00",
+        "event": "Fed Interest Rate Decision",
+        "consensus": "4.00%",
+        "previous": "4.00%"
+      },
+      {
+        "time": "14:00",
+        "event": "FOMC Statement",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "14:30",
+        "event": "FOMC Press Conference",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "08:30",
+        "event": "Wholesale Inventories",
+        "consensus": "0.5%",
+        "previous": "0.5%"
       },
       {
         "time": "10:30",
-        "event": "Dallas Fed Mfg Business Index",
-        "consensus": "8.8",
-        "previous": "9.8"
+        "event": "Crude Oil Inventories",
+        "consensus": "0.100M",
+        "previous": "-3.060M"
       },
       {
-        "time": "12:20",
-        "event": "3-Month Bill Auction",
-        "consensus": "",
-        "previous": "4.095%"
+        "time": "10:30",
+        "event": "EIA Weekly Distillates Stocks",
+        "consensus": "-0.600M",
+        "previous": "1.675M"
       },
       {
-        "time": "12:20",
-        "event": "6-Month Bill Auction",
-        "consensus": "",
-        "previous": "4.220%"
+        "time": "10:30",
+        "event": "Gasoline Inventories",
+        "consensus": "-1.400M",
+        "previous": "-2.952M"
       },
       {
-        "time": "13:00",
-        "event": "2-Year Note Auction",
+        "time": "07:00",
+        "event": "MBA 30-Year Mortgage Rate",
         "consensus": "",
-        "previous": "4.787%"
+        "previous": "7.41%"
       }
     ],
-    "econ_all": 5,
+    "econ_all": 21,
     "earnings": {
       "before": [
-        "KO",
-        "NVS",
-        "BA",
-        "SPGI",
-        "GLW",
-        "HCA",
-        "FCX",
-        "AMT"
+        "LLY",
+        "MA",
+        "MRK",
+        "CAT",
+        "SHEL",
+        "LIN",
+        "TTE",
+        "BUD"
       ],
       "after": [
-        "V",
-        "STX",
-        "WM",
-        "HOOD",
-        "OKE",
-        "NXPI",
-        "BKR",
-        "TER"
+        "AMZN",
+        "INTC",
+        "SNDK",
+        "GILD",
+        "SBUX",
+        "SYK",
+        "MDLZ",
+        "RSG"
       ],
-      "before_n": 64,
-      "after_n": 82,
-      "total": 174
+      "before_n": 147,
+      "after_n": 117,
+      "total": 303
     }
   },
   "winners": {
@@ -175,7 +205,7 @@
       {
         "day": "Mon",
         "date": "Nov 02",
-        "count": 154,
+        "count": 160,
         "econ": [],
         "before": [
           "MAR",
@@ -201,12 +231,12 @@
       {
         "day": "Tue",
         "date": "Nov 03",
-        "count": 284,
+        "count": 283,
         "econ": [
+          "Atlanta Fed GDPNow",
           "ISM Manufacturing Employment",
           "ISM Manufacturing New Orders Index",
-          "ISM Manufacturing PMI",
-          "ISM Manufacturing Prices"
+          "ISM Manufacturing PMI"
         ],
         "before": [
           "SHOP",
@@ -223,16 +253,16 @@
           "AMGN",
           "ANET",
           "BKNG",
-          "ITUB",
           "SU",
-          "XYZ",
-          "ALAB"
+          "ITUB",
+          "ALAB",
+          "XYZ"
         ]
       },
       {
         "day": "Wed",
         "date": "Nov 04",
-        "count": 491,
+        "count": 480,
         "econ": [
           "Durables Excluding Defense",
           "Durables Excluding Transport",
@@ -263,7 +293,7 @@
       {
         "day": "Thu",
         "date": "Nov 05",
-        "count": 622,
+        "count": 612,
         "econ": [
           "ADP Nonfarm Employment Change",
           "Trade Balance",
@@ -286,19 +316,20 @@
           "EOG",
           "LITE",
           "SPG",
+          "WPM",
           "DVN",
-          "TEAM",
-          "WPM"
+          "TEAM"
         ]
       },
       {
         "day": "Fri",
         "date": "Nov 06",
-        "count": 118,
+        "count": 117,
         "econ": [
-          "Nonfarm Productivity",
-          "Challenger Job Cuts",
-          "Unit Labor Costs"
+          "Continuing Jobless Claims",
+          "Initial Jobless Claims",
+          "Jobless Claims 4-Week Avg.",
+          "Nonfarm Productivity"
         ],
         "before": [
           "ENB",
