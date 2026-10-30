@@ -146,17 +146,17 @@ D.series.forEach((s) => {
   });
 }
 
-/* ---------------- 洞察條（頁面中間，兩行各一條 pill，整塊水平居中） ---------------- */
+/* ---------------- 洞察條（兩行 pill，放大 1.3×，整塊略偏左的居中位） ---------------- */
 {
-  const ss = 17, SH = 40, GAP = 10;
+  const ss = 22, SH = 52, GAP = 13;                       // 17/40/40 的 1.3 倍
   const lines = Array.isArray(D.strip) ? D.strip : [D.strip];
-  const widths = lines.map((line) => Math.min(CW, Math.round(tw(line, ss, 500)) + 36));
-  const x0 = Math.round((W - Math.max(...widths)) / 2);   // 以最寬一條為基準居中，兩條左對齊
+  const widths = lines.map((line) => Math.min(CW, Math.round(tw(line, ss, 500)) + 40));
+  const x0 = Math.round((W - Math.max(...widths)) / 2) - 72;   // 居中基礎上整塊左移 72px
   lines.forEach((line, i) => {
-    const SY = 530 + i * (SH + GAP);
-    svg.push(rrect(x0, SY, widths[i], SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
-    svg.push(`<rect x="${x0}" y="${SY + 7}" width="4" height="${SH - 14}" rx="2" fill="#E47911"/>`);
-    svg.push(t(x0 + 18, SY + 26, line, { size: ss, weight: 500, fill: '#0B1220' }));
+    const SY = 524 + i * (SH + GAP);
+    svg.push(rrect(x0, SY, widths[i], SH, 13, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
+    svg.push(`<rect x="${x0}" y="${SY + 9}" width="5" height="${SH - 18}" rx="2.5" fill="#E47911"/>`);
+    svg.push(t(x0 + 22, SY + 34, line, { size: ss, weight: 500, fill: '#0B1220' }));
   });
 }
 
