@@ -77,7 +77,7 @@ D.series.forEach((s, i) => {
 svg.push(t(W - M, LEG_Y0, D.unit, { size: 17, fill: C.dim, anchor: 'end' }));
 
 /* ---------------- 主圖：四條折線 ---------------- */
-const PX0 = M + 58, PX1 = W - M - 112;      // 右側留 112px 給 logo + 端點標值
+const PX0 = M + 58, PX1 = W - M - 150;      // 右側留 150px 給大 logo + 端點標值
 const PY0 = 366, PY1 = 1122;
 const YMAX = D.ymax, YSTEP = D.ystep;
 const yOf = (v) => PY1 - (v / YMAX) * (PY1 - PY0);
@@ -128,9 +128,9 @@ D.series.forEach((s) => {
   const placed = [];
   items.forEach((it) => {
     let y = it.y + 6;                       // 文字基線對齊點心
-    for (const p of placed) if (Math.abs(y - p) < 34) y = p + 34;
+    for (const p of placed) if (Math.abs(y - p) < 80) y = p + 80;   // logo 直徑 70，間距須 ≥ 80
     placed.push(y);
-    const L = 28, lx = PX1 + 24, cy = y - 7;
+    const L = 70, lx = PX1 + 14, cy = y - 7;
     const uri = LOGOS[it.s.ticker];
     if (uri) {
       const cid = `lg${uid++}`;
@@ -141,8 +141,8 @@ D.series.forEach((s) => {
     } else {
       svg.push(`<circle cx="${lx + L / 2}" cy="${cy}" r="${L / 2}" fill="${it.s.color}"/>`);
     }
-    svg.push(t(PX1 + 58, y, it.s.values[NQ - 1].toFixed(1),
-      { size: 20, weight: 700, fill: it.s.color, anchor: 'start' }));
+    svg.push(t(PX1 + 92, y, it.s.values[NQ - 1].toFixed(1),
+      { size: 24, weight: 700, fill: it.s.color, anchor: 'start' }));
   });
 }
 
