@@ -1,0 +1,139 @@
+{
+  "ticker": "MRK",
+  "company": "Merck",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 29, 2026 · before US open",
+  "brand": {
+    "deep": "#005A5B",
+    "primary": "#00857C",
+    "mid": "#33B5AC",
+    "teal": "#5B7C99",
+    "pos": "#028948"
+  },
+  "strip": "Keytruda $8.6B (+6%) · Winrevair $694M (+93%) · FY guide raised — but ~$550M was pull-forward",
+  "kpi": {
+    "revenue": {
+      "label": "Sales (US$)",
+      "actual": 18085,
+      "actual_disp": "$18.1B",
+      "est_disp": "$17.3B",
+      "surprise": 4.5,
+      "prior": 17276,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 4.7
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 2.49,
+      "actual_disp": "$2.49",
+      "est_disp": "$2.08",
+      "surprise": 19.7,
+      "prior": 2.58,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -3.5
+    }
+  },
+  "layout": {
+    "marginMax": 85,
+    "marginStep": 10,
+    "marginMin": -5
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    78.3,
+    73.8,
+    76.2,
+    75.1,
+    73.0
+  ],
+  "op_margin": [
+    40.8,
+    32.8,
+    38.6,
+    -0.2,
+    31.9
+  ],
+  "ocf": [
+    3293,
+    7822,
+    2857,
+    3918,
+    -5370
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 0,
+    "step": 4
+  },
+  "mix_title": "Revenue mix · products",
+  "mix_center": "Keytruda",
+  "mix_colors": [
+    "#005A5B",
+    "#00857C",
+    "#33B5AC",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "Keytruda + QLEX",
+      "pct": 48,
+      "value": "$8.6B"
+    },
+    {
+      "name": "All other",
+      "pct": 32,
+      "value": "$5.8B"
+    },
+    {
+      "name": "Gardasil",
+      "pct": 11,
+      "value": "$2.0B"
+    },
+    {
+      "name": "Animal Health",
+      "pct": 9,
+      "value": "$1.7B"
+    }
+  ],
+  "outlook": {
+    "title": "FY2026 guide · raised",
+    "items": [
+      {
+        "k": "Sales",
+        "v": "$66.8–67.3B",
+        "note": "narrowed, mid raised · +3–4%"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$2.77–2.82",
+        "note": "raised from $2.66–2.76 · incl. $0.12 SciBrunch"
+      },
+      {
+        "k": "Purchase timing",
+        "v": "~$550M",
+        "note": "pull-forward: $200M Keytruda · $300M vaccines"
+      },
+      {
+        "k": "2027 headwinds",
+        "v": ">$2B",
+        "note": "generic LOE: Januvia, Bridion, Adempas"
+      },
+      {
+        "k": "Keytruda QLEX",
+        "v": "$830M",
+        "note": "subcutaneous ramp · IV Keytruda −5%"
+      }
+    ]
+  },
+  "notes": "口徑：Merck 3Q26 業績新聞稿（merck.com，2026-10-29 06:30 ET 盤前）＋ earnings call transcript（openfilings.org）＋ stockanalysis.com MRK 季度表（2026-10-29 更新，含 Q3'26）＋ LSEG 共識（智通財經：銷售 $17.31B、Non-GAAP EPS $2.08）。銷售 $18.085B（+5%，ex-FX +4%）→ 高於共識 +4.5%；Non-GAAP EPS $2.49（共識 $2.08 → +19.7%；3Q25 $2.58 → −3.5%），GAAP EPS $2.04（−12%）；兩口徑均含 $0.12/股 SciBrunch 全球授權一次性費用。Keytruda+QLEX 合計 $8.601B（+6%，高於路透引述 $8B 預期）：皮下 QLEX $830M（4/1 起 J-code），靜脈版 −5% 至 $7.771B；Winrevair $694M（+93%）；Gardasil $1.995B（+14%，CDC 提前採購）；動物保健 $1.676B（+4%）。⚠️ 增長質量：美國約 $550M 利好來自採購時點（客戶提前進貨，$200M Keytruda、$300M 疫苗），佔同比增量約七成，會透支後續季度。GAAP 毛利率 72.9%（−4.8ppt），Non-GAAP 毛利率 81.4%（约持平）；R&D $4.537B（GAAP +7%／非GAAP +13%）。指引：FY26 銷售收窄並上調中值至 $66.8–67.3B（+3–4%；此前低端 $66.3B）；Non-GAAP EPS 上調至 $2.77–2.82（此前 $2.66–2.76，含 SciBrunch $0.12）。2027 風險：BRIDION、Januvia 系列、Adempas 專利到期/仿製藥衝擊 >$2B。毛利率五季（GAAP，stockanalysis）：78.3、73.8、76.2、75.1、73.0；營業利潤率：40.8、32.8、38.6、−0.2（2Q26 含大額一次性項目，淨虧 $1.3B）、31.9。OCF（US$M）：3,293、7,822、2,857、3,918、−5,370（3Q26 轉負，主要為 SciBrunch 授權首付款等支出）。環圖：Keytruda+QLEX 48／All other 32（＝18,085−8,601−1,995−1,676＝$5,813M，含 Winrevair $694M）／Gardasil 11／Animal Health 9（stockanalysis 產品明細加總超出總營收約 $1.3B，故其餘產品不單列）。股價：10/29 收 $146.33（+3.83%），盤後 $147.60（+0.87%）。"
+}
