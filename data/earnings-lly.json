@@ -1,0 +1,138 @@
+{
+  "ticker": "LLY",
+  "company": "Eli Lilly",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 29, 2026 · before US open",
+  "brand": {
+    "deep": "#7A0C14",
+    "primary": "#C8102E",
+    "mid": "#E4574A",
+    "teal": "#5B7C99",
+    "pos": "#028948"
+  },
+  "strip": "Rev +39% to $24.4B, big beat · Mounjaro $10.7B (+65%) · Zepbound $5.4B (+49%) · FY guide raised",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 24397,
+      "actual_disp": "$24.4B",
+      "est_disp": "$22.6B",
+      "surprise": 8.0,
+      "prior": 17601,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 38.6
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 7.48,
+      "actual_disp": "$7.48",
+      "est_disp": "$6.49",
+      "surprise": 15.3,
+      "prior": 7.02,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 7.0
+    }
+  },
+  "layout": {
+    "marginMax": 90,
+    "marginStep": 15
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    82.9,
+    82.5,
+    81.9,
+    85.8,
+    83.9
+  ],
+  "op_margin": [
+    48.3,
+    44.9,
+    49.4,
+    54.2,
+    53.7
+  ],
+  "ocf": [
+    3087,
+    8836,
+    3225,
+    5333,
+    -10690
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 0,
+    "step": 4
+  },
+  "mix_title": "Revenue mix · products",
+  "mix_center": "Mounjaro",
+  "mix_colors": [
+    "#7A0C14",
+    "#C8102E",
+    "#E4574A",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "Mounjaro",
+      "pct": 44,
+      "value": "$10.7B"
+    },
+    {
+      "name": "Zepbound",
+      "pct": 22,
+      "value": "$5.4B"
+    },
+    {
+      "name": "All other",
+      "pct": 28,
+      "value": "$6.7B"
+    },
+    {
+      "name": "Jardiance",
+      "pct": 6,
+      "value": "$1.6B"
+    }
+  ],
+  "outlook": {
+    "title": "FY2026 guide · raised",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$91.0–92.0B",
+        "note": "mid +$5.5B vs prior $85–87B"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$35.00–36.00",
+        "note": "cut from $35.50–36.50 on $4.57 IPR&D"
+      },
+      {
+        "k": "Key products",
+        "v": "$17.1B",
+        "note": "Immunology, Oncology & Neuro +100%"
+      },
+      {
+        "k": "US / ex-US",
+        "v": "$15.1B / $9.3B",
+        "note": "+34% / +47% · China NRDL price −29%"
+      },
+      {
+        "k": "One-off benefits",
+        "v": "~$900M",
+        "note": "$410M Jardiance milestones + rebates"
+      }
+    ]
+  },
+  "notes": "口徑：Lilly 3Q26 業績新聞稿（investor.lilly.com，2026-10-29 盤前）＋ stockanalysis.com LLY 季度表（2026-10-29 更新，含 Q3'26）＋ LSEG 共識（中國基金報：營收約 $22.6B、Non-GAAP EPS $6.49）。營收 $24.397B（+39%；量 +53%、價 −15%），高於 LSEG 共識約 $22.6B → +8.0%；Non-GAAP EPS $7.48（+7%；含 $4.57 acquired IPR&D 費用，去年同期 $0.71），共識 $6.49 → +15.3%；GAAP EPS $7.22（+16%）。Mounjaro $10.723B（+65%）、Zepbound $10.723B→$5.352B（+49%）、Jardiance $1.578B（含 $410M 銷售里程碑，里程碑已全部結束）、Foundayo $1.849B；Key Products 合計 $17.1B。美國 $15.1B（+34%）、美國以外 $9.3B（+47%，量 +76% 價 −29%，Mounjaro 進入中國 NRDL 降價）。毛利率 83.9%（+1.0ppt）。毛利率五季（GAAP，stockanalysis）：3Q25 82.9、4Q25 82.5、1Q26 81.9、2Q26 85.8、3Q26 83.9；營業利潤率：48.3、44.9、49.4、54.2、53.7。OCF（US$M）：3Q25 3,087、4Q25 8,836、1Q26 3,225、2Q26 5,333、3Q26 −10,690（stockanalysis，轉負主要反映 Q3 多筆 business development 支出，含完成收購 AtaiBeckley；季後另完成 Merida Biosciences）。指引：FY26 營收由 $85–87B 上調至 $91.0–92.0B（中值 +$5.5B）；Non-GAAP EPS 由 $35.50–36.50 下調至 $35.00–36.00（底層上調 $4.07 被 Q3 IPR&D $4.57 抵銷）。環圖：Mounjaro 44.0／Zepbound 21.9／All other 27.6／Jardiance 6.5（All other = 24,397 − Mounjaro − Zepbound − Jardiance = $6,744M；stockanalysis 產品線明細加總超出總營收約 $1.1B，疑有重複計算，故其餘產品不單列）。股價：10/29 盤中 +5.96% 報 $1,365.06（stockanalysis 11:45 ET），盤中高 $1,404.37 歷史新高，成為首家市值站上 $1.3T 的藥企（騰訊／中國財富網）。"
+}
