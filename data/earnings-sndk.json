@@ -1,0 +1,136 @@
+{
+  "ticker": "SNDK",
+  "company": "Sandisk",
+  "quarter": "Q1 2027",
+  "period_end": "Oct 2, 2026",
+  "reported": "Oct 29, 2026 · after US close",
+  "brand": {
+    "deep": "#1A1A1A",
+    "primary": "#DA291C",
+    "mid": "#E8705F",
+    "teal": "#EF9E8F",
+    "pos": "#028948"
+  },
+  "strip": "NAND supercycle: rev +378% Y/Y · GM 29.8% → 85.0% · Datacenter $4.8B vs $269M · 8-for-1 split",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 11031,
+      "actual_disp": "$11.0B",
+      "est_disp": "$10.64B",
+      "surprise": 3.7,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 2308,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 378
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 49.51,
+      "actual_disp": "$49.51",
+      "est_disp": "$46.22",
+      "surprise": 7.1,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 1.22,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 3958
+    }
+  },
+  "layout": {
+    "marginMax": 90,
+    "marginStep": 15
+  },
+  "quarters": [
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26",
+    "1Q27"
+  ],
+  "gross_margin": [
+    29.8,
+    50.9,
+    78.4,
+    84.6,
+    85.0
+  ],
+  "op_margin": [
+    7.6,
+    35.5,
+    70.0,
+    78.5,
+    79.6
+  ],
+  "ocf": [
+    488,
+    1019,
+    3038,
+    7126,
+    6363
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 2000
+  },
+  "mix_title": "Revenue by end market",
+  "mix_center": "Edge rev",
+  "mix_colors": [
+    "#1A1A1A",
+    "#DA291C",
+    "#E8705F"
+  ],
+  "mix": [
+    {
+      "name": "Edge",
+      "pct": 52.9,
+      "value": "$5.83B"
+    },
+    {
+      "name": "Datacenter",
+      "pct": 43.5,
+      "value": "$4.80B"
+    },
+    {
+      "name": "Consumer",
+      "pct": 3.6,
+      "value": "$0.40B"
+    }
+  ],
+  "outlook": {
+    "title": "Q2 2027 guide · above Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$12.2–12.6B",
+        "note": "consensus $12.18B · +11–14% Q/Q"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$55–57",
+        "note": "pre-split · consensus $53.19"
+      },
+      {
+        "k": "8-for-1 stock split",
+        "v": "Nov 19, 2026",
+        "note": "post-split trading from Nov 20"
+      },
+      {
+        "k": "Q1 buyback",
+        "v": "$5.0B",
+        "note": "3.2M shares · ~4% of float in 2 qtrs"
+      },
+      {
+        "k": "Contracted NBM floor",
+        "v": "$93.9B",
+        "note": "8 customers signed · demand into FY2030+"
+      }
+    ]
+  },
+  "notes": "口徑：Sandisk FY27 Q1 業績新聞稿（SEC 8-K Ex-99.1，2026-10-29 盤後，fiscal quarter ended Oct 2, 2026）＋ stockanalysis.com SNDK 季度財務（FY26 四季，2026-10-30 抓取）＋ insigtX／華爾街見聞（共識與 60/40 量價拆分）。營收 $11.031B，+23% Q/Q、+378% Y/Y（1Q26 $2.308B），vs 共識 $10.64B → Beat +3.7%；Non-GAAP EPS $49.51（GAAP $52.60）vs 共識 $46.22 → Beat +7.1%；1Q26 Non-GAAP EPS $1.22 → Y/Y +3,958%（約 40×）。GAAP 毛利率 85.0%（新聞稿），Non-GAAP 85.1%；一年前同期 29.8%。營益率＝GAAP OI $8,780M / 營收＝79.6%；五季 GM/OM（GAAP）：29.8/7.6、50.9/35.5、78.4/70.0、84.6/78.5、85.0/79.6。OCF（US$M）：1Q26 488、2Q26 1,019、3Q26 3,038、4Q26 7,126（stockanalysis）、1Q27 6,363（8-K 現金流量表 Net cash provided by operating activities；capex $54M → FCF ~$6.31B；公司口徑 adjusted FCF $5.7B）。環圖＝終端市場拆分（官方 End Market Summary）：Edge $5.832B（52.9%，+7% Q/Q／+320% Y/Y）、Datacenter $4.802B（43.5%，+61% Q/Q、1Q26 僅 $269M）、Consumer $397M（3.6%，−29% Q/Q）。管理層：本季環比增量約 60% 來自出貨量、40% 來自漲價；AI 推理（KV Cache／長上下文／持久記憶）為結構性 NAND 需求；資料中心佔 NAND bit 需求已近 50%。展望：Q2 FY27 營收 $12.2–12.6B（共識 $12.18B）、Non-GAAP EPS $55–57（拆股前，共識 $53.19）；董事會批准 1 拆 8（11/9 登記、11/19 分配、11/20 拆股後交易）；Q1 回購 $5.0B（320 萬股），兩季累計回購 6.0 百萬股（約 4% 流通盤）；已簽 8 家客戶、合約 NBM 收入底線 $93.9B，需求信號延伸至 2030 財年之後。股價：10/29 收 $1,330.05（−5.32%），盤後走勢兩源矛盾（insigtX +2.42% 至 $1,362；stockanalysis 7:59PM ET −3.80% 至 $1,279.50）→ 卡上不標盤後幅度，僅留此備註。"
+}
