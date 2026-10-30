@@ -1,0 +1,125 @@
+{
+  "ticker": "AMZN",
+  "company": "Amazon",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Oct 29, 2026 · after US close",
+  "brand": {
+    "deep": "#232F3E",
+    "primary": "#D45B07",
+    "mid": "#FF9900",
+    "teal": "#5B7C99",
+    "pos": "#028948"
+  },
+  "strip": "Op margin 13.9% — record high · AWS +39%, best in 5 yrs · TTM FCF −$42.4B on $77.3B capex",
+  "kpi": {
+    "revenue": {
+      "label": "Net sales (US$)",
+      "actual": 201944,
+      "actual_disp": "$201.9B",
+      "est_disp": "$202.3B",
+      "surprise": -0.2,
+      "prior": 180169,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 12.0
+    },
+    "eps": {
+      "label": "EPS (diluted)",
+      "actual": 1.89,
+      "actual_disp": "$1.89",
+      "est_disp": "$1.96",
+      "surprise": -3.6,
+      "prior": 1.95,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -3.1
+    }
+  },
+  "layout": {
+    "marginMax": 20,
+    "marginStep": 5
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "op_margin": [
+    11.1,
+    10.5,
+    13.1,
+    13.7,
+    13.9
+  ],
+  "ocf": [
+    35525,
+    54459,
+    26032,
+    45387,
+    42422
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 0,
+    "step": 15
+  },
+  "mix_title": "Operating income mix",
+  "mix_center": "AWS op inc",
+  "mix_colors": [
+    "#FF9900",
+    "#232F3E",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "AWS",
+      "pct": 63.3,
+      "value": "$17.8B"
+    },
+    {
+      "name": "North America",
+      "pct": 31.0,
+      "value": "$8.7B"
+    },
+    {
+      "name": "International",
+      "pct": 5.7,
+      "value": "$1.6B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 guide · mid below Street",
+    "items": [
+      {
+        "k": "Net sales",
+        "v": "$240–247B",
+        "note": "consensus $244.5B · +12–16% Y/Y"
+      },
+      {
+        "k": "Operating income",
+        "v": "$28.5–33.5B",
+        "note": "consensus $33.0B · 4Q25 was $25.0B"
+      },
+      {
+        "k": "AWS growth",
+        "v": ">40% in '27–'28",
+        "note": "Jassy · Q3 was +39.3% · $184B run rate"
+      },
+      {
+        "k": "FY26 capex",
+        "v": "~$220B",
+        "note": "maintained · Q3 capex $77.3B, 2.2× Y/Y"
+      },
+      {
+        "k": "FCF (TTM)",
+        "v": "−$42.4B",
+        "note": "vs +$14.8B a year ago · AI buildout"
+      }
+    ]
+  },
+  "notes": "口徑：Amazon 3Q26 業績新聞稿（aboutamazon.com，2026-10-29）＋ stockanalysis.com AMZN 季度表 ＋ LSEG 共識（財聯社）／新浪／網易（每經）轉述共識。淨銷售 $201.944B（+12%，ex-FX +13%；Prime Day 移至 Q2，還原後增速約 +400bps），LSEG 共識 $202.31B → −0.2% 輕微 miss；EPS $1.89（共識 $1.96 → −3.6%；3Q25 $1.95 → −3.1%，下滑主因去年同期計入 $9.5B Anthropic 投資稅前收益）。營業利潤 $28.08B（+61.5%，高於共識 $26.06B 約 7%），營業利潤率 13.9% 歷史新高。AWS 營收 $45.984B（+39.3%，共識 $45.68B，近五年最快），OI $17.773B（margin 38.7% vs 去年 34.6%），年化 run rate $184B；Jassy：2027、2028 增速將 >40%。北美 segment $112.9B(+6%)、國際 $43.1B(+5%)。廣告 $19.637B（+10.9%，ex-FX +12%，低於預期約 6%）；線上商店 $68.47B（+1.6%，三年半最慢）。Q3 capex（property & equipment）$77.3B（去年同期 $35.1B，約 2.2 倍，高於預期約 34%）；TTM OCF $168.3B（+29%）；TTM FCF −$42.4B（去年同期 +$14.8B）。維持 FY26 capex 約 $220B。營業利潤率五季（GAAP，stockanalysis）：3Q25 11.1、4Q25 10.5、1Q26 13.1、2Q26 13.7、3Q26 13.9（新聞稿）；3Q26 官方未披露毛利率 → 單線模式。OCF（US$M）：3Q25 35,525、4Q25 54,459、1Q26 26,032、2Q26 45,387（stockanalysis）；3Q26 42,422 由官方 TTM $168.3B 減前三季推得（168,300−54,459−26,032−45,387）。環圖＝營業利潤構成（AWS 17.8／北美 8.7／國際 1.6，合計 $28.1B）。指引：Q4 淨銷售 $240–247B（共識 $244.5B）、營業利潤 $28.5–33.5B（共識 $33.0B；4Q25 為 $25.0B）。股價：10/29 收 $243.79（−4.25%），盤後 $226.00（−7.30%，stockanalysis 19:59 ET；財聯社稱盤後一度 −12%）。"
+}
