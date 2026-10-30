@@ -1,0 +1,140 @@
+{
+  "ticker": "INTC",
+  "company": "Intel",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 26, 2026",
+  "reported": "Oct 29, 2026 · after US close",
+  "brand": {
+    "deep": "#003A70",
+    "primary": "#0068B5",
+    "mid": "#4B9CD3",
+    "teal": "#5FA8D3",
+    "pos": "#028948"
+  },
+  "strip": "Q3 beat across the board · DCAI +78%, best in 15 years · stock −23% after hours on soft Q4 guide",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 16513,
+      "actual_disp": "$16.5B",
+      "est_disp": "$16.5B",
+      "surprise": 0.0,
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "prior": 13653,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 21.0
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 0.52,
+      "actual_disp": "$0.52",
+      "est_disp": "$0.41",
+      "surprise": 26.8,
+      "prior": 0.23,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 126.0
+    }
+  },
+  "layout": {
+    "marginMax": 50,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    38.2,
+    37.3,
+    39.4,
+    40.4,
+    43.0
+  ],
+  "op_margin": [
+    5.0,
+    5.1,
+    6.9,
+    12.2,
+    15.3
+  ],
+  "ocf": [
+    2546,
+    4288,
+    1096,
+    7006,
+    5100
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 2000
+  },
+  "mix_title": "Revenue mix · external",
+  "mix_center": "Client rev",
+  "mix_colors": [
+    "#003A70",
+    "#0068B5",
+    "#4B9CD3",
+    "#98A2B3"
+  ],
+  "mix": [
+    {
+      "name": "Client (CCPG)",
+      "pct": 49.0,
+      "value": "$8.1B"
+    },
+    {
+      "name": "Data Center & AI",
+      "pct": 44.3,
+      "value": "$7.3B"
+    },
+    {
+      "name": "All Other",
+      "pct": 4.2,
+      "value": "$0.7B"
+    },
+    {
+      "name": "Foundry (ext.)",
+      "pct": 2.5,
+      "value": "$0.4B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 guide · well below Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$15.0–16.0B",
+        "note": "consensus $17.07B · mid −9%"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$0.25",
+        "note": "consensus $0.43 · GAAP $0.10"
+      },
+      {
+        "k": "Gross margin",
+        "v": "GAAP 37.1%",
+        "note": "non-GAAP ~38% · 3Q was 43.0%"
+      },
+      {
+        "k": "Israel fab blast",
+        "v": "−$300M rev",
+        "note": "~2-wk halt, −200bps GM · spills into 1Q27"
+      },
+      {
+        "k": "FY26 capex",
+        "v": "$20B",
+        "note": "raised from $18B · 2027 up sharply"
+      }
+    ]
+  },
+  "notes": "口徑：Intel 3Q26 業績新聞稿（intc.com press release #1786／SEC 8-K，2026-10-29）＋ stockanalysis.com INTC 季度財務（2026-10-29 抓取）＋富途新聞（Q4 共識 $17.07B／EPS 共識 $0.43、Q3 EPS 預期 $0.41）。營收 $16.513B（+21% Y/Y，3Q25 $13.653B），與市場預期基本一致 → pill 用 In line；Non-GAAP EPS $0.52（預期 $0.41 → +26.8%；3Q25 $0.23 → +126%）。GAAP EPS $0.60、GAAP 淨利 $3.3B（−18%）。毛利率／營益率五季均 GAAP：3Q25 38.2/5.0、4Q25 37.3/5.1、1Q26 39.4/6.9、2Q26 40.4/12.2（stockanalysis），3Q26 43.0/15.3（新聞稿 GAAP 表，3Q25 比較欄 5.0% 以新聞稿為準）。OCF（US$M）：3Q25 2,546、4Q25 4,288、1Q26 1,096、2Q26 7,006（stockanalysis），3Q26 5,100（新聞稿『generated $5.1 billion in cash from operations』）。mix＝外部營收拆分（segment 營收含內部交易：CCPG $8.097B、DCAI $7.318B、Foundry $6.697B、All Other $0.692B、intersegment elim −$6.291B，總計 $16.513B）：Foundry 外部營收＝16,513−8,097−7,318−692＝$406M，故環圖僅 2.5%，Foundry 總營收 +58% 由 strip／outlook 呈現。展望：Q4 營收指引 $15.0–16.0B（共識 $17.07B，中值 −9%）、Non-GAAP EPS $0.25（共識 $0.43）、GAAP EPS $0.10、GAAP 毛利率 37.1%（新華社引官方，Non-GAAP 約 38%）；以色列 Kiryat Gat 爆炸事故停產約兩週 → Q4 營收 −$300M、毛利率 −200bps，影響延續至 1Q27；FY26 capex 由 $18B 上調至 $20B。股價：10/29 收 $92.07（−3.62%），盤後 $70.86（−23.04%，stockanalysis 即時）。"
+}
