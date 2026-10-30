@@ -2,192 +2,140 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-30 13:33",
+  "generated_at": "2026-10-30 21:09",
   "week_label": "Oct 26 – Oct 30",
   "ondeck": {
-    "session": "2026-10-30",
-    "slot": "pre-market",
+    "session": "2026-11-02",
+    "slot": "next session",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.3
+        "pct": -1.82
       },
       {
         "label": "Nasdaq",
-        "pct": -1.38
+        "pct": -2.86
       },
       {
         "label": "Russell 2000",
-        "pct": 1.01
+        "pct": -1.66
       }
     ],
-    "econ": [
-      {
-        "time": "10:30",
-        "event": "Atlanta Fed GDPNow",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "08:30",
-        "event": "GDP",
-        "consensus": "3.2%",
-        "previous": "2.2%"
-      },
-      {
-        "time": "08:30",
-        "event": "GDP Price Index",
-        "consensus": "3.2%",
-        "previous": "6.1%"
-      },
-      {
-        "time": "08:30",
-        "event": "GDP Sales",
-        "consensus": "",
-        "previous": "2.8%"
-      },
-      {
-        "time": "08:30",
-        "event": "Continuing Jobless Claims",
-        "consensus": "1,720K",
-        "previous": "1,722K"
-      },
-      {
-        "time": "08:30",
-        "event": "Core PCE Price Index",
-        "consensus": "0.3%",
-        "previous": "0.3%"
-      },
-      {
-        "time": "08:30",
-        "event": "Core PCE Prices",
-        "consensus": "2.40%",
-        "previous": "3.30%"
-      },
-      {
-        "time": "08:30",
-        "event": "Initial Jobless Claims",
-        "consensus": "198K",
-        "previous": "195K"
-      },
-      {
-        "time": "08:30",
-        "event": "Jobless Claims 4-Week Avg.",
-        "consensus": "",
-        "previous": "198.00K"
-      },
-      {
-        "time": "16:30",
-        "event": "Fed's Balance Sheet",
-        "consensus": "",
-        "previous": "6,754B"
-      }
-    ],
-    "econ_all": 19,
+    "econ": [],
+    "econ_all": 0,
     "earnings": {
       "before": [
-        "XOM",
-        "ABBV",
-        "CVX",
-        "AZN",
-        "BP",
-        "SNY",
-        "GD",
-        "REGN"
+        "MAR",
+        "ETR",
+        "IDXX",
+        "EL",
+        "PEG",
+        "RYAAY",
+        "FOX",
+        "FOXA"
       ],
-      "after": [],
-      "before_n": 48,
-      "after_n": 0,
-      "total": 58
+      "after": [
+        "AAPL",
+        "PLTR",
+        "VRTX",
+        "WMB",
+        "FANG",
+        "O",
+        "ON",
+        "ROKU"
+      ],
+      "before_n": 25,
+      "after_n": 104,
+      "total": 154
     }
   },
   "winners": {
-    "from": "2026-10-19",
-    "to": "2026-10-23",
-    "universe": 1853,
+    "from": "2026-10-26",
+    "to": "2026-10-30",
+    "universe": 1862,
     "is_demo": false,
     "gainers": [
       {
-        "ticker": "BRZE",
-        "pct": 52.73
+        "ticker": "ADT",
+        "pct": 43.31
       },
       {
-        "ticker": "RHI",
-        "pct": 39.55
+        "ticker": "GKOS",
+        "pct": 33.28
       },
       {
-        "ticker": "UWMC",
-        "pct": 36.79
+        "ticker": "HRI",
+        "pct": 30.39
       },
       {
-        "ticker": "NTSK",
-        "pct": 25.03
+        "ticker": "AXGN",
+        "pct": 29.85
       },
       {
-        "ticker": "LQDA",
-        "pct": 24.96
+        "ticker": "BHC",
+        "pct": 29.13
       },
       {
-        "ticker": "APPN",
-        "pct": 23.82
+        "ticker": "CROX",
+        "pct": 26.65
       },
       {
-        "ticker": "BHVN",
-        "pct": 22.29
+        "ticker": "CDNA",
+        "pct": 26.5
       },
       {
-        "ticker": "RH",
-        "pct": 20.52
+        "ticker": "KNSA",
+        "pct": 26.39
       },
       {
-        "ticker": "KVYO",
-        "pct": 20.49
+        "ticker": "OSW",
+        "pct": 25.97
       },
       {
-        "ticker": "ZS",
-        "pct": 20.05
+        "ticker": "HAYW",
+        "pct": 25.74
       }
     ],
     "losers": [
       {
-        "ticker": "CRS",
-        "pct": -24.79
+        "ticker": "IOVA",
+        "pct": -38.46
       },
       {
-        "ticker": "RGC",
-        "pct": -23.68
+        "ticker": "RDDT",
+        "pct": -33.75
       },
       {
-        "ticker": "CORT",
-        "pct": -23.41
+        "ticker": "NOW",
+        "pct": -33.54
       },
       {
-        "ticker": "FPS",
-        "pct": -23.16
+        "ticker": "ALNY",
+        "pct": -27.52
       },
       {
-        "ticker": "FIX",
-        "pct": -20.71
+        "ticker": "INTC",
+        "pct": -27.31
       },
       {
-        "ticker": "DPC",
-        "pct": -20.14
+        "ticker": "FFIV",
+        "pct": -26.7
       },
       {
-        "ticker": "FCFS",
-        "pct": -19.62
+        "ticker": "FTNT",
+        "pct": -25.77
       },
       {
-        "ticker": "TTMI",
-        "pct": -19.16
+        "ticker": "RSI",
+        "pct": -25.64
       },
       {
-        "ticker": "LKQ",
-        "pct": -19.05
+        "ticker": "BFAM",
+        "pct": -25.35
       },
       {
-        "ticker": "LGN",
-        "pct": -18.41
+        "ticker": "SFM",
+        "pct": -24.59
       }
     ]
   },
@@ -195,138 +143,77 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 02",
-        "count": 154,
+        "date": "Oct 26",
+        "count": 71,
         "econ": [],
-        "before": [
-          "MAR",
-          "ETR",
-          "IDXX",
-          "EL",
-          "PEG",
-          "RYAAY",
-          "FOX",
-          "FOXA"
-        ],
-        "after": [
-          "AAPL",
-          "PLTR",
-          "VRTX",
-          "WMB",
-          "FANG",
-          "O",
-          "ON",
-          "ROKU"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Tue",
-        "date": "Nov 03",
-        "count": 282,
-        "econ": [],
-        "before": [
-          "SHOP",
-          "PFE",
-          "ETN",
-          "MPC",
-          "RACE",
-          "APO",
-          "MPLX",
-          "AME"
+        "date": "Oct 27",
+        "count": 173,
+        "econ": [
+          "Chicago Fed National Activity",
+          "Dallas Fed Mfg Business Index",
+          "3-Month Bill Auction",
+          "6-Month Bill Auction"
         ],
-        "after": [
-          "AMD",
-          "AMGN",
-          "ANET",
-          "BKNG",
-          "SU",
-          "ITUB",
-          "ALAB",
-          "XYZ"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Wed",
-        "date": "Nov 04",
-        "count": 480,
-        "econ": [],
-        "before": [
-          "MCD",
-          "NVO",
-          "UBER",
-          "CVS",
-          "DDOG",
-          "EMR",
-          "GWW",
-          "COR"
+        "date": "Oct 28",
+        "count": 249,
+        "econ": [
+          "Atlanta Fed GDPNow",
+          "Core Durable Goods Orders",
+          "CB Consumer Confidence",
+          "Durables Excluding Defense"
         ],
-        "after": [
-          "ARM",
-          "QCOM",
-          "MCK",
-          "APP",
-          "MELI",
-          "MSI",
-          "MFC",
-          "ALL"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Thu",
-        "date": "Nov 05",
-        "count": 619,
+        "date": "Oct 29",
+        "count": 325,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "ADP Nonfarm Employment Change",
-          "Trade Balance",
-          "ISM Non-Manufacturing Business Activity"
+          "Goods Trade Balance",
+          "Fed Interest Rate Decision",
+          "FOMC Statement",
+          "FOMC Press Conference"
         ],
         "before": [
-          "COP",
-          "SONY",
-          "PH",
-          "CNQ",
-          "SO",
-          "DUK",
-          "CI",
-          "CMI"
+          "HLN",
+          "LZM"
         ],
-        "after": [
-          "MNST",
-          "NET",
-          "ABNB",
-          "EOG",
-          "LITE",
-          "SPG",
-          "NTRA",
-          "WPM"
-        ]
+        "after": []
       },
       {
         "day": "Fri",
-        "date": "Nov 06",
-        "count": 115,
+        "date": "Oct 30",
+        "count": 56,
         "econ": [
-          "Continuing Jobless Claims",
-          "Initial Jobless Claims",
-          "Jobless Claims 4-Week Avg.",
-          "Nonfarm Productivity"
+          "GDP",
+          "GDP Price Index",
+          "GDP Sales",
+          "Continuing Jobless Claims"
         ],
         "before": [
-          "ENB",
-          "MRNA",
-          "BAM",
-          "HUM",
-          "VST",
-          "PPL",
-          "PAA",
-          "BIP"
+          "XOM",
+          "ABBV",
+          "CVX",
+          "AZN",
+          "BP",
+          "SNY",
+          "GD",
+          "REGN"
         ],
-        "after": [
-          "HE"
-        ]
+        "after": []
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }
