@@ -22,6 +22,8 @@ const { textWidth } = require('./lib/fontwidths');
 
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(path.join(BASE, 'data', 'capex-bigfour.json'), 'utf8'));
+const LOGO_PATH = path.join(BASE, 'data', 'logos.json');
+const LOGOS = fs.existsSync(LOGO_PATH) ? JSON.parse(fs.readFileSync(LOGO_PATH, 'utf8')) : {};
 
 const W = 1080, H = 1350, M = 48, CW = W - M * 2;
 const C = {
@@ -75,7 +77,7 @@ D.series.forEach((s, i) => {
 svg.push(t(W - M, LEG_Y0, D.unit, { size: 17, fill: C.dim, anchor: 'end' }));
 
 /* ---------------- 主圖：四條折線 ---------------- */
-const PX0 = M + 58, PX1 = W - M - 104;      // 右側留 104px 給端點標值
+const PX0 = M + 58, PX1 = W - M - 112;      // 右側留 112px 給 logo + 端點標值
 const PY0 = 366, PY1 = 1122;
 const YMAX = D.ymax, YSTEP = D.ystep;
 const yOf = (v) => PY1 - (v / YMAX) * (PY1 - PY0);
@@ -119,26 +121,39 @@ D.series.forEach((s) => {
   });
 }
 
-/* 右側端點標最新值：由上到下排，最小間距 26，避免 39.4/33.9 互撞 */
+/* 右側端點：各家 logo 圓標 + 最新值；由上到下排，最小間距 34（logo 直徑 28） */
 {
   const items = D.series.map((s) => ({ s, y: yOf(s.values[NQ - 1]) }))
     .sort((a, b) => a.y - b.y);
   const placed = [];
   items.forEach((it) => {
     let y = it.y + 6;                       // 文字基線對齊點心
-    for (const p of placed) if (Math.abs(y - p) < 26) y = p + 26;
+    for (const p of placed) if (Math.abs(y - p) < 34) y = p + 34;
     placed.push(y);
-    svg.push(t(PX1 + 62, y, it.s.values[NQ - 1].toFixed(1),
-      { size: 20, weight: 700, fill: it.s.color, anchor: 'middle' }));
+    const L = 28, lx = PX1 + 24, cy = y - 7;
+    const uri = LOGOS[it.s.ticker];
+    if (uri) {
+      const cid = `lg${uid++}`;
+      defs.push(`<clipPath id="${cid}"><circle cx="${lx + L / 2}" cy="${cy}" r="${L / 2}"/></clipPath>`);
+      const ein = L * 0.92, eoff = (L - ein) / 2;
+      svg.push(`<g clip-path="url(#${cid})"><image x="${lx + eoff}" y="${cy - L / 2 + eoff}" width="${ein}" height="${ein}" href="${uri}" image-rendering="optimizeQuality"/></g>`);
+      svg.push(`<circle cx="${lx + L / 2}" cy="${cy}" r="${L / 2}" fill="none" stroke="#DDE6EF" stroke-width="1.2"/>`);
+    } else {
+      svg.push(`<circle cx="${lx + L / 2}" cy="${cy}" r="${L / 2}" fill="${it.s.color}"/>`);
+    }
+    svg.push(t(PX1 + 58, y, it.s.values[NQ - 1].toFixed(1),
+      { size: 20, weight: 700, fill: it.s.color, anchor: 'start' }));
   });
 }
 
-/* ---------------- 洞察條 ---------------- */
+/* ---------------- 洞察條（頁面中間偏左，浮在圖表空曠區） ---------------- */
 {
-  const SY = 1188, SH = 46;
-  svg.push(rrect(M, SY, CW, SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
-  svg.push(`<rect x="${M}" y="${SY + 9}" width="4" height="${SH - 18}" rx="2" fill="#E47911"/>`);
-  svg.push(t(M + 18, SY + 30, D.strip, { size: 18, weight: 500, fill: '#0B1220' }));
+  const ss = 17;
+  const w = Math.min(CW, Math.round(tw(D.strip, ss, 500)) + 36);
+  const SY = 540, SH = 44;
+  svg.push(rrect(M, SY, w, SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
+  svg.push(`<rect x="${M}" y="${SY + 8}" width="4" height="${SH - 16}" rx="2" fill="#E47911"/>`);
+  svg.push(t(M + 18, SY + 28, D.strip, { size: ss, weight: 500, fill: '#0B1220' }));
 }
 
 /* ---------------- 頁腳 ---------------- */
