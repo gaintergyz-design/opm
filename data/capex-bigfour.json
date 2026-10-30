@@ -1,0 +1,20 @@
+{
+  "title": "The AI Capex Race",
+  "subtitle": "What Amazon, Microsoft, Alphabet and Meta spend each quarter",
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "unit": "US$ billions",
+  "ymax": 100,
+  "ystep": 20,
+  "strip": "Combined 3Q26: $202.0B — 2.1x a year ago · Meta's capex topped its operating cash flow",
+  "meta": "Cash purchases of property & equipment per SEC filings · excl. finance leases · calendar quarters",
+  "series": [
+    { "name": "Amazon",    "ticker": "AMZN",  "color": "#E47911", "values": [35.1, 39.5, 44.2, 54.2, 77.3],
+      "sources": ["10-Q/10-K cash flow stmt: 35,095 / 39,522 / 44,203 / 54,208 / 77,259 ($M); CFO call quotes"] },
+    { "name": "Microsoft", "ticker": "MSFT",  "color": "#0078D4", "values": [19.4, 29.9, 30.9, 35.8, 39.4],
+      "sources": ["FY26Q1-FY27Q1 press releases 'Additions to property and equipment': 19,394 / 29,876 / 30,876 / 35,802 / 39,367 ($M)"] },
+    { "name": "Alphabet",  "ticker": "GOOGL", "color": "#188038", "values": [24.0, 27.9, 35.7, 44.9, 51.4],
+      "sources": ["10-Q/10-K purchases of PP&E: 23,953 / 27,851 / 35,674 / 44,924 / 51,355 ($M)"] },
+    { "name": "Meta",      "ticker": "META",  "color": "#8B5CF6", "values": [18.8, 21.4, 19.0, 30.1, 33.9],
+      "sources": ["10-Q/10-K purchases of PP&E excl. finance-lease principal: 18,829 / 21,383 / 18,997 / 30,116 / 33,942 ($M)"] }
+  ]
+}
