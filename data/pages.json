@@ -2,112 +2,103 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-29 13:36",
+  "generated_at": "2026-10-30 13:33",
   "week_label": "Oct 26 – Oct 30",
   "ondeck": {
-    "session": "2026-10-29",
+    "session": "2026-10-30",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 0.28
+        "pct": -0.3
       },
       {
         "label": "Nasdaq",
-        "pct": 0.27
+        "pct": -1.38
       },
       {
         "label": "Russell 2000",
-        "pct": 0.41
+        "pct": 1.01
       }
     ],
     "econ": [
       {
-        "time": "10:50",
+        "time": "10:30",
         "event": "Atlanta Fed GDPNow",
-        "consensus": "3.4%",
-        "previous": "3.4%"
-      },
-      {
-        "time": "08:30",
-        "event": "Goods Trade Balance",
-        "consensus": "-130.40B",
-        "previous": "-132.07B"
-      },
-      {
-        "time": "14:00",
-        "event": "Fed Interest Rate Decision",
-        "consensus": "4.00%",
-        "previous": "4.00%"
-      },
-      {
-        "time": "14:00",
-        "event": "FOMC Statement",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "14:30",
-        "event": "FOMC Press Conference",
         "consensus": "",
         "previous": ""
       },
       {
         "time": "08:30",
-        "event": "Wholesale Inventories",
-        "consensus": "0.5%",
-        "previous": "0.5%"
+        "event": "GDP",
+        "consensus": "3.2%",
+        "previous": "2.2%"
       },
       {
-        "time": "10:30",
-        "event": "Crude Oil Inventories",
-        "consensus": "0.100M",
-        "previous": "-3.060M"
+        "time": "08:30",
+        "event": "GDP Price Index",
+        "consensus": "3.2%",
+        "previous": "6.1%"
       },
       {
-        "time": "10:30",
-        "event": "EIA Weekly Distillates Stocks",
-        "consensus": "-0.600M",
-        "previous": "1.675M"
-      },
-      {
-        "time": "10:30",
-        "event": "Gasoline Inventories",
-        "consensus": "-1.400M",
-        "previous": "-2.952M"
-      },
-      {
-        "time": "07:00",
-        "event": "MBA 30-Year Mortgage Rate",
+        "time": "08:30",
+        "event": "GDP Sales",
         "consensus": "",
-        "previous": "7.41%"
+        "previous": "2.8%"
+      },
+      {
+        "time": "08:30",
+        "event": "Continuing Jobless Claims",
+        "consensus": "1,720K",
+        "previous": "1,722K"
+      },
+      {
+        "time": "08:30",
+        "event": "Core PCE Price Index",
+        "consensus": "0.3%",
+        "previous": "0.3%"
+      },
+      {
+        "time": "08:30",
+        "event": "Core PCE Prices",
+        "consensus": "2.40%",
+        "previous": "3.30%"
+      },
+      {
+        "time": "08:30",
+        "event": "Initial Jobless Claims",
+        "consensus": "198K",
+        "previous": "195K"
+      },
+      {
+        "time": "08:30",
+        "event": "Jobless Claims 4-Week Avg.",
+        "consensus": "",
+        "previous": "198.00K"
+      },
+      {
+        "time": "16:30",
+        "event": "Fed's Balance Sheet",
+        "consensus": "",
+        "previous": "6,754B"
       }
     ],
-    "econ_all": 21,
+    "econ_all": 19,
     "earnings": {
       "before": [
-        "LLY",
-        "MA",
-        "MRK",
-        "CAT",
-        "SHEL",
-        "LIN",
-        "TTE",
-        "BUD"
+        "XOM",
+        "ABBV",
+        "CVX",
+        "AZN",
+        "BP",
+        "SNY",
+        "GD",
+        "REGN"
       ],
-      "after": [
-        "AMZN",
-        "INTC",
-        "SNDK",
-        "GILD",
-        "SBUX",
-        "SYK",
-        "MDLZ",
-        "RSG"
-      ],
-      "before_n": 147,
-      "after_n": 117,
-      "total": 303
+      "after": [],
+      "before_n": 48,
+      "after_n": 0,
+      "total": 58
     }
   },
   "winners": {
@@ -205,7 +196,7 @@
       {
         "day": "Mon",
         "date": "Nov 02",
-        "count": 160,
+        "count": 154,
         "econ": [],
         "before": [
           "MAR",
@@ -231,13 +222,8 @@
       {
         "day": "Tue",
         "date": "Nov 03",
-        "count": 283,
-        "econ": [
-          "Atlanta Fed GDPNow",
-          "ISM Manufacturing Employment",
-          "ISM Manufacturing New Orders Index",
-          "ISM Manufacturing PMI"
-        ],
+        "count": 282,
+        "econ": [],
         "before": [
           "SHOP",
           "PFE",
@@ -263,12 +249,7 @@
         "day": "Wed",
         "date": "Nov 04",
         "count": 480,
-        "econ": [
-          "Durables Excluding Defense",
-          "Durables Excluding Transport",
-          "IBD/TIPP Economic Optimism",
-          "S&P Global Manufacturing PMI"
-        ],
+        "econ": [],
         "before": [
           "MCD",
           "NVO",
@@ -284,21 +265,21 @@
           "QCOM",
           "MCK",
           "APP",
+          "MELI",
           "MSI",
           "MFC",
-          "DASH",
           "ALL"
         ]
       },
       {
         "day": "Thu",
         "date": "Nov 05",
-        "count": 612,
+        "count": 619,
         "econ": [
+          "Atlanta Fed GDPNow",
           "ADP Nonfarm Employment Change",
           "Trade Balance",
-          "ISM Non-Manufacturing Business Activity",
-          "ISM Non-Manufacturing Employment"
+          "ISM Non-Manufacturing Business Activity"
         ],
         "before": [
           "COP",
@@ -311,20 +292,20 @@
           "CMI"
         ],
         "after": [
+          "MNST",
           "NET",
           "ABNB",
           "EOG",
           "LITE",
           "SPG",
-          "WPM",
-          "DVN",
-          "TEAM"
+          "NTRA",
+          "WPM"
         ]
       },
       {
         "day": "Fri",
         "date": "Nov 06",
-        "count": 117,
+        "count": 115,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
