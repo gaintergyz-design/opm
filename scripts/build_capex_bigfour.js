@@ -146,14 +146,17 @@ D.series.forEach((s) => {
   });
 }
 
-/* ---------------- 洞察條（頁面中間偏左，浮在圖表空曠區） ---------------- */
+/* ---------------- 洞察條（頁面中間偏左，兩行各一條 pill） ---------------- */
 {
-  const ss = 17;
-  const w = Math.min(CW, Math.round(tw(D.strip, ss, 500)) + 36);
-  const SY = 540, SH = 44;
-  svg.push(rrect(M, SY, w, SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
-  svg.push(`<rect x="${M}" y="${SY + 8}" width="4" height="${SH - 16}" rx="2" fill="#E47911"/>`);
-  svg.push(t(M + 18, SY + 28, D.strip, { size: ss, weight: 500, fill: '#0B1220' }));
+  const ss = 17, SH = 40, GAP = 10;
+  const lines = Array.isArray(D.strip) ? D.strip : [D.strip];
+  lines.forEach((line, i) => {
+    const w = Math.min(CW, Math.round(tw(line, ss, 500)) + 36);
+    const SY = 530 + i * (SH + GAP);
+    svg.push(rrect(M, SY, w, SH, 11, '#EEF4FE', 'stroke="#D7E5FA" stroke-width="1.2"'));
+    svg.push(`<rect x="${M}" y="${SY + 7}" width="4" height="${SH - 14}" rx="2" fill="#E47911"/>`);
+    svg.push(t(M + 18, SY + 26, line, { size: ss, weight: 500, fill: '#0B1220' }));
+  });
 }
 
 /* ---------------- 頁腳 ---------------- */

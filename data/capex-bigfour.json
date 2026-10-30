@@ -5,7 +5,7 @@
   "unit": "US$ billions",
   "ymax": 100,
   "ystep": 20,
-  "strip": "Combined 3Q26: $202.0B — 2.1x a year ago · Meta's capex topped its operating cash flow",
+  "strip": ["Combined 3Q26: $202.0B — 2.1x a year ago", "Meta's capex topped its operating cash flow"],
   "meta": "Cash purchases of property & equipment per SEC filings · excl. finance leases · calendar quarters",
   "series": [
     { "name": "Amazon",    "ticker": "AMZN",  "color": "#E47911", "values": [35.1, 39.5, 44.2, 54.2, 77.3],
