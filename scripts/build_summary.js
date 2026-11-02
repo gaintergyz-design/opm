@@ -103,20 +103,22 @@ const BLOCKS = {
   /* 橫向長條：label + bar + 數值 */
   bars(b, sq) {
     const rows = b.items || [];
-    const ROW = Math.round(48 * sq), HEAD = Math.round(40 * sq);
+    const ROW = Math.round(54 * sq), HEAD = Math.round(46 * sq);
     return {
       h: HEAD + rows.length * ROW,
       draw(a, y) {
         sectionLabel(a, M, y + HEAD / 2 + 2, b.title, b.unit, fz(23, sq));
         const max = Math.max(...rows.map((r) => Math.abs(r.value) || 0), 0.0001);
-        const LX = M, BX = M + 168, BW = CW - 168 - 132;
+        const valSize = fz(25, sq);
+        const valW = Math.max(100, ...rows.map((r) => wOf(r.display || '', valSize, 700)));
+        const LX = M, BX = M + 168, BW = Math.max(60, CW - 168 - valW - 26);
         rows.forEach((r, i) => {
           const mid = y + HEAD + i * ROW + ROW / 2;
           a.push(t(LX, mid + 8, r.label, { size: fz(23, sq), fill: C.gray }));
           const w = Math.max(8, Math.round((Math.abs(r.value) / max) * BW));
           a.push(`<rect x="${BX}" y="${mid - 6}" width="${BW}" height="12" rx="2" fill="${C.chip}"/>`);
           a.push(`<rect x="${BX}" y="${mid - 6}" width="${w}" height="12" rx="2" fill="${C.amber}" opacity="0.9"/>`);
-          a.push(t(W - M, mid + 9, r.display, { size: fz(25, sq), weight: 700, anchor: 'end' }));
+          a.push(t(W - M, mid + 9, r.display, { size: valSize, weight: 700, anchor: 'end' }));
         });
       },
     };
@@ -125,8 +127,8 @@ const BLOCKS = {
   /* 鍵值行：左 key（可帶 sub 小字），右 value */
   rows(b, sq) {
     const rows = b.items || [];
-    const HEAD = Math.round(40 * sq);
-    const rowH = (r) => Math.round((r.sub ? 64 : 50) * sq);
+    const HEAD = Math.round(46 * sq);
+    const rowH = (r) => Math.round((r.sub ? 68 : 54) * sq);
     const total = rows.reduce((s, r) => s + rowH(r), 0);
     return {
       h: HEAD + total,
@@ -167,7 +169,7 @@ const BLOCKS = {
   /* 垂直堆疊層（階梯遞進，左側序號塊由深到淺） */
   stack(b, sq) {
     const items = b.items || [];
-    const ROW = Math.round(78 * sq), HEAD = Math.round(34 * sq);
+    const ROW = Math.round(82 * sq), HEAD = Math.round(40 * sq);
     return {
       h: HEAD + items.length * ROW,
       draw(a, y) {
@@ -208,7 +210,7 @@ const BLOCKS = {
   /* 編號要點 */
   bullets(b, sq) {
     const items = b.items || [];
-    const HEAD = Math.round(40 * sq), ROW = Math.round(70 * sq);
+    const HEAD = Math.round(46 * sq), ROW = Math.round(76 * sq);
     return {
       h: HEAD + items.length * ROW,
       draw(a, y) {
@@ -236,19 +238,33 @@ function renderCard(card) {
   const a = [];
   a.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`);
   a.push(`<rect width="${W}" height="${H}" fill="${C.bg}"/>`);
+
+  // 背景配圖（淺色編輯風）：低透明度 + 白色蒙版，保證正文對比
+  const BG_PATH = process.env.SUMMARY_BG || path.join(BASE, 'assets', 'bg', 'anthropic-ipo-bg.jpg');
+  if (fs.existsSync(BG_PATH)) {
+    const b64 = fs.readFileSync(BG_PATH).toString('base64');
+    const gid = `bgv${uid++}`;
+    defs.push(`<linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="${H}" gradientUnits="userSpaceOnUse">` +
+      `<stop offset="0" stop-color="#FFFFFF" stop-opacity="0.40"/>` +
+      `<stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.25"/>` +
+      `<stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/></linearGradient>`);
+    a.push(`<image x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice" opacity="0.9" href="data:image/jpeg;base64,${b64}"/>`);
+    a.push(`<rect width="${W}" height="${H}" fill="url(#${gid})"/>`);
+  }
+
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
 
   /* ---- 頁首 ---- */
   // kicker：0X · TAG · SERIES
-  a.push(t(M, 96, card.no, { size: 24, weight: 700, fill: C.amber, ls: 1 }));
+  a.push(t(M, 80, card.no, { size: 24, weight: 700, fill: C.amber, ls: 1 }));
   const noW = wOf(card.no, 24, 700);
-  a.push(t(M + noW + 16, 96, `· ${card.tag}`, { size: 22, fill: C.gray, ls: 2.4 }));
+  a.push(t(M + noW + 16, 80, `· ${card.tag}`, { size: 22, fill: C.gray, ls: 2.4 }));
   // 右上角 handle pill（縮小版，只佔 kicker 行高）
   const pillW = Math.round(handle.length * 13.4) + 34;
   const pillH = 44;
-  a.push(`<rect x="${W - M - pillW}" y="60" width="${pillW}" height="${pillH}" rx="10" fill="${C.amberBg}"/>`);
-  a.push(t(W - M - pillW / 2, 89, handle, { size: 24, weight: 500, fill: C.amberInk, anchor: 'middle' }));
+  a.push(`<rect x="${W - M - pillW}" y="44" width="${pillW}" height="${pillH}" rx="10" fill="${C.amberBg}"/>`);
+  a.push(t(W - M - pillW / 2, 73, handle, { size: 24, weight: 500, fill: C.amberInk, anchor: 'middle' }));
 
   // 標題：自動降級到 2 行內
   let titleSize = 76, titleLines = wrap(card.title, CW, titleSize, 700);
@@ -260,27 +276,27 @@ function renderCard(card) {
   const lineH = Math.round(titleSize * 1.14);
   titleLines.forEach((ln, i) => a.push(t(M, titleTop + i * lineH, ln, { size: titleSize, weight: 700, ls: -1.5 })));
 
-  const subY = titleTop + (titleLines.length - 1) * lineH + 52;
+  const subY = titleTop + (titleLines.length - 1) * lineH + 48;
   a.push(t(M, subY, clip(card.sub, CW, 26, 400), { size: 26, fill: C.gray }));
 
-  const ruleY = subY + 30;
+  const ruleY = subY + 28;
   a.push(`<rect x="${M}" y="${ruleY}" width="${CW}" height="6" fill="${C.amber}"/>`);
 
   /* ---- 內容區 ---- */
-  const top = ruleY + 46;
+  const top = ruleY + 42;
   const bottom = H - 142;                 // 頁腳分隔線在 H-118，留 24 緩衝
   const avail = bottom - top;
 
   // hero
   const heroItems = card.hero ? (card.hero.items || [card.hero]) : [];
-  const heroH = heroItems.length ? (heroItems.length > 1 ? 176 : 190) : 0;
+  const heroH = heroItems.length ? (heroItems.length > 1 ? 192 : 204) : 0;
   const heroSize = heroItems.length > 1 ? 76 : 104;
 
   const blocksH_nat = (card.blocks || []).reduce((s, b) => s + (BLOCKS[b.type] || BLOCKS.rows)(b, 1).h, 0);
   const nBlocks = (card.blocks || []).length;
 
   // takeaway 區
-  const TK = { h: 186, padL: 34, rowH: 44 };
+  const TK = { h: 206, padL: 34, rowH: 50 };
 
   const contentH_nat = heroH + blocksH_nat + TK.h;
   const gapCount = (heroH ? 1 : 0) + Math.max(0, nBlocks - 1) + (nBlocks ? 1 : 0);
@@ -291,7 +307,7 @@ function renderCard(card) {
   if (gap < 18) {
     gap = 18;
     const spaceForBlocks = avail - heroH - tkH - gapCount * gap;
-    sq = Math.max(0.8, spaceForBlocks / blocksH_nat);
+    sq = Math.max(0.76, spaceForBlocks / blocksH_nat);
     tkH = Math.round(TK.h * Math.max(0.86, sq));
     tkRow = Math.round(TK.rowH * Math.max(0.86, sq));
   }
@@ -300,21 +316,22 @@ function renderCard(card) {
   const blocksH = blocks.reduce((s, x) => s + x.r.h, 0);
   const contentH = heroH + blocksH + tkH;
   gap = gapCount ? Math.max(gap, (avail - contentH) / gapCount) : 0;
-  gap = Math.min(gap, 64);
+  gap = Math.min(gap, 84);
 
   let y = top;
   // hero
   if (heroItems.length) {
     const colW = CW / heroItems.length;
-    a.push(`<rect x="${M}" y="${y + 6}" width="${CW}" height="${heroH - 40}" rx="16" fill="${C.chip}"/>`);
+    const multi = heroItems.length > 1;
+    a.push(`<rect x="${M}" y="${y + 2}" width="${CW}" height="${heroH - 6}" rx="16" fill="${C.chip}"/>`);
     heroItems.forEach((it, i) => {
       const x = M + 34 + colW * i;
-      a.push(t(x, y + 96, it.value, { size: heroSize, weight: 700, ls: -2.5 }));
-      a.push(t(x, y + 130, clip(it.label, colW - 60, 21, 400), { size: 21, fill: C.gray }));
+      a.push(t(x, y + (multi ? 92 : 106), it.value, { size: heroSize, weight: 700, ls: -2.5 }));
+      a.push(t(x, y + (multi ? 136 : 152), clip(it.label, colW - 60, 21, 400), { size: 21, fill: C.gray }));
       if (it.delta) {
         const dw = wOf(it.delta, 21, 500) + 30;
-        a.push(`<rect x="${x}" y="${y + 144}" width="${dw}" height="34" rx="8" fill="${C.amberBg}"/>`);
-        a.push(t(x + dw / 2, y + 167, it.delta, { size: 21, weight: 500, fill: C.amberInk, anchor: 'middle' }));
+        a.push(`<rect x="${x}" y="${y + 166}" width="${dw}" height="34" rx="8" fill="${C.amberBg}"/>`);
+        a.push(t(x + dw / 2, y + 189, it.delta, { size: 21, weight: 500, fill: C.amberInk, anchor: 'middle' }));
       }
     });
     y += heroH + gap;
