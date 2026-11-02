@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-10-30 21:09",
-  "week_label": "Oct 26 – Oct 30",
+  "generated_at": "2026-11-02 11:46",
+  "week_label": "Nov 02 – Nov 06",
   "ondeck": {
     "session": "2026-11-02",
-    "slot": "next session",
+    "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -21,8 +21,15 @@
         "pct": -1.66
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "05:00",
+        "event": "OPEC Meeting",
+        "consensus": "",
+        "previous": ""
+      }
+    ],
+    "econ_all": 1,
     "earnings": {
       "before": [
         "MAR",
@@ -45,8 +52,8 @@
         "ROKU"
       ],
       "before_n": 25,
-      "after_n": 104,
-      "total": 154
+      "after_n": 103,
+      "total": 150
     }
   },
   "winners": {
@@ -143,75 +150,148 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Oct 26",
-        "count": 71,
-        "econ": [],
-        "before": [],
-        "after": []
+        "date": "Nov 02",
+        "count": 150,
+        "econ": [
+          "OPEC Meeting"
+        ],
+        "before": [
+          "MAR",
+          "ETR",
+          "IDXX",
+          "EL",
+          "PEG",
+          "RYAAY",
+          "FOX",
+          "FOXA"
+        ],
+        "after": [
+          "AAPL",
+          "PLTR",
+          "VRTX",
+          "WMB",
+          "FANG",
+          "O",
+          "ON",
+          "ROKU"
+        ]
       },
       {
         "day": "Tue",
-        "date": "Oct 27",
-        "count": 173,
+        "date": "Nov 03",
+        "count": 282,
         "econ": [
-          "Chicago Fed National Activity",
-          "Dallas Fed Mfg Business Index",
-          "3-Month Bill Auction",
-          "6-Month Bill Auction"
+          "Atlanta Fed GDPNow",
+          "Dallas Fed PCE",
+          "ISM Manufacturing PMI",
+          "ISM Manufacturing Prices"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "SHOP",
+          "PFE",
+          "ETN",
+          "MPC",
+          "RACE",
+          "APO",
+          "MPLX",
+          "AME"
+        ],
+        "after": [
+          "AMD",
+          "AMGN",
+          "ANET",
+          "BKNG",
+          "SU",
+          "ITUB",
+          "ALAB",
+          "XYZ"
+        ]
       },
       {
         "day": "Wed",
-        "date": "Oct 28",
-        "count": 249,
+        "date": "Nov 04",
+        "count": 480,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "Core Durable Goods Orders",
-          "CB Consumer Confidence",
-          "Durables Excluding Defense"
+          "Durables Excluding Defense",
+          "IBD/TIPP Economic Optimism",
+          "Durables Excluding Transport",
+          "S&P Global Manufacturing PMI"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "MCD",
+          "NVO",
+          "UBER",
+          "CVS",
+          "DDOG",
+          "EMR",
+          "GWW",
+          "COR"
+        ],
+        "after": [
+          "ARM",
+          "QCOM",
+          "MCK",
+          "APP",
+          "MELI",
+          "MSI",
+          "MFC",
+          "ALL"
+        ]
       },
       {
         "day": "Thu",
-        "date": "Oct 29",
-        "count": 325,
+        "date": "Nov 05",
+        "count": 618,
         "econ": [
-          "Goods Trade Balance",
-          "Fed Interest Rate Decision",
-          "FOMC Statement",
-          "FOMC Press Conference"
+          "ADP Nonfarm Employment Change",
+          "Trade Balance",
+          "ISM Non-Manufacturing PMI",
+          "ISM Non-Manufacturing Business Activity"
         ],
         "before": [
-          "HLN",
-          "LZM"
+          "COP",
+          "SONY",
+          "PH",
+          "CNQ",
+          "SO",
+          "DUK",
+          "CI",
+          "CMI"
         ],
-        "after": []
+        "after": [
+          "MNST",
+          "NET",
+          "ABNB",
+          "EOG",
+          "LITE",
+          "SPG",
+          "NTRA",
+          "DVN"
+        ]
       },
       {
         "day": "Fri",
-        "date": "Oct 30",
-        "count": 56,
+        "date": "Nov 06",
+        "count": 115,
         "econ": [
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales",
-          "Continuing Jobless Claims"
+          "Initial Jobless Claims",
+          "Nonfarm Productivity",
+          "Continuing Jobless Claims",
+          "Jobless Claims 4-Week Avg."
         ],
         "before": [
-          "XOM",
-          "ABBV",
-          "CVX",
-          "AZN",
-          "BP",
-          "SNY",
-          "GD",
-          "REGN"
+          "ENB",
+          "MRNA",
+          "BAM",
+          "HUM",
+          "VST",
+          "PPL",
+          "PAA",
+          "BIP"
         ],
-        "after": []
+        "after": [
+          "HE"
+        ]
       }
     ],
     "scope": "this week"
