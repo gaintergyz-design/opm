@@ -1,0 +1,24 @@
+{
+  "title": "SUPER MERGER",
+  "subtitle": "Tesla & SpaceX Roar Back From the Lows",
+  "asof": "Jan 1 – Oct 26, 2026",
+  "items": [
+    {
+      "name": "TESLA",
+      "ticker": "TSLA",
+      "pct": "+31%",
+      "label": "REBOUND OFF 2026 LOW",
+      "color": "#FF6B1A",
+      "series": [0.96, 0.88, 0.94, 0.84, 0.90, 0.79, 0.82, 0.72, 0.62, 0.68, 0.55, 0.45, 0.50, 0.38, 0.42, 0.52, 0.58, 0.56, 0.66, 0.71, 0.66, 0.63, 0.69, 0.67]
+    },
+    {
+      "name": "SPACEX",
+      "ticker": "SPCX",
+      "pct": "+40%",
+      "label": "REBOUND OFF 2026 LOW",
+      "color": "#4D8DFF",
+      "series": [0.52, 0.98, 0.86, 0.72, 0.77, 0.66, 0.61, 0.50, 0.47, 0.40, 0.35, 0.32, 0.38, 0.52, 0.55, 0.53, 0.58, 0.63, 0.60, 0.57, 0.68, 0.58]
+    }
+  ],
+  "meta": "Rebound measured from each name's 2026 year-to-date low"
+}
