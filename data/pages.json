@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-02 11:46",
+  "generated_at": "2026-11-02 13:42",
   "week_label": "Nov 02 – Nov 06",
   "ondeck": {
     "session": "2026-11-02",
@@ -150,150 +150,141 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 02",
-        "count": 150,
-        "econ": [
-          "OPEC Meeting"
-        ],
+        "date": "Nov 09",
+        "count": 236,
+        "econ": [],
         "before": [
-          "MAR",
-          "ETR",
-          "IDXX",
-          "EL",
-          "PEG",
-          "RYAAY",
-          "FOX",
-          "FOXA"
+          "CEG",
+          "KKR",
+          "B",
+          "FERG",
+          "IX",
+          "ROIV",
+          "NRG",
+          "KSPI"
         ],
         "after": [
-          "AAPL",
-          "PLTR",
-          "VRTX",
-          "WMB",
-          "FANG",
-          "O",
-          "ON",
-          "ROKU"
+          "OXY",
+          "SKYD",
+          "RKLB",
+          "TTWO",
+          "BAP",
+          "ASTS",
+          "JBS",
+          "EQX"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 03",
-        "count": 282,
+        "date": "Nov 10",
+        "count": 133,
         "econ": [
           "Atlanta Fed GDPNow",
-          "Dallas Fed PCE",
-          "ISM Manufacturing PMI",
-          "ISM Manufacturing Prices"
+          "CB Employment Trends Index",
+          "Wholesale Inventories",
+          "Wholesale Trade Sales"
         ],
         "before": [
-          "SHOP",
-          "PFE",
-          "ETN",
-          "MPC",
-          "RACE",
-          "APO",
-          "MPLX",
-          "AME"
+          "SE",
+          "VG",
+          "VOD",
+          "ONON",
+          "SRRK",
+          "ALH",
+          "ATAT",
+          "QBTS"
         ],
         "after": [
-          "AMD",
-          "AMGN",
-          "ANET",
-          "BKNG",
-          "SU",
-          "ITUB",
-          "ALAB",
-          "XYZ"
+          "PBR",
+          "PBR.A",
+          "ALC",
+          "EC",
+          "CRWV",
+          "VIV",
+          "MRCY",
+          "RGTI"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 04",
-        "count": 480,
+        "date": "Nov 11",
+        "count": 244,
         "econ": [
-          "Durables Excluding Defense",
-          "IBD/TIPP Economic Optimism",
-          "Durables Excluding Transport",
-          "S&P Global Manufacturing PMI"
+          "NFIB Small Business Optimism",
+          "Core CPI",
+          "Core CPI Index",
+          "CPI Index, n.s.a."
         ],
         "before": [
-          "MCD",
-          "NVO",
-          "UBER",
-          "CVS",
-          "DDOG",
-          "EMR",
-          "GWW",
-          "COR"
+          "GIB",
+          "ICL",
+          "AYA",
+          "RUM",
+          "BGSI",
+          "AADX",
+          "NYAX",
+          "FLNG"
         ],
         "after": [
-          "ARM",
-          "QCOM",
-          "MCK",
-          "APP",
-          "MELI",
-          "MSI",
-          "MFC",
-          "ALL"
+          "VYLR",
+          "FNV",
+          "TTEK",
+          "CAE",
+          "CTVA",
+          "OR",
+          "ENS",
+          "ECO"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 05",
-        "count": 618,
+        "date": "Nov 12",
+        "count": 338,
         "econ": [
-          "ADP Nonfarm Employment Change",
-          "Trade Balance",
-          "ISM Non-Manufacturing PMI",
-          "ISM Non-Manufacturing Business Activity"
+          "Thomson Reuters IPSOS PCSI"
         ],
         "before": [
-          "COP",
-          "SONY",
-          "PH",
-          "CNQ",
-          "SO",
-          "DUK",
-          "CI",
-          "CMI"
+          "BN",
+          "NBIS",
+          "TWST",
+          "HBM",
+          "FPS",
+          "NIQ",
+          "OCTV",
+          "MBGL"
         ],
         "after": [
-          "MNST",
-          "NET",
-          "ABNB",
-          "EOG",
-          "LITE",
-          "SPG",
-          "NTRA",
-          "DVN"
+          "AMAT",
+          "CBRS",
+          "STN",
+          "ELPC",
+          "ANDG",
+          "HTFL",
+          "DLO",
+          "LFTO"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 06",
-        "count": 115,
+        "date": "Nov 13",
+        "count": 220,
         "econ": [
-          "Initial Jobless Claims",
-          "Nonfarm Productivity",
-          "Continuing Jobless Claims",
-          "Jobless Claims 4-Week Avg."
+          "Existing Home Sales",
+          "Federal Budget Balance"
         ],
         "before": [
-          "ENB",
-          "MRNA",
-          "BAM",
-          "HUM",
-          "VST",
-          "PPL",
-          "PAA",
-          "BIP"
+          "USAS",
+          "RMIX",
+          "KGEI",
+          "DGXX",
+          "ECC",
+          "NDLS",
+          "EIC",
+          "PAVM"
         ],
-        "after": [
-          "HE"
-        ]
+        "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
