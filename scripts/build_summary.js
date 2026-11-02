@@ -323,7 +323,7 @@ function renderCard(card) {
   if (heroItems.length) {
     const colW = CW / heroItems.length;
     const multi = heroItems.length > 1;
-    a.push(`<rect x="${M}" y="${y + 2}" width="${CW}" height="${heroH - 6}" rx="16" fill="${C.chip}"/>`);
+    a.push(`<rect x="${M}" y="${y + 2}" width="${CW}" height="${heroH - 6}" rx="16" fill="${C.chip}" fill-opacity="0.8"/>`);
     heroItems.forEach((it, i) => {
       const x = M + 34 + colW * i;
       a.push(t(x, y + (multi ? 92 : 106), it.value, { size: heroSize, weight: 700, ls: -2.5 }));
