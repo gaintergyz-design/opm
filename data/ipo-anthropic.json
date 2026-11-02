@@ -1,0 +1,189 @@
+{
+  "handle": "@onepagemarket",
+  "series": "ANTHROPIC · IPO",
+  "date": "Nov 2, 2026",
+  "slug": "anthropic-ipo",
+  "cards": [
+    {
+      "no": "01",
+      "tag": "THE DEAL",
+      "title": "The biggest IPO ever",
+      "sub": "S-1 public Oct 26 · ticker ANT on Nasdaq · price range still blank",
+      "hero": {
+        "value": "$100B",
+        "label": "target raise — the biggest IPO on record"
+      },
+      "blocks": [
+        {
+          "type": "rows",
+          "title": "Deal terms · S-1 + press reports",
+          "items": [
+            { "k": "Ticker / venue", "v": "ANT · Nasdaq" },
+            { "k": "IPO price", "v": "blank", "sub": "range expected ~week of Nov 9 (est.)" },
+            { "k": "Valuation", "v": "$1.5–2.0T", "sub": "press reports (est.)" },
+            { "k": "Fully diluted shares", "v": "~16.9B", "sub": "implied by the S-1 (est.)" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Key dates",
+          "items": [
+            { "k": "Jun 1, 2026", "v": "confidential S-1", "sub": "done" },
+            { "k": "Oct 26, 2026", "v": "public filing", "sub": "done" },
+            { "k": "Week of Nov 16", "v": "pricing target", "sub": "reported (est.)" },
+            { "k": "Before Nov 26", "v": "Nasdaq debut", "sub": "before Thanksgiving (est.)" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Goldman Sachs & Morgan Stanley lead; JPMorgan also on ticket",
+        "Proceeds earmarked mostly for next-gen model training (est.)",
+        "5% of equity pre-pledged to the Public Benefit Fund"
+      ]
+    },
+    {
+      "no": "02",
+      "tag": "CONTROL",
+      "title": "One share beats everyone",
+      "sub": "Founders keep 50.1% of votes — Amazon and Google are capped",
+      "hero": {
+        "value": "50.1%",
+        "label": "voting power via a single Class F share",
+        "delta": "zero economic rights"
+      },
+      "blocks": [
+        {
+          "type": "stack",
+          "title": "The control stack",
+          "items": [
+            { "n": "1", "title": "Founder LLC · Class F", "desc": "7 co-founders, one share, elects 3 board seats" },
+            { "n": "2", "title": "Long-Term Benefit Trust · Class T", "desc": "Bernanke sits on it; elects and removes the board majority" },
+            { "n": "3", "title": "Public · Class A", "desc": "1 vote per share, capped at 49.9% of total votes" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Big economic holders",
+          "items": [
+            { "k": "Amazon", "v": "cap 12%", "sub": "~$18B in; $97.9B notes convert at IPO (est.)" },
+            { "k": "Google (Alphabet)", "v": "~7%", "sub": "cap 14.99%; option for $10B more at IPO price" },
+            { "k": "Public Benefit Fund", "v": "5%", "sub": "846.8M shares locked for the mission" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "No VC holds 5%+ — Spark and Iconiq are the largest funds",
+        "Trust removable only by 85% of common shareholders",
+        "Buying ANT means funding the mission, not steering it"
+      ]
+    },
+    {
+      "no": "03",
+      "tag": "BUSINESS",
+      "title": "It sells intelligence by the token",
+      "sub": "Not a chat-app company — pay-as-you-go API is the engine",
+      "hero": {
+        "value": "80%",
+        "label": "of 1H 2026 revenue from usage-based API",
+        "delta": "$13.1B"
+      },
+      "blocks": [
+        {
+          "type": "rows",
+          "title": "Three layers",
+          "items": [
+            { "k": "Models", "v": "4 lines", "sub": "Mythos · Opus · Sonnet · Haiku, priced per token" },
+            { "k": "Platform", "v": "Agent SDK + MCP", "sub": "tools, memory, multi-agent orchestration" },
+            { "k": "Apps & industry", "v": "Claude Code · Cowork", "sub": "7 industry editions, subscription-led" }
+          ]
+        },
+        {
+          "type": "bars",
+          "title": "Revenue mix, 1H 2026 (USD B)",
+          "items": [
+            { "label": "Usage API", "value": 13.1, "display": "$13.1B · 80%" },
+            { "label": "Subscriptions", "value": 3.2, "display": "$3.2B · 20%" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "New models drive the money — latest versions = 80% of recent-quarter revenue",
+        "47% of 2025 revenue flowed through Amazon & Google cloud channels",
+        "Two unnamed customers were ~12% each in 2025"
+      ]
+    },
+    {
+      "no": "04",
+      "tag": "NUMBERS",
+      "title": "Fastest ramp in software history",
+      "sub": "Revenue ×396 in three years — and Q2 turned operationally profitable",
+      "hero": {
+        "value": "$16.3B",
+        "label": "revenue · 1H 2026",
+        "delta": "+1,368% YoY"
+      },
+      "blocks": [
+        {
+          "type": "bars",
+          "title": "Revenue, USD",
+          "items": [
+            { "label": "2023", "value": 0.041, "display": "$41M" },
+            { "label": "2024", "value": 0.386, "display": "$386M" },
+            { "label": "2025", "value": 4.585, "display": "$4.59B" },
+            { "label": "1H 2026", "value": 16.286, "display": "$16.29B" }
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Profit & cash · 1H 2026",
+          "items": [
+            { "k": "Net loss", "v": "−$80.7B", "sub": "$72.4B is non-cash fair-value on converts" },
+            { "k": "Adjusted operating profit", "v": "+$1.6B", "sub": "~10% margin — first positive half" },
+            { "k": "Gross margin", "v": "~85%", "sub": "operating cash flow +$3.9B" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "Cash & short-term investments: $131.7B at Jun 30",
+        "11,900 customers above $100K a year; 250 above $10M",
+        "The filing itself warns growth may reflect early adoption"
+      ]
+    },
+    {
+      "no": "05",
+      "tag": "VALUATION & RISK",
+      "title": "Priced for perfection",
+      "sub": "Every dollar of profit has to outrun a $518B compute bill",
+      "hero": {
+        "items": [
+          { "value": "22–30×", "label": "P/S on ~$68B annualised run-rate (est.)" },
+          { "value": "$89–118", "label": "implied per share at $1.5–2T (est.)" }
+        ]
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "title": "Three risks to watch",
+          "items": [
+            "Compute lock-in — $518B+ committed: Broadcom $161B, SpaceX $120B, Google $114B, AWS $110B",
+            "Concentration — top 5 customers ~25% of revenue; cloud channel 47% of 2025 sales",
+            "Deceleration — QoQ growth cooling to ~45–50% while GAAP losses widen"
+          ]
+        },
+        {
+          "type": "rows",
+          "title": "Scale check",
+          "items": [
+            { "k": "SpaceX, June 2026", "v": "$1.77T", "sub": "at listing — the record to beat" },
+            { "k": "OpenAI, reported round", "v": "$1.25T", "sub": "pre-money (est.)" }
+          ]
+        }
+      ],
+      "takeaways": [
+        "No meaningful PE — the profit track record is one quarter old",
+        "Blank price range: watch the amended S-1 around Nov 9",
+        "Investors are underwriting the build-out, not the earnings"
+      ]
+    }
+  ]
+}
