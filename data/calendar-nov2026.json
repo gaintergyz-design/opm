@@ -1,0 +1,51 @@
+{
+  "title": "November",
+  "year": "2026",
+  "subtitle": "What moves US stocks this month · all times ET",
+  "compiled": "Nov 2, 2026",
+  "note": "Dates per company IR and agency schedules. Anthropic IPO timing is reported, not confirmed.",
+  "rows": [
+    { "date": "NOV 2", "dow": "MON", "events": [
+      { "tag": "DATA",     "text": "ISM Manufacturing PMI (Oct)", "time": "10:00 AM" },
+      { "tag": "EARNINGS", "text": "Apple · Palantir — results",  "time": "After close", "hl": true }
+    ]},
+    { "date": "NOV 3", "dow": "TUE", "events": [
+      { "tag": "POLITICS", "text": "US midterm elections",   "time": "", "hl": true },
+      { "tag": "EARNINGS", "text": "AMD — results",          "time": "After close" }
+    ]},
+    { "date": "NOV 4", "dow": "WED", "events": [
+      { "tag": "DATA",     "text": "ADP employment change (Oct)", "time": "8:15 AM" },
+      { "tag": "EARNINGS", "text": "Coherent — results",          "time": "After close" }
+    ]},
+    { "date": "NOV 5", "dow": "THU", "events": [
+      { "tag": "EARNINGS", "text": "Lumentum — results", "time": "After close" }
+    ]},
+    { "date": "NOV 6", "dow": "FRI", "events": [
+      { "tag": "DATA", "text": "October jobs report — payrolls & unemployment", "time": "8:30 AM", "hl": true }
+    ]},
+    { "date": "NOV 10", "dow": "TUE", "events": [
+      { "tag": "INFLATION", "text": "October CPI", "time": "8:30 AM", "hl": true }
+    ]},
+    { "date": "NOV 13", "dow": "FRI", "events": [
+      { "tag": "INFLATION", "text": "October PPI", "time": "8:30 AM" }
+    ]},
+    { "date": "NOV 16", "dow": "MON", "events": [
+      { "tag": "FED", "text": "Fed hearing on AI & productivity", "time": "" },
+      { "tag": "IPO", "text": "Anthropic IPO — reported for this week", "time": "", "hl": true }
+    ]},
+    { "date": "NOV 17", "dow": "TUE", "events": [
+      { "tag": "DATA", "text": "October retail sales", "time": "8:30 AM" }
+    ]},
+    { "date": "NOV 18", "dow": "WED", "events": [
+      { "tag": "EARNINGS", "text": "NVIDIA — results",                  "time": "After close", "hl": true },
+      { "tag": "FED",      "text": "FOMC meeting minutes (Oct 27–28)",  "time": "2:00 PM" }
+    ]},
+    { "date": "NOV 25", "dow": "WED", "events": [
+      { "tag": "INFLATION", "text": "October PCE price index", "time": "8:30 AM" }
+    ]},
+    { "date": "NOV 26", "dow": "THU", "events": [
+      { "tag": "HOLIDAY", "text": "Thanksgiving — US markets closed", "time": "", "hl": true },
+      { "tag": "FED",     "text": "Beige Book · Fri 27 early close 1:00 PM", "time": "2:00 PM" }
+    ]}
+  ]
+}
