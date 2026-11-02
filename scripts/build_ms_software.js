@@ -67,30 +67,30 @@ svg.push(t(M, 176, D.subtitle, { size: subSize, fill: C.gray }));
 svg.push(`<rect x="${M}" y="196" width="${CW}" height="6" fill="url(#ruleG)"/>`);
 
 /* ---------------- 四板塊區塊 ---------------- */
-const PAD = 26, ROW_H = 50, ROW_GAP = 12, SEC_GAP = 20;
+const PAD = 28, ROW_H = 56, ROW_GAP = 10, SEC_GAP = 10, SEC_HDR = 84;
 const COLS = 3;
 const COL_W = (CW - PAD * 2) / COLS;
-let y = 226;
+let y = 218;
 
 D.sections.forEach((sec) => {
   const rows = Math.ceil(sec.stocks.length / COLS);
-  const sh = 84 + rows * ROW_H + (rows - 1) * ROW_GAP + 24;
+  const sh = SEC_HDR + rows * ROW_H + (rows - 1) * ROW_GAP + 18;
 
   /* 區塊底 + 左色條 */
   svg.push(rrect(M, y, CW, sh, 18, sec.bg, `stroke="${sec.stroke}" stroke-width="1.4"`));
   svg.push(rrect(M, y, 6, sh, 3, sec.color));
 
   /* 板塊名 + 論點 */
-  svg.push(t(M + PAD, y + 36, sec.name, { size: 23, weight: 700, fill: sec.color }));
-  svg.push(t(M + PAD, y + 62, sec.desc, { size: 15, fill: C.gray }));
+  svg.push(t(M + PAD, y + 38, sec.name, { size: 28, weight: 700, fill: sec.color }));
+  svg.push(t(M + PAD, y + 66, sec.desc, { size: 17, fill: C.gray }));
 
   /* 標的 chip 網格 */
   sec.stocks.forEach((st, i) => {
     const col = i % COLS, row = Math.floor(i / COLS);
     const cx = M + PAD + col * COL_W;
-    const cy = y + 84 + row * (ROW_H + ROW_GAP);
+    const cy = y + SEC_HDR + row * (ROW_H + ROW_GAP);
 
-    const L = 36, lx = cx, lcy = cy + ROW_H / 2;
+    const L = 46, lx = cx, lcy = cy + ROW_H / 2;
     const uri = LOGOS[st.t];
     if (uri) {
       const cid = `lg${uid++}`;
@@ -100,10 +100,10 @@ D.sections.forEach((sec) => {
       svg.push(`<circle cx="${lx + L / 2}" cy="${lcy}" r="${L / 2}" fill="none" stroke="#DDE6EF" stroke-width="1"/>`);
     } else {
       svg.push(`<circle cx="${lx + L / 2}" cy="${lcy}" r="${L / 2}" fill="${sec.color}"/>`);
-      svg.push(t(lx + L / 2, lcy + 6, st.t.slice(0, 2), { size: 14, weight: 700, fill: '#FFFFFF', anchor: 'middle' }));
+      svg.push(t(lx + L / 2, lcy + 8, st.t.slice(0, 2), { size: 18, weight: 700, fill: '#FFFFFF', anchor: 'middle' }));
     }
-    svg.push(t(lx + L + 13, cy + 21, st.t, { size: 19, weight: 700 }));
-    svg.push(t(lx + L + 13, cy + 40, st.n, { size: 12.5, fill: C.gray }));
+    svg.push(t(lx + L + 15, cy + 24, st.t, { size: 26, weight: 700 }));
+    svg.push(t(lx + L + 15, cy + 44, st.n, { size: 15.5, fill: C.gray }));
   });
 
   y += sh + SEC_GAP;

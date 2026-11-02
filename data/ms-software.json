@@ -3,55 +3,135 @@
   "subtitle": "Morgan Stanley: four software groups set to benefit · research note dated Oct 26, 2026",
   "sections": [
     {
-      "name": "Cybersecurity", "color": "#E5484D",
-      "bg": "#FDF2F2", "stroke": "#F4D7D7",
-      "desc": "AI agents widen the enterprise attack surface, lifting demand for identity, threat detection and security governance",
+      "name": "Cybersecurity",
+      "color": "#E5484D",
+      "bg": "#FDF2F2",
+      "stroke": "#F4D7D7",
+      "desc": "AI agents widen the attack surface — identity, threat detection and governance demand rises",
       "stocks": [
-        { "t": "CRWD", "n": "CrowdStrike" },
-        { "t": "PANW", "n": "Palo Alto Networks" },
-        { "t": "OKTA", "n": "Okta" }
+        {
+          "t": "CRWD",
+          "n": "CrowdStrike"
+        },
+        {
+          "t": "PANW",
+          "n": "Palo Alto Networks"
+        },
+        {
+          "t": "OKTA",
+          "n": "Okta"
+        }
       ]
     },
     {
-      "name": "Data & Infrastructure Software", "color": "#0078D4",
-      "bg": "#F0F7FF", "stroke": "#D5E5F6",
-      "desc": "Expanding AI adoption lifts demand for data query, observability, model orchestration and monitoring",
+      "name": "Data & Infrastructure Software",
+      "color": "#0078D4",
+      "bg": "#F0F7FF",
+      "stroke": "#D5E5F6",
+      "desc": "AI adoption lifts demand for data query, observability, model orchestration and monitoring",
       "stocks": [
-        { "t": "MSFT", "n": "Microsoft" },
-        { "t": "NET",  "n": "Cloudflare" },
-        { "t": "DDOG", "n": "Datadog" },
-        { "t": "DT",   "n": "Dynatrace" },
-        { "t": "ESTC", "n": "Elastic" },
-        { "t": "NTNX", "n": "Nutanix" },
-        { "t": "MDB",  "n": "MongoDB" },
-        { "t": "SNOW", "n": "Snowflake" },
-        { "t": "PLTR", "n": "Palantir" }
+        {
+          "t": "MSFT",
+          "n": "Microsoft"
+        },
+        {
+          "t": "NET",
+          "n": "Cloudflare"
+        },
+        {
+          "t": "DDOG",
+          "n": "Datadog"
+        },
+        {
+          "t": "DT",
+          "n": "Dynatrace"
+        },
+        {
+          "t": "ESTC",
+          "n": "Elastic"
+        },
+        {
+          "t": "NTNX",
+          "n": "Nutanix"
+        },
+        {
+          "t": "MDB",
+          "n": "MongoDB"
+        },
+        {
+          "t": "SNOW",
+          "n": "Snowflake"
+        },
+        {
+          "t": "PLTR",
+          "n": "Palantir"
+        }
       ]
     },
     {
-      "name": "Horizontal SaaS", "color": "#12B76A",
-      "bg": "#F0FBF5", "stroke": "#D0EEDD",
-      "desc": "Falling inference costs support gross margins, speed agent adoption and enable outcome-based pricing",
+      "name": "Horizontal SaaS",
+      "color": "#12B76A",
+      "bg": "#F0FBF5",
+      "stroke": "#D0EEDD",
+      "desc": "Falling inference costs support margins, speed agent adoption and enable outcome-based pricing",
       "stocks": [
-        { "t": "TEAM", "n": "Atlassian" },
-        { "t": "CRM",  "n": "Salesforce" },
-        { "t": "NOW",  "n": "ServiceNow" },
-        { "t": "WIX",  "n": "Wix.com" },
-        { "t": "ZM",   "n": "Zoom" },
-        { "t": "FIG",  "n": "Figma" },
-        { "t": "BOX",  "n": "Box" }
+        {
+          "t": "TEAM",
+          "n": "Atlassian"
+        },
+        {
+          "t": "CRM",
+          "n": "Salesforce"
+        },
+        {
+          "t": "NOW",
+          "n": "ServiceNow"
+        },
+        {
+          "t": "WIX",
+          "n": "Wix.com"
+        },
+        {
+          "t": "ZM",
+          "n": "Zoom"
+        },
+        {
+          "t": "FIG",
+          "n": "Figma"
+        },
+        {
+          "t": "BOX",
+          "n": "Box"
+        }
       ]
     },
     {
-      "name": "Vertical SaaS", "color": "#8B5CF6",
-      "bg": "#F7F3FF", "stroke": "#E0D5F6",
-      "desc": "Low-cost AI automates more industry workflows — firms with proprietary data and domain know-how lead",
+      "name": "Vertical SaaS",
+      "color": "#8B5CF6",
+      "bg": "#F7F3FF",
+      "stroke": "#E0D5F6",
+      "desc": "Cheap AI automates more industry workflows; proprietary data and domain know-how win",
       "stocks": [
-        { "t": "SHOP", "n": "Shopify" },
-        { "t": "TOST", "n": "Toast" },
-        { "t": "MANH", "n": "Manhattan Associates" },
-        { "t": "NAVN", "n": "Navan" },
-        { "t": "TTAN", "n": "ServiceTitan" }
+        {
+          "t": "SHOP",
+          "n": "Shopify"
+        },
+        {
+          "t": "TOST",
+          "n": "Toast"
+        },
+        {
+          "t": "MANH",
+          "n": "Manhattan Associates"
+        },
+        {
+          "t": "NAVN",
+          "n": "Navan"
+        },
+        {
+          "t": "TTAN",
+          "n": "ServiceTitan"
+        }
       ]
     }
   ],
