@@ -1,0 +1,26 @@
+{
+  "title": "The AI Cash Burn",
+  "subtitle": "Three of the four mega-caps went FCF-negative in 3Q26 · US$ billions",
+  "quarters": ["4Q23", "1Q24", "2Q24", "3Q24", "4Q24", "1Q25", "2Q25", "3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "unit": "US$ billions",
+  "strip": "Combined 3Q26 FCF: -$26.4B vs +$61.7B a year ago — an $88B swing",
+  "meta": "FCF = operating cash flow minus purchases of property & equipment · SEC 10-Q/10-K filings · calendar quarters",
+  "series": [
+    { "name": "Microsoft", "ticker": "MSFT", "color": "#0078D4",
+      "values": [9.12, 20.96, 23.32, 19.26, 6.49, 20.30, 25.57, 25.66, 5.88, 15.80, 19.64, 18.63],
+      "ymin": 0, "ymax": 30, "ystep": 10,
+      "sources": ["SEC XBRL: NetCashProvidedByUsedInOperatingActivities & PaymentsToAcquirePropertyPlantAndEquipment, 10-Q/10-K, quarter ends 2023-12-31..2026-09-30; FY quarters differenced from YTD where filed YTD-only"] },
+    { "name": "Amazon", "ticker": "AMZN", "color": "#E47911",
+      "values": [27.88, 4.06, 7.66, 3.35, 17.80, -8.00, 0.33, 0.43, 14.94, -18.17, -8.82, -34.84],
+      "ymin": -40, "ymax": 40, "ystep": 20,
+      "sources": ["SEC XBRL: NetCashProvidedByUsedInOperatingActivities & PaymentsToAcquireProductiveAssets ('Purchases of property and equipment'), 10-Q/10-K; uniform OCF-capex basis (excl. proceeds from PP&E sales/incentives)"] },
+    { "name": "Alphabet", "ticker": "GOOGL", "color": "#188038",
+      "values": [7.90, 16.84, 13.45, 17.64, 24.84, 18.95, 5.30, 24.46, 24.55, 10.12, -5.86, -9.06],
+      "ymin": -10, "ymax": 30, "ystep": 10,
+      "sources": ["SEC XBRL: NetCashProvidedByUsedInOperatingActivities & PaymentsToAcquirePropertyPlantAndEquipment, 10-Q/10-K; Q2/Q3 quarter values differenced from filed YTD facts"] },
+    { "name": "Meta", "ticker": "META", "color": "#8B5CF6",
+      "values": [11.81, 12.85, 11.20, 16.47, 13.56, 11.09, 9.02, 11.17, 14.83, 13.23, 1.75, -1.16],
+      "ymin": -5, "ymax": 20, "ystep": 5,
+      "sources": ["SEC XBRL: NetCashProvidedByUsedInOperatingActivities & PaymentsToAcquirePropertyPlantAndEquipment, 10-Q/10-K; uniform OCF-capex basis (excl. finance-lease principal, unlike Meta's own FCF definition)"] }
+  ]
+}
