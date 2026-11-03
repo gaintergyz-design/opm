@@ -1,0 +1,130 @@
+{
+  "ticker": "PLTR",
+  "company": "Palantir",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 2, 2026 · after close",
+  "brand": {
+    "deep": "#101820",
+    "primary": "#24384D",
+    "mid": "#3E5C7A",
+    "teal": "#6B93B5",
+    "pos": "#028948"
+  },
+  "strip": "Rev $2.31B +96% Y/Y, +6.1% vs est · US comm $984M tops US govt $953M first time · EPS $0.44",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 2313.4,
+      "actual_disp": "$2.31B",
+      "est_disp": "$2.18B",
+      "surprise": 6.1,
+      "prior": 1181.1,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 95.9
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": 0.44,
+      "actual_disp": "$0.44",
+      "est_disp": "$0.41",
+      "surprise": 7.3,
+      "prior": 0.18,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 144.4
+    }
+  },
+  "layout": {
+    "marginMax": 90,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    82.5,
+    84.7,
+    86.8,
+    84.7,
+    83.4
+  ],
+  "op_margin": [
+    33.3,
+    40.9,
+    46.2,
+    47.1,
+    46.9
+  ],
+  "ocf": [
+    508,
+    777,
+    899,
+    1216,
+    1205
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 300
+  },
+  "mix_colors": [
+    "#101820",
+    "#2E4459",
+    "#7A93AA"
+  ],
+  "mix_center": "US Comm",
+  "mix": [
+    {
+      "name": "US Commercial",
+      "pct": 42.5,
+      "value": "$984M"
+    },
+    {
+      "name": "US Government",
+      "pct": 41.2,
+      "value": "$953M"
+    },
+    {
+      "name": "International",
+      "pct": 16.3,
+      "value": "$376M"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 · what to watch",
+    "items": [
+      {
+        "k": "Q4 revenue guide",
+        "v": "$2.649–2.653B",
+        "note": "street was $2.46B (LSEG)"
+      },
+      {
+        "k": "FY26 revenue",
+        "v": "$8.530–8.534B",
+        "note": "raised from $8.15–8.16B, +91% Y/Y"
+      },
+      {
+        "k": "FY26 US commercial",
+        "v": ">$3.559B",
+        "note": "at least +143% Y/Y"
+      },
+      {
+        "k": "Adj op income (FY)",
+        "v": "$5.245–5.249B",
+        "note": "adj FCF guided $4.8–5.0B"
+      },
+      {
+        "k": "Rule of 40",
+        "v": "158%",
+        "note": "up from 155% in 2Q26"
+      }
+    ]
+  }
+}

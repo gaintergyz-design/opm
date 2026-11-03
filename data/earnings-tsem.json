@@ -1,0 +1,124 @@
+{
+  "ticker": "TSEM",
+  "company": "Tower Semiconductor",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 2, 2026 · before open",
+  "brand": {
+    "deep": "#123F6B",
+    "primary": "#1B5E9E",
+    "mid": "#2E86AB",
+    "teal": "#3FAA8C",
+    "pos": "#028948"
+  },
+  "strip": "Rev $526M +33% Y/Y, +0.8% vs est · Record GM 34.0% · EPS $1.05 vs est $1.07 · Q4 guide $600M",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 526.2,
+      "actual_disp": "$526M",
+      "est_disp": "$522M",
+      "surprise": 0.8,
+      "prior": 395.7,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 32.9
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": 1.05,
+      "actual_disp": "$1.05",
+      "est_disp": "$1.07",
+      "surprise": -1.9,
+      "prior": 0.47,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 123.4
+    }
+  },
+  "layout": {
+    "marginMax": 40,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    23.5,
+    26.7,
+    26.8,
+    29.9,
+    34.0
+  ],
+  "op_margin": [
+    12.8,
+    16.1,
+    15.6,
+    19.6,
+    24.2
+  ],
+  "ocf": [
+    139,
+    40,
+    510,
+    177,
+    185
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 200
+  },
+  "mix_colors": [
+    "#123F6B",
+    "#9DBBD4"
+  ],
+  "mix_center": "RF Infra",
+  "mix": [
+    {
+      "name": "RF Infrastructure",
+      "pct": 56.0,
+      "value": "$295M"
+    },
+    {
+      "name": "All Other Platforms",
+      "pct": 44.0,
+      "value": "$231M"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 · what to watch",
+    "items": [
+      {
+        "k": "Q4 revenue guide",
+        "v": "$600M ±5%",
+        "note": "+36% Y/Y, +14% Q/Q at mid"
+      },
+      {
+        "k": "SiPho run-rate",
+        "v": "$1.1B annualized",
+        "note": "4Q26 target, 5x of 2025 SiPho revenue"
+      },
+      {
+        "k": "FY2026 revenue",
+        "v": "~$2.0B",
+        "note": "$2.4B annualized run-rate exiting 2026"
+      },
+      {
+        "k": "Japan 300mm Track-1",
+        "v": "ahead of plan",
+        "note": "customer contracts extended to 2029"
+      },
+      {
+        "k": "1Q27 seasonality",
+        "v": "target: growth",
+        "note": "aims to avoid typical Q1 dip"
+      }
+    ]
+  }
+}
