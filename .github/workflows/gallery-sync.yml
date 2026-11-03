@@ -1,0 +1,61 @@
+name: gallery-sync
+
+# 手動推卡（財報卡 / 專題卡）→ 自動重建畫廊索引
+#
+# 由來：本機 git 損壞、且阿澤本機 out/ 只是部分鏡像，直接在本機跑 build_gallery.py
+#   再推 docs/index.html 會刷掉舊卡（144 檔 vs 十幾檔），時間也會因取不到 git log
+#   而退回 mtime（2026-11-03 全頁時間一度全變成下載時刻）。
+#   本 workflow 在 CI 用完整倉庫 + 真 git 重建，索引與時間都正確。
+#
+# 觸發：任何 out/*.png 或 caption 變更的 push
+# 排除：定時產線自己的提交（作者 onepagemarket-bot）——daily.yml 已自帶 build_gallery，
+#       不排除會重複提交、互相 rebase 打架。
+
+on:
+  push:
+    paths:
+      - 'out/*.png'
+      - 'out/caption-*.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gallery-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.actor != 'onepagemarket-bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # 畫廊靠 git log 取每張圖的提交時間
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 重建畫廊（全量）
+        run: python3 scripts/build_gallery.py
+
+      - name: 提交回倉庫
+        run: |
+          git config user.name  "onepagemarket-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs out/gen-times.json
+          if git diff --cached --quiet; then
+            echo "無變更"
+            exit 0
+          fi
+          git commit -m "gallery: sync $(date -u +%F)"
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs >/dev/null 2>&1 && git push >/dev/null 2>&1; then
+              echo "pushed"; exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep 10
+          done
+          echo "FATAL: push 3 次失敗"; exit 1
