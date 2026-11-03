@@ -2,58 +2,112 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-02 13:42",
+  "generated_at": "2026-11-03 13:39",
   "week_label": "Nov 02 – Nov 06",
   "ondeck": {
-    "session": "2026-11-02",
+    "session": "2026-11-03",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -1.82
+        "pct": -0.29
       },
       {
         "label": "Nasdaq",
-        "pct": -2.86
+        "pct": -0.82
       },
       {
         "label": "Russell 2000",
-        "pct": -1.66
+        "pct": 0.04
       }
     ],
     "econ": [
       {
-        "time": "05:00",
-        "event": "OPEC Meeting",
+        "time": "12:00",
+        "event": "Atlanta Fed GDPNow",
+        "consensus": "3.2%",
+        "previous": "3.2%"
+      },
+      {
+        "time": "10:00",
+        "event": "ISM Manufacturing Employment",
+        "consensus": "52.0",
+        "previous": "52.7"
+      },
+      {
+        "time": "10:00",
+        "event": "ISM Manufacturing New Orders Index",
+        "consensus": "54.5",
+        "previous": "55.3"
+      },
+      {
+        "time": "10:00",
+        "event": "ISM Manufacturing PMI",
+        "consensus": "54.5",
+        "previous": "54.5"
+      },
+      {
+        "time": "10:00",
+        "event": "ISM Manufacturing Prices",
+        "consensus": "77.2",
+        "previous": "77.9"
+      },
+      {
+        "time": "11:15",
+        "event": "Fed Goolsbee Speaks",
         "consensus": "",
         "previous": ""
+      },
+      {
+        "time": "09:45",
+        "event": "S&P Global Manufacturing PMI",
+        "consensus": "56.0",
+        "previous": "56.0"
+      },
+      {
+        "time": "10:00",
+        "event": "Construction Spending",
+        "consensus": "0.4%",
+        "previous": "2.0%"
+      },
+      {
+        "time": "11:30",
+        "event": "3-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.050%"
+      },
+      {
+        "time": "11:30",
+        "event": "6-Month Bill Auction",
+        "consensus": "",
+        "previous": "4.210%"
       }
     ],
-    "econ_all": 1,
+    "econ_all": 11,
     "earnings": {
       "before": [
-        "MAR",
-        "ETR",
-        "IDXX",
-        "EL",
-        "PEG",
-        "RYAAY",
-        "FOX",
-        "FOXA"
+        "SHOP",
+        "PFE",
+        "ETN",
+        "MPC",
+        "RACE",
+        "APO",
+        "MPLX",
+        "AME"
       ],
       "after": [
-        "AAPL",
-        "PLTR",
-        "VRTX",
-        "WMB",
-        "FANG",
-        "O",
-        "ON",
-        "ROKU"
+        "AMD",
+        "AMGN",
+        "ANET",
+        "BKNG",
+        "SU",
+        "ITUB",
+        "XYZ",
+        "ALAB"
       ],
-      "before_n": 25,
-      "after_n": 103,
-      "total": 150
+      "before_n": 95,
+      "after_n": 136,
+      "total": 274
     }
   },
   "winners": {
@@ -151,7 +205,7 @@
       {
         "day": "Mon",
         "date": "Nov 09",
-        "count": 236,
+        "count": 242,
         "econ": [],
         "before": [
           "CEG",
@@ -166,33 +220,33 @@
         "after": [
           "OXY",
           "SKYD",
-          "RKLB",
           "TTWO",
+          "RKLB",
           "BAP",
+          "CIB",
           "ASTS",
-          "JBS",
-          "EQX"
+          "JBS"
         ]
       },
       {
         "day": "Tue",
         "date": "Nov 10",
-        "count": 133,
+        "count": 139,
         "econ": [
           "Atlanta Fed GDPNow",
-          "CB Employment Trends Index",
-          "Wholesale Inventories",
-          "Wholesale Trade Sales"
+          "Fed Goolsbee Speaks",
+          "NY Fed 1-Year Consumer Inflation Expectations",
+          "CB Employment Trends Index"
         ],
         "before": [
+          "TDG",
           "SE",
           "VG",
           "VOD",
           "ONON",
           "SRRK",
-          "ALH",
           "ATAT",
-          "QBTS"
+          "ALH"
         ],
         "after": [
           "PBR",
@@ -208,7 +262,7 @@
       {
         "day": "Wed",
         "date": "Nov 11",
-        "count": 244,
+        "count": 239,
         "econ": [
           "NFIB Small Business Optimism",
           "Core CPI",
@@ -239,8 +293,9 @@
       {
         "day": "Thu",
         "date": "Nov 12",
-        "count": 338,
+        "count": 339,
         "econ": [
+          "OPEC Monthly Report",
           "Thomson Reuters IPSOS PCSI"
         ],
         "before": [
@@ -267,7 +322,7 @@
       {
         "day": "Fri",
         "date": "Nov 13",
-        "count": 220,
+        "count": 217,
         "econ": [
           "Existing Home Sales",
           "Federal Budget Balance"
