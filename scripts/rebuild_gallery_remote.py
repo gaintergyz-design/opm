@@ -94,6 +94,40 @@ def sync():
         print(f'gen-times：遠端 {len(remote)} ∪ 本地 {len(local)} → {len(merged)}')
 
 
+def fetch_git_times():
+    """用 GitHub REST API 取每張圖「最後一次提交時間」，寫 out/git-times.json。
+
+    為什麼需要：build_gallery.py 原本靠 `git log`，本機 git 壞掉時取不到時間，
+    會退回 mtime（＝本次下載時刻）→ 全頁時間一起錯。這張對照表讓本機重建
+    也能拿到和 CI 一致的時間。
+    """
+    from datetime import datetime, timezone
+    items = [f for f in list_remote_out() if f['name'].endswith('.png')]
+    print(f'取提交時間：{len(items)} 張')
+
+    def one(f):
+        p = f"/repos/{OWNER}/{REPO}/commits?path=out/{f['name']}&per_page=1"
+        cs = call('GET', p)
+        if not cs:
+            return None
+        iso = cs[0]['commit']['committer']['date']
+        ep = int(datetime.strptime(iso, '%Y-%m-%dT%H:%M:%SZ')
+                 .replace(tzinfo=timezone.utc).timestamp())
+        local = os.path.join(BASE, 'out', f['name'])
+        if os.path.exists(local):
+            os.utime(local, (ep, ep))       # mtime 也對齊，避免二次誤判
+        return f"out/{f['name']}", ep
+
+    out = {}
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for r in ex.map(one, items):
+            if r:
+                out[r[0]] = r[1]
+    json.dump(out, open(os.path.join(BASE, 'out', 'git-times.json'), 'w'),
+              ensure_ascii=False, indent=0, sort_keys=True)
+    print(f'git-times.json：{len(out)} 筆')
+
+
 def build():
     r = subprocess.run([sys.executable, os.path.join(BASE, 'scripts', 'build_gallery.py')],
                        cwd=BASE, capture_output=True, text=True)
@@ -146,6 +180,8 @@ if __name__ == '__main__':
     argv = sys.argv[1:]
     extra = argv[argv.index('--files') + 1:] if '--files' in argv else None
     sync()
+    if '--skip-times' not in argv:
+        fetch_git_times()
     build()
     if '--no-push' not in argv:
         push_docs(extra)

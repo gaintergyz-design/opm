@@ -59,7 +59,6 @@ POST_OF = {
     'who-owns-aapl': 'who-owns-aapl',
     'who-owns-msft': 'who-owns-msft',
     'etf-omah': 'etf-omah',
-    'musk-merger': 'musk-merger',
     'earnings-wdc': 'earnings-wdc',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
@@ -70,13 +69,10 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-aapl': 'Who Owns Apple?',
              'who-owns-msft': 'Who Owns Microsoft?',
              'etf-omah': 'OMAH ETF · Top 10 Holdings',
-             'capex-bigfour': 'AI Capex Race · Big-Four Cloud Capex',
-             'musk-merger': 'SUPER MERGER · Tesla & SpaceX Roar Back',
              'anthropic-s1': 'Anthropic S-1 · 6 cards'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
-         'who-owns-msft', 'etf-omah', 'capex-bigfour', 'anthropic-s1',
-         'musk-merger']
+         'who-owns-msft', 'etf-omah', 'anthropic-s1']
 
 # 總結型系列：多張卡（-p01..pNN）共用一則貼文 → 歸併成同一 kind、同一 post 組
 def kind_alias(kind):
@@ -115,7 +111,14 @@ def parse(name):
 
 def git_commit_times():
     """out/ 下每個檔案「最後一次被提交」的時間（epoch）。
-    不能用 mtime：git pull/checkout 會把 mtime 重置成拉取時刻。"""
+    不能用 mtime：git pull/checkout 會把 mtime 重置成拉取時刻。
+
+    本機 git 可能損壞（xcrun/CommandLineTools 失效）→ 此時退回讀
+    out/git-times.json（由 rebuild_gallery_remote.py 用 GitHub REST API
+    預先抓好的「檔案 → 最後提交時間」對照表）。
+    ⚠️ 沒有這層 fallback，本地重建會把全部卡片的時間寫成 mtime＝下載時刻，
+    整頁時間會一起錯（2026-11-03 就發生過：所有卡都顯示同一個 12:47）。
+    """
     times = {}
     try:
         raw = subprocess.run(['git', '-C', BASE, 'log', '--format=@%ct', '--name-only', '--', 'out'],
@@ -130,6 +133,12 @@ def git_commit_times():
                     times[f] = cur           # git log 由新到舊 → 首次出現即最新
     except Exception:
         pass
+    if not times:
+        try:
+            with open(os.path.join(OUT, 'git-times.json'), encoding='utf-8') as f:
+                times = {k: int(v) for k, v in json.load(f).items()}
+        except Exception:
+            pass
     return times
 
 
