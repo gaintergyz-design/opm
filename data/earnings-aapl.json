@@ -1,0 +1,142 @@
+{
+  "ticker": "AAPL",
+  "company": "Apple",
+  "quarter": "Q4 2026",
+  "period_end": "Sep 26, 2026",
+  "reported": "Nov 2, 2026 · after close",
+  "brand": {
+    "deep": "#1D1D1F",
+    "primary": "#0071E3",
+    "mid": "#3393DB",
+    "teal": "#64B5E8",
+    "pos": "#028948"
+  },
+  "strip": "Revenue $114.48B (+12% Y/Y) beat est by 0.9% · EPS $2.10 (+14% Y/Y) incl. $0.05 tariff refund",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 114477,
+      "actual_disp": "$114.48B",
+      "est_disp": "$113.47B",
+      "surprise": 0.9,
+      "prior": 109417,
+      "prior_txt": "3Q26",
+      "cur_txt": "4Q26",
+      "yoy": 11.7
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": 2.1,
+      "actual_disp": "$2.10",
+      "est_disp": "$2.00",
+      "surprise": 5,
+      "prior": 2.02,
+      "prior_txt": "3Q26",
+      "cur_txt": "4Q26",
+      "yoy": 14
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "quarters": [
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26"
+  ],
+  "gross_margin": [
+    47.2,
+    48.2,
+    49.3,
+    50.1,
+    47.9
+  ],
+  "op_margin": [
+    31.6,
+    35.4,
+    32.3,
+    32.6,
+    31.1
+  ],
+  "ocf": [
+    29700,
+    53925,
+    28702,
+    34369,
+    28000
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 10000
+  },
+  "mix_colors": [
+    "#0071E3",
+    "#1D1D1F",
+    "#5AA7E0",
+    "#8CC3EE",
+    "#BFDFF5"
+  ],
+  "mix_center": "iPhone",
+  "mix": [
+    {
+      "name": "iPhone",
+      "pct": 50.3,
+      "value": "$57.58B"
+    },
+    {
+      "name": "Services",
+      "pct": 27.6,
+      "value": "$31.57B"
+    },
+    {
+      "name": "Mac",
+      "pct": 9.4,
+      "value": "$10.79B"
+    },
+    {
+      "name": "Wearables & Home",
+      "pct": 7.2,
+      "value": "$8.30B"
+    },
+    {
+      "name": "iPad",
+      "pct": 5.4,
+      "value": "$6.23B"
+    }
+  ],
+  "outlook": {
+    "title": "Q1 2027 · what to watch",
+    "items": [
+      {
+        "k": "iPhone Duo",
+        "v": "first full quarter",
+        "note": "folded iPhone launched Oct 23"
+      },
+      {
+        "k": "iPhone 18 Pro",
+        "v": "full-quarter ramp",
+        "note": "only 8 days of sales in FQ4"
+      },
+      {
+        "k": "Siri AI",
+        "v": "rollout",
+        "note": "new Siri debuts this holiday"
+      },
+      {
+        "k": "Memory costs",
+        "v": "RAMageddon",
+        "note": "DRAM price surge pressures GM"
+      },
+      {
+        "k": "Greater China",
+        "v": "$17.54B, +21% Y/Y",
+        "note": "missed est $18.75B"
+      }
+    ]
+  }
+}

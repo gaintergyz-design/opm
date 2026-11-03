@@ -297,8 +297,8 @@ if (D.cash_trend) {
   const nameW = Math.max(...mix.map((m) => tw(m.name, 21, 500)));
   const pctW = Math.max(...mix.map((m) => tw(`${m.pct}%`, 22, 700)));
   const dense = D.mix_dense != null ? !!D.mix_dense : (nameW + 10 + pctW > legendAvail);
-  const rowGap = mix.length >= 4 ? 50 : 62;
-  const rowY0 = B_Y + (dense ? 100 : 112);
+  const rowGap = mix.length >= 5 ? 42 : (mix.length >= 4 ? 50 : 62);
+  const rowY0 = B_Y + (dense ? (mix.length >= 5 ? 92 : 100) : 112);
   mix.forEach((m, i) => {
     const y = rowY0 + i * rowGap;
     svg.push(rrect(LX, y - 13, 13, 13, 3.5, COL[i % COL.length]));
