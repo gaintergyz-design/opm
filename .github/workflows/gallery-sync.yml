@@ -17,6 +17,11 @@ on:
       - 'out/*.png'
       - 'out/caption-*.txt'
   workflow_dispatch:
+    inputs:
+      days:
+        description: '可選：預設展開最近 N 天（留空＝3）'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -39,7 +44,7 @@ jobs:
           python-version: '3.11'
 
       - name: 重建畫廊（全量）
-        run: python3 scripts/build_gallery.py
+        run: python3 scripts/build_gallery.py ${{ github.event.inputs.days != '' && format('--days {0}', github.event.inputs.days) || '' }}
 
       - name: 提交回倉庫
         run: |
