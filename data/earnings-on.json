@@ -1,0 +1,144 @@
+{
+  "ticker": "ON",
+  "company": "onsemi",
+  "quarter": "Q3 2026",
+  "period_end": "Oct 2, 2026",
+  "reported": "Nov 2, 2026 · after US close",
+  "brand": {
+    "deep": "#003968",
+    "primary": "#1F6FB2",
+    "mid": "#4A94C9",
+    "teal": "#7FB8DC",
+    "pos": "#028948"
+  },
+  "strip": "AI data center $180M: +39% Q/Q, +175% Y/Y · GM up a 5th straight quarter, +190bp Q/Q",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 1722.3,
+      "actual_disp": "$1.72B",
+      "est_disp": "$1.71B",
+      "surprise": 1,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 1550.9,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 11
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 0.9,
+      "actual_disp": "$0.90",
+      "est_disp": "$0.88",
+      "surprise": 2.3,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.63,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 42.9
+    }
+  },
+  "layout": {
+    "marginMax": 45,
+    "marginMin": 15,
+    "marginStep": 5
+  },
+  "gm_label": "GM",
+  "om_label": "OM",
+  "mix_donut_x": 64,
+  "mix_donut_r": 86,
+  "mix_donut_hole": 50,
+  "mix_name_size": 19,
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "margin_title": "Profitability (non-GAAP)",
+  "gross_margin": [
+    38.0,
+    38.2,
+    38.5,
+    39.3,
+    41.2
+  ],
+  "op_margin": [
+    19.2,
+    19.8,
+    19.1,
+    20.8,
+    23.2
+  ],
+  "ocf": [
+    419,
+    555,
+    239,
+    460,
+    516
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 200
+  },
+  "mix_title": "Revenue by segment",
+  "mix_center": "PSG rev",
+  "mix_colors": [
+    "#003968",
+    "#1F6FB2",
+    "#7FB8DC"
+  ],
+  "mix": [
+    {
+      "name": "Power Solutions",
+      "pct": 51.7,
+      "value": "$889.9M · +21% Y/Y"
+    },
+    {
+      "name": "Analog & Mixed-Signal",
+      "pct": 34.7,
+      "value": "$597.3M · +2% Y/Y"
+    },
+    {
+      "name": "Intelligent Sensing",
+      "pct": 13.6,
+      "value": "$235.1M · +2% Y/Y"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 guide · above Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$1.715–1.815B",
+        "note": "mid $1.765B · consensus ~$1.74B"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$0.95–1.07",
+        "note": "mid $1.01 · consensus $0.95"
+      },
+      {
+        "k": "Gross margin (non-GAAP)",
+        "v": "41.5–43.5%",
+        "note": "+30–190bp Q/Q · 6th straight quarter up"
+      },
+      {
+        "k": "Ferric acquisition",
+        "v": "$600M cash",
+        "note": "+ up to $175M milestones · AI power delivery"
+      },
+      {
+        "k": "Synaptics deal revised",
+        "v": "~$5.7B all-cash",
+        "note": "$123/sh, from $7B stock · EPS accretive"
+      }
+    ]
+  },
+  "notes": "口徑：onsemi FY26 Q3 業績新聞稿（SEC 8-K Ex-99.1，2026-11-02 美股盤後，fiscal quarter ended Oct 2, 2026）＋ Q1/Q4 季新聞稿 ＋ stockanalysis.com ON 季度財務（2026-11-03 抓取）＋ FactSet 共識（Barron's/智通財經轉引）。營收 $1,722.3M，+7% Q/Q、+11% Y/Y（3Q25 $1,550.9M），vs 共識 $1,705M → Beat +1.0%；Non-GAAP EPS $0.90（GAAP $0.79）vs 共識 $0.88 → Beat +2.3%；3Q25 Non-GAAP EPS $0.63 → Y/Y +42.9%，EPS 增速為營收 4 倍（公司口徑）。Non-GAAP 毛利率 41.2%（GAAP 41.4%），環比 +190bp、連續第五季擴張；Non-GAAP 營益率 23.2%（GAAP 22.0%）。五季 Non-GAAP GM/OM：38.0/19.2、38.2/19.8、38.5/19.1、39.3/20.8、41.2/23.2（注：1Q26 GAAP 營益率 −3.5%，因重組與資產減值 $375M 一次性費用，卡上採 Non-GAAP 口徑避免失真；4Q25 GAAP GM 36.0%／OM 13.1%）。OCF（US$M）：3Q25 419、4Q25 555、1Q26 239、2Q26 460（stockanalysis）、3Q26 516（8-K，+23% Y/Y）；Q3 資本開支 ~$28M → FCF $489M（+31% Y/Y，佔營收 28%）。環圖＝業務分部拆分（8-K Revenue Summary）：PSG $889.9M（51.7%，+21% Y/Y）、AMG $597.3M（34.7%，+2% Y/Y）、ISG $235.1M（13.6%，+2% Y/Y）。AI 資料中心營收 $180M（Barron's），+39% Q/Q、+175% Y/Y，約佔總營收 10%；公司預計 2026 全年資料中心營收較 2025（>$250M）翻倍、2027 再翻倍至 >$1B，並因收購 Ferric 將 2030 年 AI 資料中心營收目標上調 $500M 至 >$3B。收購：Ferric $600M 現金＋最高 $175M 里程碑對價（AI 處理器供電）；Synaptics 交易條款修訂為約 $5.7B 全現金（$123/股，原約 $7B 股票對價），公司稱即時增厚 Non-GAAP EPS。本季回購降至 $19.9M（上季 $344.8M），期末現金及等價物 $4.16B（含 2Q26 舉債 $1,473.7M 備彈藥）。展望：Q4 營收 $1.715–1.815B（共識 ~$1.74B）、Non-GAAP EPS $0.95–1.07（共識 $0.95）、Non-GAAP GM 41.5–43.5%。股價：10/30 收 $71.67（−4.74%），11/2 盤後跌逾 3%（Barron's 報 $66.78，智通稱跌逾 3%，兩源口徑不一）→ 卡上不標盤後幅度，僅留此備註。"
+}
