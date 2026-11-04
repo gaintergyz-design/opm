@@ -2,112 +2,94 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-03 13:39",
+  "generated_at": "2026-11-04 13:41",
   "week_label": "Nov 02 – Nov 06",
   "ondeck": {
-    "session": "2026-11-03",
+    "session": "2026-11-04",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.29
+        "pct": 0.28
       },
       {
         "label": "Nasdaq",
-        "pct": -0.82
+        "pct": 0.79
       },
       {
         "label": "Russell 2000",
-        "pct": 0.04
+        "pct": 0.38
       }
     ],
     "econ": [
       {
-        "time": "12:00",
-        "event": "Atlanta Fed GDPNow",
-        "consensus": "3.2%",
-        "previous": "3.2%"
+        "time": "06:00",
+        "event": "IBD/TIPP Economic Optimism",
+        "consensus": "46.2",
+        "previous": "46.8"
       },
       {
         "time": "10:00",
-        "event": "ISM Manufacturing Employment",
-        "consensus": "52.0",
-        "previous": "52.7"
+        "event": "Durables Excluding Defense",
+        "consensus": "2.2%",
+        "previous": "0.0%"
       },
       {
         "time": "10:00",
-        "event": "ISM Manufacturing New Orders Index",
-        "consensus": "54.5",
-        "previous": "55.3"
+        "event": "Durables Excluding Transport",
+        "consensus": "0.5%",
+        "previous": "0.2%"
       },
       {
         "time": "10:00",
-        "event": "ISM Manufacturing PMI",
-        "consensus": "54.5",
-        "previous": "54.5"
+        "event": "Factory Orders",
+        "consensus": "1.2%",
+        "previous": "0.3%"
       },
       {
         "time": "10:00",
-        "event": "ISM Manufacturing Prices",
-        "consensus": "77.2",
-        "previous": "77.9"
+        "event": "JOLTS Job Openings",
+        "consensus": "7.150M",
+        "previous": "7.190M"
       },
       {
-        "time": "11:15",
-        "event": "Fed Goolsbee Speaks",
+        "time": "16:30",
+        "event": "API Weekly Crude Oil Stock",
+        "consensus": "2.100M",
+        "previous": "-2.031M"
+      },
+      {
+        "time": "08:55",
+        "event": "Redbook",
         "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "09:45",
-        "event": "S&P Global Manufacturing PMI",
-        "consensus": "56.0",
-        "previous": "56.0"
-      },
-      {
-        "time": "10:00",
-        "event": "Construction Spending",
-        "consensus": "0.4%",
-        "previous": "2.0%"
-      },
-      {
-        "time": "11:30",
-        "event": "3-Month Bill Auction",
-        "consensus": "",
-        "previous": "4.050%"
-      },
-      {
-        "time": "11:30",
-        "event": "6-Month Bill Auction",
-        "consensus": "",
-        "previous": "4.210%"
+        "previous": "9.3%"
       }
     ],
-    "econ_all": 11,
+    "econ_all": 7,
     "earnings": {
       "before": [
-        "SHOP",
-        "PFE",
-        "ETN",
-        "MPC",
-        "RACE",
-        "APO",
-        "MPLX",
-        "AME"
+        "MCD",
+        "NVO",
+        "UBER",
+        "CVS",
+        "EMR",
+        "DDOG",
+        "GWW",
+        "COR"
       ],
       "after": [
-        "AMD",
-        "AMGN",
-        "ANET",
-        "BKNG",
-        "SU",
-        "ITUB",
-        "XYZ",
-        "ALAB"
+        "ARM",
+        "QCOM",
+        "MCK",
+        "MELI",
+        "MSI",
+        "APP",
+        "MFC",
+        "ALL"
       ],
-      "before_n": 95,
-      "after_n": 136,
-      "total": 274
+      "before_n": 132,
+      "after_n": 279,
+      "total": 475
     }
   },
   "winners": {
@@ -205,7 +187,7 @@
       {
         "day": "Mon",
         "date": "Nov 09",
-        "count": 242,
+        "count": 246,
         "econ": [],
         "before": [
           "CEG",
@@ -231,18 +213,18 @@
       {
         "day": "Tue",
         "date": "Nov 10",
-        "count": 139,
+        "count": 152,
         "econ": [
           "Atlanta Fed GDPNow",
           "Fed Goolsbee Speaks",
           "NY Fed 1-Year Consumer Inflation Expectations",
-          "CB Employment Trends Index"
+          "Wholesale Inventories"
         ],
         "before": [
           "TDG",
           "SE",
-          "VG",
           "VOD",
+          "VG",
           "ONON",
           "SRRK",
           "ATAT",
@@ -262,7 +244,7 @@
       {
         "day": "Wed",
         "date": "Nov 11",
-        "count": 239,
+        "count": 227,
         "econ": [
           "NFIB Small Business Optimism",
           "Core CPI",
@@ -293,7 +275,7 @@
       {
         "day": "Thu",
         "date": "Nov 12",
-        "count": 339,
+        "count": 338,
         "econ": [
           "OPEC Monthly Report",
           "Thomson Reuters IPSOS PCSI"
@@ -301,8 +283,8 @@
         "before": [
           "BN",
           "NBIS",
-          "TWST",
           "HBM",
+          "TWST",
           "FPS",
           "NIQ",
           "OCTV",
@@ -322,20 +304,22 @@
       {
         "day": "Fri",
         "date": "Nov 13",
-        "count": 217,
+        "count": 218,
         "econ": [
-          "Existing Home Sales",
-          "Federal Budget Balance"
+          "Continuing Jobless Claims",
+          "Initial Jobless Claims",
+          "Jobless Claims 4-Week Avg.",
+          "Existing Home Sales"
         ],
         "before": [
           "USAS",
           "RMIX",
-          "KGEI",
+          "SBC",
           "DGXX",
+          "KGEI",
           "ECC",
-          "NDLS",
-          "EIC",
-          "PAVM"
+          "MIST",
+          "NDLS"
         ],
         "after": []
       }
