@@ -1,0 +1,66 @@
+{
+  "ticker": "CRCL",
+  "company": "Circle",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 4, 2026 · before open",
+  "brand": {
+    "deep": "#0A2A52",
+    "primary": "#14508F",
+    "mid": "#2775CA",
+    "teal": "#55A9E8",
+    "pos": "#028948"
+  },
+  "strip": "Reserve income −8% (yield −61bps) · $182M ARC token presale drove other revenue +627%",
+  "kpi": {
+    "revenue": {
+      "label": "Total revenue",
+      "actual": 864.9,
+      "actual_disp": "$865M",
+      "est_disp": "$797M",
+      "surprise": 8.5,
+      "prior": 739.8,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 17
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": 0.84,
+      "actual_disp": "$0.84",
+      "est_disp": "$0.40",
+      "surprise": 110,
+      "pill": "Beat +110%",
+      "prior": 0.64,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 31
+    }
+  },
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "margin_title": "RLDC margin · % of revenue",
+  "op_margin": [39.5, 40.1, 41.4, 41.2, 52.4],
+  "marginMax": 60,
+  "marginStep": 10,
+  "mix_title": "Q3'26 revenue mix",
+  "mix_center": "Reserve income",
+  "mix": [
+    { "name": "Reserve income", "pct": 76, "value": "$658M" },
+    { "name": "ARC token presale", "pct": 21, "value": "$182M" },
+    { "name": "Subscriptions & other", "pct": 3, "value": "$25M" }
+  ],
+  "mix_colors": ["#14508F", "#55A9E8", "#C3DCF2"],
+  "panel3_title": "Adjusted EBITDA",
+  "ocf": [171.5, 175.9, 151.4, 143.5, 316.7],
+  "ocf_fmt": { "unit": "US$M", "div": 1, "dec": 1, "step": 100 },
+  "outlook": {
+    "title": "FY 2026 guidance · unchanged",
+    "items": [
+      { "k": "Other revenue", "v": "$310–330M", "note": "incl. recognized ARC presale" },
+      { "k": "RLDC margin", "v": "41.7–43.7%", "note": "Q3 hit 52.4%, ARC-boosted" },
+      { "k": "Adj. operating expenses", "v": "$570–585M", "note": "Q3 came in at $139M, +13%" },
+      { "k": "USDC in circulation", "v": "40% CAGR", "note": "multi-year, through cycle" },
+      { "k": "Reserve return rate", "v": "3.5%", "note": "−61bps Y/Y; avg USDC +8%" }
+    ]
+  }
+}

@@ -183,11 +183,12 @@ const RP_X = M + LP_W + 32, RP_W = CW - LP_W - 32;
 
 svg.push(t(LP_X, B_Y + 30, D.margin_title || 'Profitability', { size: 26, weight: 500 }));
 {
-  // 圖例直接把最新一季的數值寫出來（取代壓在線上的標籤）
-  const last = D.gross_margin ? D.gross_margin.length - 1 : D.op_margin.length - 1;
+  // 圖例直接把最新一季的數值寫出來（取代壓在線上的標籤）。
+  // 單線模式（無 gross_margin）逐點已標值 → 不畫圖例，避免重複（CRCL 2026-11-04）
+  const last = D.gross_margin ? D.gross_margin.length - 1 : -1;
   const items = [];
   if (D.gross_margin) items.push({ c: C.deep, label: 'Gross', val: `${D.gross_margin[last].toFixed(1)}%` });
-  items.push({ c: C.teal, label: 'Operating', val: `${D.op_margin[last].toFixed(1)}%` });
+  if (D.gross_margin) items.push({ c: C.teal, label: 'Operating', val: `${D.op_margin[last].toFixed(1)}%` });
   let rx = LP_X + LP_W;
   items.slice().reverse().forEach((it) => {
     const vw = tw(it.val, 16, 700), lw = tw(it.label, 15);
