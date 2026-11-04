@@ -1,0 +1,148 @@
+{
+  "ticker": "PFE",
+  "company": "Pfizer",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 27, 2026",
+  "reported": "Nov 3, 2026 · before US open",
+  "brand": {
+    "deep": "#005A9C",
+    "primary": "#0093D0",
+    "mid": "#45AEDE",
+    "teal": "#86C8EC",
+    "pos": "#028948"
+  },
+  "strip": "Beat on both lines · ex-COVID revenue +7% · new products +32% · FY guide raised",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 16583,
+      "actual_disp": "$16.6B",
+      "est_disp": "$15.9B",
+      "surprise": 4.5,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 16654,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -0.4
+    },
+    "eps": {
+      "label": "EPS (adjusted)",
+      "actual": 0.87,
+      "actual_disp": "$0.87",
+      "est_disp": "$0.73",
+      "surprise": 19.2,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.87,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 0.0
+    }
+  },
+  "layout": {
+    "marginMax": 80,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    76.1,
+    71.2,
+    76.4,
+    75.7,
+    75.7
+  ],
+  "op_margin": [
+    35.3,
+    24.0,
+    31.6,
+    27.9,
+    31.0
+  ],
+  "ocf": [
+    -2335,
+    4603,
+    5348,
+    2615,
+    -835
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 2000
+  },
+  "mix_title": "Revenue mix · segments",
+  "mix_center": "Primary care",
+  "mix_colors": [
+    "#005A9C",
+    "#0093D0",
+    "#45AEDE",
+    "#9ED2F0",
+    "#D3E7F5"
+  ],
+  "mix": [
+    {
+      "name": "Primary Care",
+      "pct": 42.0,
+      "value": "$6.97B"
+    },
+    {
+      "name": "Oncology",
+      "pct": 26.1,
+      "value": "$4.33B"
+    },
+    {
+      "name": "Specialty Care",
+      "pct": 20.2,
+      "value": "$3.35B"
+    },
+    {
+      "name": "Hospital & BioPharma",
+      "pct": 9.9,
+      "value": "$1.64B"
+    },
+    {
+      "name": "CentreOne (CDMO)",
+      "pct": 1.8,
+      "value": "$0.30B"
+    }
+  ],
+  "outlook": {
+    "title": "FY26 guide · raised",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$62–64B",
+        "note": "from $60.5–62.5B · consensus $62.3B"
+      },
+      {
+        "k": "EPS (adj.)",
+        "v": "$2.95–3.05",
+        "note": "from $2.80–3.00 · consensus $2.96"
+      },
+      {
+        "k": "New products",
+        "v": "+32%",
+        "note": "launched & acquired · ex-COVID +7%"
+      },
+      {
+        "k": "COVID drag",
+        "v": "Paxlovid −63%",
+        "note": "Comirnaty −29% · Prevnar −10%"
+      },
+      {
+        "k": "Obesity push",
+        "v": "Metsera $10B",
+        "note": "Innovent oncology deal $10.5B cap"
+      }
+    ]
+  },
+  "notes": "口徑：PFE 3Q26 業績（2026-11-03 美股盤前發布，財聯社／智通／Yahoo 財經轉引）＋ stockanalysis.com 季度財務（五季，2026-11-04 抓取，本次已含 3Q26）。營收 $16,583M（Y/Y −0.4% 基本持平；LSEG 共識 $15.87B → +4.5%）→ pill 用 Beat。調整後 EPS $0.87（共識 $0.73 → +19.2%；同比持平 3Q25 $0.87）。GAAP EPS $0.56（−9%）、GAAP 淨利 $3,242M（−8%）、調整後淨利 $4,985M（+1%）。毛利率／營益率五季均取 stockanalysis（GAAP 口徑）：GM 76.1 / 71.2 / 76.4 / 75.7 / 75.7，OM 35.3 / 24.0 / 31.6 / 27.9 / 31.0（另一數據商 3Q26 營益率 37.75% 係計入口徑不同，未採用）。OCF（US$M）：−2,335 / 4,603 / 5,348 / 2,615 / −835，均取 stockanalysis 同一對齊（注意：另一數據商 2Q26 顯示 +835 與 stockanalysis 3Q26 −835 存在錯位疑慮，本卡統一以 stockanalysis 為準；PFE 三季度常見稅務繳款致現金流轉負）。mix＝segment 營收：Primary Care $6.971B（42.0%，−9%，新冠及 Prevnar 拖累）、Oncology $4.327B（26.1%，+10%）、Specialty Care $3.349B（20.2%，+7%）、Hospital & BioPharma $1.635B（9.9%，+2%）、CentreOne $0.300B（1.8%，−13%）。亮點：Eliquis $2.523B（運營口徑 +25%）、Padcev $720M（+55%）、Vyndaqel $1.773B（+12%）、Nurtec $547M（+33%）、Lorbrena $387M（+43%）；剔除新冠產品營收運營口徑 +7%，上市及併購產品 +32%。指引：全年營收上調至 $62–64B（原 $60.5–62.5B，共識 $62.26B）、調整後 EPS 上調至 $2.95–3.05（原 $2.80–3.00，共識 $2.96），已含信達生物腫瘤合作一次性研發費用 $650M（約 −$0.10 EPS）。減重：去年 $10B 收購 Metsera 推進中；2029 年前累計淨節省 $9.7B。股價：11/3 收 $30.00（−2.18%），盤後 $30.10（+0.32%，stockanalysis 即時）。"
+}
