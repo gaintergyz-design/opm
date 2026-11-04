@@ -1,0 +1,142 @@
+{
+  "ticker": "AMD",
+  "company": "Advanced Micro Devices",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 26, 2026",
+  "reported": "Nov 3, 2026 · after US close",
+  "brand": {
+    "deep": "#14161A",
+    "primary": "#26292F",
+    "mid": "#4A4F58",
+    "teal": "#FF6A13",
+    "pos": "#028948"
+  },
+  "strip": "Record quarter · DC +97%, 64% of sales · Q4 guide $17B, ~$0.7B above Street · stock +4.7% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 13377,
+      "actual_disp": "$13.4B",
+      "est_disp": "$13.1B",
+      "surprise": 2.3,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 9246,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 44.7
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 2.09,
+      "actual_disp": "$2.09",
+      "est_disp": "$1.97",
+      "surprise": 6.1,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 1.2,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 74.2
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    54.5,
+    56.8,
+    55.4,
+    56.0,
+    55.8
+  ],
+  "op_margin": [
+    13.7,
+    17.1,
+    14.4,
+    17.3,
+    21.2
+  ],
+  "ocf": [
+    2159,
+    2600,
+    2955,
+    2366,
+    1202
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 1000
+  },
+  "mix_title": "Revenue mix · segments",
+  "mix_center": "DC rev",
+  "mix_colors": [
+    "#14161A",
+    "#565C66",
+    "#98A2B3",
+    "#D3D8DF"
+  ],
+  "mix": [
+    {
+      "name": "Data Center",
+      "pct": 63.9,
+      "value": "$8.5B"
+    },
+    {
+      "name": "Client",
+      "pct": 22.0,
+      "value": "$2.9B"
+    },
+    {
+      "name": "Embedded",
+      "pct": 8.3,
+      "value": "$1.1B"
+    },
+    {
+      "name": "Gaming",
+      "pct": 5.8,
+      "value": "$0.8B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 guide · above Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "~$17.0B ±3%",
+        "note": "consensus $16.3B · mid +4% · +27% Q/Q"
+      },
+      {
+        "k": "Gross margin",
+        "v": "non-GAAP ~55%",
+        "note": "3Q non-GAAP 56% · GAAP 54%"
+      },
+      {
+        "k": "Inflection",
+        "v": "DC AI > server CPU",
+        "note": "MI455X + Helios racks ramp in Q4"
+      },
+      {
+        "k": "FY27 growth",
+        "v": ">80%",
+        "note": "server CPU seen doubling · Lisa Su"
+      },
+      {
+        "k": "Free cash flow",
+        "v": "$554M",
+        "note": "missed ~$1.05B est · $11.5B inventory build"
+      }
+    ]
+  },
+  "notes": "口徑：AMD 3Q26 業績（2026-11-03 美股盤後發布，新聞稿經財聯社／每經／中國證券網轉引）＋ stockanalysis.com AMD 季度財務（2026-11-04 抓取）。營收 $13.377B（+44.7% Y/Y，3Q25 $9.246B；市場預期 $13.08B → +2.3%；超自身指引 $12.7–13.3B 高點）→ pill 用 Beat。Non-GAAP EPS $2.09（預期 $1.97 → +6.1%；3Q25 $1.20 → +74.2%）。GAAP 淨利 $2.428B（+95%）、GAAP EPS $1.46。毛利率／營益率五季均 GAAP（stockanalysis）：3Q25 54.5/13.7、4Q25 56.8/17.1、1Q26 55.4/14.4、2Q26 56.0/17.3、3Q26 55.8/21.2；Non-GAAP 毛利率 3Q 56%（+190bps，上年同期 54%）。OCF（US$M）：2,159 / 2,600 / 2,955 / 2,366 / 1,202（3Q 庫存備貨 $11.5B＋資本開支 $648M 增加壓縮現金流）。mix＝segment 營收：Data Center $8.546B（+97%，佔 64%）、Client $2.949B（+7%）、Embedded $1.109B（+29%）、Gaming $0.773B（−40%），合計 $13.377B。展望：Q4 營收指引 ~$17.0B ±3%（共識 $16.3B，中值 +4%；Y/Y +66%、Q/Q +27%）、Non-GAAP 毛利率 ~55%；Q4 拐點——DC AI 板塊營收將超過伺服器 CPU；FY27 營收增速預計 >80%、伺服器 CPU 營收有望翻倍（財聯社引財報會）。FCF $554M，低於市場預期 ~$1.05B（每經），主因庫存與應收帳款增加。股價：11/3 收 $483.90（+3.65%），盤後 $506.43（+4.66%，stockanalysis 即時 19:44 ET）。"
+}
