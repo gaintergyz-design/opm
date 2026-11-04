@@ -1,0 +1,130 @@
+{
+  "ticker": "ANET",
+  "company": "Arista Networks",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 3, 2026 · after US close",
+  "brand": {
+    "deep": "#16325B",
+    "primary": "#1F4A85",
+    "mid": "#3E6FA8",
+    "teal": "#4A90C4",
+    "pos": "#028948"
+  },
+  "strip": "Best growth since 2014 IPO · rev +11% over guide · first FY27 guide $18.5B · stock +12.4% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 3657.6,
+      "actual_disp": "$3.66B",
+      "est_disp": "$3.33B",
+      "surprise": 9.7,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 2308.3,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 58.5
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 1.2,
+      "actual_disp": "$1.20",
+      "est_disp": "$1.08",
+      "surprise": 11.1,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.77,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 55.8
+    }
+  },
+  "layout": {
+    "marginMax": 70,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    64.6,
+    62.9,
+    61.9,
+    62.9,
+    63.6
+  ],
+  "op_margin": [
+    42.4,
+    41.5,
+    42.7,
+    45.4,
+    44.9
+  ],
+  "ocf": [
+    1268,
+    1262,
+    1694,
+    1083,
+    1200
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 500
+  },
+  "mix_title": "Revenue mix",
+  "mix_center": "Product rev",
+  "mix_colors": [
+    "#16325B",
+    "#8FB4D9"
+  ],
+  "mix": [
+    {
+      "name": "Product",
+      "pct": 87.2,
+      "value": "$3.19B"
+    },
+    {
+      "name": "Service",
+      "pct": 12.8,
+      "value": "$0.47B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 2026 guide · above Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$3.9–4.0B",
+        "note": "consensus $3.57B · mid +59% Y/Y"
+      },
+      {
+        "k": "EPS (non-GAAP)",
+        "v": "$1.26–1.30",
+        "note": "consensus $1.14 · op margin 48–49%"
+      },
+      {
+        "k": "FY26",
+        "v": "~$13.3B",
+        "note": "raised from $12.6B · AI ≥$3.5B"
+      },
+      {
+        "k": "FY27 · first guide",
+        "v": "~$18.5B",
+        "note": "+38–40% · AI ~$7B, campus ~$2B"
+      },
+      {
+        "k": "Supply",
+        "v": "$11.4B commitments",
+        "note": "+$1.7B Q/Q · inventory $3.2B"
+      }
+    ]
+  },
+  "notes": "口徑：ANET 3Q26 業績（2026-11-03 美股盤後發布，SEC 8-K EX-99.1 新聞稿）＋ stockanalysis.com 季度財務（3Q25–2Q26，2026-11-04 抓取）。營收 $3,657.6M（+58.5% Y/Y，上市以來最高單季增速；+20.5% Q/Q；高於自身指引 $3.3B → +10.8%；高於共識 $3,334M → +9.7%）→ pill 用 Beat。Non-GAAP EPS $1.20（共識 ~$1.08 → +11.1%；3Q25 $0.77 → +55.8%）。GAAP EPS $1.22（+82%，含 $134.5M 戰略投資收益，非 GAAP 予剔除）、GAAP 淨利 $1,560.4M。毛利率／營益率五季均 GAAP：3Q25 64.6/42.4（新聞稿比較欄）、4Q25 62.9/41.5、1Q26 61.9/42.7、2Q26 62.9/45.4（stockanalysis）、3Q26 63.6/44.9（新聞稿）；Non-GAAP 毛利率 64.0%（−1.2ppts Y/Y）、營益率 49.1%（+0.5ppts）。OCF（US$M）：1,268 / 1,262 / 1,694 / 1,083（stockanalysis），3Q26 ≈1,200（新聞稿僅披露九個月 $3,977.4M，減上半年 1,694＋1,083 推得）。mix＝Product $3,190.0M（87.2%）＋Service $467.6M（12.8%）。展望：Q4 營收 $3.9–4.0B（共識 $3.57B，中值 +59% Y/Y、+8% Q/Q）、Non-GAAP EPS $1.26–1.30（共識 $1.139）、Non-GAAP 營益率 48–49%；FY26 營收上調至 ~$13.3B（原 $12.6B，+48%），維持 AI ≥$3.5B、Campus ≥$1.25B；首次指引 FY27 營收 ~$18.5B（+38–40%），AI 營收 ~$7B 翻倍、Campus ~$2B（+60%）（中信證券／國泰海通引財報會）。供應鏈：採購承諾 $11.4B（環比 +$1.7B，Q2 末 $9.7B）、存貨 $3.21B（較年初 +42.8%）、遞延收入合計 $6.84B、現金及有價證券 $14.36B。股價：11/3 收漲 3.52%，盤後 +12.36%（智通／金融界發稿時）。"
+}
