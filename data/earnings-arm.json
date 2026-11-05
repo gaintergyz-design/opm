@@ -1,0 +1,132 @@
+{
+  "ticker": "ARM",
+  "company": "Arm Holdings",
+  "quarter": "Q2 FY2027",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 4, 2026 · after US close",
+  "brand": {
+    "deep": "#123B4F",
+    "primary": "#186F8F",
+    "mid": "#2E93B5",
+    "teal": "#0091BD",
+    "pos": "#028948"
+  },
+  "strip": "Record Q2 · license +50%, DC royalty 2x · Q3 guide only just above Street · stock -1.6% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 1443,
+      "actual_disp": "$1.44B",
+      "est_disp": "$1.38B",
+      "surprise": 4.6,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 1135,
+      "prior_txt": "2Q26",
+      "cur_txt": "2Q27",
+      "yoy": 27.1
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 0.52,
+      "actual_disp": "$0.52",
+      "est_disp": "$0.47",
+      "surprise": 10.6,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.39,
+      "prior_txt": "2Q26",
+      "cur_txt": "2Q27",
+      "yoy": 33.3
+    }
+  },
+  "layout": {
+    "marginMax": 100,
+    "marginStep": 25
+  },
+  "quarters": [
+    "2Q26",
+    "3Q26",
+    "4Q26",
+    "1Q27",
+    "2Q27"
+  ],
+  "gross_margin": [
+    97.45,
+    97.58,
+    97.85,
+    97.21,
+    97.09
+  ],
+  "op_margin": [
+    14.36,
+    15.38,
+    29.53,
+    7.6,
+    13.93
+  ],
+  "ocf": [
+    567,
+    260,
+    365,
+    902,
+    207
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 300
+  },
+  "mix_title": "Revenue mix · segments",
+  "mix_center": "License",
+  "mix_colors": [
+    "#123B4F",
+    "#2E93B5",
+    "#8FC5D8",
+    "#D3E5ED"
+  ],
+  "mix": [
+    {
+      "name": "License & other",
+      "pct": 53.6,
+      "value": "$773M"
+    },
+    {
+      "name": "Royalty",
+      "pct": 46.4,
+      "value": "$670M"
+    }
+  ],
+  "outlook": {
+    "title": "Q3 FY27 guide · just above Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "~$1.54B ±$50M",
+        "note": "consensus $1.53B · some models near $1.7B"
+      },
+      {
+        "k": "Royalty lag",
+        "v": "+8% vs license +50%",
+        "note": "Q2 royalty $670M missed $721M est"
+      },
+      {
+        "k": "Data center",
+        "v": "DC royalty 2x Y/Y",
+        "note": "hyperscaler share >50% (2025) → >60% by end 2026"
+      },
+      {
+        "k": "AGI CPU",
+        "v": "up to $2B",
+        "note": "FY27–28 revenue target · first chips ship 4Q FY27"
+      },
+      {
+        "k": "Scale",
+        "v": ">10B chips / quarter",
+        "note": "first time · ACV $1.79B, +12%"
+      }
+    ]
+  },
+  "notes": "口徑：Arm Holdings 2027 財年第二財季（截至 2026-09-30，2026-11-04 美股盤後發布，新聞稿經鳳凰科技／華爾街見聞／騰訊新聞轉引）＋ stockanalysis.com ARM 季度財務（2026-11-05 抓取）。營收 $1.443B（+27.1% Y/Y，2Q26 $1.135B；市場預期 $1.38B → +4.6%；連續第五季增速 >20%，創 Q2 紀錄）→ pill 用 Beat。Non-GAAP EPS $0.52（預期 $0.47 → +10.6%；2Q26 $0.39 → +33.3%）。GAAP 淨利 $130M（−45%）：含 $46.6M 股權投資公允價值損失＋$4.9M Arm China 信用損失，且上年同期含出售 Artisan 給 Cadence 的 $131M 稅前收益（高基數）；GAAP EPS $0.12（上年 $0.22）。Non-GAAP 淨利 $566M（+36%）。毛利率／營益率五季均 GAAP（stockanalysis）：2Q26 97.45/14.36、3Q26 97.58/15.38、4Q26 97.85/29.53、1Q27 97.21/7.60、2Q27 97.09/13.93；GAAP 毛利率 97.1%、非 GAAP 97.9%。OCF（US$M）：567 / 260 / 365 / 902 / 207（本季 −63% Y/Y，營運資金變動拖累）。mix＝segment 營收：License & other $773M（+50%，佔 53.6%）、Royalty $670M（+8%，低於預期 $721M），合計 $1.443B。ACV $1.79B（+12%）。展望：Q3 FY27 營收指引 ~$1.54B ±$50M（共識 $1.53B，部分分析師模型近 $1.7B）。數據中心版稅同比翻倍；超大規模雲廠商中 Arm 伺服器份額 2024 年 15% → 2025 年 >50%，公司預計 2026 日曆年底 >60%。AGI CPU：FY27–28 收入目最高 $2B，首批商業交付 4Q FY27。季度 Arm 架構晶片出貨首破 100 億顆（+15 億 Y/Y）；Arm PC 約佔全球出貨 20%。股價：11/4 收 $192.15（−5.11%，財報前大盤半導體走弱），盤後 $189.00（−1.6%，stockanalysis 即時 19:47 ET，盤中一度 −4% 至 −5% 後收窄）。"
+}
