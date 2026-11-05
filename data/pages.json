@@ -2,94 +2,51 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-04 13:41",
+  "generated_at": "2026-11-05 13:46",
   "week_label": "Nov 02 – Nov 06",
   "ondeck": {
-    "session": "2026-11-04",
+    "session": "2026-11-05",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 0.28
+        "pct": 1.53
       },
       {
         "label": "Nasdaq",
-        "pct": 0.79
+        "pct": 1.36
       },
       {
         "label": "Russell 2000",
-        "pct": 0.38
+        "pct": 1.47
       }
     ],
-    "econ": [
-      {
-        "time": "06:00",
-        "event": "IBD/TIPP Economic Optimism",
-        "consensus": "46.2",
-        "previous": "46.8"
-      },
-      {
-        "time": "10:00",
-        "event": "Durables Excluding Defense",
-        "consensus": "2.2%",
-        "previous": "0.0%"
-      },
-      {
-        "time": "10:00",
-        "event": "Durables Excluding Transport",
-        "consensus": "0.5%",
-        "previous": "0.2%"
-      },
-      {
-        "time": "10:00",
-        "event": "Factory Orders",
-        "consensus": "1.2%",
-        "previous": "0.3%"
-      },
-      {
-        "time": "10:00",
-        "event": "JOLTS Job Openings",
-        "consensus": "7.150M",
-        "previous": "7.190M"
-      },
-      {
-        "time": "16:30",
-        "event": "API Weekly Crude Oil Stock",
-        "consensus": "2.100M",
-        "previous": "-2.031M"
-      },
-      {
-        "time": "08:55",
-        "event": "Redbook",
-        "consensus": "",
-        "previous": "9.3%"
-      }
-    ],
-    "econ_all": 7,
+    "econ": [],
+    "econ_all": 0,
     "earnings": {
       "before": [
-        "MCD",
-        "NVO",
-        "UBER",
-        "CVS",
-        "EMR",
-        "DDOG",
-        "GWW",
-        "COR"
+        "COP",
+        "SONY",
+        "PH",
+        "SO",
+        "CNQ",
+        "DUK",
+        "CI",
+        "APD"
       ],
       "after": [
-        "ARM",
-        "QCOM",
-        "MCK",
-        "MELI",
-        "MSI",
-        "APP",
-        "MFC",
-        "ALL"
+        "MNST",
+        "ABNB",
+        "NET",
+        "EOG",
+        "SPG",
+        "WPM",
+        "NTRA",
+        "DVN"
       ],
-      "before_n": 132,
-      "after_n": 279,
-      "total": 475
+      "before_n": 203,
+      "after_n": 258,
+      "total": 570
     }
   },
   "winners": {
@@ -187,7 +144,7 @@
       {
         "day": "Mon",
         "date": "Nov 09",
-        "count": 246,
+        "count": 254,
         "econ": [],
         "before": [
           "CEG",
@@ -213,12 +170,12 @@
       {
         "day": "Tue",
         "date": "Nov 10",
-        "count": 152,
+        "count": 153,
         "econ": [
           "Atlanta Fed GDPNow",
           "Fed Goolsbee Speaks",
           "NY Fed 1-Year Consumer Inflation Expectations",
-          "Wholesale Inventories"
+          "FOMC Member Barkin Speaks"
         ],
         "before": [
           "TDG",
@@ -244,12 +201,12 @@
       {
         "day": "Wed",
         "date": "Nov 11",
-        "count": 227,
+        "count": 223,
         "econ": [
+          "Fed Waller Speaks",
           "NFIB Small Business Optimism",
           "Core CPI",
-          "Core CPI Index",
-          "CPI Index, n.s.a."
+          "Core CPI Index"
         ],
         "before": [
           "GIB",
@@ -267,15 +224,15 @@
           "TTEK",
           "CAE",
           "CTVA",
-          "OR",
           "ENS",
+          "OR",
           "ECO"
         ]
       },
       {
         "day": "Thu",
         "date": "Nov 12",
-        "count": 338,
+        "count": 342,
         "econ": [
           "OPEC Monthly Report",
           "Thomson Reuters IPSOS PCSI"
@@ -291,20 +248,20 @@
           "MBGL"
         ],
         "after": [
+          "CSCO",
           "AMAT",
           "CBRS",
           "STN",
+          "ARWR",
           "ELPC",
           "ANDG",
-          "HTFL",
-          "DLO",
-          "LFTO"
+          "HTFL"
         ]
       },
       {
         "day": "Fri",
         "date": "Nov 13",
-        "count": 218,
+        "count": 215,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
