@@ -1,0 +1,142 @@
+{
+  "ticker": "NVO",
+  "company": "Novo Nordisk",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 4, 2026 · pre-US open",
+  "brand": {
+    "deep": "#001965",
+    "primary": "#123A8F",
+    "mid": "#3D63C8",
+    "teal": "#7FA3E8",
+    "pos": "#028948"
+  },
+  "strip": "Sales +7.5% above est · oral Wegovy +53% Q/Q · FY26 guide raised a 3rd time · stock +5.0%",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (DKK)",
+      "actual": 79195,
+      "actual_disp": "79.2B",
+      "est_disp": "73.7B",
+      "surprise": 7.5,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 74976,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 5.6
+    },
+    "eps": {
+      "label": "Adj. EPS (DKK/ADR)",
+      "actual": 5.79,
+      "actual_disp": "5.79",
+      "est_disp": "5.28",
+      "surprise": 9.7,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 5.2,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 12
+    }
+  },
+  "layout": {
+    "marginMax": 100,
+    "marginStep": 25
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    76.12,
+    82.1,
+    85.96,
+    78.21,
+    82.1
+  ],
+  "op_margin": [
+    31.59,
+    44.53,
+    61.57,
+    42.54,
+    40.05
+  ],
+  "ocf": [
+    46266,
+    7619,
+    24084,
+    55199,
+    41710
+  ],
+  "ocf_fmt": {
+    "unit": "DKK M",
+    "div": 1,
+    "dec": 0,
+    "step": 20000
+  },
+  "mix_title": "Revenue mix · products",
+  "mix_center": "Ozempic",
+  "mix_colors": [
+    "#001965",
+    "#3D63C8",
+    "#8FA8E0",
+    "#D5DFF5"
+  ],
+  "mix": [
+    {
+      "name": "Ozempic",
+      "pct": 37.5,
+      "value": "DKK 29.7B"
+    },
+    {
+      "name": "Obesity (Wegovy)",
+      "pct": 32.6,
+      "value": "DKK 25.8B"
+    },
+    {
+      "name": "Rare dis. & other",
+      "pct": 23.7,
+      "value": "DKK 18.8B"
+    },
+    {
+      "name": "Oral Ozempic",
+      "pct": 6.2,
+      "value": "DKK 4.9B"
+    }
+  ],
+  "outlook": {
+    "title": "FY26 guide raised again",
+    "items": [
+      {
+        "k": "Sales & EBIT",
+        "v": "-2% to +2% CER",
+        "note": "3rd raise this year · was -6% to 0%"
+      },
+      {
+        "k": "Oral Wegovy",
+        "v": "DKK 5.4B, +53% Q/Q",
+        "note": "~3.6M US scripts · best GLP-1 launch ever"
+      },
+      {
+        "k": "Free cash flow",
+        "v": "DKK 60–70B",
+        "note": "raised from DKK 45–55B"
+      },
+      {
+        "k": "CagriSema",
+        "v": "-21% weight @68wks",
+        "note": "beat tirzepatide 5mg · US launch early 2027"
+      },
+      {
+        "k": "Write-downs",
+        "v": "DKK 8.7B impairment",
+        "note": "ziltivekimab failed Ph3 · GAAP net -16%"
+      }
+    ]
+  },
+  "notes": "口徑：Novo Nordisk 2026 年前三季報（Q3 截至 2026-09-30，2026-11-04 歐洲盤前發布）＋ stockanalysis.com NVO 季度財務（DKK 口徑，2026-11-05 抓取）。營收 DKK 79,195M（約 $11.9B，報告口徑 +5.6%/CER +4%；公司匯總分析師預期 DKK 73.2–73.7B → +7.5%）→ pill 用 Beat。調整後營業利潤 DKK 31,720M（CER +27%，預期 DKK 283.9–287.1 億 → +10.6%，部分受上年同期 DKK 90 億轉型成本低基數推高）。調整後 EPS（每 ADR）DKK 5.79（富途機構預期 DKK 5.28 → +9.7%；prior 柱 DKK 5.2 為按調整後淨利 +12% 反推的約值）。IFRS 口徑：營業利潤 DKK 23,011M（CER −9%）、淨利 −16%，因 DKK 87 億非現金減值（ziltivekimab 三期失敗 DKK 46 億＋產能調整 DKK 41 億）。毛利率／營益率五季均 IFRS（stockanalysis）：3Q25 76.12/31.59、4Q25 82.10/44.53、1Q26 85.96/61.57（含一次性項目，偏離常態）、2Q26 78.21/42.54、3Q26 82.10/40.05。OCF（DKK M）：46,266 / 7,619 / 24,084 / 55,199 / 41,710。mix＝產品營收：Ozempic（注射）DKK 29,706M（CER −5%，佔 37.5%）、Obesity care（Wegovy 注射 20,407 + 口服 5,394）DKK 25,801M（32.6%；口服片環比 +53%、預期僅 46.2 億；美國處方 ~360 萬張、累計 800 萬張，為美國史上最強 GLP-1 放量；Wegovy 系列美國新患者起始份額 >50%）、Rare disease & other（罕見病＋其他糖尿病與護理）DKK 18,750M（23.7%）、Oral Ozempic（Rybelsus）DKK 4,938M（6.2%，−10%）。糖尿病業務整體 −5%；區域：美國 +1% CER、國際 +8%（EUCAN +18%、中國 −5%）。展望：年內第三次上調全年指引——調整後銷售額與調整後營業利潤增速（CER）由 −6%~0% 上調至 −2%~+2%；FCF 指引由 450–550 億上調至 600–700 億克朗。CagriSema：REDEFINE 9 68 周減重 21%；REIMAGINE 5 減重 12.4% 優於替爾泊肽 5mg 的 9.1%；籌備 2027 年初美國上市。同時宣布 CFO Karsten Munk Knudsen 年底離任（任職 9 年），Galderma CFO 接任。股價：11/4 收 $42.18（+4.95%）；哥本哈根上市股年內 −17%，此前被禮來在美國市場反超。"
+}
