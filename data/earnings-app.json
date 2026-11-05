@@ -1,0 +1,130 @@
+{
+  "ticker": "APP",
+  "company": "AppLovin",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 4, 2026 · after US close",
+  "brand": {
+    "deep": "#075E7D",
+    "primary": "#0599C5",
+    "mid": "#3FB3D9",
+    "teal": "#8FD6EC",
+    "pos": "#028948"
+  },
+  "strip": "Rev $2.18B +55% · 66% net margin · $1.4B buyback in one quarter · stock +23% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 2185,
+      "actual_disp": "2.18B",
+      "est_disp": "2.07B",
+      "surprise": 5.6,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 1405,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 55
+    },
+    "eps": {
+      "label": "Diluted EPS (USD)",
+      "actual": 4.3,
+      "actual_disp": "4.30",
+      "est_disp": "4.04",
+      "surprise": 6.4,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 2.45,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 75.5
+    }
+  },
+  "layout": {
+    "marginMax": 100,
+    "marginStep": 25
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    87.56,
+    88.93,
+    88.95,
+    88.26,
+    88.98
+  ],
+  "op_margin": [
+    76.8,
+    76.92,
+    78.15,
+    77.68,
+    78.22
+  ],
+  "ocf": [
+    1053,
+    1314,
+    1291,
+    869,
+    1429
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 500
+  },
+  "mix_title": "Where revenue goes · 3Q26",
+  "mix_center": "net margin",
+  "mix_colors": [
+    "#075E7D",
+    "#BFE0EC"
+  ],
+  "mix": [
+    {
+      "name": "Net income",
+      "pct": 65.9,
+      "value": "$1.44B"
+    },
+    {
+      "name": "Costs & taxes",
+      "pct": 34.1,
+      "value": "$746M"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 guide: no letup",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$2.37–2.40B",
+        "note": "+43% Y/Y at midpoint · +9% Q/Q"
+      },
+      {
+        "k": "Adj. EBITDA",
+        "v": "$2.00–2.03B",
+        "note": "84–85% margin · still expanding"
+      },
+      {
+        "k": "Buyback",
+        "v": "$3.6B authorized",
+        "note": "added $3.2B · over 10% of market cap"
+      },
+      {
+        "k": "E-commerce",
+        "v": "AXON self-serve",
+        "note": "global since June · first full quarter"
+      },
+      {
+        "k": "Context",
+        "v": "YTD -64% pre-print",
+        "note": "Aug report cratered stock -28% AH"
+      }
+    ]
+  },
+  "notes": "口徑：AppLovin 2026 年 Q3（截至 2026-09-30，2026-11-04 美股盤後發布）SEC 8-K EX-99.1 新聞稿原始報表（accession 0001751008-26-000068）＋ QQ 智通財經／新浪報導（2026-11-05 抓取）。營收 $2,184.8M（+55% Y/Y，市場一致預期 $2.07B → Beat +5.6%；並高出公司自身 46–48% 指引約 5pp）。淨利 $1,438.9M（+72%，淨利率 66% 廣告行業最高）；攤薄 EPS $4.30（上年 $2.45，+75.5%；一致預期 $4.04 → Beat +6.4%）。調整後 EBITDA $1,842.2M（+59%，利潤率 84%，上年 82%）。毛利率／營益率五季（stockanalysis GAAP 口徑＋3Q26 按新聞稿計算：毛利 $1,944.1M / 營業利潤 $1,709.0M）：3Q25 87.56/76.80、4Q25 88.93/76.92、1Q26 88.95/78.15、2Q26 88.26/77.68、3Q26 88.98/78.22。OCF（US$M）：1,053 / 1,314 / 1,291 / 869 / 1,429（3Q26 新聞稿 $1,428.8M），FCF $1,418.4M（+35%）。環圖＝營收分配：淨利 $1,438.9M（65.9%）／成本與稅 $745.9M（34.1%，含 COGS $240.8M、Opex $235.1M、稅 $305.0M、淨其他收益 −$35.0M），兩者合計＝營收 100%。回購：Q3 回購＋預扣 410 萬股、耗資約 $14 億（≈當季 FCF 全部）；前九個月累計 $28.1 億；董事會新增 $32 億授權，10 月底總授權 $36 億（超市值十分之一）；流通股本降至 3.31 億股。期末現金 $3.17B、長期債務 $3.52B。背景：8/5 Q2 財報因增速微低共識＋指引遜色盤後重挫 28%，並引發集體訴訟（指控誇大 AI 技術持續性）；股價年內一度 −64%、為標普 500 表現最差成分股之一；10/30 單日 −10.36%。本季 +55% 實績擊碎質疑。增長引擎：AXON 自助平台 6 月起向全球電商廣告主開放，本季為首個完整財季，Store Leads 顯示全球電商客戶環比明顯增長，中國內地及香港等增量市場活躍。Q4 指引：營收 $23.65–23.95 億（中值 $23.8 億，+43% Y/Y、+9% Q/Q）、調整後 EBITDA $19.95–20.25 億（利潤率 84–85%）。股價：11/4 收 $271.75（+10.69%），盤後 $333.80（+22.83%）。"
+}
