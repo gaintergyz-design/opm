@@ -1,0 +1,142 @@
+{
+  "ticker": "QCOM",
+  "company": "Qualcomm",
+  "quarter": "Q4 FY2026",
+  "period_end": "Sep 27, 2026",
+  "reported": "Nov 4, 2026 · after US close",
+  "brand": {
+    "deep": "#1A2B63",
+    "primary": "#3253DC",
+    "mid": "#5B79E8",
+    "teal": "#7C9CFF",
+    "pos": "#028948"
+  },
+  "strip": "Beats on both lines · auto's first $2B quarter +89% · Q1 FY27 EPS guide below Street · stock -7.5% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 10322,
+      "actual_disp": "$10.3B",
+      "est_disp": "$10.1B",
+      "surprise": 2.1,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 11270,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": -8.4
+    },
+    "eps": {
+      "label": "EPS (non-GAAP)",
+      "actual": 2.17,
+      "actual_disp": "$2.17",
+      "est_disp": "$2.16",
+      "surprise": 0.5,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 3,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": -27.7
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "quarters": [
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26"
+  ],
+  "gross_margin": [
+    55.34,
+    54.55,
+    53.77,
+    53.05,
+    50.75
+  ],
+  "op_margin": [
+    25.31,
+    27.47,
+    21.53,
+    18.53,
+    10.89
+  ],
+  "ocf": [
+    3996,
+    4965,
+    2449,
+    991,
+    2740
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 1000
+  },
+  "mix_title": "Revenue mix · segments",
+  "mix_center": "Handsets",
+  "mix_colors": [
+    "#1A2B63",
+    "#5B79E8",
+    "#A8BAF5",
+    "#DDE4FB"
+  ],
+  "mix": [
+    {
+      "name": "Handsets",
+      "pct": 49.8,
+      "value": "$5.14B"
+    },
+    {
+      "name": "Automotive",
+      "pct": 19.3,
+      "value": "$1.99B"
+    },
+    {
+      "name": "IoT",
+      "pct": 18.3,
+      "value": "$1.89B"
+    },
+    {
+      "name": "QTL licensing",
+      "pct": 12.6,
+      "value": "$1.30B"
+    }
+  ],
+  "outlook": {
+    "title": "Q1 FY27 guide · EPS below Street",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$10.4–11.2B",
+        "note": "mid $10.8B · consensus $10.55B"
+      },
+      {
+        "k": "EPS",
+        "v": "$2.15–2.35",
+        "note": "midpoint below $2.32 est"
+      },
+      {
+        "k": "Cost squeeze",
+        "v": "input costs up",
+        "note": "wafers, memory, packaging · pricing relief 2H FY27"
+      },
+      {
+        "k": "Non-handset",
+        "v": "+60%+ Y/Y",
+        "note": "FY27 · Data Center $5B target kept (supply-bound)"
+      },
+      {
+        "k": "Automotive",
+        "v": "first $2B quarter",
+        "note": "+89% Y/Y · auto + IoT +36% combined"
+      }
+    ]
+  },
+  "notes": "口徑：Qualcomm 2026 財年第四財季（截至 2026-09-27，2026-11-04 美股盤後發布）SEC 新聞稿原稿（ex-99.1）＋ stockanalysis.com QCOM 季度財務（2026-11-05 抓取）。營收（GAAP）$10.322B（−8.4% Y/Y，4Q25 $11.270B；市場預期 $10.11B → +2.1%；non-GAAP 營收 $10.442B，−7%，處指引高端）→ pill 用 Beat。Non-GAAP EPS $2.17（預期 $2.16 → +0.5%；4Q25 $3.00 → −27.7%）。GAAP 淨利 $1.251B；GAAP EPS $1.17。毛利率／營益率五季均 GAAP（stockanalysis）：4Q25 55.34/25.31、1Q26 54.55/27.47、2Q26 53.77/21.53、3Q26 53.05/18.53、4Q26 50.75/10.89（QCT EBT margin 24%，同比 −5pts；QTL 70%）。OCF（US$M）：3,996 / 4,965 / 2,449 / 991 / 2,740。mix＝QCT Revenue Streams＋QTL（佔 GAAP 營收）：Handsets $5.137B（−26%，記憶體等零部件漲價令手機廠縮產）、Automotive $1.990B（+89%，首破 $2B）、IoT $1.888B（+4%）、QTL $1.304B（−7%），合計 $10.3B。展望：Q1 FY27 營收 $10.4–11.2B（共識 $10.55B，中值 $10.8B 在上）、non-GAAP EPS $2.15–2.35（中值 $2.25 低於共識 $2.32）、QCT $9.0–9.6B（含 Data Center）、QTL $1.3–1.5B。公司稱晶圓代工／封測／記憶體等投入成本全面上漲，產品提價效益 2027 財年下半年反映到 QCT 毛利率；手機芯片收入下滑主因存儲漲價壓縮手機廠出貨。FY27：非手機營收增速 >60%，Data Center 目標 $5B 重申（CEO Amon：需求不缺，是供給受限）。其他：與 Apple／華為／傳音續簽長期 QTL 授權、與 Amazon 達成 AI 數據中心多代產品合作；FY26 全年 GAAP 營收 $43.1B（−3%）、non-GAAP EPS $10.54（−12%）；Q4 回購＋分紅 $2.0B。股價：11/4 收 $173.73（+5.66%，財報前大盤走強），盤後 $160.70（−7.5%，stockanalysis 即時 18:12 ET）。"
+}
