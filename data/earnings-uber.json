@@ -1,0 +1,137 @@
+{
+  "ticker": "UBER",
+  "company": "Uber",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 4, 2026 · pre-US open",
+  "brand": {
+    "deep": "#14181D",
+    "primary": "#276EF1",
+    "mid": "#5C8FF5",
+    "teal": "#06C167",
+    "pos": "#028948"
+  },
+  "strip": "GB +20% for a 5th straight qtr · non-GAAP EPS $0.88 beat · GAAP net -92% on one-offs · stock +4.9%",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 14766,
+      "actual_disp": "14.8B",
+      "est_disp": "14.7B",
+      "surprise": 0.5,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 13467,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 9.7
+    },
+    "eps": {
+      "label": "Non-GAAP EPS (USD)",
+      "actual": 0.88,
+      "actual_disp": "0.88",
+      "est_disp": "0.86",
+      "surprise": 2.3,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.65,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 35
+    }
+  },
+  "layout": {
+    "marginMax": 50,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    34.33,
+    49.73,
+    34.06,
+    39.26,
+    37.53
+  ],
+  "op_margin": [
+    8.27,
+    6.44,
+    10.65,
+    13.32,
+    9.8
+  ],
+  "ocf": [
+    2328,
+    1750,
+    2324,
+    2862,
+    2639
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 1000
+  },
+  "mix_title": "Revenue mix · segments",
+  "mix_center": "Mobility",
+  "mix_colors": [
+    "#14181D",
+    "#276EF1",
+    "#06C167",
+    "#A9C6F8"
+  ],
+  "mix": [
+    {
+      "name": "Mobility",
+      "pct": 50.9,
+      "value": "$7.52B"
+    },
+    {
+      "name": "Delivery",
+      "pct": 37.2,
+      "value": "$5.49B"
+    },
+    {
+      "name": "Freight",
+      "pct": 11.9,
+      "value": "$1.76B"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 guide in line",
+    "items": [
+      {
+        "k": "Gross bookings",
+        "v": "$63.3–65.3B",
+        "note": "+18–22% cc · midpoint a hair below Street"
+      },
+      {
+        "k": "Non-GAAP EPS",
+        "v": "$0.95–0.99",
+        "note": "+34–39% Y/Y · matches $0.97 est"
+      },
+      {
+        "k": "Robotaxis",
+        "v": "~700 driverless by YE",
+        "note": "2,000+ in 2027 · Zoox & Motional hit Vegas"
+      },
+      {
+        "k": "Mobility",
+        "v": "+18%, below plan",
+        "note": "fuel costs, driver supply abroad · Oct improved"
+      },
+      {
+        "k": "M&A",
+        "v": "pause thru 2027",
+        "note": "ezCater $2.3B + Delivery Hero $14.8B pending"
+      }
+    ]
+  },
+  "notes": "口徑：Uber 2026 年 Q3（截至 2026-09-30，2026-11-04 美股盤前發布）SEC 新聞稿＋QQ 智通財經／Yahoo 財經／同花順報導＋ stockanalysis.com UBER 季度財務（2026-11-05 抓取）。營收 $14,766M（+9.7% Y/Y，預期 $14.65–14.69B → Beat +0.5%；英國商業模式變動對營收增速拖累約 8pp）。總預訂額 GB $59,819M（+20%，連續第五季 20%+，預期 $59.83B → 持平）。Non-GAAP EPS $0.88（+35%，FactSet 預期 $0.86／同花順 $0.87 → Beat，落在指引 0.84–0.88 上沿）；GAAP 摊薄 EPS $0.25、歸母淨利 $512M（−92%）——上年同期含 $4.9B 稅務估值釋放＋$1.5B 股權重估收益的一次性高基數，本期另有 $476M 股權重估淨虧損。Non-GAAP 營業利潤 $2,304M（+38%，佔 GB 3.9% 歷史新高，上年 3.4%）；調整後 EBITDA $2,963M（+31%，佔 GB 5.0%，預期 $2.93B）；GAAP 營業利潤 $1,447M（+30%）。分部：Mobility GB $29,512M（+18%，低於公司預期 1–2pp，行政總裁歸因海外燃料高企＋司機供給受限，10 月趨勢已改善；分部營業利潤 $2,362M +27%）、Delivery GB $28,539M（+22%，營業利潤 $1,057M +30%）、Freight GB $17,679M（+35%，虧損收窄至 $33M）。運營：行程 40.6 億次（+16%）、MAPC 2.15 億（+14%）。自動駕駛：年底約 700 輛全無人駕駛車輛上線平台、2027 年超 2,000 輛；本季在拉斯維加斯引入 Zoox 與 Motional。Q4 指引：GB $63.25–65.25B（+18–22% cc，中位數 $64.25B 略低於預期 $64.26B）、Non-GAAP EPS $0.95–0.99（與預期 $0.97 一致）。M&A：至少至 2027 年前『極少或沒有』進一步併購（自駕投資除外）；ezCater $2.3B 與 Delivery Hero $14.8B 交易待批。回購 $750M（前三季累計 $4.28B）；期末現金及短投 $10.1B。總裁兼首席企業事務官 Jill Hazelbaker 11/30 離任。股價：11/4 收 $69.87（+4.91%），盤後 $69.83（-0.06%）；年內約 −19%。毛利率／營益率五季均 stockanalysis GAAP 口徑：3Q25 34.33/8.27、4Q25 49.73/6.44、1Q26 34.06/10.65、2Q26 39.26/13.32、3Q26 37.53/9.80（4Q25 毛利率受保險準備金調整等一次性項目推高）。OCF（US$M）：2,328 / 1,750 / 2,324 / 2,862 / 2,639。mix＝分部營收：Mobility $7,520M（50.9%）、Delivery $5,488M（37.2%）、Freight $1,758M（11.9%）。"
+}
