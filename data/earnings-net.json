@@ -1,0 +1,130 @@
+{
+  "ticker": "NET",
+  "company": "Cloudflare",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 5, 2026 · after US close",
+  "brand": {
+    "deep": "#B4530A",
+    "primary": "#F6821F",
+    "mid": "#FA9A3C",
+    "teal": "#FBC980",
+    "pos": "#028948"
+  },
+  "strip": "Rev $782.5M +39% · fastest growth in 4 years · record 17.5% op margin · stock +17% after hours",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 782.5,
+      "actual_disp": "782.5M",
+      "est_disp": "737M",
+      "surprise": 6.2,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 562.0,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 39
+    },
+    "eps": {
+      "label": "Diluted EPS (USD)",
+      "actual": 0.38,
+      "actual_disp": "0.38",
+      "est_disp": "0.34",
+      "surprise": 11.8,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 0.27,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 40.7
+    }
+  },
+  "layout": {
+    "marginMax": 80,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    75.3,
+    74.9,
+    72.8,
+    73.1,
+    72.4
+  ],
+  "op_margin": [
+    15.3,
+    14.6,
+    11.4,
+    13.8,
+    17.5
+  ],
+  "ocf": [
+    167,
+    190,
+    158,
+    118,
+    215
+  ],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 0,
+    "step": 50
+  },
+  "mix_title": "Where revenue goes · 3Q26",
+  "mix_center": "non-GAAP op margin",
+  "mix_colors": [
+    "#B4530A",
+    "#FADEB8"
+  ],
+  "mix": [
+    {
+      "name": "Non-GAAP op income",
+      "pct": 17.5,
+      "value": "$137.1M"
+    },
+    {
+      "name": "Costs & other",
+      "pct": 82.5,
+      "value": "$645.4M"
+    }
+  ],
+  "outlook": {
+    "title": "Q4 guide: another gear",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$845–846M",
+        "note": "+38% Y/Y at midpoint · ~6% above street"
+      },
+      {
+        "k": "Non-GAAP EPS",
+        "v": "$0.43",
+        "note": "street $0.38 · FY raised 3rd time to $1.35"
+      },
+      {
+        "k": "GAAP profit",
+        "v": "pulled to 4Q26",
+        "note": "original target: by end of 2028"
+      },
+      {
+        "k": "Agentic web",
+        "v": "10M+ developers",
+        "note": "Act 4 product line books first revenue"
+      },
+      {
+        "k": "Retention",
+        "v": "NRR 122%",
+        "note": "up from 120% · RPO $2.88B +34%"
+      }
+    ]
+  },
+  "notes": "口徑：Cloudflare 2026 年 Q3（截至 2026-09-30，2026-11-05 美股盤後發布）SEC 8-K EX-99.1 新聞稿原始報表＋IBD／智通財經報導（2026-11-06 抓取）。營收 $782.5M（+39% Y/Y，近四年最快增速；一致預期 $737M（IBD/LSEG）→ Beat +6.2%；年化營收突破 $3B）。Non-GAAP 攤薄 EPS $0.38（上年 $0.27，+40.7%；預期 $0.34 → Beat +11.8%）。Non-GAAP 營業利潤 $137.1M（利潤率 17.5% 歷史新高，環比 +370bps）；GAAP 營業虧損 $67.9M（-8.7%）、GAAP 淨虧損 $34.1M。OCF $215.4M、FCF $82.1M（10% 利潤率）。毛利率／營益率五季（non-GAAP 口徑，各季新聞稿）：3Q25 75.3/15.3、4Q25 74.9/14.6、1Q26 72.8/11.4（1,100 人重組費用拖累營益率，Q2 GAAP 虧損 $205.7M 含 $153.8M 非經常性重組）、2Q26 73.1/13.8、3Q26 72.4/17.5。OCF（US$M）：167 / 190 / 158 / 118 / 215。環圖＝營收分配（non-GAAP 口徑）：營業利潤 $137.1M（17.5%）／其他成本與費用 $645.4M（82.5%），合計＝營收 100%。留存：NRR 122%（Q2 為 120%，同比 +6pp）；RPO $28.77 億 +34%、Current RPO +37%；期末現金 $5.13B。催化：活躍開發者破 1,000 萬（Q2 為 740 萬）；『Act 4』代理網路產品線首次確認收入；CFO 稱指引無單一客戶集中度。指引：Q4 營收 $8.45–8.46 億（中值 $845.5M，+38% Y/Y，高出市場預期 $796M 約 6%）、Non-GAAP 營業利潤 $1.56–1.57 億、EPS $0.43；全年營收 $29.63–29.64 億、EPS $1.35（年內第三次上調，2 月時 $1.11–1.12）；GAAP 盈利提前至 4Q26（投資者日原目標 2028 年底前）。股價：11/5 常規時段隨科技股拋售 -8%（納指當日 -6.4%），盤後一度 +20%、其後約 +15–17% 至 $287 附近；財報前年內 +23%（10/6 高點 $370.35）。"
+}
