@@ -2,51 +2,106 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-05 13:46",
+  "generated_at": "2026-11-06 13:42",
   "week_label": "Nov 02 – Nov 06",
   "ondeck": {
-    "session": "2026-11-05",
+    "session": "2026-11-06",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 1.53
+        "pct": -3.97
       },
       {
         "label": "Nasdaq",
-        "pct": 1.36
+        "pct": -5.02
       },
       {
         "label": "Russell 2000",
-        "pct": 1.47
+        "pct": -4.63
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "08:30",
+        "event": "Continuing Jobless Claims",
+        "consensus": "1,710K",
+        "previous": "1,695K"
+      },
+      {
+        "time": "08:30",
+        "event": "Initial Jobless Claims",
+        "consensus": "197K",
+        "previous": "195K"
+      },
+      {
+        "time": "08:30",
+        "event": "Nonfarm Productivity",
+        "consensus": "2.8%",
+        "previous": "2.1%"
+      },
+      {
+        "time": "08:30",
+        "event": "Jobless Claims 4-Week Avg.",
+        "consensus": "",
+        "previous": "197.00K"
+      },
+      {
+        "time": "09:10",
+        "event": "FOMC Member Barkin Speaks",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "16:30",
+        "event": "Fed's Balance Sheet",
+        "consensus": "",
+        "previous": "6,746B"
+      },
+      {
+        "time": "16:30",
+        "event": "Reserve Balances with Federal Reserve Banks",
+        "consensus": "",
+        "previous": "2.895T"
+      },
+      {
+        "time": "19:00",
+        "event": "Fed Logan Speaks",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "08:30",
+        "event": "Unit Labor Costs",
+        "consensus": "0.3%",
+        "previous": "1.9%"
+      },
+      {
+        "time": "10:30",
+        "event": "Natural Gas Storage",
+        "consensus": "81B",
+        "previous": "80B"
+      }
+    ],
+    "econ_all": 13,
     "earnings": {
       "before": [
-        "COP",
-        "SONY",
-        "PH",
-        "SO",
-        "CNQ",
-        "DUK",
-        "CI",
-        "APD"
+        "ENB",
+        "MRNA",
+        "BAM",
+        "HUM",
+        "VST",
+        "ECHO",
+        "PPL",
+        "PAA"
       ],
       "after": [
-        "MNST",
-        "ABNB",
-        "NET",
-        "EOG",
-        "SPG",
-        "WPM",
-        "NTRA",
-        "DVN"
+        "HE",
+        "TOMZ"
       ],
-      "before_n": 203,
-      "after_n": 258,
-      "total": 570
+      "before_n": 59,
+      "after_n": 2,
+      "total": 114
     }
   },
   "winners": {
@@ -144,17 +199,17 @@
       {
         "day": "Mon",
         "date": "Nov 09",
-        "count": 254,
+        "count": 241,
         "econ": [],
         "before": [
-          "CEG",
           "KKR",
+          "CEG",
           "B",
           "FERG",
           "IX",
           "ROIV",
-          "NRG",
-          "KSPI"
+          "KSPI",
+          "NRG"
         ],
         "after": [
           "OXY",
@@ -163,19 +218,19 @@
           "RKLB",
           "BAP",
           "CIB",
-          "ASTS",
-          "JBS"
+          "JBS",
+          "ASTS"
         ]
       },
       {
         "day": "Tue",
         "date": "Nov 10",
-        "count": 153,
+        "count": 177,
         "econ": [
           "Atlanta Fed GDPNow",
+          "FOMC Member Bowman Speaks",
           "Fed Goolsbee Speaks",
-          "NY Fed 1-Year Consumer Inflation Expectations",
-          "FOMC Member Barkin Speaks"
+          "NY Fed 1-Year Consumer Inflation Expectations"
         ],
         "before": [
           "TDG",
@@ -201,11 +256,11 @@
       {
         "day": "Wed",
         "date": "Nov 11",
-        "count": 223,
+        "count": 211,
         "econ": [
+          "Core CPI",
           "Fed Waller Speaks",
           "NFIB Small Business Optimism",
-          "Core CPI",
           "Core CPI Index"
         ],
         "before": [
@@ -214,8 +269,8 @@
           "AYA",
           "RUM",
           "BGSI",
-          "AADX",
           "NYAX",
+          "AADX",
           "FLNG"
         ],
         "after": [
@@ -224,28 +279,30 @@
           "TTEK",
           "CAE",
           "CTVA",
-          "ENS",
           "OR",
+          "ENS",
           "ECO"
         ]
       },
       {
         "day": "Thu",
         "date": "Nov 12",
-        "count": 342,
+        "count": 358,
         "econ": [
           "OPEC Monthly Report",
-          "Thomson Reuters IPSOS PCSI"
+          "MBA 30-Year Mortgage Rate",
+          "MBA Mortgage Applications",
+          "MBA Purchase Index"
         ],
         "before": [
           "BN",
           "NBIS",
           "HBM",
           "TWST",
-          "FPS",
           "NIQ",
+          "MBGL",
           "OCTV",
-          "MBGL"
+          "FPS"
         ],
         "after": [
           "CSCO",
@@ -255,18 +312,18 @@
           "ARWR",
           "ELPC",
           "ANDG",
-          "HTFL"
+          "BLTE"
         ]
       },
       {
         "day": "Fri",
         "date": "Nov 13",
-        "count": 215,
+        "count": 207,
         "econ": [
+          "Existing Home Sales",
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
-          "Jobless Claims 4-Week Avg.",
-          "Existing Home Sales"
+          "Jobless Claims 4-Week Avg."
         ],
         "before": [
           "USAS",
@@ -275,8 +332,8 @@
           "DGXX",
           "KGEI",
           "ECC",
-          "MIST",
-          "NDLS"
+          "OPHC",
+          "MIST"
         ],
         "after": []
       }
