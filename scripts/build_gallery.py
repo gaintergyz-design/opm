@@ -226,8 +226,10 @@ for g in groups.values():
     g.sort(key=lambda x: order_key(x['kind']))
 
 glatest = {k: max(i['mtime'] for i in v) for k, v in groups.items()}
+# 組間嚴格按「生成時間」倒序（2026-11-08 阿澤欽定）：後補的專題卡（文件名是
+# 數據日、生成日更晚）不再沉到舊批次裡，頁面永遠最新出圖在最上。
 ordered = sorted(groups.items(),
-                 key=lambda kv: (kv[0][1], glatest[kv[0]]),
+                 key=lambda kv: glatest[kv[0]],
                  reverse=True)
 
 # 以「最新一張圖的日期」為錨，不用 today：runner 是 UTC，且週末無產線時 today 會
