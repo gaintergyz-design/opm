@@ -43,6 +43,8 @@ const FONT = 'MiSans';
 const LAY = D.layout || {};
 const MARGIN_MAX = LAY.marginMax || 60;      // 毛利率軸上限（Meta 80%+ 用 90）
 const MARGIN_STEP = LAY.marginStep || 10;    // 毛利率軸刻度
+// 軸/點標籤後綴（BRK 卡複用本圖畫營業利潤 US$B → 設 marginSuffix: '' 去掉 %）
+const MSUF = LAY.marginSuffix != null ? LAY.marginSuffix : '%';
 const OCF = D.ocf_fmt || { unit: 'US$M', div: 1, dec: 0, step: 400 };
 const fmtOcf = (v) => (v === 0 ? '0' : (OCF.div > 1 ? (v / OCF.div).toFixed(OCF.dec)
   : OCF.dec ? v.toFixed(OCF.dec) : String(Math.round(v)))
@@ -207,7 +209,7 @@ const Y_LO = LAY.marginMin != null ? LAY.marginMin : 0;
 const yOf = (v) => PY1 - ((v - Y_LO) / (Y_MAX - Y_LO)) * (PY1 - PY0);
 const xOf = (i, n) => PX0 + (PX1 - PX0) * (i / (n - 1));
 
-const fmtMg = (v) => `${v < 0 ? '\u2212' : ''}${Math.abs(v)}%`;
+const fmtMg = (v) => `${v < 0 ? '\u2212' : ''}${Math.abs(v)}${MSUF}`;
 for (let v = Y_LO; v <= Y_MAX; v += MARGIN_STEP) {
   const y = yOf(v);
   svg.push(`<line x1="${PX0}" y1="${y.toFixed(1)}" x2="${PX1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
@@ -233,7 +235,7 @@ if (!D.gross_margin) {
   D.op_margin.forEach((v, i) => {
     // 首點靠左會撞 Y 軸刻度 → 改左對齊往右讓
     const first = i === 0;
-    svg.push(t(xOf(i, n) + (first ? 10 : 0), yOf(v) - 14, `${v}%`,
+    svg.push(t(xOf(i, n) + (first ? 10 : 0), yOf(v) - 14, MSUF ? `${v}${MSUF}` : Number(v).toFixed(1),
                { size: 16, weight: 700, fill: C.primary, anchor: first ? 'start' : 'middle' }));
   });
 }
@@ -249,7 +251,8 @@ if (D.cash_trend) {
   const vals = D.cash_trend.values;
   const n = vals.length;
   const gx0 = RP_X + 46, gx1 = RP_X + RP_W - 10;
-  const botY = B_Y + 282, topY = B_Y + 84;
+  // 有 strip 條時 B_Y=512，botY 必須壓在 806（outlook 卡上緣）之上，否則季度標籤被蓋（BRK 2026-11-09）
+  const botY = B_Y + (D.strip ? 262 : 282), topY = B_Y + 84;
   const hi = Math.max(...vals, 0);
   const yOfV = (v) => botY - (v / hi) * (botY - topY);
   const step = D.cash_trend.step || 30;
@@ -269,7 +272,8 @@ if (D.cash_trend) {
   D.quarters.forEach((q, i) => {
     svg.push(t(gx0 + slot * i + slot / 2, botY + 24, q, { size: 15, fill: C.gray, anchor: 'middle' }));
   });
-  if (D.cash_trend.note) svg.push(t(RP_X, B_Y + 322, D.cash_trend.note, { size: 15, fill: C.dim }));
+  // 註釋放標題與圖區之間（放圖下方會被 outlook 卡蓋住，B_Y+322 ≥ 806）
+  if (D.cash_trend.note) svg.push(t(RP_X, B_Y + 58, D.cash_trend.note, { size: 15, fill: C.dim }));
 } else {
   const cx = RP_X + 104, cy = B_Y + 168, R = 98, HOLE = 56;
   const mix = D.mix || [];

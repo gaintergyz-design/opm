@@ -1,0 +1,121 @@
+{
+  "ticker": "BRK",
+  "company": "Berkshire Hathaway",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 7, 2026 · Saturday pre-market",
+  "brand": {
+    "deep": "#0F2B5B",
+    "primary": "#2D5C9E",
+    "mid": "#5B85C0",
+    "teal": "#8FB3D9",
+    "pos": "#028948"
+  },
+  "mono_badge": true,
+  "strip": "Op EPS $8,954 beats · buybacks $9.6B, 2026 high · cash rebuilt to $377.4B",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 105.65,
+      "actual_disp": "$105.7B",
+      "est_disp": "$97.3B (Zacks)",
+      "surprise": 8.6,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 95.2,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 11
+    },
+    "eps": {
+      "label": "Operating EPS (USD)",
+      "actual": 8954,
+      "actual_disp": "$8,954",
+      "est_disp": "$8,821 · FactSet",
+      "surprise": 1.5,
+      "pill": "Beat",
+      "pill_tone": "pos",
+      "prior": 9381,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -4.6
+    }
+  },
+  "layout": {
+    "marginMax": 15,
+    "marginStep": 3,
+    "marginSuffix": ""
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "margin_title": "Operating earnings (US$B)",
+  "op_margin": [
+    13.5,
+    10.2,
+    11.3,
+    13.0,
+    12.7
+  ],
+  "mix_title": "Cash & T-bills (US$B)",
+  "cash_trend": {
+    "values": [
+      381.6,
+      373.3,
+      397.4,
+      360.0,
+      377.4
+    ],
+    "step": 100,
+    "note": "Deployed ~$25B in Q2 — rebuilt +$17B in Q3"
+  },
+  "panel3_title": "Net earnings (GAAP)",
+  "ocf": [
+    30.8,
+    19.2,
+    10.1,
+    25.7,
+    22.1
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1,
+    "dec": 1,
+    "step": 8
+  },
+  "outlook": {
+    "title": "The Abel era · no guidance",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$105.7B",
+        "note": "+11% vs ~+2.5% street expected"
+      },
+      {
+        "k": "Buybacks",
+        "v": "$9.6B",
+        "note": "biggest quarter of 2026 · $14.4B YTD"
+      },
+      {
+        "k": "GEICO",
+        "v": "91.4% combined",
+        "note": "vs 84.3% a year ago · claims outrun rates"
+      },
+      {
+        "k": "Top 5 holdings",
+        "v": "65% of book",
+        "note": "Alphabet, Amex, Apple, BofA, Coke"
+      },
+      {
+        "k": "Float",
+        "v": "$178.5B",
+        "note": "insurance investment income -14% as T-bill yields fell"
+      }
+    ]
+  },
+  "notes": "口徑：Berkshire Hathaway 2026 年 Q3（截至 2026-09-30，2026-11-07 週六盤前發布）公司新聞稿／10-Q＋中證網／每日經濟新聞／中國基金報／新浪財經（Bloomberg 電）／Barchart 報導（2026-11-09 抓取）。營收 $105.65B（+11% Y/Y；Zacks 街預期 $97.3B → Beat +8.6%；上年同期 $95.2B 按增速回推）。營業利潤（公司口徑，剔投資損益）$12.705B，-5.8% Y/Y（上年 $13.491B）；每 A 類股約 $8,954，FactSet 街預期 $8,821 → Beat +1.5%。GAAP 歸屬淨利 $22.112B（-28.2%，上年 $30.796B；含未實現持倉損益，公司慣例提醒該數字意義有限），每 A 類股 $15,502。左圖＝營業利潤五季（US$B）：3Q25 13.49、4Q25 10.20（2026-02-28 官方新聞稿）、1Q26 11.35（H1 $24.329B − Q2 $12.983B）、2Q26 12.98、3Q26 12.71。右圖＝期末現金＋現金等價物＋短期美債（US$B）：3Q25 381.6（當時創紀錄）、4Q25 373.3（官方）、1Q26 397.4（紀錄高點）、2Q26 360.0（現金 $35.1B＋美債 $324.9B，官方 10-Q，未含 $0.8B 未結算）、3Q26 377.4（環比 +$17.4B）。註：今日部分中文媒體稱 $377.4B『創歷史新高』，與 1Q26 $397.4B 紀錄矛盾，本卡取環比增加口徑不寫新高。分部：保險承保 $1.352B（-42.9%，無重大巨災下仍大滑）；GEICO 綜合成本率 91.4%（上年 84.3%），賠付率 76.6%（+5.1pp）、出險頻次與人傷賠付上漲、單均保費下降；保險投資收益 $2.734B（-14.1%，短端利率下行）；BNSF $1.729B（+19.3%）；鐵路＋能源＋製造服務零售三塊合計 $7.383B。浮存金約 $178.5B（較年初 +$2.1B）。回購 $9.6B（96.47 億，2026 年內單季最高；上半年僅 $4.8B），前九個月合計約 $144 億。持倉：前五大（Alphabet、美國運通、蘋果、美國銀行、可口可樂）佔股票組合公允價值 65%；運通持股 1.516 億股（22.6%）。這是阿貝爾 1/1 接任 CEO 後第三份季報，也是巴菲特 9/18 卸任董事長後首份完全獨立季報；公司不開業績會、不給指引。股價：財報前 BRK.B $572 附近、歷史高位（11/6 收盤）；週六發布無盤後反應可引用。"
+}
