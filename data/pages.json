@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-09 11:49",
+  "generated_at": "2026-11-09 13:45",
   "week_label": "Nov 09 – Nov 13",
   "ondeck": {
     "session": "2026-11-09",
@@ -25,12 +25,12 @@
     "econ_all": 0,
     "earnings": {
       "before": [
-        "KKR",
         "CEG",
+        "KKR",
         "B",
-        "FERG",
         "IX",
         "ROIV",
+        "NRG",
         "KSPI",
         "RBA"
       ],
@@ -41,12 +41,12 @@
         "RKLB",
         "BAP",
         "CIB",
-        "JBS",
-        "EQX"
+        "EQX",
+        "JBS"
       ],
-      "before_n": 63,
+      "before_n": 57,
       "after_n": 119,
-      "total": 241
+      "total": 228
     }
   },
   "winners": {
@@ -143,146 +143,138 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 09",
-        "count": 241,
+        "date": "Nov 16",
+        "count": 65,
         "econ": [],
         "before": [
-          "KKR",
-          "CEG",
-          "B",
-          "FERG",
-          "IX",
-          "ROIV",
-          "KSPI",
-          "RBA"
+          "BIDU",
+          "BEKE",
+          "TSN",
+          "HTHT",
+          "ARMK",
+          "XPEV",
+          "BXDC",
+          "IQ"
         ],
         "after": [
-          "OXY",
-          "SKYD",
-          "TTWO",
-          "RKLB",
-          "BAP",
-          "CIB",
-          "JBS",
-          "EQX"
+          "ACM",
+          "POWL",
+          "PAGS",
+          "INFQ",
+          "YALA",
+          "SHAZ",
+          "RCAT",
+          "API"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 10",
-        "count": 173,
+        "date": "Nov 17",
+        "count": 44,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "FOMC Member Bowman Speaks",
-          "Fed Goolsbee Speaks",
-          "NY Fed 1-Year Consumer Inflation Expectations"
+          "NY Empire State Manufacturing Index"
         ],
         "before": [
-          "TDG",
-          "SE",
-          "VOD",
-          "VG",
-          "ONON",
-          "SRRK",
-          "ATAT",
-          "ALH"
+          "HD",
+          "DIS",
+          "JD",
+          "VIK",
+          "ESLT",
+          "AS",
+          "TME",
+          "KLAR"
         ],
         "after": [
-          "PBR",
-          "PBR.A",
-          "ALC",
-          "EC",
-          "CRWV",
-          "VIV",
-          "MRCY",
-          "RGTI"
+          "NVDA",
+          "ZTO",
+          "DLB",
+          "GBDC",
+          "LZB",
+          "IIIV",
+          "AUNA",
+          "IRIX"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 11",
-        "count": 211,
+        "date": "Nov 18",
+        "count": 71,
         "econ": [
-          "NFIB Small Business Optimism",
-          "Core CPI",
-          "CPI Index, n.s.a.",
-          "Fed Waller Speaks"
+          "Atlanta Fed GDPNow",
+          "Core Retail Sales",
+          "Retail Sales Ex Gas/Autos",
+          "Export Price Index"
         ],
         "before": [
-          "GIB",
-          "ICL",
-          "AYA",
-          "BGSI",
-          "RUM",
-          "NYAX",
-          "AADX",
-          "FLNG"
+          "TJX",
+          "LOW",
+          "TGT",
+          "GLBE",
+          "GLNG",
+          "BLSH",
+          "ZIM",
+          "PONY"
         ],
         "after": [
-          "FNV",
-          "VYLR",
-          "TTEK",
-          "CAE",
-          "CTVA",
-          "OR",
-          "ENS",
-          "ECO"
+          "PANW",
+          "P",
+          "WWD",
+          "UGI",
+          "CPA",
+          "NJR",
+          "JOYY",
+          "HP"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 12",
-        "count": 358,
+        "date": "Nov 19",
+        "count": 50,
         "econ": [
-          "OPEC Monthly Report",
-          "MBA 30-Year Mortgage Rate",
-          "MBA Mortgage Applications",
-          "MBA Purchase Index"
+          "Housing Starts",
+          "Building Permits",
+          "Pending Home Sales",
+          "US Foreign Buying, T-bonds"
         ],
         "before": [
-          "BN",
-          "NBIS",
-          "HBM",
-          "TWST",
-          "NIQ",
-          "MBGL",
-          "OCTV",
-          "FPS"
+          "WMT",
+          "BABA",
+          "NTES",
+          "WMG",
+          "FUTU",
+          "YMM",
+          "VVV",
+          "BBWI"
         ],
         "after": [
-          "CSCO",
-          "AMAT",
-          "CBRS",
-          "STN",
-          "ARWR",
-          "ELPC",
-          "ANDG",
-          "BLTE"
+          "INTU",
+          "ROST",
+          "KEYS",
+          "ESTC",
+          "GAP",
+          "ESE",
+          "POST",
+          "BULL"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 13",
-        "count": 207,
+        "date": "Nov 20",
+        "count": 13,
         "econ": [
-          "Initial Jobless Claims",
-          "Continuing Jobless Claims",
-          "Jobless Claims 4-Week Avg.",
-          "Existing Home Sales"
+          "Philadelphia Fed Manufacturing Index",
+          "Philly Fed Business Conditions",
+          "Philly Fed CAPEX Index",
+          "Philly Fed Employment"
         ],
         "before": [
-          "USAS",
-          "RMIX",
-          "SBC",
-          "KGEI",
-          "DGXX",
-          "ECC",
-          "OPHC",
-          "NDLS"
+          "BSP",
+          "BJ",
+          "BKE"
         ],
         "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
