@@ -161,7 +161,7 @@ def caption_for(kind):
         data = (' · '.join(ev)) if ev else 'No major US data today'
         return (f"{e['total']} companies report today.\n"
                 f"Before the bell: {pre}. After the close: {post}.\n"
-                f"{data}. One page ↓")
+                f"{data}.")
     if kind == 'theclose' and os.path.exists(c):
         d = json.load(open(c))
         rows = d.get('indexes', [])
@@ -171,14 +171,14 @@ def caption_for(kind):
                           for r in top if r.get('pct') is not None)
         return (f"{_tone([i['pct'] for i in rows])} {idx}.\n"
                 f"Turnover went to {lead}.\n"
-                f"Top 20 by dollar volume, one page ↓")
+                f"Top 20 by dollar volume.")
     if kind == 'winners' and os.path.exists(p):
         w = json.load(open(p)).get('winners') or {}
         g = w['gainers'][:3]; l = w['losers'][:3]
         return (f"Last week, {_num(w.get('universe', 0))} US names ranked.\n"
                 "Top: " + ' · '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in g) + "\n"
                 "Bottom: " + ' · '.join(f"{x['ticker']} {x['pct']:+.1f}%" for x in l) + "\n"
-                "Full list, one page ↓")
+                "Full list.")
     if kind == 'weekahead' and os.path.exists(p):
         d = json.load(open(p))
         wa = d.get('week_ahead') or {}
@@ -190,7 +190,7 @@ def caption_for(kind):
             names += (x.get('before') or [])[:1] + (x.get('after') or [])[:1]
         return (f"{scope} in US markets: {head or 'quiet calendar'}.\n"
                 f"Earnings: {', '.join(names[:6])}.\n"
-                f"Whole week, one page ↓")
+                f"Whole week.")
     return ''
 
 
