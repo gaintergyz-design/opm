@@ -389,7 +389,18 @@ module.exports = function build(OPTS) {
   }
 
   // 兩段式：粗網格打分（便宜）→ 只精修前 N 個候選（貴）
+  // orbitFix（可選）：手動指定軌道 { cx, g, th0 } 跳過搜索——自動搜索被
+  // pair 碰撞卡在錯誤槽位區時（如 All Other >55% 的巨段卡），手動掃 th0 兜底。
   function searchOrbit() {
+    if (O.orbitFix) {
+      const F = O.orbitFix;
+      const ORB = { cx: F.cx, cy: CY, rxg: RX + F.g, ryg: RY + F.g };
+      let slots = refine(segs.map((s, i) => buildSlot(s, F.th0 + i * 360 / segs.length, ORB)), ORB);
+      if (violCount(slots).v === 0) slots = relax(slots, ORB);
+      const { v, det } = violCount(slots);
+      console.log('orbit(fix):', JSON.stringify(ORB), 'th0', F.th0, 'viol', v, JSON.stringify(det));
+      return { v, det, fit: 0, ORB, slots };
+    }
     const N = segs.length, step = 360 / N;
     const cands = [];
     const OR0 = O.orbit || {};
@@ -636,7 +647,7 @@ module.exports = function build(OPTS) {
     .slice()
     .sort((p, q) => Math.hypot(q.badgeC.x - px(q.s.aMid, RX + 6), q.badgeC.y - py(q.s.aMid, RY + 6)) -
                     Math.hypot(p.badgeC.x - px(p.s.aMid, RX + 6), p.badgeC.y - py(p.s.aMid, RY + 6)))
-    .forEach((sl) => { if (!drawOrbitLabel(sl, ORBIT.slots)) fallbackCount++; });
+    .forEach((sl) => { const ok = drawOrbitLabel(sl, ORBIT.slots); if (!ok) { fallbackCount++; if (process.env.DIAG) console.log('  fallback:', sl.s.name); } });
   if (fallbackCount) console.log('leader fallback:', fallbackCount);
 
   /* --- 品牌主體圖形（選配，如星艦 / 標的芯片）--- */
