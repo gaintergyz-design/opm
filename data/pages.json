@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-06 21:11",
-  "week_label": "Nov 02 – Nov 06",
+  "generated_at": "2026-11-09 11:49",
+  "week_label": "Nov 09 – Nov 13",
   "ondeck": {
     "session": "2026-11-09",
-    "slot": "next session",
+    "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -32,7 +32,7 @@
         "IX",
         "ROIV",
         "KSPI",
-        "NRG"
+        "RBA"
       ],
       "after": [
         "OXY",
@@ -42,11 +42,11 @@
         "BAP",
         "CIB",
         "JBS",
-        "ASTS"
+        "EQX"
       ],
-      "before_n": 61,
-      "after_n": 117,
-      "total": 254
+      "before_n": 63,
+      "after_n": 119,
+      "total": 241
     }
   },
   "winners": {
@@ -143,97 +143,144 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 02",
-        "count": 142,
-        "econ": [
-          "OPEC Meeting"
-        ],
+        "date": "Nov 09",
+        "count": 241,
+        "econ": [],
         "before": [
-          "XFLT"
+          "KKR",
+          "CEG",
+          "B",
+          "FERG",
+          "IX",
+          "ROIV",
+          "KSPI",
+          "RBA"
         ],
         "after": [
-          "AEHR"
+          "OXY",
+          "SKYD",
+          "TTWO",
+          "RKLB",
+          "BAP",
+          "CIB",
+          "JBS",
+          "EQX"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 03",
-        "count": 254,
+        "date": "Nov 10",
+        "count": 173,
         "econ": [
           "Atlanta Fed GDPNow",
-          "ISM Manufacturing Employment",
-          "ISM Manufacturing New Orders Index",
-          "ISM Manufacturing PMI"
+          "FOMC Member Bowman Speaks",
+          "Fed Goolsbee Speaks",
+          "NY Fed 1-Year Consumer Inflation Expectations"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "TDG",
+          "SE",
+          "VOD",
+          "VG",
+          "ONON",
+          "SRRK",
+          "ATAT",
+          "ALH"
+        ],
+        "after": [
+          "PBR",
+          "PBR.A",
+          "ALC",
+          "EC",
+          "CRWV",
+          "VIV",
+          "MRCY",
+          "RGTI"
+        ]
       },
       {
         "day": "Wed",
-        "date": "Nov 04",
-        "count": 488,
+        "date": "Nov 11",
+        "count": 211,
         "econ": [
-          "IBD/TIPP Economic Optimism",
-          "Durables Excluding Defense",
-          "Durables Excluding Transport",
-          "Factory Orders"
+          "NFIB Small Business Optimism",
+          "Core CPI",
+          "CPI Index, n.s.a.",
+          "Fed Waller Speaks"
         ],
         "before": [
-          "WBX"
+          "GIB",
+          "ICL",
+          "AYA",
+          "BGSI",
+          "RUM",
+          "NYAX",
+          "AADX",
+          "FLNG"
         ],
         "after": [
-          "PKOH",
-          "CXAI"
+          "FNV",
+          "VYLR",
+          "TTEK",
+          "CAE",
+          "CTVA",
+          "OR",
+          "ENS",
+          "ECO"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 05",
-        "count": 624,
+        "date": "Nov 12",
+        "count": 358,
         "econ": [
-          "ADP Nonfarm Employment Change",
-          "Trade Balance",
-          "ISM Non-Manufacturing Employment",
-          "ISM Non-Manufacturing New Orders"
+          "OPEC Monthly Report",
+          "MBA 30-Year Mortgage Rate",
+          "MBA Mortgage Applications",
+          "MBA Purchase Index"
         ],
         "before": [
-          "PCRX",
-          "EVO",
-          "IPHA",
-          "MCN"
+          "BN",
+          "NBIS",
+          "HBM",
+          "TWST",
+          "NIQ",
+          "MBGL",
+          "OCTV",
+          "FPS"
         ],
         "after": [
-          "GRND",
-          "AURA",
-          "BCIC",
-          "BGDE",
-          "REFR"
+          "CSCO",
+          "AMAT",
+          "CBRS",
+          "STN",
+          "ARWR",
+          "ELPC",
+          "ANDG",
+          "BLTE"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 06",
-        "count": 105,
+        "date": "Nov 13",
+        "count": 207,
         "econ": [
-          "Continuing Jobless Claims",
           "Initial Jobless Claims",
-          "Nonfarm Productivity",
-          "Jobless Claims 4-Week Avg."
+          "Continuing Jobless Claims",
+          "Jobless Claims 4-Week Avg.",
+          "Existing Home Sales"
         ],
         "before": [
-          "ENB",
-          "MRNA",
-          "BAM",
-          "HUM",
-          "VST",
-          "PPL",
-          "ECHO",
-          "BIP"
+          "USAS",
+          "RMIX",
+          "SBC",
+          "KGEI",
+          "DGXX",
+          "ECC",
+          "OPHC",
+          "NDLS"
         ],
-        "after": [
-          "HE",
-          "TOMZ"
-        ]
+        "after": []
       }
     ],
     "scope": "this week"
