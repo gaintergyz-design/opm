@@ -2,10 +2,10 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-09 13:45",
-  "week_label": "Nov 09 – Nov 13",
+  "generated_at": "2026-11-06 21:11",
+  "week_label": "Nov 02 – Nov 06",
   "ondeck": {
-    "session": "2026-11-09",
+    "session": "2026-11-10",
     "slot": "pre-market",
     "prev_close": [
       {
@@ -21,32 +21,167 @@
         "pct": 1.11
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "11:30",
+        "event": "Atlanta Fed GDPNow",
+        "consensus": "3.4%",
+        "previous": "3.4%"
+      },
+      {
+        "time": "11:00",
+        "event": "NY Fed 1-Year Consumer Inflation Expectations",
+        "consensus": "3.8%",
+        "previous": "3.9%"
+      },
+      {
+        "time": "08:40",
+        "event": "FOMC Member Bowman Speaks",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "10:00",
+        "event": "Fed Goolsbee Speaks",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "12:15",
+        "event": "FOMC Member Barkin Speaks",
+        "consensus": "",
+        "previous": ""
+      },
+      {
+        "time": "10:00",
+        "event": "Wholesale Inventories",
+        "consensus": "0.6%",
+        "previous": "0.6%"
+      },
+      {
+        "time": "10:00",
+        "event": "Wholesale Trade Sales",
+        "consensus": "1.1%",
+        "previous": "2.0%"
+      },
+      {
+        "time": "10:00",
+        "event": "CB Employment Trends Index",
+        "consensus": "",
+        "previous": "108.43"
+      },
+      {
+        "time": "11:00",
+        "event": "OPEC Crude Oil Production Algeria (Barrel)",
+        "consensus": "",
+        "previous": "1.01M"
+      },
+      {
+        "time": "11:00",
+        "event": "OPEC Crude Oil Production Congo (Barrel)",
+        "consensus": "",
+        "previous": "0.27M"
+      }
+    ],
+    "econ_all": 22,
     "earnings": {
       "before": [
-        "CEG",
-        "KKR",
-        "B",
-        "IX",
-        "ROIV",
-        "NRG",
-        "KSPI",
-        "RBA"
+        "TDG",
+        "SE",
+        "VOD",
+        "VG",
+        "ONON",
+        "SRRK",
+        "ATAT",
+        "LEGN"
       ],
       "after": [
-        "OXY",
-        "SKYD",
-        "TTWO",
-        "RKLB",
-        "BAP",
-        "CIB",
-        "EQX",
-        "JBS"
+        "PBR",
+        "PBR.A",
+        "ALC",
+        "EC",
+        "CRWV",
+        "VIV",
+        "MRCY",
+        "RGTI"
       ],
-      "before_n": 57,
-      "after_n": 119,
-      "total": 228
+      "before_n": 49,
+      "after_n": 83,
+      "total": 173,
+      "top": [
+        {
+          "ticker": "CRWV",
+          "name": "CoreWeave",
+          "cap": 25591298000,
+          "growth": 159.5,
+          "eps": -1.55,
+          "surprise": 54.4,
+          "time": "AMC"
+        },
+        {
+          "ticker": "IBRX",
+          "name": "ImmunityBio",
+          "cap": 9151686700,
+          "growth": 88.2,
+          "eps": -0.04,
+          "surprise": 37.9,
+          "time": ""
+        },
+        {
+          "ticker": "PBR",
+          "name": "Petroleo Brasileiro S.A.- Petrobras",
+          "cap": 119414112000,
+          "growth": 41.0,
+          "eps": 1.41,
+          "surprise": 31.8,
+          "time": "AMC"
+        },
+        {
+          "ticker": "VG",
+          "name": "Venture Global",
+          "cap": 28826071000,
+          "growth": 40.5,
+          "eps": 0.53,
+          "surprise": -33.9,
+          "time": "BMO"
+        },
+        {
+          "ticker": "SE",
+          "name": "Sea Limited",
+          "cap": 46383452000,
+          "growth": 35.0,
+          "eps": 0.97,
+          "surprise": -19.8,
+          "time": "BMO"
+        },
+        {
+          "ticker": "TDG",
+          "name": "Transdigm Group",
+          "cap": 66166555000,
+          "growth": 20.9,
+          "eps": 12.21,
+          "surprise": 7.6,
+          "time": "BMO"
+        },
+        {
+          "ticker": "SLAB",
+          "name": "Silicon Laboratories",
+          "cap": 7390737400,
+          "growth": 17.5,
+          "eps": 0.85,
+          "surprise": 4.2,
+          "time": ""
+        },
+        {
+          "ticker": "ONON",
+          "name": "On Holding",
+          "cap": 22544185300,
+          "growth": 17.3,
+          "eps": 0.4,
+          "surprise": 60.0,
+          "time": "BMO"
+        }
+      ]
     }
   },
   "winners": {
@@ -143,138 +278,99 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 16",
-        "count": 65,
-        "econ": [],
+        "date": "Nov 02",
+        "count": 142,
+        "econ": [
+          "OPEC Meeting"
+        ],
         "before": [
-          "BIDU",
-          "BEKE",
-          "TSN",
-          "HTHT",
-          "ARMK",
-          "XPEV",
-          "BXDC",
-          "IQ"
+          "XFLT"
         ],
         "after": [
-          "ACM",
-          "POWL",
-          "PAGS",
-          "INFQ",
-          "YALA",
-          "SHAZ",
-          "RCAT",
-          "API"
+          "AEHR"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 17",
-        "count": 44,
+        "date": "Nov 03",
+        "count": 254,
         "econ": [
-          "NY Empire State Manufacturing Index"
+          "Atlanta Fed GDPNow",
+          "ISM Manufacturing Employment",
+          "ISM Manufacturing New Orders Index",
+          "ISM Manufacturing PMI"
         ],
-        "before": [
-          "HD",
-          "DIS",
-          "JD",
-          "VIK",
-          "ESLT",
-          "AS",
-          "TME",
-          "KLAR"
-        ],
-        "after": [
-          "NVDA",
-          "ZTO",
-          "DLB",
-          "GBDC",
-          "LZB",
-          "IIIV",
-          "AUNA",
-          "IRIX"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Wed",
-        "date": "Nov 18",
-        "count": 71,
+        "date": "Nov 04",
+        "count": 488,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "Core Retail Sales",
-          "Retail Sales Ex Gas/Autos",
-          "Export Price Index"
+          "IBD/TIPP Economic Optimism",
+          "Durables Excluding Defense",
+          "Durables Excluding Transport",
+          "Factory Orders"
         ],
         "before": [
-          "TJX",
-          "LOW",
-          "TGT",
-          "GLBE",
-          "GLNG",
-          "BLSH",
-          "ZIM",
-          "PONY"
+          "WBX"
         ],
         "after": [
-          "PANW",
-          "P",
-          "WWD",
-          "UGI",
-          "CPA",
-          "NJR",
-          "JOYY",
-          "HP"
+          "PKOH",
+          "CXAI"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 19",
-        "count": 50,
+        "date": "Nov 05",
+        "count": 624,
         "econ": [
-          "Housing Starts",
-          "Building Permits",
-          "Pending Home Sales",
-          "US Foreign Buying, T-bonds"
+          "ADP Nonfarm Employment Change",
+          "Trade Balance",
+          "ISM Non-Manufacturing Employment",
+          "ISM Non-Manufacturing New Orders"
         ],
         "before": [
-          "WMT",
-          "BABA",
-          "NTES",
-          "WMG",
-          "FUTU",
-          "YMM",
-          "VVV",
-          "BBWI"
+          "PCRX",
+          "EVO",
+          "IPHA",
+          "MCN"
         ],
         "after": [
-          "INTU",
-          "ROST",
-          "KEYS",
-          "ESTC",
-          "GAP",
-          "ESE",
-          "POST",
-          "BULL"
+          "GRND",
+          "AURA",
+          "BCIC",
+          "BGDE",
+          "REFR"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 20",
-        "count": 13,
+        "date": "Nov 06",
+        "count": 105,
         "econ": [
-          "Philadelphia Fed Manufacturing Index",
-          "Philly Fed Business Conditions",
-          "Philly Fed CAPEX Index",
-          "Philly Fed Employment"
+          "Continuing Jobless Claims",
+          "Initial Jobless Claims",
+          "Nonfarm Productivity",
+          "Jobless Claims 4-Week Avg."
         ],
         "before": [
-          "BSP",
-          "BJ",
-          "BKE"
+          "ENB",
+          "MRNA",
+          "BAM",
+          "HUM",
+          "VST",
+          "PPL",
+          "ECHO",
+          "BIP"
         ],
-        "after": []
+        "after": [
+          "HE",
+          "TOMZ"
+        ]
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }

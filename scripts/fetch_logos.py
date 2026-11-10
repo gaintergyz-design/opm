@@ -87,12 +87,15 @@ def fetch(t):
 
 def collect_tickers():
     ticks = set()
-    p = os.path.join(BASE, 'data', 'pages.json')
+    # 與 build_pages.js 同源：優先吃 PAGES_DATA（預覽/調排版時用測試數據檔）
+    p = os.environ.get('PAGES_DATA') or os.path.join(BASE, 'data', 'pages.json')
     if os.path.exists(p):
         d = json.load(open(p, encoding='utf-8'))
         o = d.get('ondeck', {}).get('earnings', {})
         ticks.update(o.get('before', []) or [])
         ticks.update(o.get('after', []) or [])
+        # 2026-11-10 改版：營收增速榜的上榜公司也要有 logo（可能不在市值前 8 的 before/after 裡）
+        ticks.update([r.get('ticker') for r in (o.get('top') or []) if r.get('ticker')])
         for day in d.get('earnings_week', {}).get('days', []):
             ticks.update(day.get('before', []) or [])
             ticks.update(day.get('after', []) or [])

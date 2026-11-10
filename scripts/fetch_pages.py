@@ -11,7 +11,7 @@
 數據源：Nasdaq 官方 calendar / screener（無 key）
 用法：python fetch_pages.py [--week-start 2026-10-20]
 """
-import json, os, subprocess, argparse
+import json, os, subprocess, argparse, time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -39,6 +39,109 @@ def mcap(r):
         return int(str(r.get('marketCap', '0')).replace('$', '').replace(',', '') or 0)
     except Exception:
         return 0
+
+
+# ---------------- Yahoo quoteSummary：本季營收預期增速 / EPS 預期 / 上季超預期 ----------------
+# 2026-11-10 新增（On Deck 改版）：Nasdaq 日曆只有市值＋EPS 預期，沒有營收預期，
+# 營收預期增速只能走 Yahoo earningsTrend（需 cookie+crumb，見 MEMORY 的 Yahoo 踩坑）。
+YJAR = os.path.join('/tmp', 'onepagemarket-yahoo.cookies')
+_CRUMB = {'v': None}
+
+
+def _ycurl(url, timeout=25):
+    return subprocess.run(['curl', '-s', '--max-time', str(timeout), '-A', UA,
+                           '-b', YJAR, '-c', YJAR, url],
+                          capture_output=True, text=True).stdout
+
+
+def yahoo_crumb():
+    """fc.yahoo.com 偶發不下發 cookie → 重試 3 次；crumb 取不到就整段降級（不出假數據）"""
+    if _CRUMB['v']:
+        return _CRUMB['v']
+    for _ in range(3):
+        _ycurl('https://fc.yahoo.com', 12)
+        c = _ycurl('https://query1.finance.yahoo.com/v1/test/getcrumb', 15).strip()
+        if c and '<' not in c and 0 < len(c) < 24:
+            _CRUMB['v'] = c
+            return c
+        time.sleep(3)
+    return None
+
+
+def yahoo_estimate(sym):
+    """{growth: 本季營收預期同比增速%, eps: 本季 EPS 共識, surprise: 上季 EPS 超預期%}"""
+    crumb = yahoo_crumb()
+    if not crumb:
+        return None
+    url = (f'https://query2.finance.yahoo.com/v10/finance/quoteSummary/{sym}'
+           f'?modules=earningsTrend,earningsHistory&crumb={crumb}')
+    raw = _ycurl(url)
+    try:
+        res = json.loads(raw)['quoteSummary']['result'][0]
+    except Exception:
+        return None
+    out = {}
+    for tr in ((res.get('earningsTrend') or {}).get('trend') or []):
+        if tr.get('period') != '0q':
+            continue
+        g = (((tr.get('revenueEstimate') or {}).get('growth') or {}).get('raw'))
+        ev = (((tr.get('earningsEstimate') or {}).get('avg') or {}).get('raw'))
+        if g is not None:
+            out['growth'] = round(g * 100, 1)
+        if ev is not None:
+            out['eps'] = round(ev, 2)
+        break
+    hist = ((res.get('earningsHistory') or {}).get('history') or [])
+    if hist:
+        s = ((hist[0].get('surprisePercent') or {}).get('raw'))
+        if s is not None:
+            out['surprise'] = round(s * 100, 1)     # Yahoo 這個欄位已是百分數
+    return out or None
+
+
+NAME_SUFFIX = (', Inc.', ' Inc.', ', Inc', ' Inc', ' Incorporated', ' Corporation', ' Corp.',
+               ' Company', ' plc', ' PLC', ' Ltd.', ' Ltd', ' S.A.', ' SA', ' N.V.', ' NV',
+               ' Holding Company', ' Holdings', ' Group', ' & Co.', ' Co.', ' SE', ' AG')
+
+
+def short_name(name):
+    """'Constellation Energy Corporation' → 'Constellation Energy'（卡片上只用短名）"""
+    s = str(name or '').split(' - ')[0].strip()
+    for suf in NAME_SUFFIX:
+        if s.endswith(suf):
+            s = s[:-len(suf)]
+            break
+    return s.strip(' ,.') or str(name or '')
+
+
+def earnings_top(rows, max_cand=16, keep=8):
+    """當日財報「預期營收增速」榜：
+    候選＝市值前 16（254 家全打會爆），逐檔取本季營收預期增速，按增速降序取前 8。
+    拿不到預期的剔除，絕不補假數。"""
+    cand = sorted(rows, key=mcap, reverse=True)[:max_cand]
+    out = []
+    for r in cand:
+        sym = (r.get('symbol') or '').strip()
+        if not sym:
+            continue
+        est = yahoo_estimate(sym) or {}
+        g = est.get('growth')
+        if g is None:
+            continue
+        tm = r.get('time') or ''
+        out.append({
+            'ticker': sym,
+            'name': short_name(r.get('name')),
+            'cap': mcap(r),
+            'growth': g,
+            'eps': est.get('eps'),
+            'surprise': est.get('surprise'),
+            'time': 'BMO' if tm == 'time-pre-market' else ('AMC' if tm == 'time-after-hours' else ''),
+        })
+        time.sleep(0.5)
+    out.sort(key=lambda x: x['growth'], reverse=True)
+    print('    [ondeck] 營收增速榜：' + ', '.join(f"{x['ticker']} {x['growth']:+.1f}%" for x in out[:keep]))
+    return out[:keep]
 
 
 def weekdays(start):
@@ -86,6 +189,7 @@ def earnings_of(date_str):
         'before_n': len(before),
         'after_n': len(after),
         'notable': [r['symbol'] for r in sorted(rows, key=mcap, reverse=True)[:3]],
+        'rows': rows,               # 完整行（含 name / marketCap / time / epsForecast），供營收增速榜用
     }
 
 
@@ -301,6 +405,7 @@ def main():
     nd = on_deck_session()
     on_deck_earn = earnings_of(nd.strftime('%Y-%m-%d'))
     on_deck_econ = econ_of(nd.strftime('%Y-%m-%d'))
+    on_deck_top = earnings_top(on_deck_earn.get('rows') or [])
     next_days = []
     seen_econ = set()                       # GDPNow 等每日重複指標跨日去重
     for d in wa_days:
@@ -356,7 +461,9 @@ def main():
         'econ_all': len(on_deck_econ),
             'earnings': {'before': on_deck_earn['before'][:8], 'after': on_deck_earn['after'][:8],
                          'before_n': on_deck_earn['before_n'], 'after_n': on_deck_earn['after_n'],
-                         'total': on_deck_earn['total']},
+                         'total': on_deck_earn['total'],
+                         # 2026-11-10 改版：按「本季營收預期同比增速」降序的頭部名單（卡片主圖用）
+                         'top': on_deck_top},
         },
         'winners': week or _demo_winners(),
         'week_ahead': {'days': next_days,

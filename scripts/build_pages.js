@@ -116,55 +116,72 @@ const longDate = (iso) => {
 };
 
 /* ---------------- 1. On Deck ---------------- */
+// 2026-11-10 改版（阿澤欽定方向：圖形化＋logo＋對比）：
+//   主圖＝當日財報「本季營收預期同比增速」橫向柱狀圖，按增速降序；
+//   柱色編碼上季 EPS 超預期（綠 beat / 紅 miss）；每行帶公司 logo、短名、市值、盤前/盤後。
+const capStr = (v) => {
+  if (!v) return '';
+  const b = v / 1e9;
+  return b >= 100 ? `$${Math.round(b)}B` : `$${b.toFixed(1)}B`;
+};
 function buildOnDeck() {
   defs = []; uid = 0;
   const o = D.ondeck || {};
   const e = o.earnings || {};
-  const econ = (o.econ || []).slice(0, 10);
-  const nE = econ.length;
+  const top = (e.top || []).slice(0, 8);
+  const econ = (o.econ || []).slice(0, 2);
+  H = top.length >= 7 ? CFG.H : CFG.H_SQUARE;
 
-  // 內容少 → 正方形 1080×1080（不硬撐 1350 留白）
-  const rawBottom = 446 + Math.max(0, nE - 1) * 48 + 58 + 172 + 56 + 42;
-  H = rawBottom <= 1000 ? CFG.H_SQUARE : CFG.H;
+  const sub = [`${num(e.before_n)} pre / ${num(e.after_n)} post`]
+    .concat(econ.map((x) => `${x.time || ''} ${x.event}`.trim()))
+    .join(' · ');
+  const a = scaffold('On Deck', `${longDate(o.session || '')} · ${num(e.total)} companies report today`);
 
-  // 依目標底邊反推行距，把內容均勻撐滿版心（上限 96，避免過散）
-  const target = H - 146;
-  const s0 = (target - 660) / (nE + 1.2);
-  const s = Math.max(46, Math.min(96, s0));
-  const econStep = Math.round(s);
-  const gap1 = Math.round(s * 1.2);
-  const pairStep = Math.max(56, Math.round(s * 1.05));
+  const areaTop = 386, areaBottom = H - 176;
+  const n = Math.max(1, top.length);
+  const step = n > 1 ? Math.min(112, Math.floor((areaBottom - areaTop) / (n - 1))) : 0;
+  const mx = Math.max(1, ...top.map((r) => r.growth || 0));
 
-  const a = scaffold('On Deck', `${longDate(o.session || '')} · ${o.slot || 'pre-market'}`);
-  const econY = (i) => 446 + i * econStep;
-  const y2 = econY(Math.max(0, nE - 1)) + gap1;              // 'Companies report today'
-  const yE = y2 + 68 + 56;                                   // Earnings section
-  const pairY = (i) => yE + 48 + i * pairStep;
-  const bottom = pairY(1) + 42;
-  const shift = Math.max(0, Math.min(120, Math.round((target - bottom) / 2)));
-  const Y = (v) => v + shift;
+  if (!top.length) {                       // 拿不到共識預期：退回舊式盤前/盤後 ticker 清單
+    section(a, M, 300, 'Earnings today', `${num(e.before_n)} pre / ${num(e.after_n)} post`);
+    a.push(tickerRow((e.before || []).slice(0, 8), M, 356, { size: 22, logo: 26, gap: 24, max: 8 }));
+    a.push(tickerRow((e.after || []).slice(0, 8), M, 396, { size: 22, logo: 26, gap: 24, max: 8 }));
+    a.push(t(M, 470, 'Consensus estimates unavailable for this session.', { size: 18, fill: C.dim }));
+    return finish(a);
+  }
 
-  a.push(t(M, Y(262), 'Econ events', { size: 22, fill: C.dim }));
-  a.push(t(M, Y(332), String(o.econ_all ?? nE), { size: 72, weight: 700, ls: -2 }));
+  a.push(t(M, 256, 'Fastest expected revenue growth today', { size: 30, weight: 500 }));
+  a.push(t(M, 292, clip(sub, 64), { size: 19, fill: C.dim }));
 
-  section(a, M, Y(396), 'Econ · US', 'time ET');
-  econ.forEach((ev, i) => {
-    const y = Y(econY(i));
-    a.push(t(M, y, ev.time || '—', { size: 24, fill: C.gray }));
-    a.push(t(M + 96, y, clip(ev.event, 38), { size: 26 }));
-    if (ev.consensus) a.push(t(W - M, y, `cons ${ev.consensus}`, { size: 22, fill: C.dim, anchor: 'end' }));
-  });
-  if (!nE) a.push(t(M, Y(446), '—', { size: 24, fill: C.dim }));
+  // 圖例：柱色＝上季 EPS 超預期；柱長＝本季營收預期增速
+  const ly = 331;
+  const sq = (x, col) => `<rect x="${x}" y="${ly - 11}" width="12" height="12" rx="3" fill="${col}"/>`;
+  a.push(sq(M, C.up));
+  a.push(t(M + 20, ly, 'beat last quarter', { size: 17, fill: C.gray }));
+  a.push(sq(M + 196, C.down));
+  a.push(t(M + 216, ly, 'missed last quarter', { size: 17, fill: C.gray }));
+  a.push(t(W - M, ly, 'bar = consensus revenue growth, YoY', { size: 17, fill: C.dim, anchor: 'end' }));
 
-  a.push(t(M, Y(y2), 'Companies report today', { size: 22, fill: C.dim }));
-  a.push(t(M, Y(y2 + 68), String(e.total ?? '—'), { size: 72, weight: 700, ls: -2 }));
+  const BX = 404, BW = 488, BH = 47;      // 柱區：404 → 892（柱高 1.8×，2026-11-10 阿澤定）
+  top.forEach((r, i) => {
+    const y = areaTop + i * step;
+    a.push(logoAt(r.ticker, M, y, 46));
+    a.push(t(M + 60, y - 2, r.ticker, { size: 28, weight: 700 }));
+    a.push(t(M + 60, y + 22, clip(`${r.name}${r.cap ? ' · ' + capStr(r.cap) : ''}${r.time ? ' · ' + r.time : ''}`, 30),
+      { size: 16, fill: C.dim }));
 
-  section(a, M, Y(yE), 'Earnings', `${num(e.before_n)} pre / ${num(e.after_n)} post`);
-  const pairs = [['Before open', (e.before || []).slice(0, 8)], ['After close', (e.after || []).slice(0, 8)]];
-  pairs.forEach(([label, list], i) => {
-    const y = Y(pairY(i));
-    a.push(t(M, y, label, { size: 22, fill: C.dim }));
-    a.push(tickerRow(list, M, y + 32, { size: 22, logo: 26, gap: 24, max: 8 }));
+    a.push(`<rect x="${BX}" y="${y - BH / 2}" width="${BW}" height="${BH}" rx="4" fill="${C.track}"/>`);
+    const g = r.growth || 0;
+    const bw = Math.max(8, Math.round(Math.abs(g) / mx * BW));
+    const col = typeof r.surprise === 'number' ? (r.surprise < 0 ? C.down : C.up) : C.amber;
+    a.push(`<rect x="${BX}" y="${y - BH / 2}" width="${bw}" height="${BH}" rx="4" fill="${col}" opacity="0.9"/>`);
+
+    a.push(t(W - M, y + 2, `${g >= 0 ? '+' : '\u2212'}${Math.abs(g).toFixed(1)}%`,
+      { size: 30, weight: 700, anchor: 'end', fill: g < 0 ? C.down : C.ink }));
+    if (typeof r.eps === 'number') {
+      const eps = `${r.eps < 0 ? '\u2212' : ''}$${Math.abs(r.eps).toFixed(2)}`;
+      a.push(t(W - M, y + 26, `EPS ${eps}`, { size: 16, fill: C.dim, anchor: 'end' }));
+    }
   });
 
   return finish(a);

@@ -156,6 +156,16 @@ def caption_for(kind):
     if kind == 'ondeck' and os.path.exists(p):
         o = json.load(open(p))['ondeck']
         e = o['earnings']
+        top = e.get('top') or []
+        if top:
+            # 2026-11-10 改版口徑：疑問句 hook（11-09 阿澤欽定）＋營收增速榜數字
+            rest = ' · '.join(f"{x['ticker']} {x['growth']:+.0f}%" for x in top[1:3])
+            t0 = top[0]
+            when = f" ({t0['time']})" if t0.get('time') else ''
+            return (f"Who's expected to grow fastest today?\n"
+                    f"{e['total']} companies report — {t0['ticker']} tops the list "
+                    f"at {t0['growth']:+.0f}% rev est{when}.\n"
+                    f"Also on deck: {rest}.")
         pre = ', '.join(e['before'][:3]); post = ', '.join(e['after'][:3])
         ev = _dedupe([x['event'] for x in o.get('econ', [])])[:2]
         data = (' · '.join(ev)) if ev else 'No major US data today'
