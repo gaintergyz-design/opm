@@ -1,12 +1,11 @@
 /**
  * OPM 專題卡 · Google's Q3 Stock Portfolio（Alphabet 13F 前十大持倉）· 1080×1350
- *
- * 版面（2026-11-10，數據與排版參考富途牛牛「Google Q3 美股持倉曝光」卡，
- * OPM 淺色格式＋欽定的圖形化方向）：
- *   頁首   兩行大標題 + 副標 + 漸變色條 + 3 個 KPI 膠囊
- *   主圖   10 行持倉：序號 + logo 圓徽 + 代碼/公司名 + 動作 pill（BOOSTED/NEW/TRIMMED）
- *          + 品牌色漸變橫條（長度∝組合佔比，線性誠實比例——SpaceX 佔 94.8% 本身就是故事）
- *          + 右側市值與佔比
+ * v2（2026-11-10 阿澤反饋）：**排版完全抄富途**——柱狀圖不適合（除 SPCX 外值太小），
+ * 改文字表格為主體：
+ *   頁首   大標題（橙 "Google Q3" + 黑）+ 副行（加倉 SpaceX、建倉高通）+ 副標
+ *   左欄   3D Google 圓牌 logo（assets/goog-coin.png）+ 組合總市值（橙）+ 前十大佔比
+ *   右欄   深色表頭三欄表格（TICKER/NAME · VALUE · WEIGHT）10 行：logo 圓徽 +
+ *          代碼/公司名 + 市值 + 佔比；動作 pill（BOOSTED/NEW/TRIMMED）掛在表左緣
  *   頁腳   統一聲明（disclaimer.js）+ 數據截止日 meta + handle
  *
  * 數據：whalewisdom，2026 年第三季 13F（9/30 截止），照抄富途卡口徑。
@@ -21,10 +20,13 @@ const { textWidth } = require('./lib/fontwidths');
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(path.join(BASE, 'data', 'goog-holdings.json'), 'utf8'));
 const LOGOS = JSON.parse(fs.readFileSync(path.join(BASE, 'data', 'logos.json'), 'utf8'));
+const COIN = fs.readFileSync(path.join(BASE, 'assets', 'goog-coin.png')).toString('base64');
 
 const W = 1080, H = 1350, M = 48, CW = W - M * 2;
 const C = {
   bg: '#FFFFFF', ink: '#0B1220', gray: '#5C6675', dim: '#98A2B3', line: '#E4E7EC',
+  accent: '#E8710A',                 // 富途橙
+  headBg: '#1B2430',                 // 表頭深色
 };
 const FONT = 'MiSans';
 const handle = '@onepagemarket';
@@ -43,6 +45,7 @@ const tw = (s, size, weight = 400) => textWidth(s, size, weight);
 function t(x, y, s, { size = 24, weight = 400, fill = C.ink, anchor = 'start', ls = 0 } = {}) {
   return `<text x="${x}" y="${y}" font-family="${FONT}" font-size="${size}" font-weight="${weight}" fill="${fill}" text-anchor="${anchor}" letter-spacing="${ls}">${esc(s)}</text>`;
 }
+const fit = (s, size, weight, max) => tw(s, size, weight) > max ? Math.floor(size * max / tw(s, size, weight)) : size;
 
 /* ---------------- 背景與頁首 ---------------- */
 let svg = [];
@@ -50,113 +53,101 @@ svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" vie
 defs.push(`<linearGradient id="bgG" x1="0" y1="0" x2="0.35" y2="1">
   <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#FAFCFE"/>
   <stop offset="1" stop-color="#EFF5FA"/></linearGradient>`);
-defs.push(`<linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#4285F4"/><stop offset="0.5" stop-color="#EA4335"/>
-  <stop offset="1" stop-color="#FBBC05"/></linearGradient>`);
 svg.push(`<rect width="${W}" height="${H}" fill="url(#bgG)"/>`);
 svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032">
   ${t(0, 0, handle, { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
 </g>`);
 
-const rows = D.rows;
+/* 標題：仿富途「Google Q3（橙）美股持倉曝光！（黑）」 */
+const T1A = 'Google Q3 ', T1B = 'Holdings Revealed!';
+const TS1 = fit(T1A + T1B, 62, 700, CW);
+const wA = tw(T1A, TS1, 700);
+svg.push(t(M, 112, T1A, { size: TS1, weight: 700, fill: C.accent, ls: -1 }));
+svg.push(t(M + wA, 112, T1B, { size: TS1, weight: 700, ls: -1 }));
+const T2 = 'SpaceX boosted, Qualcomm opened';
+const TS2 = fit(T2, 46, 700, CW);
+svg.push(t(M, 172, T2, { size: TS2, weight: 700, ls: -0.5 }));
+const SUB = 'Alphabet\u2019s top 10 U.S. holdings \u00b7 Q3 2026 13F \u00b7 whalewisdom';
+const subSize = fit(SUB, 22, 400, CW);
+svg.push(t(M, 212, SUB, { size: subSize, fill: C.gray }));
 
-const T1 = D.title_line1, T2 = D.title_line2;
-const TS = 66;
-svg.push(t(M, 116, T1, { size: TS, weight: 700, ls: -2 }));
-svg.push(t(M, 190, T2, { size: TS, weight: 700, ls: -2 }));
-const SUB = D.subtitle;
-const subSize = tw(SUB, 24) > CW ? Math.floor(24 * CW / tw(SUB, 24)) : 24;
-svg.push(t(M, 230, SUB, { size: subSize, fill: C.gray }));
-svg.push(`<rect x="${M}" y="250" width="${CW}" height="6" fill="url(#ruleG)"/>`);
+/* ---------------- 右欄表格（主體） ---------------- */
+const TX0 = 430, TX1 = 1032;
+const HEAD_Y = 296, HEAD_H = 52, ROW_H = 72;
+const LOGO_CX = 478, LOGO_R = 22;
+const NAME_X = 512;
+const VAL_X = 856, PCT_X = 1008;
 
-/* KPI 膠囊 */
-const pills = [
-  ['$88.3B', ' portfolio value'],
-  ['94.8%', ' is SpaceX'],
-  ['99.5%', ' in the top 10'],
-];
-let px = M;
-pills.forEach(([bold, rest]) => {
-  const wBold = tw(bold, 20, 700), wRest = tw(rest, 17) + 2;
-  const wPad = 22, wIn = wBold + wRest;
-  const pw = wIn + wPad * 2;
-  svg.push(`<rect x="${px}" y="276" width="${pw}" height="42" rx="21" fill="#F4F6F9" stroke="${C.line}" stroke-width="1.2"/>`);
-  const cyT = 303;
-  svg.push(`<text x="${px + wPad}" y="${cyT}" font-family="${FONT}" font-size="20" font-weight="700" fill="${C.ink}">${esc(bold)}<tspan font-weight="400" font-size="17" fill="${C.gray}" dx="5">${esc(rest.trim())}</tspan></text>`);
-  px += pw + 12;
-});
+/* 表格外框（白卡 + 細邊） */
+const TB_Y0 = HEAD_Y, TB_Y1 = HEAD_Y + HEAD_H + ROW_H * 10;
+svg.push(`<rect x="${TX0 - 16}" y="${TB_Y0 - 16}" width="${TX1 - TX0 + 32}" height="${TB_Y1 - TB_Y0 + 32}" rx="16" fill="#FFFFFF" stroke="${C.line}" stroke-width="1.5"/>`);
 
-/* ---------------- 持倉行 ----------------
- * 左：序號 + logo 圓徽 + 代碼/公司名（兩行）+ 動作 pill
- * 中：品牌色漸變橫條（長度∝佔比，線性）
- * 右：市值 + 佔比
- */
-const Y0 = 352, RH = 64, GAP = 20, STRIDE = RH + GAP;
-const LOGO_R = 27, LOGO_CX = 130;
-const NAME_X = 180;
-const BAR_X = 402, BAR_H = 30;
-const RIGHT_X = 1032;                        // 右緣（ink 數字右對齊）
-const BAR_W_MAX = RIGHT_X - 108 - BAR_X;     // 右側留 108 組「市值+佔比」
-const maxPct = rows[0].pct;
+/* 深色表頭（上圓下直） */
+svg.push(`<rect x="${TX0 - 16}" y="${TB_Y0 - 16}" width="${TX1 - TX0 + 32}" height="${HEAD_H + 16}" rx="16" fill="${C.headBg}"/>`);
+svg.push(`<rect x="${TX0 - 16}" y="${TB_Y0 + 16}" width="${TX1 - TX0 + 32}" height="${HEAD_H - 32}" fill="${C.headBg}"/>`);
+svg.push(t(NAME_X, TB_Y0 + 22, 'TICKER / NAME', { size: 17, weight: 700, fill: '#FFFFFF' }));
+svg.push(t(VAL_X, TB_Y0 + 22, 'VALUE', { size: 17, weight: 700, fill: '#FFFFFF', anchor: 'end' }));
+svg.push(t(PCT_X, TB_Y0 + 22, 'WEIGHT', { size: 17, weight: 700, fill: '#FFFFFF', anchor: 'end' }));
 
-rows.forEach((r, i) => {
-  const y = Y0 + i * STRIDE;
-  const cy = y + RH / 2;
+D.rows.forEach((r, i) => {
+  const cy = TB_Y0 + HEAD_H + ROW_H * i + ROW_H / 2;
 
-  /* 行分隔線（除最後一行） */
-  if (i > 0) svg.push(`<line x1="${M}" y1="${y - GAP / 2}" x2="${W - M}" y2="${y - GAP / 2}" stroke="${C.line}" stroke-width="1"/>`);
+  /* 行分隔線 */
+  if (i > 0) svg.push(`<line x1="${TX0 - 16}" y1="${TB_Y0 + HEAD_H + ROW_H * i}" x2="${TX1 + 16}" y2="${TB_Y0 + HEAD_H + ROW_H * i}" stroke="${C.line}" stroke-width="1"/>`);
 
-  /* 序號 */
-  svg.push(t(84, cy + 9, `${i + 1}.`, { size: 24, weight: 700, fill: C.dim, anchor: 'end' }));
-
-  /* logo 圓徽（白底） */
+  /* logo 圓徽 */
   const lg = LOGOS[r.ticker];
   const lcid = `lc${uid++}`;
   defs.push(`<clipPath id="${lcid}"><circle cx="${LOGO_CX}" cy="${cy}" r="${LOGO_R}"/></clipPath>`);
-  svg.push(`<circle cx="${LOGO_CX}" cy="${cy}" r="${LOGO_R}" fill="#FFFFFF" stroke="#DDE6EF" stroke-width="1.4"/>`);
+  svg.push(`<circle cx="${LOGO_CX}" cy="${cy}" r="${LOGO_R}" fill="#FFFFFF" stroke="#DDE6EF" stroke-width="1.2"/>`);
   if (lg) {
     const ein = LOGO_R * 2 * 0.92, eoff = (LOGO_R * 2 - ein) / 2;
     svg.push(`<g clip-path="url(#${lcid})"><image x="${LOGO_CX - LOGO_R + eoff}" y="${cy - LOGO_R + eoff}" width="${ein}" height="${ein}" href="${lg}" image-rendering="optimizeQuality"/></g>`);
   } else {
-    svg.push(t(LOGO_CX, cy + 7, r.ticker.slice(0, 2), { size: 16, weight: 700, anchor: 'middle' }));
+    svg.push(t(LOGO_CX, cy + 6, r.ticker.slice(0, 2), { size: 14, weight: 700, anchor: 'middle' }));
   }
 
   /* 代碼 + 公司名（兩行） */
-  svg.push(t(NAME_X, cy - 4, r.ticker, { size: 24, weight: 700 }));
-  svg.push(t(NAME_X, cy + 20, r.name, { size: 15, fill: C.gray }));
+  svg.push(t(NAME_X, cy - 3, r.ticker, { size: 23, weight: 700 }));
+  svg.push(t(NAME_X, cy + 19, r.name, { size: 14, fill: C.gray }));
 
-  /* 動作 pill（跟在公司名後，若太寬則上移） */
+  /* 市值 + 佔比 */
+  const val = r.value >= 1e9 ? `$${(r.value / 1e9).toFixed(r.value >= 1e10 ? 1 : 2)}B` : `$${Math.round(r.value / 1e6)}M`;
+  svg.push(t(VAL_X, cy + 8, val, { size: 23, weight: 700, anchor: 'end' }));
+  svg.push(t(PCT_X, cy + 8, `${r.pct.toFixed(2)}%`, { size: 23, weight: 700, anchor: 'end' }));
+
+  /* 動作 pill（掛在表左緣，帶小三角指向行） */
   if (r.action) {
     const A = ACTION[r.action];
-    const aw = tw(A.label, 13, 700) + 18;
-    let ax = NAME_X + Math.max(tw(r.ticker, 24, 700), tw(r.name, 15)) + 14;
-    if (ax + aw > BAR_X - 12) ax = BAR_X - 12 - aw;   // 兜底：不壓柱
-    const ay = cy - 24;                                // 與代碼同行
-    svg.push(`<rect x="${ax}" y="${ay}" width="${aw}" height="24" rx="12" fill="${A.bg}"/>`);
-    svg.push(t(ax + aw / 2, ay + 17, A.label, { size: 13, weight: 700, fill: A.fg, anchor: 'middle' }));
+    const aw = tw(A.label, 13, 700) + 18, ah = 26;
+    const ay = cy - ah / 2, ax = TX0 - 16 - aw + 10;      // 大半在外、右端壓過表緣
+    svg.push(`<path d="M ${ax + aw} ${cy - 6} L ${ax + aw + 12} ${cy} L ${ax + aw} ${cy + 6} Z" fill="${A.bg}"/>`);
+    svg.push(`<rect x="${ax}" y="${ay}" width="${aw}" height="${ah}" rx="13" fill="${A.bg}" stroke="${A.fg}" stroke-width="1.2"/>`);
+    svg.push(t(ax + aw / 2, cy + 5, A.label, { size: 13, weight: 700, fill: A.fg, anchor: 'middle' }));
   }
-
-  /* 佔比橫條（線性誠實比例；<0.35% 給最小可見寬度 5px） */
-  const bw = Math.max(5, BAR_W_MAX * r.pct / maxPct);
-  const gid = `bg${uid++}`;
-  defs.push(`<linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${r.c[0]}"/><stop offset="1" stop-color="${r.c[1]}"/></linearGradient>`);
-  svg.push(`<rect x="${BAR_X}" y="${cy - BAR_H / 2}" width="${bw}" height="${BAR_H}" rx="10" fill="url(#${gid})"/>`);
-
-  /* 市值：短柱放柱外（灰粗），長柱（SpaceX）放柱內右端（白粗，避免撞右緣佔比） */
-  const val = r.value >= 1e9 ? `$${(r.value / 1e9).toFixed(r.value >= 1e10 ? 1 : 2)}B` : `$${Math.round(r.value / 1e6)}M`;
-  const vw = tw(val, 17, 700);
-  if (bw >= BAR_W_MAX - 120) {
-    svg.push(t(BAR_X + bw - 16, cy + 6, val, { size: 17, weight: 700, fill: '#FFFFFF', anchor: 'end' }));
-  } else {
-    svg.push(t(BAR_X + Math.max(bw, 5) + 12, cy - 2, val, { size: 17, weight: 700, fill: C.gray }));
-  }
-  svg.push(t(RIGHT_X, cy + 9, `${r.pct.toFixed(2)}%`, { size: 26, weight: 700, anchor: 'end' }));
 });
 
-/* 註解（柱區下方小字） */
-const NOTE = '13F covers long U.S. equity only. The SpaceX stake is held via private placements — Alphabet added in Q3.';
-svg.push(t(M, Y0 + 10 * STRIDE + 26, NOTE, { size: 16, fill: C.dim }));
+/* ---------------- 左欄（Google logo + 組合數據） ---------------- */
+const COIN_W = 336, COIN_H = Math.round(COIN_W * 645 / 792);
+const COIN_Y = 384;
+svg.push(`<ellipse cx="${M + COIN_W / 2}" cy="${COIN_Y + COIN_H + 14}" rx="${COIN_W * 0.42}" ry="14" fill="#0B1220" opacity="0.08"/>`);
+svg.push(`<image x="${M}" y="${COIN_Y}" width="${COIN_W}" height="${COIN_H}" href="data:image/png;base64,${COIN}" image-rendering="optimizeQuality"/>`);
+
+const L1 = COIN_Y + COIN_H;   // logo 底
+svg.push(t(M, L1 + 84, 'Total portfolio value', { size: 21, fill: C.gray }));
+svg.push(t(M, L1 + 148, '$88.3B', { size: 62, weight: 700, fill: C.accent, ls: -1 }));
+svg.push(t(M, L1 + 224, 'Top 10 holdings =', { size: 21, fill: C.gray }));
+svg.push(t(M, L1 + 290, '99.47%', { size: 62, weight: 700, ls: -1 }));
+
+/* 口徑註解（左欄底部小字） */
+const NOTE = [
+  '13F covers long U.S. equity only \u2014 the',
+  'SpaceX stake is held via private placements.',
+  'Alphabet added in Q3.',
+];
+NOTE.forEach((line, i) => {
+  svg.push(t(M, L1 + 348 + i * 22, line, { size: 15, fill: C.dim }));
+});
 
 /* ---------------- 頁腳 ---------------- */
 pushFooter(t, svg, {
