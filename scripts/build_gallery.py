@@ -60,6 +60,7 @@ POST_OF = {
     'who-owns-msft': 'who-owns-msft',
     'etf-omah': 'etf-omah',
     'earnings-wdc': 'earnings-wdc',
+    'top10-cap': 'top10-cap',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
@@ -69,7 +70,8 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-aapl': 'Who Owns Apple?',
              'who-owns-msft': 'Who Owns Microsoft?',
              'etf-omah': 'OMAH ETF · Top 10 Holdings',
-             'anthropic-s1': 'Anthropic S-1 · 6 cards'}
+             'anthropic-s1': 'Anthropic S-1 · 6 cards',
+             'top10-cap': 'The 10 Most Valuable Companies'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft', 'etf-omah', 'anthropic-s1']
