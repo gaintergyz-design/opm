@@ -34,7 +34,7 @@ const FONT = 'MiSans';
 const handle = '@onepagemarket';
 
 const META = {   // ticker → 顯示名 / CEO / 品牌色漸變 [亮, 深]
-  AAPL:  { disp: 'APPLE',     ceo: 'Tim Cook',        c: ['#5A5A63', '#1D1D1F'] },
+  AAPL:  { disp: 'APPLE',     ceo: 'John Ternus',     c: ['#5A5A63', '#1D1D1F'] },
   NVDA:  { disp: 'NVIDIA',    ceo: 'Jensen Huang',    c: ['#A4D65E', '#4C7A00'] },
   MSFT:  { disp: 'MICROSOFT', ceo: 'Satya Nadella',   c: ['#38B6FF', '#0078D4'] },
   GOOGL: { disp: 'ALPHABET',  ceo: 'Sundar Pichai',   c: ['#EA4335', '#4285F4'] },
@@ -100,11 +100,16 @@ pills.forEach(([bold, rest]) => {
   px += pw + 12;
 });
 
-/* ---------------- 排名行 ---------------- */
+/* ---------------- 排名行 ----------------
+ * 2026-11-10 阿澤反饋改版：① 頭像從 logo 側移到柱內左端（logo 行不再擠）
+ * ② 公司名/市值改同行（名在柱內跟頭像後，市值在柱右端外側 ink 色）
+ */
 const Y0 = 344, RH = 82, GAP = 6, STRIDE = RH + GAP;
 const LOGO_R = 30, LOGO_CX = 124;
-const AV_R = 26, AV_CX = 168;
-const BAR_X = 202, BAR_W_MAX = W - M - BAR_X, BAR_H = 58;
+const AV_R = 25, AV_CX_OFF = 30;                 // 頭像圓心 = 柱左端 + 30
+const BAR_X = 190, BAR_H = 54;
+const VAL_W = 106;                               // 柱右端外側市值預留
+const BAR_W_MAX = W - M - BAR_X - VAL_W;
 const maxCap = rows[0].mcap;
 
 rows.forEach((r, i) => {
@@ -127,37 +132,33 @@ rows.forEach((r, i) => {
     svg.push(t(LOGO_CX, cy + 8, r.ticker.slice(0, 2), { size: 18, weight: 700, anchor: 'middle' }));
   }
 
-  /* CEO 頭像（白環疊在 logo 右側） */
-  const av = AVATARS[r.ticker];
-  if (av && av.uri) {
-    const acid = `av${uid++}`;
-    defs.push(`<clipPath id="${acid}"><circle cx="${AV_CX}" cy="${cy}" r="${AV_R}"/></clipPath>`);
-    svg.push(`<circle cx="${AV_CX}" cy="${cy}" r="${AV_R + 3.5}" fill="#FFFFFF"/>`);
-    const ain = AV_R * 2 * 1.0, aoff = 0;
-    svg.push(`<g clip-path="url(#${acid})"><image x="${AV_CX - AV_R}" y="${cy - AV_R}" width="${ain}" height="${ain}" href="${av.uri}" image-rendering="optimizeQuality"/></g>`);
-    svg.push(`<circle cx="${AV_CX}" cy="${cy}" r="${AV_R}" fill="none" stroke="#FFFFFF" stroke-width="3"/>`);
-    svg.push(`<circle cx="${AV_CX}" cy="${cy}" r="${AV_R + 3.5}" fill="none" stroke="#E4E7EC" stroke-width="1"/>`);
-    /* CEO 名（頭像下方） */
-    const nm = av.name || m.ceo;
-    svg.push(t(AV_CX, y + RH - 6, nm, { size: 12.5, fill: C.dim, anchor: 'middle' }));
-  }
-
   /* 市值橫條（長度∝市值） */
   const bw = Math.max(150, BAR_W_MAX * r.mcap / maxCap);
   const x1 = BAR_X + bw;
-  defs.push(`<linearGradient id="bg${uid}" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${m.c[0]}"/><stop offset="1" stop-color="${m.c[1]}"/></linearGradient>`);
   const gid = `bg${uid++}`;
+  defs.push(`<linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="${m.c[0]}"/><stop offset="1" stop-color="${m.c[1]}"/></linearGradient>`);
   svg.push(`<rect x="${BAR_X}" y="${cy - BAR_H / 2}" width="${bw}" height="${BAR_H}" rx="16" fill="url(#${gid})"/>`);
 
-  /* 條內右端：公司名 / 市值（中間白細線，Boardroom 式） */
-  const nameS = 24, valS = 27, pad = 20;
-  const wName = tw(m.disp, nameS, 700), wVal = tw(fmtCap(r.mcap), valS, 700);
-  const tx = x1 - pad;
-  svg.push(t(tx, cy - 7, m.disp, { size: nameS, weight: 700, fill: '#FFFFFF', anchor: 'end' }));
-  const lineW = Math.max(wName, wVal);
-  svg.push(`<line x1="${tx - lineW}" y1="${cy + 1}" x2="${tx}" y2="${cy + 1}" stroke="#FFFFFF" stroke-width="2" opacity="0.85"/>`);
-  svg.push(t(tx, cy + 26, fmtCap(r.mcap), { size: valS, weight: 700, fill: '#FFFFFF', anchor: 'end' }));
+  /* CEO 頭像（疊在柱內左端） */
+  const av = AVATARS[r.ticker];
+  const AV_CX = BAR_X + AV_CX_OFF;
+  if (av && av.uri) {
+    const acid = `av${uid++}`;
+    defs.push(`<clipPath id="${acid}"><circle cx="${AV_CX}" cy="${cy}" r="${AV_R}"/></clipPath>`);
+    svg.push(`<circle cx="${AV_CX}" cy="${cy}" r="${AV_R + 2.5}" fill="#FFFFFF"/>`);
+    svg.push(`<g clip-path="url(#${acid})"><image x="${AV_CX - AV_R}" y="${cy - AV_R}" width="${AV_R * 2}" height="${AV_R * 2}" href="${av.uri}" image-rendering="optimizeQuality"/></g>`);
+    svg.push(`<circle cx="${AV_CX}" cy="${cy}" r="${AV_R}" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>`);
+    /* CEO 名（柱下方、對齊頭像） */
+    const nm = av.name || m.ceo;
+    svg.push(t(AV_CX, y + RH - 2, nm, { size: 12.5, fill: C.dim, anchor: 'middle' }));
+  }
+
+  /* 柱內公司名（頭像右側、同行垂直居中） */
+  svg.push(t(AV_CX + AV_R + 14, cy + 8, m.disp, { size: 24, weight: 700, fill: '#FFFFFF' }));
+
+  /* 市值（柱右端外側，ink 色） */
+  svg.push(t(x1 + 14, cy + 9, fmtCap(r.mcap), { size: 26, weight: 700 }));
 });
 
 function fmtCap(v) {
