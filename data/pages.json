@@ -2,23 +2,23 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-06 21:11",
-  "week_label": "Nov 02 – Nov 06",
+  "generated_at": "2026-11-10 11:40",
+  "week_label": "Nov 09 – Nov 13",
   "ondeck": {
     "session": "2026-11-10",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 0.55
+        "pct": 2.43
       },
       {
         "label": "Nasdaq",
-        "pct": 1.27
+        "pct": 2.85
       },
       {
         "label": "Russell 2000",
-        "pct": 1.11
+        "pct": 3.46
       }
     ],
     "econ": [
@@ -155,6 +155,15 @@
           "time": "BMO"
         },
         {
+          "ticker": "ONON",
+          "name": "On Holding",
+          "cap": 22544185300,
+          "growth": 21.3,
+          "eps": 0.31,
+          "surprise": 17.8,
+          "time": "BMO"
+        },
+        {
           "ticker": "TDG",
           "name": "Transdigm Group",
           "cap": 66166555000,
@@ -171,15 +180,6 @@
           "eps": 0.85,
           "surprise": 4.2,
           "time": ""
-        },
-        {
-          "ticker": "ONON",
-          "name": "On Holding",
-          "cap": 22544185300,
-          "growth": 17.3,
-          "eps": 0.4,
-          "surprise": 60.0,
-          "time": "BMO"
         }
       ]
     }
@@ -278,99 +278,140 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 02",
-        "count": 142,
-        "econ": [
-          "OPEC Meeting"
-        ],
+        "date": "Nov 16",
+        "count": 65,
+        "econ": [],
         "before": [
-          "XFLT"
+          "BIDU",
+          "BEKE",
+          "TSN",
+          "HTHT",
+          "ARMK",
+          "XPEV",
+          "BXDC",
+          "IQ"
         ],
         "after": [
-          "AEHR"
+          "ACM",
+          "POWL",
+          "PAGS",
+          "INFQ",
+          "YALA",
+          "SHAZ",
+          "RCAT",
+          "API"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 03",
-        "count": 254,
+        "date": "Nov 17",
+        "count": 44,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "ISM Manufacturing Employment",
-          "ISM Manufacturing New Orders Index",
-          "ISM Manufacturing PMI"
+          "NY Empire State Manufacturing Index",
+          "3-Month Bill Auction",
+          "6-Month Bill Auction"
         ],
-        "before": [],
-        "after": []
+        "before": [
+          "HD",
+          "DIS",
+          "JD",
+          "VIK",
+          "ESLT",
+          "AS",
+          "TME",
+          "KLAR"
+        ],
+        "after": [
+          "NVDA",
+          "ZTO",
+          "DLB",
+          "GBDC",
+          "LZB",
+          "IIIV",
+          "AUNA",
+          "IRIX"
+        ]
       },
       {
         "day": "Wed",
-        "date": "Nov 04",
-        "count": 488,
+        "date": "Nov 18",
+        "count": 71,
         "econ": [
-          "IBD/TIPP Economic Optimism",
-          "Durables Excluding Defense",
-          "Durables Excluding Transport",
-          "Factory Orders"
+          "Atlanta Fed GDPNow",
+          "Core Retail Sales",
+          "Retail Sales Ex Gas/Autos",
+          "Export Price Index"
         ],
         "before": [
-          "WBX"
+          "TJX",
+          "LOW",
+          "TGT",
+          "GLBE",
+          "GLNG",
+          "BLSH",
+          "ZIM",
+          "PONY"
         ],
         "after": [
-          "PKOH",
-          "CXAI"
+          "PANW",
+          "P",
+          "WWD",
+          "UGI",
+          "CPA",
+          "NJR",
+          "JOYY",
+          "HP"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 05",
-        "count": 624,
+        "date": "Nov 19",
+        "count": 50,
         "econ": [
-          "ADP Nonfarm Employment Change",
-          "Trade Balance",
-          "ISM Non-Manufacturing Employment",
-          "ISM Non-Manufacturing New Orders"
+          "Housing Starts",
+          "FOMC Meeting Minutes",
+          "Building Permits",
+          "Pending Home Sales"
         ],
         "before": [
-          "PCRX",
-          "EVO",
-          "IPHA",
-          "MCN"
+          "WMT",
+          "BABA",
+          "NTES",
+          "WMG",
+          "FUTU",
+          "YMM",
+          "VVV",
+          "BBWI"
         ],
         "after": [
-          "GRND",
-          "AURA",
-          "BCIC",
-          "BGDE",
-          "REFR"
+          "INTU",
+          "ROST",
+          "KEYS",
+          "ESTC",
+          "GAP",
+          "ESE",
+          "POST",
+          "BULL"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 06",
-        "count": 105,
+        "date": "Nov 20",
+        "count": 13,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
-          "Nonfarm Productivity",
-          "Jobless Claims 4-Week Avg."
+          "Jobless Claims 4-Week Avg.",
+          "Philadelphia Fed Manufacturing Index"
         ],
         "before": [
-          "ENB",
-          "MRNA",
-          "BAM",
-          "HUM",
-          "VST",
-          "PPL",
-          "ECHO",
-          "BIP"
+          "BSP",
+          "BJ",
+          "BKE"
         ],
-        "after": [
-          "HE",
-          "TOMZ"
-        ]
+        "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
