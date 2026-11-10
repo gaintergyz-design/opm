@@ -1,0 +1,75 @@
+{
+  "kicker": "US INFLATION · OCTOBER PRINT",
+  "title": "October CPI Preview",
+  "subtitle": "BLS release · Tuesday, November 10",
+  "badge": "08:30 ET",
+  "prints": [
+    {
+      "name": "CPI",
+      "desc": "all items, month over month",
+      "consensus": 0.3,
+      "bars": [
+        { "l": "Aug", "v": 0.4 },
+        { "l": "Sep", "v": 0.6 },
+        { "l": "Oct", "v": 0.3, "fcst": true }
+      ]
+    },
+    {
+      "name": "Core CPI",
+      "desc": "ex food & energy, month over month",
+      "consensus": 0.2,
+      "bars": [
+        { "l": "Aug", "v": 0.3 },
+        { "l": "Sep", "v": 0.3 },
+        { "l": "Oct", "v": 0.2, "fcst": true }
+      ]
+    },
+    {
+      "name": "CPI",
+      "desc": "all items, year over year",
+      "consensus": null,
+      "bars": null,
+      "gap": {
+        "a": "Last official print · Sep",
+        "b": "3.7% headline · 2.6% core"
+      }
+    }
+  ],
+  "note": {
+    "a": "BLS will not publish a 12-month rate: October 2025 prices were never collected during the shutdown.",
+    "b": "Imputed estimates: headline ~4.0% (from 3.7%), core ~2.8% (from 2.6%) \u2014 estimates, not official."
+  },
+  "scenarios": [
+    {
+      "name": "Clearly soft",
+      "tone": "soft",
+      "threshold": "< 0.2%",
+      "rows": [
+        ["Equities modestly higher", "\u2191"],
+        ["Treasury yields lower", "\u2193"],
+        ["Dollar softer", "\u2193"]
+      ]
+    },
+    {
+      "name": "In line",
+      "tone": "mid",
+      "threshold": "= 0.2%",
+      "rows": [
+        ["Equities edge higher", "\u2191"],
+        ["Yields steady", "\u2192"],
+        ["Dollar steady", "\u2192"]
+      ]
+    },
+    {
+      "name": "Clearly hot",
+      "tone": "hot",
+      "threshold": "> 0.2%",
+      "rows": [
+        ["Equities under pressure", "\u2193"],
+        ["Treasury yields higher", "\u2191"],
+        ["Dollar firmer", "\u2191"]
+      ]
+    }
+  ],
+  "meta": "Prepared November 10, 2026"
+}
