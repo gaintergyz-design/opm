@@ -61,6 +61,7 @@ POST_OF = {
     'etf-omah': 'etf-omah',
     'earnings-wdc': 'earnings-wdc',
     'top10-cap': 'top10-cap',
+    'cpi': 'cpi',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
@@ -71,10 +72,11 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-msft': 'Who Owns Microsoft?',
              'etf-omah': 'OMAH ETF · Top 10 Holdings',
              'anthropic-s1': 'Anthropic S-1 · 6 cards',
-             'top10-cap': 'The 10 Most Valuable Companies'}
+             'top10-cap': 'The 10 Most Valuable Companies',
+             'cpi': 'US CPI Preview'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
-         'who-owns-msft', 'etf-omah', 'anthropic-s1']
+         'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi']
 
 # 總結型系列：多張卡（-p01..pNN）共用一則貼文 → 歸併成同一 kind、同一 post 組
 def kind_alias(kind):
