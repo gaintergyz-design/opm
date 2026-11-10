@@ -247,22 +247,24 @@ def esc(s):
              .replace('"', '&quot;'))
 
 
-# 預計下一張圖：按 GitHub Actions 排程（ET）算下一次運行，換算北京時間顯示
+# 預計下一張圖：按 GitHub Actions 排程算下一次運行，換算北京時間顯示
+# On Deck 自 2026-11-10 起固定北京 19:00（＝UTC 11:00，北京無夏令時）；其餘仍按 ET 排程
 def next_post():
     try:
         et, cn = ZoneInfo('America/New_York'), ZoneInfo('Asia/Shanghai')
+        utc = datetime.timezone.utc
         now_et = datetime.datetime.now(et)
-        sched = [('On Deck', (0, 1, 2, 3, 4), 8, 30),
-                 ('The Close', (0, 1, 2, 3, 4), 16, 15),
-                 ('Winners & Losers', (4,), 16, 30),
-                 ('Week Ahead', (0,), 7, 0)]
+        sched = [('On Deck', (0, 1, 2, 3, 4), 11, 0, utc),
+                 ('The Close', (0, 1, 2, 3, 4), 16, 15, et),
+                 ('Winners & Losers', (4,), 16, 30, et),
+                 ('Week Ahead', (0,), 7, 0, et)]
         best = None
         for i in range(9):
             d = (now_et + datetime.timedelta(days=i)).date()
-            for name, wds, h, m in sched:
+            for name, wds, h, m, tz in sched:
                 if d.weekday() not in wds:
                     continue
-                t = datetime.datetime.combine(d, datetime.time(h, m), tzinfo=et)
+                t = datetime.datetime.combine(d, datetime.time(h, m), tzinfo=tz)
                 if t > now_et and (best is None or t < best[0]):
                     best = (t, name)
         if not best:
