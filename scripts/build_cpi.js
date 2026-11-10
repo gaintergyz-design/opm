@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
+const { brandMark } = require('./lib/brand');
 const { textWidth } = require('./lib/fontwidths');
 
 const BASE = path.join(__dirname, '..');
@@ -71,6 +72,7 @@ svg.push(`<rect width="${W}" height="${H}" fill="url(#bgG)"/>`);
 svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032">
   ${t(0, 0, '@onepagemarket', { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
 </g>`);
+brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 
 const handle = '@onepagemarket';
 

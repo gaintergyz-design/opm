@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
+const { brandMark } = require('./lib/brand');
 
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(process.env.ETF_DATA || path.join(BASE, 'data', 'etf-omah.json'), 'utf8'));
@@ -105,6 +106,7 @@ a.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewB
 // 水印
 const wm = CFG.watermark;
 a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
+brandMark(a, { y: 8, h: 30 });        // 左上角 OPM 標識（2026-11-10 阿澤欽定，緊湊版）
 
 // 右上 handle pill（同 scaffold）
 const handle = '@onepagemarket';

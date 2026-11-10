@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
+const { brandMark } = require('./lib/brand');
 
 const BASE = path.join(__dirname, '..');
 const DATA_PATH = process.env.CLOSE_DATA || path.join(BASE, 'data', 'close.json');
@@ -109,6 +110,7 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacit
 </g>`);
 
 // ---------- 頁首 ----------
+brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 svg.push(t(M, 122, 'The Close', { size: 80, weight: 700, ls: -1.5 }));
 svg.push(t(M, 168, `${longDate(D.session)} · 16:15 ET`, { size: 26, fill: C.gray }));
 

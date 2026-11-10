@@ -19,6 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
+const { brandMark } = require('./lib/brand');
 const { textWidth } = require('./lib/fontwidths');
 
 const BASE = path.join(__dirname, '..');
@@ -254,6 +255,7 @@ function renderCard(card) {
 
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
+  brandMark(a, { y: 16, h: 34 });     // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 
   /* ---- 頁首 ---- */
   // kicker：0X · TAG · SERIES

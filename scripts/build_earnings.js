@@ -22,6 +22,7 @@ const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
 const { textWidth } = require('./lib/fontwidths');
+const { brandMark } = require('./lib/brand');
 
 const BASE = path.join(__dirname, '..');
 const DATA_PATH = process.env.EARN_DATA || path.join(BASE, 'data', 'earnings-wdc.json');
@@ -82,6 +83,7 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032
 const handle = '@onepagemarket';
 
 /* ---------------- 頁首 ---------------- */
+brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 const TICK = D.ticker || '';
 const TS = 92;
 svg.push(t(M, 128, TICK, { size: TS, weight: 700, ls: -2.5 }));

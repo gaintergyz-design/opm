@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./lib/disclaimer');
+const { brandMark } = require('./lib/brand');
 
 const BASE = path.join(__dirname, '..');
 const D = JSON.parse(fs.readFileSync(process.env.PAGES_DATA || path.join(BASE, 'data', 'pages.json'), 'utf8'));
@@ -91,6 +92,7 @@ function scaffold(title, sub) {
     `<rect width="${W}" height="${H}" fill="${C.bg}"/>`];
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
+  brandMark(a);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
   a.push(t(M, 122, title, { size: fitTitle(title, avail, 80), weight: 700, ls: -1.5 }));
   a.push(t(M, 168, sub, { size: 26, fill: C.gray }));
   const pw = Math.round(handle0.length * 17.6) + 44;

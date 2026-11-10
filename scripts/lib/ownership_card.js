@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resvg } = require('@resvg/resvg-js');
 const { pushFooter } = require('./disclaimer');
+const { brandMark } = require('./brand');
 
 const BASE = path.join(__dirname, '..', '..');
 
@@ -117,6 +118,7 @@ module.exports = function build(OPTS) {
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', fill: C.ink, ls: 6 })}</g>`);
 
   // 右上 handle pill
+  brandMark(a, { y: 8, h: 30 });      // 左上角 OPM 標識（2026-11-10 阿澤欽定，緊湊版）
   const handle = '@onepagemarket';
   const pw = Math.round(handle.length * 17.6) + 44;
   a.push(`<rect x="${W - M - pw}" y="62" width="${pw}" height="58" rx="12" fill="${PAL.handlePill}"/>`);
