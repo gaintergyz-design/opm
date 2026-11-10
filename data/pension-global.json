@@ -1,0 +1,16 @@
+{
+  "title": "Global Pension Giants",
+  "subtitle": "The largest public pension funds by assets and allocation",
+  "asof": "Dec 31, 2025",
+  "funds": [
+    { "flag": "no", "name": "Norway GPFG",      "full": "Government Pension Fund Global",        "t": 2.11, "eq": 71, "fi": 27 },
+    { "flag": "jp", "name": "Japan GPIF",        "full": "Government Pension Investment Fund",    "t": 1.87, "eq": 50, "fi": 50 },
+    { "flag": "us", "name": "U.S. Federal TSP",  "full": "Federal Retirement Thrift Savings Plan","t": 1.07, "eq": 66, "fi": 33, "us": true },
+    { "flag": "kr", "name": "Korea NPS",         "full": "National Pension Service",              "t": 1.01, "eq": 56, "fi": 28 },
+    { "flag": "nl", "name": "Netherlands ABP",   "full": "Civil Pension Fund (ABP)",              "t": 0.62, "eq": 31, "fi": 40 },
+    { "flag": "ca", "name": "Canada CPP",        "full": "Canada Pension Plan",                   "t": 0.58, "eq": 29, "fi": 28 },
+    { "flag": "sg", "name": "Singapore CPF",     "full": "Central Provident Fund",                "t": 0.51, "eq": 0,  "fi": 99.9 }
+  ],
+  "strip": "Norway's fund alone outweighs ABP + CPP + CPF combined ($2.1T vs $1.7T)",
+  "note": "口徑：東方財富圖解財經整理（公開信息），數據截至 2025-12-31；美國僅保留聯邦 TSP，剔除加州 CalPERS/CalSTRS 與中國全國社保基金（阿澤 2026-11-10 指定）"
+}
