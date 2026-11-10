@@ -1,0 +1,20 @@
+{
+  "title_line1": "Google's $88B Stock",
+  "title_line2": "Portfolio = SpaceX",
+  "subtitle": "Alphabet's top 10 U.S. holdings after Q3 13F — boosted SpaceX, opened Qualcomm · whalewisdom",
+  "total": 88300000000,
+  "top10_pct": 99.47,
+  "rows": [
+    {"ticker": "SPCX", "name": "SpaceX",              "value": 83734000000, "pct": 94.78, "action": "boosted", "c": ["#3E4A5E", "#111827"]},
+    {"ticker": "CME",  "name": "CME Group",           "value":  913000000, "pct":  1.03, "action": null,      "c": ["#37A5E0", "#0068A8"]},
+    {"ticker": "PL",   "name": "Planet Labs",         "value":  578000000, "pct":  0.65, "action": null,      "c": ["#17B0A7", "#0B7B78"]},
+    {"ticker": "ARM",  "name": "Arm Holdings",        "value":  568000000, "pct":  0.64, "action": null,      "c": ["#3BB9E8", "#0091BD"]},
+    {"ticker": "RVMD", "name": "Revolution Medicines","value":  549000000, "pct":  0.62, "action": "trimmed", "c": ["#57A863", "#2E7D43"]},
+    {"ticker": "QCOM", "name": "Qualcomm",            "value":  548000000, "pct":  0.62, "action": "new",     "c": ["#5B7BF0", "#3253DC"]},
+    {"ticker": "ASTS", "name": "AST SpaceMobile",     "value":  526000000, "pct":  0.60, "action": null,      "c": ["#F5A623", "#E07C00"]},
+    {"ticker": "FRSH", "name": "Freshworks",          "value":  183000000, "pct":  0.21, "action": "trimmed", "c": ["#F0554D", "#C0392B"]},
+    {"ticker": "PBLS", "name": "Parabilis Medicines", "value":  159000000, "pct":  0.18, "action": null,      "c": ["#F0A05A", "#D97C2B"]},
+    {"ticker": "TEM",  "name": "Tempus AI",           "value":  127000000, "pct":  0.14, "action": null,      "c": ["#6B7280", "#111827"]}
+  ],
+  "as_of": "Q3 2026 13F (Sep 30, 2026)"
+}
