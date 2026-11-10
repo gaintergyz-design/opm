@@ -255,18 +255,14 @@ function renderCard(card) {
 
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
-  brandMark(a, { y: 16, h: 34 });     // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 
   /* ---- 頁首 ---- */
   // kicker：0X · TAG · SERIES
   a.push(t(M, 80, card.no, { size: 24, weight: 700, fill: C.amber, ls: 1 }));
   const noW = wOf(card.no, 24, 700);
   a.push(t(M + noW + 16, 80, `· ${card.tag}`, { size: 22, fill: C.gray, ls: 2.4 }));
-  // 右上角 handle pill（縮小版，只佔 kicker 行高）
-  const pillW = Math.round(handle.length * 13.4) + 34;
-  const pillH = 44;
-  a.push(`<rect x="${W - M - pillW}" y="44" width="${pillW}" height="${pillH}" rx="10" fill="${C.amberBg}"/>`);
-  a.push(t(W - M - pillW / 2, 73, handle, { size: 24, weight: 500, fill: C.amberInk, anchor: 'middle' }));
+  // 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
+  brandMark(a, { cy: 66, h: 32 });
 
   // 標題：自動降級到 2 行內
   let titleSize = 76, titleLines = wrap(card.title, CW, titleSize, 700);

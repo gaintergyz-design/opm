@@ -83,15 +83,16 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032
 const handle = '@onepagemarket';
 
 /* ---------------- 頁首 ---------------- */
-brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 const TICK = D.ticker || '';
 const TS = 92;
 svg.push(t(M, 128, TICK, { size: TS, weight: 700, ls: -2.5 }));
 let hx = M + tw(TICK, TS, 700) + 22;
 const nameStr = D.company || '';
-// 公司名過長（IBM → International Business Machines）時自動縮字，不撞右上 logo/handle
+// 公司名過長（IBM → International Business Machines）時自動縮字，不撞右上品牌標識 / 公司 logo
+const OPM_W = 79.2;                        // OPM logo（h=36）
+const opmX = W - M - OPM_W;
 const logoW = (LOGOS[TICK] || D.mono_badge) ? 44 + 16 : 0;
-const handleW = Math.round(tw(handle, 27, 500)) + 38;
+const handleW = OPM_W + 16;                // 右側被品牌標識吃掉的寬度
 const nameAvail = (W - M - handleW - logoW) - hx - 8;
 const nameSize = tw(nameStr, 40, 500) > nameAvail
   ? Math.max(24, Math.floor(40 * nameAvail / tw(nameStr, 40, 500)))
@@ -104,13 +105,11 @@ svg.push(t(M, 172, nameFits
   : `${D.company} · ${D.quarter} · Quarter ended ${D.period_end} · Reported ${D.reported}`,
   { size: 21, fill: C.gray }));
 
-const pillW = Math.round(tw(handle, 27, 500)) + 38;
-const pillX = W - M - pillW;
-svg.push(rrect(pillX, 66, pillW, 50, 12, '#EAF2F9'));
-svg.push(t(pillX + pillW / 2, 99, handle, { size: 27, weight: 500, fill: C.primary, anchor: 'middle' }));
+// 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
+brandMark(svg);
 const logoUri = LOGOS[TICK];
 if (logoUri) {
-  const ls2 = 44, lx = pillX - 16 - ls2, cid = `lg${uid++}`;
+  const ls2 = 44, lx = opmX - 16 - ls2, cid = `lg${uid++}`;
   defs.push(`<clipPath id="${cid}"><circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}"/></clipPath>`);
   // 圖不鋪滿直徑：留 4% 餘量，避免圓形裁切切到四角（同 build_pages/build_close）
   const ein = ls2 * 0.96, eoff = (ls2 - ein) / 2;
@@ -118,7 +117,7 @@ if (logoUri) {
   svg.push(`<circle cx="${lx + ls2 / 2}" cy="91" r="${ls2 / 2}" fill="none" stroke="#DDE6EF" stroke-width="1.2"/>`);
 } else if (D.mono_badge) {
   // 只有字標的品牌（Netflix 的 wordmark 塞進 46px 圓只剩一條線）→ 品牌色圓底 + 白首字母
-  const ls2 = 44, lx = pillX - 16 - ls2, ccx = lx + ls2 / 2;
+  const ls2 = 44, lx = opmX - 16 - ls2, ccx = lx + ls2 / 2;
   const ch = D.mono_badge === true ? TICK.charAt(0) : String(D.mono_badge);
   svg.push(`<circle cx="${ccx}" cy="91" r="${ls2 / 2}" fill="${C.primary}"/>`);
   svg.push(t(ccx, 100, ch, { size: 23, weight: 700, fill: '#FFFFFF', anchor: 'middle', ls: -0.5 }));

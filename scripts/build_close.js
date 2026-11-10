@@ -110,16 +110,12 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacit
 </g>`);
 
 // ---------- 頁首 ----------
-brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 svg.push(t(M, 122, 'The Close', { size: 80, weight: 700, ls: -1.5 }));
 svg.push(t(M, 168, `${longDate(D.session)} · 16:15 ET`, { size: 26, fill: C.gray }));
 
-// 帳號 pill（右）
-const handle = D.handle || '@onepagemarket';
-const pillW = Math.round(handle.length * 17.6) + 44;
-const pillX = W - M - pillW, pillY = 62, pillH = 58;
-svg.push(`<rect x="${pillX}" y="${pillY}" width="${pillW}" height="${pillH}" rx="12" fill="${C.amberBg}"/>`);
-svg.push(t(pillX + pillW / 2, pillY + 39, handle, { size: 32, weight: 500, fill: C.amberInk, anchor: 'middle' }));
+// 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
+brandMark(svg);
+const handle = D.handle || '@onepagemarket';   // 頁腳署名仍用
 
 // 規則線
 svg.push(`<rect x="${M}" y="200" width="${CW}" height="6" fill="${C.amber}"/>`);

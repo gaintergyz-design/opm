@@ -117,12 +117,9 @@ module.exports = function build(OPTS) {
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', fill: C.ink, ls: 6 })}</g>`);
 
-  // 右上 handle pill
-  brandMark(a, { y: 8, h: 30 });      // 左上角 OPM 標識（2026-11-10 阿澤欽定，緊湊版）
+  // 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
+  brandMark(a);
   const handle = '@onepagemarket';
-  const pw = Math.round(handle.length * 17.6) + 44;
-  a.push(`<rect x="${W - M - pw}" y="62" width="${pw}" height="58" rx="12" fill="${PAL.handlePill}"/>`);
-  a.push(t(W - M - pw / 2, 101, handle, { size: 32, weight: 500, fill: PAL.handleInk, anchor: 'middle' }));
 
   // 品牌 wordmark
   if (O.wordmark) {

@@ -106,13 +106,9 @@ a.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewB
 // 水印
 const wm = CFG.watermark;
 a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
-brandMark(a, { y: 8, h: 30 });        // 左上角 OPM 標識（2026-11-10 阿澤欽定，緊湊版）
-
-// 右上 handle pill（同 scaffold）
+// 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
+brandMark(a);
 const handle = '@onepagemarket';
-const pw = Math.round(handle.length * 17.6) + 44;
-a.push(`<rect x="${W - M - pw}" y="62" width="${pw}" height="58" rx="12" fill="#FAEEDA"/>`);
-a.push(t(W - M - pw / 2, 101, handle, { size: 32, weight: 500, fill: '#854F0B', anchor: 'middle' }));
 
 // 標題（兩行）＋副題 pill ＋摘要行
 a.push(t(M, 96, D.title_line1, { size: 74, weight: 700, ls: -1.5 }));

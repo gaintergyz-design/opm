@@ -64,7 +64,8 @@ brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿�
 
 /* ---------------- 頁首 ---------------- */
 const TS = 88;
-const titleSize = tw(D.title, TS, 700) > CW ? Math.floor(TS * CW / tw(D.title, TS, 700)) : TS;
+const AVAIL_T = CW - 104;   // 右上預留 OPM 標識寬度（2026-11-10）
+const titleSize = tw(D.title, TS, 700) > AVAIL_T ? Math.floor(TS * AVAIL_T / tw(D.title, TS, 700)) : TS;
 svg.push(t(M, 132, D.title, { size: titleSize, weight: 700, ls: -2.5 }));
 const SUB = 24;
 const subSize = tw(D.subtitle, SUB, 400) > CW ? Math.floor(SUB * CW / tw(D.subtitle, SUB, 400)) : SUB;

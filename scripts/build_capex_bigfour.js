@@ -60,9 +60,10 @@ svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032
 </g>`);
 brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
 
-/* ---------------- 頁首（標題大一點，右上不放 logo） ---------------- */
+/* ---------------- 頁首（標題大一點） ---------------- */
 const TS = 96;
-const titleSize = tw(D.title, TS, 700) > CW ? Math.floor(TS * CW / tw(D.title, TS, 700)) : TS;
+const AVAIL_T = CW - 104;   // 右上預留 OPM 標識寬度（2026-11-10）
+const titleSize = tw(D.title, TS, 700) > AVAIL_T ? Math.floor(TS * AVAIL_T / tw(D.title, TS, 700)) : TS;
 svg.push(t(M, 140, D.title, { size: titleSize, weight: 700, ls: -2.5 }));
 svg.push(t(M, 186, D.subtitle, { size: 26, fill: C.gray }));
 svg.push(`<rect x="${M}" y="208" width="${CW}" height="6" fill="url(#ruleG)"/>`);

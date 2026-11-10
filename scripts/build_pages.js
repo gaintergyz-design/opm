@@ -92,12 +92,9 @@ function scaffold(title, sub) {
     `<rect width="${W}" height="${H}" fill="${C.bg}"/>`];
   const wm = CFG.watermark;
   a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(${wm.angle})" opacity="${wm.opacity}">${t(0, 0, wm.text, { size: wm.size, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
-  brandMark(a);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）
   a.push(t(M, 122, title, { size: fitTitle(title, avail, 80), weight: 700, ls: -1.5 }));
   a.push(t(M, 168, sub, { size: 26, fill: C.gray }));
-  const pw = Math.round(handle0.length * 17.6) + 44;
-  a.push(`<rect x="${W - M - pw}" y="62" width="${pw}" height="58" rx="12" fill="${C.amberBg}"/>`);
-  a.push(t(W - M - pw / 2, 101, handle0, { size: 32, weight: 500, fill: C.amberInk, anchor: 'middle' }));
+  brandMark(a);                       // 右上角 OPM 標識（取代 @onepagemarket pill，2026-11-10 阿澤定）
   a.push(`<rect x="${M}" y="200" width="${CW}" height="6" fill="${C.amber}"/>`);
   return a;
 }

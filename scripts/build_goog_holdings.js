@@ -63,9 +63,13 @@ brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿�
 const rows = D.rows;
 
 const T1 = D.title_line1, T2 = D.title_line2;
+// 標題過寬會撞右上 OPM 標識 → 自動縮字（2026-11-10）
 const TS = 66;
-svg.push(t(M, 116, T1, { size: TS, weight: 700, ls: -2 }));
-svg.push(t(M, 190, T2, { size: TS, weight: 700, ls: -2 }));
+const AVAIL_T = CW - 104;
+const twMax = Math.max(tw(T1, TS, 700), tw(T2, TS, 700));
+const titleSize = twMax > AVAIL_T ? Math.max(46, Math.floor(TS * AVAIL_T / twMax)) : TS;
+svg.push(t(M, 116, T1, { size: titleSize, weight: 700, ls: -2 }));
+svg.push(t(M, 190, T2, { size: titleSize, weight: 700, ls: -2 }));
 const SUB = D.subtitle;
 const subSize = tw(SUB, 24) > CW ? Math.floor(24 * CW / tw(SUB, 24)) : 24;
 svg.push(t(M, 230, SUB, { size: subSize, fill: C.gray }));
