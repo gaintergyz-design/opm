@@ -1,17 +1,15 @@
 #!/bin/bash
 # onepagemarket 專題卡｜一條龍上畫廊
 #
-# === 出完圖之後，只要這一步 ==========================================
-#   1) 定稿 PNG 放 out/，檔名 <kind>-YYYYMMDD[-HHMM].png
-#      同目錄的 caption-<kind>-<stamp>.txt、data/<kind>.json、
-#      scripts/build_<kind>.js 會自動一起帶上
-#   2) 想先看計畫：加 --dry-run（不移動檔案、不 commit、不 push）
-#   3) 正式發布：
-#      bash scripts/publish_special_card.sh out/ai-labs-scorecard-20261111-0955.png \
-#           --title "OpenAI vs Anthropic scorecard" \
-#           --group "OpenAI vs Anthropic · Scorecard"
-#   4) 跑完看最後的驗收 ✓；Pages 有快取，首刷舊頁屬正常
-#      文案在 out/caption-*-<stamp>.txt，本腳本不發帖
+# === 一句話就夠：說「上传画廊」→ 跑這行（零參數） =====================
+#      bash scripts/publish_special_card.sh
+#   自動挑「最新出圖、尚未上畫廊」的定稿；自動帶上 caption / data json /
+#   build 腳本；自動查（或新建）畫廊組名、自動生成 commit 名稱。
+#   有歧義才加線索：bash scripts/publish_special_card.sh --match openai
+#   想先看計畫：加 --dry-run（不移動檔案、不 commit、不 push）
+#   也可明確指定：bash scripts/publish_special_card.sh out/<kind>-<stamp>.png
+#   跑完看最後的驗收 ✓；文案在 out/caption-*-<stamp>.txt，本腳本不發帖
+#   Pages 有快取，首刷舊頁屬正常
 #
 # === 換電腦 / 同步 ===================================================
 #   本檔與 .workbuddy/skills/onepagemarket/SKILL.md 都在 git 裡，
@@ -20,11 +18,12 @@
 #   Python 優先 WorkBuddy 內建 venv，找不到就退回 PATH 的 python3
 #   任何電腦都能先跑 `bash scripts/publish_special_card.sh --help` 看這份說明
 #
-# === 參數 ===========================================================
-#   <定稿 PNG>      必填，out/ 下的最終版（可只給檔名）
+# === 參數（全部可省略） ==============================================
+#   <定稿 PNG>      省略＝自動選最新未上線的圖
+#   --match "..."   自動選圖時只挑檔名含此字串的（給線索用）
 #   --title "..."   commit 名稱：card: <title> / gallery: add <title>
-#                   省略時用組名，再省略用 kind
-#   --group "..."   畫廊組名；POST_NAME 沒這個 kind 時自動寫入 build_gallery.py
+#                   省略時由組名自動生成
+#   --group "..."   畫廊組名；省略時查 POST_NAME，新卡種才自動建
 #   --extra <path>  額外進第一段提交的檔案，可重複（新 logo、附加數據…）
 #   --no-clean      跳過清理（預設把同 kind 舊版收進 out/_wip/）
 #   --no-push       只做兩段提交，不 fetch/rebase/push
@@ -42,12 +41,13 @@ cd "$(dirname "$0")/.."
 
 PY="${PY:-$( [ -x /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python ] && echo /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python || command -v python3 )}"
 
-IMG_ARG=""; TITLE=""; GROUP=""; DRY=0; NO_CLEAN=0; NO_PUSH=0
+IMG_ARG=""; TITLE=""; GROUP=""; MATCH=""; DRY=0; NO_CLEAN=0; NO_PUSH=0
 EXTRAS=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --title)      TITLE="$2"; shift 2 ;;
     --group)      GROUP="$2"; shift 2 ;;
+    --match)      MATCH="$2"; shift 2 ;;
     --extra)      EXTRAS+=("$2"); shift 2 ;;
     --dry-run)    DRY=1; shift ;;
     --no-clean)   NO_CLEAN=1; shift ;;
@@ -58,9 +58,44 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-if [ -z "$IMG_ARG" ]; then echo "用法：bash scripts/publish_special_card.sh <定稿 PNG> [--title ...] [--group ...]" >&2; exit 1; fi
-case "$IMG_ARG" in out/*) IMG_PATH="$IMG_ARG" ;; *) IMG_PATH="out/$IMG_ARG" ;; esac
-[ -f "$IMG_PATH" ] || { echo "找不到定稿圖：$IMG_PATH" >&2; exit 1; }
+# 零參數：自動挑「最新出圖、尚未上畫廊」的定稿（專題卡優先於四張定時卡）
+if [ -z "$IMG_ARG" ]; then
+  if ! IMG_PATH="$(python3 - "$MATCH" <<'PY'
+import glob, os, re, subprocess, sys, time
+match = sys.argv[1].lower()
+now, WINDOW = time.time(), 7 * 86400
+idx = subprocess.run(['git','show','origin/main:docs/index.html'],
+                     capture_output=True, text=True).stdout
+TIMED = ('the-close-', 'on-deck-', 'winners-losers-', 'week-ahead-')
+allnew = []
+for p in glob.glob('out/*.png'):
+    n = os.path.basename(p)
+    if n in idx: continue                       # 已在線上畫廊
+    if match and match not in n.lower(): continue
+    stem = n[:-4]
+    kind = re.sub(r'-\d{8}(-\w+)?$', '', stem)
+    meta = (glob.glob('out/caption-*%s*.txt' % stem)
+            + glob.glob('data/%s*.json' % kind)
+            + glob.glob('scripts/build_%s*.js' % kind.replace('-', '_')))
+    allnew.append((now - os.path.getmtime(p), bool(meta), n.startswith(TIMED), p))
+if not allnew: sys.exit(3)
+fresh = [c for c in allnew if c[0] <= WINDOW]   # 只認 7 天內新出的圖，防舊草稿誤發
+if not fresh:
+    print('      7 天內沒有新圖；較舊的未上線圖：', file=sys.stderr)
+    for c in sorted(allnew)[:5]: print('        %s' % c[3], file=sys.stderr)
+    sys.exit(3)
+fresh.sort(key=lambda c: (not c[1], c[2], c[0]))  # 有文案/數據 → 專題卡 → 越新越優先
+for c in fresh[:3]: print('      候選: %s' % c[3], file=sys.stderr)
+print(fresh[0][3])
+PY
+  )"; then
+    echo "      ✓ 沒有 7 天內待上傳的新卡（或都已上畫廊），無事可做"; exit 0
+  fi
+  echo "      ✓ 自動選定：$IMG_PATH"
+else
+  case "$IMG_ARG" in out/*) IMG_PATH="$IMG_ARG" ;; *) IMG_PATH="out/$IMG_ARG" ;; esac
+  [ -f "$IMG_PATH" ] || { echo "找不到定稿圖：$IMG_PATH" >&2; exit 1; }
+fi
 
 IMG_NAME="$(basename "$IMG_PATH")"
 STEM="${IMG_NAME%.png}"
@@ -71,7 +106,29 @@ GROUP_KEY="$(printf '%s' "$KIND" | sed -E 's/-p[0-9]+$//')"   # anthropic-s1-p01
 KIND_U="$(printf '%s' "$KIND" | tr '-' '_')"
 GK_U="$(printf '%s' "$GROUP_KEY" | tr '-' '_')"
 if [ "$STAMP" = "$STEM" ] || [ -z "$KIND" ]; then echo "檔名解析失敗（需 <kind>-YYYYMMDD[-tag].png）：$IMG_NAME" >&2; exit 1; fi
-[ -z "$GROUP" ] && GROUP="$KIND"
+# 組名自動推導：POST_NAME 已有 → 用；新卡種 → data json 的 title；都沒有 → kind 轉可讀
+if [ -z "$GROUP" ]; then
+  GROUP="$(python3 - "$GROUP_KEY" "$KIND" <<'PY'
+import json, os, re, sys
+key, kind = sys.argv[1], sys.argv[2]
+s = open('scripts/build_gallery.py', encoding='utf-8').read()
+m = re.search(r'POST_NAME = \{.*?\}', s, re.S)
+d = dict(re.findall(r"['\"]([^'\"]+)['\"]\s*:\s*['\"]([^'\"]+)['\"]", m.group(0))) if m else {}
+if key in d:
+    print(d[key]); raise SystemExit
+for p in ('data/%s.json' % kind, 'data/%s.json' % key,
+          'data/%s.json' % kind.replace('-', '_')):
+    if os.path.exists(p):
+        try:
+            j = json.load(open(p, encoding='utf-8'))
+            for k in ('title', 'name', 'headline', 'company'):
+                if isinstance(j.get(k), str) and j[k].strip():
+                    print(j[k].strip()); raise SystemExit
+        except (ValueError, OSError): pass
+print(kind.replace('-', ' ').title())
+PY
+)"
+fi
 [ -z "$TITLE" ] && TITLE="$(printf '%s' "$GROUP" | sed 's/ · / /g')"
 
 echo "── 專題卡上畫廊 ──────────────────────────────"

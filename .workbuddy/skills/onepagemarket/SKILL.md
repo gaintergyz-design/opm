@@ -1,6 +1,6 @@
 ---
 name: onepagemarket
-description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」「上畫廊」「發布專題卡」「publish_special_card」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡，以及出完圖後一條指令上畫廊的完整流程（第 10 節）。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維、跨設備同步。改產線或跑產線前必讀。
+description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」「上传画廊」「上畫廊」「發布專題卡」「publish_special_card」。🔴 聽到「上传画廊」＝直接跑零參數 `bash scripts/publish_special_card.sh`，不問問題、不要求填參數（第 10 節）。涵蓋四張定時卡、Who Owns X 股權卡、個股財報卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維、跨設備同步。改產線或跑產線前必讀。
 ---
 
 # OPM 產線操作手冊（@onepagemarket）
@@ -27,8 +27,9 @@ bash scripts/preview.sh ondeck|winners|earnings|weekahead|close
 # 全產線（fetch → render → gallery → notify → post_x）
 bash scripts/publish.sh ondeck|theclose|winners|weekahead
 
-# 專題卡出完圖 → 一條指令上畫廊（見第 10 節，跨設備同步也看那節）
-bash scripts/publish_special_card.sh out/<kind>-<stamp>.png --title "..." --group "..."
+# 🔴 說「上传画廊」就直接跑這行（零參數，見第 10 節）
+bash scripts/publish_special_card.sh
+#   可選：--match <關鍵字> 指定哪張；--dry-run 先看計畫
 bash scripts/publish_special_card.sh --help   # 自帶完整說明
 
 # 股權卡
@@ -119,19 +120,25 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - 家用電腦：資料庫下載源碼包（或 git clone）→ npm install → 即可按本手冊跑產線。
 - 定時卡永遠以 GitHub Actions 為準，任何設備關機都不影響。
 
-## 10. 🔴 出完圖之後：一條指令上畫廊（含跨設備同步）
+## 10. 🔴 說「上传画廊」就跑完（零參數，含跨設備同步）
 
-**流程（不要再拆成探索／盤點／驗證多輪）**
+**🔴 阿澤說「上传画廊」／「上畫廊」／「發布專題卡」＝立刻執行下面這行，不問問題、不要求他填檔名／title／group、不重新調研：**
 
-1. 定稿 PNG 放 `out/`，檔名 `<kind>-YYYYMMDD[-HHMM].png`。同目錄的 `caption-<kind>-<stamp>.txt`、`data/<kind>.json`、`scripts/build_<kind>.js` 會自動帶上（build 腳本用底線命名，如 `build_ai_labs_scorecard.js`，也認）。
-2. 想先確認：加 `--dry-run`（完全不寫檔、不移動、不 commit）。
-3. 正式跑：
-   ```bash
-   bash scripts/publish_special_card.sh out/ai-labs-scorecard-20261111-0955.png \
-     --title "OpenAI vs Anthropic scorecard" \
-     --group "OpenAI vs Anthropic · Scorecard"
-   ```
-4. 看腳本最後的驗收 ✓。文案在 `out/caption-*-<stamp>.txt`，**腳本不發帖**；Pages 有快取，首刷舊頁屬正常。
+```bash
+bash scripts/publish_special_card.sh
+```
+
+腳本自己判斷一切：
+
+- **選圖**：`out/*.png` 中排除已出現在 `origin/main:docs/index.html` 的，只認 7 天內新出的（防舊草稿誤發），優先有 caption／data json 的專題卡，再取最新。開頭會印「自動選定：<路徑>」與前 3 個候選。
+- **帶檔**：同 kind 的 `caption-*.txt`、`data/<kind>.json`、`scripts/build_<kind>.js`（底線命名也認）自動進第一段提交。
+- **組名／標題**：查 `build_gallery.py` 的 `POST_NAME`；新卡種才從 `data/*.json` 的 title 或 kind 自動生成並寫回模板。
+- **其餘**：清過程稿 → `card:` → `gallery: add` → rebase → 代理 push → 驗收，全自動。
+- 若 7 天內沒有新圖，腳本會列出較舊的未上線圖並安全結束，不會亂發。
+
+**只有這兩種情況才加參數**：使用者給了線索（「上传画廊 OpenAI 那張」）→ `--match openai`；想先看計畫 → `--dry-run`。明確指定圖檔 `--title`／`--group` 只在特殊需求時用，一般不要。
+
+跑完看腳本最後的驗收 ✓，回報時附上成品圖與文案即可。文案在 `out/caption-*-<stamp>.txt`，**腳本不發帖**；Pages 有快取，首刷舊頁屬正常。
 
 **腳本做的六件事**：清同 kind 過程稿到 `out/_wip/`（已入庫的舊版跳過，移走會讓重建索引拔掉歷史卡）→ 新卡種自動補 `POST_NAME` 組名 → `card:` → `gallery: add` → 代理 fetch／分叉才 `rebase -X theirs`／重跑畫廊補索引／amend／push → 驗收只看 `git show origin/main:`。內建冪等（卡已在遠端且索引引用即結束）、精確 `git add` 不碰別線 WIP、先 push 再還 stash。
 
