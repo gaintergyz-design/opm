@@ -45,6 +45,10 @@ def arg(name, d):
 OPEN_DAYS = arg('--days', 3)     # 最近 N 天預設展開
 SHOW_DAYS = arg('--show', 0)     # 只渲染最近 N 天的貼文（0 = 全部，默認；舊組折疊不佔流量）
 PRUNE_DAYS = arg('--prune', 0)   # >0 時，docs/img 超過 N 天的圖直接刪除
+# 同一工作區可能有別張卡正在製作中（out/ 已有圖但尚未定稿）→ 用 --exclude <kind>[,<kind>]
+# 暫時不收進畫廊，避免半成品被推上公開頁。不傳參數時行為與舊版完全一致。
+_ex = sys.argv[1:]
+EXCLUDE = set(_ex[_ex.index('--exclude') + 1].split(',')) if '--exclude' in _ex else set()
 
 os.makedirs(IMG, exist_ok=True)
 
@@ -178,7 +182,7 @@ for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
     name = os.path.basename(p)
     kind, d = parse(name)
     kind = kind_alias(kind)
-    if d is None:
+    if d is None or kind in EXCLUDE or POST_OF.get(kind, kind) in EXCLUDE:
         continue
     shutil.copy2(p, os.path.join(IMG, name))
     cap_file = os.path.join(OUT, f'caption-{name[:-4]}.txt')
