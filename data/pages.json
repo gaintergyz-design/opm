@@ -2,184 +2,184 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-10 11:40",
+  "generated_at": "2026-11-11 11:44",
   "week_label": "Nov 09 – Nov 13",
   "ondeck": {
-    "session": "2026-11-10",
+    "session": "2026-11-11",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 2.43
+        "pct": -0.35
       },
       {
         "label": "Nasdaq",
-        "pct": 2.85
+        "pct": -0.74
       },
       {
         "label": "Russell 2000",
-        "pct": 3.46
+        "pct": -0.84
       }
     ],
     "econ": [
       {
-        "time": "11:30",
-        "event": "Atlanta Fed GDPNow",
-        "consensus": "3.4%",
-        "previous": "3.4%"
+        "time": "06:00",
+        "event": "NFIB Small Business Optimism",
+        "consensus": "98.0",
+        "previous": "97.9"
       },
       {
-        "time": "11:00",
-        "event": "NY Fed 1-Year Consumer Inflation Expectations",
-        "consensus": "3.8%",
-        "previous": "3.9%"
+        "time": "08:30",
+        "event": "Core CPI",
+        "consensus": "0.2%",
+        "previous": "0.3%"
       },
       {
-        "time": "08:40",
-        "event": "FOMC Member Bowman Speaks",
+        "time": "08:30",
+        "event": "CPI Index, n.s.a.",
+        "consensus": "337.02",
+        "previous": "336.94"
+      },
+      {
+        "time": "04:00",
+        "event": "Fed Waller Speaks",
         "consensus": "",
         "previous": ""
       },
       {
-        "time": "10:00",
-        "event": "Fed Goolsbee Speaks",
+        "time": "08:30",
+        "event": "Core CPI Index",
+        "consensus": "",
+        "previous": "338.90"
+      },
+      {
+        "time": "08:30",
+        "event": "CPI Index, s.a",
+        "consensus": "",
+        "previous": "336.30"
+      },
+      {
+        "time": "08:30",
+        "event": "CPI, n.s.a",
+        "consensus": "",
+        "previous": "0.59%"
+      },
+      {
+        "time": "09:35",
+        "event": "Fed Logan Speaks",
         "consensus": "",
         "previous": ""
       },
       {
-        "time": "12:15",
-        "event": "FOMC Member Barkin Speaks",
+        "time": "13:00",
+        "event": "Cleveland CPI",
+        "consensus": "",
+        "previous": "0.2%"
+      },
+      {
+        "time": "13:30",
+        "event": "Fed Schmid Speaks",
         "consensus": "",
         "previous": ""
-      },
-      {
-        "time": "10:00",
-        "event": "Wholesale Inventories",
-        "consensus": "0.6%",
-        "previous": "0.6%"
-      },
-      {
-        "time": "10:00",
-        "event": "Wholesale Trade Sales",
-        "consensus": "1.1%",
-        "previous": "2.0%"
-      },
-      {
-        "time": "10:00",
-        "event": "CB Employment Trends Index",
-        "consensus": "",
-        "previous": "108.43"
-      },
-      {
-        "time": "11:00",
-        "event": "OPEC Crude Oil Production Algeria (Barrel)",
-        "consensus": "",
-        "previous": "1.01M"
-      },
-      {
-        "time": "11:00",
-        "event": "OPEC Crude Oil Production Congo (Barrel)",
-        "consensus": "",
-        "previous": "0.27M"
       }
     ],
-    "econ_all": 22,
+    "econ_all": 18,
     "earnings": {
       "before": [
-        "TDG",
-        "SE",
-        "VOD",
-        "VG",
-        "ONON",
-        "SRRK",
-        "ATAT",
-        "LEGN"
+        "GIB",
+        "ICL",
+        "AYA",
+        "BGSI",
+        "RUM",
+        "NYAX",
+        "AADX",
+        "FLNG"
       ],
       "after": [
-        "PBR",
-        "PBR.A",
-        "ALC",
-        "EC",
-        "CRWV",
-        "VIV",
-        "MRCY",
-        "RGTI"
+        "FNV",
+        "VYLR",
+        "TTEK",
+        "CAE",
+        "CTVA",
+        "OR",
+        "ENS",
+        "ECO"
       ],
-      "before_n": 49,
-      "after_n": 83,
-      "total": 173,
+      "before_n": 23,
+      "after_n": 34,
+      "total": 218,
       "top": [
         {
-          "ticker": "CRWV",
-          "name": "CoreWeave",
-          "cap": 25591298000,
-          "growth": 159.5,
-          "eps": -1.55,
-          "surprise": 54.4,
+          "ticker": "ECO",
+          "name": "Okeanis Eco Tankers",
+          "cap": 3250857980,
+          "growth": 281.0,
+          "eps": 3.69,
+          "surprise": 116.9,
           "time": "AMC"
         },
         {
-          "ticker": "IBRX",
-          "name": "ImmunityBio",
-          "cap": 9151686700,
-          "growth": 88.2,
-          "eps": -0.04,
-          "surprise": 37.9,
-          "time": ""
-        },
-        {
-          "ticker": "PBR",
-          "name": "Petroleo Brasileiro S.A.- Petrobras",
-          "cap": 119414112000,
-          "growth": 41.0,
-          "eps": 1.41,
-          "surprise": 31.8,
+          "ticker": "TNK",
+          "name": "Teekay Tankers",
+          "cap": 2969325060,
+          "growth": 128.7,
+          "eps": 4.49,
+          "surprise": 5.7,
           "time": "AMC"
         },
         {
-          "ticker": "VG",
-          "name": "Venture Global",
-          "cap": 28826071000,
-          "growth": 40.5,
-          "eps": 0.53,
-          "surprise": -33.9,
-          "time": "BMO"
-        },
-        {
-          "ticker": "SE",
-          "name": "Sea Limited",
-          "cap": 46383452000,
-          "growth": 35.0,
-          "eps": 0.97,
-          "surprise": -19.8,
-          "time": "BMO"
-        },
-        {
-          "ticker": "ONON",
-          "name": "On Holding",
-          "cap": 22544185300,
-          "growth": 21.3,
-          "eps": 0.31,
-          "surprise": 17.8,
-          "time": "BMO"
-        },
-        {
-          "ticker": "TDG",
-          "name": "Transdigm Group",
-          "cap": 66166555000,
-          "growth": 20.9,
-          "eps": 12.21,
-          "surprise": 7.6,
-          "time": "BMO"
-        },
-        {
-          "ticker": "SLAB",
-          "name": "Silicon Laboratories",
-          "cap": 7390737400,
-          "growth": 17.5,
-          "eps": 0.85,
-          "surprise": 4.2,
+          "ticker": "UGP",
+          "name": "Ultrapar Participacoes",
+          "cap": 6031431200,
+          "growth": 22.0,
+          "eps": 0.23,
+          "surprise": 14.7,
           "time": ""
+        },
+        {
+          "ticker": "FNV",
+          "name": "Franco-Nevada",
+          "cap": 49221353000,
+          "growth": 13.2,
+          "eps": 1.73,
+          "surprise": 3.8,
+          "time": "AMC"
+        },
+        {
+          "ticker": "TECH",
+          "name": "Bio-Techne Corp",
+          "cap": 11413231600,
+          "growth": 4.1,
+          "eps": 0.48,
+          "surprise": 5.8,
+          "time": ""
+        },
+        {
+          "ticker": "GIB",
+          "name": "CGI",
+          "cap": 19341555700,
+          "growth": 2.9,
+          "eps": 2.3,
+          "surprise": 1.9,
+          "time": "BMO"
+        },
+        {
+          "ticker": "ENS",
+          "name": "EnerSys",
+          "cap": 5302309400,
+          "growth": 1.6,
+          "eps": 3.18,
+          "surprise": 8.8,
+          "time": "AMC"
+        },
+        {
+          "ticker": "CAE",
+          "name": "CAE",
+          "cap": 8634453000,
+          "growth": 1.0,
+          "eps": 0.26,
+          "surprise": 14.9,
+          "time": "AMC"
         }
       ]
     }
@@ -279,33 +279,33 @@
       {
         "day": "Mon",
         "date": "Nov 16",
-        "count": 65,
+        "count": 72,
         "econ": [],
         "before": [
           "BIDU",
-          "BEKE",
           "TSN",
+          "BEKE",
           "HTHT",
           "ARMK",
           "XPEV",
           "BXDC",
-          "IQ"
+          "POET"
         ],
         "after": [
           "ACM",
+          "XP",
           "POWL",
           "PAGS",
           "INFQ",
-          "YALA",
           "SHAZ",
-          "RCAT",
-          "API"
+          "YALA",
+          "RCAT"
         ]
       },
       {
         "day": "Tue",
         "date": "Nov 17",
-        "count": 44,
+        "count": 43,
         "econ": [
           "NY Empire State Manufacturing Index",
           "3-Month Bill Auction",
@@ -314,8 +314,8 @@
         "before": [
           "HD",
           "DIS",
-          "JD",
           "VIK",
+          "JD",
           "ESLT",
           "AS",
           "TME",
@@ -328,8 +328,8 @@
           "GBDC",
           "LZB",
           "IIIV",
-          "AUNA",
-          "IRIX"
+          "GLAD",
+          "AUNA"
         ]
       },
       {
@@ -340,7 +340,7 @@
           "Atlanta Fed GDPNow",
           "Core Retail Sales",
           "Retail Sales Ex Gas/Autos",
-          "Export Price Index"
+          "Retail Inventories Ex Auto"
         ],
         "before": [
           "TJX",
@@ -366,7 +366,7 @@
       {
         "day": "Thu",
         "date": "Nov 19",
-        "count": 50,
+        "count": 49,
         "econ": [
           "Housing Starts",
           "FOMC Meeting Minutes",
@@ -397,7 +397,7 @@
       {
         "day": "Fri",
         "date": "Nov 20",
-        "count": 13,
+        "count": 14,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
@@ -407,7 +407,8 @@
         "before": [
           "BSP",
           "BJ",
-          "BKE"
+          "BKE",
+          "WRD"
         ],
         "after": []
       }
