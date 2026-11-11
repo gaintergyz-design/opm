@@ -76,6 +76,7 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'who-owns-msft': 'Who Owns Microsoft?',
              'etf-omah': 'OMAH ETF · Top 10 Holdings',
              'anthropic-s1': 'Anthropic S-1 · 6 cards',
+             'ai-labs-scorecard': 'OpenAI vs Anthropic · Scorecard',
              'top10-cap': 'The 10 Most Valuable Companies',
              'cpi': 'US CPI Preview'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
