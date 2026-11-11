@@ -1,6 +1,6 @@
 ---
 name: onepagemarket
-description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維。改產線或跑產線前必讀。
+description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」「上畫廊」「發布專題卡」「publish_special_card」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡，以及出完圖後一條指令上畫廊的完整流程（第 10 節）。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維、跨設備同步。改產線或跑產線前必讀。
 ---
 
 # OPM 產線操作手冊（@onepagemarket）
@@ -26,6 +26,10 @@ bash scripts/preview.sh ondeck|winners|earnings|weekahead|close
 
 # 全產線（fetch → render → gallery → notify → post_x）
 bash scripts/publish.sh ondeck|theclose|winners|weekahead
+
+# 專題卡出完圖 → 一條指令上畫廊（見第 10 節，跨設備同步也看那節）
+bash scripts/publish_special_card.sh out/<kind>-<stamp>.png --title "..." --group "..."
+bash scripts/publish_special_card.sh --help   # 自帶完整說明
 
 # 股權卡
 NODE_PATH=./node_modules node scripts/build_ownership.js   # 數據在 data/ownership-<ticker>.json
@@ -57,7 +61,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 ## 4. 🔴 交付約定
 
 - **🔴 每輪交付必須同時給出：① 成品圖（present_files）② 完整發帖文案**（post_x.py「將發帖：」全文；模板：`The Close: {指數}. Most traded: {前三}. Breadth {n}% advancers. 🧵`）。未發帖時註明「未發帖，供手動發」。
-- 文案鐵律：只寫數字與事實、不寫「所以」、單句 ≤90 字元、全文 ≤280 字元。
+- 文案鐵律（2026-11-09 欽定現行版，取代早期「只寫數字與事實、單句 ≤90 字」）：**開頭必為疑問句 hook**；≤3 行、必 ≤280 字；活人感＋話題感＋簡短、不說教、不寫總結陳詞；中段只留 2–3 個最有戲的數字；**結尾不寫 `One page ↓`**。
 - 檔名：`the-close-YYYYMMDD.png`（用 session 交易日命名）；四頁用 `PAGES_STAMP`＝數據交易日。
 - X 發帖：OAuth1.0a 適合 CI（不過期）；OAuth2 PKCE 的 refresh token 會輪換，勿用於定時任務。X API 2026-02 起 pay-per-use（發帖 $0.015/則）。
 - 推送通知：scripts/notify.py（wecom / wecom-app / telegram / bark / none 可插拔，配置 scripts/.env.notify），產圖後先 notify（失敗不阻斷）再 post_x。
@@ -114,3 +118,27 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - 手機操作：WorkBuddy 小程序「本機模式」（iMac 開機時遙控本機）或「雲端模式」（沙箱 clone 本公開倉庫跑，冷啟動幾分鐘，發帖授權不在沙箱，產出＝成品圖+文案手動發）。
 - 家用電腦：資料庫下載源碼包（或 git clone）→ npm install → 即可按本手冊跑產線。
 - 定時卡永遠以 GitHub Actions 為準，任何設備關機都不影響。
+
+## 10. 🔴 出完圖之後：一條指令上畫廊（含跨設備同步）
+
+**流程（不要再拆成探索／盤點／驗證多輪）**
+
+1. 定稿 PNG 放 `out/`，檔名 `<kind>-YYYYMMDD[-HHMM].png`。同目錄的 `caption-<kind>-<stamp>.txt`、`data/<kind>.json`、`scripts/build_<kind>.js` 會自動帶上（build 腳本用底線命名，如 `build_ai_labs_scorecard.js`，也認）。
+2. 想先確認：加 `--dry-run`（完全不寫檔、不移動、不 commit）。
+3. 正式跑：
+   ```bash
+   bash scripts/publish_special_card.sh out/ai-labs-scorecard-20261111-0955.png \
+     --title "OpenAI vs Anthropic scorecard" \
+     --group "OpenAI vs Anthropic · Scorecard"
+   ```
+4. 看腳本最後的驗收 ✓。文案在 `out/caption-*-<stamp>.txt`，**腳本不發帖**；Pages 有快取，首刷舊頁屬正常。
+
+**腳本做的六件事**：清同 kind 過程稿到 `out/_wip/`（已入庫的舊版跳過，移走會讓重建索引拔掉歷史卡）→ 新卡種自動補 `POST_NAME` 組名 → `card:` → `gallery: add` → 代理 fetch／分叉才 `rebase -X theirs`／重跑畫廊補索引／amend／push → 驗收只看 `git show origin/main:`。內建冪等（卡已在遠端且索引引用即結束）、精確 `git add` 不碰別線 WIP、先 push 再還 stash。
+
+**🔴 跨電腦同步靠 git，不是靠記憶**
+
+- **會同步**（都在 repo 內、受 git 管理）：`scripts/publish_special_card.sh`、**本 SKILL.md（項目級 skill）**、`scripts/build_gallery.py`、`docs/`。
+- **不會同步**：workspace 的 `.workbuddy/memory/MEMORY.md` 與每日日誌、使用者級 `~/.workbuddy/skills/`、`~/.workbuddy/.../MEMORY.md`、X／notify 憑證檔——全是本機專屬。**所以流程與觸發口令必須寫在這裡，不能只寫進記憶。**
+- 新電腦：`git clone https://github.com/gaintergyz-design/opm.git` → `npm install` → 設 git 憑證 → 用 WorkBuddy 開啟該 workspace（會自動載入項目級 skill）→ 說「上畫廊」／「發布專題卡」，或直接跑指令。既有電腦 `git pull` 即可。
+- 代理：腳本讀 `$HTTPS_PROXY`（全域 7890 常失效）。能直連就不必設；需要時 `export HTTPS_PROXY=http://127.0.0.1:<埠>`。Python 優先用 WorkBuddy 內建 venv，找不到就退回 PATH 的 `python3`。
+- 任何電腦先跑 `bash scripts/publish_special_card.sh --help` 就有完整說明——說明寫在腳本註解裡，跟著 git 一起走。

@@ -1,25 +1,42 @@
 #!/bin/bash
 # onepagemarket 專題卡｜一條龍上畫廊
 #
-# 把「清理過程稿 → 兩段式提交 → rebase → 代理推送 → 驗收」封成一支腳本。
-# 依據 .workbuddy/memory/MEMORY.md 的固定 SOP，執行時不再重新調研。
+# === 出完圖之後，只要這一步 ==========================================
+#   1) 定稿 PNG 放 out/，檔名 <kind>-YYYYMMDD[-HHMM].png
+#      同目錄的 caption-<kind>-<stamp>.txt、data/<kind>.json、
+#      scripts/build_<kind>.js 會自動一起帶上
+#   2) 想先看計畫：加 --dry-run（不移動檔案、不 commit、不 push）
+#   3) 正式發布：
+#      bash scripts/publish_special_card.sh out/ai-labs-scorecard-20261111-0955.png \
+#           --title "OpenAI vs Anthropic scorecard" \
+#           --group "OpenAI vs Anthropic · Scorecard"
+#   4) 跑完看最後的驗收 ✓；Pages 有快取，首刷舊頁屬正常
+#      文案在 out/caption-*-<stamp>.txt，本腳本不發帖
 #
-# 用法：
-#   bash scripts/publish_special_card.sh out/ai-labs-scorecard-20261111-0955.png \
-#        --title "OpenAI vs Anthropic scorecard" \
-#        --group "OpenAI vs Anthropic · Scorecard"
+# === 換電腦 / 同步 ===================================================
+#   本檔與 .workbuddy/skills/onepagemarket/SKILL.md 都在 git 裡，
+#   新電腦 git clone 或 git pull 就有，不需複製任何本機記憶檔
+#   首次準備：npm install；git 憑證；需代理時先 export HTTPS_PROXY=...
+#   Python 優先 WorkBuddy 內建 venv，找不到就退回 PATH 的 python3
+#   任何電腦都能先跑 `bash scripts/publish_special_card.sh --help` 看這份說明
 #
-#   bash scripts/publish_special_card.sh <定稿 PNG> [選項]
-#     --title "..."      commit 名稱，內文為 `card: <title>` / `gallery: add <title>`
-#                        省略時用組名（再省略用 kind）
-#     --group "..."      畫廊組名；POST_NAME 沒有這個 kind 時自動寫入 build_gallery.py
-#     --extra <path>     額外要進第一段提交的檔案，可重複（新 logo、附加數據…）
-#     --no-clean         跳過清理（預設會把同 kind 舊版收進 out/_wip/）
-#     --no-push          只做到兩段提交，不 fetch/rebase/push
-#     --dry-run          只印出計畫，不移動檔案、不改檔、不 commit、不 push
+# === 參數 ===========================================================
+#   <定稿 PNG>      必填，out/ 下的最終版（可只給檔名）
+#   --title "..."   commit 名稱：card: <title> / gallery: add <title>
+#                   省略時用組名，再省略用 kind
+#   --group "..."   畫廊組名；POST_NAME 沒這個 kind 時自動寫入 build_gallery.py
+#   --extra <path>  額外進第一段提交的檔案，可重複（新 logo、附加數據…）
+#   --no-clean      跳過清理（預設把同 kind 舊版收進 out/_wip/）
+#   --no-push       只做兩段提交，不 fetch/rebase/push
+#   --dry-run       只印計畫，不移動檔案、不改檔、不 commit、不 push
+#   -h | --help     印出這份說明
 #
-# 注意：本腳本自行解析參數，--dry-run 不外傳給任何子程式（publish.sh 的舊坑不適用）。
-# 精確 git add，絕不 `git add -A`／`git commit -a`，不碰其它產線的 WIP。
+# === 行為 ===========================================================
+#   清理 → 補組名 → card: → gallery: add → rebase → 代理 push → 驗收
+#   冪等：卡已在 origin/main 且索引引用即結束；精確 git add，
+#   絕不 git add -A / commit -a，不碰其它產線 WIP
+#   參數自行解析，--dry-run 不外傳（publish.sh 的舊坑不適用）
+# ==================================================================
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
@@ -35,7 +52,7 @@ while [ $# -gt 0 ]; do
     --dry-run)    DRY=1; shift ;;
     --no-clean)   NO_CLEAN=1; shift ;;
     --no-push)    NO_PUSH=1; shift ;;
-    -h|--help)    sed -n '2,26p' "$0"; exit 0 ;;
+    -h|--help)    awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0"; exit 0 ;;
     -*)           echo "未知選項：$1" >&2; exit 1 ;;
     *)            [ -z "$IMG_ARG" ] && IMG_ARG="$1" || { echo "只能給一張定稿 PNG" >&2; exit 1; }; shift ;;
   esac
