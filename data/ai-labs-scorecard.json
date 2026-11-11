@@ -1,0 +1,70 @@
+{
+  "title": "OpenAI vs Anthropic",
+  "subtitle": "The 2026 scorecard: revenue, burn, cash, valuation and backers",
+  "meta": "Data as of Nov 11, 2026",
+  "kicker": "THE FRONTIER LAB SCORECARD",
+
+  "quarters": [
+    { "q": "Q1 '26", "oai": 5.70,  "ant": 4.73 },
+    { "q": "Q2 '26", "oai": 6.70,  "ant": 11.56 },
+    { "q": "Q3 '26", "oai": null,  "ant": 16.96 }
+  ],
+  "quarter_scale_max": 18,
+
+  "rows": [
+    {
+      "label": "Latest valuation",
+      "oai": "$1.25T", "oaiSub": "$11B round, Nov 6",
+      "ant": "$965B",  "antSub": "Series H, May 28"
+    },
+    {
+      "label": "Q2 growth (QoQ)",
+      "oai": "+18%", "oaiSub": "$5.7B → $6.7B",
+      "ant": "+144%", "antSub": "$4.7B → $11.6B"
+    },
+    {
+      "label": "Annualized run-rate",
+      "oai": "~$50B", "oaiSub": "net basis, Sep '26",
+      "ant": "~$65B", "antSub": "gross basis, Jul '26"
+    },
+    {
+      "label": "Q2 operating income",
+      "oai": "−$12.3B", "oaiSub": "GAAP loss",
+      "ant": "+$0.97B", "antSub": "first GAAP profit"
+    },
+    {
+      "label": "Cash & ST investments",
+      "oai": "n/d", "oaiSub": "not disclosed",
+      "ant": "$131.7B", "antSub": "as of Jun '26"
+    },
+    {
+      "label": "H1 operating cash flow",
+      "oai": "n/d", "oaiSub": "not disclosed",
+      "ant": "+$3.93B", "antSub": "first positive"
+    },
+    {
+      "label": "Compute commitments",
+      "oai": "$856B", "oaiSub": "spend, '26–'30E",
+      "ant": "$431B", "antSub": "signed, ~10 yrs"
+    }
+  ],
+
+  "backers": {
+    "oai": [
+      { "t": "MSFT", "n": "Microsoft" },
+      { "t": "AMZN", "n": "Amazon" },
+      { "t": "NVDA", "n": "NVIDIA" }
+    ],
+    "ant": [
+      { "t": "AMZN", "n": "Amazon" },
+      { "t": "GOOGL", "n": "Alphabet" },
+      { "t": "MSFT", "n": "Microsoft" }
+    ]
+  },
+  "backers_label": ["MAJOR CORPORATE BACKERS", "& PARTNERS"],
+
+  "notes": [
+    "OpenAI: figures from investor materials reported by Bloomberg / Reuters, not audited filings. Anthropic: SEC S-1 (filed Oct 26, updated Nov 2, 2026).",
+    "Revenue methods differ (net vs gross via cloud marketplaces); run-rates and private-round valuations are dated differently — not directly comparable."
+  ]
+}
