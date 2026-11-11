@@ -162,10 +162,11 @@ function kpiCard(x, k) {
   g.push(t(bx + bw + gap2 + bw / 2, baseY + 22, k.cur_txt, { size: 16, fill: C.dim, anchor: 'middle' }));
 
   // YOY 帶號：|Δ|<1% 用灰（持平），否則綠/紅
+  // 虧損股（CRWV）用 yoy_disp 覆寫成「去年同期」絕對值，避免負 EPS 的 % 變動失真
   const yoy = Number(k.yoy);
-  const ytxt = `YOY ${yoy > 0 ? '+' : yoy < 0 ? '\u2212' : ''}${Math.abs(yoy)}%`;
-  const ycol = Math.abs(yoy) < 1 ? C.gray : (yoy > 0 ? C.pos : '#C0392B');
-  g.push(t(x + cardW - 26, KPI_Y + 46, ytxt, { size: 23, weight: 700, fill: ycol, anchor: 'end' }));
+  const ytxt = k.yoy_disp || `YOY ${yoy > 0 ? '+' : yoy < 0 ? '\u2212' : ''}${Math.abs(yoy)}%`;
+  const ycol = k.yoy_disp ? C.gray : (Math.abs(yoy) < 1 ? C.gray : (yoy > 0 ? C.pos : '#C0392B'));
+  g.push(t(x + cardW - 26, KPI_Y + 46, ytxt, { size: k.yoy_disp ? 19 : 23, weight: 700, fill: ycol, anchor: 'end' }));
   return g.join('');
 }
 svg.push(kpiCard(M, D.kpi.revenue));
@@ -236,7 +237,8 @@ if (!D.gross_margin) {
   D.op_margin.forEach((v, i) => {
     // 首點靠左會撞 Y 軸刻度 → 改左對齊往右讓
     const first = i === 0;
-    svg.push(t(xOf(i, n) + (first ? 10 : 0), yOf(v) - 14, MSUF ? `${v}${MSUF}` : Number(v).toFixed(1),
+    svg.push(t(xOf(i, n) + (first ? 10 : 0), yOf(v) - 14,
+               MSUF ? `${v}${MSUF}` : Number(v).toFixed(LAY.marginDec != null ? LAY.marginDec : 1),
                { size: 16, weight: 700, fill: C.primary, anchor: first ? 'start' : 'middle' }));
   });
 }
@@ -254,7 +256,8 @@ if (D.cash_trend) {
   const gx0 = RP_X + 46, gx1 = RP_X + RP_W - 10;
   // 有 strip 條時 B_Y=512，botY 必須壓在 806（outlook 卡上緣）之上，否則季度標籤被蓋（BRK 2026-11-09）
   const botY = B_Y + (D.strip ? 262 : 282), topY = B_Y + 84;
-  const hi = Math.max(...vals, 0);
+  // headroom：最大值恰好等於軸頂時，柱頂數值會貼到標題下的註解（CRWV backlog 卡踩到）
+  const hi = Math.max(...vals, 0) * (D.cash_trend.headroom || 1);
   const yOfV = (v) => botY - (v / hi) * (botY - topY);
   const step = D.cash_trend.step || 30;
   for (let v = 0; v <= hi; v += step) {

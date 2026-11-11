@@ -1,0 +1,78 @@
+{
+  "ticker": "CRWV",
+  "company": "CoreWeave",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 10, 2026 · after close",
+  "brand": {
+    "deep": "#182238",
+    "primary": "#2B4EE6",
+    "mid": "#5575F0",
+    "teal": "#9DB1F7",
+    "pos": "#028948"
+  },
+  "strip": "Rev +168% Y/Y · adj. op margin hit 10% a quarter early · backlog $132.5B · interest $846M",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 3.661,
+      "actual_disp": "$3.66B",
+      "est_disp": "$3.56B · consensus",
+      "surprise": 2.8,
+      "pill_tone": "pos",
+      "prior": 1.365,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 168
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": -1.27,
+      "actual_disp": "-$1.27",
+      "est_disp": "-$1.46 · consensus",
+      "surprise": 13.0,
+      "pill": "Smaller loss",
+      "pill_tone": "pos",
+      "prior": -0.22,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 0,
+      "yoy_disp": "LY -$0.22"
+    }
+  },
+  "layout": {
+    "marginMax": 4,
+    "marginStep": 1,
+    "marginSuffix": "",
+    "marginDec": 2
+  },
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "margin_title": "Revenue (US$B)",
+  "op_margin": [1.37, 1.57, 2.08, 2.58, 3.66],
+  "mix_title": "Revenue backlog (US$B)",
+  "cash_trend": {
+    "values": [55.6, 66.8, 99.4, 104.0, 132.5],
+    "step": 40,
+    "headroom": 1.12,
+    "note": "+$28.5B Q/Q · ~$9B customer prepayments due in 3 months"
+  },
+  "panel3_title": "Operating cash flow",
+  "ocf": [1.7, 1.6, 3.0, 0.7, 2.0],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1,
+    "dec": 1,
+    "step": 1
+  },
+  "outlook": {
+    "title": "FY 2026 guidance · raised",
+    "items": [
+      { "k": "FY26 revenue", "v": "$13.0–13.3B", "note": "exit ARR guided to $20–21B" },
+      { "k": "Adj. op income", "v": "$1.275–1.375B", "note": "midpoint +26% vs prior guide" },
+      { "k": "FY26 capex", "v": "$37–39B", "note": "low end raised from $35B" },
+      { "k": "Net interest", "v": "$846M", "note": "Q4 guide $1.05–1.15B · debt ~$46.9B" },
+      { "k": "Active power", "v": "1.7 GW", "note": "+200 MW in Q3 · >4.6 GW contracted" }
+    ]
+  },
+  "notes": "口徑：CoreWeave, Inc.（Nasdaq: CRWV）2026 年 Q3（截至 2026-09-30，美東 2026-11-10 盤後發布）。主要來源＝公司投資者關係官方新聞稿『CoreWeave Reports Strong Third Quarter 2026 Results』（2026-11-10）之合併損益表／資產負債表／現金流量表／GAAP 與 Non-GAAP 調節表；共識與股價反應取自華爾街見聞、每日經濟新聞、財聯社（2026-11-11）、Benzinga 報價頁；歷史季度營收／backlog 用公司 Q2 2026 新聞稿、Q3 2025 財報報導（鉅亨網、新浪、鈦媒體、香港經濟日報）與 Sacra 研究交叉核對。\n\n【本季】營收 $3,661M（3Q25 $1,365M，+168% Y/Y；街預期約 $3,560M → Beat +2.8%；環比 +$1,086M，CEO 稱「單季增加逾 $10 億」）。GAAP 營業利益 $207M（利潤率 6%，3Q25 $52M / 4%）；GAAP 淨損 $709M（3Q25 $110M），淨損率 -19%；稀釋每股淨損 -$1.27（3Q25 -$0.22，街預期 -$1.46 → 虧損小於預期，媒體口徑「每股淨虧損優於預期」）。淨利息支出 $846M（3Q25 $310M）。調整後 EBITDA $2,256M（+169% Y/Y），調整後 EBITDA 利潤率 62%（3Q25 61%）；調整後營業利益 $379M（+75% Y/Y），調整後營業利益率 10%（3Q25 16%、2Q26 5%），CEO 稱雙位數利潤率「提前一季達成」；調整後淨損 $529M。\n\n【五季營收 US$B】3Q25 1.365 / 4Q25 1.572 / 1Q26 2.078 / 2Q26 2.575 / 3Q26 3.661。9M26 官方 $8,314M，與 Q1+Q2+Q3 = 2,078+2,575+3,661 完全相符；FY2025 官方 $5,131M 亦與四季相加一致。\n\n【五季 revenue backlog US$B】3Q25 55.6（官方新聞稿，簽約電力 2.9GW）/ 4Q25 66.8（Sacra，year-end 2025）/ 1Q26 99.4（Sacra、Longbridge）/ 2Q26 104.0（Q2 官方新聞稿約 $104B／Longbridge 1040 億；另 Q3 初新增逾 $25B 承諾未計入）/ 3Q26 132.5（Q3 官方新聞稿，截至 9/30）。定義＝剩餘履約義務 + 已承諾客戶合約未來可認列收入，須滿足交付與服務可用性。\n\n【五季營業現金流 US$B】3Q25 1.689（Q3 官方現金流量表）/ 4Q25 1.559（FY2025 $3,058M − 9M25 $1,499M 回推）/ 1Q26 2.984 / 2Q26 0.679 / 3Q26 1.975（Q3 官方現金流量表）。9M26 官方 $5,638M = 2,984+679+1,975 完全相符。資本開支：Q3 官方購置固定資產 $9,441M（部分媒體引 $14.5B 為含其他投資口徑，本卡不混用）；FY26 指引 $37–39B。\n\n【指引／其他】FY26 營收上調至 $13.0–13.3B；調整後營業利益 $1.275–1.375B（中值較前指引 +26%）；年底年化收入運行率 ARR $20–21B（定義＝季度最後一個月營收 ×12）；Q4 利息支出 $1.05–1.15B；年底有效功率 >1.85GW，本季新增 >200MW 至 >1.7GW、簽約總功率 >4.6GW（國際 >1.3GW）；未來三個月預計收到約 $90 億客戶預付款及押金；本季募資含 $4.2B 可轉債、$2.6B DDTL 5.5、最多 3,500 萬股 ATM。期末現金及等價物 $4,122M、現金＋受限制現金 $6,404M；四項有追索／無追索債務合計 $46,873M（2025 年底 $21,373M）。股價：11/6 收 $46.40，財報後盤後一度 +2%~+8%（各來源口徑不同，本卡不引用單一漲幅），年內累計約 -32%。\n\n【不做的事】不寫「轉虧為盈」（GAAP 仍淨損 $709M）；不把積壓訂單當作已認列收入；不引用東方財富接口數據。"
+}
