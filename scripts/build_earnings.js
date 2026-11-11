@@ -260,10 +260,17 @@ if (D.cash_trend) {
   const hi = Math.max(...vals, 0) * (D.cash_trend.headroom || 1);
   const yOfV = (v) => botY - (v / hi) * (botY - topY);
   const step = D.cash_trend.step || 30;
+  // fmt：右圖單位與下方現金流不同時（RKLB backlog 用 US$B、OCF 用 US$M）獨立換算，
+  //      不設則沿用舊行為（軸標 String(v) + 柱標 fmtOcf）。
+  const CFMT = D.cash_trend.fmt || null;
+  const fmtCt = CFMT ? (v) => (v / CFMT.div).toFixed(CFMT.dec) : fmtOcf;
+  const fmtAxisCt = CFMT
+    ? (v) => (v / CFMT.div).toFixed(CFMT.axisDec != null ? CFMT.axisDec : CFMT.dec)
+    : (v) => String(v);
   for (let v = 0; v <= hi; v += step) {
     const y = yOfV(v);
     svg.push(`<line x1="${gx0}" y1="${y.toFixed(1)}" x2="${gx1}" y2="${y.toFixed(1)}" stroke="${v === 0 ? '#D8E2EC' : C.track}" stroke-width="1"/>`);
-    svg.push(t(gx0 - 12, y + 5, String(v), { size: 15, fill: C.dim, anchor: 'end' }));
+    svg.push(t(gx0 - 12, y + 5, fmtAxisCt(v), { size: 15, fill: C.dim, anchor: 'end' }));
   }
   const slot = (gx1 - gx0) / n;
   const bw = Math.min(56, slot * 0.52);
@@ -271,7 +278,7 @@ if (D.cash_trend) {
     const y = yOfV(v);
     const x = gx0 + slot * i + (slot - bw) / 2;
     svg.push(rrect(x, y, bw, botY - y, 4, i === n - 1 ? 'url(#barCur)' : 'url(#barOcf)'));
-    svg.push(t(x + bw / 2, y - 9, fmtOcf(v), { size: 15, weight: 600, fill: C.deep, anchor: 'middle' }));
+    svg.push(t(x + bw / 2, y - 9, fmtCt(v), { size: 15, weight: 600, fill: C.deep, anchor: 'middle' }));
   });
   D.quarters.forEach((q, i) => {
     svg.push(t(gx0 + slot * i + slot / 2, botY + 24, q, { size: 15, fill: C.gray, anchor: 'middle' }));

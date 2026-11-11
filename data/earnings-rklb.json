@@ -1,0 +1,79 @@
+{
+  "ticker": "RKLB",
+  "company": "Rocket Lab",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 9, 2026 · after close",
+  "brand": {
+    "deep": "#101820",
+    "primary": "#24344A",
+    "mid": "#465E7A",
+    "teal": "#D9322C",
+    "pos": "#028948"
+  },
+  "strip": "Record rev $268M (+73%) · backlog $3.57B (+52% Q/Q) · first positive GAAP op cash flow · EPS missed",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 267.834,
+      "actual_disp": "$268M",
+      "est_disp": "$257M · consensus",
+      "surprise": 4.1,
+      "pill_tone": "pos",
+      "prior": 155.08,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 73
+    },
+    "eps": {
+      "label": "EPS (diluted, GAAP)",
+      "actual": -0.12,
+      "actual_disp": "-$0.12",
+      "est_disp": "-$0.07 · consensus",
+      "surprise": -71.4,
+      "pill": "Wider loss",
+      "pill_tone": "neg",
+      "prior": -0.03,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 0,
+      "yoy_disp": "LY -$0.03"
+    }
+  },
+  "layout": {
+    "marginMax": 300,
+    "marginStep": 50,
+    "marginSuffix": "",
+    "marginDec": 0
+  },
+  "quarters": ["3Q25", "4Q25", "1Q26", "2Q26", "3Q26"],
+  "margin_title": "Revenue (US$M)",
+  "op_margin": [155, 180, 200, 234, 268],
+  "mix_title": "Backlog (US$B)",
+  "cash_trend": {
+    "values": [1.1, 1.85, 2.2, 2.36, 3.57],
+    "step": 1,
+    "headroom": 1.12,
+    "fmt": { "div": 1, "dec": 1, "axisDec": 0 },
+    "note": "+$1.2B Q/Q · ~$1B new launch contracts signed in Q3"
+  },
+  "panel3_title": "Operating cash flow",
+  "ocf": [-23.5, -64.5, -50.3, -84.1, 7.2],
+  "ocf_fmt": {
+    "unit": "US$M",
+    "div": 1,
+    "dec": 1,
+    "step": 10
+  },
+  "outlook": {
+    "title": "Q4 2026 guide · record revenue",
+    "items": [
+      { "k": "Q4 revenue", "v": "$270–290M", "note": "midpoint $280M vs $265.5M consensus" },
+      { "k": "Backlog", "v": "$3.57B", "note": "+52% Q/Q · 117 launches booked" },
+      { "k": "Neutron price", "v": "$70M", "note": "up from $55M · 16 missions pre-sold" },
+      { "k": "Neutron debut", "v": "2027+", "note": "delayed from Q4 2026 · 8 new deals signed" },
+      { "k": "Cash & securities", "v": "$4.7B", "note": "ATM raise fully funds Iridium deal" }
+    ]
+  },
+  "notes": "口徑：Rocket Lab Corporation（Nasdaq: RKLB）2026 財年 Q3（截至 2026-09-30，美東 2026-11-09 盤後 16:05 ET 發布）。主源＝公司投資者關係官方新聞稿『Rocket Lab Announces Third Quarter 2026 Financial Results』之合併損益表／資產負債表／九個月現金流量表／GAAP–Non-GAAP 調節表；歷史季度與 backlog 用公司 Q4 2025、Q1 2026、Q2 2026 新聞稿、Q3 2025 電話會紀錄及 SEC 8-K Exhibit 99.1 交叉核對；共識與股價反應取自 Investing.com／Yahoo Finance、智通財經、新浪財經（2026-11-10）。禁用東方財富行情接口。\n\n【本季】營收 $267.834M（新聞稿四捨五入 $268M，連續第六季創紀錄），3Q25 $155.080M → +72.7%（官方表述 +73% Y/Y）；街預期約 $257.17M → Beat +4.1%，亦高於公司 Q3 指引 $250–265M 上限；環比 +$34M。產品收入 $197.487M／服務收入 $70.347M（官方分類為 Product / Service，新聞稿未披露 Space Systems / Launch Services 分部收入；電話會另有 Space Systems $214.8M / Launch Services $53.1M 口徑，本卡不混用）。GAAP 毛利 $90.071M → 毛利率 33.6%（3Q25 37.0%），Non-GAAP 毛利率 38.4%；GAAP 營業虧損 $79.189M；GAAP 淨損 $79.677M（3Q25 $18.257M，去年同期含 $41.091M 稅收利益故基期偏低）；基本與稀釋每股淨損 -$0.12（3Q25 -$0.03，街預期約 -$0.07 → 虧損大於預期，Yahoo/Investing.com 與新浪口徑一致）。淨損擴大主因 $27.259M 債務清償損失、$21.340M Iridium 收購交易費用、$3.503M 所得稅費用。調整後 EBITDA 虧損 $18.047M（3Q25 虧損 $26.275M，指引區間 -$17M~-23M 的較好一端）；Non-GAAP 營業虧損 $27.425M（3Q25 $33.152M）。\n\n【單季現金流轉正】官方 Highlight：Positive GAAP operating cash flow of $7.2M（東財季度表 +$7.153M）。注意：官方現金流量表只給九個月累計，9M26 經營現金淨流出 $127.254M、9M25 淨流出 $100.990M；單季 +$7.2M 係新聞稿 Highlight 口徑，本卡不寫「全年轉正」或「自由現金流轉正」（9M26 FCF 仍為負）。\n\n【五季營收 US$M】3Q25 155.080（官方對比表）/ 4Q25 179.652（官方 Q4 新聞稿 record $180M）/ 1Q26 200.348 / 2Q26 234.066（官方 Q2 新聞稿 $234M）/ 3Q26 267.834。9M26 官方 $702.248M = 200.348+234.066+267.834 完全相符；FY2025 官方 $601.799M。\n\n【五季 backlog US$B】3Q25 1.1（Q3 2025 電話會「approximately $1.1 billion in total backlog」，launch 47% / space systems 53%）/ 4Q25 1.85（Q4 2025 官方新聞稿 record $1.85B，+73% Y/Y）/ 1Q26 2.2（Q1 2026 官方新聞稿「Record backlog of $2.2B, up 20.2% QoQ」）/ 2Q26 2.36（Q2 2026 官方新聞稿）/ 3Q26 3.57（Q3 官方新聞稿，約 $3.6B，+52% Q/Q、+$1.2B）。本季新簽發射合約近 $10 億、Space Systems 合約 $4.7 億；發射 backlog 達 117 次，Neutron 首飛前已簽 16 次、其中 Q3 新簽逾 $515M（8 次任務／5 家星座營運商），基準發射價由 $55M 提高至 $70M；Neutron 首飛因一級推進劑貯箱前穹頂碳纖維層間孔隙缺陷推遲至「不早於 2027 年」。\n\n【五季 GAAP 營業現金流 US$M】3Q25 -23.5（Q3 2025 電話會「use of $23.5 million」）/ 4Q25 -64.531 / 1Q26 -50.332 / 2Q26 -84.075 / 3Q26 +7.153。驗證：FY2025 -165.521 = -54.225(1Q25) -23.242(2Q25) -23.523(3Q25) -64.531(4Q25)；9M26 官方 -127.254 = -50.332-84.075+7.153，兩條累計鏈皆完全自洽。\n\n【Q4 2026 指引】營收 $270–290M（中點 $280M，街預期約 $265.5M）；GAAP 毛利率 34–36%、Non-GAAP 39–41%；GAAP 營業費用 $162–168M、Non-GAAP $136–142M；利息收入淨額 $45M；調整後 EBITDA 虧損 $14–20M；基本加權平均股數 681M。\n\n【其他】期末現金及等價物 $4.4477B，加流動／非流動有價證券約 $4.7B（2025 年底約 $1.10B），主要來自 9M26 ATM 股權募資 $3.9119B，已全額支應 pending 的 Iridium 收購（Iridium 股東與貸款人皆已批准）。12 顆自製太空船在軌運行、55+ 顆在研。股價：11/9 常規時段 +10.5% 至 $58.65，財報後盤後一度 -6.6% 至 $54.97、隔日盤前跌逾 5%（EPS miss 與 Neutron 延期）。\n\n【不做的事】不把 backlog 當已認列收入；不混用電話會分部營收與官方 Product/Service 分類；不寫「獲利」或「現金流全年轉正」；不引用單一盤後漲跌幅。"
+}
