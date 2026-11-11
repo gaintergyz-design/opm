@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<defs><linearGradient id="bgG" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.6" stop-color="#FBFCFE"/>
+  <stop offset="1" stop-color="#F2F5F9"/></linearGradient><linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#E3B063"/></linearGradient><linearGradient id="barG" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#E3B063"/></linearGradient></defs>
+<rect width="1080" height="1350" fill="url(#bgG)"/>
+<g transform="translate(540 675) rotate(-24)" opacity="0.055">
+  <text x="0" y="0" font-family="MiSans" font-size="132" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="6">@onepagemarket</text>
+</g>
+<rect x="759.64" y="66" width="272.36" height="50" rx="12" fill="#FAEEDA" />
+<text x="895.8199999999999" y="99" font-family="MiSans" font-size="27" font-weight="500" fill="#854F0B" text-anchor="middle" letter-spacing="0">@onepagemarket</text>
+<text x="48" y="152" font-family="MiSans" font-size="49" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="-2">Who succeeds Jensen Huang?</text>
+<text x="48" y="196" font-family="MiSans" font-size="24" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Kalshi puts 40% odds he exits as Nvidia CEO by July 2027 — Polymarket lists 6 names</text>
+<rect x="48" y="222" width="984" height="3" fill="url(#ruleG)" rx="1.5"/>
+<rect x="48" y="248" width="320" height="58" rx="14" fill="#F6F7F9" stroke="#E4E7EC" stroke-width="1"/>
+<text x="68" y="272" font-family="MiSans" font-size="13" font-weight="500" fill="#98A2B3" text-anchor="start" letter-spacing="0.8">KALSHI · EXIT BY JUL 2027</text>
+<text x="68" y="294" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">40%</text>
+<rect x="386" y="248" width="300" height="58" rx="14" fill="#F6F7F9" stroke="#E4E7EC" stroke-width="1"/>
+<text x="406" y="272" font-family="MiSans" font-size="13" font-weight="500" fill="#98A2B3" text-anchor="start" letter-spacing="0.8">POLYMARKET · CANDIDATES</text>
+<text x="406" y="294" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">6</text>
+<rect x="704" y="248" width="220" height="58" rx="14" fill="#F6F7F9" stroke="#E4E7EC" stroke-width="1"/>
+<text x="724" y="272" font-family="MiSans" font-size="13" font-weight="500" fill="#98A2B3" text-anchor="start" letter-spacing="0.8">NVDA TWO-DAY DROP</text>
+<text x="724" y="294" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">-9.5%</text>
+<rect x="48" y="356" width="984" height="50" rx="8" fill="#161B26" />
+<text x="136" y="386" font-family="MiSans" font-size="13" font-weight="500" fill="#E7EAF0" text-anchor="start" letter-spacing="0.8">CANDIDATE</text>
+<text x="636" y="386" font-family="MiSans" font-size="13" font-weight="500" fill="#E7EAF0" text-anchor="middle" letter-spacing="0.8">JOINED</text>
+<text x="1032" y="386" font-family="MiSans" font-size="13" font-weight="500" fill="#E7EAF0" text-anchor="end" letter-spacing="0.8">MARKET ODDS</text>
+<line x1="48" y1="406" x2="1032" y2="406" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="462" r="30" fill="#F0F6E2" stroke="#4E7A00" stroke-width="2"/>
+<text x="78" y="470" font-family="MiSans" font-size="22" font-weight="700" fill="#4E7A00" text-anchor="middle" letter-spacing="0">JP</text>
+<text x="136" y="446" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Jay Puri</text>
+<text x="136" y="472" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Senior advisor — led global sales</text>
+<text x="136" y="494" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">&amp; partnerships; left exec role Aug 2026</text>
+<text x="636" y="470" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">2005</text>
+<rect x="700" y="453" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="453" width="230" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="471" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">21%</text>
+<line x1="48" y1="518" x2="1032" y2="518" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="574" r="30" fill="#F0F6E2" stroke="#4E7A00" stroke-width="2"/>
+<text x="78" y="582" font-family="MiSans" font-size="22" font-weight="700" fill="#4E7A00" text-anchor="middle" letter-spacing="0">MH</text>
+<text x="136" y="558" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Madison Huang</text>
+<text x="136" y="584" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Senior director, physical AI product</text>
+<text x="136" y="606" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">&amp; technical marketing — Huang’s daughter</text>
+<text x="636" y="582" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">2020</text>
+<rect x="700" y="565" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="565" width="88" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="583" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">8%</text>
+<line x1="48" y1="630" x2="1032" y2="630" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="686" r="30" fill="#FBEAEA" stroke="#B02A2A" stroke-width="2"/>
+<text x="78" y="694" font-family="MiSans" font-size="22" font-weight="700" fill="#B02A2A" text-anchor="middle" letter-spacing="0">LS</text>
+<text x="136" y="670" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Lisa Su</text>
+<text x="136" y="696" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Chair &amp; CEO of AMD — the only candidate</text>
+<text x="136" y="718" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">with no Nvidia operating record</text>
+<text x="636" y="694" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">—</text>
+<rect x="700" y="677" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="677" width="88" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="695" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">8%</text>
+<line x1="48" y1="742" x2="1032" y2="742" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="798" r="30" fill="#F0F6E2" stroke="#4E7A00" stroke-width="2"/>
+<text x="78" y="806" font-family="MiSans" font-size="22" font-weight="700" fill="#4E7A00" text-anchor="middle" letter-spacing="0">CK</text>
+<text x="136" y="782" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Colette Kress</text>
+<text x="136" y="808" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">EVP &amp; Chief Financial Officer,</text>
+<text x="136" y="830" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">at Nvidia since Sept 2013</text>
+<text x="636" y="806" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">2013</text>
+<rect x="700" y="789" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="789" width="55" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="807" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">5%</text>
+<line x1="48" y1="854" x2="1032" y2="854" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="910" r="30" fill="#F0F6E2" stroke="#4E7A00" stroke-width="2"/>
+<text x="78" y="918" font-family="MiSans" font-size="22" font-weight="700" fill="#4E7A00" text-anchor="middle" letter-spacing="0">DS</text>
+<text x="136" y="894" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Debora Shoquist</text>
+<text x="136" y="920" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">EVP, operations — manufacturing,</text>
+<text x="136" y="942" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">supply chain &amp; workforce</text>
+<text x="636" y="918" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">2007</text>
+<rect x="700" y="901" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="901" width="33" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="919" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">3%</text>
+<line x1="48" y1="966" x2="1032" y2="966" stroke="#E4E7EC" stroke-width="1"/>
+<circle cx="78" cy="1022" r="30" fill="#F0F6E2" stroke="#4E7A00" stroke-width="2"/>
+<text x="78" y="1030" font-family="MiSans" font-size="22" font-weight="700" fill="#4E7A00" text-anchor="middle" letter-spacing="0">BD</text>
+<text x="136" y="1006" font-family="MiSans" font-size="27" font-weight="700" fill="#0B1220" text-anchor="start" letter-spacing="0">Bill Dally</text>
+<text x="136" y="1032" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Chief scientist; SVP,</text>
+<text x="136" y="1054" font-family="MiSans" font-size="17" font-weight="400" fill="#5C6675" text-anchor="start" letter-spacing="0">Nvidia Research</text>
+<text x="636" y="1030" font-family="MiSans" font-size="22" font-weight="700" fill="#0B1220" text-anchor="middle" letter-spacing="0">2009</text>
+<rect x="700" y="1013" width="230" height="18" rx="9" fill="#F2F4F7" />
+<rect x="700" y="1013" width="33" height="18" rx="9" fill="url(#barG)" />
+<text x="1032" y="1031" font-family="MiSans" font-size="30" font-weight="700" fill="#854F0B" text-anchor="end" letter-spacing="0">3%</text>
+<text x="48" y="1118" font-family="MiSans" font-size="14" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">Polymarket book as of Nov 11, 2026, 4:00 pm Beijing time; thin volume — probabilities are indicative only.</text>
+<text x="48" y="1138" font-family="MiSans" font-size="14" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">Kalshi: implied odds Huang exits as CEO before July 2027. Board has opened an independent review.</text>
+<rect x="48" y="1232" width="984" height="1" fill="#E4E7EC"/>
+<text x="48" y="1256" font-family="MiSans" font-size="15" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">For informational purposes only. Not investment advice. The relevant data and content are obtained</text>
+<text x="48" y="1275" font-family="MiSans" font-size="15" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">from public sources and for reference only. All third-party trademarks, brand names and logos</text>
+<text x="48" y="1294" font-family="MiSans" font-size="15" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">displayed are for identification purposes only and remain the property of their respective owners.</text>
+<text x="48" y="1320" font-family="MiSans" font-size="15" font-weight="400" fill="#98A2B3" text-anchor="start" letter-spacing="0">Polymarket · Kalshi · As of Nov 11, 2026</text>
+<text x="1032" y="1320" font-family="MiSans" font-size="15" font-weight="400" fill="#98A2B3" text-anchor="end" letter-spacing="0">@onepagemarket</text>
+</svg>

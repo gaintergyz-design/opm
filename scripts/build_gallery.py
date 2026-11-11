@@ -67,7 +67,8 @@ POST_OF = {
     'top10-cap': 'top10-cap',
     'cpi': 'cpi',
 }
-POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+POST_NAME = {
+             'nvda-succession': 'NVDA CEO Succession Odds','ondeck': 'On Deck', 'theclose': 'The Close',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
              'who-owns-nvda': 'Who Owns NVDA?',
              'who-owns-spcx': 'Who Owns SpaceX?',
