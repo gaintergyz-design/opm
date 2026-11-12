@@ -35,7 +35,7 @@ const CFG = {
   },
   font: 'MiSans',
   // 水印：正中、低透明度（防盜圖，不干擾閱讀）
-  watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
+  watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
 };
 const { W, M, colors: C } = CFG;
 const H = CFG.H;

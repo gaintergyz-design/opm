@@ -172,7 +172,7 @@ pushFooter(t, svg, { M, W, H, C: { line: C.line, dim: C.dim }, meta: D.meta, han
 // 暗角 + 極淡浮水印
 svg.push(`<rect width="${W}" height="${H}" fill="url(#vig)" pointer-events="none"/>`);
 brandMark(svg, { white: true });      // 左上角 OPM 標識（黑底用白色版；畫在 vignette 之上，2026-11-10 阿澤欽定）
-svg.push(`<g transform="translate(${W / 2} 700) rotate(-24)" opacity="0.018">${t(0, 0, handle, { size: 120, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
+svg.push(`<g transform="translate(${W / 2} 700) rotate(-24)" opacity="0">${t(0, 0, handle, { size: 120, weight: 700, anchor: 'middle', ls: 6 })}</g>`);
 
 svg.push('</svg>');
 svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);

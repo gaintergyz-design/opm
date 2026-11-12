@@ -63,7 +63,7 @@ function start(ruleStops) {
     <stop offset="1" stop-color="#F1F5F9"/></linearGradient>`);
   defs.push(`<linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">${ruleStops}</linearGradient>`);
   a.push(rr(0, 0, W, H, 0, 'url(#bgG)'));
-  a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.03">
+  a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0">
     ${t(0, 0, handle, { size: 132, weight: 700, anchor: 'middle', ls: 6, fill: '#94A3B8' })}</g>`);
   brandMark(a);
   return { a, defs };

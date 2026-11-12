@@ -75,7 +75,7 @@ defs.push(`<linearGradient id="barG" x1="0" y1="0" x2="1" y2="0">
   <stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#E3B063"/></linearGradient>`);
 svg.push(`<clipPath id="avClip"><circle cx="30" cy="30" r="30"/></clipPath>`);
 svg.push(`<rect width="${W}" height="${H}" fill="url(#bgG)"/>`);
-svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.055">
+svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0">
   ${t(0, 0, '@onepagemarket', { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
 </g>`);
 

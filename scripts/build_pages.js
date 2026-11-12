@@ -22,7 +22,7 @@ const CFG = {
     up: '#12A263', down: '#DE3A1B', track: '#F2F4F7', chip: '#F6F7F9',
   },
   font: 'MiSans',
-  watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
+  watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
 };
 const { W, M, colors: C } = CFG;
 let H = CFG.H;                     // 每頁可切換：內容少 → 正方形 1080×1080

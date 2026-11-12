@@ -36,7 +36,7 @@ const CFG = {
     chip: '#F6F7F9', chipLine: '#EAECF0',
   },
   font: 'MiSans',
-  watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
+  watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
 };
 const { W, M, colors: C } = CFG;
 const H = CFG.H;

@@ -69,7 +69,7 @@ defs.push(`<linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">
 defs.push(`<linearGradient id="barNew" x1="0" y1="1" x2="0" y2="0">
   <stop offset="0" stop-color="${C.accentDeep}"/><stop offset="1" stop-color="#E1662A"/></linearGradient>`);
 svg.push(`<rect width="${W}" height="${H}" fill="url(#bgG)"/>`);
-svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.032">
+svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0">
   ${t(0, 0, '@onepagemarket', { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
 </g>`);
 brandMark(svg);                       // 左上角 OPM 標識（2026-11-10 阿澤欽定）

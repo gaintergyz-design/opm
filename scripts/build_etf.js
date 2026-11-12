@@ -23,7 +23,7 @@ const CFG = {
   other: '#CBD2DB',            // Other 扇區灰
   title2: '#B26A0F',
   font: 'MiSans',
-  watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
+  watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
   donut: { CX: 308, CY: 745, RX: 250, RY: 178, IX: 145, IY: 94, D: 48 },
   start: -106,
 };

@@ -21,7 +21,7 @@ const CFG = {
   green: '#76B900',                     // NVIDIA 品牌綠（最大扇區起始色）
   pale: '#DDF4BE',                      // 依次變淺的終點色
   font: 'MiSans',
-  watermark: { text: '@onepagemarket', size: 132, opacity: 0.055, angle: -24 },
+  watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
   donut: { CX: 530, CY: 780, RX: 250, RY: 170, IX: 130, IY: 80, D: 48 },
   start: -106,                          // All Other 佔右側大弧，小份額掃向左側（左右上下均可落標籤）
 };

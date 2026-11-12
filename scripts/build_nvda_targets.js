@@ -76,7 +76,7 @@ defs.push(`<pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnU
 const a = [];
 a.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`);
 a.push(rr(0, 0, W, H, 0, 'url(#bgG)'));
-a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.03">
+a.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0">
   ${t(0, 0, handle, { size: 132, weight: 700, anchor: 'middle', ls: 6, fill: '#94A3B8' })}</g>`);
 brandMark(a);
 

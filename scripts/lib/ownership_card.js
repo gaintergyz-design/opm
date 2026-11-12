@@ -25,7 +25,7 @@ module.exports = function build(OPTS) {
     W: 1080, H: 1350, M: 48,
     colors: { bg: '#FFFFFF', ink: '#0B1220', gray: '#5C6675', dim: '#98A2B3', line: '#E4E7EC' },
     font: 'MiSans',
-    watermark: { text: '@onepagemarket', size: 132, opacity: 0.045, angle: -24 },
+    watermark: { text: '@onepagemarket', size: 132, opacity: 0, angle: -24 },
     ring: O.ring || { CX: 550, CY: 760, RX: 245, RY: 162, D: 50, IX: 115, IY: 66 },
     start: O.start == null ? -106 : O.start,
     ramp: O.ramp,
