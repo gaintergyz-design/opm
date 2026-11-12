@@ -1,0 +1,40 @@
+{
+  "stamp": "20261112",
+  "asof": "Price targets as of Nov 11, 2026",
+  "palette_note": "OPM 2026-11-12 欽定：綠往藍偏 #00A98C、紅往橙偏 #F1541E / #D1400F、黃用 #FFB01C / #FF8A1E 亮金亮橙，禁用純綠/暗酒紅/土黃。",
+  "kicker": "NVDA / SELL-SIDE TARGETS / NOV 09-11, 2026",
+  "title": "Nvidia's Target Price Split",
+  "subtitle": "Ten firms revisited their NVDA targets in three days. The high is still 2x the low.",
+  "kpis": [
+    { "value": "10 firms", "label": "revisited targets in 3 days" },
+    { "value": "$400 / $200", "label": "highest vs lowest target" },
+    { "value": "5 unchanged", "label": "4 cuts, 1 withdrawn" }
+  ],
+  "legend": [
+    { "label": "Unchanged", "color": "#00A98C" },
+    { "label": "Target cut", "color": "#F1541E" },
+    { "label": "Cut + downgrade", "color": "#D1400F" },
+    { "label": "Withdrawn", "color": "#8A94A3" }
+  ],
+  "legend_right": "USD per share / Nov 9-11, 2026",
+  "footnote": "Solid bar = new target. Pale tail = prior target. Sorted by new target, high to low.",
+  "status": {
+    "same":      { "color": "#00A98C", "ink": "#007C68" },
+    "cut":       { "color": "#F1541E", "ink": "#C93C10" },
+    "down":      { "color": "#D1400F", "ink": "#A32E0A" },
+    "withdrawn": { "color": "#8A94A3", "ink": "#667085" }
+  },
+  "scale_max": 520,
+  "firms": [
+    { "key": "bernstein", "name": "Bernstein",         "old": 400, "new": 400, "date": "Nov 09", "action": "Outperform reiterated",     "status": "same" },
+    { "key": "bofa",      "name": "Bank of America",   "old": 350, "new": 350, "date": "Nov 10", "action": "Buy, off US 1 List",       "status": "same" },
+    { "key": "rbc",       "name": "RBC Capital",       "old": 330, "new": 330, "date": "Nov 09", "action": "Outperform reiterated",     "status": "same" },
+    { "key": "ms",        "name": "Morgan Stanley",    "old": 300, "new": 300, "date": "Nov 11", "action": "Overweight, off Top Pick",  "status": "same" },
+    { "key": "wells",     "name": "Wells Fargo",       "old": 315, "new": 300, "date": "Nov 10", "action": "Overweight reiterated",     "status": "cut" },
+    { "key": "gs",        "name": "Goldman Sachs",     "old": 300, "new": 300, "date": "Nov 09", "action": "Buy reiterated",            "status": "same" },
+    { "key": "citi",      "name": "Citi",              "old": 315, "new": 285, "date": "Nov 10", "action": "Buy reiterated",            "status": "cut" },
+    { "key": "ubs",       "name": "UBS",               "old": 315, "new": 250, "date": "Nov 09", "action": "Outperform reiterated",     "status": "cut" },
+    { "key": "baird",     "name": "Baird",             "old": 500, "new": 200, "date": "Nov 11", "action": "Outperform to Neutral",     "status": "down" },
+    { "key": "aletheia",  "name": "Aletheia Capital",  "old": 340, "new": null,"date": "Nov 09", "action": "Buy to Hold, target pulled","status": "withdrawn" }
+  ]
+}
