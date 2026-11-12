@@ -32,6 +32,8 @@
 #
 # === 行為 ===========================================================
 #   清理 → 補組名 → card: → gallery: add → rebase → 代理 push → 驗收
+#   畫廊是增量模式：只把本次新卡插進索引最前面，舊卡一個字都不動；
+#   rebase 後也只在「新卡掉出索引」時才補跑，不再無條件全量重跑。
 #   冪等：卡已在 origin/main 且索引引用即結束；精確 git add，
 #   絕不 git add -A / commit -a，不碰其它產線 WIP
 #   參數自行解析，--dry-run 不外傳（publish.sh 的舊坑不適用）
@@ -252,8 +254,13 @@ else
     HAS_STASH=0; [ -n "$AFTER" ] && [ "$AFTER" != "$BEFORE" ] && HAS_STASH=1
     "${GITP[@]}" rebase -X theirs origin/main --quiet || {
       echo "      ✗ rebase 失敗，請手動處理（stash 已保留）" >&2; exit 1; }
-    # 取 theirs 會少一組歷史卡 → 本地重跑畫廊補回，併回 gallery commit
-    "$PY" scripts/build_gallery.py >/dev/null
+    # 增量模式（2026-11-12）：只在「本次新卡掉出索引」時補跑，不再無條件重跑。
+    # 舊版無條件重跑會把 rebase 後少掉的歷史卡當成新卡、頂到全頁最前。
+    if grep -qF "$IMG_NAME" docs/index.html; then
+      echo "      索引已含本次新卡，略過重建（只增不改）"
+    else
+      "$PY" scripts/build_gallery.py >/dev/null
+    fi
     if ! git diff --quiet -- docs/index.html; then
       git add -- docs/index.html
       if git log -1 --format=%s | grep -q "^gallery: add $TITLE"; then

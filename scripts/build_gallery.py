@@ -19,14 +19,19 @@
    全部下線，圖還在 docs/img 但頁面看不到）。要控制頁面長度請用折疊閾值 --days。
 
 用法：
-  python3 scripts/build_gallery.py             # 預設：全部上頁（舊組折疊，點「查看更多」才載圖）
+  python3 scripts/build_gallery.py             # 預設＝增量「只加新圖」（見下）
+  python3 scripts/build_gallery.py --full      # 全量重建（改模板／需要重排時才用）
   python3 scripts/build_gallery.py --show 7    # 只上最近 N 天的貼文（僅影響渲染，不刪圖）
   python3 scripts/build_gallery.py --prune 90  # 額外刪掉 docs/img 中超過 90 天的圖（默認保留全部）
   python3 scripts/build_gallery.py --days 3    # 調整「預設展開」的天數（折疊閾值）
+  python3 scripts/build_gallery.py --include x.png  # 強制收錄日期過舊的孤立圖
 
-⚠️ 這個腳本會整份重寫 docs/index.html —— 任何想長期存在的頁面改動（圖標、
-   刷新按鈕、顯示天數…）都必須寫進本文件的模板，直接改 index.html 會在
-   下一次 GitHub Action 跑完產線後被覆蓋掉（Meta 文案就是這樣消失過的）。
+🔴 增量模式「只加新圖」（2026-11-12 阿澤欽定，預設）：
+   以磁碟上現有的 docs/index.html 為基底，只把尚未出現在頁面上的圖做成新
+   section 插到 <main> 最前面；其餘 section 逐字保留——時間戳、展開/折疊
+   狀態、src/data-src、文案全部不動。沒有新卡時連檔案都不寫（避免 CI 空轉
+   提交）。舊卡時間不再重算，因此不再需要 git 歷史去「猜」六成缺記錄的卡片。
+   --full 才回到整份重寫；長期存在的頁面改動仍須寫進本檔模板。
 """
 import glob, json, os, re, shutil, subprocess, sys, datetime
 from zoneinfo import ZoneInfo
@@ -46,9 +51,14 @@ OPEN_DAYS = arg('--days', 3)     # 最近 N 天預設展開
 SHOW_DAYS = arg('--show', 0)     # 只渲染最近 N 天的貼文（0 = 全部，默認；舊組折疊不佔流量）
 PRUNE_DAYS = arg('--prune', 0)   # >0 時，docs/img 超過 N 天的圖直接刪除
 # 同一工作區可能有別張卡正在製作中（out/ 已有圖但尚未定稿）→ 用 --exclude <kind>[,<kind>]
-# 暫時不收進畫廊，避免半成品被推上公開頁。不傳參數時行為與舊版完全一致。
+# 暫時不收進畫廊，避免半成品被推上公開頁。
 _ex = sys.argv[1:]
-EXCLUDE = set(_ex[_ex.index('--exclude') + 1].split(',')) if '--exclude' in _ex else set()
+# 回覆卡不進公開畫廊（它在 out/ 但頁面上從未收錄，增量模式不能把它當新卡）
+EXCLUDE = {'reply-waiting'}
+if '--exclude' in _ex:
+    EXCLUDE |= set(_ex[_ex.index('--exclude') + 1].split(','))
+# 補一張日期偏舊的卡時，增量模式會當成孤立圖略過；用 --include <name>.png 強制收錄
+INCLUDE = set(_ex[_ex.index('--include') + 1].split(',')) if '--include' in _ex else set()
 
 os.makedirs(IMG, exist_ok=True)
 
@@ -327,6 +337,72 @@ n_hidden = len(ordered) - n_open
 more = ''
 if n_hidden > 0:
     more = (f'<div class="morebar"><button id="more">查看更多（{n_hidden} 則更早）</button></div>')
+
+# ── 🔴 增量模式「只加新圖」（2026-11-12 阿澤欽定）──────────────────────
+# 全量重建會把每組 <span class="day"> 重新算一次；六成舊卡沒有 gen-times
+# 記錄、只能靠「git 提交時間 / 檔案時間取較早」估，換環境就漂 1 分鐘，
+# 違反「只增不改」。改為以現有 index.html 為基底，只插入新組，舊 section
+# 逐字保留（時間戳、展開/折疊、src/data-src、文案全部不動）。
+IDX = os.path.join(DOCS, 'index.html')
+FULL = '--full' in sys.argv
+INCREMENTAL = None
+N_NEW = 0
+
+
+def incremental_html():
+    global N_NEW
+    if FULL or not os.path.exists(IDX):
+        return None                      # 首次建站／顯式 --full → 走全量
+    old = open(IDX, encoding='utf-8').read()
+    if '<main>\n' not in old:
+        return None                      # 版型變了，安全退回全量
+    seen = set(re.findall(r'data-name="([^"]+\.png)"', old))
+    # 頁面上最新一張卡的日期：擋掉「在 out/ 但頁面刻意沒收」的舊孤兒圖，
+    # 以及 rebase 取 theirs 後可能被誤判成新卡的歷史卡（避免舊卡頂到最前）。
+    page_dates = [d for d in (parse(n)[1] for n in seen) if d]
+    latest = max(page_dates) if page_dates else datetime.date.today()
+    fresh, skipped = [], []
+    for i in items:
+        if i['name'] in seen:
+            continue
+        if i['date'] and i['date'] < latest - datetime.timedelta(days=3) \
+                and i['name'] not in INCLUDE:
+            skipped.append(i['name'])
+            continue
+        fresh.append(i)
+    if skipped:
+        print('增量：略過 %d 張早於頁面現況的孤立圖（--include 可強制）：%s'
+              % (len(skipped), ', '.join(skipped[:4])))
+    if not fresh:
+        return 'NOCHANGE'
+    # 同一則貼文（post + 日期）的多張圖合成一組，跟全量分組規則一致
+    grp = {}
+    for i in fresh:
+        grp.setdefault((i['post'], i['date']), []).append(i)
+    for v in grp.values():
+        v.sort(key=lambda x: order_key(x['kind']))
+    # 新卡時間＝真實出圖時刻（gen-times）或現在；不再翻 git 歷史估
+    now_cn = datetime.datetime.now(SH).strftime('%Y-%m-%d %H:%M')
+    for i in fresh:
+        ep = GEN_TIMES.get(i['name'])
+        i['time'] = (datetime.datetime.fromtimestamp(ep, SH).strftime('%Y-%m-%d %H:%M')
+                     if ep else now_cn)
+    secs = [group_html(k, v, 0) for k, v in
+            sorted(grp.items(), key=lambda kv: kv[0][1], reverse=True)]
+    N_NEW = len(secs)
+    out = old.replace('<main>\n', '<main>\n' + '\n'.join(secs) + '\n', 1)
+    # 頁頭「預計下一張圖」是動態文字，跟著刷新（不屬於舊卡區）
+    if NEXT_POST:
+        out = re.sub(r'(<div class="sub">)(.*?)(</div>)',
+                     lambda m: m.group(1) + NEXT_POST + m.group(3),
+                     out, count=1, flags=re.S)
+    return out
+
+
+INCREMENTAL = incremental_html()
+if INCREMENTAL == 'NOCHANGE':
+    print('gallery: 沒有新卡，docs/index.html 保持不變（只增不改）')
+    sys.exit(0)
 
 GALLERY_JS = r"""
 // 下載圖片：手機走系統分享面板（網頁唯一能存進「相簿」的路徑），桌面直接下載
@@ -645,5 +721,10 @@ if (rfBtn) {{
 </script>
 </body></html>'''
 
-open(os.path.join(DOCS, 'index.html'), 'w', encoding='utf-8').write(html)
-print(f'gallery: {len(ordered)} posts / {len(items)} images（展開 {n_open} 則，折疊 {n_hidden} 則）-> docs/index.html')
+if INCREMENTAL is not None:
+    open(IDX, 'w', encoding='utf-8').write(INCREMENTAL)
+    print(f'gallery: 增量新增 {N_NEW} 組，舊卡逐字保留 -> docs/index.html')
+else:
+    open(IDX, 'w', encoding='utf-8').write(html)
+    print(f'gallery: 全量重建 {len(ordered)} posts / {len(items)} images'
+          f'（展開 {n_open} 則，折疊 {n_hidden} 則）-> docs/index.html')

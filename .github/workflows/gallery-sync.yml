@@ -1,11 +1,11 @@
 name: gallery-sync
 
-# 手動推卡（財報卡 / 專題卡）→ 自動重建畫廊索引
+# 手動推卡（財報卡 / 專題卡）→ 自動把新卡加進畫廊
 #
-# 由來：本機 git 損壞、且阿澤本機 out/ 只是部分鏡像，直接在本機跑 build_gallery.py
-#   再推 docs/index.html 會刷掉舊卡（144 檔 vs 十幾檔），時間也會因取不到 git log
-#   而退回 mtime（2026-11-03 全頁時間一度全變成下載時刻）。
-#   本 workflow 在 CI 用完整倉庫 + 真 git 重建，索引與時間都正確。
+# 2026-11-12 阿澤欽定「只加新圖」：build_gallery.py 改為增量模式，
+#   以 CI 上現有的 docs/index.html 為基底，只插入本次新增的 section，
+#   舊卡的時間戳／展開狀態／文案逐字保留，不再整頁重算。
+#   沒有新卡時腳本直接結束、不寫檔 → 本 workflow 不會空轉提交。
 #
 # 觸發：任何 out/*.png 或 caption 變更的 push
 # 排除：定時產線自己的提交（作者 onepagemarket-bot）——daily.yml 已自帶 build_gallery，
@@ -41,13 +41,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0        # 畫廊靠 git log 取每張圖的提交時間
+          fetch-depth: 0        # 保留完整歷史以相容 pull --rebase；增量模式已不靠它估時間
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: 重建畫廊（全量）
+      - name: 把新卡加進畫廊（增量）
         run: |
           ARGS=""
           [ -n "${{ github.event.inputs.days }}" ] && ARGS="$ARGS --days ${{ github.event.inputs.days }}"

@@ -38,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0     # 完整歷史：畫廊靠 git log 取每張圖的生成時間
+          fetch-depth: 0     # 完整歷史：去重守衛用 git log --grep 查當天是否已出卡（畫廊已改增量，不再靠它估時間）
 
       - name: 決定本次產線
         id: kind

@@ -56,7 +56,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 
 ## 4. 🔴 交付約定
 
-- **🔴 只增不改（2026-11-12 阿澤欽定）：兩台電腦各自往畫廊加圖，不需要同步，只管添加圖片，彼此不要覆蓋。** 已固化進 `scripts/push_local.py`：① 禁推 `docs/`（FATAL）——索引只由 CI 全量重建；② 累積檔（`out/gen-times.json`、`out/git-times.json`、`data/logos.json`）推送前自動拉遠端 dict-union；③ 其餘檔案若覆蓋遠端已有內容會逐項印 `⚠ 覆蓋遠端已有檔`——正常加圖應為 0 條。
+- **🔴 只增不改（2026-11-12 阿澤欽定）：兩台電腦各自往畫廊加圖，不需要同步，只管添加圖片，彼此不要覆蓋。** 已固化進 `scripts/push_local.py`：① 禁推 `docs/`（FATAL）——索引只由 CI 增量加圖（見 §10），本機 docs 是部分鏡像；② 累積檔（`out/gen-times.json`、`out/git-times.json`、`data/logos.json`）推送前自動拉遠端 dict-union；③ 其餘檔案若覆蓋遠端已有內容會逐項印 `⚠ 覆蓋遠端已有檔`——正常加圖應為 0 條。
 - **🔴🔴 OPM 卡全英文（2026-11-12 阿澤欽定）**：卡片上不出現任何中文；來源文章是中文也要翻譯成英文，金額一律 $B 口徑（$30B、$6.7B），不用「億」。依據 workspace 根目錄 `X起號方案-美股英文版-20261020.md`／`X起號方案-美股數據號-20261020.md`：定位 Objective US market data、語言全英文、@onepagemarket、No takes. No picks.。給阿澤的回覆仍用中文，發帖文案英文。
 - **🔴 每輪交付必須同時給出：① 成品圖（present_files）② 完整發帖文案**（post_x.py「將發帖：」全文；模板：`The Close: {指數}. Most traded: {前三}. Breadth {n}% advancers. 🧵`）。未發帖時註明「未發帖，供手動發」。
 - 文案鐵律：只寫數字與事實、不寫「所以」、單句 ≤90 字元、全文 ≤280 字元。
@@ -78,7 +78,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - tickerRow 字寬係數 0.60→0.68 的教訓：GOOG/GOOGL/LLY 會重疊，勿改回 0.60。
 - logo：FMP image-stock 為主源（RGBA 透明），Wikimedia 官方 SVG 為備源（Clearbit 已失效、CMC 擋爬）。logoAt() 圓形裁切＋`stroke #D6DAE1 1.2-1.5` 外框；缺 logo 畫灰底圓＋首字母。統一 96×96、6% 留白，快取 assets/logos/＋data/logos.json（base64 data URI；**resvg 不認 file:// href，必須 data URI**）。
 - 預覽支援假數據：`PAGES_DATA` / `CLOSE_DATA` 環境變數換數據檔；`CLOSE_SUFFIX` 加檔名後綴。
-- 每次出圖都要寫 `out/gen-times.json`（{檔名: epoch}）——畫廊時間戳三層來源的第一層，git checkout 會重置 mtime。
+- 每次出圖都要寫 `out/gen-times.json`（{檔名: epoch}）——增量模式只用它給**新卡**標真實出圖時刻；舊卡時間一律沿用頁面上已寫好的值，不再重算（見 §10）。
 
 ## 6. Who Owns X 股權卡規則
 
@@ -105,7 +105,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - workflow：`.github/workflows/daily.yml`。守衛容差 ±60 分鐘（GitHub schedule 常延遲 30-50 分，低於此會被誤攔）；workflow_dispatch 直通不檢查。
 - 手動補跑：`git credential fill` 取 token → POST dispatches。推送遇 non-fast-forward：`git pull --rebase` 再推。
 - ⚠️ GitHub 60 天無提交會停用排程，記得留意。
-- checkout 已設 `fetch-depth: 0`（淺克隆取不到 git 歷史時間戳）。
+- checkout 已設 `fetch-depth: 0`：去重守衛要用 `git log --grep` 查當天是否已出卡。畫廊改增量後已不需要歷史來估時間，**但這行不能拔**，拔了會重複出卡。
 - Secrets 用 env: 注入再接 shell 變數（多行 secret 直接插值會斷行）。憑證檔（.env.x/.env.notify/.x_tokens.json）不入庫，.gitignore 已擋。
 - 本機與雲端**不可同時 ACTIVE** 同一產線（雙發）；本機 automation 已停，雲端為唯一定時源。
 - 本倉庫已設 local `git config http.proxy ""` 繞過全域代理。
@@ -116,4 +116,16 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 
 - 手機操作：WorkBuddy 小程序「本機模式」（iMac 開機時遙控本機）或「雲端模式」（沙箱 clone 本公開倉庫跑，冷啟動幾分鐘，發帖授權不在沙箱，產出＝成品圖+文案手動發）。
 - 家用電腦：資料庫下載源碼包（或 git clone）→ npm install → 即可按本手冊跑產線。
+- 🔴 **改了產線腳本後，家用電腦不會自動變**：CI 那條路（加圖 → `gallery-sync`）用的是倉庫 main 上的腳本，家用電腦什麼都不用做就生效；但家用電腦**本機直接跑** `publish_special_card.sh`／`build_gallery.py` 時，用的是它自己那份副本，必須在那台機器上 `git pull`（或重新下載源碼包）才會換成新版。本機 `MEMORY.md`、工作日誌、使用者級 skill **都不隨 git 同步**，規則只能寫進本檔。
 - 定時卡永遠以 GitHub Actions 為準，任何設備關機都不影響。
+
+## 10. 🔴 畫廊「只加新圖」增量規則（2026-11-12 阿澤欽定，跨設備同步源）
+
+- **口令**：阿澤說「上传画廊」＝直接跑 `bash scripts/publish_special_card.sh`（零參數），不問、不填、不調研。腳本自動選圖、帶 caption/data/build、查組名、兩段提交、代理推送、驗收；不發帖。
+- **`scripts/build_gallery.py` 預設是增量**：
+  ① 以磁碟上現有的 `docs/index.html` 為基底；② 找出「在 `out/*.png` 但頁面還沒引用」的圖，按 `(post, 日期)` 分組；③ 只把這些新組做成 section 插到 `<main>` 最前面，且為**展開**（`class="sec"` + `src`）；④ 其餘 section **逐字保留**——時間戳、展開/折疊、`src`/`data-src`、文案一律不動，展開組數自然 +1；⑤ 新卡時間用 `out/gen-times.json` 的真實出圖時刻，沒有就用當下北京時間，**不再翻 git 歷史估時間**；⑥ 沒有新卡就印「保持不變」並直接結束，**連 index.html 都不寫**（CI 不會空轉提交）。
+- **安全閥**：日期比頁面現況早 3 天以上、又不在頁面上的「孤立圖」會被略過並印警告，避免 `reply-waiting` 這類刻意不收錄的舊卡、或 rebase 遺失的歷史卡被當新卡頂到最前；要強制收錄補卡，加 `--include <檔名>.png`。
+- `--full` 才回到舊的整份重寫（改模板、需要重排時才用）。`--exclude <kind>` 照舊擋半成品；`reply-waiting` 已列為預設不收錄。
+- **`publish_special_card.sh` 第 5 步**已改成：rebase 後只在「本次新卡不在索引裡」時才補跑畫廊，不再無條件重跑（舊版會把歷史卡誤判成新卡）。
+- **🔴 不要再做的事**：不要為了解時間／排序去補 `out/gen-times.json`、不要重推 `docs/index.html` 去改舊卡時間戳、不要動別台電腦的 WIP。發現排序或時間異常先問阿澤，並用並排對比圖＋白話說明，不要用 commit 代號問他做決定。
+- **跨設備**：本檔與 `scripts/`、`.github/workflows/` 都在 git 裡，`git pull` 即載入；本機記憶檔不同步。CI 路徑自動生效，本機腳本路徑需手動 pull（見 §9）。
