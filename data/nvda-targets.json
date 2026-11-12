@@ -4,20 +4,16 @@
   "palette_note": "OPM 2026-11-12 欽定：綠往藍偏 #00A98C、紅往橙偏 #F1541E / #D1400F、黃用 #FFB01C / #FF8A1E 亮金亮橙，禁用純綠/暗酒紅/土黃。",
   "kicker": "NVDA / SELL-SIDE TARGETS / NOV 09-11, 2026",
   "title": "Nvidia's Target Price Split",
-  "subtitle": "Ten firms revisited their NVDA targets in three days. The high is still 2x the low.",
-  "kpis": [
-    { "value": "10 firms", "label": "revisited targets in 3 days" },
-    { "value": "$400 / $200", "label": "highest vs lowest target" },
-    { "value": "5 unchanged", "label": "4 cuts, 1 withdrawn" }
-  ],
+  "subtitle": "Ten firms, three days: $400 to $200.",
+  "table_head": ["FIRM", "PRICE TARGET (USD)", "ACTION / DATE"],
   "legend": [
     { "label": "Unchanged", "color": "#00A98C" },
     { "label": "Target cut", "color": "#F1541E" },
     { "label": "Cut + downgrade", "color": "#D1400F" },
     { "label": "Withdrawn", "color": "#8A94A3" }
   ],
-  "legend_right": "USD per share / Nov 9-11, 2026",
-  "footnote": "Solid bar = new target. Pale tail = prior target. Sorted by new target, high to low.",
+  "legend_right": "Nov 9-11, 2026",
+  "footnote": "Bar length = new target. Left price = prior, right price = new. Sorted high to low.",
   "status": {
     "same":      { "color": "#00A98C", "ink": "#007C68" },
     "cut":       { "color": "#F1541E", "ink": "#C93C10" },
