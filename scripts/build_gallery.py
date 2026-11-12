@@ -71,6 +71,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'eisman-scenarios': 'Eisman Scenarios',
              'eisman-risks': 'Eisman Risks',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
              'who-owns-nvda': 'Who Owns NVDA?',
