@@ -2,183 +2,165 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-11 11:44",
+  "generated_at": "2026-11-12 12:44",
   "week_label": "Nov 09 – Nov 13",
   "ondeck": {
-    "session": "2026-11-11",
+    "session": "2026-11-12",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.35
+        "pct": 1.31
       },
       {
         "label": "Nasdaq",
-        "pct": -0.74
+        "pct": 1.6
       },
       {
         "label": "Russell 2000",
-        "pct": -0.84
+        "pct": 0.88
       }
     ],
     "econ": [
       {
-        "time": "06:00",
-        "event": "NFIB Small Business Optimism",
-        "consensus": "98.0",
-        "previous": "97.9"
-      },
-      {
-        "time": "08:30",
-        "event": "Core CPI",
-        "consensus": "0.2%",
-        "previous": "0.3%"
-      },
-      {
-        "time": "08:30",
-        "event": "CPI Index, n.s.a.",
-        "consensus": "337.02",
-        "previous": "336.94"
-      },
-      {
-        "time": "04:00",
-        "event": "Fed Waller Speaks",
+        "time": "05:00",
+        "event": "OPEC Monthly Report",
         "consensus": "",
         "previous": ""
       },
       {
-        "time": "08:30",
-        "event": "Core CPI Index",
+        "time": "07:00",
+        "event": "MBA 30-Year Mortgage Rate",
         "consensus": "",
-        "previous": "338.90"
+        "previous": "7.30%"
       },
       {
-        "time": "08:30",
-        "event": "CPI Index, s.a",
+        "time": "07:00",
+        "event": "MBA Mortgage Applications",
         "consensus": "",
-        "previous": "336.30"
+        "previous": "-1.2%"
       },
       {
-        "time": "08:30",
-        "event": "CPI, n.s.a",
+        "time": "07:00",
+        "event": "MBA Purchase Index",
         "consensus": "",
-        "previous": "0.59%"
+        "previous": "131.4"
       },
       {
-        "time": "09:35",
-        "event": "Fed Logan Speaks",
+        "time": "07:00",
+        "event": "Mortgage Market Index",
         "consensus": "",
-        "previous": ""
+        "previous": "192.6"
       },
       {
-        "time": "13:00",
-        "event": "Cleveland CPI",
+        "time": "07:00",
+        "event": "Mortgage Refinance Index",
         "consensus": "",
-        "previous": "0.2%"
+        "previous": "517.5"
       },
       {
-        "time": "13:30",
-        "event": "Fed Schmid Speaks",
+        "time": "11:00",
+        "event": "Thomson Reuters IPSOS PCSI",
         "consensus": "",
-        "previous": ""
+        "previous": "45.18"
       }
     ],
-    "econ_all": 18,
+    "econ_all": 7,
     "earnings": {
       "before": [
-        "GIB",
-        "ICL",
-        "AYA",
-        "BGSI",
-        "RUM",
-        "NYAX",
-        "AADX",
-        "FLNG"
+        "BN",
+        "NBIS",
+        "ASND",
+        "HBM",
+        "TWST",
+        "FPS",
+        "NIQ",
+        "MBGL"
       ],
       "after": [
-        "FNV",
-        "VYLR",
-        "TTEK",
-        "CAE",
-        "CTVA",
-        "OR",
-        "ENS",
-        "ECO"
+        "CSCO",
+        "AMAT",
+        "NU",
+        "CBRS",
+        "STN",
+        "ELPC",
+        "ANDG",
+        "ARWR"
       ],
-      "before_n": 23,
-      "after_n": 34,
-      "total": 218,
+      "before_n": 93,
+      "after_n": 125,
+      "total": 388,
       "top": [
         {
-          "ticker": "ECO",
-          "name": "Okeanis Eco Tankers",
-          "cap": 3250857980,
-          "growth": 281.0,
-          "eps": 3.69,
-          "surprise": 116.9,
-          "time": "AMC"
-        },
-        {
-          "ticker": "TNK",
-          "name": "Teekay Tankers",
-          "cap": 2969325060,
-          "growth": 128.7,
-          "eps": 4.49,
-          "surprise": 5.7,
-          "time": "AMC"
-        },
-        {
-          "ticker": "UGP",
-          "name": "Ultrapar Participacoes",
-          "cap": 6031431200,
-          "growth": 22.0,
-          "eps": 0.23,
-          "surprise": 14.7,
-          "time": ""
-        },
-        {
-          "ticker": "FNV",
-          "name": "Franco-Nevada",
-          "cap": 49221353000,
-          "growth": 13.2,
-          "eps": 1.73,
-          "surprise": 3.8,
-          "time": "AMC"
-        },
-        {
-          "ticker": "TECH",
-          "name": "Bio-Techne Corp",
-          "cap": 11413231600,
-          "growth": 4.1,
-          "eps": 0.48,
-          "surprise": 5.8,
-          "time": ""
-        },
-        {
-          "ticker": "GIB",
-          "name": "CGI",
-          "cap": 19341555700,
-          "growth": 2.9,
-          "eps": 2.3,
-          "surprise": 1.9,
+          "ticker": "NBIS",
+          "name": "Nebius Group",
+          "cap": 36428599000,
+          "growth": 520.9,
+          "eps": -1.24,
+          "surprise": -20.2,
           "time": "BMO"
         },
         {
-          "ticker": "ENS",
-          "name": "EnerSys",
-          "cap": 5302309400,
-          "growth": 1.6,
-          "eps": 3.18,
-          "surprise": 8.8,
+          "ticker": "HBM",
+          "name": "Hudbay Minerals",
+          "cap": 9755471900,
+          "growth": 111.1,
+          "eps": 0.34,
+          "surprise": -50.7,
+          "time": "BMO"
+        },
+        {
+          "ticker": "QXO",
+          "name": "QXO",
+          "cap": 14244747300,
+          "growth": 78.8,
+          "eps": 0.14,
+          "surprise": 5.7,
+          "time": ""
+        },
+        {
+          "ticker": "ASND",
+          "name": "Ascendis Pharma A/S",
+          "cap": 16905200600,
+          "growth": 70.7,
+          "eps": 1.12,
+          "surprise": 429.3,
+          "time": "BMO"
+        },
+        {
+          "ticker": "AMAT",
+          "name": "Applied Materials",
+          "cap": 295638860000,
+          "growth": 51.4,
+          "eps": 4.05,
+          "surprise": 3.6,
           "time": "AMC"
         },
         {
-          "ticker": "CAE",
-          "name": "CAE",
-          "cap": 8634453000,
-          "growth": 1.0,
-          "eps": 0.26,
-          "surprise": 14.9,
+          "ticker": "NU",
+          "name": "Nu Holdings",
+          "cap": 58656539000,
+          "growth": 42.3,
+          "eps": 0.22,
+          "surprise": 3.9,
+          "time": "AMC"
+        },
+        {
+          "ticker": "TWST",
+          "name": "Twist Bioscience",
+          "cap": 8760374300,
+          "growth": 24.9,
+          "eps": -0.2,
+          "surprise": 10.0,
+          "time": "BMO"
+        },
+        {
+          "ticker": "CSCO",
+          "name": "Cisco Systems",
+          "cap": 386964914000,
+          "growth": 21.8,
+          "eps": 1.33,
+          "surprise": 1.8,
           "time": "AMC"
         }
       ]
@@ -279,7 +261,7 @@
       {
         "day": "Mon",
         "date": "Nov 16",
-        "count": 72,
+        "count": 110,
         "econ": [],
         "before": [
           "BIDU",
@@ -297,19 +279,20 @@
           "POWL",
           "PAGS",
           "INFQ",
+          "OMER",
           "SHAZ",
-          "YALA",
-          "RCAT"
+          "YALA"
         ]
       },
       {
         "day": "Tue",
         "date": "Nov 17",
-        "count": 43,
+        "count": 59,
         "econ": [
+          "FOMC Member Williams Speaks",
+          "Fed Chair Warsh Speaks",
           "NY Empire State Manufacturing Index",
-          "3-Month Bill Auction",
-          "6-Month Bill Auction"
+          "3-Month Bill Auction"
         ],
         "before": [
           "HD",
@@ -324,18 +307,18 @@
         "after": [
           "NVDA",
           "ZTO",
+          "SQM",
           "DLB",
+          "CAAP",
           "GBDC",
           "LZB",
-          "IIIV",
-          "GLAD",
-          "AUNA"
+          "IIIV"
         ]
       },
       {
         "day": "Wed",
         "date": "Nov 18",
-        "count": 71,
+        "count": 81,
         "econ": [
           "Atlanta Fed GDPNow",
           "Core Retail Sales",
@@ -347,10 +330,10 @@
           "LOW",
           "TGT",
           "GLBE",
+          "HAFN",
           "GLNG",
           "BLSH",
-          "ZIM",
-          "PONY"
+          "ZIM"
         ],
         "after": [
           "PANW",
@@ -360,13 +343,13 @@
           "CPA",
           "NJR",
           "JOYY",
-          "HP"
+          "KLIC"
         ]
       },
       {
         "day": "Thu",
         "date": "Nov 19",
-        "count": 49,
+        "count": 50,
         "econ": [
           "Housing Starts",
           "FOMC Meeting Minutes",
@@ -380,8 +363,8 @@
           "WMG",
           "FUTU",
           "YMM",
-          "VVV",
-          "BBWI"
+          "ROAD",
+          "VVV"
         ],
         "after": [
           "INTU",
@@ -397,7 +380,7 @@
       {
         "day": "Fri",
         "date": "Nov 20",
-        "count": 14,
+        "count": 13,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
@@ -407,7 +390,9 @@
         "before": [
           "BSP",
           "BJ",
+          "FRO",
           "BKE",
+          "RLX",
           "WRD"
         ],
         "after": []
