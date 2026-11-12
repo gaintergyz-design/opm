@@ -71,6 +71,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'nvda-targets': "Nvidia's Target Price Split",
              'eisman-scenarios': 'Eisman Scenarios',
              'eisman-risks': 'Eisman Risks',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
