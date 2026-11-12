@@ -66,9 +66,12 @@ POST_OF = {
     'earnings-wdc': 'earnings-wdc',
     'top10-cap': 'top10-cap',
     'cpi': 'cpi',
+    # 2026-11-12 阿澤：兩則貼文合併成一則 → 兩張卡共用同一 post 組、同一文案
+    'eisman-scenarios': 'eisman-ai-boom',
+    'eisman-risks': 'eisman-ai-boom',
 }
-POST_NAME = {
-             'nvda-succession': 'NVDA CEO Succession Odds','ondeck': 'On Deck', 'theclose': 'The Close',
+POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'eisman-risks': 'Eisman Risks',
              'winners': 'Winners & Losers', 'weekahead': 'Week Ahead',
              'who-owns-nvda': 'Who Owns NVDA?',
              'who-owns-spcx': 'Who Owns SpaceX?',
@@ -79,10 +82,12 @@ POST_NAME = {
              'anthropic-s1': 'Anthropic S-1 · 6 cards',
              'ai-labs-scorecard': 'OpenAI vs Anthropic · Scorecard',
              'top10-cap': 'The 10 Most Valuable Companies',
-             'cpi': 'US CPI Preview'}
+             'cpi': 'US CPI Preview',
+             'eisman-ai-boom': 'Four Scenarios & Five Risks of the AI Boom'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
-         'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi']
+         'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi',
+         'eisman-scenarios', 'eisman-risks']
 
 # 總結型系列：多張卡（-p01..pNN）共用一則貼文 → 歸併成同一 kind、同一 post 組
 def kind_alias(kind):
