@@ -1,6 +1,6 @@
 ---
 name: onepagemarket
-description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」「上传画廊」「上畫廊」「發布專題卡」「publish_special_card」。🔴 聽到「上传画廊」＝直接跑零參數 `bash scripts/publish_special_card.sh`，不問問題、不要求填參數（第 10 節）。涵蓋四張定時卡、Who Owns X 股權卡、個股財報卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維、跨設備同步。改產線或跑產線前必讀。
+description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維。改產線或跑產線前必讀。
 ---
 
 # OPM 產線操作手冊（@onepagemarket）
@@ -26,11 +26,6 @@ bash scripts/preview.sh ondeck|winners|earnings|weekahead|close
 
 # 全產線（fetch → render → gallery → notify → post_x）
 bash scripts/publish.sh ondeck|theclose|winners|weekahead
-
-# 🔴 說「上传画廊」就直接跑這行（零參數，見第 10 節）
-bash scripts/publish_special_card.sh
-#   可選：--match <關鍵字> 指定哪張；--dry-run 先看計畫
-bash scripts/publish_special_card.sh --help   # 自帶完整說明
 
 # 股權卡
 NODE_PATH=./node_modules node scripts/build_ownership.js   # 數據在 data/ownership-<ticker>.json
@@ -61,8 +56,10 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 
 ## 4. 🔴 交付約定
 
+- **🔴 只增不改（2026-11-12 阿澤欽定）：兩台電腦各自往畫廊加圖，不需要同步，只管添加圖片，彼此不要覆蓋。** 已固化進 `scripts/push_local.py`：① 禁推 `docs/`（FATAL）——索引只由 CI 全量重建；② 累積檔（`out/gen-times.json`、`out/git-times.json`、`data/logos.json`）推送前自動拉遠端 dict-union；③ 其餘檔案若覆蓋遠端已有內容會逐項印 `⚠ 覆蓋遠端已有檔`——正常加圖應為 0 條。
+
 - **🔴 每輪交付必須同時給出：① 成品圖（present_files）② 完整發帖文案**（post_x.py「將發帖：」全文；模板：`The Close: {指數}. Most traded: {前三}. Breadth {n}% advancers. 🧵`）。未發帖時註明「未發帖，供手動發」。
-- 文案鐵律（2026-11-09 欽定現行版，取代早期「只寫數字與事實、單句 ≤90 字」）：**開頭必為疑問句 hook**；≤3 行、必 ≤280 字；活人感＋話題感＋簡短、不說教、不寫總結陳詞；中段只留 2–3 個最有戲的數字；**結尾不寫 `One page ↓`**。
+- 文案鐵律：只寫數字與事實、不寫「所以」、單句 ≤90 字元、全文 ≤280 字元。
 - 檔名：`the-close-YYYYMMDD.png`（用 session 交易日命名）；四頁用 `PAGES_STAMP`＝數據交易日。
 - X 發帖：OAuth1.0a 適合 CI（不過期）；OAuth2 PKCE 的 refresh token 會輪換，勿用於定時任務。X API 2026-02 起 pay-per-use（發帖 $0.015/則）。
 - 推送通知：scripts/notify.py（wecom / wecom-app / telegram / bark / none 可插拔，配置 scripts/.env.notify），產圖後先 notify（失敗不阻斷）再 post_x。
@@ -119,33 +116,3 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - 手機操作：WorkBuddy 小程序「本機模式」（iMac 開機時遙控本機）或「雲端模式」（沙箱 clone 本公開倉庫跑，冷啟動幾分鐘，發帖授權不在沙箱，產出＝成品圖+文案手動發）。
 - 家用電腦：資料庫下載源碼包（或 git clone）→ npm install → 即可按本手冊跑產線。
 - 定時卡永遠以 GitHub Actions 為準，任何設備關機都不影響。
-
-## 10. 🔴 說「上传画廊」就跑完（零參數，含跨設備同步）
-
-**🔴 阿澤說「上传画廊」／「上畫廊」／「發布專題卡」＝立刻執行下面這行，不問問題、不要求他填檔名／title／group、不重新調研：**
-
-```bash
-bash scripts/publish_special_card.sh
-```
-
-腳本自己判斷一切：
-
-- **選圖**：`out/*.png` 中排除已出現在 `origin/main:docs/index.html` 的，只認 7 天內新出的（防舊草稿誤發），優先有 caption／data json 的專題卡，再取最新。開頭會印「自動選定：<路徑>」與前 3 個候選。
-- **帶檔**：同 kind 的 `caption-*.txt`、`data/<kind>.json`、`scripts/build_<kind>.js`（底線命名也認）自動進第一段提交。
-- **組名／標題**：查 `build_gallery.py` 的 `POST_NAME`；新卡種才從 `data/*.json` 的 title 或 kind 自動生成並寫回模板。
-- **其餘**：清過程稿 → `card:` → `gallery: add` → rebase → 代理 push → 驗收，全自動。
-- 若 7 天內沒有新圖，腳本會列出較舊的未上線圖並安全結束，不會亂發。
-
-**只有這兩種情況才加參數**：使用者給了線索（「上传画廊 OpenAI 那張」）→ `--match openai`；想先看計畫 → `--dry-run`。明確指定圖檔 `--title`／`--group` 只在特殊需求時用，一般不要。
-
-跑完看腳本最後的驗收 ✓，回報時附上成品圖與文案即可。文案在 `out/caption-*-<stamp>.txt`，**腳本不發帖**；Pages 有快取，首刷舊頁屬正常。
-
-**腳本做的六件事**：清同 kind 過程稿到 `out/_wip/`（已入庫的舊版跳過，移走會讓重建索引拔掉歷史卡）→ 新卡種自動補 `POST_NAME` 組名 → `card:` → `gallery: add` → 代理 fetch／分叉才 `rebase -X theirs`／重跑畫廊補索引／amend／push → 驗收只看 `git show origin/main:`。內建冪等（卡已在遠端且索引引用即結束）、精確 `git add` 不碰別線 WIP、先 push 再還 stash。
-
-**🔴 跨電腦同步靠 git，不是靠記憶**
-
-- **會同步**（都在 repo 內、受 git 管理）：`scripts/publish_special_card.sh`、**本 SKILL.md（項目級 skill）**、`scripts/build_gallery.py`、`docs/`。
-- **不會同步**：workspace 的 `.workbuddy/memory/MEMORY.md` 與每日日誌、使用者級 `~/.workbuddy/skills/`、`~/.workbuddy/.../MEMORY.md`、X／notify 憑證檔——全是本機專屬。**所以流程與觸發口令必須寫在這裡，不能只寫進記憶。**
-- 新電腦：`git clone https://github.com/gaintergyz-design/opm.git` → `npm install` → 設 git 憑證 → 用 WorkBuddy 開啟該 workspace（會自動載入項目級 skill）→ 說「上畫廊」／「發布專題卡」，或直接跑指令。既有電腦 `git pull` 即可。
-- 代理：腳本讀 `$HTTPS_PROXY`（全域 7890 常失效）。能直連就不必設；需要時 `export HTTPS_PROXY=http://127.0.0.1:<埠>`。Python 優先用 WorkBuddy 內建 venv，找不到就退回 PATH 的 `python3`。
-- 任何電腦先跑 `bash scripts/publish_special_card.sh --help` 就有完整說明——說明寫在腳本註解裡，跟著 git 一起走。
