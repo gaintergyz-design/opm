@@ -57,7 +57,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 ## 4. 🔴 交付約定
 
 - **🔴 只增不改（2026-11-12 阿澤欽定）：兩台電腦各自往畫廊加圖，不需要同步，只管添加圖片，彼此不要覆蓋。** 已固化進 `scripts/push_local.py`：① 禁推 `docs/`（FATAL）——索引只由 CI 全量重建；② 累積檔（`out/gen-times.json`、`out/git-times.json`、`data/logos.json`）推送前自動拉遠端 dict-union；③ 其餘檔案若覆蓋遠端已有內容會逐項印 `⚠ 覆蓋遠端已有檔`——正常加圖應為 0 條。
-
+- **🔴🔴 OPM 卡全英文（2026-11-12 阿澤欽定）**：卡片上不出現任何中文；來源文章是中文也要翻譯成英文，金額一律 $B 口徑（$30B、$6.7B），不用「億」。依據 workspace 根目錄 `X起號方案-美股英文版-20261020.md`／`X起號方案-美股數據號-20261020.md`：定位 Objective US market data、語言全英文、@onepagemarket、No takes. No picks.。給阿澤的回覆仍用中文，發帖文案英文。
 - **🔴 每輪交付必須同時給出：① 成品圖（present_files）② 完整發帖文案**（post_x.py「將發帖：」全文；模板：`The Close: {指數}. Most traded: {前三}. Breadth {n}% advancers. 🧵`）。未發帖時註明「未發帖，供手動發」。
 - 文案鐵律：只寫數字與事實、不寫「所以」、單句 ≤90 字元、全文 ≤280 字元。
 - 檔名：`the-close-YYYYMMDD.png`（用 session 交易日命名）；四頁用 `PAGES_STAMP`＝數據交易日。
@@ -66,6 +66,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 
 ## 5. 排版系統與旋鈕
 
+- **🔴 配色（2026-11-12 阿澤欽定，取樣自三張富途參考圖）**：綠往藍偏 `#00A98C`（teal，不用純綠）、紅往橙偏 `#F1541E`／`#D1400F`（不用正紅／暗酒紅）、黃用亮金亮橙 `#FFB01C`／`#FF8A1E`（**不要土黃 #DC8A05**）。亮色做面積，文字另用同色系深版 `ink` 保對比；亮金底上的字用深色不用白字。範本：`data/eisman-ai-boom.json` 的 color／ink／tint 三欄。
 - 渲染路線：SVG → @resvg/resvg-js → PNG 1080×1350（正方形規則見下）。font-family "MiSans" + font-weight 匹配。
 - 共用版式：scaffold（大標 80 + 副標 26 + 琥珀規則線 + 右上手柄 pill + 正中水印）＋footer。
   - 手柄 pill：`#FAEEDA` 底／`#854F0B` 字／32px／圓角 12，頁腳重複第二次。
