@@ -1,28 +1,28 @@
 {
-  "session": "2026-11-11",
-  "generated_at": "2026-11-11 21:39",
+  "session": "2026-11-12",
+  "generated_at": "2026-11-12 21:54",
   "timezone": "ET",
   "source": "Yahoo Finance · Nasdaq",
   "indexes": [
     {
       "label": "S&P 500",
-      "last": 7619.38,
-      "prev_close": 7520.93,
-      "pct": 1.31,
+      "last": 7592.4,
+      "prev_close": 7619.38,
+      "pct": -0.35,
       "src": "yahoo-chart"
     },
     {
       "label": "Nasdaq",
-      "last": 25466.19,
-      "prev_close": 25065.88,
-      "pct": 1.6,
+      "last": 25366.09,
+      "prev_close": 25466.19,
+      "pct": -0.39,
       "src": "yahoo-chart"
     },
     {
       "label": "Russell 2000",
-      "last": 2846.26,
-      "prev_close": 2821.38,
-      "pct": 0.88,
+      "last": 2799.06,
+      "prev_close": 2846.26,
+      "pct": -1.66,
       "src": "yahoo-chart"
     }
   ],
@@ -35,162 +35,162 @@
       {
         "ticker": "NVDA",
         "name": "NVIDIA Corporation Common Stock",
-        "last": 173.73,
-        "pct": 2.92,
-        "dollar_volume": 46323337666,
-        "volume": 266639830
-      },
-      {
-        "ticker": "MU",
-        "name": "Micron Technology Inc. Common Stock",
-        "last": 811.3,
-        "pct": 11.89,
-        "dollar_volume": 28536310039,
-        "volume": 35173561
+        "last": 166.19,
+        "pct": -4.34,
+        "dollar_volume": 122032487878,
+        "volume": 734295011
       },
       {
         "ticker": "AMD",
         "name": "Advanced Micro Devices Inc. Common Stock",
-        "last": 552.9,
-        "pct": 7.32,
-        "dollar_volume": 23517752442,
-        "volume": 42535273
+        "last": 585.3,
+        "pct": 5.86,
+        "dollar_volume": 32106675397,
+        "volume": 54855075
       },
       {
-        "ticker": "SPCX",
-        "name": "Space Exploration Technologies Corp. Class A Common Stock",
-        "last": 139.75,
-        "pct": -2.33,
-        "dollar_volume": 15544783940,
-        "volume": 111232801
-      },
-      {
-        "ticker": "SNDK",
-        "name": "Sandisk Corporation Common Stock",
-        "last": 977.69,
-        "pct": 13.69,
-        "dollar_volume": 15382352649,
-        "volume": 15733364
-      },
-      {
-        "ticker": "MSFT",
-        "name": "Microsoft Corporation Common Stock",
-        "last": 521.12,
-        "pct": -2.26,
-        "dollar_volume": 14776746909,
-        "volume": 28355475
-      },
-      {
-        "ticker": "AAPL",
-        "name": "Apple Inc. Common Stock",
-        "last": 355.63,
-        "pct": 2.04,
-        "dollar_volume": 11659009839,
-        "volume": 32784101
+        "ticker": "MU",
+        "name": "Micron Technology Inc. Common Stock",
+        "last": 798.44,
+        "pct": -1.59,
+        "dollar_volume": 21402050861,
+        "volume": 26804833
       },
       {
         "ticker": "AVGO",
         "name": "Broadcom Inc. Common Stock",
-        "last": 345.22,
-        "pct": 3.99,
-        "dollar_volume": 11142161228,
-        "volume": 32275538
+        "last": 364.36,
+        "pct": 5.54,
+        "dollar_volume": 15773800977,
+        "volume": 43291802
+      },
+      {
+        "ticker": "SPCX",
+        "name": "Space Exploration Technologies Corp. Class A Common Stock",
+        "last": 139.94,
+        "pct": 0.14,
+        "dollar_volume": 13207022361,
+        "volume": 94376321
       },
       {
         "ticker": "TSLA",
         "name": "Tesla Inc. Common Stock",
-        "last": 390.84,
-        "pct": 2.91,
-        "dollar_volume": 10599023462,
-        "volume": 27118574
+        "last": 397.45,
+        "pct": 1.7,
+        "dollar_volume": 11259701267,
+        "volume": 28329856
       },
       {
-        "ticker": "AMZN",
-        "name": "Amazon.com Inc. Common Stock",
-        "last": 266.17,
-        "pct": -1.74,
-        "dollar_volume": 9834377560,
-        "volume": 36947731
-      },
-      {
-        "ticker": "META",
-        "name": "Meta Platforms Inc. Class A Common Stock",
-        "last": 628.77,
-        "pct": -1.97,
-        "dollar_volume": 9538582373,
-        "volume": 15170225
-      },
-      {
-        "ticker": "CRWV",
-        "name": "CoreWeave Inc. Class A Common Stock",
-        "last": 60.77,
-        "pct": 24.71,
-        "dollar_volume": 9385882806,
-        "volume": 154449281
-      },
-      {
-        "ticker": "INTC",
-        "name": "Intel Corporation Common Stock",
-        "last": 62.5,
-        "pct": 7.52,
-        "dollar_volume": 8013959875,
-        "volume": 128223358
+        "ticker": "AAPL",
+        "name": "Apple Inc. Common Stock",
+        "last": 354.88,
+        "pct": -0.14,
+        "dollar_volume": 10797201288,
+        "volume": 30424936
       },
       {
         "ticker": "GOOGL",
         "name": "Alphabet Inc. Class A Common Stock",
-        "last": 293.45,
-        "pct": 2.11,
-        "dollar_volume": 7194544169,
-        "volume": 24517104
+        "last": 298.7,
+        "pct": 1.79,
+        "dollar_volume": 10437837319,
+        "volume": 34944216
+      },
+      {
+        "ticker": "MSFT",
+        "name": "Microsoft Corporation Common Stock",
+        "last": 523.0,
+        "pct": 0.36,
+        "dollar_volume": 9304881803,
+        "volume": 17791361
+      },
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com Inc. Common Stock",
+        "last": 267.44,
+        "pct": 0.48,
+        "dollar_volume": 8996262789,
+        "volume": 33638434
       },
       {
         "ticker": "NBIS",
         "name": "Nebius Group N.V. Class A Ordinary Shares",
-        "last": 154.69,
-        "pct": 15.44,
-        "dollar_volume": 5884909878,
-        "volume": 38043247
-      },
-      {
-        "ticker": "TSM",
-        "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
-        "last": 413.35,
-        "pct": 4.25,
-        "dollar_volume": 5814391082,
-        "volume": 14066508
-      },
-      {
-        "ticker": "MRVL",
-        "name": "Marvell Technology Inc. Common Stock",
-        "last": 168.8,
-        "pct": 9.33,
-        "dollar_volume": 5561626789,
-        "volume": 32948026
+        "last": 128.64,
+        "pct": -16.84,
+        "dollar_volume": 8714161204,
+        "volume": 67740681
       },
       {
         "ticker": "GOOG",
         "name": "Alphabet Inc. Class C Capital Stock",
-        "last": 290.63,
-        "pct": 2.0,
-        "dollar_volume": 5165333858,
-        "volume": 17772886
+        "last": 295.35,
+        "pct": 1.62,
+        "dollar_volume": 6382772522,
+        "volume": 21610877
       },
       {
-        "ticker": "ORCL",
-        "name": "Oracle Corporation Common Stock",
-        "last": 128.38,
-        "pct": 8.82,
-        "dollar_volume": 4870867377,
-        "volume": 37941014
+        "ticker": "CRWV",
+        "name": "CoreWeave Inc. Class A Common Stock",
+        "last": 56.6,
+        "pct": -6.86,
+        "dollar_volume": 6049472750,
+        "volume": 106881144
+      },
+      {
+        "ticker": "INTC",
+        "name": "Intel Corporation Common Stock",
+        "last": 61.2,
+        "pct": -2.03,
+        "dollar_volume": 4823166553,
+        "volume": 78809911
+      },
+      {
+        "ticker": "MRVL",
+        "name": "Marvell Technology Inc. Common Stock",
+        "last": 164.45,
+        "pct": -2.58,
+        "dollar_volume": 3491842333,
+        "volume": 21233459
+      },
+      {
+        "ticker": "SMCI",
+        "name": "Super Micro Computer Inc. Common Stock",
+        "last": 26.99,
+        "pct": -11.3,
+        "dollar_volume": 3066612788,
+        "volume": 113620333
       },
       {
         "ticker": "BE",
         "name": "Bloom Energy Corporation Class A Common Stock",
-        "last": 209.47,
-        "pct": 12.97,
-        "dollar_volume": 3800919871,
-        "volume": 18145414
+        "last": 201.93,
+        "pct": -3.6,
+        "dollar_volume": 2862929818,
+        "volume": 14177833
+      },
+      {
+        "ticker": "ORCL",
+        "name": "Oracle Corporation Common Stock",
+        "last": 127.11,
+        "pct": -0.99,
+        "dollar_volume": 2842585716,
+        "volume": 22363195
+      },
+      {
+        "ticker": "BABA",
+        "name": "Alibaba Group Holding Limited American Depositary Shares each representing eight Ordinary share",
+        "last": 94.36,
+        "pct": -7.05,
+        "dollar_volume": 2385825321,
+        "volume": 25284287
+      },
+      {
+        "ticker": "CSCO",
+        "name": "Cisco Systems Inc. Common Stock (DE)",
+        "last": 102.01,
+        "pct": 1.24,
+        "dollar_volume": 2293643947,
+        "volume": 22484501
       }
     ]
   },
