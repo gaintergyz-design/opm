@@ -41,6 +41,18 @@ const DATA = [
   { name: 'Bill Dally',         role: ['Chief scientist; SVP,', 'Nvidia Research'], joined: '2009', odds: 3,  co: 'nvda' },
 ];
 
+/* ---- 頭像（圓形裁切；來源：Polymarket 截圖 2026-11-12 阿澤提供，存 assets/succession/）----
+ * 缺檔時自動退回首字母徽章，不影響出圖。 */
+const AVATARS = {
+  'Jay Puri': 'puri', 'Madison Huang': 'madison', 'Lisa Su': 'lisa',
+  'Colette Kress': 'kress', 'Debora Shoquist': 'shoquist', 'Bill Dally': 'dally',
+};
+const avatarDataUri = {};
+for (const [name, f] of Object.entries(AVATARS)) {
+  const p = path.join(BASE, 'assets', 'succession', f + '.png');
+  if (fs.existsSync(p)) avatarDataUri[name] = 'data:image/png;base64,' + fs.readFileSync(p).toString('base64');
+}
+
 /* ---- 工具 ---- */
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -61,6 +73,7 @@ defs.push(`<linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">
   <stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#E3B063"/></linearGradient>`);
 defs.push(`<linearGradient id="barG" x1="0" y1="0" x2="1" y2="0">
   <stop offset="0" stop-color="#BA7517"/><stop offset="1" stop-color="#E3B063"/></linearGradient>`);
+svg.push(`<clipPath id="avClip"><circle cx="30" cy="30" r="30"/></clipPath>`);
 svg.push(`<rect width="${W}" height="${H}" fill="url(#bgG)"/>`);
 svg.push(`<g transform="translate(${W / 2} ${H / 2}) rotate(-24)" opacity="0.055">
   ${t(0, 0, '@onepagemarket', { size: 132, weight: 700, anchor: 'middle', ls: 6 })}
@@ -126,11 +139,19 @@ DATA.forEach((r, ri) => {
   /* 行底：白底 + 底部細線 */
   svg.push(`<line x1="${M}" y1="${y}" x2="${W - M}" y2="${y}" stroke="${C.line}" stroke-width="1"/>`);
 
-  /* 徽章（tint 底 + 實色描邊圈 + 實色姓名首字母） */
+  /* 頭像（有照片→圓形裁切；無→tint 底首字母徽章）＋實色描邊圈 */
   const BR = 30, bx = M + BR, by = cy;
-  svg.push(`<circle cx="${bx}" cy="${by}" r="${BR}" fill="${co.tint}" stroke="${co.solid}" stroke-width="2"/>`);
-  const initials = r.name.split(' ').map((p) => p[0]).join('').toUpperCase().slice(0, 2);
-  svg.push(t(bx, by + 8, initials, { size: 22, weight: 700, fill: co.solid, anchor: 'middle' }));
+  const photo = avatarDataUri[r.name];
+  if (photo) {
+    /* resvg 按 PNG 原始尺寸（120px）繪 image，故用 scale(0.5) 縮到 60 使用者單位 */
+    svg.push(`<g transform="translate(${bx - BR} ${by - BR})" clip-path="url(#avClip)">`
+      + `<g transform="scale(0.5)"><image width="120" height="120" href="${photo}"/></g></g>`);
+  } else {
+    svg.push(`<circle cx="${bx}" cy="${by}" r="${BR}" fill="${co.tint}"/>`);
+    const initials = r.name.split(' ').map((p) => p[0]).join('').toUpperCase().slice(0, 2);
+    svg.push(t(bx, by + 8, initials, { size: 22, weight: 700, fill: co.solid, anchor: 'middle' }));
+  }
+  svg.push(`<circle cx="${bx}" cy="${by}" r="${BR}" fill="none" stroke="${co.solid}" stroke-width="2"/>`);
 
   /* 姓名 + 職位兩行 */
   svg.push(t(NAME_X, cy - 16, r.name, { size: 27, weight: 700, fill: C.ink }));
@@ -155,6 +176,9 @@ DATA.forEach((r, ri) => {
     { size: 14, fill: C.dim }));
   svg.push(t(M, my + 20,
     'Kalshi: implied odds Huang exits as CEO before July 2027. Board has opened an independent review.',
+    { size: 14, fill: C.dim }));
+  svg.push(t(M, my + 40,
+    'Photos: Polymarket.',
     { size: 14, fill: C.dim }));
 }
 
