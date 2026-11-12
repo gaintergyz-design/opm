@@ -14,6 +14,9 @@
 # === 換電腦 / 同步 ===================================================
 #   本檔與 .workbuddy/skills/onepagemarket/SKILL.md 都在 git 裡，
 #   新電腦 git clone 或 git pull 就有，不需複製任何本機記憶檔
+#   🔴 改過產線邏輯後：家裡電腦「本機直接跑本腳本」前要先 git pull
+#      （或重新下載源碼包）；只推圖、讓 CI 加圖的路徑不用做任何事，
+#      雲端用的永遠是 main 上的最新版。本機 MEMORY.md／日誌不隨 git 同步。
 #   首次準備：npm install；git 憑證；需代理時先 export HTTPS_PROXY=...
 #   Python 優先 WorkBuddy 內建 venv，找不到就退回 PATH 的 python3
 #   任何電腦都能先跑 `bash scripts/publish_special_card.sh --help` 看這份說明
