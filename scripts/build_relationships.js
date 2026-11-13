@@ -57,9 +57,10 @@ const DATA = [
     note: 'Undisclosed relationship with a direct report', outcome: 'dismissed' },
 ];
 
-/* ---- 頭像：取自原圖左欄人物照（放大裁切 + SVG 圓形 clip，2026-11-13）----
- * 裁切時留 38px 餘量，顯示時以 52px 繪 42px 圓，邊緣 logo／虛線被推出圓外。
- * 缺檔時退回中性首字母圓徽，不影響出圖。 */
+/* ---- 頭像：取自原圖左欄人物照，完整頭肩裁切（2026-11-13 修正）----
+ * 以膚色峰值定位臉部 → 頭頂上方硬裁掉公司 logo 帶、底部裁掉虛線帶，
+ * 保留原白底並在素材層做圓角，SVG 只貼一次、不做二次裁切。
+ * 缺檔時退回中性首字母圓角徽，不影響出圖。 */
 const AV_SLUGS = ['stonecipher', 'hurd', 'krzanich', 'easterbrook', 'bezos',
   'gates', 'zucker', 'shell', 'shaw', 'freixe'];
 const AVATARS = AV_SLUGS.map((s) => {
@@ -148,17 +149,17 @@ DATA.forEach((r, i) => {
 
   svg.push(`<line x1="${M}" y1="${y}" x2="${W - M}" y2="${y}" stroke="${C.line}" stroke-width="1"/>`);
 
-  /* 頭像圓徽（52px 圖繪進 42px 圓，輕微放大以避開原圖 logo／虛線） */
-  const acx = M + 24, acy = y + 40, clipId = `avClip${i}`;
-  defs.push(`<clipPath id="${clipId}"><circle cx="${acx}" cy="${acy}" r="21"/></clipPath>`);
+  /* 頭像：完整頭肩人像，素材自帶圓角白底，不再做二次裁切（2026-11-13 修正） */
+  const acx = M + 24, acy = y + 40;
+  const avS = 56, avX = acx - avS / 2, avY = acy - avS / 2;
   if (AVATARS[i]) {
-    svg.push(`<g clip-path="url(#${clipId})"><image x="${acx - 26}" y="${acy - 26 + (r.avDy || 0)}" width="52" height="52" href="${AVATARS[i]}"/></g>`);
+    svg.push(`<image x="${avX}" y="${avY}" width="${avS}" height="${avS}" href="${AVATARS[i]}"/>`);
   } else {
-    svg.push(`<circle cx="${acx}" cy="${acy}" r="21" fill="${C.chip}"/>`);
+    svg.push(`<rect x="${avX}" y="${avY}" width="${avS}" height="${avS}" rx="16" fill="${C.chip}"/>`);
     const initials = r.name.split(' ').map((p) => p[0]).join('').toUpperCase().slice(0, 2);
     svg.push(t(acx, acy + 6, initials, { size: 15, weight: 700, fill: C.gray, anchor: 'middle' }));
   }
-  svg.push(`<circle cx="${acx}" cy="${acy}" r="21" fill="none" stroke="#D6DAE1" stroke-width="1.5"/>`);
+  svg.push(`<rect x="${avX}" y="${avY}" width="${avS}" height="${avS}" rx="16" fill="none" stroke="#D6DAE1" stroke-width="1.5"/>`);
 
   /* 姓名 / 公司職位 / 事件 */
   svg.push(t(M + 64, y + 27, r.name, { size: 22, weight: 700 }));
