@@ -138,7 +138,18 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 
 - **背景**：GitHub `schedule` 是 best-effort，高載時延遲數十分鐘～數小時，甚至直接丟單且**不留任何 run 記錄**。2026-11-09~12 GitHub 連出多起 Actions critical 事故；11/12 只剩一次遲到約 7 小時的投遞（被守衛判窗外跳過）、11/13 掛零，靠人工 `workflow_dispatch` 補圖。11/10 改版又把 On Deck 從兩條 DST cron 砍成單條整點 cron，冗餘歸零。
 - **🔴 主觸發＝外部定時器打 dispatch**：`bash scripts/dispatch_card.sh <kind>`（等價於 POST `.../actions/workflows/daily.yml/dispatches`，body `{"ref":"main","inputs":{"kind":"ondeck","force":"false"}}`）。`workflow_dispatch` 不走 best-effort 佇列，11/12 兩次人工補跑都秒成。
-- **外部定時器至少配主＋備兩個時間點**（例如北京 19:07 / 19:25 / 19:45），重複觸發由「當日去重」擋下，一天只出一張。定時器須常在线（WorkBuddy 自動化任務 / Cloudflare Workers cron / VPS cron），不要放在會關機的機器上。
+- **外部定時器至少配主＋備兩個時間點**，重複觸發由「當日去重」擋下，一天只出一張。定時器須常在线（WorkBuddy 自動化任務 / Cloudflare Workers cron / VPS cron），不要放在會關機的機器上。
+- **🔴 已落地的 WorkBuddy 雲端定時任務（2026-11-13 阿澤「全配」）**：四類卡各一條，皆 `sandbox_agent`（沙盒雲端、常在线），打 `dispatch(kind=..., force=false)`。🔴 這些任務**不在 git 裡**，改定時＝改 WorkBuddy 自動化任務，改完必須同步更新本表；本表是跨設備查詢的唯一依據。
+
+| 卡片 | 任務 ID | cron | 時區 | 觸發點 |
+|---|---|---|---|---|
+| On Deck | 15650083 | `0 7,25,45 19 * * 1-5` | Asia/Shanghai | 工作日北京 19:07 / 19:25 / 19:45 |
+| The Close | 15650317 | `0 22,45,52 16 * * 1-5` | America/New_York | 工作日 ET 16:22 / 16:45 / 16:52（收盤後） |
+| Winners | 15650319 | `0 30,45 16 * * 5` | America/New_York | 週五 ET 16:30 / 16:45 |
+| Week Ahead | 15650321 | `0 0,20 7 * * 1` | America/New_York | 週一 ET 07:00 / 07:20（盤前） |
+
+  The Close / Winners / Week Ahead 一律用 `America/New_York`，夏令時由調度器自動換算；🔴 不要改寫成固定 UTC 或北京時間，否則 EST/EDT 切換會提前／延後一小時，出成半成品卡。
+- **🔴 令牌到期日 `2027-02-08 07:34 UTC`**：到期前必須換新細粒度 PAT 並更新四條任務的 prompt，否則會重演「靜默不出圖」。到期前一週提醒阿澤輪換。
 - **token**：外部定時器用只授這個倉庫 `Actions: read+write` 的**細粒度 PAT**，放環境變數 `OPM_DISPATCH_TOKEN`（優先於 `GITHUB_TOKEN`/`GH_TOKEN`）。🔴 不要寫進腳本、不要入庫、不要印出來。GitHub App user token（`ghu_`）會過期，不適合長期排程。
 - **守衛 v3**：dispatch 不看時間窗、只做當日去重；schedule 兜底仍檢查寬鬆 ET 窗口（ondeck 已放寬到 ET 19:45，遲到數小時也能補卡）；`force=true` 忽略一切守衛供人工強制補圖。去重鍵 `cards: <UTC日期> <kind>`，`fetch-depth: 0` 不能拔。
 - **`daily.yml` 裡 10 條 schedule 只作兜底**，不要再把它當唯一準時來源，也不要為了「準時」頻繁改 cron——每次改都會重新註冊 schedule 並產生數小時空窗。
