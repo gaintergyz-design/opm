@@ -81,6 +81,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'earnings-amat': 'Applied Materials Q4 FY26',
              'earnings-csco': 'Cisco Q1 FY27',
              'nvda-targets': "Nvidia's Target Price Split",
              'eisman-scenarios': 'Eisman Scenarios',
