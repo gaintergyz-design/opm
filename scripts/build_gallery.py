@@ -95,7 +95,8 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'ai-labs-scorecard': 'OpenAI vs Anthropic · Scorecard',
              'top10-cap': 'The 10 Most Valuable Companies',
              'cpi': 'US CPI Preview',
-             'eisman-ai-boom': 'Four Scenarios & Five Risks of the AI Boom'}
+             'eisman-ai-boom': 'Four Scenarios & Five Risks of the AI Boom',
+             'relationships-at-the-top': '10 Relationships That Reached the Board'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi',
