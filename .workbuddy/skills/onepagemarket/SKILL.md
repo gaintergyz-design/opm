@@ -18,6 +18,7 @@ description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成
 - 專題卡（不定時，手動觸發）：`scripts/build_ownership.js` + `data/ownership-*.json`（Who Owns X 股權卡）；`scripts/build_earnings.js` + `data/earnings-*.json`（個股財報卡）。
   - 財報卡資料欄位：`kpi.revenue/eps`（actual_disp、est_disp、surprise、prior、yoy）、`quarters`＋`gross_margin`＋`op_margin`＋`ocf`（五季序列，non-GAAP 口徑）、`mix`（2–5 段，配 `mix_colors`）、`outlook.items`、`layout.marginMax/marginStep`、`notes`（中文口徑，不上卡）。
   - 🔴 **寬橫向 wordmark 用 `logo_square: true`**（2026-11-13 Cisco 卡建立）：思科這種「橋＋CISCO」字標塞進 44px 圓徽章會被切掉兩端字，設此開關改畫方形圓角白底徽章、contain 全圖（`data/logos.json` 的圖需先裁成內容居中的 64×64 方圖）。圓徽章是預設，別亂開。
+  - 🔴 **公司 logo 不加邊框（2026-11-13 阿澤欽定，往後所有財報卡）**：右上角公司 logo（圓徽章與方形徽章皆同）去掉外圈描邊／邊框線，直接與 OPM 標識並列即可；當日已出的 CSCO／AMAT 卡不回改。
 - 畫廊：`build_gallery.py` 把 out/*.png 生成 docs/img + index.html，Pages 線上預覽。
 
 ## 2. 命令速查
