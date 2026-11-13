@@ -1,0 +1,149 @@
+{
+  "ticker": "CSCO",
+  "company": "Cisco",
+  "quarter": "Q1 FY2027",
+  "period_end": "Oct 24, 2026",
+  "reported": "Nov 12, 2026 · after US close",
+  "logo_square": true,
+  "brand": {
+    "deep": "#005073",
+    "primary": "#049FD9",
+    "mid": "#2FB2E6",
+    "teal": "#8CD3F0",
+    "pos": "#028948"
+  },
+  "strip": "Record $18.5B +24% · networking +43% · record 37.8% op margin · AI revenue guide doubled",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 18517,
+      "actual_disp": "18.5B",
+      "est_disp": "18.1B",
+      "surprise": 2.3,
+      "pill": "Beat +2.3%",
+      "pill_tone": "pos",
+      "prior": 14883,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 24.4
+    },
+    "eps": {
+      "label": "Non-GAAP EPS (USD)",
+      "actual": 1.4,
+      "actual_disp": "1.40",
+      "est_disp": "1.33",
+      "surprise": 5.3,
+      "pill": "Beat +5.3%",
+      "pill_tone": "pos",
+      "prior": 1.0,
+      "prior_txt": "1Q26",
+      "cur_txt": "1Q27",
+      "yoy": 40
+    }
+  },
+  "layout": {
+    "marginMax": 80,
+    "marginStep": 10
+  },
+  "quarters": [
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26",
+    "1Q27"
+  ],
+  "gross_margin": [
+    68.1,
+    67.5,
+    66.0,
+    66.3,
+    65.6
+  ],
+  "op_margin": [
+    34.4,
+    34.6,
+    34.2,
+    35.9,
+    37.8
+  ],
+  "ocf": [
+    3212,
+    1822,
+    3800,
+    5400,
+    4357
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 1
+  },
+  "mix_title": "Where revenue comes from · 1Q27",
+  "mix_center": "networking",
+  "mix_colors": [
+    "#005073",
+    "#049FD9",
+    "#2FB2E6",
+    "#7FCBEA",
+    "#C3E4F4"
+  ],
+  "mix": [
+    {
+      "name": "Networking",
+      "pct": 60.1,
+      "value": "$11.1B"
+    },
+    {
+      "name": "Services",
+      "pct": 20.8,
+      "value": "$3.85B"
+    },
+    {
+      "name": "Security",
+      "pct": 11.5,
+      "value": "$2.12B"
+    },
+    {
+      "name": "Collaboration",
+      "pct": 6.1,
+      "value": "$1.14B"
+    },
+    {
+      "name": "Observability",
+      "pct": 1.5,
+      "value": "$0.28B"
+    }
+  ],
+  "outlook": {
+    "title": "Q2 guide: street was behind",
+    "items": [
+      {
+        "k": "Q2 revenue",
+        "v": "$18.0–18.2B",
+        "note": "+18% Y/Y at midpoint · street $17.88B"
+      },
+      {
+        "k": "Q2 EPS",
+        "v": "$1.34–1.36",
+        "note": "street $1.23 · non-GAAP"
+      },
+      {
+        "k": "FY27 revenue",
+        "v": "$74.8–75.8B",
+        "note": "raised from $72.2–73.4B"
+      },
+      {
+        "k": "FY27 EPS",
+        "v": "$5.47–5.53",
+        "note": "raised from $5.05–5.11 · FY26 $4.33"
+      },
+      {
+        "k": "AI infra revenue",
+        "v": "$9B",
+        "note": "hyperscalers, FY27 · 2x+ FY26 · orders $9.3B in FY26"
+      }
+    ]
+  },
+  "notes": "口徑：Cisco FY2027 Q1（截至 2026-10-24，2026-11-12 美股盤後發布）SEC 8-K EX-99.1 新聞稿＋CNBC／界面新聞（2026-11-13 抓取）。營收 $18,517M（+24% Y/Y，15 年來最快增速；LSEG 一致預期 $18.1B → Beat +2.3%），產品 $14,667M +32%、服務 $3,850M +1%。GAAP 淨利 $4,552M（+59%）、GAAP 攤薄 EPS $1.14（+58%）；non-GAAP 淨利 $5,567M（+39%）、non-GAAP EPS $1.40（+40%，預期 $1.33 → Beat +5.3%）。GAAP 毛利率 63.7%（上年 65.5%）、non-GAAP 毛利率 65.6%（上年 68.1%，記憶體成本與產品組合拖累）；GAAP 營益率 30.2%（營益 $5.6B，+66%）、non-GAAP 營益率 37.8% 創紀錄（營益 $7.0B，+37%）。分部門：Networking $11,132M +43%（連續第五季雙位數產品訂單增長）、Security $2,120M +7%、Collaboration $1,136M +8%、Observability $279M +2%。地區：美洲 +28%、EMEA +18%、APJC +21%。OCF $4,357M（+36%）；現金及投資 $15.8B；RPO $46.2B +8%。五季序列（non-GAAP 毛利率／營益率）：1Q26 68.1/34.4、2Q26 67.5/34.6、3Q26 66.0/34.2、4Q26 66.3/35.9、1Q27 65.6/37.8；OCF（US$M）3212 / 1822 / 3800 / 5400 / 4357。指引：Q2 FY27 營收 $18.0–18.2B（中值 $18.1B，+18% Y/Y）、non-GAAP 毛利率 65–66%、營益率 36–37%、non-GAAP EPS $1.34–1.36（市場預期 $1.23）；FY27 全年營收上調至 $74.8–75.8B（8 月原指引 $72.2–73.4B）、non-GAAP EPS 上調至 $5.47–5.53（原 $5.05–5.11）。AI：FY27 來自超大規模雲廠商的 AI 基礎設施收入預期上調至 $9B，為 FY26 總額兩倍以上（FY26 AI 訂單 $9.3B）。股東回報 $3.7B（股息 $0.42/股、回購 1,800 萬股均價 $112.38）。股價：年內 +35%（同期納指 +9%），財報後盤後上漲。"
+}
