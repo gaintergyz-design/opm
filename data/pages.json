@@ -2,11 +2,11 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-13 13:25",
+  "generated_at": "2026-11-13 21:17",
   "week_label": "Nov 09 – Nov 13",
   "ondeck": {
-    "session": "2026-11-13",
-    "slot": "pre-market",
+    "session": "2026-11-16",
+    "slot": "next session",
     "prev_close": [
       {
         "label": "S&P 500",
@@ -21,250 +21,195 @@
         "pct": -1.66
       }
     ],
-    "econ": [
-      {
-        "time": "08:30",
-        "event": "Continuing Jobless Claims",
-        "consensus": "1,710K",
-        "previous": "1,717K"
-      },
-      {
-        "time": "08:30",
-        "event": "Initial Jobless Claims",
-        "consensus": "194K",
-        "previous": "191K"
-      },
-      {
-        "time": "10:00",
-        "event": "Existing Home Sales",
-        "consensus": "-3.5%",
-        "previous": "1.0%"
-      },
-      {
-        "time": "14:00",
-        "event": "Federal Budget Balance",
-        "consensus": "-298.6B",
-        "previous": "-27.0B"
-      },
-      {
-        "time": "08:30",
-        "event": "Jobless Claims 4-Week Avg.",
-        "consensus": "",
-        "previous": "195.25K"
-      },
-      {
-        "time": "10:00",
-        "event": "Fed Vice Chair for Supervision Barr Speaks",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "11:30",
-        "event": "Fed Goolsbee Speaks",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "13:10",
-        "event": "FOMC Member Daly Speaks",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "13:30",
-        "event": "Fed Schmid Speaks",
-        "consensus": "",
-        "previous": ""
-      },
-      {
-        "time": "16:30",
-        "event": "Fed's Balance Sheet",
-        "consensus": "",
-        "previous": "6,748B"
-      }
-    ],
-    "econ_all": 24,
+    "econ": [],
+    "econ_all": 0,
     "earnings": {
       "before": [
-        "SMFG",
-        "MFG",
-        "XXI",
-        "USAS",
-        "RMIX",
-        "SGML",
-        "SBC",
-        "DGXX"
+        "BIDU",
+        "TSN",
+        "BEKE",
+        "HTHT",
+        "ARMK",
+        "XPEV",
+        "BXDC",
+        "POET"
       ],
       "after": [
-        "ROLR",
-        "BBGI"
+        "ACM",
+        "XP",
+        "POWL",
+        "PAGS",
+        "INFQ",
+        "OMER",
+        "SHAZ",
+        "YALA"
       ],
-      "before_n": 25,
-      "after_n": 2,
-      "total": 180,
+      "before_n": 37,
+      "after_n": 38,
+      "total": 108,
       "top": [
         {
-          "ticker": "USAS",
-          "name": "Americas Gold and Silver",
-          "cap": 999118140,
-          "growth": 107.9,
-          "eps": 0.03,
-          "surprise": 21.5,
-          "time": "BMO"
-        },
-        {
-          "ticker": "KT",
-          "name": "KT",
-          "cap": 8992845800,
-          "growth": 45.8,
-          "eps": null,
-          "surprise": null,
+          "ticker": "BRC",
+          "name": "Brady",
+          "cap": 3874813180,
+          "growth": 76.1,
+          "eps": 1.51,
+          "surprise": 1.7,
           "time": ""
         },
         {
-          "ticker": "SCZM",
-          "name": "Santacruz Silver Mining",
-          "cap": 681355460,
-          "growth": 37.9,
-          "eps": 0.2,
-          "surprise": 33.3,
+          "ticker": "XPEV",
+          "name": "XPeng",
+          "cap": 9063344100,
+          "growth": 13.7,
+          "eps": -0.7,
+          "surprise": 65.8,
+          "time": "BMO"
+        },
+        {
+          "ticker": "TEO",
+          "name": "Telecom Argentina Stet",
+          "cap": 4535667200,
+          "growth": 11.3,
+          "eps": 0.18,
+          "surprise": -4.5,
           "time": ""
         },
         {
-          "ticker": "SGML",
-          "name": "Sigma Lithium",
-          "cap": 580656260,
-          "growth": 29.1,
-          "eps": 0.08,
-          "surprise": -100.0,
+          "ticker": "POWL",
+          "name": "Powell Industries",
+          "cap": 5165044700,
+          "growth": 11.2,
+          "eps": 1.56,
+          "surprise": 12.2,
+          "time": "AMC"
+        },
+        {
+          "ticker": "XP",
+          "name": "XP",
+          "cap": 7795411500,
+          "growth": 9.8,
+          "eps": 2.78,
+          "surprise": 2.2,
+          "time": "AMC"
+        },
+        {
+          "ticker": "HTHT",
+          "name": "H World Group Limited",
+          "cap": 15360815100,
+          "growth": 5.2,
+          "eps": 5.6,
+          "surprise": 0.1,
           "time": "BMO"
         },
         {
-          "ticker": "MFG",
-          "name": "Mizuho Financial Group",
-          "cap": 126484308000,
-          "growth": 20.4,
-          "eps": 0.21,
-          "surprise": 24.8,
-          "time": "BMO"
-        },
-        {
-          "ticker": "SMFG",
-          "name": "Sumitomo Mitsui Financial Group",
-          "cap": 157952164000,
-          "growth": 14.4,
-          "eps": 0.25,
-          "surprise": 15.6,
-          "time": "BMO"
-        },
-        {
-          "ticker": "SBC",
-          "name": "SBC Medical Group Holdings",
-          "cap": 538917950,
-          "growth": 12.8,
-          "eps": 0.12,
-          "surprise": 5.9,
-          "time": "BMO"
-        },
-        {
-          "ticker": "MUFG",
-          "name": "Mitsubishi UFJ Financial Group",
-          "cap": 260377575000,
-          "growth": 12.4,
-          "eps": 0.45,
-          "surprise": 25.2,
+          "ticker": "DAC",
+          "name": "Danaos",
+          "cap": 2763105540,
+          "growth": 5.1,
+          "eps": 7.06,
+          "surprise": -4.9,
           "time": ""
+        },
+        {
+          "ticker": "ARMK",
+          "name": "Aramark",
+          "cap": 14204117000,
+          "growth": 4.8,
+          "eps": 0.75,
+          "surprise": -12.7,
+          "time": "BMO"
         }
       ]
     }
   },
   "winners": {
-    "from": "2026-11-02",
-    "to": "2026-11-06",
-    "universe": 1836,
+    "from": "2026-11-09",
+    "to": "2026-11-13",
+    "universe": 1841,
     "is_demo": false,
     "gainers": [
       {
-        "ticker": "APP",
-        "pct": 70.95
-      },
-      {
-        "ticker": "XERS",
-        "pct": 49.46
-      },
-      {
-        "ticker": "ARDT",
-        "pct": 47.4
-      },
-      {
-        "ticker": "RIOT",
-        "pct": 41.13
-      },
-      {
-        "ticker": "VCEL",
-        "pct": 34.83
-      },
-      {
-        "ticker": "BETA",
-        "pct": 33.02
-      },
-      {
-        "ticker": "TMDX",
-        "pct": 32.35
+        "ticker": "PLBL",
+        "pct": 33.09
       },
       {
         "ticker": "LFTO",
-        "pct": 29.13
+        "pct": 30.63
       },
       {
-        "ticker": "FLY",
-        "pct": 27.44
+        "ticker": "MOD",
+        "pct": 27.8
       },
       {
-        "ticker": "MGNI",
-        "pct": 26.57
+        "ticker": "AAON",
+        "pct": 27.64
+      },
+      {
+        "ticker": "LQDA",
+        "pct": 19.93
+      },
+      {
+        "ticker": "MBGL",
+        "pct": 17.22
+      },
+      {
+        "ticker": "STVN",
+        "pct": 15.08
+      },
+      {
+        "ticker": "CHTR",
+        "pct": 14.18
+      },
+      {
+        "ticker": "CORZ",
+        "pct": 14.15
+      },
+      {
+        "ticker": "ACAD",
+        "pct": 13.64
       }
     ],
     "losers": [
       {
-        "ticker": "CDLR",
-        "pct": -76.0
+        "ticker": "RGTI",
+        "pct": -25.89
       },
       {
-        "ticker": "VCYT",
-        "pct": -50.69
+        "ticker": "CTVA",
+        "pct": -22.13
       },
       {
-        "ticker": "DOX",
-        "pct": -33.76
+        "ticker": "SMMT",
+        "pct": -20.68
       },
       {
-        "ticker": "STVN",
-        "pct": -31.71
+        "ticker": "QS",
+        "pct": -19.47
       },
       {
-        "ticker": "CVI",
-        "pct": -31.69
+        "ticker": "NOVT",
+        "pct": -18.56
       },
       {
-        "ticker": "IRTC",
-        "pct": -28.49
+        "ticker": "IONQ",
+        "pct": -18.28
       },
       {
-        "ticker": "FIS",
-        "pct": -28.48
+        "ticker": "BETA",
+        "pct": -18.2
       },
       {
-        "ticker": "SUPN",
-        "pct": -27.89
+        "ticker": "NG",
+        "pct": -18.17
       },
       {
-        "ticker": "AXON",
-        "pct": -26.43
+        "ticker": "NBIS",
+        "pct": -18.08
       },
       {
-        "ticker": "ECG",
-        "pct": -25.62
+        "ticker": "JOBY",
+        "pct": -17.8
       }
     ]
   },
@@ -272,144 +217,97 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 16",
-        "count": 108,
+        "date": "Nov 09",
+        "count": 237,
         "econ": [],
         "before": [
-          "BIDU",
-          "TSN",
-          "BEKE",
-          "HTHT",
-          "ARMK",
-          "XPEV",
-          "BXDC",
-          "POET"
+          "IX"
         ],
         "after": [
-          "ACM",
-          "XP",
-          "POWL",
-          "PAGS",
-          "INFQ",
-          "OMER",
-          "SHAZ",
-          "YALA"
+          "GSHD",
+          "CNCK"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 17",
-        "count": 60,
+        "date": "Nov 10",
+        "count": 216,
         "econ": [
-          "FOMC Member Williams Speaks",
-          "Fed Chair Warsh Speaks",
-          "3-Month Bill Auction",
-          "NY Empire State Manufacturing Index"
+          "Atlanta Fed GDPNow",
+          "NY Fed 1-Year Consumer Inflation Expectations",
+          "FOMC Member Bowman Speaks",
+          "Fed Goolsbee Speaks"
         ],
         "before": [
-          "HD",
-          "DIS",
-          "VIK",
-          "JD",
-          "ESLT",
-          "AS",
-          "TME",
-          "KLAR"
+          "VOD"
         ],
         "after": [
-          "NVDA",
-          "ZTO",
-          "SQM",
-          "DLB",
-          "CAAP",
-          "GBDC",
-          "LZB",
-          "IIIV"
+          "EC",
+          "LWLG",
+          "SWMR",
+          "MWC"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 18",
-        "count": 75,
+        "date": "Nov 11",
+        "count": 118,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "Core Retail Sales",
-          "Retail Sales Ex Gas/Autos",
-          "Capacity Utilization Rate"
+          "NFIB Small Business Optimism",
+          "Core CPI",
+          "CPI Index, n.s.a.",
+          "Fed Waller Speaks"
         ],
-        "before": [
-          "TJX",
-          "LOW",
-          "TGT",
-          "GLBE",
-          "HAFN",
-          "GLNG",
-          "BLSH",
-          "ZIM"
-        ],
-        "after": [
-          "PANW",
-          "P",
-          "WWD",
-          "UGI",
-          "SNEX",
-          "CPA",
-          "NJR",
-          "JOYY"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Thu",
-        "date": "Nov 19",
-        "count": 50,
+        "date": "Nov 12",
+        "count": 460,
         "econ": [
-          "Housing Starts",
-          "Fed Vice Chair for Supervision Barr Speaks",
-          "FOMC Meeting Minutes",
-          "FOMC Member Kashkari Speaks"
+          "OPEC Monthly Report",
+          "MBA 30-Year Mortgage Rate",
+          "MBA Mortgage Applications",
+          "MBA Purchase Index"
         ],
         "before": [
-          "WMT",
-          "BABA",
-          "NTES",
-          "WMG",
-          "FUTU",
-          "YMM",
-          "ROAD",
-          "VVV"
+          "CDRO"
         ],
         "after": [
-          "INTU",
-          "ROST",
-          "KEYS",
-          "ESTC",
-          "GAP",
-          "ESE",
-          "POST",
-          "BULL"
+          "CIG",
+          "ACCV",
+          "BAK",
+          "WKHS",
+          "TOMZ"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 20",
-        "count": 13,
+        "date": "Nov 13",
+        "count": 170,
         "econ": [
           "Continuing Jobless Claims",
           "Initial Jobless Claims",
-          "Jobless Claims 4-Week Avg.",
-          "Philadelphia Fed Manufacturing Index"
+          "Existing Home Sales",
+          "Federal Budget Balance"
         ],
         "before": [
-          "BSP",
-          "BJ",
-          "FRO",
-          "BKE",
-          "RLX",
-          "WRD"
+          "SMFG",
+          "MFG",
+          "USAS",
+          "SGML",
+          "SBC",
+          "KGEI",
+          "OWLT",
+          "ECC"
         ],
-        "after": []
+        "after": [
+          "ROLR",
+          "BBGI"
+        ]
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }
