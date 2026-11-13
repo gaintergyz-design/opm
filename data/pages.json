@@ -2,166 +2,178 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-12 12:44",
+  "generated_at": "2026-11-13 13:25",
   "week_label": "Nov 09 – Nov 13",
   "ondeck": {
-    "session": "2026-11-12",
+    "session": "2026-11-13",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": 1.31
+        "pct": -0.35
       },
       {
         "label": "Nasdaq",
-        "pct": 1.6
+        "pct": -0.39
       },
       {
         "label": "Russell 2000",
-        "pct": 0.88
+        "pct": -1.66
       }
     ],
     "econ": [
       {
-        "time": "05:00",
-        "event": "OPEC Monthly Report",
+        "time": "08:30",
+        "event": "Continuing Jobless Claims",
+        "consensus": "1,710K",
+        "previous": "1,717K"
+      },
+      {
+        "time": "08:30",
+        "event": "Initial Jobless Claims",
+        "consensus": "194K",
+        "previous": "191K"
+      },
+      {
+        "time": "10:00",
+        "event": "Existing Home Sales",
+        "consensus": "-3.5%",
+        "previous": "1.0%"
+      },
+      {
+        "time": "14:00",
+        "event": "Federal Budget Balance",
+        "consensus": "-298.6B",
+        "previous": "-27.0B"
+      },
+      {
+        "time": "08:30",
+        "event": "Jobless Claims 4-Week Avg.",
+        "consensus": "",
+        "previous": "195.25K"
+      },
+      {
+        "time": "10:00",
+        "event": "Fed Vice Chair for Supervision Barr Speaks",
         "consensus": "",
         "previous": ""
       },
       {
-        "time": "07:00",
-        "event": "MBA 30-Year Mortgage Rate",
+        "time": "11:30",
+        "event": "Fed Goolsbee Speaks",
         "consensus": "",
-        "previous": "7.30%"
+        "previous": ""
       },
       {
-        "time": "07:00",
-        "event": "MBA Mortgage Applications",
+        "time": "13:10",
+        "event": "FOMC Member Daly Speaks",
         "consensus": "",
-        "previous": "-1.2%"
+        "previous": ""
       },
       {
-        "time": "07:00",
-        "event": "MBA Purchase Index",
+        "time": "13:30",
+        "event": "Fed Schmid Speaks",
         "consensus": "",
-        "previous": "131.4"
+        "previous": ""
       },
       {
-        "time": "07:00",
-        "event": "Mortgage Market Index",
+        "time": "16:30",
+        "event": "Fed's Balance Sheet",
         "consensus": "",
-        "previous": "192.6"
-      },
-      {
-        "time": "07:00",
-        "event": "Mortgage Refinance Index",
-        "consensus": "",
-        "previous": "517.5"
-      },
-      {
-        "time": "11:00",
-        "event": "Thomson Reuters IPSOS PCSI",
-        "consensus": "",
-        "previous": "45.18"
+        "previous": "6,748B"
       }
     ],
-    "econ_all": 7,
+    "econ_all": 24,
     "earnings": {
       "before": [
-        "BN",
-        "NBIS",
-        "ASND",
-        "HBM",
-        "TWST",
-        "FPS",
-        "NIQ",
-        "MBGL"
+        "SMFG",
+        "MFG",
+        "XXI",
+        "USAS",
+        "RMIX",
+        "SGML",
+        "SBC",
+        "DGXX"
       ],
       "after": [
-        "CSCO",
-        "AMAT",
-        "NU",
-        "CBRS",
-        "STN",
-        "ELPC",
-        "ANDG",
-        "ARWR"
+        "ROLR",
+        "BBGI"
       ],
-      "before_n": 93,
-      "after_n": 125,
-      "total": 388,
+      "before_n": 25,
+      "after_n": 2,
+      "total": 180,
       "top": [
         {
-          "ticker": "NBIS",
-          "name": "Nebius Group",
-          "cap": 36428599000,
-          "growth": 520.9,
-          "eps": -1.24,
-          "surprise": -20.2,
+          "ticker": "USAS",
+          "name": "Americas Gold and Silver",
+          "cap": 999118140,
+          "growth": 107.9,
+          "eps": 0.03,
+          "surprise": 21.5,
           "time": "BMO"
         },
         {
-          "ticker": "HBM",
-          "name": "Hudbay Minerals",
-          "cap": 9755471900,
-          "growth": 111.1,
-          "eps": 0.34,
-          "surprise": -50.7,
-          "time": "BMO"
-        },
-        {
-          "ticker": "QXO",
-          "name": "QXO",
-          "cap": 14244747300,
-          "growth": 78.8,
-          "eps": 0.14,
-          "surprise": 5.7,
+          "ticker": "KT",
+          "name": "KT",
+          "cap": 8992845800,
+          "growth": 45.8,
+          "eps": null,
+          "surprise": null,
           "time": ""
         },
         {
-          "ticker": "ASND",
-          "name": "Ascendis Pharma A/S",
-          "cap": 16905200600,
-          "growth": 70.7,
-          "eps": 1.12,
-          "surprise": 429.3,
+          "ticker": "SCZM",
+          "name": "Santacruz Silver Mining",
+          "cap": 681355460,
+          "growth": 37.9,
+          "eps": 0.2,
+          "surprise": 33.3,
+          "time": ""
+        },
+        {
+          "ticker": "SGML",
+          "name": "Sigma Lithium",
+          "cap": 580656260,
+          "growth": 29.1,
+          "eps": 0.08,
+          "surprise": -100.0,
           "time": "BMO"
         },
         {
-          "ticker": "AMAT",
-          "name": "Applied Materials",
-          "cap": 295638860000,
-          "growth": 51.4,
-          "eps": 4.05,
-          "surprise": 3.6,
-          "time": "AMC"
-        },
-        {
-          "ticker": "NU",
-          "name": "Nu Holdings",
-          "cap": 58656539000,
-          "growth": 42.3,
-          "eps": 0.22,
-          "surprise": 3.9,
-          "time": "AMC"
-        },
-        {
-          "ticker": "TWST",
-          "name": "Twist Bioscience",
-          "cap": 8760374300,
-          "growth": 24.9,
-          "eps": -0.2,
-          "surprise": 10.0,
+          "ticker": "MFG",
+          "name": "Mizuho Financial Group",
+          "cap": 126484308000,
+          "growth": 20.4,
+          "eps": 0.21,
+          "surprise": 24.8,
           "time": "BMO"
         },
         {
-          "ticker": "CSCO",
-          "name": "Cisco Systems",
-          "cap": 386964914000,
-          "growth": 21.8,
-          "eps": 1.33,
-          "surprise": 1.8,
-          "time": "AMC"
+          "ticker": "SMFG",
+          "name": "Sumitomo Mitsui Financial Group",
+          "cap": 157952164000,
+          "growth": 14.4,
+          "eps": 0.25,
+          "surprise": 15.6,
+          "time": "BMO"
+        },
+        {
+          "ticker": "SBC",
+          "name": "SBC Medical Group Holdings",
+          "cap": 538917950,
+          "growth": 12.8,
+          "eps": 0.12,
+          "surprise": 5.9,
+          "time": "BMO"
+        },
+        {
+          "ticker": "MUFG",
+          "name": "Mitsubishi UFJ Financial Group",
+          "cap": 260377575000,
+          "growth": 12.4,
+          "eps": 0.45,
+          "surprise": 25.2,
+          "time": ""
         }
       ]
     }
@@ -261,7 +273,7 @@
       {
         "day": "Mon",
         "date": "Nov 16",
-        "count": 110,
+        "count": 108,
         "econ": [],
         "before": [
           "BIDU",
@@ -287,12 +299,12 @@
       {
         "day": "Tue",
         "date": "Nov 17",
-        "count": 59,
+        "count": 60,
         "econ": [
           "FOMC Member Williams Speaks",
           "Fed Chair Warsh Speaks",
-          "NY Empire State Manufacturing Index",
-          "3-Month Bill Auction"
+          "3-Month Bill Auction",
+          "NY Empire State Manufacturing Index"
         ],
         "before": [
           "HD",
@@ -318,12 +330,12 @@
       {
         "day": "Wed",
         "date": "Nov 18",
-        "count": 81,
+        "count": 75,
         "econ": [
           "Atlanta Fed GDPNow",
           "Core Retail Sales",
           "Retail Sales Ex Gas/Autos",
-          "Retail Inventories Ex Auto"
+          "Capacity Utilization Rate"
         ],
         "before": [
           "TJX",
@@ -340,10 +352,10 @@
           "P",
           "WWD",
           "UGI",
+          "SNEX",
           "CPA",
           "NJR",
-          "JOYY",
-          "KLIC"
+          "JOYY"
         ]
       },
       {
@@ -352,9 +364,9 @@
         "count": 50,
         "econ": [
           "Housing Starts",
+          "Fed Vice Chair for Supervision Barr Speaks",
           "FOMC Meeting Minutes",
-          "Building Permits",
-          "Pending Home Sales"
+          "FOMC Member Kashkari Speaks"
         ],
         "before": [
           "WMT",
