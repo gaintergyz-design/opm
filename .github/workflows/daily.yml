@@ -1,18 +1,20 @@
 name: daily-cards
 
-# 排程基準：On Deck 以「北京時間」為準（2026-11-10 阿澤定：每晚 19:00 北京），其餘以「美東 ET」為準
-#                     觸發時間          → cron（UTC）
-#   On Deck        北京 19:00（週一~五） → 11:07 + 兜底 11:40（2026-11-13 避開整點：
-#                                            GitHub 高峰期整點投遞易延遲/丟單，11/12 On Deck 與
-#                                            The Close 均未投遞、靠 workflow_dispatch 補跑）
-#   The Close      16:15（週一~五）     → 次日 04:22 / 05:22 + 兜底 04:52 / 05:52 → 20:22 / 21:22 + 20:52 / 21:52 UTC
-#   Winners&Losers 週五 16:30          → 週六 04:30 / 05:30     → 20:30 / 21:30 UTC（週五）
-#   Week Ahead     週一 07:00          → 週一 19:00 / 20:00     → 11:00 / 12:00 UTC
-# ⚠️ UTC ≠ 北京時間：UTC+0，北京 UTC+8。UTC 11:00 是北京 19:00。
-# 其餘產線註冊兩個 UTC 時間（DST / 非 DST 各一），哪一次真的跑由「時區守衛」判定，
-# 這樣 3 月 / 11 月換時制時不會整體錯開 1 小時，也不必手動改 cron。
-# ⚠️ 週一 11:00 UTC 的 Week Ahead 與 11:07 的 On Deck 前後腳——concurrency 排隊串行，守衛各自判定，不衝突。
-# 兜底條與主條同產線：先到先出卡，後到的被「當日去重」擋下（跑 7 秒直接跳過），無副作用。
+# 🔴 觸發架構（2026-11-13 阿澤欽定「治本」，詳見 .workbuddy/skills/onepagemarket/SKILL.md §11）：
+#   主觸發＝外部定時器打 workflow_dispatch（POST .../daily.yml/dispatches，封裝於 scripts/dispatch_card.sh）。
+#   GitHub 的 schedule 是 best-effort：高載時延遲數十分鐘～數小時，甚至直接丟單且不留任何 run 記錄
+#   （2026-11-09~12 GitHub 連出多起 Actions critical 事故；11/12 只剩一次遲到約 7 小時的投遞、
+#    被守衛判窗外跳過，11/13 掛零，靠人工 dispatch 補圖）。
+#   👉 下面 10 條 schedule **只作兜底**，不再是唯一準時來源；外部定時器至少配主/備兩個時間點，
+#      靠「當日去重」保證一天只出一張卡。
+#
+# 時間對照（UTC cron；北京＝UTC+8，美東 ET 冬令 UTC-5 / 夏令 UTC-4）：
+#   On Deck        北京 19:07 / 19:40（週一~五） → 11:07 / 11:40 UTC
+#   The Close      ET 16:15（週一~五）          → 20:22 / 21:22 + 20:52 / 21:52 UTC
+#   Winners&Losers ET 週五 16:30                → 20:30 / 21:30 UTC（週五）
+#   Week Ahead     ET 週一 07:00                → 11:00 / 12:00 UTC（週一）
+# ⚠️ 週一 11:00 UTC 的 Week Ahead 與 11:07 的 On Deck 前後腳——concurrency 排隊串行，守衛各自判定。
+# ⚠️ 不要為了「準時」頻繁改 cron：每次改動都會重新註冊 schedule 並產生數小時空窗。
 on:
   schedule:
     - cron: '7 11 * * 1-5'    # On Deck  北京 19:07（避開整點）
@@ -31,6 +33,10 @@ on:
         description: 'ondeck | theclose | winners | weekahead'
         required: true
         default: 'ondeck'
+      force:
+        description: 'true = 忽略當日去重，強制出圖（人工補跑用）'
+        required: false
+        default: 'false'
 
 concurrency:
   group: daily-cards
@@ -63,56 +69,58 @@ jobs:
           echo "kind=$K" >> "$GITHUB_OUTPUT"
           echo "本次產線：$K"
 
-      # 去重守衛 v2（2026-10-29）：舊版「±60 分鐘」窗口在 10-28 被 GitHub cron 延遲 62 分鐘擊穿，
-      # On Deck 兩條 cron 全被靜默跳過。改為「寬鬆時間窗 + 當日去重」：
-      #   ① 現在必須落在該產線的寬鬆 ET 窗口內（容忍 cron 延遲數小時）；
-      #   ② 當天倉庫裡還沒有 "cards: <UTC日期> <kind>" 提交（提交訊息用 UTC 日期，各產線
-      #      觸發時 UTC 日期與 ET 日期恆為同一天，所以可直接比對）。
-      # 兩條 DST/非 DST cron 重疊觸發時，第二條會因去重命中而跳過，不會重複出卡。
+      # 守衛 v3（2026-11-13 治本）：
+      #   · workflow_dispatch（外部定時器 / 人工補跑）不看時間窗，只做「當日去重」
+      #     → 外部定時器可配主/備多個時間點，重複觸發不會重複出卡。
+      #   · schedule 僅作兜底，仍檢查寬鬆 ET 窗口（ondeck 已放寬到 ET 19:45，遲到數小時也能補卡）。
+      #   · force=true 忽略一切守衛，供人工強制補圖。
+      #   去重鍵＝提交訊息 "cards: <UTC日期> <kind>"（checkout fetch-depth: 0 不可拔）。
       - name: 去重守衛（當天已出卡則跳過）
         id: guard
         env:
           KIND: ${{ steps.kind.outputs.kind }}
           EVENT: ${{ github.event_name }}
+          FORCE: ${{ github.event.inputs.force }}
         run: |
           python3 - <<'PY'
           import os, subprocess, sys
           from datetime import datetime, timezone
           from zoneinfo import ZoneInfo
 
-          if os.environ.get('EVENT') == 'workflow_dispatch':
-              print('手動觸發 → 跳過守衛')
-              open(os.environ['GITHUB_OUTPUT'], 'a').write('run=true\n')
-              sys.exit(0)
-
           KIND = os.environ['KIND']
-          # (允許的 ET 星期 0=Mon, 窗口起, 窗口止) —— 分鐘數
-          # ondeck 觸發點＝UTC 11:07（兜底 11:40）＝ET 06:07(冬令)/07:07(夏令)，窗口相應提前（2026-11-13 避開整點）
-          W = {'ondeck':    ([0, 1, 2, 3, 4], 5*60+30,  13*60),      # 目標 ET 06:00/07:00，容忍延遲到 13:00
-               'theclose':  ([0, 1, 2, 3, 4], 15*60,    19*60+45),   # 目標 16:15
-               'winners':   ([4],              15*60+30, 19*60+45),  # 週五，目標 16:30
-               'weekahead': ([0],              6*60,     11*60)}     # 週一，目標 07:00
-          days, lo, hi = W[KIND]
-          now = datetime.now(ZoneInfo('America/New_York'))
-          m = now.hour * 60 + now.minute
-          inwin = now.weekday() in days and lo <= m <= hi
-          print(f"ET 現在 {now:%a %H:%M} · 窗口 {lo//60:02d}:{lo%60:02d}–{hi//60:02d}:{hi%60:02d} → {'在窗內' if inwin else '窗外，跳過'}")
-          if not inwin:
-              open(os.environ['GITHUB_OUTPUT'], 'a').write('run=false\n')
+          EVENT = os.environ.get('EVENT', '')
+          FORCE = os.environ.get('FORCE') == 'true'
+
+          def out(v, msg):
+              print(msg)
+              open(os.environ['GITHUB_OUTPUT'], 'a').write(f'run={v}\n')
               sys.exit(0)
 
-          # 去重：當天已有該產線的出卡提交就不再跑
+          if FORCE:
+              out('true', 'force=true → 跳過所有守衛，強制出圖')
+
+          # 外部 dispatch 不檢查時間窗；只有 schedule 兜底需要容忍/限制 ET 窗口
+          if EVENT != 'workflow_dispatch':
+              W = {'ondeck':    ([0, 1, 2, 3, 4], 5*60+30,  19*60+45),  # 放寬到 ET 19:45
+                   'theclose':  ([0, 1, 2, 3, 4], 15*60,    19*60+45),
+                   'winners':   ([4],              15*60+30, 19*60+45),
+                   'weekahead': ([0],              6*60,     11*60)}
+              days, lo, hi = W[KIND]
+              now = datetime.now(ZoneInfo('America/New_York'))
+              m = now.hour * 60 + now.minute
+              inwin = now.weekday() in days and lo <= m <= hi
+              print(f"ET 現在 {now:%a %H:%M} · 窗口 {lo//60:02d}:{lo%60:02d}–{hi//60:02d}:{hi%60:02d} → {'在窗內' if inwin else '窗外，跳過'}")
+              if not inwin:
+                  out('false', 'schedule 落在窗口外 → 跳過')
+
+          # 當日去重：dispatch / schedule 一體適用
           today = datetime.now(timezone.utc).strftime('%F')
           pat = f"cards: {today} {KIND}"
           hit = subprocess.run(['git', 'log', '--grep', pat, '-1', '--format=%h %s'],
                                capture_output=True, text=True).stdout.strip()
           if hit:
-              print(f'今日已出卡（{hit}）→ 跳過')
-              ok = 'false'
-          else:
-              print('今日尚無出卡 → 執行')
-              ok = 'true'
-          open(os.environ['GITHUB_OUTPUT'], 'a').write(f'run={ok}\n')
+              out('false', f'今日已出卡（{hit}）→ 跳過')
+          out('true', '今日尚無出卡 → 執行')
           PY
 
       - if: steps.guard.outputs.run == 'true'

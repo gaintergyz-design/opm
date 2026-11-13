@@ -110,7 +110,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - ⚠️ GitHub 60 天無提交會停用排程，記得留意。
 - checkout 已設 `fetch-depth: 0`：去重守衛要用 `git log --grep` 查當天是否已出卡。畫廊改增量後已不需要歷史來估時間，**但這行不能拔**，拔了會重複出卡。
 - Secrets 用 env: 注入再接 shell 變數（多行 secret 直接插值會斷行）。憑證檔（.env.x/.env.notify/.x_tokens.json）不入庫，.gitignore 已擋。
-- 本機與雲端**不可同時 ACTIVE** 同一產線（雙發）；本機 automation 已停，雲端為唯一定時源。
+- 本機與雲端**不可同時 ACTIVE** 同一產線（雙發）；本機不跑定時產線，雲端 CI 只負責「被觸發後出圖」，準時觸發改由外部定時器負責（見 §11）。
 - 本倉庫已設 local `git config http.proxy ""` 繞過全域代理。
 - Pages 部署延遲 2-4 分鐘，驗證帶 ?v=N 防快取。
 - Actions 兩條警告無害：Node 20→24 強制升級、ubuntu-latest 遷移。
@@ -120,7 +120,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - 手機操作：WorkBuddy 小程序「本機模式」（iMac 開機時遙控本機）或「雲端模式」（沙箱 clone 本公開倉庫跑，冷啟動幾分鐘，發帖授權不在沙箱，產出＝成品圖+文案手動發）。
 - 家用電腦：資料庫下載源碼包（或 git clone）→ npm install → 即可按本手冊跑產線。
 - 🔴 **改了產線腳本後，家用電腦不會自動變**：CI 那條路（加圖 → `gallery-sync`）用的是倉庫 main 上的腳本，家用電腦什麼都不用做就生效；但家用電腦**本機直接跑** `publish_special_card.sh`／`build_gallery.py` 時，用的是它自己那份副本，必須在那台機器上 `git pull`（或重新下載源碼包）才會換成新版。本機 `MEMORY.md`、工作日誌、使用者級 skill **都不隨 git 同步**，規則只能寫進本檔。
-- 定時卡永遠以 GitHub Actions 為準，任何設備關機都不影響。
+- 定時卡由外部常在线定時器觸發（見 §11）；GitHub Actions 負責出圖，任何設備關機都不影響出圖這一段。
 
 ## 10. 🔴 畫廊「只加新圖」增量規則（2026-11-12 阿澤欽定，跨設備同步源）
 
@@ -133,3 +133,13 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - **🔴 衝突一律以 git 遠端為準（2026-11-13 阿澤欽定）**：上傳腳本 rebase 用 `-X ours`（rebase 語境裡 ours＝origin/main），任何衝突都取雲端版本；本次改動若因此整個變空會自動 skip，新卡再由重建索引步驟以純新增方式插回雲端最新頁面。舊版 `-X theirs` 會取「我這邊的舊頁」，2026-11-13 曾因此把雲端已上線的 3 張卡擠出畫廊（雲端 sync 隨後補回，才出現「重複上傳」的假象）。丢卡的根因＝本地頁面過時＋衝突選錯邊，兩者都已封死。
 - **🔴 不要再做的事**：不要為了解時間／排序去補 `out/gen-times.json`、不要重推 `docs/index.html` 去改舊卡時間戳、不要動別台電腦的 WIP。發現排序或時間異常先問阿澤，並用並排對比圖＋白話說明，不要用 commit 代號問他做決定。
 - **跨設備**：本檔與 `scripts/`、`.github/workflows/` 都在 git 裡，`git pull` 即載入；本機記憶檔不同步。CI 路徑自動生效，本機腳本路徑需手動 pull（見 §9）。
+
+## 11. 🔴 觸發架構：外部 dispatch 為主、schedule 為兜底（2026-11-13 阿澤欽定「治本」）
+
+- **背景**：GitHub `schedule` 是 best-effort，高載時延遲數十分鐘～數小時，甚至直接丟單且**不留任何 run 記錄**。2026-11-09~12 GitHub 連出多起 Actions critical 事故；11/12 只剩一次遲到約 7 小時的投遞（被守衛判窗外跳過）、11/13 掛零，靠人工 `workflow_dispatch` 補圖。11/10 改版又把 On Deck 從兩條 DST cron 砍成單條整點 cron，冗餘歸零。
+- **🔴 主觸發＝外部定時器打 dispatch**：`bash scripts/dispatch_card.sh <kind>`（等價於 POST `.../actions/workflows/daily.yml/dispatches`，body `{"ref":"main","inputs":{"kind":"ondeck","force":"false"}}`）。`workflow_dispatch` 不走 best-effort 佇列，11/12 兩次人工補跑都秒成。
+- **外部定時器至少配主＋備兩個時間點**（例如北京 19:07 / 19:25 / 19:45），重複觸發由「當日去重」擋下，一天只出一張。定時器須常在线（WorkBuddy 自動化任務 / Cloudflare Workers cron / VPS cron），不要放在會關機的機器上。
+- **token**：外部定時器用只授這個倉庫 `Actions: read+write` 的**細粒度 PAT**，放環境變數 `OPM_DISPATCH_TOKEN`（優先於 `GITHUB_TOKEN`/`GH_TOKEN`）。🔴 不要寫進腳本、不要入庫、不要印出來。GitHub App user token（`ghu_`）會過期，不適合長期排程。
+- **守衛 v3**：dispatch 不看時間窗、只做當日去重；schedule 兜底仍檢查寬鬆 ET 窗口（ondeck 已放寬到 ET 19:45，遲到數小時也能補卡）；`force=true` 忽略一切守衛供人工強制補圖。去重鍵 `cards: <UTC日期> <kind>`，`fetch-depth: 0` 不能拔。
+- **`daily.yml` 裡 10 條 schedule 只作兜底**，不要再把它當唯一準時來源，也不要為了「準時」頻繁改 cron——每次改都會重新註冊 schedule 並產生數小時空窗。
+- 本次改動檔案：`.github/workflows/daily.yml`、`scripts/dispatch_card.sh`、本節。CI 路徑自動生效；本機腳本需 `git pull`（見 §9）。
