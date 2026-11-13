@@ -1,0 +1,191 @@
+{
+ "stamp": "20261113",
+ "kicker": "NVIDIA / CEO SUCCESSION RISK / NOV 12, 2026",
+ "title": "Who Got Repriced?",
+ "subtitle": "Jensen exit talk: one session, two directions.",
+ "col_day": "NOV 12 (1 DAY)",
+ "col_since": "SINCE NOV 2 (8 SESSIONS)",
+ "legend_gain": "GAIN",
+ "legend_loss": "LOSS",
+ "asof": "US close Nov 12, 2026. Since Nov 2 = eight sessions.",
+ "chart_title": "EIGHT SESSIONS, INDEXED TO NOV 2 = 100",
+ "chart_note": "Rivals +19.2%  |  Neoclouds -2.6%  |  NVDA -17.8%",
+ "baskets": {
+  "dates": [
+   "11-02",
+   "11-03",
+   "11-04",
+   "11-05",
+   "11-06",
+   "11-09",
+   "11-10",
+   "11-11",
+   "11-12"
+  ],
+  "Rivals": [
+   100.0,
+   103.4,
+   102.9,
+   88.5,
+   93.7,
+   104.0,
+   106.7,
+   112.8,
+   119.2
+  ],
+  "Neoclouds": [
+   100.0,
+   108.5,
+   98.4,
+   84.7,
+   94.1,
+   98.3,
+   93.8,
+   108.4,
+   97.4
+  ],
+  "NVDA": [
+   100.0,
+   102.3,
+   99.0,
+   89.9,
+   92.4,
+   88.4,
+   83.6,
+   86.0,
+   82.2
+  ]
+ },
+ "groups": [
+  {
+   "name": "RIVALS",
+   "tag": "The bid",
+   "rows": [
+    {
+     "ticker": "AMD",
+     "name": "AMD",
+     "group": "RIVALS",
+     "tag": "The bid",
+     "day": 5.9,
+     "since": 25.4,
+     "prev": 552.9,
+     "last": 585.3
+    },
+    {
+     "ticker": "AVGO",
+     "name": "Broadcom",
+     "group": "RIVALS",
+     "tag": "The bid",
+     "day": 5.5,
+     "since": 13.1,
+     "prev": 345.22,
+     "last": 364.36
+    }
+   ]
+  },
+  {
+   "name": "NEOCLOUDS",
+   "tag": "The bill",
+   "rows": [
+    {
+     "ticker": "NBIS",
+     "name": "Nebius",
+     "group": "NEOCLOUDS",
+     "tag": "The bill",
+     "day": -16.8,
+     "since": -9.0,
+     "prev": 154.69,
+     "last": 128.64
+    },
+    {
+     "ticker": "CRWV",
+     "name": "CoreWeave",
+     "group": "NEOCLOUDS",
+     "tag": "The bill",
+     "day": -6.9,
+     "since": 12.9,
+     "prev": 60.77,
+     "last": 56.6
+    },
+    {
+     "ticker": "IREN",
+     "name": "IREN",
+     "group": "NEOCLOUDS",
+     "tag": "The bill",
+     "day": -6.5,
+     "since": -11.5,
+     "prev": 20.84,
+     "last": 19.48
+    }
+   ]
+  },
+  {
+   "name": "NVIDIA & SUPPLY CHAIN",
+   "tag": "The center",
+   "rows": [
+    {
+     "ticker": "NVDA",
+     "name": "Nvidia",
+     "group": "NVIDIA & SUPPLY CHAIN",
+     "tag": "The center",
+     "day": -4.3,
+     "since": -17.8,
+     "prev": 173.73,
+     "last": 166.19
+    },
+    {
+     "ticker": "MRVL",
+     "name": "Marvell",
+     "group": "NVIDIA & SUPPLY CHAIN",
+     "tag": "The center",
+     "day": -2.6,
+     "since": -4.1,
+     "prev": 168.8,
+     "last": 164.45
+    },
+    {
+     "ticker": "COHR",
+     "name": "Coherent",
+     "group": "NVIDIA & SUPPLY CHAIN",
+     "tag": "The center",
+     "day": -1.0,
+     "since": 16.1,
+     "prev": 234.51,
+     "last": 232.08
+    }
+   ]
+  },
+  {
+   "name": "MEMORY",
+   "tag": "The spillover",
+   "rows": [
+    {
+     "ticker": "SNDK",
+     "name": "SanDisk",
+     "group": "MEMORY",
+     "tag": "The spillover",
+     "day": -4.1,
+     "since": -12.8,
+     "prev": 977.69,
+     "last": 937.46
+    },
+    {
+     "ticker": "MU",
+     "name": "Micron",
+     "group": "MEMORY",
+     "tag": "The spillover",
+     "day": -1.6,
+     "since": -4.2,
+     "prev": 811.3,
+     "last": 798.44
+    }
+   ]
+  }
+ ],
+ "sk_hynix": {
+  "name": "SK hynix",
+  "day": -1.8,
+  "note": "Seoul close Nov 12"
+ },
+ "source_note": "Prices: Yahoo Finance chart, Nov 12, 2026 close. SK hynix: KRX Nov 12 close."
+}
