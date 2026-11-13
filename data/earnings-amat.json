@@ -1,0 +1,137 @@
+{
+  "ticker": "AMAT",
+  "company": "Applied Materials",
+  "quarter": "Q4 FY2026",
+  "period_end": "Oct 25, 2026",
+  "reported": "Nov 12, 2026 · after US close",
+  "brand": {
+    "deep": "#004C7C",
+    "primary": "#1B9AD0",
+    "mid": "#4CB4E0",
+    "teal": "#9AD5EC",
+    "pos": "#028948"
+  },
+  "strip": "Record $10.4B +53% · semi systems +64% · EPS $4.16 +92% · Q1 guide $11.1B",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (USD)",
+      "actual": 10409,
+      "actual_disp": "10.4B",
+      "est_disp": "10.3B",
+      "surprise": 1.1,
+      "pill": "Beat +1.1%",
+      "pill_tone": "pos",
+      "prior": 6800,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": 53
+    },
+    "eps": {
+      "label": "Non-GAAP EPS (USD)",
+      "actual": 4.16,
+      "actual_disp": "4.16",
+      "est_disp": "4.06",
+      "surprise": 2.5,
+      "pill": "Beat +2.5%",
+      "pill_tone": "pos",
+      "prior": 2.17,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": 92
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "quarters": [
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26"
+  ],
+  "gross_margin": [
+    48,
+    49,
+    49.9,
+    50.3,
+    50.4
+  ],
+  "op_margin": [
+    25.2,
+    26.1,
+    31.9,
+    33.8,
+    35.1
+  ],
+  "panel3_title": "Free cash flow",
+  "ocf": [
+    2043,
+    1040,
+    210,
+    2330,
+    2616
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 1
+  },
+  "mix_title": "Where revenue comes from · 4Q26",
+  "mix_center": "semi systems",
+  "mix_colors": [
+    "#004C7C",
+    "#1B9AD0",
+    "#9AD5EC"
+  ],
+  "mix": [
+    {
+      "name": "Semi Systems",
+      "pct": 76.8,
+      "value": "$8.00B"
+    },
+    {
+      "name": "Global Services",
+      "pct": 18.2,
+      "value": "$1.90B"
+    },
+    {
+      "name": "Display & other",
+      "pct": 5,
+      "value": "$0.52B"
+    }
+  ],
+  "outlook": {
+    "title": "Q1 guide: $11.1B and climbing",
+    "items": [
+      {
+        "k": "Q1 revenue",
+        "v": "$11.1B ±0.5",
+        "note": "+58% Y/Y at midpoint · street $10.84B"
+      },
+      {
+        "k": "Q1 EPS",
+        "v": "$4.35 ±0.20",
+        "note": "non-GAAP · street $4.25"
+      },
+      {
+        "k": "Semi Systems",
+        "v": "+64% Y/Y",
+        "note": "$8.0B quarter · on track +40%+ in CY26"
+      },
+      {
+        "k": "FY2026",
+        "v": "$34.45B, +21%",
+        "note": "record year · non-GAAP EPS $12.89 +37%"
+      },
+      {
+        "k": "Buyback",
+        "v": "$2.0B",
+        "note": "largest quarterly buyback in 8+ years"
+      }
+    ]
+  },
+  "notes": "口徑：Applied Materials FY2026 Q4（截至 2026-10-25，2026-11-12 美股盤後發布）SEC 8-K EX-99.1 新聞稿＋Investing.com／每經（2026-11-13 抓取）。營收 $10,409M（+53% Y/Y，創紀錄；一致預期 $10.30B → Beat +1.1%）。GAAP 毛利率 50.4%（+240bps）、non-GAAP 毛利率 50.6%（+250bps）；GAAP 營益 $3,658M / 35.1%，non-GAAP 營益 $3,680M / 35.3%（雙雙創紀錄）；GAAP EPS $3.40（+43%）、non-GAAP EPS $4.16（+92%，預期 $4.06 → Beat +2.5%）。分部（重述後口徑）：Semi Systems $7,996M（+64%，Foundry&Logic 58%／DRAM 33%／Flash 9%）、AGS $1,896M（+26%）、Display & Other $517M（+25%）。OCF $3.30B 創紀錄、non-GAAP FCF $2.62B；回購 $2.0B＋股息 $421M，八年多來最大單季回購。FY2026 全年：營收 $34.45B（+21%）、non-GAAP EPS $12.89（+37%）、OCF $8.87B。五季序列為 GAAP 口徑（Q4 GAAP 與 non-GAAP 僅差 0.2pt）：毛利率 48.0／49.0／49.9／50.3／50.4；營益率 25.2／26.1／31.9／33.8／35.1（1Q26–3Q26 由 findog 收錄的公司披露數字換算：18.3/70.1、25.2/79.1、30.8/91.2）。自由現金流（US$M）：2,043／1,040／210／2,330／2,616；首末兩季與公司披露吻合（4Q25 $2,043M、4Q26 $2,616M），2Q26 為季節性低點（單季 $210M）。指引：Q1 FY2027 營收 $11.1B ±$0.5B（+58% Y/Y，市場預期 $10.84B）、non-GAAP EPS $4.35 ±$0.20（預期 $4.25）。CEO Dickerson：CY2026 半導體系統業務增長超過 40%，AI 持續推動增量需求；EPIC 中心矽谷揭幕、EPIC 合作已達 15 家（Intel 為創始夥伴）。股價：財報後盤後約 +1.5%。"
+}
