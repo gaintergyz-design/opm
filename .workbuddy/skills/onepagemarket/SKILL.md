@@ -130,5 +130,6 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - **安全閥**：日期比頁面現況早 3 天以上、又不在頁面上的「孤立圖」會被略過並印警告，避免 `reply-waiting` 這類刻意不收錄的舊卡、或 rebase 遺失的歷史卡被當新卡頂到最前；要強制收錄補卡，加 `--include <檔名>.png`。
 - `--full` 才回到舊的整份重寫（改模板、需要重排時才用）。`--exclude <kind>` 照舊擋半成品；`reply-waiting` 已列為預設不收錄。
 - **`publish_special_card.sh` 第 5 步**已改成：rebase 後只在「本次新卡不在索引裡」時才補跑畫廊，不再無條件重跑（舊版會把歷史卡誤判成新卡）。
+- **🔴 衝突一律以 git 遠端為準（2026-11-13 阿澤欽定）**：上傳腳本 rebase 用 `-X ours`（rebase 語境裡 ours＝origin/main），任何衝突都取雲端版本；本次改動若因此整個變空會自動 skip，新卡再由重建索引步驟以純新增方式插回雲端最新頁面。舊版 `-X theirs` 會取「我這邊的舊頁」，2026-11-13 曾因此把雲端已上線的 3 張卡擠出畫廊（雲端 sync 隨後補回，才出現「重複上傳」的假象）。丢卡的根因＝本地頁面過時＋衝突選錯邊，兩者都已封死。
 - **🔴 不要再做的事**：不要為了解時間／排序去補 `out/gen-times.json`、不要重推 `docs/index.html` 去改舊卡時間戳、不要動別台電腦的 WIP。發現排序或時間異常先問阿澤，並用並排對比圖＋白話說明，不要用 commit 代號問他做決定。
 - **跨設備**：本檔與 `scripts/`、`.github/workflows/` 都在 git 裡，`git pull` 即載入；本機記憶檔不同步。CI 路徑自動生效，本機腳本路徑需手動 pull（見 §9）。

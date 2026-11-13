@@ -35,6 +35,8 @@
 #
 # === 行為 ===========================================================
 #   清理 → 補組名 → card: → gallery: add → rebase → 代理 push → 驗收
+#   🔴 合併衝突一律以 git 遠端為準（-X ours）；本次新卡若被擠掉，
+#      重建索引以純新增方式插回雲端最新頁面再推。
 #   畫廊是增量模式：只把本次新卡插進索引最前面，舊卡一個字都不動；
 #   rebase 後也只在「新卡掉出索引」時才補跑，不再無條件全量重跑。
 #   冪等：卡已在 origin/main 且索引引用即結束；精確 git add，
@@ -244,7 +246,7 @@ if [ -z "$PROXY" ]; then echo "      ⚠️ \$HTTPS_PROXY 為空（全域 7890 �
 GITP=(git)
 [ -n "$PROXY" ] && GITP=(git -c "http.proxy=$PROXY" -c "https.proxy=$PROXY")
 if [ "$DRY" = 1 ]; then
-  echo "      fetch origin → 分叉則 stash → rebase -X theirs → 重跑畫廊 → amend → push"
+  echo "      fetch origin → 分叉則 stash → rebase（衝突一律以 git 遠端為準）→ 重建索引 → push"
 else
   "${GITP[@]}" fetch origin --quiet
   NEED_REBASE=0
@@ -255,8 +257,18 @@ else
     git stash push -m "publish-special-card-$$" --quiet
     AFTER="$(git rev-parse -q --verify refs/stash 2>/dev/null || true)"
     HAS_STASH=0; [ -n "$AFTER" ] && [ "$AFTER" != "$BEFORE" ] && HAS_STASH=1
-    "${GITP[@]}" rebase -X theirs origin/main --quiet || {
-      echo "      ✗ rebase 失敗，請手動處理（stash 已保留）" >&2; exit 1; }
+    # 🔴 衝突一律以 git 遠端為準（2026-11-13 阿澤欽定，取代舊的 -X theirs）。
+    # rebase 中 "ours" = origin/main（遠端）。取遠端後本次改動可能整個變空，
+    # rebase 會停在空提交等待指示 → 偵測到就 skip（內容會由下方重建索引補回）。
+    "${GITP[@]}" rebase -X ours origin/main --quiet || {
+      if git rev-parse -q --verify REBASE_HEAD >/dev/null 2>&1 \
+         && git diff --quiet && git diff --cached --quiet; then
+        echo "      本次改動與遠端相同（衝突已取遠端），跳過空提交"
+        "${GITP[@]}" rebase --skip --quiet
+      else
+        echo "      ✗ rebase 失敗，請手動處理（stash 已保留）" >&2; exit 1
+      fi
+    }
     # 增量模式（2026-11-12）：只在「本次新卡掉出索引」時補跑，不再無條件重跑。
     # 舊版無條件重跑會把 rebase 後少掉的歷史卡當成新卡、頂到全頁最前。
     if grep -qF "$IMG_NAME" docs/index.html; then
@@ -274,7 +286,7 @@ else
         echo "      ✓ 索引補回（獨立 commit）"
       fi
     fi
-    # -X theirs 有時會漏一行別人 WIP 殘留 → 清掉再 pop（stash 有完整副本）
+    # 清掉衝突解算殘留的工作區髒檔再 pop（stash 有完整副本）
     if [ -n "$(git status --porcelain --untracked-files=no)" ]; then git restore --worktree .; fi
     # 先 push 再還 WIP：就算 pop 撞 gen-times.json，卡也已上線
     "${GITP[@]}" push origin main --quiet
