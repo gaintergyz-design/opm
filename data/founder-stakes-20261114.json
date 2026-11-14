@@ -1,0 +1,46 @@
+{
+  "title": "Founder stakes vs. control",
+  "stem": "founder-stakes-20261114",
+  "as_of": "As of Nov 13, 2026",
+  "headline": "Stake vs. control",
+  "subtitle": [
+    "What three founder-CEOs own — and how many votes they cast.",
+    "Nvidia, Tesla, SpaceX and Meta, from public filings and disclosures."
+  ],
+  "people": [
+    {
+      "name": "Jensen Huang",
+      "role": "Founder & former CEO, Nvidia",
+      "avatar": "huang",
+      "accent": "teal",
+      "zoom": 1.20,
+      "charts": [
+        { "value": 3.6, "ticker": "NVIDIA", "metric": "EQUITY & VOTES" }
+      ]
+    },
+    {
+      "name": "Elon Musk",
+      "role": "Founder & CEO, Tesla and SpaceX",
+      "avatar": "musk",
+      "accent": "orange",
+      "zoom": 1.04,
+      "charts": [
+        { "value": 19.8, "ticker": "TESLA", "metric": "EQUITY & VOTES" },
+        { "value": 46.1, "ticker": "SPACEX", "metric": "EQUITY" },
+        { "value": 83.7, "ticker": "SPACEX", "metric": "VOTES" }
+      ]
+    },
+    {
+      "name": "Mark Zuckerberg",
+      "role": "Founder & CEO, Meta",
+      "avatar": "zuck",
+      "accent": "gold",
+      "charts": [
+        { "value": 13.4, "ticker": "META", "metric": "EQUITY" },
+        { "value": 60.6, "ticker": "META", "metric": "VOTES" }
+      ]
+    }
+  ],
+  "caption": "Jensen Huang: 3.6% of Nvidia, and 3.6% of the vote.\nElon Musk: 19.8% of Tesla; 46.1% of SpaceX equity, 83.7% of its votes.\nMark Zuckerberg: 13.4% of Meta, 60.6% of the vote.\nClass B shares carry 10 votes each. One page \u2193",
+  "notes": "Source card: 'Three founder CEOs: stake comparison', compiled Nov 13, 2026 (user-provided image). Numbers retained verbatim from that card and cross-checked: NVDA 3.6% economic + voting (Eastmoney research note, Nov 13 2026; no dual-class structure); TSLA 19.8% (Tesla Schedule 13G filed Jun 17 2026 shows 19.9% beneficial ownership, one share one vote, so equity = votes); SPCX 83.7% voting power (same research note; SpaceX 10-Q / prospectus report ~42-48% economic and ~82-88% votes, 46.1% is the pro-forma IPO economic figure); META 13.4% economic / 60.6% voting (Meta preliminary information statement Oct 21 2026; Fortune Oct 21 2026; Class B = 10 votes). OPM rules applied: English only, no diagonal watermark, teal/orange/gold palette, no three-chip row, enlarged type, generous whitespace. v2 (Nov 14): horizontal comparison bars replaced by donut/pie rings, one ring per figure, value inside the ring."
+}
