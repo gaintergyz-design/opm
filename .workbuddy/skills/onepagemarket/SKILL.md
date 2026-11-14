@@ -74,6 +74,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - 共用版式：scaffold（大標 80 + 副標 26 + 琥珀規則線 + 右上手柄 pill + 正中水印）＋footer。
   - 手柄 pill：`#FAEEDA` 底／`#854F0B` 字／32px／圓角 12，頁腳重複第二次。
   - 🔴 **全產線禁用斜紋水印（2026-11-13 阿澤欽定）**：所有 OPM 卡一律不渲染 `@onepagemarket` 斜紋（原 rotate -24° / 132px bold）。20 支 build 腳本與 `lib/ownership_card.js` 的 watermark opacity 已統一設為 0，`CFG.watermark` 保留但**禁止啟用**；新增卡片不得再加入水印代碼。右上角 `brandMark` 品牌標識與頁腳 handle 不受影響，照常保留。
+  - 🔴 **右上角品牌標識統一用 OPM 字標圖片（2026-11-14 阿澤欽定）**：所有新卡右上角不再畫 `@onepagemarket` 手柄 pill（`#FAEEDA` 底／`#854F0B` 字），改用 `assets/opm-logo.png`（藍紫漸變 OPM 字標、透明 PNG，由 `scripts/prepare_opm_logo.py` 從阿澤提供的原圖裁切去白＋4x 放大）。以 base64 data URI 載入（resvg 不認 file://），高度約 56px、寬按圖檔比例、右緣對齊 `W-M`；頁尾右下 `@onepagemarket` handle 依統一頁尾保留。舊卡不回改。
   - 視覺四級重量 80/60/28/24px；「平淡」的唯一成因是所有元素同尺寸同粗細。
 - 關鍵旋鈕位置（build_pages.js）：CFG.colors 15/19 行、watermark 23/22、fitTitle 標題上限 90 行、scaffold 副標 91、手柄 pill 92-94、橘條 95、finish 頁腳 99-102、tickerRow 字寬係數 0.68（61-70）、各頁函數 buildOnDeck 117 / buildWinners 172 / buildEarningsWeek 203 / buildWeekAhead 244。
 - **正方形切換門檻**：On Deck `rawBottom <= 1000` → H=1080；The Close `(1080-146-NATURAL_BASE)/3 >= 48`（gSquare>=48）→ H=1080，否則 1350。其餘頁開頭重置 H=CFG.H。
