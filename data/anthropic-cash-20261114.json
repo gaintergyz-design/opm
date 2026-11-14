@@ -1,0 +1,21 @@
+{
+  "title": "Anthropic Cash: $132B",
+  "stem": "anthropic-cash-20261114",
+  "as_of": "As of Jun 30, 2026",
+  "headline": "Who's sitting on $132B?",
+  "subhead": "Only Alphabet has more.",
+  "col_left": "COMPANY / TICKER",
+  "col_right": "CASH & LIQUID INVESTMENTS",
+  "note": "* Cash and liquid investments, before deducting debt.",
+  "rows": [
+    { "logo": "googl",     "name": "Alphabet",        "ticker": "GOOGL",    "value": 242, "amount": "$242B" },
+    { "logo": "anthropic", "name": "Anthropic",       "ticker": "ANT",      "value": 132, "amount": "$132B", "highlight": true },
+    { "logo": "amzn",      "name": "Amazon",          "ticker": "AMZN",     "value": 123, "amount": "$123B" },
+    { "logo": "meta",      "name": "Meta Platforms",  "ticker": "META",     "value": 90,  "amount": "$90B"  },
+    { "logo": "msft",      "name": "Microsoft",       "ticker": "MSFT",     "value": 77,  "amount": "$77B"  },
+    { "logo": "tencent",   "name": "Tencent",         "ticker": "00700.HK", "value": 75,  "amount": "$75B"  },
+    { "logo": "baba",      "name": "Alibaba",         "ticker": "BABA",     "value": 70,  "amount": "$70B"  }
+  ],
+  "caption": "Who's got $132B lying around? Anthropic.\nOnly Alphabet ($242B) has more. Amazon's at $123B, Meta $90B.\nOne page \u2193",
+  "notes": "Rebuild of a Futu NiuNiu card (Anthropic holds $132B cash, second only to Alphabet) into OPM format. Only the MIDDLE CONTENT AREA of the reference is used as layout reference: column headers, seven horizontal rows with a circular company logo + company name over ticker + proportional bar with an end tick + right-aligned amount, and one fully highlighted row (Anthropic). Title, top-right wordmark and footer follow OPM rules; white background, no dark theme, no watermark, no QR / Futu branding. Amounts converted from 億美元 to $B: $2420億=$242B, $1320億=$132B, $1230億=$123B, $900億=$90B, $770億=$77B, $750億=$75B, $700億=$70B. Bar lengths are proportional to the largest value (242). Source image cites company filings (10-Q / earnings), Anthropic S-1, FUNDA analysis, as of 2026-06-30; figures are reproduced from the supplied reference, not independently re-verified. All seven circular logos are cropped from the reference image by scripts/prepare_cash_logos.py (white circle, transparent outside). Caption follows the 2026-11-14 voice rule: question first, short, human, no preaching; old cards are not rewritten."
+}
