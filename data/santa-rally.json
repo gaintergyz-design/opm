@@ -1,0 +1,64 @@
+{
+  "title": "Santa Rally vs. The January Bill",
+  "stem": "santa-rally-20261114",
+  "as_of": "As of Nov 13, 2026",
+  "headline": "Can Christmas come early?",
+  "subtitle": [
+    "Goldman, Morgan Stanley and JPMorgan flag a year-end squeeze setup.",
+    "Upstream inflation says the bill lands in Q1 2027."
+  ],
+  "sections": [
+    {
+      "label": "THE SETUP",
+      "tag": "SANTA RALLY SETUP",
+      "accent": "teal",
+      "rows": [
+        {
+          "label": "Positions cleared",
+          "lines": [
+            "Goldman: one of the sharpest de-grossings in a decade.",
+            "MS: AI net exposure underweight for the first time since 2023.",
+            "Hedge fund de-grossing has run longest in 15+ years."
+          ]
+        },
+        {
+          "label": "Valuation back, earnings up",
+          "lines": [
+            "MSCI World fwd P/E 15.6x, PEG 1.1x - near post-1997 means.",
+            "S&P 500 17.9x vs 18.9x implied by 2.25% real yields.",
+            "2026-28 EPS upgrades; bad news left prices steady."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "THE BILL",
+      "tag": "DUE IN Q1 2027",
+      "accent": "orange",
+      "rows": [
+        {
+          "label": "The pipeline is running hot",
+          "lines": [
+            "Global mfg import prices ~24% annualized, above 2021-22 peak.",
+            "Global PPI ~11%; pressure spreading beyond energy, AI hardware.",
+            "25-40% of import baskets >5%; US PPI categories >40%."
+          ]
+        },
+        {
+          "label": "January does the resetting",
+          "lines": [
+            "~16 CPI components jump >2 SD in January; others <=2.5.",
+            "6-12 month pass-through; Oct PPI +6.5% y/y; CPI beat 69/70.",
+            "GS added a third Fed rate hike to its forecast."
+          ]
+        }
+      ]
+    }
+  ],
+  "takeaway": [
+    "\"Short every consensus trade\" - Goldman's 2026 rule. \"Good luck.\"",
+    "GS macro note (Nov 13, 2026) via Futu News (Nov 14, 2026). A rally loosens financial conditions."
+  ],
+  "caption": "Goldman: one of the sharpest de-grossings in a decade. MSCI World fwd P/E 15.6x.\nGlobal import prices ~24% annualized, above 2021-22 peak. October PPI +6.5% y/y.\n~16 CPI components jump >2 SD in January; other months <=2.5. GS added a third Fed hike.\nOne page \u2193",
+  "notes": "Source article: Futu News, 'Will the traditional Santa Claus rally materialize in the US?', 2026-11-14. Goldman Sachs macro note by Cosimo Codacci-Pisanelli, 2026-11-13. Card text is English-only per OPM rule. Layout v2: no chips row, larger type, wider spacing."
+}
