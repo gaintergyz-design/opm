@@ -1,0 +1,84 @@
+{
+  "stem": "us-earnings-week-20261116",
+  "headline": "Who reports this week?",
+  "subhead": "35 US companies · Nov 16–20, 2026 · all times ET",
+  "note": "BMO = before market open, AMC = after market close. Schedules can change; check company filings.",
+  "meta": "US earnings · Week of Nov 16–20, 2026 · ET",
+  "days": [
+    {
+      "label": "MON",
+      "date": "11/16",
+      "bmo": [
+        ["BEKE", "KE Holdings"],
+        ["BIDU", "Baidu"],
+        ["IQ", "iQIYI"],
+        ["POET", "POET Tech."],
+        ["XPEV", "XPeng"]
+      ],
+      "amc": [
+        ["INFQ", "Infleqtion"],
+        ["RCAT", "Red Cat"]
+      ]
+    },
+    {
+      "label": "TUE",
+      "date": "11/17",
+      "bmo": [
+        ["DIS", "Disney"],
+        ["ESLT", "Elbit Systems"],
+        ["HD", "Home Depot"],
+        ["JD", "JD.com"],
+        ["VIK", "Viking Holdings"]
+      ],
+      "amc": [
+        ["NVDA", "NVIDIA"],
+        ["SQM", "SQM S.A."]
+      ]
+    },
+    {
+      "label": "WED",
+      "date": "11/18",
+      "bmo": [
+        ["BLSH", "Bullish"],
+        ["LOW", "Lowe's"],
+        ["PONY", "Pony.ai"],
+        ["TGT", "Target"],
+        ["TJX", "TJX Companies"],
+        ["ZIM", "ZIM Shipping"]
+      ],
+      "amc": [
+        ["JOYY", "JOYY Inc."],
+        ["PANW", "Palo Alto"],
+        ["WWD", "Woodward"]
+      ]
+    },
+    {
+      "label": "THU",
+      "date": "11/19",
+      "bmo": [
+        ["BABA", "Alibaba"],
+        ["FUTU", "Futu Holdings"],
+        ["NTES", "NetEase"],
+        ["PDD", "PDD Holdings"],
+        ["WMG", "Warner Music"],
+        ["WMT", "Walmart"]
+      ],
+      "amc": [
+        ["ESTC", "Elastic"],
+        ["GAP", "Gap Inc."],
+        ["INTU", "Intuit"],
+        ["ROST", "Ross Stores"]
+      ]
+    },
+    {
+      "label": "FRI",
+      "date": "11/20",
+      "bmo": [
+        ["BJ", "BJ's Wholesale"],
+        ["WRD", "WeRide"]
+      ],
+      "amc": []
+    }
+  ],
+  "caption": "Who's reporting this week? 35 US names, Nov 16–20.\nNVIDIA Tuesday after the close, Walmart Thursday before the open.\nBaidu, Alibaba, PDD and NetEase all in one week.\nOne page ↓"
+}
