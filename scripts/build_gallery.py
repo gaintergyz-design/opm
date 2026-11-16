@@ -100,6 +100,7 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'ai-labs-scorecard': 'OpenAI vs Anthropic · Scorecard',
              'top10-cap': 'The 10 Most Valuable Companies',
              'cpi': 'US CPI Preview',
+             'sp500-pe-eps': 'S&P 500: Multiple vs Earnings',
              'eisman-ai-boom': 'Four Scenarios & Five Risks of the AI Boom',
              'relationships-at-the-top': '10 Relationships That Reached the Board'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
