@@ -2,23 +2,23 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-13 21:17",
-  "week_label": "Nov 09 – Nov 13",
+  "generated_at": "2026-11-16 11:07",
+  "week_label": "Nov 16 – Nov 20",
   "ondeck": {
     "session": "2026-11-16",
-    "slot": "next session",
+    "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.35
+        "pct": -0.4
       },
       {
         "label": "Nasdaq",
-        "pct": -0.39
+        "pct": -0.91
       },
       {
         "label": "Russell 2000",
-        "pct": -1.66
+        "pct": -0.31
       }
     ],
     "econ": [],
@@ -71,7 +71,7 @@
           "name": "Telecom Argentina Stet",
           "cap": 4535667200,
           "growth": 11.3,
-          "eps": 0.18,
+          "eps": 0.28,
           "surprise": -4.5,
           "time": ""
         },
@@ -217,97 +217,99 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 09",
-        "count": 237,
+        "date": "Nov 23",
+        "count": 26,
         "econ": [],
         "before": [
-          "IX"
+          "VNET",
+          "CRGO"
         ],
         "after": [
-          "GSHD",
-          "CNCK"
+          "HPE",
+          "A",
+          "ZM",
+          "SYM",
+          "J",
+          "SMTC",
+          "AMTM",
+          "FSCO"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 10",
-        "count": 216,
+        "date": "Nov 24",
+        "count": 41,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "NY Fed 1-Year Consumer Inflation Expectations",
-          "FOMC Member Bowman Speaks",
-          "Fed Goolsbee Speaks"
+          "Chicago Fed National Activity",
+          "S&P Global Manufacturing PMI",
+          "S&P Global Composite PMI",
+          "S&P Global Services PMI"
         ],
         "before": [
-          "VOD"
+          "ADI",
+          "MDT",
+          "DLTR",
+          "BBY",
+          "BURL",
+          "SJM",
+          "DKS",
+          "ANF"
         ],
         "after": [
-          "EC",
-          "LWLG",
-          "SWMR",
-          "MWC"
+          "DELL",
+          "ADSK",
+          "WDAY",
+          "HPQ",
+          "NTNX",
+          "URBN",
+          "AMBA",
+          "BBAR"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 11",
-        "count": 118,
+        "date": "Nov 25",
+        "count": 19,
         "econ": [
-          "NFIB Small Business Optimism",
-          "Core CPI",
-          "CPI Index, n.s.a.",
-          "Fed Waller Speaks"
+          "CB Consumer Confidence",
+          "House Price Index",
+          "S&P/CS HPI Composite - 20 s.a.",
+          "S&P/CS HPI Composite - 20 n.s.a."
         ],
-        "before": [],
+        "before": [
+          "DE",
+          "LI",
+          "GDS",
+          "DSX"
+        ],
         "after": []
       },
       {
         "day": "Thu",
-        "date": "Nov 12",
-        "count": 460,
+        "date": "Nov 26",
+        "count": 1,
         "econ": [
-          "OPEC Monthly Report",
-          "MBA 30-Year Mortgage Rate",
-          "MBA Mortgage Applications",
-          "MBA Purchase Index"
+          "Atlanta Fed GDPNow",
+          "GDP",
+          "GDP Price Index",
+          "GDP Sales"
         ],
         "before": [
-          "CDRO"
+          "CMBT"
         ],
-        "after": [
-          "CIG",
-          "ACCV",
-          "BAK",
-          "WKHS",
-          "TOMZ"
-        ]
+        "after": []
       },
       {
         "day": "Fri",
-        "date": "Nov 13",
-        "count": 170,
+        "date": "Nov 27",
+        "count": 5,
         "econ": [
-          "Continuing Jobless Claims",
-          "Initial Jobless Claims",
-          "Existing Home Sales",
-          "Federal Budget Balance"
+          "United States - Thanksgiving Day"
         ],
-        "before": [
-          "SMFG",
-          "MFG",
-          "USAS",
-          "SGML",
-          "SBC",
-          "KGEI",
-          "OWLT",
-          "ECC"
-        ],
-        "after": [
-          "ROLR",
-          "BBGI"
-        ]
+        "before": [],
+        "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
