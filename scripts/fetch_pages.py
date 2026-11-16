@@ -225,9 +225,8 @@ def econ_score(e):
 #    後果：每張卡的「週一」桶＝週日（美區 0 條）→ 週一永遠空白；週五真數據藏在週六桶裡永遠查不到。
 #    ⇒ 經濟事件一律改走 ForexFactory 周曆（date 欄就是 ET 日曆日，實測與真實發布日完全吻合，
 #      還自帶 High/Medium/Low 影響度），Nasdaq 僅在 FF 抓不到時兜底（查 D+1 並把日期標回來）。
-FF_WEEK = {'this': 'ff_calendar_thisweek.json',
-           'last': 'ff_calendar_lastweek.json',
-           'next': 'ff_calendar_nextweek.json'}
+# 只有 thisweek 是長期有效的檔名（last/next 在 nfs.faireconomy.media 回 404，實測 2026-11-16）
+FF_WEEK = {'this': 'ff_calendar_thisweek.json'}
 FF_BASE = 'https://nfs.faireconomy.media/'
 # 補跑/回補用：/tmp/ff_calendar_<YYYY-MM-DD>.json（該日期所在週的週曆）優先於固定檔名
 FF_DAILY = '/tmp/ff_calendar_{d}.json'
@@ -261,18 +260,20 @@ def _fetch_ff(url, label, quiet=False, tries=3):
 
 
 def _ff_week_of(date_str):
-    """某一週（含 date_str 那週）的 FF 週曆：先試每日快照，再退回 thisweek，最後才用 last/next。"""
+    """包含 date_str 那一週的 FF 週曆（USD）。
+    thisweek 檔**只保證含「今天」那一週**：補跑去其他週時它完全不含該日期（實測 404/交集為空），
+    故一律先驗證有沒有覆蓋到 date_str；沒有就當缺失（走 Nasdaq 兜底），絕不回空集合。
+    註：last/next 在 nfs.faireconomy.media 已 404；要補跑歷史週就把該週檔存成 /tmp/ff_calendar_<date>.json。"""
     kind = 'w' + date_str
     if kind in _FF_CACHE:
         return _FF_CACHE[kind]
-    d = datetime.strptime(date_str, '%Y-%m-%d').date()
-    mon = d - timedelta(days=d.weekday())
-    rows = _fetch_ff(FF_DAILY.format(d=mon.isoformat()), f'week of {mon}', quiet=True)
+    rows = _fetch_ff(FF_DAILY.format(d=date_str), 'snapshot', quiet=True)
     if rows is None:
-        for k in ('this', 'last', 'next'):
-            rows = _fetch_ff(FF_WEEK[k], f'{k}week', quiet=True)
-            if rows is not None:
-                break
+        rows = _fetch_ff(FF_WEEK['this'], 'thisweek', quiet=True)
+    # 快照/固定檔都不含該日期 → 說明拿到的是別的一週，寧可當缺失（走兜底），不要回空集合
+    if rows and not any((x.get('date') or '')[:10] == date_str for x in rows):
+        print(f'    ⚠️ [econ] FF 週曆不含 {date_str}（{rows[0].get("date", "")[:10]} 起）→ 視為缺失')
+        rows = None
     _FF_CACHE[kind] = rows
     return rows
 
