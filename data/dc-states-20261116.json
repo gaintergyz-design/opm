@@ -1,0 +1,32 @@
+{
+  "stem": "dc-states-20261116",
+  "headline": "The data-center state race",
+  "subhead": "Top 20 US states · capacity under construction & planned, GW · Oct 2026",
+  "party": { "D": "Democratic governor", "R": "Republican governor" },
+  "note1": "Bars colored by projected 2027 governor party. Disclosed power capacity of projects under construction",
+  "note2": "or in planning; excludes capacity already in service. Values rounded to 0.1 GW.",
+  "source": "Source: public market data",
+  "rows": [
+    { "abbr": "TX", "name": "Texas",         "gw": 93.1, "party": "D" },
+    { "abbr": "VA", "name": "Virginia",      "gw": 31.6, "party": "D" },
+    { "abbr": "PA", "name": "Pennsylvania",  "gw": 23.1, "party": "D" },
+    { "abbr": "GA", "name": "Georgia",       "gw": 19.8, "party": "D" },
+    { "abbr": "UT", "name": "Utah",          "gw": 19.3, "party": "R" },
+    { "abbr": "OH", "name": "Ohio",          "gw": 17.6, "party": "D" },
+    { "abbr": "NM", "name": "New Mexico",    "gw": 15.7, "party": "D" },
+    { "abbr": "WV", "name": "West Virginia", "gw": 13.4, "party": "R" },
+    { "abbr": "AZ", "name": "Arizona",       "gw": 10.6, "party": "D" },
+    { "abbr": "IL", "name": "Illinois",      "gw": 10.6, "party": "D" },
+    { "abbr": "IN", "name": "Indiana",       "gw": 8.7,  "party": "R" },
+    { "abbr": "KY", "name": "Kentucky",      "gw": 7.9,  "party": "D" },
+    { "abbr": "NV", "name": "Nevada",        "gw": 7.7,  "party": "D" },
+    { "abbr": "NY", "name": "New York",      "gw": 6.1,  "party": "D" },
+    { "abbr": "LA", "name": "Louisiana",     "gw": 5.8,  "party": "R" },
+    { "abbr": "WY", "name": "Wyoming",       "gw": 5.1,  "party": "R" },
+    { "abbr": "MO", "name": "Missouri",      "gw": 4.6,  "party": "R" },
+    { "abbr": "IA", "name": "Iowa",          "gw": 4.3,  "party": "D" },
+    { "abbr": "OK", "name": "Oklahoma",      "gw": 3.9,  "party": "R" },
+    { "abbr": "ND", "name": "North Dakota",  "gw": 3.5,  "party": "R" }
+  ],
+  "caption": "How does Texas have 3x the data-center power of any other state?\nTX is building or planning 93.1 GW — Virginia is a distant #2 at 31.6.\nAcross the top 20 states that's 312 GW, with Dem-led states holding ~79% of it.\nOne page ↓"
+}
