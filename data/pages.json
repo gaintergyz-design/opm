@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-16 12:01",
+  "generated_at": "2026-11-16 14:05",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
     "session": "2026-11-16",
@@ -21,8 +21,51 @@
         "pct": -0.31
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "12:00",
+        "event": "Fed Chairman Warsh Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "High"
+      },
+      {
+        "time": "09:48",
+        "event": "Cleveland Fed Inflation Expectations",
+        "consensus": "",
+        "previous": "3.3%",
+        "impact": "Low"
+      },
+      {
+        "time": "05:00",
+        "event": "FOMC Member Barr Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "Low"
+      },
+      {
+        "time": "08:30",
+        "event": "Empire State Manufacturing Index",
+        "consensus": "17.6",
+        "previous": "25.5",
+        "impact": "Low"
+      },
+      {
+        "time": "09:05",
+        "event": "FOMC Member Williams Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "Low"
+      },
+      {
+        "time": "14:15",
+        "event": "FOMC Member Hammack Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "Low"
+      }
+    ],
+    "econ_all": 6,
     "earnings": {
       "before": [
         "BIDU",
@@ -219,7 +262,12 @@
         "day": "Mon",
         "date": "Nov 16",
         "count": 108,
-        "econ": [],
+        "econ": [
+          "Fed Chairman Warsh Speaks",
+          "Cleveland Fed Inflation Expectations",
+          "FOMC Member Barr Speaks",
+          "Empire State Manufacturing Index"
+        ],
         "before": [
           "BIDU",
           "TSN",
@@ -244,12 +292,12 @@
       {
         "day": "Tue",
         "date": "Nov 17",
-        "count": 60,
+        "count": 56,
         "econ": [
-          "Fed Vice Chair for Supervision Barr Speaks",
-          "FOMC Member Williams Speaks",
-          "Fed Chair Warsh Speaks",
-          "FOMC Member Barkin Speaks"
+          "Core Retail Sales m/m",
+          "FOMC Member Musalem Speaks",
+          "Import Prices m/m",
+          "FOMC Member Waller Speaks"
         ],
         "before": [
           "HD",
@@ -275,12 +323,12 @@
       {
         "day": "Wed",
         "date": "Nov 18",
-        "count": 75,
+        "count": 106,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "Core Retail Sales",
-          "Retail Sales Ex Gas/Autos",
-          "Fed Waller Speaks"
+          "FOMC Meeting Minutes",
+          "Housing Starts",
+          "Building Permits",
+          "Pending Home Sales m/m"
         ],
         "before": [
           "TJX",
@@ -308,10 +356,10 @@
         "date": "Nov 19",
         "count": 62,
         "econ": [
-          "Housing Starts",
-          "FOMC Meeting Minutes",
-          "FOMC Member Kashkari Speaks",
-          "Pending Home Sales"
+          "Philly Fed Manufacturing Index",
+          "Unemployment Claims",
+          "FOMC Member Hammack Speaks",
+          "CB Leading Index m/m"
         ],
         "before": [
           "WMT",
@@ -339,10 +387,9 @@
         "date": "Nov 20",
         "count": 22,
         "econ": [
-          "Initial Jobless Claims",
-          "Philadelphia Fed Manufacturing Index",
-          "Continuing Jobless Claims",
-          "Jobless Claims 4-Week Avg."
+          "Revised UoM Consumer Sentiment",
+          "Revised UoM Inflation Expectations",
+          "FOMC Member Cook Speaks"
         ],
         "before": [
           "BSP",
