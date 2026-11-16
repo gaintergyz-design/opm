@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-16 12:00",
+  "generated_at": "2026-11-16 12:01",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
     "session": "2026-11-16",
@@ -44,8 +44,8 @@
         "SHAZ",
         "YALA"
       ],
-      "before_n": 37,
-      "after_n": 38,
+      "before_n": 40,
+      "after_n": 43,
       "total": 108,
       "top": [
         {
@@ -94,15 +94,6 @@
           "time": "AMC"
         },
         {
-          "ticker": "DAC",
-          "name": "Danaos",
-          "cap": 2763105540,
-          "growth": 5.1,
-          "eps": 7.06,
-          "surprise": -4.9,
-          "time": ""
-        },
-        {
           "ticker": "ARMK",
           "name": "Aramark",
           "cap": 14204117000,
@@ -119,6 +110,15 @@
           "eps": 8.22,
           "surprise": 245.4,
           "time": ""
+        },
+        {
+          "ticker": "TSN",
+          "name": "Tyson Foods",
+          "cap": 20847757300,
+          "growth": 1.7,
+          "eps": 0.6,
+          "surprise": 37.8,
+          "time": "BMO"
         }
       ]
     }
@@ -306,7 +306,7 @@
       {
         "day": "Thu",
         "date": "Nov 19",
-        "count": 73,
+        "count": 62,
         "econ": [
           "Housing Starts",
           "FOMC Meeting Minutes",
@@ -318,10 +318,10 @@
           "BABA",
           "PDD",
           "NTES",
+          "WSM",
           "WMG",
           "FUTU",
-          "YMM",
-          "ROAD"
+          "YMM"
         ],
         "after": [
           "INTU",
@@ -337,7 +337,7 @@
       {
         "day": "Fri",
         "date": "Nov 20",
-        "count": 13,
+        "count": 22,
         "econ": [
           "Initial Jobless Claims",
           "Philadelphia Fed Manufacturing Index",
@@ -347,6 +347,8 @@
         "before": [
           "BSP",
           "BJ",
+          "MOG.A",
+          "MOG.B",
           "FRO",
           "BKE",
           "RLX",
