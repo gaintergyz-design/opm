@@ -42,7 +42,10 @@ else
     echo "  週榜窗口起始：$WEEK_START（錨定最近交易日）"
     "$PY" scripts/fetch_pages.py --target week --week-start "$WEEK_START" --strict-winners "$@"
   else
-    "$PY" scripts/fetch_pages.py --target "$TARGET" "$@"
+    # 經濟事件取不到就 FATAL（避免把 0 條的空日曆寫進 pages.json）；本機要放過就設 ECON_STRICT=0
+    _ECON_STRICT=()
+    [ "${ECON_STRICT:-1}" = "1" ] && _ECON_STRICT=(--strict-econ)
+    "$PY" scripts/fetch_pages.py --target "$TARGET" "${_ECON_STRICT[@]}" "$@"
   fi
   # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json
   "$PY" scripts/fetch_logos.py || echo "    ⚠️ fetch_logos 失敗，沿用舊 logos.json"

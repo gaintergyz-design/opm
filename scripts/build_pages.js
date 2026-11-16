@@ -253,7 +253,7 @@ function buildWeekAhead() {
       a.push(t(M + 118, sy + j * step, `${j + 1}`, { size: 20, fill: C.dim }));
       a.push(t(M + 146, sy + j * step, clip(ev, 29), { size: 24 }));
     });
-    if (!econ.length) a.push(t(M + 118, mid + 9, '—', { size: 24, fill: C.dim }));
+    if (!econ.length) a.push(t(M + 118, mid + 9, 'No major US releases', { size: 21, fill: C.dim }));
 
     // 右側：盤前 / 盤後 財報（各最多 8 家，兩行），行距放寬
     const groups = [['Pre', d.before || [], -46], ['Post', d.after || [], 16]];

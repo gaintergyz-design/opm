@@ -197,6 +197,10 @@ MAJOR = ['FOMC', 'Fed', 'CPI', 'PCE', 'GDP', 'Nonfarm', 'Payroll', 'Unemployment
          'Retail Sales', 'ISM', 'Consumer Confidence', 'Jobless', 'PPI', 'Durable',
          'Housing Starts', 'Existing Home', 'GDP', 'Trade Balance', 'Michigan']
 
+# 官員講話／例行性拍賣佔掉前 4 行會把真正的數據擠掉 → 影響度不夠就跟數據一起排序
+_NOISE = ('speaks', 'auction', 'api weekly', 'baker hughes', 'cftc', 'mortgage rate',
+          'mortgage applications', 'gas storage', 'rig count')
+
 
 def econ_score(e):
     n = e['event']
@@ -206,11 +210,96 @@ def econ_score(e):
             sc += 3
     if e.get('consensus'):
         sc += 1
+    imp = (e.get('impact') or '').lower()
+    sc += {'high': 3, 'medium': 2, 'low': 0}.get(imp, 0)
+    if any(k in n.lower() for k in _NOISE):
+        sc -= 2
     return sc
 
 
-def econ_of(date_str):
-    j = jget(f'{NASDAQ}/calendar/economicevents?date={date_str}')
+# ---------------- 經濟事件：ForexFactory 主源 + Nasdaq 兜底 ----------------
+# 🔴 2026-11-16 排查結論：Nasdaq 的 economicevents 接口**按 ET 日期 +1 天**分桶。
+#    實測 date=11-17 桶內裝的整批是 11-16（Barr 05:00 → Barkin 18:10 完整一天）；
+#    非農（實際 2026-12-04 週五 08:30 ET）出現在 date=12-05 週六的桶裡，週六根本沒有美區發布，
+#    任何時區換算都做不到這種結果 → 不是我們 ET/北京混了，是上游整日錯位。
+#    後果：每張卡的「週一」桶＝週日（美區 0 條）→ 週一永遠空白；週五真數據藏在週六桶裡永遠查不到。
+#    ⇒ 經濟事件一律改走 ForexFactory 周曆（date 欄就是 ET 日曆日，實測與真實發布日完全吻合，
+#      還自帶 High/Medium/Low 影響度），Nasdaq 僅在 FF 抓不到時兜底（查 D+1 並把日期標回來）。
+FF_WEEK = {'this': 'ff_calendar_thisweek.json',
+           'last': 'ff_calendar_lastweek.json',
+           'next': 'ff_calendar_nextweek.json'}
+FF_BASE = 'https://nfs.faireconomy.media/'
+# 補跑/回補用：/tmp/ff_calendar_<YYYY-MM-DD>.json（該日期所在週的週曆）優先於固定檔名
+FF_DAILY = '/tmp/ff_calendar_{d}.json'
+_FF_CACHE = {}
+
+
+def _fetch_ff(url, label, quiet=False, tries=3):
+    """抓一份 FF 周曆，只留 USD。任何異常（404 / 空檔 / 非 JSON）都回 None 並在非 quiet 時打印。
+    nfs.faireconomy.media 對同一 IP 短時間連發會回空體（實測 2026-11-16），故失敗重試。"""
+    if not url.startswith(('http://', 'https://', 'file://', '/')):
+        url = FF_BASE + url          # 相對檔名（ff_calendar_*.json）必須補全網域，否則 curl 當本地檔
+    raw = ''
+    for i in range(tries):
+        raw = subprocess.run(['curl', '-s', '--max-time', '40', '-A', UA, url],
+                             capture_output=True, text=True).stdout
+        if raw.strip().startswith('['):
+            break
+        time.sleep(3 + 3 * i)
+    try:
+        js = json.loads(raw) if raw.strip().startswith('[') else None
+    except Exception:
+        js = None
+    if not js:
+        if not quiet:
+            print(f'    ⚠️ [econ] ForexFactory {label} 抓取失敗（{len(raw)} bytes）')
+        return None
+    rows = [x for x in js if isinstance(x, dict) and (x.get('country') or '') == 'USD']
+    if not quiet:
+        print(f'    [econ] ForexFactory {label}：{len(rows)} 條美區事件')
+    return rows
+
+
+def _ff_week_of(date_str):
+    """某一週（含 date_str 那週）的 FF 週曆：先試每日快照，再退回 thisweek，最後才用 last/next。"""
+    kind = 'w' + date_str
+    if kind in _FF_CACHE:
+        return _FF_CACHE[kind]
+    d = datetime.strptime(date_str, '%Y-%m-%d').date()
+    mon = d - timedelta(days=d.weekday())
+    rows = _fetch_ff(FF_DAILY.format(d=mon.isoformat()), f'week of {mon}', quiet=True)
+    if rows is None:
+        for k in ('this', 'last', 'next'):
+            rows = _fetch_ff(FF_WEEK[k], f'{k}week', quiet=True)
+            if rows is not None:
+                break
+    _FF_CACHE[kind] = rows
+    return rows
+
+
+def _ff_of(date_str):
+    """指定 ET 日期（含）所在整週的 FF 事件，只取該日。"""
+    out = {}
+    for x in (_ff_week_of(date_str) or []):
+        if (x.get('date') or '')[:10] != date_str:
+            continue
+        name = (x.get('title') or '').strip()
+        if not name:
+            continue
+        out[(name.lower(), (x.get('date') or '')[11:16])] = {
+            'time': (x.get('date') or '')[11:16],
+            'event': name,
+            'consensus': str(x.get('forecast') or '').strip(),
+            'previous': str(x.get('previous') or '').strip(),
+            'impact': (x.get('impact') or '').strip(),
+        }
+    return list(out.values())
+
+
+def _nasdaq_of(date_str):
+    """兜底：Nasdaq 桶比真實 ET 日期晚一天，查 D+1 把資料取回來。"""
+    d = datetime.strptime(date_str, '%Y-%m-%d') + timedelta(days=1)
+    j = jget(f'{NASDAQ}/calendar/economicevents?date={d:%Y-%m-%d}')
     rows = ((j.get('data') or {}).get('rows') or [])
     us = [r for r in rows if 'United States' in (r.get('country') or '')]
     keep = []
@@ -223,7 +312,12 @@ def econ_of(date_str):
             'event': name,
             'consensus': (r.get('consensus') or '').replace('&nbsp;', '').strip(),
             'previous': (r.get('previous') or '').replace('&nbsp;', '').strip(),
+            'impact': '',
         })
+    return keep
+
+
+def _econ_dedupe(keep):
     seen, uniq = set(), []
     for e in keep:
         k = e['event'].lower()
@@ -235,6 +329,22 @@ def econ_of(date_str):
             continue
         seen.add(k)
         uniq.append(e)
+    return uniq
+
+
+def econ_of(date_str, strict=False):
+    """某個 ET 日期的美區經濟事件（FF 主源；FF 無資料時 Nasdaq 兜底）。
+    strict=True（即 schedule 兜底跑）時，FF 取不到就直接 FATAL，不寫入 0 條空結果
+    ——0 條一旦落盤，Week Ahead 的週一會永久顯示空白。dispatch 主觸發用寬鬆模式。"""
+    evs = _ff_of(date_str)
+    if evs:
+        uniq = _econ_dedupe(sorted(evs, key=econ_score, reverse=True))
+        uniq.sort(key=econ_score, reverse=True)
+        return uniq
+    if strict:
+        raise SystemExit(f'FATAL: ForexFactory 取不到 {date_str} 的經濟事件，中止（避免寫入空白日曆）')
+    print(f'    ⚠️ [econ] {date_str} 無 FF 數據 → 退回 Nasdaq（D+1 桶）')
+    uniq = _econ_dedupe(_nasdaq_of(date_str))
     uniq.sort(key=econ_score, reverse=True)
     return uniq
 
@@ -389,12 +499,15 @@ def main():
     ap.add_argument('--week-start', default='')
     ap.add_argument('--target', choices=['week', 'next'], default='next',
                     help='Week Ahead 覆蓋週：week=本週（週一早上發）/ next=下週（預設）')
+    ap.add_argument('--strict-econ', action='store_true',
+                    help='經濟事件取不到就 FATAL，不寫空白日曆（schedule 兜底跑用）')
     ap.add_argument('--strict-winners', action='store_true',
                     help='winners 產線用：歷史快照不足時直接 FATAL，絕不出 demo 假數據（2026-10-26 阿澤欽定）')
     args = ap.parse_args()
 
     start = (datetime.strptime(args.week_start, '%Y-%m-%d') if args.week_start
-             else datetime.now())
+             else datetime.now(ET))       # 🔴 必須是 ET：runner 是 UTC，北京週一 00:00–08:00
+                                          #    （＝UTC 週日）用 datetime.now() 會對齊到「上週一」
     start = start - timedelta(days=start.weekday())          # 對齊本週一
     days = weekdays(start)
     nxt = weekdays(days[-1] + timedelta(days=3))
@@ -404,13 +517,15 @@ def main():
     # On Deck = 今天（ET 未收盤）或下一個交易日（ET 收盤後 / 週末）
     nd = on_deck_session()
     on_deck_earn = earnings_of(nd.strftime('%Y-%m-%d'))
-    on_deck_econ = econ_of(nd.strftime('%Y-%m-%d'))
+    econ_strict = bool(args.strict_econ)
+    on_deck_econ = econ_of(nd.strftime('%Y-%m-%d'), strict=econ_strict)
     on_deck_top = earnings_top(on_deck_earn.get('rows') or [])
     next_days = []
     seen_econ = set()                       # GDPNow 等每日重複指標跨日去重
     for d in wa_days:
         e = earnings_of(d.strftime('%Y-%m-%d'))
-        ev = [x for x in econ_of(d.strftime('%Y-%m-%d')) if x['event'] not in seen_econ]
+        ev = [x for x in econ_of(d.strftime('%Y-%m-%d'), strict=econ_strict)
+              if x['event'] not in seen_econ]
         for x in ev[:4]:
             seen_econ.add(x['event'])
         next_days.append({

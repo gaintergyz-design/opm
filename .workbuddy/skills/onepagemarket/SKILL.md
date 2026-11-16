@@ -48,7 +48,8 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
   - Stooq 已上 JS PoW 驗證，headless 不可用，**棄用**。
 - 交易日判定：Yahoo 日 K（SPY→^GSPC）。
 - 成交量榜：Yahoo screener POST（cookie+crumb；NMS/NYQ/ASE 三大交易所＋市值>$2B，按成交量取 100 檔再按官方價×量重排 Top 20，與真實成交額偏差 <1%）。
-- 財報/經濟事件：Nasdaq 官方 calendar（時間欄位是 **ET** 非 GMT）。經濟事件按 MAJOR 關鍵詞評分排序＋同名去重（短鍵 <10 字元不參與去重，防 GDP 誤傷 GDPNow）；跨日重複指標（GDPNow 等）在 Week Ahead 用 seen set 去重。
+- 財報：Nasdaq 官方 calendar（時間欄位是 **ET** 非 GMT）。
+- 經濟事件：**ForexFactory 周曆為主源**（`nfs.faireconomy.media/ff_calendar_thisweek.json`，`date` 就是 ET 日曆日，自帶 High/Medium/Low 影響度；按 MAJOR 關鍵詞＋影響度評分排序，官員講話/例行拍賣降權）。Nasdaq `calendar/economicevents` 僅作兜底，且**必須查 D+1**——2026-11-16 實測該接口整日錯位（date=11-17 桶裝的是 11-16 全天；非農 12-04 週五的數據出現在 12-05 週六桶裡），直接查當天會導致「每週一經濟欄永遠空白」＋週五真數據永遠查不到。取不到即 FATAL（`--strict-econ`），絕不把 0 條空日曆寫進 pages.json。
 - 寬度：S&P 500 官方成分股（GitHub datasets/s-and-p-500-companies，快取 7 天）＋ Yahoo v7 批量報價（fc.yahoo.com cookie + getcrumb，150/批）。
 
 ### Yahoo 踩坑（遇錯先對照）
