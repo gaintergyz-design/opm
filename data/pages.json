@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-16 11:07",
+  "generated_at": "2026-11-16 12:00",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
     "session": "2026-11-16",
@@ -61,9 +61,9 @@
           "ticker": "XPEV",
           "name": "XPeng",
           "cap": 9063344100,
-          "growth": 13.7,
-          "eps": -0.7,
-          "surprise": 65.8,
+          "growth": 34.2,
+          "eps": -0.13,
+          "surprise": 925.4,
           "time": "BMO"
         },
         {
@@ -94,15 +94,6 @@
           "time": "AMC"
         },
         {
-          "ticker": "HTHT",
-          "name": "H World Group Limited",
-          "cap": 15360815100,
-          "growth": 5.2,
-          "eps": 5.6,
-          "surprise": 0.1,
-          "time": "BMO"
-        },
-        {
           "ticker": "DAC",
           "name": "Danaos",
           "cap": 2763105540,
@@ -119,6 +110,15 @@
           "eps": 0.75,
           "surprise": -12.7,
           "time": "BMO"
+        },
+        {
+          "ticker": "TCOM",
+          "name": "Trip.com Group Limited",
+          "cap": 27209562100,
+          "growth": 3.2,
+          "eps": 8.22,
+          "surprise": 245.4,
+          "time": ""
         }
       ]
     }
@@ -217,99 +217,144 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 23",
-        "count": 26,
+        "date": "Nov 16",
+        "count": 108,
         "econ": [],
         "before": [
-          "VNET",
-          "CRGO"
+          "BIDU",
+          "TSN",
+          "BEKE",
+          "HTHT",
+          "ARMK",
+          "XPEV",
+          "BXDC",
+          "POET"
         ],
         "after": [
-          "HPE",
-          "A",
-          "ZM",
-          "SYM",
-          "J",
-          "SMTC",
-          "AMTM",
-          "FSCO"
+          "ACM",
+          "XP",
+          "POWL",
+          "PAGS",
+          "INFQ",
+          "OMER",
+          "SHAZ",
+          "YALA"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 24",
-        "count": 41,
+        "date": "Nov 17",
+        "count": 60,
         "econ": [
-          "Chicago Fed National Activity",
-          "S&P Global Manufacturing PMI",
-          "S&P Global Composite PMI",
-          "S&P Global Services PMI"
+          "Fed Vice Chair for Supervision Barr Speaks",
+          "FOMC Member Williams Speaks",
+          "Fed Chair Warsh Speaks",
+          "FOMC Member Barkin Speaks"
         ],
         "before": [
-          "ADI",
-          "MDT",
-          "DLTR",
-          "BBY",
-          "BURL",
-          "SJM",
-          "DKS",
-          "ANF"
+          "HD",
+          "DIS",
+          "VIK",
+          "JD",
+          "ESLT",
+          "AS",
+          "TME",
+          "KLAR"
         ],
         "after": [
-          "DELL",
-          "ADSK",
-          "WDAY",
-          "HPQ",
-          "NTNX",
-          "URBN",
-          "AMBA",
-          "BBAR"
+          "NVDA",
+          "ZTO",
+          "SQM",
+          "DLB",
+          "CAAP",
+          "GBDC",
+          "LZB",
+          "IIIV"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 25",
-        "count": 19,
+        "date": "Nov 18",
+        "count": 75,
         "econ": [
-          "CB Consumer Confidence",
-          "House Price Index",
-          "S&P/CS HPI Composite - 20 s.a.",
-          "S&P/CS HPI Composite - 20 n.s.a."
+          "Atlanta Fed GDPNow",
+          "Core Retail Sales",
+          "Retail Sales Ex Gas/Autos",
+          "Fed Waller Speaks"
         ],
         "before": [
-          "DE",
-          "LI",
-          "GDS",
-          "DSX"
+          "TJX",
+          "LOW",
+          "TGT",
+          "GLBE",
+          "HAFN",
+          "GLNG",
+          "BLSH",
+          "ZIM"
         ],
-        "after": []
+        "after": [
+          "PANW",
+          "P",
+          "WWD",
+          "UGI",
+          "SNEX",
+          "CPA",
+          "NJR",
+          "JOYY"
+        ]
       },
       {
         "day": "Thu",
-        "date": "Nov 26",
-        "count": 1,
+        "date": "Nov 19",
+        "count": 73,
         "econ": [
-          "Atlanta Fed GDPNow",
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales"
+          "Housing Starts",
+          "FOMC Meeting Minutes",
+          "FOMC Member Kashkari Speaks",
+          "Pending Home Sales"
         ],
         "before": [
-          "CMBT"
+          "WMT",
+          "BABA",
+          "PDD",
+          "NTES",
+          "WMG",
+          "FUTU",
+          "YMM",
+          "ROAD"
         ],
-        "after": []
+        "after": [
+          "INTU",
+          "ROST",
+          "KEYS",
+          "ESTC",
+          "GAP",
+          "ESE",
+          "POST",
+          "BULL"
+        ]
       },
       {
         "day": "Fri",
-        "date": "Nov 27",
-        "count": 5,
+        "date": "Nov 20",
+        "count": 13,
         "econ": [
-          "United States - Thanksgiving Day"
+          "Initial Jobless Claims",
+          "Philadelphia Fed Manufacturing Index",
+          "Continuing Jobless Claims",
+          "Jobless Claims 4-Week Avg."
         ],
-        "before": [],
+        "before": [
+          "BSP",
+          "BJ",
+          "FRO",
+          "BKE",
+          "RLX",
+          "WRD"
+        ],
         "after": []
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }
