@@ -1,0 +1,178 @@
+{
+ "note": "美股前 20 大市值公司 ROE 排名。市值来源 CompaniesMarketCap（2026-11-13 收盘）；ROE 来源 stockanalysis.com 财务比率页（S&P Global 数据），TTM 口径，TTM 缺失者用最近完整财年。人工核对后写死，禁止手改卡面文字。",
+ "as_of": "2026-11-13",
+ "headline": [
+  "AMERICA'S 20 LARGEST",
+  "RANKED BY ROE"
+ ],
+ "subtitle": "Return on equity · latest reported values · market cap as of Nov 13, 2026",
+ "axis_max": 160,
+ "meta": "TTM ROE · MA & ABBV bars cut at 160% · ABBV: latest fiscal year",
+ "caption": "Does a high ROE mean a great company?\nApple only ranks third. SpaceX's is negative.\nTwo pages ↓",
+ "rows": [
+  {
+   "ticker": "ABBV",
+   "name": "AbbVie",
+   "roe": 6225.0,
+   "mcap": 521,
+   "basis": "FY2025",
+   "truncate": true,
+   "color": "#061C48"
+  },
+  {
+   "ticker": "MA",
+   "name": "Mastercard",
+   "roe": 231.37,
+   "mcap": 576,
+   "basis": "TTM",
+   "truncate": true,
+   "color": "#EB001B"
+  },
+  {
+   "ticker": "AAPL",
+   "name": "Apple",
+   "roe": 142.26,
+   "mcap": 5177,
+   "basis": "TTM",
+   "color": "#000000"
+  },
+  {
+   "ticker": "NVDA",
+   "name": "NVIDIA",
+   "roe": 117.21,
+   "mcap": 3932,
+   "basis": "TTM",
+   "color": "#76B900"
+  },
+  {
+   "ticker": "MU",
+   "name": "Micron",
+   "roe": 88.26,
+   "mcap": 881,
+   "basis": "TTM",
+   "color": "#0092D5"
+  },
+  {
+   "ticker": "LLY",
+   "name": "Eli Lilly",
+   "roe": 86.02,
+   "mcap": 1285,
+   "basis": "TTM",
+   "color": "#D52A1D"
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "roe": 63.51,
+   "mcap": 794,
+   "basis": "TTM",
+   "color": "#1A1F71"
+  },
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet",
+   "roe": 44.29,
+   "mcap": 3596,
+   "basis": "TTM",
+   "color": "#4285F4"
+  },
+  {
+   "ticker": "AVGO",
+   "name": "Broadcom",
+   "roe": 44.25,
+   "mcap": 1656,
+   "basis": "TTM",
+   "color": "#CC0935"
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "roe": 34.22,
+   "mcap": 3890,
+   "basis": "TTM",
+   "color": "#00A4EF"
+  },
+  {
+   "ticker": "META",
+   "name": "Meta Platforms",
+   "roe": 32.26,
+   "mcap": 1640,
+   "basis": "TTM",
+   "color": "#0668E1"
+  },
+  {
+   "ticker": "AMZN",
+   "name": "Amazon",
+   "roe": 27.42,
+   "mcap": 2883,
+   "basis": "TTM",
+   "color": "#FF9900"
+  },
+  {
+   "ticker": "WMT",
+   "name": "Walmart",
+   "roe": 22.31,
+   "mcap": 1016,
+   "basis": "TTM",
+   "color": "#0071CE"
+  },
+  {
+   "ticker": "JNJ",
+   "name": "Johnson & Johnson",
+   "roe": 20.02,
+   "mcap": 688,
+   "basis": "TTM",
+   "color": "#D21201"
+  },
+  {
+   "ticker": "JPM",
+   "name": "JPMorgan Chase",
+   "roe": 18.01,
+   "mcap": 919,
+   "basis": "TTM",
+   "color": "#005BBD"
+  },
+  {
+   "ticker": "XOM",
+   "name": "Exxon Mobil",
+   "roe": 15.53,
+   "mcap": 696,
+   "basis": "TTM",
+   "color": "#FD000B"
+  },
+  {
+   "ticker": "AMD",
+   "name": "AMD",
+   "roe": 11.96,
+   "mcap": 876,
+   "basis": "TTM",
+   "color": "#00A774"
+  },
+  {
+   "ticker": "BRK.B",
+   "name": "Berkshire Hathaway",
+   "roe": 10.57,
+   "mcap": 1259,
+   "basis": "TTM",
+   "color": "#2C3292"
+  },
+  {
+   "ticker": "TSLA",
+   "name": "Tesla",
+   "roe": 3.84,
+   "mcap": 1542,
+   "basis": "TTM",
+   "color": "#E82127"
+  },
+  {
+   "ticker": "SPCX",
+   "name": "SpaceX",
+   "roe": -14.71,
+   "mcap": 1889,
+   "basis": "FY2025",
+   "color": "#000000"
+  }
+ ],
+ "meta2": "TTM ROE · SPCX: latest fiscal year",
+ "caption2": "Does a high ROE mean a great company?\nApple only ranks third. SpaceX's is negative.\nTwo pages ↓"
+}

@@ -102,6 +102,7 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'cpi': 'US CPI Preview',
              'sp500-pe-eps': 'S&P 500: Multiple vs Earnings',
              'eisman-ai-boom': 'Four Scenarios & Five Risks of the AI Boom',
+             'us-roe-top20': "America's 20 Largest by ROE",
              'relationships-at-the-top': '10 Relationships That Reached the Board'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
