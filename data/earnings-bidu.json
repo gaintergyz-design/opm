@@ -1,0 +1,143 @@
+{
+  "ticker": "BIDU",
+  "company": "Baidu",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 16, 2026 · before US open",
+  "brand": {
+    "deep": "#1E2A78",
+    "primary": "#2938C8",
+    "mid": "#4E63E8",
+    "teal": "#AEBBF5",
+    "pos": "#00877A"
+  },
+  "strip": "AI Cloud Infra +94% · GPU Cloud +191% · ads −22% · AI = 53% of core revenue",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$B)",
+      "actual": 4.6,
+      "actual_disp": "4.60",
+      "est_disp": "4.57",
+      "surprise": 0.7,
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "prior": 4.38,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -1
+    },
+    "eps": {
+      "label": "Adj. EPS/ADS (US$)",
+      "actual": 1.01,
+      "actual_disp": "1.01",
+      "est_disp": "1.14",
+      "surprise": -11.4,
+      "pill": "Miss −11.4%",
+      "pill_tone": "neg",
+      "prior": 1.56,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -35
+    }
+  },
+  "layout": {
+    "marginMax": 45,
+    "marginStep": 5
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    41.2,
+    44.2,
+    38.9,
+    39.0,
+    35.4
+  ],
+  "op_margin": [
+    3.5,
+    4.5,
+    10.0,
+    9.7,
+    2.0
+  ],
+  "panel3_title": "Operating cash flow",
+  "ocf": [
+    1256,
+    2609,
+    2670,
+    3436,
+    2800
+  ],
+  "ocf_fmt": {
+    "unit": "RMB M",
+    "div": 1,
+    "dec": 0,
+    "step": 1000
+  },
+  "mix_title": "Baidu General revenue mix · 3Q26",
+  "mix_center": "online ads",
+  "mix_colors": [
+    "#1E2A78",
+    "#2938C8",
+    "#4E63E8",
+    "#8496EE"
+  ],
+  "mix": [
+    {
+      "name": "Online marketing",
+      "pct": 48,
+      "value": "$1.77B"
+    },
+    {
+      "name": "AI Cloud Infra",
+      "pct": 33,
+      "value": "$1.22B"
+    },
+    {
+      "name": "AI applications",
+      "pct": 10,
+      "value": "$0.39B"
+    },
+    {
+      "name": "AI-native mktg",
+      "pct": 9,
+      "value": "$0.36B"
+    }
+  ],
+  "outlook": {
+    "title": "What comes next",
+    "items": [
+      {
+        "k": "AI Cloud Infra",
+        "v": "+94% Y/Y",
+        "note": "RMB8.2B · GPU Cloud +191% Y/Y"
+      },
+      {
+        "k": "Core AI mix",
+        "v": "53%",
+        "note": "of Baidu General · 3rd quarter >50%"
+      },
+      {
+        "k": "Online marketing",
+        "v": "−22% Y/Y",
+        "note": "RMB11.9B · ad slump drags results"
+      },
+      {
+        "k": "Q4 consensus",
+        "v": "EPS 8.20",
+        "note": "revenue RMB32.9B · date unconfirmed"
+      },
+      {
+        "k": "Dividend",
+        "v": "By year-end",
+        "note": "first ever · pending board approval"
+      }
+    ]
+  },
+  "notes": "口徑：Baidu Q3 2026（截至 2026-09-30，2026-11-16 美股盤前／港交所发布）公司 IR 新聞稿 ir.baidu.com＋HKEX 業績公告（2026-11-17 抓取）。總營收 RMB30.8B（US$4.60B，-1% Y/Y，-2% QoQ），市場預期 US$4.57B（RMB30.6B）→ 基本符合（In line）。Baidu General 營收 RMB25.0B（$3.73B，+1% Y/Y，-1% QoQ）；iQIYI RMB6.0B（$896M，-10% Y/Y）。GAAP：淨利歸屬百度 RMB1.4B（$208M）、稀釋 EPS/ADS RMB4.35（$0.65）、營益 RMB626M／營益率 2%、毛利率 35.4%（成本 RMB19.9B +9% Y/Y）。Non-GAAP：淨利 RMB2.4B（$357M）、稀釋 EPS/ADS RMB6.78（$1.01，-35% Y/Y vs 3Q25 RMB11.12/$1.56）、營益 RMB1.7B／營益率 6%、淨利率 8%、調整後 EBITDA RMB4.5B（15%）。EPS 預期 RMB7.67（US$1.14，Investing.com／Yahoo Finance 共識）→ Miss −11.4%（股價財報後跌約 5%）。營運現金流 RMB2.8B（$414M，連續第五季正值）；現金及投資 RMB276.6B（$41.25B）。2026 年初至今回購 US$373M；首次股息預計年底前宣布（待董事會批准）。分部：AI Cloud Infra RMB8.2B（+94% Y/Y，GPU Cloud +191% Y/Y／+43% QoQ，千帆 MaaS token 收入 +1,159%）；AI 應用 RMB2.6B（持平）；AI 原生營銷 RMB2.4B（-15%）；在線營銷 RMB11.9B（-22%，宏觀＋競爭＋AI 搜索優先用戶體驗）；核心 AI 新業務佔 Baidu General 53%（連續三季過半）。Baidu General 營收佔比：在線營銷 48%／AI Cloud 33%／AI 應用 10%／AI 原生營銷 10%（公司 internal accounts 未經審計）。五季序列：毛利率 41.2/44.2/38.9/39.0/35.4（Yahoo 季度 gross profit÷revenue，3Q26 官方 35.4%）；營益率 3.5/4.5/10.0/9.7/2.0（GAAP operating income÷revenue）；OCF（RMB M）1256/2609/2670/3436/2800（Yahoo quarterlyOperatingCashFlow，3Q26 官方 2.8B）。Q4 一致預期 EPS 8.20、營收 RMB32.9B（日期未定）。"
+}
