@@ -144,26 +144,33 @@ function renderCard() {
   svg.push(t(LX + LW, 886, '+$4.9B Q/Q', { size: 18, weight: 700, fill: C.up, anchor: 'end' }));
 
   /* 兩張動作卡 */
+  /* Bending Spoons 是私人公司、官方標誌只有字標（無獨立圖標），用字標排版 */
+  const BSP_BUF = fs.readFileSync(path.join(BASE, 'assets', 'logos', 'BSP-wordmark.png'));
+  const BSP_URI = 'data:image/png;base64,' + BSP_BUF.toString('base64');
+  const BSP_AR = BSP_BUF.readUInt32BE(16) / BSP_BUF.readUInt32BE(20);
+
   const cards = [
-    { y: 924, tag: 'NEW STAKE', head: 'Bending Spoons', sub: '$0.69B \u00b7 0.23% of book',
-      bg: C.upTint, bar: C.upFill, ink: C.up, badge: { text: 'BS', fill: '#232B3A' } },
+    { y: 924, tag: 'NEW STAKE', sub: '$0.69B \u00b7 0.23% of book',
+      bg: C.upTint, bar: C.upFill, ink: C.up, wordmark: BSP_URI },
     { y: 1058, tag: 'BIGGEST CUT', head: 'Bank of America', sub: '\u22125.7% shares \u00b7 \u2212$2.7B value',
       bg: C.downTint, bar: C.downFill, ink: C.down, badge: { ticker: 'BAC' } }
   ];
   cards.forEach((c, ci) => {
     svg.push(rrect(LX, c.y, LW, 122, 16, c.bg));
     svg.push(rrect(LX + 18, c.y + 22, 4, 78, 2, c.bar));
-    /* 圓形徽章 */
-    const bcx = LX + 62, bcy = c.y + 61, br = 23;
-    if (c.badge.ticker) {
-      svg.push(logo(defs, c.badge.ticker, bcx, bcy, br, 90 + ci));
+    if (c.wordmark) {
+      const wh = 26, ww = Math.round(wh * BSP_AR);
+      svg.push(t(LX + 36, c.y + 34, c.tag, { size: 12, weight: 700, fill: c.ink, ls: 1.2 }));
+      svg.push(`<image x="${LX + 36}" y="${c.y + 48}" width="${ww}" height="${wh}" href="${c.wordmark}" image-rendering="optimizeQuality"/>`);
+      svg.push(t(LX + 36, c.y + 98, c.sub, { size: 15, fill: C.gray }));
     } else {
-      svg.push(`<circle cx="${bcx}" cy="${bcy}" r="${br}" fill="${c.badge.fill}"/>` +
-        t(bcx, bcy + 6, c.badge.text, { size: 18, weight: 700, fill: '#FFFFFF', anchor: 'middle', ls: 0.5 }));
+      /* 圓形徽章 */
+      const bcx = LX + 62, bcy = c.y + 61, br = 23;
+      svg.push(logo(defs, c.badge.ticker, bcx, bcy, br, 90 + ci));
+      svg.push(t(LX + 98, c.y + 34, c.tag, { size: 12, weight: 700, fill: c.ink, ls: 1.2 }));
+      svg.push(t(LX + 98, c.y + 68, c.head, { size: 22, weight: 700, ls: -0.4 }));
+      svg.push(t(LX + 98, c.y + 96, c.sub, { size: 15, fill: C.gray }));
     }
-    svg.push(t(LX + 98, c.y + 34, c.tag, { size: 12, weight: 700, fill: c.ink, ls: 1.2 }));
-    svg.push(t(LX + 98, c.y + 68, c.head, { size: 22, weight: 700, ls: -0.4 }));
-    svg.push(t(LX + 98, c.y + 96, c.sub, { size: 15, fill: C.gray }));
   });
 
   /* ---------- 右欄：持倉表 ---------- */
