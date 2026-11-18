@@ -127,6 +127,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 ## 10. 🔴 畫廊「只加新圖」增量規則（2026-11-12 阿澤欽定，跨設備同步源）
 
 - **口令**：阿澤說「上传画廊」＝直接跑 `bash scripts/publish_special_card.sh`（零參數），不問、不填、不調研。腳本自動選圖、帶 caption/data/build、查組名、兩段提交、代理推送、驗收；不發帖。
+- 🔴 **財報卡／個股專題卡做完 → 直接上畫廊（2026-11-18 阿澤欽定）**：`build_earnings.js`／`build_ownership.js` 出圖並驗收後，**不等口令**，直接跑零參數 `bash scripts/publish_special_card.sh` 上畫廊，跑完回報成品圖＋文案即可（不發帖）。起因：阿澤在手機端操控家用電腦時已交代「財報做完直接上傳」，但兩台電腦的本機記憶檔不隨 git 同步，故固化在本檔。
 - **`scripts/build_gallery.py` 預設是增量**：
   ① 以磁碟上現有的 `docs/index.html` 為基底；② 找出「在 `out/*.png` 但頁面還沒引用」的圖，按 `(post, 日期)` 分組；③ 只把這些新組做成 section 插到 `<main>` 最前面，且為**展開**（`class="sec"` + `src`）；④ 其餘 section **逐字保留**——時間戳、展開/折疊、`src`/`data-src`、文案一律不動，展開組數自然 +1；⑤ 新卡時間用 `out/gen-times.json` 的真實出圖時刻，沒有就用當下北京時間，**不再翻 git 歷史估時間**；⑥ 沒有新卡就印「保持不變」並直接結束，**連 index.html 都不寫**（CI 不會空轉提交）。
 - **安全閥**：日期比頁面現況早 3 天以上、又不在頁面上的「孤立圖」會被略過並印警告，避免 `reply-waiting` 這類刻意不收錄的舊卡、或 rebase 遺失的歷史卡被當新卡頂到最前；要強制收錄補卡，加 `--include <檔名>.png`。
