@@ -106,7 +106,8 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'us-roe-top20': "America's 20 Largest by ROE",
              'relationships-at-the-top': '10 Relationships That Reached the Board',
              'comeback-ceos': 'The Comeback CEOs',
-             'nvda-13f': "Nvidia's Q3 13F"}
+             'nvda-13f': "Nvidia's Q3 13F",
+             'berkshire-q3': "Buffett's Q3 Book"}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi',
