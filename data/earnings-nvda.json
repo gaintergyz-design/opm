@@ -1,0 +1,78 @@
+{
+  "ticker": "NVDA",
+  "company": "NVIDIA",
+  "quarter": "Q3 FY2027",
+  "period_end": "Oct 25, 2026",
+  "reported": "Nov 17, 2026 · after US close",
+  "brand": {
+    "deep": "#33550B",
+    "primary": "#5F9400",
+    "mid": "#76B900",
+    "teal": "#17A9C4",
+    "pos": "#028948"
+  },
+  "strip": "First $100B+ quarter · DC $107.6B +110% · Backlog $2.5T · FY28 target +75% · Buyback +$150B",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$)",
+      "actual": 115844,
+      "actual_disp": "$115.8B",
+      "est_disp": "$109.3B",
+      "surprise": 5.9,
+      "prior": 57006,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 103.1
+    },
+    "eps": {
+      "label": "EPS (diluted, non-GAAP)",
+      "actual": 2.68,
+      "actual_disp": "$2.68",
+      "est_disp": "$2.48",
+      "surprise": 8.1,
+      "prior": 1.27,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 111
+    }
+  },
+  "layout": {
+    "marginMax": 80,
+    "marginStep": 20
+  },
+  "quarters": [
+    "3Q26",
+    "4Q26",
+    "1Q27",
+    "2Q27",
+    "3Q27"
+  ],
+  "gross_margin": [73.4, 75.0, 74.9, 75.0, 74.8],
+  "op_margin": [63.2, 65.0, 65.6, 66.2, 66.9],
+  "ocf": [23750, 36190, 50345, 24077, 48253],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 0,
+    "step": 10
+  },
+  "mix_title": "Revenue mix",
+  "mix_center": "hyperscalers",
+  "mix_colors": ["#76B900", "#33550B", "#98A2B3"],
+  "mix": [
+    { "name": "Hyperscalers", "pct": 52, "value": "$60.1B" },
+    { "name": "AI cloud & enterprise", "pct": 41, "value": "$47.5B" },
+    { "name": "Edge computing", "pct": 7, "value": "$8.2B" }
+  ],
+  "outlook": {
+    "title": "Q4 FY27 guide · above Street",
+    "items": [
+      { "k": "Revenue", "v": "$126.1–133.9B", "note": "mid $130B · Street $125.3B · ex-China DC" },
+      { "k": "Gross margin", "v": "71.0–72.0%", "note": "non-GAAP trough · FY28 back to 72–73%" },
+      { "k": "Opex", "v": "~$10.7B", "note": "non-GAAP · GAAP ~$11.0B" },
+      { "k": "FY2028 growth", "v": "+75% target", "note": "raised from +70% · backlog $2.5T" },
+      { "k": "Buyback", "v": "+$150B", "note": "$227.3B remaining · no expiry" }
+    ]
+  },
+  "notes": "口徑：NVIDIA Q3 FY2027 官方新聞稿（investor.nvidia.com，2026-11-17）＋ Q2/Q1 FY27、FY26 Q4/Q3 官方新聞稿 ＋ 上證報/財聯社/每經/新浪轉述共識。營收 $115,844M（+103.1% Y/Y、+20.3% Q/Q，史上首個千億美元季度），共識 $109.33B → +5.9%，連續 17 季超預期；GAAP 淨利 $65,287M（+105%）、GAAP EPS $2.70（+108%）；non-GAAP 淨利 $64,870M（+109%）、non-GAAP EPS $2.68（+111%，較共識 +8.1%，共識約 $2.48；3Q26 non-GAAP EPS $1.27 為新口徑追溯值——自 1Q27 起 non-GAAP 不再剔除股權激勵）。毛利率 GAAP 74.8%／non-GAAP 74.9%（共識約 74.1%）；non-GAAP 營業利潤 $77.88B（+116%）。Data Center $107.6B（+110% Y/Y、+21% Q/Q，共識 $101.87B），其中超大規模雲廠商 $60.1B、AI 雲／工業／企業 $47.5B；Edge Computing $8.2B（+42%）。Vera Rubin NVL72 開始出貨（史上最快爬坡）。OCF（US$M）：3Q26 23,750、4Q26 36,190（FY26 全年 102,718）、1Q27 50,345（＝前九個月 122,675 − Q2 − Q3 推得）、2Q27 24,077、3Q27 48,253（FY27 前九個月 122,675）；Q3 FCF $43,777M。營業利潤率五季（GAAP，營業利潤÷營收）：3Q26 36,010/57,006＝63.2、4Q26 44,299/68,127＝65.0、1Q27 53,536/81,615＝65.6、2Q27 63,734/96,221＝66.2、3Q27 77.5B/115,844＝66.9。毛利率五季（GAAP）：73.4／75.0／74.9／75.0／74.8。環圖＝營收構成（雲廠商 60.1／AI 雲與企業 47.5／邊緣計算 8.2，合計 $115.8B）。指引：Q4 營收 $130B ±3%（$126.1–133.9B，高於共識 $125.25B；含額外一週，不含中國 DC 計算收入）、毛利率 71.0–72.0%（Q4 為低點，FY28 回升至 72–73%）、non-GAAP opex 約 $10.7B；FY28 營收增速目標上調至 +75%（原 +70%）；雲業務積壓訂單 $2.5T（上季 $2T）；9 月董事會追加 $150B 回購授權（無到期日），期末剩餘約 $227.3B；本季返還股東 $28.1B。股價：11/17 收 $155.46（−0.44%），盤後一度 +4~5%。"
+}
