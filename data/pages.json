@@ -2,166 +2,194 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-16 14:05",
+  "generated_at": "2026-11-18 14:57",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
-    "session": "2026-11-16",
+    "session": "2026-11-18",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.4
+        "pct": -1.03
       },
       {
         "label": "Nasdaq",
-        "pct": -0.91
+        "pct": -0.74
       },
       {
         "label": "Russell 2000",
-        "pct": -0.31
+        "pct": -1.5
       }
     ],
     "econ": [
       {
-        "time": "12:00",
-        "event": "Fed Chairman Warsh Speaks",
+        "time": "14:00",
+        "event": "FOMC Meeting Minutes",
         "consensus": "",
         "previous": "",
         "impact": "High"
       },
       {
-        "time": "09:48",
-        "event": "Cleveland Fed Inflation Expectations",
-        "consensus": "",
-        "previous": "3.3%",
+        "time": "08:30",
+        "event": "Housing Starts",
+        "consensus": "1.25M",
+        "previous": "1.22M",
         "impact": "Low"
       },
       {
-        "time": "05:00",
+        "time": "08:30",
+        "event": "Building Permits",
+        "consensus": "1.38M",
+        "previous": "1.40M",
+        "impact": "Low"
+      },
+      {
+        "time": "10:00",
+        "event": "Pending Home Sales m/m",
+        "consensus": "-2.0%",
+        "previous": "-7.3%",
+        "impact": "Low"
+      },
+      {
+        "time": "10:30",
+        "event": "Crude Oil Inventories",
+        "consensus": "0.4M",
+        "previous": "4.7M",
+        "impact": "Low"
+      },
+      {
+        "time": "12:15",
+        "event": "FOMC Member Daly Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "Low"
+      },
+      {
+        "time": "13:35",
         "event": "FOMC Member Barr Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       },
       {
-        "time": "08:30",
-        "event": "Empire State Manufacturing Index",
-        "consensus": "17.6",
-        "previous": "25.5",
-        "impact": "Low"
-      },
-      {
-        "time": "09:05",
+        "time": "14:30",
         "event": "FOMC Member Williams Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       },
       {
-        "time": "14:15",
-        "event": "FOMC Member Hammack Speaks",
+        "time": "16:00",
+        "event": "TIC Long-Term Purchases",
+        "consensus": "160.7B",
+        "previous": "279.2B",
+        "impact": "Low"
+      },
+      {
+        "time": "16:15",
+        "event": "FOMC Member Kashkari Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       }
     ],
-    "econ_all": 6,
+    "econ_all": 10,
     "earnings": {
       "before": [
-        "BIDU",
-        "TSN",
-        "BEKE",
-        "HTHT",
-        "ARMK",
-        "XPEV",
-        "BXDC",
-        "POET"
+        "TJX",
+        "LOW",
+        "TGT",
+        "GLBE",
+        "GLNG",
+        "ZIM",
+        "BLSH",
+        "PONY"
       ],
       "after": [
-        "ACM",
-        "XP",
-        "POWL",
-        "PAGS",
-        "INFQ",
-        "OMER",
-        "SHAZ",
-        "YALA"
+        "PANW",
+        "P",
+        "WWD",
+        "UGI",
+        "SNEX",
+        "NJR",
+        "CPA",
+        "JOYY"
       ],
-      "before_n": 40,
-      "after_n": 43,
-      "total": 108,
+      "before_n": 16,
+      "after_n": 17,
+      "total": 62,
       "top": [
         {
-          "ticker": "BRC",
-          "name": "Brady",
-          "cap": 3874813180,
-          "growth": 76.1,
-          "eps": 1.51,
-          "surprise": 1.7,
-          "time": ""
-        },
-        {
-          "ticker": "XPEV",
-          "name": "XPeng",
-          "cap": 9063344100,
-          "growth": 34.2,
-          "eps": -0.13,
-          "surprise": 925.4,
-          "time": "BMO"
-        },
-        {
-          "ticker": "TEO",
-          "name": "Telecom Argentina Stet",
-          "cap": 4535667200,
-          "growth": 11.3,
-          "eps": 0.28,
-          "surprise": -4.5,
-          "time": ""
-        },
-        {
-          "ticker": "POWL",
-          "name": "Powell Industries",
-          "cap": 5165044700,
-          "growth": 11.2,
-          "eps": 1.56,
-          "surprise": 12.2,
+          "ticker": "KLIC",
+          "name": "Kulicke and Soffa Industries",
+          "cap": 3427557120,
+          "growth": 112.2,
+          "eps": 1.43,
+          "surprise": 26.1,
           "time": "AMC"
         },
         {
-          "ticker": "XP",
-          "name": "XP",
-          "cap": 7795411500,
-          "growth": 9.8,
-          "eps": 2.78,
-          "surprise": 2.2,
+          "ticker": "ZIM",
+          "name": "ZIM Integrated Shipping Services",
+          "cap": 3576632830,
+          "growth": 43.5,
+          "eps": 5.11,
+          "surprise": -3.0,
+          "time": "BMO"
+        },
+        {
+          "ticker": "GLBE",
+          "name": "Global-E Online",
+          "cap": 6670893600,
+          "growth": 40.3,
+          "eps": 0.62,
+          "surprise": 23.2,
+          "time": "BMO"
+        },
+        {
+          "ticker": "P",
+          "name": "Everpure",
+          "cap": 33919201300,
+          "growth": 38.4,
+          "eps": 0.78,
+          "surprise": -0.7,
           "time": "AMC"
         },
         {
-          "ticker": "ARMK",
-          "name": "Aramark",
-          "cap": 14204117000,
-          "growth": 4.8,
-          "eps": 0.75,
-          "surprise": -12.7,
-          "time": "BMO"
+          "ticker": "PANW",
+          "name": "Palo Alto Networks",
+          "cap": 253136273000,
+          "growth": 33.7,
+          "eps": 0.97,
+          "surprise": 4.4,
+          "time": "AMC"
         },
         {
-          "ticker": "TCOM",
-          "name": "Trip.com Group Limited",
-          "cap": 27209562100,
-          "growth": 3.2,
-          "eps": 8.22,
-          "surprise": 245.4,
-          "time": ""
+          "ticker": "CPA",
+          "name": "Copa Holdings",
+          "cap": 5531078700,
+          "growth": 28.8,
+          "eps": 3.76,
+          "surprise": 5.1,
+          "time": "AMC"
         },
         {
-          "ticker": "TSN",
-          "name": "Tyson Foods",
-          "cap": 20847757300,
-          "growth": 1.7,
-          "eps": 0.6,
-          "surprise": 37.8,
-          "time": "BMO"
+          "ticker": "UGI",
+          "name": "UGI",
+          "cap": 8028546600,
+          "growth": 17.4,
+          "eps": -0.91,
+          "surprise": 43.9,
+          "time": "AMC"
+        },
+        {
+          "ticker": "WWD",
+          "name": "Woodward",
+          "cap": 18288853000,
+          "growth": 14.8,
+          "eps": 2.52,
+          "surprise": 10.6,
+          "time": "AMC"
         }
       ]
     }
@@ -260,150 +288,110 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 16",
-        "count": 108,
+        "date": "Nov 23",
+        "count": 34,
         "econ": [
-          "Fed Chairman Warsh Speaks",
-          "Cleveland Fed Inflation Expectations",
-          "FOMC Member Barr Speaks",
-          "Empire State Manufacturing Index"
+          "Chicago Fed National Activity",
+          "S&P Global Manufacturing PMI",
+          "S&P Global Composite PMI",
+          "S&P Global Services PMI"
         ],
         "before": [
-          "BIDU",
-          "TSN",
-          "BEKE",
-          "HTHT",
-          "ARMK",
-          "XPEV",
-          "BXDC",
-          "POET"
+          "VNET",
+          "CRGO",
+          "THCH",
+          "ADXN"
         ],
         "after": [
-          "ACM",
-          "XP",
-          "POWL",
-          "PAGS",
-          "INFQ",
-          "OMER",
-          "SHAZ",
-          "YALA"
+          "HPE",
+          "A",
+          "ZM",
+          "SYM",
+          "J",
+          "SMTC",
+          "AMTM",
+          "CENT"
         ]
       },
       {
         "day": "Tue",
-        "date": "Nov 17",
-        "count": 56,
+        "date": "Nov 24",
+        "count": 50,
         "econ": [
-          "Core Retail Sales m/m",
-          "FOMC Member Musalem Speaks",
-          "Import Prices m/m",
-          "FOMC Member Waller Speaks"
+          "CB Consumer Confidence",
+          "Redbook",
+          "House Price Index",
+          "S&P/CS HPI Composite - 20 s.a."
         ],
         "before": [
-          "HD",
-          "DIS",
-          "VIK",
-          "JD",
-          "ESLT",
-          "AS",
-          "TME",
-          "KLAR"
+          "ADI",
+          "MDT",
+          "DLTR",
+          "BBY",
+          "BURL",
+          "SJM",
+          "DKS",
+          "DY"
         ],
         "after": [
-          "NVDA",
-          "ZTO",
-          "SQM",
-          "DLB",
-          "CAAP",
-          "GBDC",
-          "LZB",
-          "IIIV"
+          "DELL",
+          "ADSK",
+          "WDAY",
+          "HPQ",
+          "NTNX",
+          "URBN",
+          "AMBA",
+          "BBAR"
         ]
       },
       {
         "day": "Wed",
-        "date": "Nov 18",
-        "count": 106,
+        "date": "Nov 25",
+        "count": 22,
         "econ": [
-          "FOMC Meeting Minutes",
-          "Housing Starts",
-          "Building Permits",
-          "Pending Home Sales m/m"
+          "Atlanta Fed GDPNow",
+          "GDP",
+          "GDP Price Index",
+          "GDP Sales"
         ],
         "before": [
-          "TJX",
-          "LOW",
-          "TGT",
-          "GLBE",
-          "HAFN",
-          "GLNG",
-          "BLSH",
-          "ZIM"
+          "DE",
+          "LI",
+          "BZ",
+          "GDS",
+          "HDL",
+          "GOTU",
+          "DSX",
+          "NNOX"
         ],
         "after": [
-          "PANW",
-          "P",
-          "WWD",
-          "UGI",
-          "SNEX",
-          "CPA",
-          "NJR",
-          "JOYY"
+          "FINV"
         ]
       },
       {
         "day": "Thu",
-        "date": "Nov 19",
-        "count": 62,
+        "date": "Nov 26",
+        "count": 0,
         "econ": [
-          "Philly Fed Manufacturing Index",
-          "Unemployment Claims",
-          "FOMC Member Hammack Speaks",
-          "CB Leading Index m/m"
+          "United States - Thanksgiving Day"
         ],
-        "before": [
-          "WMT",
-          "BABA",
-          "PDD",
-          "NTES",
-          "WSM",
-          "WMG",
-          "FUTU",
-          "YMM"
-        ],
-        "after": [
-          "INTU",
-          "ROST",
-          "KEYS",
-          "ESTC",
-          "GAP",
-          "ESE",
-          "POST",
-          "BULL"
-        ]
+        "before": [],
+        "after": []
       },
       {
         "day": "Fri",
-        "date": "Nov 20",
-        "count": 22,
+        "date": "Nov 27",
+        "count": 4,
         "econ": [
-          "Revised UoM Consumer Sentiment",
-          "Revised UoM Inflation Expectations",
-          "FOMC Member Cook Speaks"
+          "Goods Trade Balance",
+          "Retail Inventories Ex Auto",
+          "Wholesale Inventories",
+          "United States - Thanksgiving Day - Early close at 13:00"
         ],
-        "before": [
-          "BSP",
-          "BJ",
-          "MOG.A",
-          "MOG.B",
-          "FRO",
-          "BKE",
-          "RLX",
-          "WRD"
-        ],
+        "before": [],
         "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
