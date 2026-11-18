@@ -1,0 +1,21 @@
+{
+  "kicker": "GLOBAL FOUNDRY  ·  Q2 2026",
+  "headline": ["Foundry top 10", "TSMC takes 72.5%"],
+  "subtitle": "Q2 2026 revenue, US$M  ·  the top 10 are 96.4% of the global foundry market",
+  "barCaption": "Share of top-10 foundry revenue",
+  "barTotal": "Top-10 total  $53.5B",
+  "meta": "Quarter ended June 2026  ·  figures as reported by TrendForce",
+  "caption": "How far ahead is TSMC? 72.5% of top-10 foundry revenue — more than the other nine combined.\n\nSamsung's 5.9% is now 12x smaller. SMIC 5.4% is the only one close. Q2 2026.",
+  "rows": [
+    { "rank": 1,  "name": "TSMC",               "code": "TSM",        "rev": 40198, "share": 72.5, "logo": "TSMC" },
+    { "rank": 2,  "name": "Samsung Foundry",     "code": "005930.KS",  "rev": 3260,  "share": 5.9,  "logo": "SAMSUNG" },
+    { "rank": 3,  "name": "SMIC",                "code": "0981.HK",    "rev": 3006,  "share": 5.4,  "logo": "SMIC" },
+    { "rank": 4,  "name": "UMC",                 "code": "UMC",        "rev": 2175,  "share": 3.9,  "logo": "UMC" },
+    { "rank": 5,  "name": "GlobalFoundries",     "code": "GFS",        "rev": 1786,  "share": 3.2,  "logo": "GFS" },
+    { "rank": 6,  "name": "HuaHong Group",       "code": "1347.HK",    "rev": 1274,  "share": 2.3,  "logo": "HUAHD" },
+    { "rank": 7,  "name": "Tower Semiconductor", "code": "TSEM",       "rev": 460,   "share": 0.8,  "logo": "TOWER" },
+    { "rank": 8,  "name": "VIS",                 "code": "5347.TW",    "rev": 451,   "share": 0.8,  "logo": "VIS" },
+    { "rank": 9,  "name": "Nexchip",             "code": "688249.SH",  "rev": 447,   "share": 0.8,  "logo": "NEXCHIP" },
+    { "rank": 10, "name": "PSMC",                "code": "6770.TW",    "rev": 432,   "share": 0.8,  "logo": "PSMC" }
+  ]
+}
