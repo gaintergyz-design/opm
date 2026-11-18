@@ -63,7 +63,7 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - **🔴 只增不改（2026-11-12 阿澤欽定）：兩台電腦各自往畫廊加圖，不需要同步，只管添加圖片，彼此不要覆蓋。** 已固化進 `scripts/push_local.py`：① 禁推 `docs/`（FATAL）——索引只由 CI 增量加圖（見 §10），本機 docs 是部分鏡像；② 累積檔（`out/gen-times.json`、`out/git-times.json`、`data/logos.json`）推送前自動拉遠端 dict-union；③ 其餘檔案若覆蓋遠端已有內容會逐項印 `⚠ 覆蓋遠端已有檔`——正常加圖應為 0 條。
 - **🔴🔴 OPM 卡全英文（2026-11-12 阿澤欽定）**：卡片上不出現任何中文；來源文章是中文也要翻譯成英文，金額一律 $B 口徑（$30B、$6.7B），不用「億」。依據 workspace 根目錄 `X起號方案-美股英文版-20261020.md`／`X起號方案-美股數據號-20261020.md`：定位 Objective US market data、語言全英文、@onepagemarket、No takes. No picks.。給阿澤的回覆仍用中文，發帖文案英文。
 - **🔴 每輪交付必須同時給出：① 成品圖（present_files）② 完整發帖文案**（post_x.py「將發帖：」全文；模板：`The Close: {指數}. Most traded: {前三}. Breadth {n}% advancers. 🧵`）。未發帖時註明「未發帖，供手動發」。
-- 🔴 **發帖文案規則（2026-11-14 阿澤欽定，取代舊「只寫數字與事實」鐵律）**：**一般用疑問句開頭、要簡短、要有活人感、不要說教**。疑問句如 `Who's got $132B lying around?`；簡短＝別把卡上數字全抄一遍，挑 2–4 個最有意思的；活人感＝口語、具體、可用縮寫與 `One page ↓`，像人在講不是新聞稿；不說教＝不寫「所以」、不下結論、不給建議、不講大道理。硬約束不變：全英文、$B 口徑、只寫事實與數字、單句 ≤90 字元、全文 ≤280 字元。**舊卡文案不回改，新卡一律照此。**
+- 🔴 **發帖文案規則（2026-11-14 阿澤欽定，取代舊「只寫數字與事實」鐵律）**：**一般用疑問句開頭、要簡短、要有活人感、不要說教**。疑問句如 `Who's got $132B lying around?`；簡短＝別把卡上數字全抄一遍，挑 2–4 個最有意思的；活人感＝口語、具體、可用縮寫，像人在講不是新聞稿；不說教＝不寫「所以」、不下結論、不給建議、不講大道理。**結尾一律不加 `One page ↓`（2026-11-18 阿澤欽定）**。硬約束不變：全英文、$B 口徑、只寫事實與數字、單句 ≤90 字元、全文 ≤280 字元。**舊卡文案不回改，新卡一律照此。**
 - 檔名：`the-close-YYYYMMDD.png`（用 session 交易日命名）；四頁用 `PAGES_STAMP`＝數據交易日。
 - X 發帖：OAuth1.0a 適合 CI（不過期）；OAuth2 PKCE 的 refresh token 會輪換，勿用於定時任務。X API 2026-02 起 pay-per-use（發帖 $0.015/則）。
 - 推送通知：scripts/notify.py（wecom / wecom-app / telegram / bark / none 可插拔，配置 scripts/.env.notify），產圖後先 notify（失敗不阻斷）再 post_x。
