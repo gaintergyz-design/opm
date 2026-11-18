@@ -1,0 +1,78 @@
+{
+  "ticker": "DIS",
+  "company": "Walt Disney",
+  "quarter": "Q4 2026",
+  "period_end": "Oct 3, 2026",
+  "reported": "Nov 17, 2026 · pre-market",
+
+  "brand": {
+    "deep": "#0B1E5C",
+    "primary": "#1B41C4",
+    "mid": "#3E62DC",
+    "teal": "#6E93E8",
+    "pos": "#028948"
+  },
+
+  "strip": "Streaming OI doubled to $824M · record Experiences quarter · 53rd week added ~$0.18 to adj. EPS",
+
+  "kpi": {
+    "revenue": {
+      "label": "Revenue",
+      "actual": 25947,
+      "actual_disp": "$25.95B",
+      "est_disp": "$25.18B",
+      "surprise": 3.0,
+      "pill": "Beat +3.0%",
+      "pill_tone": "pos",
+      "prior": 22464,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": 15.5
+    },
+    "eps": {
+      "label": "Adjusted EPS",
+      "actual": 1.77,
+      "actual_disp": "$1.77",
+      "est_disp": "$1.67",
+      "surprise": 6.0,
+      "pill": "Beat +6.0%",
+      "pill_tone": "pos",
+      "prior": 1.11,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": 59.5
+    }
+  },
+
+  "layout": {
+    "marginMax": 50,
+    "marginStep": 10
+  },
+
+  "quarters": ["4Q25", "1Q26", "2Q26", "3Q26", "4Q26"],
+  "gross_margin": [37.6, 35.8, 36.8, 40.2, 39.3],
+  "op_margin": [10.7, 15.4, 15.5, 19.3, 14.4],
+
+  "ocf": [4474, 735, 6914, 4866, 6755],
+  "ocf_fmt": { "unit": "US$M", "div": 1, "dec": 0, "step": 2000 },
+
+  "mix_title": "Revenue by segment",
+  "mix_center": "Entertainment",
+  "mix_colors": ["#0B1E5C", "#1B41C4", "#6E93E8"],
+  "mix": [
+    { "name": "Entertainment", "pct": 44.7, "value": "$11.89B" },
+    { "name": "Experiences", "pct": "38.0", "value": "$10.11B" },
+    { "name": "Sports", "pct": 17.3, "value": "$4.61B" }
+  ],
+
+  "outlook": {
+    "title": "FY2027 guidance",
+    "items": [
+      { "k": "Adjusted EPS", "v": "Double-digit growth", "note": "ex-53rd week" },
+      { "k": "Segment op. income", "v": "+8%", "note": "ex-53rd week · H1-weighted" },
+      { "k": "Free cash flow", "v": "~$11B", "note": "vs $10.6B in FY26" },
+      { "k": "Buyback", "v": "$9.0B", "note": "dividend +33% to $2.00/sh" },
+      { "k": "Content spend", "v": "$26B", "note": "+9% cash spend" }
+    ]
+  }
+}
