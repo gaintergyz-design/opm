@@ -81,6 +81,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'earnings-dis': 'Walt Disney',
              'us-earnings-week': 'Us Earnings Week',
              'nvda-pe-decade': "Ten years of Nvidia's P/E",
              'jensen-reprice': 'Who Got Repriced?',
