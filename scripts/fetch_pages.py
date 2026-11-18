@@ -335,19 +335,22 @@ def _econ_dedupe(keep):
 
 def econ_of(date_str, strict=False):
     """某個 ET 日期的美區經濟事件（FF 主源；FF 無資料時 Nasdaq 兜底）。
-    strict=True（即 schedule 兜底跑）時，FF 取不到就直接 FATAL，不寫入 0 條空結果
-    ——0 條一旦落盤，Week Ahead 的週一會永久顯示空白。dispatch 主觸發用寬鬆模式。"""
+    strict=True 時，FF 與 Nasdaq 兜底都取不到才 FATAL（不寫入 0 條空結果）。
+    2026-11-18 修正：改為「先兜底、後報錯」——原本 FF 一缺就 FATAL，
+    但 ff_calendar_thisweek.json 只覆蓋本周，下周日期必缺 → dispatch 連環失敗（11/17、11/18 掉圖）。"""
     evs = _ff_of(date_str)
     if evs:
         uniq = _econ_dedupe(sorted(evs, key=econ_score, reverse=True))
         uniq.sort(key=econ_score, reverse=True)
         return uniq
-    if strict:
-        raise SystemExit(f'FATAL: ForexFactory 取不到 {date_str} 的經濟事件，中止（避免寫入空白日曆）')
     print(f'    ⚠️ [econ] {date_str} 無 FF 數據 → 退回 Nasdaq（D+1 桶）')
-    uniq = _econ_dedupe(_nasdaq_of(date_str))
-    uniq.sort(key=econ_score, reverse=True)
-    return uniq
+    fallback = _econ_dedupe(_nasdaq_of(date_str))
+    fallback.sort(key=econ_score, reverse=True)
+    if fallback:
+        return fallback
+    if strict:
+        raise SystemExit(f'FATAL: FF 與 Nasdaq 都取不到 {date_str} 的經濟事件，中止（避免寫入空白日曆）')
+    return []
 
 
 def _demo_winners():

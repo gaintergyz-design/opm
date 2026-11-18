@@ -42,9 +42,13 @@ else
     echo "  週榜窗口起始：$WEEK_START（錨定最近交易日）"
     "$PY" scripts/fetch_pages.py --target week --week-start "$WEEK_START" --strict-winners "$@"
   else
-    # 經濟事件取不到就 FATAL（避免把 0 條的空日曆寫進 pages.json）；本機要放過就設 ECON_STRICT=0
+    # 經濟事件取不到就 FATAL（避免把 0 條的空日曆寫進 pages.json）。
+    # 🔴 2026-11-18 治本：預設改為寬鬆（Nasdaq D+1 桶兜底），嚴格改由 ECON_STRICT=1 顯式開啟。
+    #    原因：ff_calendar_thisweek.json 只覆蓋「本周」，而 ondeck 產線要順帶算「下週」Week Ahead，
+    #    周二～周五執行時「下週一」必不在 FF 檔內 → 舊預設（嚴格）讓 dispatch 連環 FATAL，
+    #    11/17、11/18 的 On Deck 因此整天沒出圖（dispatch 已 204 但 job 失敗）。
     _ECON_STRICT=()
-    [ "${ECON_STRICT:-1}" = "1" ] && _ECON_STRICT=(--strict-econ)
+    [ "${ECON_STRICT:-0}" = "1" ] && _ECON_STRICT=(--strict-econ)
     "$PY" scripts/fetch_pages.py --target "$TARGET" "${_ECON_STRICT[@]}" "$@"
   fi
   # logo 緩存同步：缺的才抓（秒回），重建 data/logos.json
