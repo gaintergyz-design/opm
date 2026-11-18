@@ -18,6 +18,8 @@
 #      （或重新下載源碼包）；只推圖、讓 CI 加圖的路徑不用做任何事，
 #      雲端用的永遠是 main 上的最新版。本機 MEMORY.md／日誌不隨 git 同步。
 #   首次準備：npm install；git 憑證；需代理時先 export HTTPS_PROXY=...
+#   🔴 每次上傳（成功或失敗）自動記進 SYNC-LOG.md 並同步上雲；
+#      兩台電腦排查上傳問題先看這個檔，不要問阿澤要報錯
 #   Python 優先 WorkBuddy 內建 venv，找不到就退回 PATH 的 python3
 #   任何電腦都能先跑 `bash scripts/publish_special_card.sh --help` 看這份說明
 #
@@ -46,6 +48,32 @@
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
+# ── 0.0 跨設備上傳狀態日誌（2026-11-18 阿澤欽定「信息共享」）──────────────
+#   開跑先 fetch，列印另一台電腦最近的上傳記錄；每次執行（成功或失敗）
+#   自動在 SYNC-LOG.md 加一行，並隨本次第一段提交同步上雲。
+#   🔴 排查上傳問題先看這個檔，不問阿澤要報錯。
+SYNC_LOG="SYNC-LOG.md"
+HOSTN="$(hostname -s 2>/dev/null || echo unknown)"
+NOTE=""
+SKIPLOG=0
+git fetch origin --quiet 2>/dev/null || true
+if git cat-file -e "origin/main:SYNC-LOG.md" 2>/dev/null; then
+  echo "── 另一台電腦最近的上傳記錄（origin/main:SYNC-LOG.md，末 4 行）──"
+  git show origin/main:SYNC-LOG.md | tail -n 4 || true
+  echo
+fi
+ensure_synclog() {
+  [ -f "$SYNC_LOG" ] || printf '# OPM 上傳同步日誌（兩台電腦共享；只加新行，不改舊行）\n\n| 時間 | 電腦 | 結果 | 卡片 | 備註 |\n|---|---|---|---|---|\n' > "$SYNC_LOG"
+}
+log_sync() { printf '| %s | %s | %s | %s | %s |\n' "$(date '+%Y-%m-%d %H:%M')" "$HOSTN" "$1" "${IMG_NAME:--}" "$2" >> "$SYNC_LOG" 2>/dev/null || true; }
+trap 'rc=$?
+  if [ "$SKIPLOG" != "1" ]; then
+    ensure_synclog
+    if [ "$rc" -eq 0 ]; then log_sync "✅" "成功"
+    else log_sync "❌" "失敗 rc=$rc${NOTE:+；$NOTE}"; fi
+  fi
+  exit $rc' EXIT
+
 PY="${PY:-$( [ -x /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python ] && echo /Users/gyz-igyz-imacmac/.workbuddy/binaries/python/envs/default/bin/python || command -v python3 )}"
 
 IMG_ARG=""; TITLE=""; GROUP=""; MATCH=""; DRY=0; NO_CLEAN=0; NO_PUSH=0
@@ -56,10 +84,10 @@ while [ $# -gt 0 ]; do
     --group)      GROUP="$2"; shift 2 ;;
     --match)      MATCH="$2"; shift 2 ;;
     --extra)      EXTRAS+=("$2"); shift 2 ;;
-    --dry-run)    DRY=1; shift ;;
+    --dry-run)    DRY=1; SKIPLOG=1; shift ;;
     --no-clean)   NO_CLEAN=1; shift ;;
     --no-push)    NO_PUSH=1; shift ;;
-    -h|--help)    awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0"; exit 0 ;;
+    -h|--help)    awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0"; SKIPLOG=1; exit 0 ;;
     -*)           echo "未知選項：$1" >&2; exit 1 ;;
     *)            [ -z "$IMG_ARG" ] && IMG_ARG="$1" || { echo "只能給一張定稿 PNG" >&2; exit 1; }; shift ;;
   esac
@@ -96,7 +124,7 @@ for c in fresh[:3]: print('      候選: %s' % c[3], file=sys.stderr)
 print(fresh[0][3])
 PY
   )"; then
-    echo "      ✓ 沒有 7 天內待上傳的新卡（或都已上畫廊），無事可做"; exit 0
+    echo "      ✓ 沒有 7 天內待上傳的新卡（或都已上畫廊），無事可做"; SKIPLOG=1; exit 0
   fi
   echo "      ✓ 自動選定：$IMG_PATH"
 else
@@ -222,6 +250,7 @@ CARD_UNIQ=(); for f in "${CARD_FILES[@]}"; do case " ${CARD_UNIQ[*]} " in *" $f 
 printf '      %s\n' "${CARD_UNIQ[@]}"
 if [ "$DRY" = 0 ]; then
   git add -- "${CARD_UNIQ[@]}"
+  if [ -f "$SYNC_LOG" ]; then git add -- "$SYNC_LOG"; fi   # 上傳狀態隨卡同步上雲
   if git diff --cached --quiet; then echo "      （無新變更，略過 commit）"; else git commit -m "card: $TITLE" --quiet; echo "      ✓ $(git rev-parse --short HEAD)"; fi
 fi
 
@@ -266,7 +295,7 @@ else
         echo "      本次改動與遠端相同（衝突已取遠端），跳過空提交"
         "${GITP[@]}" rebase --skip --quiet
       else
-        echo "      ✗ rebase 失敗，請手動處理（stash 已保留）" >&2; exit 1
+        echo "      ✗ rebase 失敗，請手動處理（stash 已保留）" >&2; NOTE="rebase 衝突需手動處理（stash 已保留）"; exit 1
       fi
     }
     # 增量模式（2026-11-12）：只在「本次新卡掉出索引」時補跑，不再無條件重跑。
@@ -289,13 +318,13 @@ else
     # 清掉衝突解算殘留的工作區髒檔再 pop（stash 有完整副本）
     if [ -n "$(git status --porcelain --untracked-files=no)" ]; then git restore --worktree .; fi
     # 先 push 再還 WIP：就算 pop 撞 gen-times.json，卡也已上線
-    "${GITP[@]}" push origin main --quiet
+    "${GITP[@]}" push origin main --quiet || { NOTE="push 失敗（網路／代理／git 憑證）"; exit 1; }
     if [ "$HAS_STASH" = 1 ]; then
       if git stash pop --quiet 2>/dev/null; then echo "      ✓ WIP 還原"
       else echo "      ⚠️ stash pop 衝突（常見：out/gen-times.json）。卡已上線，stash 保留，請手動 git stash pop" >&2; fi
     fi
   else
-    "${GITP[@]}" push origin main --quiet
+    "${GITP[@]}" push origin main --quiet || { NOTE="push 失敗（網路／代理／git 憑證）"; exit 1; }
   fi
   echo "      ✓ pushed"
 fi
@@ -322,7 +351,7 @@ print('      ✓ 過程稿未上公開頁' if not bad else '      ✗ 過程稿�
 sys.exit(1 if s.count(img) == 0 or bad else 0)
 PY
   then FAIL=1; fi
-  [ "$FAIL" = 1 ] && { echo "  ⚠️ 驗收有異常，見上" >&2; exit 1; }
+  [ "$FAIL" = 1 ] && { echo "  ⚠️ 驗收有異常，見上" >&2; NOTE="驗收異常（見腳本輸出）"; exit 1; }
 fi
 echo
 echo "✅ 完成｜https://gaintergyz-design.github.io/opm/ （Pages 有快取，首刷可能是舊頁）"
