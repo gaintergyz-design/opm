@@ -78,8 +78,10 @@ function render() {
   const tsmc = D.rows[0];
   const wTop = CW * tsmc.share / 100;
   const r = BAR_H / 2;
-  a.push(`<path d="M${M} ${BAR_Y} h${wTop - r} a${r} ${r} 0 0 1 0 ${BAR_H} h-${wTop - r} Z" fill="${C.teal}"/>`);
-  a.push(`<path d="M${M + wTop} ${BAR_Y} h${CW - wTop - r} a${r} ${r} 0 0 1 0 ${BAR_H} h-${CW - wTop - r} Z" fill="#E7ECF1"/>`);
+  /* 整條兩端圓角、中間接縫直角：TSMC 段＝左圓右直；其餘段＝左直右圓 */
+  const LJ = M + wTop;   /* 兩段接縫 x */
+  a.push(`<path d="M${M + r} ${BAR_Y} H${LJ} V${BAR_Y + BAR_H} H${M + r} A${r} ${r} 0 0 1 ${M} ${BAR_Y + BAR_H - r} V${BAR_Y + r} A${r} ${r} 0 0 1 ${M + r} ${BAR_Y} Z" fill="${C.teal}"/>`);
+  a.push(`<path d="M${LJ} ${BAR_Y} H${W - M - r} A${r} ${r} 0 0 1 ${W - M} ${BAR_Y + r} V${BAR_Y + BAR_H - r} A${r} ${r} 0 0 1 ${W - M - r} ${BAR_Y + BAR_H} H${LJ} Z" fill="#E7ECF1"/>`);
   a.push(t(M + 16, BAR_Y + BAR_H / 2 + 6, `${tsmc.name} ${tsmc.share}%`, { size: 17, weight: 700, fill: '#FFFFFF' }));
   const restLabel = `Everyone else  ${(100 - tsmc.share).toFixed(1)}%`;
   a.push(t(M + wTop + 14, BAR_Y + BAR_H / 2 + 6, restLabel, { size: 15, weight: 500, fill: C.gray }));
