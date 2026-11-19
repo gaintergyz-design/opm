@@ -1,0 +1,83 @@
+{
+  "ticker": "TCEHY",
+  "company": "Tencent",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 18, 2026 · HKEX: 0700",
+  "brand": {
+    "deep": "#003C8F",
+    "primary": "#0052D9",
+    "mid": "#2E7CF6",
+    "teal": "#00A4EF",
+    "pos": "#00A98C"
+  },
+  "strip": "Capex +527% to RMB81B · FCF −RMB69B · Ads +19% · Intl games −9%",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$B)",
+      "actual": 31.1,
+      "actual_disp": "31.1",
+      "est_disp": "31.6",
+      "surprise": -1.5,
+      "prior": 28.9,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 8
+    },
+    "eps": {
+      "label": "Adj. net profit (RMB B)",
+      "actual": 66.5,
+      "actual_disp": "66.5",
+      "est_disp": "66.5",
+      "surprise": 0,
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "prior": 70.6,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": -6
+    }
+  },
+  "layout": {
+    "marginMax": 60,
+    "marginStep": 10
+  },
+  "margin_title": "Margins",
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [56.4, 55.7, 56.6, 57.8, 55.9],
+  "op_margin": [37.6, 35.8, 38.5, 36.9, 32.8],
+  "panel3_title": "Capital expenditure",
+  "ocf": [13, 22, 32, 53, 81],
+  "ocf_fmt": {
+    "unit": "RMB B",
+    "div": 1,
+    "dec": 0,
+    "step": 20
+  },
+  "mix_title": "Revenue mix · 3Q26",
+  "mix_center": "VAS",
+  "mix_colors": ["#003C8F", "#0052D9", "#2E7CF6", "#9DC4FA"],
+  "mix": [
+    { "name": "Value-added svcs", "pct": 47, "value": "$14.7B" },
+    { "name": "FinTech & enterprise", "pct": 31, "value": "$9.6B" },
+    { "name": "Marketing (ads)", "pct": 21, "value": "$6.5B" },
+    { "name": "Others", "pct": 1, "value": "$0.3B" }
+  ],
+  "outlook": {
+    "title": "The AI trade-off",
+    "items": [
+      { "k": "Adj. op margin", "v": "32.8%", "note": "−4.8pt Y/Y · 40% ex-new AI" },
+      { "k": "Intl. games", "v": "−9% Y/Y", "note": "−4% constant FX · high base" },
+      { "k": "Domestic games", "v": "+11% Y/Y", "note": "RMB47.6B · Delta Force" },
+      { "k": "Free cash flow", "v": "−RMB69B", "note": "+RMB16.9B ex-compute prepay" },
+      { "k": "Buyback", "v": "HK$7.0B", "note": "~15.9M shares in 3Q" }
+    ]
+  },
+  "notes": "口徑：騰訊控股 3Q2026（截至 2026-09-30，2026-11-18 港股收盤後发布）公司 IR 新聞稿（tencent.com）＋HKEX 業績公告 C700_3Qresults.pdf＋騰訊 3Q25／FY25／1Q26／2Q26 官方新聞稿交叉核對；共識來自格隆匯／新浪財經／智通財經 11-18 綜合預期（一手＋非一手已標註）。總收入 RMB207.336B（+8% Y/Y、+1% Q/Q），共識 RMB210.53B → Miss −1.5%；按 11-18 在岸人民幣收盤 6.6653 換算 US$31.1B（3Q25 RMB192.869B → US$28.9B）。Non-IFRS 歸母淨利 RMB66.52B（−6% Y/Y、−3% Q/Q），共識 RMB66.5B → In line；IFRS 歸母淨利 RMB63.61B（+0.8%）；Non-IFRS 攤薄 EPS RMB7.227、基本 RMB7.382（3Q25 攤薄 7.575），IFRS 攤薄 RMB6.947。毛利率五季（IFRS 毛利÷營收）：56.4/55.7/56.6/57.8/55.9（3Q26 = 115.911/207.336）。Non-IFRS 經營利潤率五季：37.6/35.8/38.5/36.9/32.8（3Q26 = 68.073/207.336=32.8%，官方由 38% 降至 33%；剔除新 AI 產品為 40%）。資本開支五季（RMB B，官方）：3Q25 12.983／4Q25 22.4／1Q26 31.936／2Q26 52.78／3Q26 81.433（+527% Y/Y，共識約 55）。3Q26 自由現金流 −RMB69.1B（經營現金淨額 RMB2.6B − 資本開支 65.1B − 媒體內容 4.6B − 租賃 2.0B）；剔除算力採購預付款為 +RMB16.9B。分部 3Q26（RMB B）：增值服務 98.3（+3%，本土遊戲 47.6/+11%、國際遊戲 18.9/−9%（固定匯率 −4%）、社交 31.8/−1%）；營銷服務 43.0（+19%）；金融科技及企業服務 63.7（+9%）；其他 2.3。佔比 47/31/21/1。微信及 WeChat 合併 MAU 14.49 億；總現金 RMB525.7B（+7%）；3Q26 回購約 HK$7.0B／1,587 萬股。股價 11-18 收 HK$372.8（−0.85%），11-19 早盤 HK$363（−2.63%）；大摩維持增持、目標價 HK$550（核心 DCF 470＋投資組合 80）。Mix value 美元按 6.6653 換算。匯率與共識為非一手來源，需核實原文。"
+}
