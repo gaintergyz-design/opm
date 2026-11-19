@@ -1,0 +1,60 @@
+{
+  "stamp": "20261119",
+  "asof": "Rating actions as of Nov 18, 2026",
+  "palette_note": "OPM 2026-11-12 欽定：綠往藍偏 #00A98C、紅往橙偏 #F1541E、黃亮金 #FFB01C。升級=teal，展望下调=橙红。",
+  "kicker": "NVDA / CREDIT RATINGS / 2026",
+  "title": "Nvidia's Ratings: Up, Then Cooled",
+  "subtitle": "Big Three agencies, three moves — two upgrades, one outlook cut.",
+  "big3_label": "THE BIG THREE",
+  "big3_note": "Credit rating agencies covering Nvidia",
+  "agencies": [
+    { "key": "moodys",  "name": "Moody's",      "logo": "MCO.png"  },
+    { "key": "sp",      "name": "S&P Global",   "logo": "SPGI.png" },
+    { "key": "fitch",   "name": "Fitch",        "logo": null       }
+  ],
+  "table_head": ["AGENCY", "RATING MOVE", "ACTION / DATE"],
+  "legend": [
+    { "label": "Upgrade",    "color": "#00A98C" },
+    { "label": "Outlook cut", "color": "#F1541E" }
+  ],
+  "legend_right": "2026 rating actions",
+  "status": {
+    "up":   { "color": "#00A98C", "ink": "#007C68", "tint": "#E5F7F3" },
+    "down": { "color": "#F1541E", "ink": "#C93C10", "tint": "#FFF0E8" }
+  },
+  "moves": [
+    {
+      "key": "moodys",
+      "agency": "Moody's",
+      "detail": "Senior unsecured · 2nd-highest grade",
+      "old": "Aa2",
+      "new": "Aa1",
+      "action": "UPGRADE",
+      "date": "Jan 20, 2026",
+      "status": "up"
+    },
+    {
+      "key": "sp",
+      "agency": "S&P Global",
+      "detail": "Issuer credit · outlook stable",
+      "old": "AA-",
+      "new": "AA",
+      "action": "UPGRADE",
+      "date": "Jun 11, 2026",
+      "status": "up"
+    },
+    {
+      "key": "moodys",
+      "agency": "Moody's",
+      "detail": "Aa1 affirmed · outlook cut",
+      "old": "Positive",
+      "new": "Stable",
+      "action": "OUTLOOK CUT",
+      "date": "Nov 18, 2026",
+      "status": "down"
+    }
+  ],
+  "callout": "Aa1 stands — but the upgrade door is shut for 12–18 months.",
+  "footnote": "Moody's cut the OUTLOOK to Stable from Positive, not the Aa1 rating. Fitch, the third of the Big Three, has no recent public rating action on Nvidia. Moody's Aa1 ≈ S&P AA+; both sit in the double-A band.",
+  "source_note": "Sources: Moody's / S&P Global ratings releases; Bloomberg, StreetInsider, Yahoo Finance, Nov 2026."
+}
