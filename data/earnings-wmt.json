@@ -1,0 +1,132 @@
+{
+  "ticker": "WMT",
+  "company": "Walmart",
+  "quarter": "Q3 FY27",
+  "period_end": "Oct 31, 2026",
+  "reported": "Nov 19, 2026 · before US open",
+  "brand": {
+    "deep": "#003B7A",
+    "primary": "#0071CE",
+    "mid": "#2E86C1",
+    "teal": "#5B9BD5",
+    "pos": "#028948"
+  },
+  "strip": "Adj. EPS $0.65 tops $0.64 · eComm +17% (U.S. +23%) · FY27 guide raised a 3rd time",
+  "kpi": {
+    "revenue": {
+      "label": "Total revenue (US$)",
+      "actual": 188835,
+      "actual_disp": "$188.8B",
+      "est_disp": "$187.3B",
+      "surprise": 0.8,
+      "prior": 179496,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 5.2
+    },
+    "eps": {
+      "label": "Adj. EPS (US$)",
+      "actual": 0.65,
+      "actual_disp": "$0.65",
+      "est_disp": "$0.64",
+      "surprise": 1.6,
+      "prior": 0.62,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 4.8
+    }
+  },
+  "layout": {
+    "marginMax": 30,
+    "marginStep": 5
+  },
+  "quarters": [
+    "3Q26",
+    "4Q26",
+    "1Q27",
+    "2Q27",
+    "3Q27"
+  ],
+  "gross_margin": [
+    24.95,
+    24.67,
+    25.14,
+    24.60,
+    24.5
+  ],
+  "op_margin": [
+    3.73,
+    4.57,
+    4.21,
+    3.45,
+    4.2
+  ],
+  "ocf": [
+    9100,
+    14113,
+    4738,
+    14972,
+    9726
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 5
+  },
+  "mix_title": "Net sales mix · segments",
+  "mix_center": "U.S. retail",
+  "mix_colors": [
+    "#0071CE",
+    "#FFC220",
+    "#003B7A"
+  ],
+  "mix": [
+    {
+      "name": "Walmart U.S.",
+      "pct": 66.9,
+      "value": "$125.0B"
+    },
+    {
+      "name": "International",
+      "pct": 19.2,
+      "value": "$35.9B"
+    },
+    {
+      "name": "Sam's Club U.S.",
+      "pct": 13.9,
+      "value": "$25.9B"
+    }
+  ],
+  "outlook": {
+    "title": "FY27 guide · raised (3rd time)",
+    "items": [
+      {
+        "k": "Net sales (cc)",
+        "v": "+4.9–5.2%",
+        "note": "prior +4.0–5.0%"
+      },
+      {
+        "k": "Adj. op income (cc)",
+        "v": "+8.0–8.6%",
+        "note": "prior +7.0–8.5%"
+      },
+      {
+        "k": "Adj. EPS",
+        "v": "$2.84–2.89",
+        "note": "prior $2.80–2.87 · FY26 $2.64"
+      },
+      {
+        "k": "Capex",
+        "v": "~4% of sales",
+        "note": "9M capex $22.6B, +$4.0B Y/Y"
+      },
+      {
+        "k": "Q4 watch",
+        "v": "BBD shift",
+        "note": "Flipkart Big Billion Days benefit to Q4"
+      }
+    ]
+  },
+  "notes": "口徑：Walmart Q3 FY27 業績新聞稿（SEC EX-99.1，2026-11-19 盤前 7:00 ET）＋ Walmart corporate 新聞稿＋ stockanalysis.com WMT 季度表（GAAP standardized）＋ LSEG 共識（CNBC 轉述）。季度截止 2026-10-31。Total revenue $188.835B（+5.2%，cc +4.5%），高於 LSEG 共識 $187.27B 約 +0.8%；Net sales $186.757B（+5.1%）。Adj. EPS $0.65（去年 $0.62 → +4.8%），高於共識 $0.64 → +1.6%；GAAP EPS $0.62（去年 $0.77 → −19%，主因去年同季股權投資收益高基数＋本季 $0.03 淨投資虧損）。Operating income $7.77B（+16.0%，adjusted cc +5.5%），op margin 4.2%；gross profit rate 24.5%（+28bps）。全球電商 +17%（美國 +23%，連續 11 季 >20%；Sam's Club +30%），全球廣告 +25%（美國 +37%），會員費收入 +17%。分部淨銷售：Walmart U.S. $125.0B（+3.6%，comp ex-fuel +2.9%）、International $35.9B（cc +3.3%，中國 +28.5%）、Sam's Club U.S. $25.9B（+10.0%，comp ex-fuel +4.9%）。中國淨銷售 $6.1B（+21.8%），中國電商 +32%。毛利率五季：3Q26 24.95／4Q26 24.67／1Q27 25.14／2Q27 24.60（stockanalysis standardized，gross profit ÷ revenue）＋3Q27 24.5（官方 gross profit rate，net sales 分母）；營業利潤率五季：3.73／4.57／4.21／3.45（stockanalysis standardized）＋3Q27 4.2（官方 operating income rate）；最新一季與前四季口徑分母略異（官方 net sales vs standardized total revenue），不影響趨勢判讀。OCF（US$M，單季）：3Q26 9,100／4Q26 14,113／1Q27 4,738／2Q27 14,972（stockanalysis）；3Q27 9,726＝官方 9M YTD $29,436M − Q1 4,738 − Q2 14,972。9M FCF $6.8B（−$2.0B，capex $22.6B +$4.0B）。指引（11/19 第三次上調）：FY27 net sales cc +4.9~5.2%、adj op income cc +8.0~8.6%、adj EPS $2.84~2.89（FY26 基準 net sales $706.4B／adj OI $31.0B／adj EPS $2.64）。股價：11/18 收 $127.36，11/19 盤前一度 $124.65~$129.67。"
+}
