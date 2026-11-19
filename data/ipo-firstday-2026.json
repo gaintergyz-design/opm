@@ -1,0 +1,64 @@
+{
+ "note": "From the Futu NiuNiu first-day IPO gain chart. Only 2026 listings kept. Anthropic added as a pending/unknown debut (dashed bar + ?). User said no data verification needed.",
+ "as_of": "Nov 19, 2026",
+ "headline": [
+  "US IPO",
+  "FIRST-DAY POP"
+ ],
+ "subtitle": "How much the 2026 debut class jumped on day one",
+ "axis_max": 75,
+ "axis_step": 25,
+ "meta": "2026 US listings · day-one gain vs IPO price · as of Nov 19, 2026",
+ "caption": "Who's next after a 68% first-day pop?\nCerebras, SpaceX and three more debuted in 2026.\nAnthropic's still a question mark.",
+ "rows": [
+  {
+   "ticker": "MAIR",
+   "name": "Madison Air",
+   "date": "Apr 16",
+   "gain": 17.59,
+   "color": "#5FCB39",
+   "ink": "#2E7D12"
+  },
+  {
+   "ticker": "XE",
+   "name": "X-energy",
+   "date": "Apr 24",
+   "gain": 26.96,
+   "color": "#1B2A41",
+   "ink": "#1B2A41"
+  },
+  {
+   "ticker": "CBRS",
+   "name": "Cerebras",
+   "date": "May 14",
+   "gain": 68.15,
+   "color": "#E05020",
+   "ink": "#B33A12"
+  },
+  {
+   "ticker": "INIO",
+   "name": "INNIO",
+   "date": "Jun 4",
+   "gain": 23.33,
+   "color": "#00B863",
+   "ink": "#007A42"
+  },
+  {
+   "ticker": "SPCX",
+   "name": "SpaceX",
+   "date": "Jun 12",
+   "gain": 19.22,
+   "color": "#111111",
+   "ink": "#111111"
+  },
+  {
+   "ticker": "ANTHROPIC",
+   "name": "Anthropic",
+   "date": "Pending",
+   "gain": null,
+   "dashed": true,
+   "color": "#D97757",
+   "ink": "#A85230"
+  }
+ ]
+}

@@ -8,3 +8,5 @@
 | 2026-11-18 17:03 | gyz | ✅ | foundry-top10-20261118.png | 成功 |
 | 2026-11-19 09:08 | gyz | ✅ | earnings-tcehy-20261119.png | 成功 |
 | 2026-11-19 09:13 | gyz | ✅ | nvda-ratings-20261119.png | 成功 |
+| 2026-11-19 09:45 | gyz | ✅ | breaking-nvda-moody-20261119.png | 成功 |
+| 2026-11-19 17:48 | gyz | ❌ | ipo-firstday-2026.png | 失敗 rc=1 |
