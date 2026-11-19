@@ -2,194 +2,194 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-18 14:57",
+  "generated_at": "2026-11-19 09:10",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
-    "session": "2026-11-18",
+    "session": "2026-11-19",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -1.03
+        "pct": -0.23
       },
       {
         "label": "Nasdaq",
-        "pct": -0.74
+        "pct": 0.42
       },
       {
         "label": "Russell 2000",
-        "pct": -1.5
+        "pct": 0.46
       }
     ],
     "econ": [
       {
-        "time": "14:00",
-        "event": "FOMC Meeting Minutes",
-        "consensus": "",
-        "previous": "",
-        "impact": "High"
+        "time": "08:30",
+        "event": "Philly Fed Manufacturing Index",
+        "consensus": "20.6",
+        "previous": "20.9",
+        "impact": "Medium"
       },
       {
         "time": "08:30",
-        "event": "Housing Starts",
-        "consensus": "1.25M",
-        "previous": "1.22M",
+        "event": "Unemployment Claims",
+        "consensus": "198K",
+        "previous": "200K",
+        "impact": "Medium"
+      },
+      {
+        "time": "08:50",
+        "event": "FOMC Member Hammack Speaks",
+        "consensus": "",
+        "previous": "",
         "impact": "Low"
       },
       {
-        "time": "08:30",
-        "event": "Building Permits",
-        "consensus": "1.38M",
-        "previous": "1.40M",
+        "time": "09:25",
+        "event": "FOMC Member Jefferson Speaks",
+        "consensus": "",
+        "previous": "",
         "impact": "Low"
       },
       {
         "time": "10:00",
-        "event": "Pending Home Sales m/m",
-        "consensus": "-2.0%",
-        "previous": "-7.3%",
+        "event": "CB Leading Index m/m",
+        "consensus": "0.0%",
+        "previous": "0.0%",
         "impact": "Low"
       },
       {
-        "time": "10:30",
-        "event": "Crude Oil Inventories",
-        "consensus": "0.4M",
-        "previous": "4.7M",
-        "impact": "Low"
-      },
-      {
-        "time": "12:15",
-        "event": "FOMC Member Daly Speaks",
+        "time": "12:30",
+        "event": "FOMC Member Goolsbee Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       },
       {
-        "time": "13:35",
+        "time": "14:15",
         "event": "FOMC Member Barr Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       },
       {
-        "time": "14:30",
-        "event": "FOMC Member Williams Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      },
-      {
         "time": "16:00",
-        "event": "TIC Long-Term Purchases",
-        "consensus": "160.7B",
-        "previous": "279.2B",
+        "event": "FOMC Member Barkin Speaks",
+        "consensus": "",
+        "previous": "",
         "impact": "Low"
       },
       {
-        "time": "16:15",
-        "event": "FOMC Member Kashkari Speaks",
+        "time": "18:30",
+        "event": "FOMC Member Paulson Speaks",
         "consensus": "",
         "previous": "",
+        "impact": "Low"
+      },
+      {
+        "time": "10:15",
+        "event": "Mortgage Delinquencies",
+        "consensus": "",
+        "previous": "4.37%",
         "impact": "Low"
       }
     ],
-    "econ_all": 10,
+    "econ_all": 11,
     "earnings": {
       "before": [
-        "TJX",
-        "LOW",
-        "TGT",
-        "GLBE",
-        "GLNG",
-        "ZIM",
-        "BLSH",
-        "PONY"
+        "WMT",
+        "BABA",
+        "PDD",
+        "NTES",
+        "WSM",
+        "WMG",
+        "FUTU",
+        "YMM"
       ],
       "after": [
-        "PANW",
-        "P",
-        "WWD",
-        "UGI",
-        "SNEX",
-        "NJR",
-        "CPA",
-        "JOYY"
+        "INTU",
+        "ROST",
+        "KEYS",
+        "ESTC",
+        "ESE",
+        "GAP",
+        "POST",
+        "BULL"
       ],
-      "before_n": 16,
-      "after_n": 17,
-      "total": 62,
+      "before_n": 21,
+      "after_n": 15,
+      "total": 63,
       "top": [
         {
-          "ticker": "KLIC",
-          "name": "Kulicke and Soffa Industries",
-          "cap": 3427557120,
-          "growth": 112.2,
-          "eps": 1.43,
-          "surprise": 26.1,
+          "ticker": "KEYS",
+          "name": "Keysight Technologies",
+          "cap": 48426119000,
+          "growth": 37.4,
+          "eps": 3.38,
+          "surprise": 3.0,
           "time": "AMC"
         },
         {
-          "ticker": "ZIM",
-          "name": "ZIM Integrated Shipping Services",
-          "cap": 3576632830,
-          "growth": 43.5,
-          "eps": 5.11,
-          "surprise": -3.0,
+          "ticker": "VVV",
+          "name": "Valvoline",
+          "cap": 4218007040,
+          "growth": 25.2,
+          "eps": 0.42,
+          "surprise": -4.0,
           "time": "BMO"
         },
         {
-          "ticker": "GLBE",
-          "name": "Global-E Online",
-          "cap": 6670893600,
-          "growth": 40.3,
-          "eps": 0.62,
-          "surprise": 23.2,
+          "ticker": "ROAD",
+          "name": "Construction Partners",
+          "cap": 4517672400,
+          "growth": 21.1,
+          "eps": 1.03,
+          "surprise": -1.6,
           "time": "BMO"
         },
         {
-          "ticker": "P",
-          "name": "Everpure",
-          "cap": 33919201300,
-          "growth": 38.4,
-          "eps": 0.78,
-          "surprise": -0.7,
+          "ticker": "ESTC",
+          "name": "Elastic",
+          "cap": 8519746000,
+          "growth": 14.9,
+          "eps": 0.81,
+          "surprise": 11.1,
           "time": "AMC"
         },
         {
-          "ticker": "PANW",
-          "name": "Palo Alto Networks",
-          "cap": 253136273000,
-          "growth": 33.7,
-          "eps": 0.97,
-          "surprise": 4.4,
+          "ticker": "ROST",
+          "name": "Ross Stores",
+          "cap": 70423437000,
+          "growth": 11.7,
+          "eps": 1.87,
+          "surprise": 10.9,
           "time": "AMC"
         },
         {
-          "ticker": "CPA",
-          "name": "Copa Holdings",
-          "cap": 5531078700,
-          "growth": 28.8,
-          "eps": 3.76,
-          "surprise": 5.1,
+          "ticker": "INTU",
+          "name": "Intuit",
+          "cap": 85726634000,
+          "growth": 10.8,
+          "eps": 2.64,
+          "surprise": 8.0,
           "time": "AMC"
         },
         {
-          "ticker": "UGI",
-          "name": "UGI",
-          "cap": 8028546600,
-          "growth": 17.4,
-          "eps": -0.91,
-          "surprise": 43.9,
-          "time": "AMC"
+          "ticker": "BABA",
+          "name": "Alibaba Group Holding Limited",
+          "cap": 209908417000,
+          "growth": 8.9,
+          "eps": 11.03,
+          "surprise": -24.6,
+          "time": "BMO"
         },
         {
-          "ticker": "WWD",
-          "name": "Woodward",
-          "cap": 18288853000,
-          "growth": 14.8,
-          "eps": 2.52,
-          "surprise": 10.6,
-          "time": "AMC"
+          "ticker": "PDD",
+          "name": "PDD Holdings",
+          "cap": 110156653000,
+          "growth": 6.7,
+          "eps": 18.84,
+          "surprise": 27.2,
+          "time": "BMO"
         }
       ]
     }
@@ -317,12 +317,7 @@
         "day": "Tue",
         "date": "Nov 24",
         "count": 50,
-        "econ": [
-          "CB Consumer Confidence",
-          "Redbook",
-          "House Price Index",
-          "S&P/CS HPI Composite - 20 s.a."
-        ],
+        "econ": [],
         "before": [
           "ADI",
           "MDT",
