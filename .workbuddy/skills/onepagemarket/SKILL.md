@@ -1,6 +1,6 @@
 ---
 name: onepagemarket
-description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維。改產線或跑產線前必讀。
+description: OPM 產線（@onepagemarket 美股數據卡）。觸發詞「生成OPM格式」「OPM 格式」「OPM-Breaking」「Breaking 形式」。涵蓋 The Close / On Deck / Winners & Losers / Week Ahead 四張定時卡、Who Owns X 股權卡、個股財報卡、OPM-Breaking 即時突發卡。含數據源硬規則、排版旋鈕、踩坑清單、GitHub Actions 雲端運維。改產線或跑產線前必讀。
 ---
 
 # OPM 產線操作手冊（@onepagemarket）
@@ -159,3 +159,20 @@ gh workflow run daily.yml -f kind=ondeck    # 或 API POST .../workflows/daily.y
 - **守衛 v3**：dispatch 不看時間窗、只做當日去重；schedule 兜底仍檢查寬鬆 ET 窗口（ondeck 已放寬到 ET 19:45，遲到數小時也能補卡）；`force=true` 忽略一切守衛供人工強制補圖。去重鍵 `cards: <UTC日期> <kind>`，`fetch-depth: 0` 不能拔。
 - **`daily.yml` 裡 10 條 schedule 只作兜底**，不要再把它當唯一準時來源，也不要為了「準時」頻繁改 cron——每次改都會重新註冊 schedule 並產生數小時空窗。
 - 本次改動檔案：`.github/workflows/daily.yml`、`scripts/dispatch_card.sh`、本節。CI 路徑自動生效；本機腳本需 `git pull`（見 §9）。
+
+## 12. 🔴 OPM-Breaking 即時突發卡（2026-11-19 阿澤欽定新格式）
+- **觸發**：阿澤說「做 OPM-Breaking 格式」／「Breaking 形式」／「即時性消息做成 Breaking」＝做本節 1080×1080 突發卡，不是上面任何一種日卡/財報卡。
+- **版式（照阿澤上傳的 Breaking.png 參考圖钦定）**：
+  1. 最底層＝一張**事件主體的新聞背景圖**（深色 3D 質感最佳）。
+  2. 上面蓋**一層 60% 不透明黑幕**（`fill=#000 opacity=0.6`）。
+  3. 上方 **BREAKING:** 色條——**背景條顏色跟隨事件主體**：英偉達＝綠 `#329528`、特斯拉＝紅（在 data json 的 `accent` 指定，勿寫死）。色條位置 x=81,y=192,h=195，白字 ~88px。
+  4. 色條下跟**一個簡短的大白標題**（~82px、能自動折行、左緣 x≈88），下面可加一行低調 source。
+  5. **右上角 OPM logo**：`assets/breaking/opm-logo-full.png`（阿澤提供的藍紫漸變 880×400 原圖），高 ~62px。勿用舊的 opm_logo.png。
+- **素材**：底圖放 `assets/breaking/<subject>-breaking-bg.png`。🔴 **AI 生成圖必須先裁掉右下角「AI生成 / WORKBUDDY」浮水印才可用**（用左側同高度暗背景條帶覆蓋）；非法／浮水印圖不上卡。
+- **產線**：`scripts/build_breaking.js` + `data/breaking-<subject>-<stamp>.json`（欄位：`bg`/`brand_logo`/`accent`/`headline`/`kicker`/`source_note`）。
+  ```bash
+  NODE_PATH=./node_modules node scripts/build_breaking.js                     # 預設 data/breaking-nvda-moody.json
+  BREAKING_DATA=breaking-tsla-xxx.json NODE_PATH=./node_modules node scripts/build_breaking.js
+  ```
+- 🔴 **卡片全英文**、PNG、1080×1080；Built with SVG→resvg，和 OPM 其他卡同一套字體/渲染。avatar 主體 logo 由底圖自帶，不另加圓徽。
+- 首張示範：`out/breaking-nvda-moody-20261119.png`（穆迪下調 NVDA 評級展望；標題照阿澤參考圖原文 "Moody's downgrades Nvidia's rating outlook"）。
