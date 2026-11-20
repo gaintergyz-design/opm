@@ -16,3 +16,4 @@
 | 2026-11-20 15:28 | gyz | ✅ | trump-751-trades-20261120.png | 成功 |
 | 2026-11-20 15:41 | gyz | ✅ | druckenmiller-13f-20261120.png | 成功 |
 | 2026-11-20 15:47 | gyz | ❌ | druckenmiller-13f-20261120b.png | 失敗 rc=1 |
+| 2026-11-20 15:47 | gyz | ✅ | druckenmiller-13f-20261120-v2.png | 成功 |
