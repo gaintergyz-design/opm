@@ -2,236 +2,211 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-20 09:10",
+  "generated_at": "2026-11-20 21:35",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
-    "session": "2026-11-20",
-    "slot": "pre-market",
+    "session": "2026-11-23",
+    "slot": "next session",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -2.02
+        "pct": -3.7
       },
       {
         "label": "Nasdaq",
-        "pct": -2.25
+        "pct": -5.28
       },
       {
         "label": "Russell 2000",
-        "pct": -2.18
+        "pct": -2.76
       }
     ],
-    "econ": [
-      {
-        "time": "10:00",
-        "event": "Revised UoM Consumer Sentiment",
-        "consensus": "51.7",
-        "previous": "51.0",
-        "impact": "Medium"
-      },
-      {
-        "time": "10:00",
-        "event": "Revised UoM Inflation Expectations",
-        "consensus": "",
-        "previous": "4.3%",
-        "impact": "Medium"
-      },
-      {
-        "time": "08:25",
-        "event": "FOMC Member Waller Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      },
-      {
-        "time": "12:15",
-        "event": "FOMC Member Cook Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      }
-    ],
-    "econ_all": 4,
+    "econ": [],
+    "econ_all": 0,
     "earnings": {
       "before": [
-        "BSP",
-        "BJ",
-        "MOG.A",
-        "MOG.B",
-        "FRO",
-        "IESC",
-        "BKE",
-        "RLX"
+        "VNET",
+        "CRGO",
+        "THCH",
+        "ADXN",
+        "BLRX"
       ],
       "after": [
-        "DLNG"
+        "HPE",
+        "A",
+        "ZM",
+        "SYM",
+        "J",
+        "SMTC",
+        "AMTM",
+        "CENT"
       ],
-      "before_n": 9,
-      "after_n": 1,
-      "total": 39,
+      "before_n": 5,
+      "after_n": 18,
+      "total": 37,
       "top": [
         {
-          "ticker": "FRO",
-          "name": "Frontline Plc",
-          "cap": 9886682100,
-          "growth": 179.1,
-          "eps": 2.26,
-          "surprise": -20.3,
-          "time": "BMO"
+          "ticker": "SMTC",
+          "name": "Semtech",
+          "cap": 9501482000,
+          "growth": 56.0,
+          "eps": 1.13,
+          "surprise": 7.9,
+          "time": "AMC"
         },
         {
-          "ticker": "RLX",
-          "name": "RLX Technology",
-          "cap": 1784491650,
-          "growth": 54.8,
-          "eps": 0.23,
-          "surprise": 2.0,
-          "time": "BMO"
+          "ticker": "HPE",
+          "name": "Hewlett Packard Enterprise",
+          "cap": 60386374000,
+          "growth": 49.0,
+          "eps": 1.28,
+          "surprise": 6.6,
+          "time": "AMC"
         },
         {
-          "ticker": "FSI",
-          "name": "Flexible Solutions International",
-          "cap": 75688904,
-          "growth": 49.8,
-          "eps": -0.04,
-          "surprise": -200.0,
-          "time": ""
+          "ticker": "SYM",
+          "name": "Symbotic",
+          "cap": 20055224300,
+          "growth": 25.2,
+          "eps": 0.16,
+          "surprise": 665.5,
+          "time": "AMC"
         },
         {
-          "ticker": "KT",
-          "name": "KT",
-          "cap": 8491367900,
-          "growth": 45.2,
-          "eps": null,
-          "surprise": null,
-          "time": ""
+          "ticker": "J",
+          "name": "Jacobs Solutions",
+          "cap": 18091829200,
+          "growth": 23.4,
+          "eps": 2.12,
+          "surprise": 4.2,
+          "time": "AMC"
         },
         {
-          "ticker": "IESC",
-          "name": "IES Holdings",
-          "cap": 6760005100,
-          "growth": 27.9,
-          "eps": 2.81,
-          "surprise": 60.5,
-          "time": "BMO"
+          "ticker": "TUYA",
+          "name": "Tuya",
+          "cap": 944460610,
+          "growth": 16.1,
+          "eps": 0.03,
+          "surprise": 0.0,
+          "time": "AMC"
         },
         {
-          "ticker": "BJ",
-          "name": "BJ's Wholesale Club Holdings",
-          "cap": 14005773300,
-          "growth": 11.7,
-          "eps": 1.26,
-          "surprise": 6.3,
-          "time": "BMO"
+          "ticker": "A",
+          "name": "Agilent Technologies",
+          "cap": 49433403000,
+          "growth": 6.9,
+          "eps": 1.73,
+          "surprise": 0.4,
+          "time": "AMC"
         },
         {
-          "ticker": "BKE",
-          "name": "Buckle, Inc. (The)",
-          "cap": 2201641470,
+          "ticker": "DAC",
+          "name": "Danaos",
+          "cap": 2641142270,
           "growth": 5.1,
-          "eps": 0.84,
-          "surprise": 0.9,
-          "time": "BMO"
+          "eps": 7.06,
+          "surprise": -4.9,
+          "time": "AMC"
         },
         {
-          "ticker": "AREC",
-          "name": "American Resources",
-          "cap": 91396256,
-          "growth": -100.0,
-          "eps": -0.12,
-          "surprise": 16.5,
-          "time": ""
+          "ticker": "ZM",
+          "name": "Zoom Communications",
+          "cap": 24457310200,
+          "growth": 4.0,
+          "eps": 1.49,
+          "surprise": 5.8,
+          "time": "AMC"
         }
       ]
     }
   },
   "winners": {
-    "from": "2026-11-09",
-    "to": "2026-11-13",
-    "universe": 1841,
+    "from": "2026-11-16",
+    "to": "2026-11-20",
+    "universe": 1781,
     "is_demo": false,
     "gainers": [
       {
+        "ticker": "SLS",
+        "pct": 82.86
+      },
+      {
         "ticker": "PLBL",
-        "pct": 33.09
+        "pct": 31.8
       },
       {
-        "ticker": "LFTO",
-        "pct": 30.63
+        "ticker": "TU",
+        "pct": 15.67
       },
       {
-        "ticker": "MOD",
-        "pct": 27.8
+        "ticker": "INSM",
+        "pct": 15.01
       },
       {
-        "ticker": "AAON",
-        "pct": 27.64
+        "ticker": "NTSK",
+        "pct": 9.47
       },
       {
-        "ticker": "LQDA",
-        "pct": 19.93
+        "ticker": "CALM",
+        "pct": 8.7
       },
       {
-        "ticker": "MBGL",
-        "pct": 17.22
+        "ticker": "PANW",
+        "pct": 8.61
       },
       {
-        "ticker": "STVN",
-        "pct": 15.08
+        "ticker": "ACM",
+        "pct": 8.48
       },
       {
-        "ticker": "CHTR",
-        "pct": 14.18
+        "ticker": "BIP",
+        "pct": 8.22
       },
       {
-        "ticker": "CORZ",
-        "pct": 14.15
-      },
-      {
-        "ticker": "ACAD",
-        "pct": 13.64
+        "ticker": "BIPC",
+        "pct": 8.19
       }
     ],
     "losers": [
       {
-        "ticker": "RGTI",
-        "pct": -25.89
+        "ticker": "SNEX",
+        "pct": -35.5
       },
       {
-        "ticker": "CTVA",
-        "pct": -22.13
+        "ticker": "IREN",
+        "pct": -27.88
       },
       {
-        "ticker": "SMMT",
-        "pct": -20.68
+        "ticker": "AAOI",
+        "pct": -27.08
       },
       {
-        "ticker": "QS",
-        "pct": -19.47
+        "ticker": "PS",
+        "pct": -26.42
       },
       {
-        "ticker": "NOVT",
-        "pct": -18.56
+        "ticker": "LUNR",
+        "pct": -25.19
       },
       {
-        "ticker": "IONQ",
-        "pct": -18.28
+        "ticker": "NXT",
+        "pct": -24.83
       },
       {
-        "ticker": "BETA",
-        "pct": -18.2
+        "ticker": "QBTS",
+        "pct": -24.8
       },
       {
-        "ticker": "NG",
-        "pct": -18.17
+        "ticker": "MSTR",
+        "pct": -24.49
       },
       {
         "ticker": "NBIS",
-        "pct": -18.08
+        "pct": -24.1
       },
       {
         "ticker": "JOBY",
-        "pct": -17.8
+        "pct": -23.73
       }
     ]
   },
@@ -239,114 +214,71 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 23",
-        "count": 37,
+        "date": "Nov 16",
+        "count": 265,
         "econ": [
-          "Chicago Fed National Activity",
-          "FOMC Member Williams Speaks",
-          "S&P Global Manufacturing PMI",
-          "S&P Global Composite PMI"
+          "Fed Chairman Warsh Speaks",
+          "Cleveland Fed Inflation Expectations",
+          "FOMC Member Barr Speaks",
+          "Empire State Manufacturing Index"
         ],
         "before": [
-          "VNET",
-          "CRGO",
-          "THCH",
-          "BLRX",
-          "ADXN"
+          "QVCG"
         ],
-        "after": [
-          "HPE",
-          "A",
-          "ZM",
-          "SYM",
-          "J",
-          "SMTC",
-          "AMTM",
-          "CENT"
-        ]
+        "after": []
       },
       {
         "day": "Tue",
-        "date": "Nov 24",
-        "count": 49,
-        "econ": [
-          "CB Consumer Confidence",
-          "ADP Employment Change Weekly",
-          "Redbook",
-          "House Price Index"
-        ],
-        "before": [
-          "ADI",
-          "MDT",
-          "DLTR",
-          "BBY",
-          "BURL",
-          "SJM",
-          "DKS",
-          "DY"
-        ],
-        "after": [
-          "DELL",
-          "ADSK",
-          "WDAY",
-          "HPQ",
-          "NTNX",
-          "URBN",
-          "AMBA",
-          "BBAR"
-        ]
-      },
-      {
-        "day": "Wed",
-        "date": "Nov 25",
-        "count": 37,
-        "econ": [
-          "Atlanta Fed GDPNow",
-          "GDP",
-          "GDP Price Index",
-          "GDP Sales"
-        ],
-        "before": [
-          "DE",
-          "LI",
-          "BZ",
-          "GDS",
-          "HDL",
-          "GOTU",
-          "DSX",
-          "YSG"
-        ],
-        "after": [
-          "FINV"
-        ]
-      },
-      {
-        "day": "Thu",
-        "date": "Nov 26",
-        "count": 0,
-        "econ": [
-          "Goods Trade Balance",
-          "Fed's Balance Sheet",
-          "Reserve Balances with Federal Reserve Banks",
-          "Retail Inventories Ex Auto"
-        ],
+        "date": "Nov 17",
+        "count": 44,
+        "econ": [],
         "before": [],
         "after": []
       },
       {
-        "day": "Fri",
-        "date": "Nov 27",
-        "count": 4,
+        "day": "Wed",
+        "date": "Nov 18",
+        "count": 55,
         "econ": [
-          "Wholesale Inventories",
-          "United States - Thanksgiving Day - Early close at 13:00"
+          "Atlanta Fed GDPNow",
+          "Housing Starts",
+          "FOMC Meeting Minutes",
+          "Building Permits"
         ],
         "before": [
-          "XYF"
+          "ENRD",
+          "KNDI"
         ],
         "after": []
+      },
+      {
+        "day": "Thu",
+        "date": "Nov 19",
+        "count": 52,
+        "econ": [],
+        "before": [
+          "MAGN",
+          "SPWR"
+        ],
+        "after": [
+          "GRRR"
+        ]
+      },
+      {
+        "day": "Fri",
+        "date": "Nov 20",
+        "count": 30,
+        "econ": [],
+        "before": [
+          "BJ",
+          "MOG.A",
+          "WRD"
+        ],
+        "after": [
+          "DLNG"
+        ]
       }
     ],
-    "scope": "next week"
+    "scope": "this week"
   }
 }
