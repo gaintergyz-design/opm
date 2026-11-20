@@ -89,14 +89,14 @@ svg.push(`<rect width="${W}" height="${H}" fill="${C.bg}"/>`);
   svg.push(`<image x="${W - M - lw}" y="36" width="${lw}" height="${lh}" href="${OPM_URI}" image-rendering="optimizeQuality"/>`);
 }
 
-/* 標題（自適應縮字，不撞右上品牌標識） */
+/* 標題：放大到可用全寬。右上 logo 在 y=36~92，標題基線 158、字頂 >98，
+   垂直已錯開，故水平可用到 W-M，不必為 logo 預留 320px（2026-11-20 阿澤糾正）。 */
 {
-  const BRAND_MIN_X = W - M - 320;
-  const avail = BRAND_MIN_X - M - 16;
-  const TS = fit(D.title, 70, avail, 700);
-  svg.push(t(M, 150, D.title, { size: TS, weight: 700, ls: -2 }));
-  svg.push(t(M, 198, D.subtitle, { size: 24, fill: C.gray }));
-  svg.push(`<rect x="${M}" y="226" width="${CW}" height="3" fill="url(#ruleG)" rx="1.5"/>`);
+  const avail = CW - 4;
+  const TS = fit(D.title, 80, avail, 700);
+  svg.push(t(M, 158, D.title, { size: TS, weight: 700, ls: -2 }));
+  svg.push(t(M, 202, D.subtitle, { size: 24, fill: C.gray }));
+  svg.push(`<rect x="${M}" y="228" width="${CW}" height="3" fill="url(#ruleG)" rx="1.5"/>`);
 }
 
 /* ---- 上半：Top 10 holdings 橫向柱狀圖 ---- */
@@ -164,7 +164,7 @@ svg.splice(1, 0, `<defs>${defs.join('')}</defs>`);
 /* ---- 渲染輸出 ---- */
 const outDir = path.join(BASE, 'out', process.env.PREVIEW ? '_preview' : '');
 fs.mkdirSync(outDir, { recursive: true });
-const stem = 'druckenmiller-13f-20261120';
+const stem = 'druckenmiller-13f-20261120-v2';
 const svgStr = svg.join('\n');
 fs.writeFileSync(path.join(outDir, `${stem}.svg`), svgStr);
 
