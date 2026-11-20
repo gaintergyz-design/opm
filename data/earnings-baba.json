@@ -1,0 +1,103 @@
+{
+  "ticker": "BABA",
+  "company": "Alibaba",
+  "quarter": "Q3 2026",
+  "period_end": "Sep 30, 2026",
+  "reported": "Nov 19, 2026 · before US open",
+  "brand": {
+    "deep": "#B34400",
+    "primary": "#F56A00",
+    "mid": "#FF9140",
+    "teal": "#FFB980",
+    "pos": "#00A98C"
+  },
+  "strip": "Cloud +53% · AI sales triple-digit 13th Q · adj. EBITA +260% · capex +60%",
+  "kpi": {
+    "revenue": {
+      "label": "Revenue (US$B)",
+      "actual": 40.5,
+      "actual_disp": "40.5",
+      "est_disp": "40.3",
+      "surprise": 0.4,
+      "pill": "In line",
+      "pill_tone": "neutral",
+      "prior": 37.0,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 10
+    },
+    "eps": {
+      "label": "Adj. net profit (US$B)",
+      "actual": 2.97,
+      "actual_disp": "2.97",
+      "est_disp": "3.97",
+      "surprise": -25.2,
+      "pill": "Miss −25.2%",
+      "pill_tone": "neg",
+      "prior": 1.54,
+      "prior_txt": "3Q25",
+      "cur_txt": "3Q26",
+      "yoy": 92
+    }
+  },
+  "layout": {
+    "marginMax": 50,
+    "marginStep": 10
+  },
+  "quarters": [
+    "3Q25",
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26"
+  ],
+  "gross_margin": [
+    39.1,
+    40.5,
+    34.5,
+    38.2,
+    38.0
+  ],
+  "op_margin": [
+    2.2,
+    7.1,
+    1.0,
+    7.3,
+    10.7
+  ],
+  "panel3_title": "Operating cash flow",
+  "ocf": [
+    10099,
+    36032,
+    9410,
+    22945,
+    15690
+  ],
+  "ocf_fmt": {
+    "unit": "RMB M",
+    "div": 1,
+    "dec": 0,
+    "step": 10000
+  },
+  "mix_title": "Revenue mix · 3Q26",
+  "mix_center": "e-commerce",
+  "mix_colors": ["#B34400", "#F56A00", "#FF9140", "#FFB980", "#FFD9B8"],
+  "mix": [
+    { "name": "China commerce", "pct": 34, "value": "$14.7B" },
+    { "name": "AI cloud & compute", "pct": 21, "value": "$9.1B" },
+    { "name": "Instant retail", "pct": 20, "value": "$8.8B" },
+    { "name": "Intl + wholesale", "pct": 14, "value": "$6.0B" },
+    { "name": "Others", "pct": 11, "value": "$4.9B" }
+  ],
+  "outlook": {
+    "title": "The AI buildout",
+    "items": [
+      { "k": "Cloud revenue", "v": "+53% Y/Y", "note": "RMB61.0B · external +64%" },
+      { "k": "Adj. EBITA", "v": "+260% Y/Y", "note": "RMB32.6B · margin 12%" },
+      { "k": "Capital spending", "v": "+60% Y/Y", "note": "RMB50.5B · AI infrastructure" },
+      { "k": "Free cash flow", "v": "−$5.1B", "note": "RMB−34.5B · vs −RMB21.8B" },
+      { "k": "Buyback", "v": "$221M", "note": "17.95M shares · 2.24M ADS" }
+    ]
+  },
+  "notes": "口徑：阿里巴巴集團 FY2027 Q2（截至 2026-09-30，2026-11-19 美股盤前發布）公司 IR 新聞稿 alibabagroup.com＋HKEX 業績公告 2026111900874_c.pdf（2026-11-20 抓取）；共識為證券時報 11-19 引述 Prestige Economics／Visible Alpha 口徑（非一手）；五季序列取自 stockanalysis.com 季度報表（BABA，CNY，Apr–Mar 財年）與公司公告交叉核對。總收入 RMB271,519M（US$40,498M／$40.5B，+10% Y/Y），共識 RMB270,530M（$40.3B）→ +0.4% In line。GAAP：經營利潤 RMB29,116M（$4,343M，+443%）、經營利潤率 11%（29,116/271,519）；歸屬普通股股東淨利 RMB64,535M（$9,626M，+207%，主要來自投資淨收益）；淨利潤 RMB64,420M（+213%）；攤薄每 ADS 收益 RMB25.94（$3.87）。Non-GAAP：淨利潤 RMB19,909M（$2,969M／$2.97B，+92%），共識 RMB26,610M（$3.97B）→ Miss −25.2%；非 GAAP 攤薄每 ADS 收益 RMB8.10（$1.21，+86%）。毛利率本季 38.0%（(271,519−168,476)/271,519；營業成本 RMB168,476M，佔收入 62.0%）；經調整 EBITA RMB32,636M（$4,868M，+260%），EBITA 率 12%（雲分部 14.5%）；經調整 EBITDA RMB46,055M（+167%）。經營現金流 RMB15,690M（$2,340M，+55%，去年同期 10,099M）；自由現金流 −RMB34,472M（−$5,142M，去年同期 −21,840M）；期末現金及其他流動投資 RMB487,929M（$72,776M）。資本開支 RMB50,477M（$7,529M，+60%，去年同期 31,501M）。股份回購 US$221M／1,795 萬股普通股（224 萬 ADS）。分部收入（RMB M，3Q26，新分部架構自 2Q26起）：阿里巴巴電商集團 197,237（+2%）＝中國電商 98,497（客戶管理 75,033/−5%、直營物流及其他 23,464/−7%）＋中國即時零售 58,757（+22%）＋國際電商 25,723（−8%）＋全球批發 14,260（+6%）；AI 雲與算力服務 60,973（+53%，外部客戶 +64%、外部經常性 +67%）；AI 實驗室與應用 4,435（+51%）；所有其他 27,714（−5%）；未分攤 542；分部間抵消 −19,382。餅圖按未抵消分部收入歸一化：中國電商 34%／AI 雲 21%／即時零售 20%＋國際與批發 14%／其他（AI  labs＋所有其他＋未分攤）11%。AI 相關產品收入 RMB17,918M（$2,673M），連續第 13 季同比三位數增長。五季序列（CNY M／%，日历年季度末）：毛利率 39.1/40.5/34.5/38.2/38.0（stockanalysis 季度 gross profit÷revenue，本季用官方成本）；經營利潤率 2.2/7.1/1.0/7.3/10.7（GAAP operating income÷revenue，官方本季 11%）；經營現金流 10,099/36,032/9,410/22,945/15,690（stockanalysis 季度 OCF，本季官方 15,690）。"
+}
