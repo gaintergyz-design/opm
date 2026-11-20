@@ -2,194 +2,145 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-19 09:10",
+  "generated_at": "2026-11-20 09:10",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
-    "session": "2026-11-19",
+    "session": "2026-11-20",
     "slot": "pre-market",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -0.23
+        "pct": -2.02
       },
       {
         "label": "Nasdaq",
-        "pct": 0.42
+        "pct": -2.25
       },
       {
         "label": "Russell 2000",
-        "pct": 0.46
+        "pct": -2.18
       }
     ],
     "econ": [
       {
-        "time": "08:30",
-        "event": "Philly Fed Manufacturing Index",
-        "consensus": "20.6",
-        "previous": "20.9",
+        "time": "10:00",
+        "event": "Revised UoM Consumer Sentiment",
+        "consensus": "51.7",
+        "previous": "51.0",
         "impact": "Medium"
-      },
-      {
-        "time": "08:30",
-        "event": "Unemployment Claims",
-        "consensus": "198K",
-        "previous": "200K",
-        "impact": "Medium"
-      },
-      {
-        "time": "08:50",
-        "event": "FOMC Member Hammack Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      },
-      {
-        "time": "09:25",
-        "event": "FOMC Member Jefferson Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
       },
       {
         "time": "10:00",
-        "event": "CB Leading Index m/m",
-        "consensus": "0.0%",
-        "previous": "0.0%",
-        "impact": "Low"
+        "event": "Revised UoM Inflation Expectations",
+        "consensus": "",
+        "previous": "4.3%",
+        "impact": "Medium"
       },
       {
-        "time": "12:30",
-        "event": "FOMC Member Goolsbee Speaks",
+        "time": "08:25",
+        "event": "FOMC Member Waller Speaks",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       },
       {
-        "time": "14:15",
-        "event": "FOMC Member Barr Speaks",
+        "time": "12:15",
+        "event": "FOMC Member Cook Speaks",
         "consensus": "",
         "previous": "",
-        "impact": "Low"
-      },
-      {
-        "time": "16:00",
-        "event": "FOMC Member Barkin Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      },
-      {
-        "time": "18:30",
-        "event": "FOMC Member Paulson Speaks",
-        "consensus": "",
-        "previous": "",
-        "impact": "Low"
-      },
-      {
-        "time": "10:15",
-        "event": "Mortgage Delinquencies",
-        "consensus": "",
-        "previous": "4.37%",
         "impact": "Low"
       }
     ],
-    "econ_all": 11,
+    "econ_all": 4,
     "earnings": {
       "before": [
-        "WMT",
-        "BABA",
-        "PDD",
-        "NTES",
-        "WSM",
-        "WMG",
-        "FUTU",
-        "YMM"
+        "BSP",
+        "BJ",
+        "MOG.A",
+        "MOG.B",
+        "FRO",
+        "IESC",
+        "BKE",
+        "RLX"
       ],
       "after": [
-        "INTU",
-        "ROST",
-        "KEYS",
-        "ESTC",
-        "ESE",
-        "GAP",
-        "POST",
-        "BULL"
+        "DLNG"
       ],
-      "before_n": 21,
-      "after_n": 15,
-      "total": 63,
+      "before_n": 9,
+      "after_n": 1,
+      "total": 39,
       "top": [
         {
-          "ticker": "KEYS",
-          "name": "Keysight Technologies",
-          "cap": 48426119000,
-          "growth": 37.4,
-          "eps": 3.38,
-          "surprise": 3.0,
-          "time": "AMC"
-        },
-        {
-          "ticker": "VVV",
-          "name": "Valvoline",
-          "cap": 4218007040,
-          "growth": 25.2,
-          "eps": 0.42,
-          "surprise": -4.0,
+          "ticker": "FRO",
+          "name": "Frontline Plc",
+          "cap": 9886682100,
+          "growth": 179.1,
+          "eps": 2.26,
+          "surprise": -20.3,
           "time": "BMO"
         },
         {
-          "ticker": "ROAD",
-          "name": "Construction Partners",
-          "cap": 4517672400,
-          "growth": 21.1,
-          "eps": 1.03,
-          "surprise": -1.6,
+          "ticker": "RLX",
+          "name": "RLX Technology",
+          "cap": 1784491650,
+          "growth": 54.8,
+          "eps": 0.23,
+          "surprise": 2.0,
           "time": "BMO"
         },
         {
-          "ticker": "ESTC",
-          "name": "Elastic",
-          "cap": 8519746000,
-          "growth": 14.9,
-          "eps": 0.81,
-          "surprise": 11.1,
-          "time": "AMC"
+          "ticker": "FSI",
+          "name": "Flexible Solutions International",
+          "cap": 75688904,
+          "growth": 49.8,
+          "eps": -0.04,
+          "surprise": -200.0,
+          "time": ""
         },
         {
-          "ticker": "ROST",
-          "name": "Ross Stores",
-          "cap": 70423437000,
+          "ticker": "KT",
+          "name": "KT",
+          "cap": 8491367900,
+          "growth": 45.2,
+          "eps": null,
+          "surprise": null,
+          "time": ""
+        },
+        {
+          "ticker": "IESC",
+          "name": "IES Holdings",
+          "cap": 6760005100,
+          "growth": 27.9,
+          "eps": 2.81,
+          "surprise": 60.5,
+          "time": "BMO"
+        },
+        {
+          "ticker": "BJ",
+          "name": "BJ's Wholesale Club Holdings",
+          "cap": 14005773300,
           "growth": 11.7,
-          "eps": 1.87,
-          "surprise": 10.9,
-          "time": "AMC"
-        },
-        {
-          "ticker": "INTU",
-          "name": "Intuit",
-          "cap": 85726634000,
-          "growth": 10.8,
-          "eps": 2.64,
-          "surprise": 8.0,
-          "time": "AMC"
-        },
-        {
-          "ticker": "BABA",
-          "name": "Alibaba Group Holding Limited",
-          "cap": 209908417000,
-          "growth": 8.9,
-          "eps": 11.03,
-          "surprise": -24.6,
+          "eps": 1.26,
+          "surprise": 6.3,
           "time": "BMO"
         },
         {
-          "ticker": "PDD",
-          "name": "PDD Holdings",
-          "cap": 110156653000,
-          "growth": 6.7,
-          "eps": 18.84,
-          "surprise": 27.2,
+          "ticker": "BKE",
+          "name": "Buckle, Inc. (The)",
+          "cap": 2201641470,
+          "growth": 5.1,
+          "eps": 0.84,
+          "surprise": 0.9,
           "time": "BMO"
+        },
+        {
+          "ticker": "AREC",
+          "name": "American Resources",
+          "cap": 91396256,
+          "growth": -100.0,
+          "eps": -0.12,
+          "surprise": 16.5,
+          "time": ""
         }
       ]
     }
@@ -289,17 +240,18 @@
       {
         "day": "Mon",
         "date": "Nov 23",
-        "count": 34,
+        "count": 37,
         "econ": [
           "Chicago Fed National Activity",
+          "FOMC Member Williams Speaks",
           "S&P Global Manufacturing PMI",
-          "S&P Global Composite PMI",
-          "S&P Global Services PMI"
+          "S&P Global Composite PMI"
         ],
         "before": [
           "VNET",
           "CRGO",
           "THCH",
+          "BLRX",
           "ADXN"
         ],
         "after": [
@@ -316,8 +268,13 @@
       {
         "day": "Tue",
         "date": "Nov 24",
-        "count": 50,
-        "econ": [],
+        "count": 49,
+        "econ": [
+          "CB Consumer Confidence",
+          "ADP Employment Change Weekly",
+          "Redbook",
+          "House Price Index"
+        ],
         "before": [
           "ADI",
           "MDT",
@@ -342,7 +299,7 @@
       {
         "day": "Wed",
         "date": "Nov 25",
-        "count": 22,
+        "count": 37,
         "econ": [
           "Atlanta Fed GDPNow",
           "GDP",
@@ -357,7 +314,7 @@
           "HDL",
           "GOTU",
           "DSX",
-          "NNOX"
+          "YSG"
         ],
         "after": [
           "FINV"
@@ -368,7 +325,10 @@
         "date": "Nov 26",
         "count": 0,
         "econ": [
-          "United States - Thanksgiving Day"
+          "Goods Trade Balance",
+          "Fed's Balance Sheet",
+          "Reserve Balances with Federal Reserve Banks",
+          "Retail Inventories Ex Auto"
         ],
         "before": [],
         "after": []
@@ -378,12 +338,12 @@
         "date": "Nov 27",
         "count": 4,
         "econ": [
-          "Goods Trade Balance",
-          "Retail Inventories Ex Auto",
           "Wholesale Inventories",
           "United States - Thanksgiving Day - Early close at 13:00"
         ],
-        "before": [],
+        "before": [
+          "XYF"
+        ],
         "after": []
       }
     ],
