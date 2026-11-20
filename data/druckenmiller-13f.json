@@ -1,0 +1,43 @@
+{
+  "title": "Druckenmiller's Q3 Book",
+  "subtitle": "Top 10 holdings, new positions and exits \u00b7 Q3 2026",
+  "meta": "Data via WhaleWisdom \u00b7 13F quarter ended Sep 30, 2026",
+  "source_note": "Source image: Futu NiuNiu infographic, Stanley Druckenmiller Q3 2026 13F. Amounts converted from 億 to $B / $M.",
+  "holdings": [
+    { "tk": "NTRA", "name": "Natera",                    "val": "$1.31B", "pct": "29.22%" },
+    { "tk": "STX",  "name": "Seagate Technology",         "val": "$315M",  "pct": "7.05%"  },
+    { "tk": "AMZN", "name": "Amazon",                     "val": "$192M",  "pct": "4.31%"  },
+    { "tk": "FOXA", "name": "Fox Corp-A",                 "val": "$191M",  "pct": "4.27%"  },
+    { "tk": "YPF",  "name": "YPF Argentina",              "val": "$178M",  "pct": "3.97%"  },
+    { "tk": "U",    "name": "Unity Software",             "val": "$162M",  "pct": "3.62%"  },
+    { "tk": "SE",   "name": "Sea",                        "val": "$155M",  "pct": "3.47%"  },
+    { "tk": "EWZ",  "name": "iShares MSCI Brazil ETF",    "val": "$126M",  "pct": "2.81%"  },
+    { "tk": "INSM", "name": "Insmed",                     "val": "$125M",  "pct": "2.79%"  },
+    { "tk": "AMZN", "name": "Amazon",                     "val": "$114M",  "pct": "2.56%"  }
+  ],
+  "added": [
+    { "tk": "SGI",  "name": "Tempur Sealy" },
+    { "tk": "NEM",  "name": "Newmont" },
+    { "tk": "B",    "name": "Barrick Mining" },
+    { "tk": "AEM",  "name": "Agnico Eagle" },
+    { "tk": "WDC",  "name": "Western Digital" },
+    { "tk": "APP",  "name": "AppLovin" },
+    { "tk": "SPCX", "name": "SpaceX" },
+    { "tk": "TTMI", "name": "TTM Technologies" },
+    { "tk": "HUM",  "name": "Humana" },
+    { "tk": "PLTR", "name": "Palantir" }
+  ],
+  "exited": [
+    { "tk": "GOOGL", "name": "Alphabet-A" },
+    { "tk": "UAL",   "name": "United Airlines" },
+    { "tk": "SNDK",  "name": "SanDisk" },
+    { "tk": "DAL",   "name": "Delta Air Lines" },
+    { "tk": "DHI",   "name": "D.R. Horton" },
+    { "tk": "AMD",   "name": "AMD" },
+    { "tk": "CLF",   "name": "Cleveland-Cliffs" },
+    { "tk": "HUT",   "name": "Hut 8" },
+    { "tk": "CAI",   "name": "Caris Life Sciences" },
+    { "tk": "ARGT",  "name": "Global X MSCI Argentina ETF" }
+  ],
+  "caption": "Who's the Fed chair's mentor? Druckenmiller. His Q3 book: 29% sits in one name, Natera. SpaceX went in; Google and SanDisk went out."
+}
