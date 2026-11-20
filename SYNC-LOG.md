@@ -12,3 +12,4 @@
 | 2026-11-19 17:48 | gyz | ❌ | ipo-firstday-2026.png | 失敗 rc=1 |
 | 2026-11-19 17:50 | gyz | ✅ | ipo-firstday-20261119.png | 成功 |
 | 2026-11-19 17:55 | gyz | ✅ | breaking-musk-jensen-20261119.png | 成功 |
+| 2026-11-20 09:17 | gyz | ✅ | earnings-baba-20261120.png | 成功 |
