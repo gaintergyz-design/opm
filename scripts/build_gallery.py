@@ -81,6 +81,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'trump-751-trades': 'Trump 751 Trades',
              'earnings-baba': 'Alibaba',
              'breaking-musk-jensen': "Musk hails Jensen Huang as 'the Michael Jordan of tech'",
              'ipo-firstday': 'IPO First-Day Pop',
