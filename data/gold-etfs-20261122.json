@@ -1,0 +1,33 @@
+{
+  "headline": ["Every US gold ETF", "from unleveraged to −3x"],
+  "subtitle": "Bullion funds, 2–3x miners plays and inverse ETNs — leverage marked on each row",
+  "as_of": "Prices as of Fri 20 Nov 2026",
+  "facts": [
+    { "label": "FUNDS ON CARD", "value": "15" },
+    { "label": "GLD LAST (FRI)", "value": "$322.79" },
+    { "label": "GLD DAY", "value": "−3.7%" }
+  ],
+  "unleveraged": [
+    { "ticker": "GLD",  "name": "SPDR Gold Shares",            "issuer": "State Street" },
+    { "ticker": "IAU",  "name": "iShares Gold Trust",          "issuer": "BlackRock" },
+    { "ticker": "GDX",  "name": "VanEck Gold Miners ETF",      "issuer": "VanEck" },
+    { "ticker": "GLDM", "name": "SPDR Gold MiniShares Trust",  "issuer": "State Street" },
+    { "ticker": "SGOL", "name": "abrdn Physical Gold Shares ETF", "issuer": "abrdn" }
+  ],
+  "long": [
+    { "ticker": "NUGT", "lev": "2x", "name": "Direxion Daily Gold Miners Bull 2X" },
+    { "ticker": "DGP",  "lev": "2x", "name": "Invesco DB Gold Double Long ETN" },
+    { "ticker": "UGL",  "lev": "2x", "name": "ProShares Ultra Gold" },
+    { "ticker": "GDXU", "lev": "3x", "name": "MicroSectors Gold Miners 3X ETN" },
+    { "ticker": "SHNY", "lev": "3x", "name": "MicroSectors Gold 3X ETN" }
+  ],
+  "inverse": [
+    { "ticker": "DGZ",  "lev": "-1x", "name": "Invesco DB Gold Short ETN" },
+    { "ticker": "DZZ",  "lev": "-2x", "name": "Invesco DB Gold Double Short ETN" },
+    { "ticker": "GLL",  "lev": "-2x", "name": "ProShares UltraShort Gold" },
+    { "ticker": "DUST", "lev": "-2x", "name": "Direxion Daily Gold Miners Bear 2X" },
+    { "ticker": "GDXD", "lev": "-3x", "name": "MicroSectors Gold Miners −3X ETN" }
+  ],
+  "note": "Leveraged funds reset daily · DB gold ETNs are unsecured notes of the issuer, not fund shares",
+  "caption": "GLD just dropped 3.7% on Friday. Cooling off, or noise? One page: all 15 US gold ETFs, from unleveraged bullion to −3x inverse miners. Which one is in your watchlist?"
+}
