@@ -1,0 +1,15 @@
+{
+  "stamp": "20261122",
+  "kind": "amzn-decart",
+  "bg": "assets/breaking/amzn-decart-breaking-bg.png",
+  "brand_logo": "assets/breaking/opm-logo-full.png",
+  "accent": "#E8790A",
+  "accent_name": "Amazon orange",
+  "headline": "Amazon nears $7.5B deal to buy AI startup Decart",
+  "kicker": "BREAKING:",
+  "source_note": "Source: Financial Times, Nov 22, 2026",
+  "asof": "Nov 22, 2026",
+  "wrap_width": 980,
+  "title_size": 82,
+  "title_line": 100
+}
