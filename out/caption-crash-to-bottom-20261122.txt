@@ -1,0 +1,1 @@
+How fast did each crash find its low? 2020: 33 days. 2025: 48. 2022: 282. 2008: 517 — down 57% before it was done.
