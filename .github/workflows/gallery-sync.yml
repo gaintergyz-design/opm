@@ -15,6 +15,7 @@ on:
   push:
     paths:
       - 'out/*.png'
+      - 'out/*.mp4'
       - 'out/caption-*.txt'
   workflow_dispatch:
     inputs:

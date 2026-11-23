@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""掃描 out/*.png + out/caption-*.txt → docs/img/ + docs/index.html（手機畫廊）
+"""掃描 out/*.png + out/*.mp4 + out/caption-*.txt → docs/img/ + docs/index.html（手機畫廊）
 
 畫廊按「一則貼文」分組（四條獨立產線）：
   · On Deck      每天 19:00 HKT      → on-deck 一張
@@ -121,7 +121,8 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'nvda-13f': "Nvidia's Q3 13F",
              'berkshire-q3': "Buffett's Q3 Book",
              'anthropic-timeline': 'Anthropic After the IPO',
-             'only-dollar-up': 'Only the dollar was up'}
+             'only-dollar-up': 'Only the dollar was up',
+             'bear2000-rallies': 'Beware the bounce'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi',
@@ -215,6 +216,8 @@ def stamp_of(p, name):
     """圖片生成時刻：① 產線記錄 gen-times ② min(git 提交時間, mtime)
        —— git 拉取只會把 mtime 推後、批量提交只會把 git 時間推後，取較早者最接近真實生成時刻。"""
     ep = GEN_TIMES.get(name)
+    if not ep and name.lower().endswith('.mp4'):
+        ep = GEN_TIMES.get(name[:-4] + '.png')   # 影片沿用同名靜態卡的生成時刻
     if not ep:
         git_ep = GIT_TIMES.get(f'out/{name}')
         mtime = os.stat(p).st_mtime
@@ -223,7 +226,7 @@ def stamp_of(p, name):
 
 
 items = []
-for p in sorted(glob.glob(os.path.join(OUT, '*.png'))):
+for p in sorted(glob.glob(os.path.join(OUT, '*.png')) + glob.glob(os.path.join(OUT, '*.mp4'))):
     name = os.path.basename(p)
     kind, d = parse(name)
     kind = kind_alias(kind)
@@ -349,10 +352,19 @@ def group_html(key, imgs, idx):
     shots = []
     for i in imgs:
         src = f'src="{i["img"]}"' if live else 'data-src="' + i['img'] + '"'
+        is_vid = i['img'].lower().endswith('.mp4')
+        stem = os.path.splitext(i['img'])[0]
+        poster = next((j['img'] for j in imgs if j['img'].lower().endswith('.png')
+                       and os.path.splitext(j['img'])[0] == stem), '')
+        poster_attr = f' poster="{poster}"' if (is_vid and poster and live) else ''
+        media = (f'<video {src} controls playsinline preload="metadata"{poster_attr}></video>'
+                 if is_vid else f'<img {src} loading="lazy" alt="{i["name"]}">')
+        label = '下載影片' if is_vid else '下載圖片'
         shots.append(
             f'<div class="shot">'
-            f'<button class="dl" type="button" data-img="{i["img"]}" data-name="{i["name"]}">下載圖片</button>'
-            f'<img {src} loading="lazy" alt="{i["name"]}"></div>')
+            f'<button class="dl" type="button" data-img="{i["img"]}" data-name="{i["name"]}"'
+            f' data-label="{label}">{label}</button>'
+            f'{media}</div>')
     cls = 'sec' if live else 'sec late'
     hid = '' if live else ' hidden'
     return f'<section class="{cls}"{hid}>{head}{block}<div class="shots">{"".join(shots)}</div></section>'
@@ -382,7 +394,7 @@ def incremental_html():
     old = open(IDX, encoding='utf-8').read()
     if '<main>\n' not in old:
         return None                      # 版型變了，安全退回全量
-    seen = set(re.findall(r'data-name="([^"]+\.png)"', old))
+    seen = set(re.findall(r'data-name="([^"]+\.(?:png|mp4))"', old))
     # 頁面上最新一張卡的日期：擋掉「在 out/ 但頁面刻意沒收」的舊孤兒圖，
     # 以及 rebase 取 theirs 後可能被誤判成新卡的歷史卡（避免舊卡頂到最前）。
     page_dates = [d for d in (parse(n)[1] for n in seen) if d]
@@ -507,10 +519,10 @@ function saveImage(btn) {
   var url = btn.getAttribute('data-img'), name = btn.getAttribute('data-name') || 'card.png';
   var settle = function (ok) {
     if (ok) { markDone(btn, '已下載'); saveDone('d:' + url); toast('已下載'); }
-    else { btn.textContent = '下載圖片'; btn.classList.remove('busy', 'done'); }
+    else { btn.textContent = btn.getAttribute('data-label') || '下載圖片'; btn.classList.remove('busy', 'done'); }
   };
   if (dlBlob[url]) { runShare(dlBlob[url], name).then(settle); return; }   // 快路徑：手勢內同步
-  var fallback = btn.classList.contains('done') ? '已下載' : '下載圖片';
+  var fallback = btn.classList.contains('done') ? '已下載' : (btn.getAttribute('data-label') || '下載圖片');
   btn.textContent = '處理中'; btn.classList.add('busy');
   grab(url)
     .then(function (blob) { return runShare(blob, name); })
@@ -606,6 +618,7 @@ html = f'''<!DOCTYPE html>
   .shots {{ display:flex; flex-direction:column; gap:14px; }}
   .shot {{ position:relative; }}
   .shot img {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; }}
+  .shot video {{ width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; background:#000; }}
   /* 下載膠囊：與「複製文案」同一套視覺，浮在圖片右上角 */
   .shot .dl {{ position:absolute; top:10px; right:10px; z-index:2; font-size:11.5px; padding:5px 11px;
     border:1px solid var(--line); background:rgba(255,255,255,.94); border-radius:20px;
@@ -688,7 +701,7 @@ if (moreBtn) {{
   moreBtn.addEventListener('click', function () {{
     document.querySelectorAll('section.late').forEach(function (s) {{
       s.hidden = false;
-      s.querySelectorAll('img[data-src]').forEach(function (im) {{
+      s.querySelectorAll('img[data-src],video[data-src]').forEach(function (im) {{
         if (!im.getAttribute('src')) im.setAttribute('src', im.getAttribute('data-src'));
       }});
     }});
