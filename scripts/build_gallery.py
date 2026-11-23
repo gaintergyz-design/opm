@@ -439,8 +439,7 @@ def incremental_html():
 
 INCREMENTAL = incremental_html()
 if INCREMENTAL == 'NOCHANGE':
-    print('gallery: 沒有新卡，docs/index.html 保持不變（只增不改）')
-    sys.exit(0)
+    print('gallery: 沒有新卡，檢查是否需要同步樣式模板')
 
 GALLERY_JS = r"""
 // 下載圖片：手機走系統分享面板（網頁唯一能存進「相簿」的路徑），桌面直接下載
@@ -761,6 +760,20 @@ if (rfBtn) {{
 </body></html>'''
 
 if INCREMENTAL is not None:
+    # 🔴 樣式模板同步（2026-11-23）：增量只換 <main>，<style> 一直是舊版。
+    # 影片的 .shot video 等比縮放規則因此從未上線；這裡只同步 <style> 區塊，
+    # 舊卡的內容／時間戳／順序／src 逐字保留（只增不改的前提不變）。
+    if INCREMENTAL == 'NOCHANGE':
+        INCREMENTAL = open(IDX, encoding='utf-8').read()
+    m_old = re.search(r'<style>.*?</style>', INCREMENTAL, re.S)
+    m_new = re.search(r'<style>.*?</style>', html, re.S)
+    style_changed = bool(m_old and m_new and m_old.group() != m_new.group())
+    if style_changed:
+        INCREMENTAL = INCREMENTAL.replace(m_old.group(), m_new.group(), 1)
+        print('gallery: 同步 <style> 樣式模板（舊卡內容不變）')
+    if not style_changed and N_NEW == 0:
+        print('gallery: 沒有新卡，docs/index.html 保持不變（只增不改）')
+        sys.exit(0)
     open(IDX, 'w', encoding='utf-8').write(INCREMENTAL)
     print(f'gallery: 增量新增 {N_NEW} 組，舊卡逐字保留 -> docs/index.html')
 else:
