@@ -20,3 +20,5 @@
 | 2026-11-20 17:01 | gyz | ❌ | hk-bullbear-20261120.png | 失敗 rc=1；驗收異常（見腳本輸出） |
 | 2026-11-23 09:50 | gyz | ❌ | nvda-congress-sales-20261123.png | 失敗 rc=1；rebase 衝突需手動處理（stash 已保留） |
 | 2026-11-23 09:51 | gyz | ❌ | nvda-congress-sales-20261123.png | 失敗 rc=1；rebase 衝突需手動處理（stash 已保留） |
+| 2026-11-23 09:57 | gyz | ✅ | nvda-congress-sales-20261123.png | 成功 |
+| 2026-11-23 10:05 | gyz | ✅ | cuda-moat-20261123.png | 成功（手動補推漏掉的圖片 blob） |
