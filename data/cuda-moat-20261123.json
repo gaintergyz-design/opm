@@ -1,0 +1,18 @@
+{
+  "stamp": "20261123",
+  "kicker": "FRONTIER LAB COMPUTE · DEPLOYMENT 2026+",
+  "title": "CUDA's moat is crumbling",
+  "subtitle": "Announced compute capacity by accelerator vendor, GW, deployment 2026 or later",
+  "meta": "Announced agreements · deployment 2026 or later",
+  "total_gw_disp": "43.9",
+  "vendors": [
+    { "key": "nvda",  "name": "Nvidia GPUs",       "ticker": "NVDA", "gw": 12.11, "gw_disp": "12.11 GW", "pct": 28, "color": "#00A98C", "ink": "#00705C" },
+    { "key": "avgo",  "name": "Broadcom custom",   "ticker": "AVGO", "gw": 10.00, "gw_disp": "10 GW",    "pct": 23, "color": "#F1541E", "ink": "#B23A0E" },
+    { "key": "amd",   "name": "AMD GPUs",          "ticker": "AMD",  "gw": 8.00,  "gw_disp": "8 GW",     "pct": 18, "color": "#2B6FE8", "ink": "#1D4FAE" },
+    { "key": "amzn",  "name": "Amazon Trainium",   "ticker": "AMZN", "gw": 7.00,  "gw_disp": "7 GW",     "pct": 16, "color": "#FFB01C", "ink": "#8A5A00" },
+    { "key": "goog",  "name": "Google TPUs",       "ticker": "GOOG", "gw": 6.00,  "gw_disp": "6 GW",     "pct": 14, "color": "#7C5CE0", "ink": "#5A3CB8" },
+    { "key": "cbrs",  "name": "Cerebras",          "ticker": "CBRS", "gw": 0.75,  "gw_disp": "0.75 GW",  "pct": 2,  "color": "#22304A", "ink": "#22304A" }
+  ],
+  "takeaway_pre": "Now goes to custom silicon & non-NVIDIA accelerators — of announced 2026+ frontier compute",
+  "palette_note": "OPM 欽定色板：teal #00A98C / 橘紅 #F1541E / 亮金 #FFB01C / 藍 #2B6FE8 / 紫 #7C5CE0 / 墨 #22304A；亮金段內文字用深色 #5A3200。"
+}
