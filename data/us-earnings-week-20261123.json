@@ -1,0 +1,62 @@
+{
+  "stem": "us-earnings-week-20261123",
+  "headline": "Who reports this week?",
+  "subhead": "17 US companies · Nov 23–27, 2026 · all times ET",
+  "note": "BMO = before market open, AMC = after market close. Schedules can change; check company filings.",
+  "meta": "US earnings · Week of Nov 23–27, 2026 · ET",
+  "days": [
+    {
+      "label": "MON",
+      "date": "11/23",
+      "bmo": [
+        ["VNET", "VNET Group"]
+      ],
+      "amc": [
+        ["HPE", "Hewlett Packard"],
+        ["SMTC", "Semtech"],
+        ["ZM", "Zoom"]
+      ]
+    },
+    {
+      "label": "TUE",
+      "date": "11/24",
+      "bmo": [
+        ["ADI", "Analog Devices"],
+        ["BBY", "Best Buy"],
+        ["BILI", "Bilibili"],
+        ["KC", "Kingsoft Cloud"],
+        ["MDT", "Medtronic"]
+      ],
+      "amc": [
+        ["ADSK", "Autodesk"],
+        ["DELL", "Dell Technologies"],
+        ["HPQ", "HP Inc."],
+        ["WDAY", "Workday"]
+      ]
+    },
+    {
+      "label": "WED",
+      "date": "11/25",
+      "bmo": [
+        ["BZ", "Kanzhun"],
+        ["DE", "Deere & Co."],
+        ["GDS", "GDS Holdings"],
+        ["LI", "Li Auto"]
+      ],
+      "amc": []
+    },
+    {
+      "label": "THU",
+      "date": "11/26",
+      "bmo": [],
+      "amc": []
+    },
+    {
+      "label": "FRI",
+      "date": "11/27",
+      "bmo": [],
+      "amc": []
+    }
+  ],
+  "caption": "Who's on the earnings calendar this week? 17 US names, Nov 23–27.\nBilibili, Best Buy and Medtronic before Tuesday's open.\nDell, HP and Workday after the close that day."
+}
