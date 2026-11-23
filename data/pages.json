@@ -2,142 +2,166 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-23 03:18",
-  "week_label": "Nov 16 – Nov 20",
+  "generated_at": "2026-11-23 22:37",
+  "week_label": "Nov 23 – Nov 27",
   "ondeck": {
-    "session": "2026-11-23",
+    "session": "2026-11-24",
     "slot": "next session",
     "prev_close": [
       {
         "label": "S&P 500",
-        "pct": -3.7
+        "pct": 4.73
       },
       {
         "label": "Nasdaq",
-        "pct": -5.28
+        "pct": 6.51
       },
       {
         "label": "Russell 2000",
-        "pct": -2.76
+        "pct": 3.4
       }
     ],
     "econ": [
       {
-        "time": "09:45",
-        "event": "Flash Manufacturing PMI",
-        "consensus": "54.5",
-        "previous": "56.0",
+        "time": "10:00",
+        "event": "CB Consumer Confidence",
+        "consensus": "92.4",
+        "previous": "91.7",
         "impact": "Medium"
       },
       {
-        "time": "09:45",
-        "event": "Flash Services PMI",
-        "consensus": "55.6",
-        "previous": "57.9",
-        "impact": "Medium"
+        "time": "09:00",
+        "event": "HPI m/m",
+        "consensus": "0.2%",
+        "previous": "0.3%",
+        "impact": "Low"
       },
       {
-        "time": "16:00",
-        "event": "FOMC Member Williams Speaks",
+        "time": "09:00",
+        "event": "S&P/CS Composite-20 HPI y/y",
+        "consensus": "2.7%",
+        "previous": "2.7%",
+        "impact": "Low"
+      },
+      {
+        "time": "10:00",
+        "event": "Richmond Manufacturing Index",
+        "consensus": "-2",
+        "previous": "-2",
+        "impact": "Low"
+      },
+      {
+        "time": "08:15",
+        "event": "ADP Weekly Employment Change",
+        "consensus": "",
+        "previous": "23.8K",
+        "impact": "Low"
+      },
+      {
+        "time": "16:30",
+        "event": "API Weekly Statistical Bulletin",
         "consensus": "",
         "previous": "",
         "impact": "Low"
       }
     ],
-    "econ_all": 3,
+    "econ_all": 6,
     "earnings": {
       "before": [
-        "VNET",
-        "CRGO",
-        "THCH",
-        "ADXN",
-        "BLRX"
+        "ADI",
+        "MDT",
+        "DLTR",
+        "BBY",
+        "BURL",
+        "SJM",
+        "DKS",
+        "DY"
       ],
       "after": [
-        "HPE",
-        "A",
-        "ZM",
-        "SYM",
-        "J",
-        "SMTC",
-        "AMTM",
-        "CENT"
+        "DELL",
+        "ADSK",
+        "WDAY",
+        "HPQ",
+        "NTNX",
+        "URBN",
+        "AMBA",
+        "BBAR"
       ],
-      "before_n": 5,
-      "after_n": 18,
-      "total": 37,
+      "before_n": 25,
+      "after_n": 11,
+      "total": 50,
       "top": [
         {
-          "ticker": "SMTC",
-          "name": "Semtech",
-          "cap": 9501482000,
-          "growth": 56.0,
-          "eps": 1.13,
-          "surprise": 7.9,
+          "ticker": "DELL",
+          "name": "Dell Technologies",
+          "cap": 176768664000,
+          "growth": 82.5,
+          "eps": 6.55,
+          "surprise": 4.6,
           "time": "AMC"
         },
         {
-          "ticker": "HPE",
-          "name": "Hewlett Packard Enterprise",
-          "cap": 60386374000,
-          "growth": 49.0,
-          "eps": 1.29,
-          "surprise": 6.6,
+          "ticker": "ADI",
+          "name": "Analog Devices",
+          "cap": 167620887000,
+          "growth": 40.6,
+          "eps": 3.89,
+          "surprise": 1.1,
+          "time": "BMO"
+        },
+        {
+          "ticker": "DY",
+          "name": "Dycom Industries",
+          "cap": 6199584800,
+          "growth": 34.0,
+          "eps": 4.57,
+          "surprise": 13.1,
+          "time": "BMO"
+        },
+        {
+          "ticker": "DKS",
+          "name": "Dick's Sporting Goods",
+          "cap": 11760536600,
+          "growth": 22.0,
+          "eps": 1.41,
+          "surprise": 2.7,
+          "time": "BMO"
+        },
+        {
+          "ticker": "ADSK",
+          "name": "Autodesk",
+          "cap": 51096322000,
+          "growth": 15.2,
+          "eps": 3.07,
+          "surprise": 6.9,
           "time": "AMC"
         },
         {
-          "ticker": "SYM",
-          "name": "Symbotic",
-          "cap": 20055224300,
-          "growth": 25.2,
-          "eps": 0.16,
-          "surprise": 665.5,
+          "ticker": "NTNX",
+          "name": "Nutanix",
+          "cap": 14787544100,
+          "growth": 13.8,
+          "eps": 0.61,
+          "surprise": 0.2,
           "time": "AMC"
         },
         {
-          "ticker": "J",
-          "name": "Jacobs Solutions",
-          "cap": 18091829200,
-          "growth": 23.4,
-          "eps": 2.12,
-          "surprise": 4.2,
+          "ticker": "WDAY",
+          "name": "Workday",
+          "cap": 42059321000,
+          "growth": 10.7,
+          "eps": 2.74,
+          "surprise": 6.7,
           "time": "AMC"
         },
         {
-          "ticker": "TUYA",
-          "name": "Tuya",
-          "cap": 944460610,
-          "growth": 16.1,
-          "eps": 0.03,
-          "surprise": 0.0,
-          "time": "AMC"
-        },
-        {
-          "ticker": "A",
-          "name": "Agilent Technologies",
-          "cap": 49433403000,
-          "growth": 6.9,
-          "eps": 1.73,
-          "surprise": 0.4,
-          "time": "AMC"
-        },
-        {
-          "ticker": "DAC",
-          "name": "Danaos",
-          "cap": 2641142270,
-          "growth": 5.1,
-          "eps": 7.06,
-          "surprise": -4.9,
-          "time": "AMC"
-        },
-        {
-          "ticker": "ZM",
-          "name": "Zoom Communications",
-          "cap": 24457310200,
-          "growth": 4.0,
-          "eps": 1.49,
-          "surprise": 5.8,
-          "time": "AMC"
+          "ticker": "BURL",
+          "name": "Burlington Stores",
+          "cap": 15411080200,
+          "growth": 9.9,
+          "eps": 1.72,
+          "surprise": 2.7,
+          "time": "BMO"
         }
       ]
     }
@@ -236,62 +260,127 @@
     "days": [
       {
         "day": "Mon",
-        "date": "Nov 16",
-        "count": 265,
-        "econ": [],
-        "before": [
-          "QVCG"
+        "date": "Nov 30",
+        "count": 6,
+        "econ": [
+          "Dallas Fed Mfg Business Index",
+          "Chicago PMI",
+          "CFTC Aluminium speculative net positions",
+          "CFTC Copper speculative net positions"
         ],
-        "after": []
+        "before": [
+          "HMR",
+          "BOSC"
+        ],
+        "after": [
+          "RBRK",
+          "NNE",
+          "PXS",
+          "MOB"
+        ]
       },
       {
         "day": "Tue",
-        "date": "Nov 17",
-        "count": 44,
-        "econ": [],
-        "before": [],
-        "after": []
+        "date": "Dec 01",
+        "count": 20,
+        "econ": [
+          "Atlanta Fed GDPNow",
+          "ISM Manufacturing Employment",
+          "ISM Manufacturing New Orders Index",
+          "ISM Manufacturing PMI"
+        ],
+        "before": [
+          "CPRT",
+          "NIO",
+          "VSTS",
+          "CTRN"
+        ],
+        "after": [
+          "CRWD",
+          "MRVL",
+          "OKTA",
+          "NTAP",
+          "MDB",
+          "CRDO",
+          "HQY",
+          "GTLB"
+        ]
       },
       {
         "day": "Wed",
-        "date": "Nov 18",
-        "count": 55,
-        "econ": [],
-        "before": [
-          "ENRD",
-          "KNDI"
+        "date": "Dec 02",
+        "count": 29,
+        "econ": [
+          "ADP Nonfarm Employment Change"
         ],
-        "after": []
+        "before": [
+          "BMO",
+          "BNS",
+          "DCI",
+          "M",
+          "VFS",
+          "SIG",
+          "CBRL",
+          "CXM"
+        ],
+        "after": [
+          "CRM",
+          "SNOW",
+          "ZS",
+          "FIVE",
+          "NTSK",
+          "DSGX",
+          "AEO",
+          "BLBD"
+        ]
       },
       {
         "day": "Thu",
-        "date": "Nov 19",
-        "count": 52,
-        "econ": [],
+        "date": "Dec 03",
+        "count": 41,
+        "econ": [
+          "Durables Excluding Defense",
+          "Durables Excluding Transport",
+          "ISM Non-Manufacturing Business Activity",
+          "ISM Non-Manufacturing Employment"
+        ],
         "before": [
-          "MAGN",
-          "SPWR"
+          "RY",
+          "TD",
+          "CM",
+          "KR",
+          "DG",
+          "BF.A",
+          "BF.B",
+          "HRL"
         ],
         "after": [
-          "GRRR"
+          "VEEV",
+          "ULTA",
+          "IOT",
+          "DOCU",
+          "COO",
+          "GWRE",
+          "S",
+          "TTAN"
         ]
       },
       {
         "day": "Fri",
-        "date": "Nov 20",
-        "count": 39,
+        "date": "Dec 04",
+        "count": 4,
         "econ": [
-          "Michigan 1-Year Inflation Expectations",
-          "Michigan 5-Year Inflation Expectations",
-          "Michigan Consumer Expectations",
-          "Michigan Consumer Sentiment"
+          "Nonfarm Payrolls",
+          "Government Payrolls",
+          "Manufacturing Payrolls",
+          "U6 Unemployment Rate"
         ],
-        "before": [],
-        "after": [
-          "DLNG"
-        ]
+        "before": [
+          "KNOP"
+        ],
+        "after": []
       }
     ],
-    "scope": "this week"
+    "scope": "next week"
   }
 }
