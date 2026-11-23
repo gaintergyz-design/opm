@@ -1,0 +1,15 @@
+{
+  "stamp": "20261123",
+  "kind": "nvda-huang-return",
+  "bg": "assets/breaking/nvda-breaking-bg.png",
+  "brand_logo": "assets/breaking/opm-logo-full.png",
+  "accent": "#329528",
+  "accent_name": "Nvidia green",
+  "headline": "Jensen Huang confirms return to Nvidia",
+  "kicker": "BREAKING:",
+  "source_note": "Source: NVIDIA, Nov 23, 2026",
+  "asof": "Nov 23, 2026",
+  "wrap_width": 980,
+  "title_size": 82,
+  "title_line": 100
+}
