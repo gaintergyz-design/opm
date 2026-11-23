@@ -18,3 +18,4 @@
 | 2026-11-20 15:47 | gyz | ❌ | druckenmiller-13f-20261120b.png | 失敗 rc=1 |
 | 2026-11-20 15:47 | gyz | ✅ | druckenmiller-13f-20261120-v2.png | 成功 |
 | 2026-11-20 17:01 | gyz | ❌ | hk-bullbear-20261120.png | 失敗 rc=1；驗收異常（見腳本輸出） |
+| 2026-11-23 09:50 | gyz | ❌ | nvda-congress-sales-20261123.png | 失敗 rc=1；rebase 衝突需手動處理（stash 已保留） |
