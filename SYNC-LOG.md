@@ -17,3 +17,4 @@
 | 2026-11-20 15:41 | gyz | ✅ | druckenmiller-13f-20261120.png | 成功 |
 | 2026-11-20 15:47 | gyz | ❌ | druckenmiller-13f-20261120b.png | 失敗 rc=1 |
 | 2026-11-20 15:47 | gyz | ✅ | druckenmiller-13f-20261120-v2.png | 成功 |
+| 2026-11-20 17:01 | gyz | ❌ | hk-bullbear-20261120.png | 失敗 rc=1；驗收異常（見腳本輸出） |
