@@ -81,6 +81,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'week-ahead': 'Week Ahead',
              'nvda-congress-sales': 'Nvda Congress Sales',
              'hk-bullbear': 'Hong Kong Bull & Bear',
              'druckenmiller-13f': "Druckenmiller's Q3 Book",
