@@ -2,7 +2,7 @@
   "handle": "@onepagemarket",
   "disclaimer": "For informational purposes only. Not investment advice. The relevant data and content are obtained from public sources and for reference only. All third-party trademarks, brand names and logos displayed are for identification purposes only and remain the property of their respective owners.",
   "source": "Nasdaq official calendar & screener",
-  "generated_at": "2026-11-20 21:35",
+  "generated_at": "2026-11-23 03:18",
   "week_label": "Nov 16 – Nov 20",
   "ondeck": {
     "session": "2026-11-23",
@@ -21,8 +21,30 @@
         "pct": -2.76
       }
     ],
-    "econ": [],
-    "econ_all": 0,
+    "econ": [
+      {
+        "time": "09:45",
+        "event": "Flash Manufacturing PMI",
+        "consensus": "54.5",
+        "previous": "56.0",
+        "impact": "Medium"
+      },
+      {
+        "time": "09:45",
+        "event": "Flash Services PMI",
+        "consensus": "55.6",
+        "previous": "57.9",
+        "impact": "Medium"
+      },
+      {
+        "time": "16:00",
+        "event": "FOMC Member Williams Speaks",
+        "consensus": "",
+        "previous": "",
+        "impact": "Low"
+      }
+    ],
+    "econ_all": 3,
     "earnings": {
       "before": [
         "VNET",
@@ -59,7 +81,7 @@
           "name": "Hewlett Packard Enterprise",
           "cap": 60386374000,
           "growth": 49.0,
-          "eps": 1.28,
+          "eps": 1.29,
           "surprise": 6.6,
           "time": "AMC"
         },
@@ -216,12 +238,7 @@
         "day": "Mon",
         "date": "Nov 16",
         "count": 265,
-        "econ": [
-          "Fed Chairman Warsh Speaks",
-          "Cleveland Fed Inflation Expectations",
-          "FOMC Member Barr Speaks",
-          "Empire State Manufacturing Index"
-        ],
+        "econ": [],
         "before": [
           "QVCG"
         ],
@@ -239,12 +256,7 @@
         "day": "Wed",
         "date": "Nov 18",
         "count": 55,
-        "econ": [
-          "Atlanta Fed GDPNow",
-          "Housing Starts",
-          "FOMC Meeting Minutes",
-          "Building Permits"
-        ],
+        "econ": [],
         "before": [
           "ENRD",
           "KNDI"
@@ -267,13 +279,14 @@
       {
         "day": "Fri",
         "date": "Nov 20",
-        "count": 30,
-        "econ": [],
-        "before": [
-          "BJ",
-          "MOG.A",
-          "WRD"
+        "count": 39,
+        "econ": [
+          "Michigan 1-Year Inflation Expectations",
+          "Michigan 5-Year Inflation Expectations",
+          "Michigan Consumer Expectations",
+          "Michigan Consumer Sentiment"
         ],
+        "before": [],
         "after": [
           "DLNG"
         ]
