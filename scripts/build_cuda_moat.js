@@ -150,25 +150,19 @@ function finish(a, defs, stem) {
   });
   a.push(`<circle cx="${DCX}" cy="${DCY}" r="${R0 - 3}" fill="#FFFFFF"/>`);
 
-  /* 中心：總量 */
-  a.push(t(DCX, DCY - 6, D.total_gw_disp, { size: 58, weight: 700, anchor: 'middle', ls: -1 }));
-  a.push(t(DCX, DCY + 32, 'GW announced', { size: 19, weight: 500, fill: C.gray, anchor: 'middle', ls: 1.5 }));
-
   /* --- 圖例（右）：logo 徽章 + 名稱 + GW + % --- */
-  const LX = 690, RX = W - M, ROWH = 72;
+  const LX = 690, RX = W - M, ROWH = 88;
   const LY0 = DCY - (D.vendors.length * ROWH) / 2 + 10;
   D.vendors.forEach((v, i) => {
     const cy = LY0 + ROWH * i + ROWH / 2;
-    // 色點
-    a.push(`<circle cx="${LX + 9}" cy="${cy}" r="7" fill="${v.color}"/>`);
-    // logo 徽章
+    // logo 徽章（加大版，去色點）
     const uri = logoUri(v.ticker);
-    if (uri) logoBadge(a, defs, LX + 44, cy, 26, uri);
+    if (uri) logoBadge(a, defs, LX + 34, cy, 32, uri);
     // 名稱 + GW
-    a.push(t(LX + 84, cy - 5, v.name, { size: fit(v.name, 21, RX - (LX + 84) - 96), weight: 700 }));
-    a.push(t(LX + 84, cy + 21, v.gw_disp, { size: 16, fill: C.gray }));
+    a.push(t(LX + 80, cy - 6, v.name, { size: fit(v.name, 24, RX - (LX + 80) - 86), weight: 700 }));
+    a.push(t(LX + 80, cy + 22, v.gw_disp, { size: 18, fill: C.gray }));
     // 右側 %
-    a.push(t(RX, cy + 11, `${v.pct}%`, { size: 30, weight: 700, fill: v.ink, anchor: 'end' }));
+    a.push(t(RX, cy + 12, `${v.pct}%`, { size: 34, weight: 700, fill: v.ink, anchor: 'end' }));
     // 分隔線
     if (i < D.vendors.length - 1) a.push(`<line x1="${LX}" y1="${cy + ROWH / 2}" x2="${RX}" y2="${cy + ROWH / 2}" stroke="${C.line}" stroke-width="1"/>`);
   });

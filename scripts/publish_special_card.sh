@@ -24,7 +24,7 @@
 #   任何電腦都能先跑 `bash scripts/publish_special_card.sh --help` 看這份說明
 #
 # === 參數（全部可省略） ==============================================
-#   <定稿 PNG>      省略＝自動選最新未上線的圖
+#   <定稿 PNG/MP4>  省略＝自動選最新未上線的圖（PNG／MP4 都支援）
 #   --match "..."   自動選圖時只挑檔名含此字串的（給線索用）
 #   --title "..."   commit 名稱：card: <title> / gallery: add <title>
 #                   省略時由組名自動生成
@@ -89,7 +89,7 @@ while [ $# -gt 0 ]; do
     --no-push)    NO_PUSH=1; shift ;;
     -h|--help)    awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0"; SKIPLOG=1; exit 0 ;;
     -*)           echo "未知選項：$1" >&2; exit 1 ;;
-    *)            [ -z "$IMG_ARG" ] && IMG_ARG="$1" || { echo "只能給一張定稿 PNG" >&2; exit 1; }; shift ;;
+    *)            [ -z "$IMG_ARG" ] && IMG_ARG="$1" || { echo "只能給一張定稿（PNG／MP4）" >&2; exit 1; }; shift ;;
   esac
 done
 
@@ -103,7 +103,7 @@ idx = subprocess.run(['git','show','origin/main:docs/index.html'],
                      capture_output=True, text=True).stdout
 TIMED = ('the-close-', 'on-deck-', 'winners-losers-', 'week-ahead-')
 allnew = []
-for p in glob.glob('out/*.png'):
+for p in glob.glob('out/*.png') + glob.glob('out/*.mp4'):
     n = os.path.basename(p)
     if n in idx: continue                       # 已在線上畫廊
     if match and match not in n.lower(): continue
@@ -133,7 +133,7 @@ else
 fi
 
 IMG_NAME="$(basename "$IMG_PATH")"
-STEM="${IMG_NAME%.png}"
+STEM="${IMG_NAME%.*}"   # .png / .mp4 都支援（畫廊 2026-11-24 起收影片）
 STAMP="$(printf '%s' "$STEM" | sed -E 's/^.*-([0-9]{8}(-[A-Za-z0-9]+)?)$/\1/')"
 KIND="$(printf '%s' "$STEM" | sed -E 's/-[0-9]{8}(-[A-Za-z0-9]+)?$//')"
 GROUP_KEY="$(printf '%s' "$KIND" | sed -E 's/-p[0-9]+$//')"   # anthropic-s1-p01 → anthropic-s1
@@ -188,7 +188,8 @@ OLD_IMGS=""
 if [ "$NO_CLEAN" = 0 ]; then
   echo "[1/6] 清理過程稿"
   mkdir -p out/_wip
-  for f in out/"$KIND"-*.png out/"$KIND_U"-*.png out/caption-"$KIND"-*.txt out/caption-"$KIND_U"-*.txt \
+  for f in out/"$KIND"-*.png out/"$KIND_U"-*.png out/"$KIND"-*.mp4 out/"$KIND_U"-*.mp4 \
+           out/caption-"$KIND"-*.txt out/caption-"$KIND_U"-*.txt \
            out/"$KIND"-*.svg out/"$KIND_U"-*.svg; do
     [ -f "$f" ] || continue
     # 定稿本體（PNG / 同名 SVG / 對應 caption）必須留下
