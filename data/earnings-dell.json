@@ -1,0 +1,138 @@
+{
+  "ticker": "DELL",
+  "company": "Dell Technologies",
+  "quarter": "Q3 FY27",
+  "period_end": "Oct 30, 2026",
+  "reported": "Nov 24, 2026 · after US close",
+  "brand": {
+    "deep": "#00437A",
+    "primary": "#0076CE",
+    "mid": "#2F86C6",
+    "teal": "#3FA9DF",
+    "pos": "#028948"
+  },
+  "strip": "AI server rev $22.0B (+291%) · New AI orders $60.2B · Backlog $132.3B (record)",
+  "kpi": {
+    "revenue": {
+      "label": "Total revenue (US$)",
+      "actual": 54937,
+      "actual_disp": "$54.9B",
+      "est_disp": "$49.3B",
+      "surprise": 11.4,
+      "prior": 27005,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 103.4
+    },
+    "eps": {
+      "label": "Adj. EPS (US$)",
+      "actual": 9.45,
+      "actual_disp": "$9.45",
+      "est_disp": "$6.59",
+      "surprise": 43.4,
+      "prior": 2.59,
+      "prior_txt": "3Q26",
+      "cur_txt": "3Q27",
+      "yoy": 265
+    }
+  },
+  "layout": {
+    "marginMax": 25,
+    "marginStep": 5
+  },
+  "quarters": [
+    "3Q26",
+    "4Q26",
+    "1Q27",
+    "2Q27",
+    "3Q27"
+  ],
+  "gross_margin": [
+    20.83,
+    20.26,
+    17.94,
+    20.98,
+    21.04
+  ],
+  "op_margin": [
+    8.27,
+    9.62,
+    8.86,
+    12.02,
+    13.55
+  ],
+  "ocf": [
+    1172,
+    585,
+    4081,
+    2225,
+    4459
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 1
+  },
+  "mix_title": "Revenue mix · Q3 FY27",
+  "mix_center": "AI servers",
+  "mix_colors": [
+    "#0076CE",
+    "#00437A",
+    "#46B0DC",
+    "#F2B01E"
+  ],
+  "mix": [
+    {
+      "name": "AI-optimized servers",
+      "pct": 40.1,
+      "value": "$22.0B"
+    },
+    {
+      "name": "Servers & networking",
+      "pct": 27.3,
+      "value": "$15.0B"
+    },
+    {
+      "name": "Client (PCs)",
+      "pct": 23.5,
+      "value": "$12.9B"
+    },
+    {
+      "name": "Storage",
+      "pct": 9.0,
+      "value": "$4.9B"
+    }
+  ],
+  "outlook": {
+    "title": "FY27 guide · raised (3rd time)",
+    "items": [
+      {
+        "k": "Revenue",
+        "v": "$202B",
+        "note": "prior $192B · +78% Y/Y"
+      },
+      {
+        "k": "Adj. EPS",
+        "v": "$29.68",
+        "note": "prior $25.50 · +188% Y/Y"
+      },
+      {
+        "k": "AI server revenue",
+        "v": "$78B",
+        "note": "prior $74B · +216% Y/Y"
+      },
+      {
+        "k": "Q4 watch",
+        "v": "$56.3B rev",
+        "note": "adj. EPS $8.40"
+      },
+      {
+        "k": "Capital return",
+        "v": "+$25B buyback",
+        "note": "$4.9B returned in Q3 (record)"
+      }
+    ]
+  },
+  "notes": "口徑：Dell Technologies Q3 FY27 新聞稿（investors.delltechnologies.com，2026-11-24 美股盤後）＋ Yahoo Finance／騰訊新聞／財聯社轉述共識 ＋ stockanalysis.com DELL 季度表（GAAP standardized）。季度截止 2026-10-30。Total revenue $54.937B（+103.4%），高於共識 $49.32B 約 +11.4%；Adj.（non-GAAP）EPS $9.45（去年 $2.59 → +265%），高於共識 $6.59 → +43.4%（SA 口徑共識區間 $6.62–6.76）；GAAP EPS $8.82（+287%），淨利 $5.67B（+266%）。營業現金流 $4.459B（Q3 紀錄，+280%），自由現金流 $3.474B（stockanalysis capex 口徑）。分部：ISG $41.97B（+198%，營業利潤 $7.12B +308%，利潤率 17.0%），其中 AI 優化伺服器 $22.03B（+291%）、傳統伺服器及網絡 $15.01B（+235%）、儲存 $4.93B（+24%）；CSG $12.9B（+3%，commercial $11.3B +6%／consumer $1.59B −15%）。AI 伺服器本季新增訂單 $60.2B，期末積壓 $132.3B（紀錄，同比 +619%，大於去年全年營收），全球逾 7,500 家客戶部署 Dell AI Factory。營收 mix 按四項產品口徑：AI 伺服器 40.1%／傳統伺服器及網絡（圖例作 Servers & networking）27.3%／CSG 23.5%／儲存 9.0%（合計 99.9%，餘為 Other Businesses $77M）。毛利率五季（stockanalysis standardized，gross profit ÷ revenue）：3Q26 20.83／4Q26 20.26／1Q27 17.94／2Q27 20.98／3Q27 21.04（官方口徑 3Q27 21.0% vs 去年 20.7%）；營業利潤率五季：8.27／9.62／8.86／12.02／13.55（GAAP standardized；官方 non-GAAP op income $7.83B +213%）。OCF（US$M）：3Q26 1,172／4Q26 585／1Q27 4,081／2Q27 2,225／3Q27 4,459。指引（11/24 第三次上調）：FY27 營收 $202B（原 $192B）、AI 伺服器收入 $78B（原 $74B）、adj EPS $29.68（原 $25.50）；Q4 營收 $56.3B、adj EPS $8.40，均高於共識。股東回報：本季 $4.9B（紀錄），董事會追加回購授權 $25B。股價：11/24 正規交易時段收 $295.28（−11.83%，財報發布前大盤 AI 板塊回落），盤後漲約 2–4%。風險點（新聞稿及媒體提及）：記憶體晶片供應緊張、零部件成本上漲對伺服器定價與利潤率構成壓力。"
+}
