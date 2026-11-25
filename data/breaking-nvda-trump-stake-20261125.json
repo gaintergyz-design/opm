@@ -1,0 +1,15 @@
+{
+  "stamp": "20261125",
+  "kind": "nvda-trump-stake",
+  "bg": "assets/breaking/nvda-breaking-bg.png",
+  "brand_logo": "assets/breaking/opm-logo-full.png",
+  "accent": "#329528",
+  "accent_name": "Nvidia green",
+  "headline": "Trump: Open to U.S. government stake in Nvidia",
+  "kicker": "BREAKING:",
+  "source_note": "Source: New York Post, Nov 24, 2026",
+  "asof": "Nov 24, 2026",
+  "wrap_width": 980,
+  "title_size": 82,
+  "title_line": 100
+}
