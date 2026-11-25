@@ -1,0 +1,132 @@
+{
+  "ticker": "HPQ",
+  "company": "HP Inc.",
+  "quarter": "Q4 FY26",
+  "period_end": "Oct 31, 2026",
+  "reported": "Nov 24, 2026 · after US close",
+  "brand": {
+    "deep": "#00396B",
+    "primary": "#0096D6",
+    "mid": "#33A9DC",
+    "teal": "#43B8E5",
+    "pos": "#028948"
+  },
+  "strip": "Commercial PCs +23% · AI PCs ~60% of shipments · EPS incl. $0.15 tariff refund",
+  "kpi": {
+    "revenue": {
+      "label": "Total revenue (US$)",
+      "actual": 16004,
+      "actual_disp": "$16.0B",
+      "est_disp": "$15.4B",
+      "surprise": 3.9,
+      "prior": 14639,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": 9.3
+    },
+    "eps": {
+      "label": "Adj. EPS (US$)",
+      "actual": 0.83,
+      "actual_disp": "$0.83",
+      "est_disp": "$0.74",
+      "surprise": 12.2,
+      "prior": 0.93,
+      "prior_txt": "4Q25",
+      "cur_txt": "4Q26",
+      "yoy": -10.8
+    }
+  },
+  "layout": {
+    "marginMax": 25,
+    "marginStep": 5
+  },
+  "quarters": [
+    "4Q25",
+    "1Q26",
+    "2Q26",
+    "3Q26",
+    "4Q26"
+  ],
+  "gross_margin": [
+    20.23,
+    20.72,
+    20.93,
+    17.97,
+    17.5
+  ],
+  "op_margin": [
+    7.44,
+    6.03,
+    7.11,
+    5.4,
+    5.74
+  ],
+  "ocf": [
+    1624,
+    383,
+    926,
+    1735,
+    932
+  ],
+  "ocf_fmt": {
+    "unit": "US$B",
+    "div": 1000,
+    "dec": 1,
+    "step": 0.5
+  },
+  "mix_title": "Revenue mix · Q4 FY26",
+  "mix_center": "Commercial PCs",
+  "mix_colors": [
+    "#0096D6",
+    "#00B389",
+    "#7BC9EB"
+  ],
+  "mix": [
+    {
+      "name": "Commercial PCs",
+      "pct": 53.7,
+      "value": "$8.6B"
+    },
+    {
+      "name": "Printing",
+      "pct": 26.6,
+      "value": "$4.3B"
+    },
+    {
+      "name": "Consumer PCs",
+      "pct": 19.7,
+      "value": "$3.2B"
+    }
+  ],
+  "outlook": {
+    "title": "FY27 guide · cautious",
+    "items": [
+      {
+        "k": "Adj. EPS",
+        "v": "$3.15–3.45",
+        "note": "consensus $3.18 · ex-SBC basis"
+      },
+      {
+        "k": "Q1 EPS",
+        "v": "$0.66–0.76",
+        "note": "consensus $0.72"
+      },
+      {
+        "k": "Free cash flow",
+        "v": "$2.9–3.1B",
+        "note": "below ~$3.3B est · FY26 $3.3B"
+      },
+      {
+        "k": "Dividend",
+        "v": "+3% to $0.31",
+        "note": "first FY27 payout Jan 6"
+      },
+      {
+        "k": "Margin watch",
+        "v": "PS 3.0%",
+        "note": "memory ~40% of PC BOM · Q4 low"
+      }
+    ]
+  },
+  "notes": "口徑：HP Inc. FY26 Q4 及全年新聞稿（hp.com，2026-11-24 美股盤後）＋ 智通財經／BigGo／同花順轉述共識 ＋ stockanalysis.com HPQ 季度表（GAAP standardized）。季度截止 2026-10-31。Total revenue $16.004B（+9.3%，cc +8.6%），高於共識（彭博 $15.4B／FactSet ~$15.4B）約 +3.9%；Non-GAAP EPS $0.83（去年 $0.93 → −10.8%），高於共識 $0.74 → +12.2%，且高於公司指引 $0.69–0.79；GAAP EPS $0.84（持平）。⚠️ 兩口徑 EPS 均含 $0.15 關稅退税利好（原指引僅 $0.08），剔除後盈利同比明顯收縮——beat 的質量打折扣，市場焦點因此在 FY27 審慎指引。分部：Personal Systems $11.75B（+14%，商用 $8.60B +23%／消費 $3.15B −7%，總出貨量 −29%，AI PC 佔出貨近 60%，PS 營業利潤率 3.0% vs 上年 5.8%、上季 4.6%，CFO 稱 Q4 為低點、逐季回升至 5–7%）；Printing $4.25B（−1%，營業利潤率 19.7% 高於預期 17.3%）。營收 mix 按商用 PC／打印／消費 PC 三段：53.7%／26.6%／19.7%（分部合計 = 總營收）。毛利率五季（stockanalysis standardized）：4Q25 20.23／1Q26 20.72／2Q26 20.93／3Q26 17.97／4Q26 17.50（同比 4Q25 20.23 → 下滑 2.7pts，主因記憶體／儲存成本上涨——記憶體佔 PC BOM 從財年初 15–18% 升至 ~40%）；營業利潤率五季：7.44／6.03／7.11／5.40／5.74。OCF（US$M）：4Q25 1,624／1Q26 383／2Q26 926／3Q26 1,735／4Q26 932；Q4 FCF $0.8B（預期 $0.6B）。全年 FY26：營收 $60.5B（+9.5%）、non-GAAP EPS $3.33（+6.7%，超指引 $3.19–3.29）、FCF $3.3B、股東回報 $2.3B。FY27 指引（11/24）：non-GAAP EPS $3.15–3.45（共識 $3.18；可比口徑中值同比約 −11%；FY27 起剔除 SBC 費用，對 FY26 影響 ~$0.38/股）、Q1 EPS $0.66–0.76（共識 $0.72）、FCF $2.9–3.1B（低於共識 ~$3.3B）；股息上調 3% 至 $0.31/股。股價：11/24 收 $27.94（−3.36%），盤後一度 +15% 後幾乎全部回吐至平盤附近。人事：臨時 CEO Bruce Broussard（Emma Walmsley 明年 1 月接任）。"
+}
