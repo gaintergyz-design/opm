@@ -81,6 +81,7 @@ POST_OF = {
     'eisman-risks': 'eisman-ai-boom',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
+             'nasdaq-deepv': 'Nasdaq Deepv',
              'nvda-huang-bounce': 'Nvda Huang Bounce',
              'assets-2x2': 'Assets 2X2',
              'ant-break': 'Ant Break',
