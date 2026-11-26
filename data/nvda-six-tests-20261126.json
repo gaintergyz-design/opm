@@ -1,0 +1,41 @@
+{
+  "stem": "nvda-six-tests-20261126",
+  "headline": ["Jensen Huang's return", "is just the beginning!"],
+  "subhead": "Nvidia faces six key tests ahead",
+  "columns": ["TIME (ET)", "MAJOR EVENT", "KEY FOCUS"],
+  "rows": [
+    {
+      "date": "Nov 30 – Dec 3, 2026",
+      "event": "GTC Washington",
+      "focus": "AI infrastructure, technology roadmap and government cooperation"
+    },
+    {
+      "date": "Dec 1, 2026",
+      "event": "Jensen Huang faces closed-door questioning by three House committees",
+      "focus": "National security, AI chip exports and compliance issues"
+    },
+    {
+      "date": "Dec 2, 2026",
+      "event": "Nvidia chief legal officer Tim Teter faces closed-door questioning",
+      "focus": "Internal compliance, export controls and legal liability"
+    },
+    {
+      "date": "Dec 3, 2026",
+      "event": "Jensen Huang appears at a Senate Banking Committee public hearing",
+      "focus": "US AI chip export controls and Huang's public response"
+    },
+    {
+      "date": "Dec 10, 2026 (TBC)",
+      "event": "Commerce Secretary Lutnick invited to testify at a hearing",
+      "focus": "China AI chip export approvals and policy direction"
+    },
+    {
+      "date": "Jan 3, 2027",
+      "event": "The 120th US Congress formally takes office",
+      "focus": "Whether related investigations escalate further"
+    }
+  ],
+  "as_of": "Data as of Nov 25, 2026",
+  "caption": "What comes after Jensen Huang's return?\nGTC Washington opens Nov 30. Three House committees question Huang on Dec 1.\nNvidia's legal chief follows on Dec 2, then a Senate hearing on Dec 3.\nLutnick is invited for Dec 10; the 120th Congress starts Jan 3.",
+  "notes": "OPM rebuild of the user-supplied Futu NiuNiu infographic dated Nov 25, 2026. All six rows, dates, events and focus points preserved; Chinese text translated to English. No added annotations. Per OPM format the Futu wordmark, QR code and source list are not carried over; the unified OPM footer and 'Data as of Nov 25, 2026' are used instead."
+}
