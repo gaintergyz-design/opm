@@ -1,6 +1,6 @@
 {
   "session": "2026-11-25",
-  "generated_at": "2026-11-25 21:22",
+  "generated_at": "2026-11-26 21:22",
   "timezone": "ET",
   "source": "Yahoo Finance · Nasdaq",
   "indexes": [
@@ -37,160 +37,160 @@
         "name": "NVIDIA Corporation Common Stock",
         "last": 149.3,
         "pct": -3.91,
-        "dollar_volume": 53263472380,
-        "volume": 356754671
+        "dollar_volume": 53677385131,
+        "volume": 359527027
       },
       {
         "ticker": "MU",
         "name": "Micron Technology Inc. Common Stock",
         "last": 601.25,
         "pct": -4.57,
-        "dollar_volume": 31264362074,
-        "volume": 51998939
+        "dollar_volume": 31451778312,
+        "volume": 52310650
       },
       {
         "ticker": "ANT",
         "name": "Anthropic PBC Class A Common Stock",
         "last": 82.79,
         "pct": 1.08,
-        "dollar_volume": 24151765715,
-        "volume": 291723224
+        "dollar_volume": 24202101290,
+        "volume": 292331215
       },
       {
         "ticker": "AMD",
         "name": "Advanced Micro Devices Inc. Common Stock",
         "last": 406.03,
         "pct": -1.75,
-        "dollar_volume": 20680233009,
-        "volume": 50932771
+        "dollar_volume": 20798836402,
+        "volume": 51224876
       },
       {
         "ticker": "AAPL",
         "name": "Apple Inc. Common Stock",
         "last": 355.58,
         "pct": 0.43,
-        "dollar_volume": 18767976076,
-        "volume": 52781304
+        "dollar_volume": 18867164406,
+        "volume": 53060252
       },
       {
         "ticker": "SPCX",
         "name": "Space Exploration Technologies Corp. Class A Common Stock",
         "last": 127.44,
         "pct": 1.3,
-        "dollar_volume": 18555364932,
-        "volume": 145600792
+        "dollar_volume": 18724639279,
+        "volume": 146929059
       },
       {
         "ticker": "AMZN",
         "name": "Amazon.com Inc. Common Stock",
         "last": 244.43,
         "pct": -3.12,
-        "dollar_volume": 14925852499,
-        "volume": 61063914
+        "dollar_volume": 15084727599,
+        "volume": 61713896
       },
       {
         "ticker": "TSLA",
         "name": "Tesla Inc. Common Stock",
         "last": 380.14,
         "pct": -1.18,
-        "dollar_volume": 12777233368,
-        "volume": 33611915
+        "dollar_volume": 12880290843,
+        "volume": 33883019
       },
       {
         "ticker": "MSFT",
         "name": "Microsoft Corporation Common Stock",
         "last": 489.93,
         "pct": -1.25,
-        "dollar_volume": 12679086113,
-        "volume": 25879383
+        "dollar_volume": 12784855631,
+        "volume": 26095270
       },
       {
         "ticker": "META",
         "name": "Meta Platforms Inc. Class A Common Stock",
         "last": 609.89,
         "pct": 3.4,
-        "dollar_volume": 11184059139,
-        "volume": 18337830
+        "dollar_volume": 11318350208,
+        "volume": 18558019
       },
       {
         "ticker": "GOOGL",
         "name": "Alphabet Inc. Class A Common Stock",
         "last": 273.1,
         "pct": -2.13,
-        "dollar_volume": 11044303281,
-        "volume": 40440510
+        "dollar_volume": 11143768486,
+        "volume": 40804718
       },
       {
         "ticker": "AVGO",
         "name": "Broadcom Inc. Common Stock",
         "last": 300.86,
         "pct": -0.07,
-        "dollar_volume": 9861727476,
-        "volume": 32778460
+        "dollar_volume": 10107186513,
+        "volume": 33594318
       },
       {
         "ticker": "SNDK",
         "name": "Sandisk Corporation Common Stock",
         "last": 73.61,
         "pct": -5.57,
-        "dollar_volume": 8921244259,
-        "volume": 121196091
-      },
-      {
-        "ticker": "TSM",
-        "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
-        "last": 342.34,
-        "pct": -1.96,
-        "dollar_volume": 7746158675,
-        "volume": 22627092
+        "dollar_volume": 8967826433,
+        "volume": 121828915
       },
       {
         "ticker": "DELL",
         "name": "Dell Technologies Inc. Class C Common Stock",
         "last": 297.06,
         "pct": 0.6,
-        "dollar_volume": 7694249090,
-        "volume": 25901330
+        "dollar_volume": 7858296019,
+        "volume": 26453565
+      },
+      {
+        "ticker": "TSM",
+        "name": "Taiwan Semiconductor Manufacturing Company Ltd.",
+        "last": 342.34,
+        "pct": -1.96,
+        "dollar_volume": 7766028774,
+        "volume": 22685134
       },
       {
         "ticker": "GOOG",
         "name": "Alphabet Inc. Class C Capital Stock",
         "last": 270.98,
         "pct": -2.02,
-        "dollar_volume": 7299980622,
-        "volume": 26939186
+        "dollar_volume": 7312816132,
+        "volume": 26986553
       },
       {
         "ticker": "INTC",
         "name": "Intel Corporation Common Stock",
         "last": 54.47,
         "pct": -0.6,
-        "dollar_volume": 6894878345,
-        "volume": 126581207
+        "dollar_volume": 6985865033,
+        "volume": 128251607
       },
       {
         "ticker": "INSM",
         "name": "Insmed Incorporated Common Stock",
         "last": 170.31,
         "pct": 0.09,
-        "dollar_volume": 5345998200,
-        "volume": 31389808
-      },
-      {
-        "ticker": "LRCX",
-        "name": "Lam Research Corporation Common Stock",
-        "last": 185.01,
-        "pct": -5.68,
-        "dollar_volume": 3810293901,
-        "volume": 20595070
+        "dollar_volume": 5346028175,
+        "volume": 31389984
       },
       {
         "ticker": "ORCL",
         "name": "Oracle Corporation Common Stock",
         "last": 103.88,
         "pct": -5.13,
-        "dollar_volume": 3775051763,
-        "volume": 36340506
+        "dollar_volume": 3974209876,
+        "volume": 38257700
+      },
+      {
+        "ticker": "LRCX",
+        "name": "Lam Research Corporation Common Stock",
+        "last": 185.01,
+        "pct": -5.68,
+        "dollar_volume": 3876208523,
+        "volume": 20951346
       }
     ]
   },
