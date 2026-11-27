@@ -1,0 +1,37 @@
+{
+  "stem": "bottom-signals-20261127",
+  "kicker": "BOTTOM SIGNALS",
+  "headline": ["How to spot", "a market bottom"],
+  "subhead": "Five signals that the selloff's core worries are fading",
+  "items": [
+    {
+      "n": "01",
+      "title": "Bad news stops biting",
+      "body": "Tariff shocks, weak jobs or guidance cuts hit at the open, then stocks recover or close higher — bad news stops working."
+    },
+    {
+      "n": "02",
+      "title": "The leaders stop falling",
+      "body": "Big Tech and semis led the drop and carry the most index weight. Watch AI capex worries ease and the chip index stop making new lows — not one stock's bounce."
+    },
+    {
+      "n": "03",
+      "title": "Risk appetite returns",
+      "body": "Money rotates from utilities and staples back toward growth. Earnings get judged on improvement, not just misses. More sectors stabilizing means confidence returning."
+    },
+    {
+      "n": "04",
+      "title": "Credit spreads stay calm",
+      "body": "Check the US high-yield spread (FRED: BAMLH0A0HYM2). New equity lows with a flat or falling spread mean corporate credit stress is not worsening."
+    },
+    {
+      "n": "05",
+      "title": "A higher low forms",
+      "body": "One-day surges can be short covering. Watch a rebound, then a pullback holding above the prior low — a higher low — then a break above the rebound high."
+    }
+  ],
+  "takeaway": "No single signal calls the bottom. Bear rallies still happen — know your cash needs, then scale in or buy monthly.",
+  "as_of": "As of Nov 27, 2026",
+  "caption": "What actually changes when a market bottoms?\nFive quiet signals: bad news stops biting, semis stop making lows, credit holds.\nNone of them calls the exact low.",
+  "notes": "OPM rebuild of a Chinese explainer on identifying market bottoms. All five angles, the FRED series code and the closing caveat are preserved; Chinese text translated to English. No extra annotations, no data invented. Per OPM format the card is all-English with the OPM wordmark and unified footer."
+}
