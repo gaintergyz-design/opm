@@ -1,0 +1,80 @@
+{
+  "stamp": "20261127",
+  "as_of": "Nov 26, 2026",
+  "headline": "GPU capex outlook cut",
+  "subtitle": "SemiAnalysis forecast - AI accelerator capex ($B)",
+  "chart": {
+    "years": ["2025", "2026E", "2027E", "2028E", "2029E", "2030E"],
+    "old": [191, 398, 775, 1054, 1352, 1531],
+    "new": [191, 392, 627, 758, 796, 923],
+    "delta": [null, null, -19, -28, -41, -40]
+  },
+  "stock_headline": "SOX constituents since July",
+  "stock_subtitle": "All 30 names lower - grouped by segment",
+  "groups": [
+    {
+      "name": "AI Compute Hardware",
+      "stocks": [
+        {"name":"Credo Technology","ticker":"CRDO","change":-60.74},
+        {"name":"Astera Labs","ticker":"ALAB","change":-60.60},
+        {"name":"Marvell Technology","ticker":"MRVL","change":-56.04},
+        {"name":"Arm Holdings","ticker":"ARM","change":-54.46},
+        {"name":"AMD","ticker":"AMD","change":-30.11},
+        {"name":"Nvidia","ticker":"NVDA","change":-25.31},
+        {"name":"Broadcom","ticker":"AVGO","change":-20.21}
+      ]
+    },
+    {
+      "name": "Foundry",
+      "stocks": [
+        {"name":"Intel","ticker":"INTC","change":-60.98},
+        {"name":"GlobalFoundries","ticker":"GFS","change":-55.96},
+        {"name":"Tower Semiconductor","ticker":"TSEM","change":-53.30},
+        {"name":"TSMC","ticker":"TSM","change":-28.18}
+      ]
+    },
+    {
+      "name": "Equipment & Materials",
+      "stocks": [
+        {"name":"Lam Research","ticker":"LRCX","change":-57.26},
+        {"name":"Applied Materials","ticker":"AMAT","change":-56.84},
+        {"name":"Teradyne","ticker":"TER","change":-56.09},
+        {"name":"KLA","ticker":"KLAC","change":-55.40},
+        {"name":"ASML","ticker":"ASML","change":-34.36},
+        {"name":"Qnity","ticker":"Q","change":-33.58},
+        {"name":"Entegris","ticker":"ENTG","change":-28.51}
+      ]
+    },
+    {
+      "name": "Memory",
+      "stocks": [
+        {"name":"Micron Technology","ticker":"MU","change":-47.89}
+      ]
+    },
+    {
+      "name": "Analog & Power",
+      "stocks": [
+        {"name":"SiTime","ticker":"SITM","change":-48.22},
+        {"name":"Microchip Technology","ticker":"MCHP","change":-35.87},
+        {"name":"onsemi","ticker":"ON","change":-33.91},
+        {"name":"Analog Devices","ticker":"ADI","change":-15.88},
+        {"name":"Monolithic Power","ticker":"MPWR","change":-13.41},
+        {"name":"NXP Semiconductors","ticker":"NXPI","change":-13.15},
+        {"name":"Texas Instruments","ticker":"TXN","change":-8.44}
+      ]
+    },
+    {
+      "name": "Comms & Optical",
+      "stocks": [
+        {"name":"Coherent","ticker":"COHR","change":-50.27},
+        {"name":"MACOM","ticker":"MTSI","change":-47.45},
+        {"name":"Lattice Semiconductor","ticker":"LSCC","change":-35.80},
+        {"name":"Qualcomm","ticker":"QCOM","change":-8.22}
+      ]
+    }
+  ],
+  "parts": [
+    ["AI Compute Hardware", "Foundry", "Memory", "Comms & Optical"],
+    ["Equipment & Materials", "Analog & Power"]
+  ]
+}

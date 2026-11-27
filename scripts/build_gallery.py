@@ -79,6 +79,9 @@ POST_OF = {
     # 2026-11-12 阿澤：兩則貼文合併成一則 → 兩張卡共用同一 post 組、同一文案
     'eisman-scenarios': 'eisman-ai-boom',
     'eisman-risks': 'eisman-ai-boom',
+    # 2026-11-27：折線圖＋成分股兩張共用同一則文案 → 同一 post 組
+    'gpu-capex-outlook': 'gpu-capex-sox',
+    'sox-drawdown': 'gpu-capex-sox',
 }
 POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'nasdaq-deepv': 'Nasdaq Deepv',
@@ -130,7 +133,8 @@ POST_NAME = {'ondeck': 'On Deck', 'theclose': 'The Close',
              'berkshire-q3': "Buffett's Q3 Book",
              'anthropic-timeline': 'Anthropic After the IPO',
              'only-dollar-up': 'Only the dollar was up',
-             'bear2000-rallies': 'Beware the bounce'}
+             'bear2000-rallies': 'Beware the bounce',
+             'gpu-capex-sox': 'GPU Capex Cut & SOX Drawdown'}
 ORDER = ['on-deck', 'winners-losers', 'week-ahead', 'the-close',
          'who-owns-nvda', 'who-owns-spcx', 'who-owns-meta', 'who-owns-aapl',
          'who-owns-msft', 'etf-omah', 'anthropic-s1', 'cpi',
